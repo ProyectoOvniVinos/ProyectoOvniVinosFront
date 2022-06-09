@@ -1,0 +1,44 @@
+.fmorado {
+    background-color: rgb(184, 13, 72);
+}
+
+.contenedor-logo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.cerrado {
+    height: 100%;
+    width: 135px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 85px;
+}
+
+.menuIcon {
+    width: 40px;
+}
+
+.contenedor-sidebar {
+    width: 135px;
+}
+
+.cont-menu {
+    height: 100%;
+    width: 135px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1.5s;
+}
+
+.contenedor-header {
+    width: 231px;
+    margin: 0 !important;
+    padding: 0 !important;
+}

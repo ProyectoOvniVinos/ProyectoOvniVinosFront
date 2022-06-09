@@ -1,0 +1,58 @@
+<mat-toolbar>
+    <mat-toolbar-row class="contenedor-header">
+        <div [ngClass]="abierto?'cont-menu fmorado':'cerrado'" *ngIf="abierto else menucerrado">
+            <img class="menuIcon" (click)="sidenav.toggle()" (click)="abierto = !abierto" src="../../../../assets/Images/menuCerrado.png" alt="">
+        </div>
+        <h1>Ovni Vinos</h1>
+        <ng-template #menucerrado >
+            <div class="cont-menu">
+
+                <img class="menuIcon" (click)="sidenav.toggle()" (click)="abierto = !abierto" src="../../../../assets/Images/menu.png" alt="">
+            </div>
+
+        </ng-template>
+        
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container >
+    <mat-sidenav #sidenav opened="true" mode="side" class="contenedor-sidebar fmorado">
+        <mat-nav-list>
+            <div class="contenedor-logo">
+
+                <img class="logo" src="../../../../assets/Images/logo.png" alt="">
+            </div>
+            <div *ngIf="!admin && !cliente">
+
+                <a mat-list-item>Iniciar sesion</a>
+                <a mat-list-item>Registrarse</a>
+            </div>
+
+            <div *ngIf="admin">
+
+                <a mat-list-item >Productos</a>
+                <a mat-list-item>Clientes</a>
+                <a mat-list-item>Inventario</a>
+                <a mat-list-item>Contabilidad</a>
+            </div>
+
+            <div *ngIf="cliente">
+
+                <a mat-list-item>Carrito</a>
+                <a mat-list-item>Mis datos</a>
+            </div>
+
+            <div *ngIf="admin || cliente">
+
+                <a mat-list-item>Salir</a>
+            </div>
+
+            
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div style="height: 88vh;">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>
+<app-footer></app-footer>
