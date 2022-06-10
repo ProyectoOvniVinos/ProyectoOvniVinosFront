@@ -1,0 +1,23 @@
+.catalogo{
+    width:100%;
+    justify-content:center;
+    align-items:center;
+}
+.container-c{
+    width:70%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.slider-entero{
+    width:50%;
+    min-width: 600px;
+}
+.carousel-orden{
+    background-color:whitesmoke;
+    width:5%;
+}
+.item-image{
+    width:40%;
+    max-width:500px;
+}
