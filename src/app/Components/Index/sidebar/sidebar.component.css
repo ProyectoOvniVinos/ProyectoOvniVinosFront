@@ -23,18 +23,33 @@
 .menuIcon {
     width: 40px;
 }
+.contenedor-titulo-header{
+    width:20%;
+    display: flex;
+    justify-content: flex-start;
+}
 
 .contenedor-sidebar {
     width: 135px;
 }
-
+.mat-toolbar{
+    background-color:#fafafa
+}
 .cont-menu {
     height: 100%;
     width: 135px;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: all 1.5s;
+    animation: fadeIn 1s;
+}
+@keyframes fadeIn {
+    0%{
+        opacity: 0.5;
+    }
+    to{
+        opacity: 1;
+    }
 }
 
 .contenedor-header {

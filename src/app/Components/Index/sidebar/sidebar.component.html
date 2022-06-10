@@ -11,19 +11,29 @@
             </div>
 
         </ng-template>
-        
+        <div class="contenedor-titulo-header">
+
+            <h1>Ovni Vinos</h1>
+        </div>
     </mat-toolbar-row>
 </mat-toolbar>
 <mat-sidenav-container >
     <mat-sidenav #sidenav opened="true" mode="side" class="contenedor-sidebar fmorado">
         <mat-nav-list>
             <div class="contenedor-logo">
+<<<<<<< HEAD
 
                 <img routerLink="/catalogo" class="logo" src="../../../../assets/Images/logo.png" alt="">
             </div>
             <div *ngIf="!admin && !cliente">
 
                 <a routerLink="/iniciarSesion" mat-list-item>Iniciar sesion</a>
+=======
+                <img class="logo" src="../../../../assets/Images/logo.png" alt="">
+            </div>
+            <div *ngIf="!admin && !cliente">
+                <a mat-list-item>Iniciar Sesion</a>
+>>>>>>> main
                 <a mat-list-item>Registrarse</a>
             </div>
 
