@@ -3,9 +3,7 @@
         <div [ngClass]="abierto?'cont-menu fmorado':'cerrado'" *ngIf="abierto else menucerrado">
             <img class="menuIcon" (click)="sidenav.toggle()" (click)="abierto = !abierto" src="../../../../assets/Images/menuCerrado.png" alt="">
         </div>
-        <h1 routerLink="/catalogo" class="contenedor-titulo-header">
-             Ovni Vinos
-            </h1>
+        <h1 routerLink="/catalogo" class="contenedor-titulo-header">Ovni Vinos</h1>
         <ng-template #menucerrado >
             <div class="cont-menu">
 

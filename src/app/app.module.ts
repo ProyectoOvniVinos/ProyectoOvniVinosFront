@@ -17,7 +17,7 @@ import { ProductosComponent } from './Components/Admin/productos/productos.compo
 import { ContabilidadComponent } from './Components/Admin/contabilidad/contabilidad.component';
 import { SidebarComponent } from './Components/Index/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -54,6 +54,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatListModule,
     MatIconModule,
     MatButtonModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   providers: [],
