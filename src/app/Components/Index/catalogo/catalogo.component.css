@@ -5,19 +5,40 @@
 }
 .container-c{
     width:70%;
+    height:70vh;
     display:flex;
     justify-content:center;
     align-items:center;
 }
 .slider-entero{
     width:50%;
-    min-width: 600px;
 }
 .carousel-orden{
     background-color:whitesmoke;
     width:5%;
 }
 .item-image{
-    width:40%;
-    max-width:500px;
+    width:50% ;
+    max-height: 600px;
+    max-width:450px;
+}
+.carousel-indicators{
+    margin-bottom:1rem;
+}
+
+@media screen and (max-height:780px) {
+    .container-c{
+        width:40%;
+        height:70vh;
+    }
+    .item-image{
+        max-height: 500px;
+    }
+    .carousel-indicators{
+
+        margin-bottom:1rem;
+    }
+    .slider-entero{
+        width:75%;
+    }
 }
