@@ -3,7 +3,7 @@
         <div [ngClass]="abierto?'cont-menu fmorado':'cerrado'" *ngIf="abierto else menucerrado">
             <img class="menuIcon" (click)="sidenav.toggle()" (click)="abierto = !abierto" src="../../../../assets/Images/menuCerrado.png" alt="">
         </div>
-        <h1>Ovni Vinos</h1>
+        <h1 routerLink="/catalogo">     Ovni Vinos</h1>
         <ng-template #menucerrado >
             <div class="cont-menu">
 
@@ -19,11 +19,11 @@
         <mat-nav-list>
             <div class="contenedor-logo">
 
-                <img class="logo" src="../../../../assets/Images/logo.png" alt="">
+                <img routerLink="/catalogo" class="logo" src="../../../../assets/Images/logo.png" alt="">
             </div>
             <div *ngIf="!admin && !cliente">
 
-                <a mat-list-item>Iniciar sesion</a>
+                <a routerLink="/iniciarSesion" mat-list-item>Iniciar sesion</a>
                 <a mat-list-item>Registrarse</a>
             </div>
 
