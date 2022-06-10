@@ -6,16 +6,16 @@
         </div>
         <div class="cajaHijoLogin">
             <div class="cajaForm">
-                <form action="" class="cajaFormCompleto">
-                    <div>
+                <form action="" class="cajaFormCompleto" [formGroup]="loginForm">
+                    <div class="cajaCorreo">
                         <label for="" class="label">Correo Electronico</label>
                         <br>
-                        <input type="text" class="input">
+                        <input type="text" class="input form-control" formControlName="correo">
                     </div>
-                    <div>
+                    <div class="cajaContraseña">
                         <label for="" class="label">Contraseña</label>
                         <br>
-                        <input type="text" class="input">
+                        <input type="text" class="input form-control" formControlName="contraseña">
                     </div>
                     <div>
                         <button class="btnIniciar">Iniciar Sesion</button>
@@ -23,10 +23,10 @@
                 </form>
             </div>
             <div class="cajaRegistrar">
-                <div>
-                    <img src="" alt="">
+                <div class="cajaImg">
+                    <img src="../../../../assets/Images/manoCopada.png" alt="manoCopada" class="imgLogin">
                 </div>
-                <button> Registrarse </button>
+                <button class="btnRegistrar"> Registrarse </button>
             </div>
         </div>
     </div>

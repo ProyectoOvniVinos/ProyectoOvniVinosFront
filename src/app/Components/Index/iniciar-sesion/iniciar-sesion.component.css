@@ -10,13 +10,18 @@
     width: 50%;
     height: 70%;
     border: 2px solid black;
+    background-color: white;
+    border-radius: 5px;
 }
 
 .cajaTitleLogin{
     border-bottom: 2px solid black;
-    text-align: center;
     background-color: rgb(184, 13, 72);
     color: white;
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .cajaHijoLogin{
@@ -40,6 +45,7 @@
 .cajaFormCompleto{
     display: flex;
     flex-direction: column;
+    gap: 30px;
 }
 
 .label{
@@ -48,7 +54,14 @@
 
 .input{
     height: 5vh;
-    width: 30vh;
+    width: 34vh;
+    border-radius:5px;
+    font-size: 2vh;
+}
+
+.input:focus{
+    box-shadow:  1px 1px 3px 1px rgb(184, 13, 72);
+    border: 1px solid rgb(184, 13, 72);
 }
 
 .btnIniciar{
@@ -57,8 +70,43 @@
     width: 70%;
     height: 6vh;
     border: none;
-    border-radius: 10px;
+    border-radius: 5px;
     font-size:2.5vh;
     margin-top: 8%;
     margin-left: 15%;
+    transition: 0.2s;
+}
+
+.btnIniciar:hover{
+    transform: scale(1.1,1.1);
+    background-color: rgb(150, 8, 58);
+}
+
+.btnRegistrar{
+    background-color: rgb(184, 13, 72);
+    color: white;
+    width: 70%;
+    height: 6vh;
+    border: none;
+    border-radius: 5px;
+    font-size:2.5vh;
+    margin-top: 1%;
+    margin-left: 15%;
+    transition: 0.2s;
+}
+
+.btnRegistrar:hover{
+    transform: scale(1.1,1.1);
+    background-color: rgb(150, 8, 58);
+}
+
+.imgLogin{
+    width: 100%;
+    height: 100%;
+}
+
+.cajaImg{
+    width: 102%;
+    margin-top: 7%;
+    height: 33vh;
 }
