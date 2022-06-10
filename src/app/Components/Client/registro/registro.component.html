@@ -2,32 +2,59 @@
 
     <div class="cajaM-login">
         <div class="cajaTitleLogin">
-            <h2>Iniciar Sesion</h2>
+            <h2>Registrar</h2>
         </div>
         <div class="cajaHijoLogin">
             <div class="cajaForm">
-                <form action="" class="cajaFormCompleto">
-                    <div>
-                        <label for="" class="label">Correo Electronico</label>
+                <form action="" class="cajaFormCompleto" [formGroup]="registroForm">
+                    <div class="row">
+
+                        <div class="cajaCorreo col">
+                            <label for="" class="label">Correo Electronico</label>
+                            <br>
+                            <input type="text" class="input form-control" formControlName="correo">
+                        </div>
+                        <div class="cajaCorreo col">
+                            <label for="" class="label">Nombre</label>
+                            <br>
+                            <input type="text" class="input form-control" formControlName="correo">
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="cajaCorreo col">
+                            <label for="" class="label">Apellido</label>
+                            <br>
+                            <input type="text" class="input form-control" formControlName="correo">
+                        </div>
+                        <div class="cajaCorreo col">
+                            <label for="" class="label">Direccion</label>
+                            <br>
+                            <input type="text" class="input form-control" formControlName="correo">
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="cajaCorreo col">
+                            <label for="" class="label">Telefono</label>
+                            <br>
+                            <input type="text" class="input form-control" formControlName="correo">
+                        </div>
+                        <div class="cajaContraseña col">
+                            <label for="" class="label">Contraseña</label>
+                            <br>
+                            <input type="text" class="input form-control" formControlName="contraseña">
+                        </div>
+                    </div>
+                    <div class="cajaContraseña">
+                        <label for="" class="label">Repita la contraseña</label>
                         <br>
-                        <input type="text" class="input">
+                        <input type="text" class="input form-control" formControlName="contraseña">
                     </div>
-                    <div>
-                        <label for="" class="label">Contraseña</label>
-                        <br>
-                        <input type="text" class="input">
-                    </div>
-                    <div>
-                        <button class="btnIniciar">Iniciar Sesion</button>
-                    </div>
+                    <button class="btnRegistrar"> Registrarse </button>
                 </form>
             </div>
-            <div class="cajaRegistrar">
-                <div>
-                    <img src="" alt="">
-                </div>
-                <button> Registrarse </button>
-            </div>
+
         </div>
     </div>
 </div>
