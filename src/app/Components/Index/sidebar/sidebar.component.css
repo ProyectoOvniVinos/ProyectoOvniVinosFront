@@ -27,6 +27,8 @@
     width:20%;
     display: flex;
     justify-content: flex-start;
+    margin-left: 10%;
+    font-size: 6vh;
 }
 
 .contenedor-sidebar {
