@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -8,18 +8,22 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class IniciarSesionComponent implements OnInit {
 
-  public loginForm!: FormGroup;
+  public loginForm = new FormGroup({
+    email: new FormControl('',[Validators.required, Validators.email]),
+    password: new FormControl('',[Validators.required]),
+  });
 
-  constructor(private fb: FormBuilder) { }
-
-  ngOnInit(): void {
+  get emailControl(): FormControl{
+    return this.loginForm.get('email') as FormControl;
   }
 
-  initForm(): void {
-    this.loginForm = this.fb.group({
-      correo: ['', [Validators.required, Validators.email]],
-      contraseña: ['',[Validators.required, Validators.minLength(8)]]
-    })
+  get passwordControl(): FormControl{
+    return this.loginForm.get('password') as FormControl;
+  }
+
+  constructor() { }
+
+  ngOnInit(): void {
   }
 
 }
