@@ -11,6 +11,7 @@
             </div>
 
         </ng-template>
+
     </mat-toolbar-row>
 </mat-toolbar>
 <mat-sidenav-container >
@@ -23,7 +24,7 @@
             <div *ngIf="!admin && !cliente">
 
                 <a routerLink="/iniciarSesion" mat-list-item>Iniciar sesion</a>
-                <a mat-list-item>Registrarse</a>
+                <a routerLink="/registro" mat-list-item>Registrarse</a>
             </div>
 
             <div *ngIf="admin">
