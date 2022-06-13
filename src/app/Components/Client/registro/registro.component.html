@@ -15,7 +15,8 @@
                             <input type="text" 
                                     class="input form-control" 
                                     formControlName="nombre"
-                                    [class.is-invalid]="nombreNoValido">
+                                    [ngClass]="''"
+                                    [ngClass]="nombreNoValido ? 'is.invalid': 'is-valid' ">
                         </div>
                         <div class="cajaInput col">
                             <label for="" class="label">Apellido</label>
