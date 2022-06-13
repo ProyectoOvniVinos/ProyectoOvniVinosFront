@@ -33,21 +33,32 @@
     min-width: 40px;
 }
 
-@media screen and (max-width:1005px) {
-    .footer {
-        flex-direction: column;
-        height: 10rem;
-    }
+@media screen and (max-width: 1366px) and (max-height:768px){
 
-    .logos {
-        width: 20%;
-        margin-right: 0px;
+    .footer{
+        height: 5.8rem;
     }
 }
 
-@media screen and (max-width:748px) {
-    .texts h3 {
-        margin-top: 20px;
-        font-size: 100%;
+@media screen and (max-width: 1280px) and (max-height:720px){
+
+    .footer{
+        height:7rem;
     }
+
+    .texts h3 {
+        font-size: 1.3rem;
+    }
+
+}
+
+@media screen and (max-width: 960px) and (max-height:540px){
+    .footer{
+        height:6rem;
+    }
+
+    .texts h3 {
+        font-size: 1rem;
+    }
+
 }
