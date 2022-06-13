@@ -14,14 +14,16 @@
                             <br>
                             <input type="text" 
                                     class="input form-control" 
-                                    formControlName="nombre">
+                                    formControlName="nombre"
+                                    [class.is-invalid]="nombreNoValido">
                         </div>
                         <div class="cajaInput col">
                             <label for="" class="label">Apellido</label>
                             <br>
                             <input type="text" 
                                     class="input form-control" 
-                                    formControlName="apellido">
+                                    formControlName="apellido"
+                                    [class.is-invalid]="apellidoNoValido">
                         </div>
                     </div>
                     <div class="row">
@@ -31,14 +33,16 @@
                             <br>
                             <input type="text" 
                                     class="input form-control" 
-                                    formControlName="direccion">
+                                    formControlName="direccion"
+                                    [class.is-invalid]="direccionNoValido">
                         </div>
                         <div class="cajaInput col">
                             <label for="" class="label">Celular</label>
                             <br>
-                            <input type="text" 
+                            <input type="number" 
                                     class="input form-control" 
-                                    formControlName="celular">
+                                    formControlName="celular"
+                                    [class.is-invalid]="celularNoValido">
                         </div>
                     </div>
                     <div class="row">
@@ -48,15 +52,19 @@
                             <br>
                             <input type="text" 
                                     class="input form-control" 
-                                    formControlName="correo">
+                                    formControlName="correo"
+                                    correo
+                                    [class.is-invalid]="correoNoValido">
                         </div>
                         <div class="cajaInput col">
                             <div>
 
                                 <label for="" class="label">Contraseña</label>
                                 <br>
-                                <input type="text" 
-                                        class="input form-control" formControlName="contraseña">
+                                <input type="password" 
+                                        class="input form-control" 
+                                        formControlName="contrasena1"
+                                        [class.is-invalid]="contrasena1NoValido">
                             </div>
                         </div>
                     </div>
@@ -65,10 +73,13 @@
 
                             <label for="" class="label">Repita la contraseña</label>
                             <br>
-                            <input type="text" class="input form-control" formControlName="contraseña">
+                            <input type="password" 
+                                    class="input form-control" 
+                                    formControlName="contrasena2"
+                                    [class.is-invalid]="contrasena2NoValido">
                         </div>
                     </div>
-                    <div class="d-flex ">
+                    <div class="container-envio d-flex ">
 
                         <div class="cajaImg">
                             <img src="../../../../assets/Images/manoCopada.png" alt="manoCopada" class="imgLogin">
