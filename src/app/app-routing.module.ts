@@ -4,13 +4,17 @@ import { ProductosComponent } from './Components/Admin/productos/productos.compo
 import { RegistroComponent } from './Components/Client/registro/registro.component';
 import { CatalogoComponent } from './Components/Index/catalogo/catalogo.component';
 import { IniciarSesionComponent } from './Components/Index/iniciar-sesion/iniciar-sesion.component';
+import { RecuperarPasswordComponent } from './Components/Index/recuperar-password/recuperar-password.component';
+import { RecuperandoPasswordComponent} from './Components/Index/recuperando-password/recuperando-password.component'
 import { AuthGuard } from './Guards/auth.guard';
 
 const routes: Routes = [
   { path: 'catalogo', component: CatalogoComponent },
   { path: 'productos', component: ProductosComponent, canActivate: [AuthGuard] },
   { path: 'iniciarSesion', component: IniciarSesionComponent },
+  { path: 'recuperar', component: RecuperarPasswordComponent },
   { path: 'registro', component: RegistroComponent },
+  { path: 'recuperando', component: RecuperandoPasswordComponent},
   { path: '**', pathMatch: 'full', redirectTo: '/catalogo' }
 ];
 
