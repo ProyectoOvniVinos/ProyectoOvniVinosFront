@@ -15,6 +15,9 @@ import { InventarioDetallesComponent } from './Components/Admin/inventario-detal
 import { IniciarSesionComponent } from './Components/Index/iniciar-sesion/iniciar-sesion.component';
 import { ProductosComponent } from './Components/Admin/productos/productos.component';
 import { ContabilidadComponent } from './Components/Admin/contabilidad/contabilidad.component';
+import { RecuperarPasswordComponent } from './Components/Index/recuperar-password/recuperar-password.component';
+import { RecuperandoPasswordComponent } from './Components/Index/recuperando-password/recuperando-password.component';
+
 import { SidebarComponent } from './Components/Index/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -24,6 +27,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+
 
 
 
@@ -43,6 +47,8 @@ import { MatButtonModule } from '@angular/material/button';
     ProductosComponent,
     ContabilidadComponent,
     SidebarComponent,
+    RecuperarPasswordComponent,
+    RecuperandoPasswordComponent,
 
   ],
   imports: [
