@@ -25,6 +25,8 @@
 }
 .contenedor-titulo-header{
     width:20%;
+    text-decoration: none;
+    color: black;
     display: flex;
     justify-content: flex-start;
     margin-left: 10%;
