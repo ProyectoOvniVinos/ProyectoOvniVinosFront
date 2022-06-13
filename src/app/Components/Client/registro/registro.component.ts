@@ -8,6 +8,15 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegistroComponent implements OnInit {
 
+  banderaNombre : boolean = false;
+  banderaApellido : boolean = false;
+  banderaDireccion : boolean = false;
+  banderaCelular : boolean = false;
+  banderaCorreo: boolean = false;
+  banderaPasswordOne: boolean = false;
+  banderaPasswordTwo: boolean = false;
+  
+
   registroForm !: FormGroup;
   constructor(private fb: FormBuilder) {
     this.crearFormulario();
@@ -26,7 +35,14 @@ export class RegistroComponent implements OnInit {
   }
 
   get nombreNoValido() {
-    return this.registroForm.get('nombre')?.invalid && this.registroForm.get('nombre')?.touched;
+
+    if(this.registroForm.get('nombre')?.invalid == false && this.registroForm.get('nombre')?.touched){
+      this.banderaNombre=true;
+      return false;
+    }else{
+      return true;
+    }
+
   }
 
   get apellidoNoValido() {
