@@ -9,49 +9,83 @@
                 <form action="" class="cajaFormCompleto" [formGroup]="registroForm">
                     <div class="row">
 
-                        <div class="cajaCorreo col">
-                            <label for="" class="label">Correo Electronico</label>
-                            <br>
-                            <input type="text" class="input form-control" formControlName="correo">
-                        </div>
-                        <div class="cajaCorreo col">
+                        <div class="cajaInput col">
                             <label for="" class="label">Nombre</label>
                             <br>
-                            <input type="text" class="input form-control" formControlName="correo">
+                            <input type="text" 
+                                    class="input form-control" 
+                                    formControlName="nombre"
+                                    [class.is-invalid]="nombreNoValido">
                         </div>
-                    </div>
-                    <div class="row">
-
-                        <div class="cajaCorreo col">
+                        <div class="cajaInput col">
                             <label for="" class="label">Apellido</label>
                             <br>
-                            <input type="text" class="input form-control" formControlName="correo">
-                        </div>
-                        <div class="cajaCorreo col">
-                            <label for="" class="label">Direccion</label>
-                            <br>
-                            <input type="text" class="input form-control" formControlName="correo">
+                            <input type="text" 
+                                    class="input form-control" 
+                                    formControlName="apellido"
+                                    [class.is-invalid]="apellidoNoValido">
                         </div>
                     </div>
                     <div class="row">
 
-                        <div class="cajaCorreo col">
-                            <label for="" class="label">Telefono</label>
+                        <div class="cajaInput col">
+                            <label for="" class="label">Direccion</label>
                             <br>
-                            <input type="text" class="input form-control" formControlName="correo">
+                            <input type="text" 
+                                    class="input form-control" 
+                                    formControlName="direccion"
+                                    [class.is-invalid]="direccionNoValido">
                         </div>
-                        <div class="cajaContraseña col">
-                            <label for="" class="label">Contraseña</label>
+                        <div class="cajaInput col">
+                            <label for="" class="label">Celular</label>
                             <br>
-                            <input type="text" class="input form-control" formControlName="contraseña">
+                            <input type="number" 
+                                    class="input form-control" 
+                                    formControlName="celular"
+                                    [class.is-invalid]="celularNoValido">
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="cajaInput col">
+                            <label for="" class="label">Correo Electronico</label>
+                            <br>
+                            <input type="text" 
+                                    class="input form-control" 
+                                    formControlName="correo"
+                                    correo
+                                    [class.is-invalid]="correoNoValido">
+                        </div>
+                        <div class="cajaInput col">
+                            <div>
+
+                                <label for="" class="label">Contraseña</label>
+                                <br>
+                                <input type="password" 
+                                        class="input form-control" 
+                                        formControlName="contrasena1"
+                                        [class.is-invalid]="contrasena1NoValido">
+                            </div>
                         </div>
                     </div>
                     <div class="cajaContraseña">
-                        <label for="" class="label">Repita la contraseña</label>
-                        <br>
-                        <input type="text" class="input form-control" formControlName="contraseña">
+                        <div>
+
+                            <label for="" class="label">Repita la contraseña</label>
+                            <br>
+                            <input type="password" 
+                                    class="input form-control" 
+                                    formControlName="contrasena2"
+                                    [class.is-invalid]="contrasena2NoValido">
+                        </div>
                     </div>
-                    <button class="btnRegistrar"> Registrarse </button>
+                    <div class="container-envio d-flex ">
+
+                        <div class="cajaImg">
+                            <img src="../../../../assets/Images/manoCopada.png" alt="manoCopada" class="imgLogin">
+                        </div>
+                        <button class="btnRegistrar"> Registrarse </button>
+                    </div>
                 </form>
             </div>
 
