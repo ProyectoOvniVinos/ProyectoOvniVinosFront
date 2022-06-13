@@ -1,6 +1,6 @@
 .cajaP-login{
     width: 100%;
-    height: 90%;
+    height: 95%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,7 +8,7 @@
 
 .cajaM-login{
     width: 50%;
-    height: 70%;
+    height: 80%;
     border: 2px solid black;
     background-color: white;
     border-radius: 5px;
@@ -28,13 +28,14 @@
     display: flex;
     justify-content:space-between;
     justify-content: space-around;
+    align-items: center;
 }
 
 .cajaForm{
-    height: 50vh;
+    height: 40vh;
     display: flex;
-    justify-content:center;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
 
 }
 
@@ -44,6 +45,14 @@
     gap: 30px;
 }
 
+.cajaContraseña{
+    width:100%;
+    display: flex;
+    justify-content:center;
+}
+.cajaInput{
+    
+}
 .label{
     font-size: 2.5vh;
 }
@@ -94,4 +103,13 @@
 .btnRegistrar:hover{
     transform: scale(1.1,1.1);
     background-color: rgb(150, 8, 58);
+}
+.imgLogin{
+    width: 100%;
+    height: 30%;
+}
+.cajaImg{
+    width: 10%;
+    margin-left: 7%;
+    height: 33vh;
 }
