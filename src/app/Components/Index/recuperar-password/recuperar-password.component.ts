@@ -22,6 +22,19 @@ export class RecuperarPasswordComponent implements OnInit {
     return this.recuperarForm.get('codigo') as FormControl;
   }
 
+  get emailNoValido() {
+    if(this.recuperarForm.get('email')?.touched){
+      if(this.recuperarForm.get('email')?.invalid == false){
+        return false;
+      }else{
+        return true;
+      }
+    }else{
+      return null;
+    }
+
+  }
+
   constructor() { }
 
   ngOnInit(): void {

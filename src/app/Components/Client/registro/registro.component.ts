@@ -35,39 +35,110 @@ export class RegistroComponent implements OnInit {
   }
 
   get nombreNoValido() {
-
-    if(this.registroForm.get('nombre')?.invalid == false && this.registroForm.get('nombre')?.touched){
-      this.banderaNombre=true;
-      return false;
+    if(this.registroForm.get('nombre')?.touched){
+      if(this.registroForm.get('nombre')?.invalid == false){
+        return false;
+      }else{
+        return true;
+      }
     }else{
-      return true;
+      return null;
     }
 
   }
 
   get apellidoNoValido() {
-    return this.registroForm.get('apellido')?.invalid && this.registroForm.get('apellido')?.touched;
+    if(this.registroForm.get('apellido')?.touched){
+      if(this.registroForm.get('apellido')?.invalid == false){
+        return false;
+      }else{
+        return true;
+      }
+    }else{
+      return null;
+    }
+    //return this.registroForm.get('apellido')?.invalid && this.registroForm.get('apellido')?.touched;
   }
   get direccionNoValido() {
-    return this.registroForm.get('direccion')?.invalid && this.registroForm.get('direccion')?.touched;
+    if(this.registroForm.get('direccion')?.touched){
+      if(this.registroForm.get('direccion')?.invalid == false){
+        return false;
+      }else{
+        return true;
+      }
+    }else{
+      return null;
+    }
+    //return this.registroForm.get('direccion')?.invalid && this.registroForm.get('direccion')?.touched;
   }
   get celularNoValido() {
-    return this.registroForm.get('celular')?.invalid && this.registroForm.get('celular')?.touched;
+    if(this.registroForm.get('celular')?.touched){
+      try {
+        let numero = Number(this.registroForm.get('celular')?.value);
+        if(numero){
+          if(this.registroForm.get('celular')?.invalid == false){
+            return false;
+          }else{
+            return true;
+          }
+        }else{
+          return true;
+        }
+      } catch (error) {
+        return true;
+      }
+    }else{
+      return null;
+    }
+    //return this.registroForm.get('celular')?.invalid && this.registroForm.get('celular')?.touched;
   }
 
   get correoNoValido() {
-    return this.registroForm.get('correo')?.invalid && this.registroForm.get('correo')?.touched;
+    if(this.registroForm.get('correo')?.touched){
+      if(this.registroForm.get('correo')?.invalid == false){
+        return false;
+      }else{
+        return true;
+      }
+    }else{
+      return null;
+    }
+    //return this.registroForm.get('correo')?.invalid && this.registroForm.get('correo')?.touched;
   }
 
   get contrasena1NoValido() {
-    return this.registroForm.get('contrasena1')?.invalid && this.registroForm.get('contrasena1')?.touched;
+    if(this.registroForm.get('contrasena1')?.touched){
+      if(this.registroForm.get('contrasena1')?.invalid == false){
+        return false;
+      }else{
+        return true;
+      }
+    }else{
+      return null;
+    }
+    //return this.registroForm.get('contrasena1')?.invalid && this.registroForm.get('contrasena1')?.touched;
   }
 
   get contrasena2NoValido() {
     const contrasena1 = this.registroForm.get('contrasena1')?.value;
     const contrasena2 = this.registroForm.get('contrasena2')?.value;
-
-    return (contrasena1 === contrasena2) ? false : true && this.registroForm.get('contrasena2')?.touched;
+    if(this.registroForm.get('contrasena2')?.touched){
+      if(this.registroForm.get('contrasena2')?.invalid == false){
+        if(contrasena1 === contrasena2){
+          return false;
+        }else{
+          return true;
+        }
+      }else{
+        return true;
+      }
+    }else{
+      return null;
+    }
+    
+    
+    //return (this.registroForm.get('contrasena2')?.touched && this.registroForm.get('contrasena2')?.invalid) ? true : (contrasena1 === contrasena2) ? false : true;
+    //return (contrasena1 === contrasena2) ? false : true && this.registroForm.get('contrasena2')?.touched;
   }
 
   crearFormulario() {
@@ -75,7 +146,7 @@ export class RegistroComponent implements OnInit {
       nombre: ['', [Validators.required, Validators.minLength(3)]],
       apellido: ['', [Validators.required]],
       direccion:['', [Validators.required, Validators.minLength(3)]],
-      celular:[[Validators.required,]],
+      celular:['',[Validators.required, Validators.minLength(10)]],
       correo: ['', [Validators.required, Validators.pattern('[a-z0-9.%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       contrasena1: ['', [Validators.required, Validators.minLength(8)]],
       contrasena2: ['', Validators.required]

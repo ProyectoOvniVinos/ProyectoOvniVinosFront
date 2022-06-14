@@ -9,7 +9,7 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 export class RecuperandoPasswordComponent implements OnInit {
 
   public recuperandoForm = new FormGroup({
-    password: new FormControl('',[Validators.required]),
+    password: new FormControl('',[Validators.required, Validators.minLength(8)]),
     passwordConfirmacion: new FormControl('',[Validators.required]),
   });
 
@@ -19,6 +19,41 @@ export class RecuperandoPasswordComponent implements OnInit {
 
   get passwordConfirmacionControl(): FormControl{
     return this.recuperandoForm.get('passwordConfirmacion') as FormControl;
+  }
+  
+  get contrasena1NoValido() {
+    if(this.recuperandoForm.get('password')?.touched){
+      if(this.recuperandoForm.get('password')?.invalid == false){
+        return false;
+      }else{
+        return true;
+      }
+    }else{
+      return null;
+    }
+    //return this.registroForm.get('contrasena1')?.invalid && this.registroForm.get('contrasena1')?.touched;
+  }
+
+  get contrasena2NoValido() {
+    const contrasena1 = this.recuperandoForm.get('password')?.value;
+    const contrasena2 = this.recuperandoForm.get('passwordConfirmacion')?.value;
+    if(this.recuperandoForm.get('passwordConfirmacion')?.touched){
+      if(this.recuperandoForm.get('passwordConfirmacion')?.invalid == false){
+        if(contrasena1 === contrasena2){
+          return false;
+        }else{
+          return true;
+        }
+      }else{
+        return true;
+      }
+    }else{
+      return null;
+    }
+    
+    
+    //return (this.registroForm.get('contrasena2')?.touched && this.registroForm.get('contrasena2')?.invalid) ? true : (contrasena1 === contrasena2) ? false : true;
+    //return (contrasena1 === contrasena2) ? false : true && this.registroForm.get('contrasena2')?.touched;
   }
 
   constructor() { }
