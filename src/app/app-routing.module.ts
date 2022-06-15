@@ -8,6 +8,7 @@ import { RecuperarPasswordComponent } from './Components/Index/recuperar-passwor
 import { RecuperandoPasswordComponent} from './Components/Index/recuperando-password/recuperando-password.component';
 import { DatosClienteComponent } from './Components/Client/datos-cliente/datos-cliente.component';
 import { AuthGuard } from './Guards/auth.guard';
+import { EditarDatosComponent } from './Components/Client/editar-datos/editar-datos.component';
 
 const routes: Routes = [
   { path: 'catalogo', component: CatalogoComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
   { path: 'recuperando', component: RecuperandoPasswordComponent},
   { path: 'datosC', component: DatosClienteComponent},
+  { path: 'editarC', component: EditarDatosComponent},
   { path: '**', pathMatch: 'full', redirectTo: '/catalogo' }
 ];
 

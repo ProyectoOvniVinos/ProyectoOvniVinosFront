@@ -234,6 +234,10 @@
         margin-top: -2%;
     }
 
+    .cajaImg{
+        height: 33vh;
+    }
+
     .cajaM-login {
         width: 70%;
     }
