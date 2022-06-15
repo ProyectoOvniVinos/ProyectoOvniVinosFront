@@ -1,8 +1,9 @@
 export class ProductoModel {
-    correo_admin!: string;
-    nombre_admin!: string;
-    apellido_admin!: string;
-    direccion_admin!: string;
-    telefono_admin!: string;
-    password_admin!: string;
+    codigo_producto!: number;
+    nombre_producto !: string;
+    precio_producto !: number;
+    precio_productoProveedor !: number;
+    descripcion_producto !: string;
+
+    imagen!: string;
 }

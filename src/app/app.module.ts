@@ -28,6 +28,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { DatosClienteComponent } from './Components/Client/datos-cliente/datos-cliente.component';
+import { SlideshowComponent } from './Components/Index/slideshow/slideshow.component';
 
 
 
@@ -51,6 +52,7 @@ import { DatosClienteComponent } from './Components/Client/datos-cliente/datos-c
     RecuperarPasswordComponent,
     RecuperandoPasswordComponent,
     DatosClienteComponent,
+    SlideshowComponent,
 
   ],
   imports: [

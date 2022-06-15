@@ -1,0 +1,22 @@
+<div class="swiper mt-2">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper" data-bs-interval="1000">
+        <!-- Slides -->
+        
+        <div class="swiper-slide cont-produc" *ngFor="let producto of productos"data-swiper-autoplay="1000"[ngStyle]="{'background-position': 'center','background-repeat':'no-repeat','background-image':'url('+producto.imagen+')'}">
+            <div class="prod-description">
+                <h1>{{producto.nombre_producto}}</h1>
+                <h2>{{producto.precio_producto}}</h2>
+                <p>{{producto.descripcion_producto}}</p>
+                <img src="" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+  
+    <!-- If we need navigation buttons -->
+    <div (click)="onSlidePrev()" class="swiper-button-prev"></div>
+    <div (click)="onSlideNext()" class="swiper-button-next"></div>
+  
+</div>

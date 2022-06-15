@@ -1,0 +1,26 @@
+.swiper {
+    width: 50%;
+    min-width: 200px;
+    max-width: 800px;
+    height: 600px;
+    min-height: 400px;
+    max-height: 700px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    color: black;
+}
+
+.prod-description {
+    background-color: rgba(0, 0, 0, 0.3);
+
+    bottom: 0;
+    padding: 5px 30px;
+    position: absolute;
+    width: 100%;
+}
+
+.cont-produc {
+    width: 20%;
+}
