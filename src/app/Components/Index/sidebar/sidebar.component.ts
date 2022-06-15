@@ -9,7 +9,7 @@ export class SidebarComponent implements OnInit {
 
   abierto = true;
   admin = false;
-  cliente = false;
+  cliente = true;
   constructor() {
 
   }
