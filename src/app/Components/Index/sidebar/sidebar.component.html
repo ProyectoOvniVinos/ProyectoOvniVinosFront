@@ -37,8 +37,10 @@
 
             <div *ngIf="cliente">
 
-                <a mat-list-item >Carrito</a>
+                <a mat-list-item (click)="validarCarrito = !validarCarrito">Carrito</a>
                 <a mat-list-item routerLink="/datosC">Mis datos</a>
+
+
             </div>
 
             <div *ngIf="admin || cliente">
@@ -46,7 +48,7 @@
                 <a mat-list-item>Salir</a>
             </div>
 
-            
+
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
@@ -55,4 +57,11 @@
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
+
+
 <app-footer></app-footer>
+
+<div *ngIf="validarCarrito">
+    <app-carrito></app-carrito>
+</div>
+

@@ -29,6 +29,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { DatosClienteComponent } from './Components/Client/datos-cliente/datos-cliente.component';
 import { SlideshowComponent } from './Components/Index/slideshow/slideshow.component';
+import { CarritoComponent } from './Components/Client/carrito/carrito.component';
 
 
 
@@ -53,6 +54,7 @@ import { SlideshowComponent } from './Components/Index/slideshow/slideshow.compo
     RecuperandoPasswordComponent,
     DatosClienteComponent,
     SlideshowComponent,
+    CarritoComponent,
 
   ],
   imports: [
