@@ -6,6 +6,6 @@
     left: 164vh;
     bottom: 1vh;
     height: 86vh;
-    z-index: 1000;
+    z-index: 1;
     transition: 0.5s;
 }
