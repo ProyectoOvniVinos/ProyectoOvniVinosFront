@@ -23,30 +23,32 @@
             </div>
             <div *ngIf="!admin && !cliente">
 
-                <a routerLink="/iniciarSesion" mat-list-item>Iniciar sesion</a>
-                <a routerLink="/registro" mat-list-item>Registrarse</a>
+                <a class="linkRuta" routerLink="/iniciarSesion" mat-list-item>Iniciar sesion</a>
+                <a class="linkRuta" routerLink="/registro" mat-list-item>Registrarse</a>
             </div>
 
             <div *ngIf="admin">
 
-                <a mat-list-item >Productos</a>
-                <a mat-list-item>Clientes</a>
-                <a mat-list-item>Inventario</a>
-                <a mat-list-item>Contabilidad</a>
+                <a class="linkRuta" mat-list-item >Productos</a>
+                <a class="linkRuta" mat-list-item>Clientes</a>
+                <a class="linkRuta" mat-list-item>Inventario</a>
+                <a class="linkRuta" mat-list-item>Contabilidad</a>
             </div>
 
             <div *ngIf="cliente">
 
-                <a mat-list-item >Carrito</a>
-                <a mat-list-item routerLink="/datosC">Mis datos</a>
+                <a class="linkRuta" mat-list-item (click)="validarCarrito = !validarCarrito">Carrito</a>
+                <a class="linkRuta" mat-list-item routerLink="/datosC">Mis datos</a>
+
+
             </div>
 
             <div *ngIf="admin || cliente">
 
-                <a mat-list-item>Salir</a>
+                <a class="linkRuta" mat-list-item>Salir</a>
             </div>
 
-            
+
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
@@ -55,4 +57,11 @@
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
+
+
 <app-footer></app-footer>
+
+<div *ngIf="validarCarrito">
+    <app-carrito></app-carrito>
+</div>
+
