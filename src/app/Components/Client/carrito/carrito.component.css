@@ -1,11 +1,168 @@
 .cajaPCarrito{   
-    background-color: black;
+    background-color: rgba(189, 24, 82, 0.466);
     position: absolute;
-    width: 46.5vh;
+    width: 43vh;
     top: 0px;
-    left: 164vh;
+    left: 50vh;
     bottom: 1vh;
-    height: 86vh;
+    left: 97vh;
     z-index: 1;
     transition: 0.5s;
+    padding: 20px;
+}
+
+.cajaMCarrito{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.cajaImgCard{
+    width: 30%;
+    height: 10vh;
+    border: 1px solid rgba(0, 0, 0, 0);
+    border-radius: 10px
+}
+
+.img{
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.cardCarrito{
+    display: flex;
+    gap: 10px;
+    justify-content: space-evenly;
+
+    padding: -1p;
+    align-items: center;
+}
+
+.cajaCardPadre{
+    border: 2px solid white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: gainsboro;
+    border-radius: 10px
+}
+
+.cajaCard{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.cajaButton{
+    display: flex;
+    justify-content: center;
+}
+
+.btnCancelar{
+    background-color: rgb(250, 135, 135);
+    border: 2px solid red;
+    color: white;
+    width: 36%;
+    height: 3vh;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.5vh;
+    margin-top: 1%;
+    margin-left: 6%;
+    margin-right: 8%;
+    transition: 0.2s;
+}
+
+.btnCancelar:hover{
+    transform: scale(1.1,1.1);
+    background-color: rgb(252, 93, 93);
+    border: 2px solid  rgb(163, 2, 2);
+}
+
+.CajaComprar{
+    position: absolute;
+    left: 31%;
+    top: 79%;
+}
+
+.btnComprar{
+    background-color: rgb(124, 208, 124);
+    border: 2px solid green;
+    color: white;
+    width: 171%;
+    height: 6vh;
+    border: none;
+    border-radius: 5px;
+    font-size: 2.5vh;
+    margin-top: 0%;
+    margin-left: 0%;
+    transition: 0.2s
+}
+
+.btnComprar:hover{
+    transform: scale(1.1,1.1);
+    background-color: rgb(108, 248, 108);
+    border: 2px solid  rgb(1, 75, 1);
+}
+
+.fadeIn{
+    animation-name: animacion;
+    animation-duration: 1s;
+}
+
+@keyframes animacion {
+
+    0%{
+        transform: scale(0.2,1);
+        left: -5vh;
+        opacity: 0;
+    }
+
+    100%{
+        opacity: 100%;
+    }
+
+}
+
+@media screen and (max-width: 1920px) and (max-height:1080px){
+
+    .cajaPCarrito{
+        left: 134.7vh;
+    }
+
+}
+
+@media screen and (max-width: 1400px) and (max-height:1050px){
+    .cajaPCarrito{
+        left: 90.2vh;
+    }
+
+}
+
+@media screen and (max-width: 1366px) and (max-height:768px){
+
+    .cajaPCarrito{
+        left: 134.8vh;
+    }
+}
+
+@media screen and (max-width: 1280px) and (max-height:1024px){
+
+    .cajaPCarrito{
+        left: 97.2vh;
+    }
+}
+
+@media screen and (max-width: 1280px) and (max-height:720px){
+
+    .cajaPCarrito{
+        left: 134.7vh;
+    }
+
+}
+
+
+@media screen and (max-width: 960px) and (max-height:540px){
+
+    
 }
