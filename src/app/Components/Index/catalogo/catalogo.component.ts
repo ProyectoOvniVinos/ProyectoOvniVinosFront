@@ -37,4 +37,8 @@ export class CatalogoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  buscar(termino:string){
+    
+  }
+
 }

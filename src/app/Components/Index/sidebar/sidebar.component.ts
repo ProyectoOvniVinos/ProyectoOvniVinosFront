@@ -11,6 +11,8 @@ export class SidebarComponent implements OnInit {
   admin = false;
   cliente = true;
   validarCarrito = false;
+  modal:boolean = true;
+
   constructor() {
 
   }

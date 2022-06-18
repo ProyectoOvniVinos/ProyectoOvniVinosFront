@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-datos-cliente',
@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DatosClienteComponent implements OnInit {
   
-  modal:boolean = false;
+  @Input() modal:boolean = false;
 
-  constructor() { }
+  constructor() { } 
 
   ngOnInit(): void {
   }
