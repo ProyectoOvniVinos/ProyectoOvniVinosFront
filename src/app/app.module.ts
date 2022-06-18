@@ -21,6 +21,7 @@ import { RecuperandoPasswordComponent } from './Components/Index/recuperando-pas
 import { SidebarComponent } from './Components/Index/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -67,7 +68,8 @@ import { CarritoComponent } from './Components/Client/carrito/carrito.component'
     MatIconModule,
     MatButtonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
