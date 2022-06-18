@@ -1,0 +1,16 @@
+.cajaPadreAyuda{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.btnEnviar{
+    background-color: rgb(184, 13, 72);
+    color: white;
+}
+
+.btnEnviar:hover{
+    transform: scale(1.1,1.1);
+    background-color: rgb(150, 8, 58);
+}

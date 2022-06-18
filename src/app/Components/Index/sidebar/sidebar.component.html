@@ -22,7 +22,6 @@
                 <img routerLink="/catalogo" class="logo" src="../../../../assets/Images/logo.png" alt="">
             </div>
             <div *ngIf="!admin && !cliente">
-
                 <a class="linkRuta" routerLink="/iniciarSesion" mat-list-item>Iniciar sesion</a>
                 <a class="linkRuta" routerLink="/registro" mat-list-item>Registrarse</a>
             </div>
@@ -38,8 +37,9 @@
             <div *ngIf="cliente">
 
                 <a class="linkRuta" mat-list-item (click)="validarCarrito = !validarCarrito">Carrito</a>
-                <a class="linkRuta" mat-list-item routerLink="/datosC">Mis datos</a>
-
+                <a class="linkRuta" mat-list-item routerLink="/datosC">Mis Datos</a>
+                <a class="linkRuta" mat-list-item routerLink="/historialC">Ver Historial</a>
+                <a class="linkRuta" mat-list-item routerLink="/ayuda">Ayuda</a>
 
             </div>
 
@@ -64,6 +64,7 @@
 
 <div *ngIf="validarCarrito">
     <app-carrito></app-carrito>
+    <button type="button"class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
 <app-footer></app-footer>
 

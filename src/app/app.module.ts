@@ -31,6 +31,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { DatosClienteComponent } from './Components/Client/datos-cliente/datos-cliente.component';
 import { SlideshowComponent } from './Components/Index/slideshow/slideshow.component';
 import { CarritoComponent } from './Components/Client/carrito/carrito.component';
+import { HistorialComponent } from './Components/Client/historial/historial.component';
+import { AyudaComponent } from './Components/Client/ayuda/ayuda.component';
 
 
 
@@ -56,6 +58,8 @@ import { CarritoComponent } from './Components/Client/carrito/carrito.component'
     DatosClienteComponent,
     SlideshowComponent,
     CarritoComponent,
+    HistorialComponent,
+    AyudaComponent,
 
   ],
   imports: [
