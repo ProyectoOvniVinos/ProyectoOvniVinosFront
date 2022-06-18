@@ -8,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class SidebarComponent implements OnInit {
 
   abierto = true;
-  admin = false;
+  admin = true;
   cliente = true;
   validarCarrito = false;
+  modal:boolean = true;
+
   constructor() {
 
   }

@@ -65,3 +65,15 @@
 .linkRuta{
     color: aliceblue;
 }
+
+.bloquear{
+    cursor: not-allowed;
+    background-color: rgb(124, 10, 50);
+    pointer-events:none;
+}
+
+.espacioArriba{
+    margin-top: 150px;
+}
+
+
