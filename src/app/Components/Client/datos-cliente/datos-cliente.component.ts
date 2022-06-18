@@ -6,10 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./datos-cliente.component.css']
 })
 export class DatosClienteComponent implements OnInit {
+  
+  modal:boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  cerrarModal(){
+    this.modal = false;
+  }
+
+  abrirModal(){
+    this.modal = true;
   }
 
 }
