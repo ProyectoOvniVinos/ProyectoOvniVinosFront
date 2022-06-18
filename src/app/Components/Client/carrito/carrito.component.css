@@ -109,7 +109,7 @@
 
 .fadeIn{
     animation-name: animacion;
-    animation-duration: 1s;
+    animation-duration: 0.4s;
 }
 
 .viewport{
@@ -120,7 +120,7 @@
 @keyframes animacion {
 
     0%{
-        transform: scale(0.2,1);
+        transform: scale(0.2,0.2);
         left: -5vh;
         opacity: 0;
     }

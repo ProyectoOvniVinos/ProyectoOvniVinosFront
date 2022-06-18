@@ -1,86 +1,58 @@
+<div class="modal abrir-modal animacion fadeIn" tabindex="-1" style="display: block;" *ngIf="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title headerModal1 text-center">Confirmar Compra</h5>
+          <button type="button" (click)="cerrarModal()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body modalFooter">
+          <p>Cantidad de Produtos: {{cantidadProductos()}}</p>
+        </div>
+        <div class="container" *ngFor="let producto of productos">
+            <hr>
+            <div>
+                <p>Nombre: {{producto.nombre_producto}} = Precio: {{producto.precio_producto}}</p>
+            </div>
+        </div>
+        <div class="modal-footer modalFooter">
+          <button type="button" (click)="cerrarModal()" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary">Comprar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 <div class="cajaPCarrito fadeIn">
     <div class="cajaMCarrito">
 
         <h2 class="hCarrito">Carrito</h2>
-
         <cdk-virtual-scroll-viewport itemSize="50" class="viewport">
-
-            <div class="cajaCardPadre">
-                <div class="cardCarrito"> 
-                    <div class="cajaCard">
-                        <h3>Vino TInto</h3>
-                        <p>Precio: </p>
-                        <p>Cantidad</p>
+            <div *ngFor="let producto of productos">
+                <div class="cajaCardPadre" >
+                    <div class="cardCarrito"> 
+                        <div class="cajaCard">
+                            <h3>{{producto.nombre_producto}}</h3>
+                            <p>Precio: {{producto.precio_producto}} </p>
+                            <p>Cantidad: 5</p>
+                        </div>
+                        <div class="cajaImgCard">
+                            <img class="img" src="{{producto.imagen}}" alt="">
+                        </div>
                     </div>
-                    <div class="cajaImgCard">
-                        <img class="img" src="../../../../assets/Images/manoCopada.png" alt="">
+                
+                    <div class="cajaButton">
+                        <button class="btnCancelar">Cancelar</button>
                     </div>
                 </div>
-            
-                <div class="cajaButton">
-                    <button class="btnCancelar">Cancelar</button>
-                </div>
+                <br>                
             </div>
-            <br>
-
-            <div class="cajaCardPadre">
-                <div class="cardCarrito"> 
-                    <div class="cajaCard">
-                        <h3>Vino TInto</h3>
-                        <p>Precio: </p>
-                        <p>Cantidad</p>
-                    </div>
-                    <div class="cajaImgCard">
-                        <img class="img" src="../../../../assets/Images/manoCopada.png" alt="">
-                    </div>
-                </div>
-            
-                <div class="cajaButton">
-                    <button class="btnCancelar">Cancelar</button>
-                </div>
-            </div>
-            <br>
-
-            <div class="cajaCardPadre">
-                <div class="cardCarrito"> 
-                    <div class="cajaCard">
-                        <h3>Vino TInto</h3>
-                        <p>Precio: </p>
-                        <p>Cantidad</p>
-                    </div>
-                    <div class="cajaImgCard">
-                        <img class="img" src="../../../../assets/Images/manoCopada.png" alt="">
-                    </div>
-                </div>
-            
-                <div class="cajaButton">
-                    <button class="btnCancelar">Cancelar</button>
-                </div>
-            </div>
-            <br>
-            
-            <div class="cajaCardPadre">
-                <div class="cardCarrito"> 
-                    <div class="cajaCard">
-                        <h3>Vino TInto</h3>
-                        <p>Precio: </p>
-                        <p>Cantidad</p>
-                    </div>
-                    <div class="cajaImgCard">
-                        <img class="img" src="../../../../assets/Images/manoCopada.png" alt="">
-                    </div>
-                </div>
-            
-                <div class="cajaButton">
-                    <button class="btnCancelar">Cancelar</button>
-                </div>
-            </div>
-            <br>
+        
 
         </cdk-virtual-scroll-viewport>
 
     </div>
     <div class="CajaComprar">
-        <Button class="btnComprar">Comprar</Button>
+        <Button class="btnComprar" (click)="abrirModal()">Comprar</Button>
     </div>
 </div>
