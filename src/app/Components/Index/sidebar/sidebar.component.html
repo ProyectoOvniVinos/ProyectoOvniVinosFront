@@ -29,7 +29,7 @@
 
             <div *ngIf="admin">
 
-                <a class="linkRuta" mat-list-item >Productos</a>
+                <a class="linkRuta" routerLink="/productos"mat-list-item >Productos</a>
                 <a class="linkRuta" mat-list-item>Clientes</a>
                 <a class="linkRuta" mat-list-item>Inventario</a>
                 <a class="linkRuta" mat-list-item>Contabilidad</a>
@@ -54,6 +54,7 @@
     <mat-sidenav-content>
         <div style="height: 88vh;">
             <router-outlet></router-outlet>
+            <hr class="espacioArriba">
         </div>
     </mat-sidenav-content>
 </mat-sidenav-container>
