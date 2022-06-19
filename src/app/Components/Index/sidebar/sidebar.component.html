@@ -14,7 +14,7 @@
 
     </mat-toolbar-row>
 </mat-toolbar>
-<mat-sidenav-container >
+<mat-sidenav-container>
     <mat-sidenav #sidenav opened="true" mode="side" class="contenedor-sidebar fmorado">
         <mat-nav-list>
             <div class="contenedor-logo">
@@ -22,37 +22,50 @@
                 <img routerLink="/catalogo" class="logo" src="../../../../assets/Images/logo.png" alt="">
             </div>
             <div *ngIf="!admin && !cliente">
-
-                <a routerLink="/iniciarSesion" mat-list-item>Iniciar sesion</a>
-                <a routerLink="/registro" mat-list-item>Registrarse</a>
+                <a class="linkRuta" routerLink="/iniciarSesion" mat-list-item>Iniciar sesion</a>
+                <a class="linkRuta" routerLink="/registro" mat-list-item>Registrarse</a>
             </div>
 
             <div *ngIf="admin">
 
-                <a mat-list-item >Productos</a>
-                <a mat-list-item>Clientes</a>
-                <a mat-list-item>Inventario</a>
-                <a mat-list-item>Contabilidad</a>
+                <a class="linkRuta" routerLink="/productos"mat-list-item >Productos</a>
+                <a class="linkRuta" mat-list-item>Clientes</a>
+                <a class="linkRuta" mat-list-item>Inventario</a>
+                <a class="linkRuta" mat-list-item>Contabilidad</a>
             </div>
 
             <div *ngIf="cliente">
 
-                <a mat-list-item >Carrito</a>
-                <a mat-list-item routerLink="/datosC">Mis datos</a>
+                <a class="linkRuta" mat-list-item (click)="validarCarrito = !validarCarrito">Carrito</a>
+                <a class="linkRuta" mat-list-item routerLink="/datosC">Mis Datos</a>
+                <a class="linkRuta" mat-list-item routerLink="/historialC">Ver Historial</a>
+                <a class="linkRuta" mat-list-item routerLink="/ayuda">Ayuda</a>
+
             </div>
 
             <div *ngIf="admin || cliente">
 
-                <a mat-list-item>Salir</a>
+                <a class="linkRuta" mat-list-item>Salir</a>
             </div>
 
             
+
+
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
         <div style="height: 88vh;">
             <router-outlet></router-outlet>
+            <hr class="espacioArriba">
         </div>
     </mat-sidenav-content>
+    
 </mat-sidenav-container>
+
+<div *ngIf="validarCarrito">
+    <app-carrito></app-carrito>
+    <button type="button"class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+</div>
 <app-footer></app-footer>
+
+

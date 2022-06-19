@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-datos-cliente',
@@ -6,10 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./datos-cliente.component.css']
 })
 export class DatosClienteComponent implements OnInit {
+  
+  @Input() modal:boolean = false;
 
-  constructor() { }
+  constructor() { } 
 
   ngOnInit(): void {
+  }
+
+  cerrarModal(){
+    this.modal = false;
+  }
+
+  abrirModal(){
+    this.modal = true;
   }
 
 }

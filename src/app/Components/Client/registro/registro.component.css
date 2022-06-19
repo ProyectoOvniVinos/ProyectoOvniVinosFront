@@ -27,6 +27,7 @@
 .cajaHijoLogin{
     display: flex;
     height:88%;
+    padding-top: 3%;
     justify-content:space-between;
     justify-content: space-around;
 }
@@ -130,7 +131,29 @@
 @media screen and (max-width: 1366px) and (max-height:768px){
     .cajaM-login{
         width: 56%;
+        margin-top: -4%;
     }
+
+    .cajaFormCompleto{
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 1366px) and (max-height:617px){
+
+    .cajaP-login{
+        height: 81%;
+    }
+
+    .cajaM-login{
+        width: 44%;
+        height: 60vh;
+    }
+
+    .cajaFormCompleto{
+        gap: 5px;
+    }
+    
 }
 
 @media screen and (max-width: 1280px) and (max-height:1024px){
@@ -151,8 +174,8 @@
 @media screen and (max-width: 960px) and (max-height:540px){
     
     .cajaM-login{
-        height: 75%;
-        margin-bottom: 6%;
+        height: 90%;
+        margin-bottom: -1%;
     }
     
     .cajaFormCompleto{
