@@ -6,19 +6,19 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./datos-cliente.component.css']
 })
 export class DatosClienteComponent implements OnInit {
-  
-  @Input() modal:boolean = false;
 
-  constructor() { } 
+  @Input() modal: boolean = false;
+
+  constructor() { }
 
   ngOnInit(): void {
   }
 
-  cerrarModal(){
+  cerrarModal() {
     this.modal = false;
   }
 
-  abrirModal(){
+  abrirModal() {
     this.modal = true;
   }
 

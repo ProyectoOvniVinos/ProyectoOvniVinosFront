@@ -33,6 +33,8 @@ import { SlideshowComponent } from './Components/Index/slideshow/slideshow.compo
 import { CarritoComponent } from './Components/Client/carrito/carrito.component';
 import { HistorialComponent } from './Components/Client/historial/historial.component';
 import { AyudaComponent } from './Components/Client/ayuda/ayuda.component';
+import { DatosAdminComponent } from './Components/Admin/datos-admin/datos-admin.component';
+import { EditarDatosAdmComponent } from './Components/Admin/editar-datos-adm/editar-datos-adm.component';
 
 
 
@@ -60,6 +62,8 @@ import { AyudaComponent } from './Components/Client/ayuda/ayuda.component';
     CarritoComponent,
     HistorialComponent,
     AyudaComponent,
+    DatosAdminComponent,
+    EditarDatosAdmComponent,
 
   ],
   imports: [
