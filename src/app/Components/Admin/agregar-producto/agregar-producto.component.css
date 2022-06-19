@@ -1,0 +1,6 @@
+.boton{
+    display: flex;
+    width: 90%;
+    justify-content: end;
+    margin-bottom: 30px;
+}

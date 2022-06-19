@@ -10,10 +10,14 @@ import { DatosClienteComponent } from './Components/Client/datos-cliente/datos-c
 import { AuthGuard } from './Guards/auth.guard';
 import { EditarDatosComponent } from './Components/Client/editar-datos/editar-datos.component';
 import { CarritoComponent } from './Components/Client/carrito/carrito.component';
+import { AgregarProductoComponent } from './Components/Admin/agregar-producto/agregar-producto.component';
+import { EditarProductoComponent } from './Components/Admin/editar-producto/editar-producto.component';
 
 const routes: Routes = [
   { path: 'catalogo', component: CatalogoComponent },
   { path: 'productos', component: ProductosComponent, canActivate: [AuthGuard] },
+  { path: 'agregarProducto', component: AgregarProductoComponent },
+  { path: 'editarProducto/:id', component: EditarProductoComponent },
   { path: 'iniciarSesion', component: IniciarSesionComponent },
   { path: 'recuperar', component: RecuperarPasswordComponent },
   { path: 'registro', component: RegistroComponent },
