@@ -42,7 +42,7 @@
                 </thead>
                 <tbody class="tablabodyP">
                     <tr *ngFor="let producto of productos">
-                        <td>{{producto.codigo_producto}}</td>
+                        <td routerLink="/editarProducto/{{producto.codigo_producto}}">{{producto.codigo_producto}}</td>
                         <td>{{producto.nombre_producto}}</td>
                         <td>{{producto.precio_producto}}</td>
                         <td>{{producto.precio_productoProveedor}}</td>

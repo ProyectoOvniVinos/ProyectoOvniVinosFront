@@ -31,14 +31,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { DatosClienteComponent } from './Components/Client/datos-cliente/datos-cliente.component';
 import { SlideshowComponent } from './Components/Index/slideshow/slideshow.component';
 import { CarritoComponent } from './Components/Client/carrito/carrito.component';
-<<<<<<< HEAD
+
 import { AgregarProductoComponent } from './Components/Admin/agregar-producto/agregar-producto.component';
-=======
+
 import { HistorialComponent } from './Components/Client/historial/historial.component';
 import { AyudaComponent } from './Components/Client/ayuda/ayuda.component';
 import { DatosAdminComponent } from './Components/Admin/datos-admin/datos-admin.component';
 import { EditarDatosAdmComponent } from './Components/Admin/editar-datos-adm/editar-datos-adm.component';
->>>>>>> 35958e9d4caa31b44b97bded25eb37d3bc1b1162
+
 
 
 
@@ -64,14 +64,13 @@ import { EditarDatosAdmComponent } from './Components/Admin/editar-datos-adm/edi
     DatosClienteComponent,
     SlideshowComponent,
     CarritoComponent,
-<<<<<<< HEAD
+
     AgregarProductoComponent,
-=======
     HistorialComponent,
     AyudaComponent,
     DatosAdminComponent,
     EditarDatosAdmComponent,
->>>>>>> 35958e9d4caa31b44b97bded25eb37d3bc1b1162
+
 
   ],
   imports: [
