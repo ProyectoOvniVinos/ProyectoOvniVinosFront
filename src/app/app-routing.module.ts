@@ -9,14 +9,22 @@ import { RecuperandoPasswordComponent } from './Components/Index/recuperando-pas
 import { DatosClienteComponent } from './Components/Client/datos-cliente/datos-cliente.component';
 import { AuthGuard } from './Guards/auth.guard';
 import { EditarDatosComponent } from './Components/Client/editar-datos/editar-datos.component';
+
+import { CarritoComponent } from './Components/Client/carrito/carrito.component';
+import { AgregarProductoComponent } from './Components/Admin/agregar-producto/agregar-producto.component';
+import { EditarProductoComponent } from './Components/Admin/editar-producto/editar-producto.component';
+
 import { HistorialComponent } from './Components/Client/historial/historial.component';
 import { AyudaComponent } from './Components/Client/ayuda/ayuda.component';
 import { DatosAdminComponent } from './Components/Admin/datos-admin/datos-admin.component';
 import { EditarDatosAdmComponent } from './Components/Admin/editar-datos-adm/editar-datos-adm.component';
 
+
 const routes: Routes = [
   { path: 'catalogo', component: CatalogoComponent },
   { path: 'productos', component: ProductosComponent, canActivate: [AuthGuard] },
+  { path: 'agregarProducto', component: AgregarProductoComponent },
+  { path: 'editarProducto/:id', component: AgregarProductoComponent },
   { path: 'iniciarSesion', component: IniciarSesionComponent },
   { path: 'recuperar', component: RecuperarPasswordComponent },
   { path: 'registro', component: RegistroComponent },

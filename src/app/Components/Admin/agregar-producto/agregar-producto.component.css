@@ -1,0 +1,220 @@
+.boton{
+    display: flex;
+    width: 90%;
+    justify-content: end;
+    margin-bottom: 30px;
+}
+
+.cajaGrande{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    height: 70vh;
+}
+
+.cajaP-login{
+    width: 100%;
+    height: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cajaInputfileF{
+    display: flex;
+    justify-content: center;
+}
+
+.cajaInputfileA{
+    width: 100%;
+    text-align: center;
+}
+
+
+.cajaM-login{
+    width: 50%;
+    height: 100%;
+    border: 2px solid black;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.cajaTitleLogin{
+    border-bottom: 2px solid black;
+    background-color: rgb(184, 13, 72);
+    color: white;
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.cajaHijoLogin{
+    display: flex;
+    height:100%;
+    padding-top: 3%;
+    justify-content:space-between;
+    justify-content: space-around;
+}
+
+.cajaForm{
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+}
+
+.cajaFormCompleto{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.cajaContraseña{
+    width:100%;
+    display: flex;
+    justify-content:center;
+}
+/* .cajaInput{
+    
+} */
+.label{
+    font-size: 2.5vh;
+}
+
+.input{
+    height: 5vh;
+    width: 34vh;
+    border-radius:5px;
+    font-size: 2vh;
+}
+
+.input:focus{
+    box-shadow:  1px 1px 3px 1px rgb(184, 13, 72);
+    border: 1px solid rgb(184, 13, 72);
+}
+
+.btnIniciar{
+    background-color: rgb(184, 13, 72);
+    color: white;
+    width: 70%;
+    height: 6vh;
+    border: none;
+    border-radius: 5px;
+    font-size:2.5vh;
+    margin-top: 8%;
+    margin-left: 15%;
+    transition: 0.2s;
+}
+
+.btnIniciar:hover{
+    transform: scale(1.1,1.1);
+    background-color: rgb(150, 8, 58);
+}
+
+.btnRegistrar{
+    background-color: rgb(184, 13, 72);
+    color: white;
+    width: 70%;
+    height: 6vh;
+    border: none;
+    border-radius: 5px;
+    font-size:2.5vh;
+    margin-top: 1%;
+    margin-left: 15%;
+    transition: 0.2s;
+}
+
+.btnRegistrar:hover{
+    transform: scale(1.1,1.1);
+    background-color: rgb(150, 8, 58);
+}
+.imgLogin{
+    width: 100%;
+    height: 80px;
+}
+.cajaImg{
+    width: 10%;
+    margin-right: -10%;
+    margin-top: -5%;
+}
+.container-envio{
+    max-height:100px;
+}
+
+.textArea{
+    height: 90px;
+    resize: none;
+}
+
+
+@media screen and (max-width: 1920px) and (max-height:1080px){
+
+}
+
+@media screen and (max-width: 1400px) and (max-height:1050px){
+    .cajaM-login{
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 1366px) and (max-height:768px){
+    .cajaM-login{
+        width: 56%;
+        margin-top: -4%;
+    }
+
+    .cajaFormCompleto{
+        gap: 26px;
+    }
+}
+
+@media screen and (max-width: 1366px) and (max-height:617px){
+
+    .cajaP-login{
+        height: 81%;
+    }
+
+    .cajaM-login{
+        width: 44%;
+        height: 70vh;
+    }
+
+    .cajaFormCompleto{
+        gap: 26px;
+    }
+    
+}
+
+@media screen and (max-width: 1280px) and (max-height:1024px){
+    .cajaM-login{
+        width: 73%;
+    }
+}
+
+@media screen and (max-width: 1280px) and (max-height:720px){
+    .cajaM-login{
+        width: 60%;
+        margin-bottom: 5%;
+        height: 83%;
+    }
+}
+
+
+@media screen and (max-width: 960px) and (max-height:540px){
+    
+    .cajaM-login{
+        height: 90%;
+        margin-bottom: -1%;
+    }
+    
+    .cajaFormCompleto{
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+}

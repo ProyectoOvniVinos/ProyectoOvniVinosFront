@@ -1,3 +1,21 @@
+
+<div class="modal abrir-modal animacion fadeIn" tabindex="-1" style="display: block;" *ngIf="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body modalFooter centrar">
+            <div class="boton2">
+                <button type="button" (click)="cerrarModal()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <img class="tamano" [src]="[imgModal]" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="boton">
+    <button (click)="irAgregarProducto()"class="btn btn-success">Agregar Producto</button>
+</div>
+
 <div class="container">
     <table class="tabla">
         <thead class="tablaHeaderG">
@@ -24,13 +42,13 @@
                 </thead>
                 <tbody class="tablabodyP">
                     <tr *ngFor="let producto of productos">
-                        <td>{{producto.codigo_producto}}</td>
+                        <td routerLink="/editarProducto/{{producto.codigo_producto}}">{{producto.codigo_producto}}</td>
                         <td>{{producto.nombre_producto}}</td>
                         <td>{{producto.precio_producto}}</td>
                         <td>{{producto.precio_productoProveedor}}</td>
                         <td>{{producto.descripcion_producto}}</td>
                         <td>
-                            <img class="imagen" src="{{producto.imagen}}" alt="{{producto.imagen}}">
+                            <img (click)="abrirModal(producto.imagen)" class="imagen" src="{{producto.imagen}}" alt="{{producto.imagen}}">
                             
                         </td>
                     </tr>
