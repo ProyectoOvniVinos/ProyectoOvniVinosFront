@@ -1,7 +1,6 @@
 .cajaPdatos {
     width: 100%;
-    height: 95%;
-    ;
+    height: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,11 +8,11 @@
 
 .cajaMdatos {
     width: 50%;
-    height: 70%;
+    height: 85%;
     border: 2px solid black;
     background-color: white;
     border-radius: 10px;
-    margin-bottom: 5%
+    margin-bottom: -2%
 }
 
 .cajaTitle {

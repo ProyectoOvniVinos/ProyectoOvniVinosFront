@@ -31,7 +31,7 @@
                 <a class="linkRuta" routerLink="/productos" routerLinkActive="activo" mat-list-item > <img  class="imagenes" src="../../../../assets/Images/productos.png" alt="productos"> Productos</a>
                 <a class="linkRuta" mat-list-item routerLink="/datosA" routerLinkActive="activo"> <img class="imagenes" src="../../../../assets/Images/misDatos.png" alt="datos"> Mis Datos</a>
                 <a class="linkRuta" mat-list-item routerLink="/clientes" routerLinkActive="activo"><img class="imagenes" src="../../../../assets/Images/clientes}.png" alt="clientes"> Clientes</a>
-                <a class="linkRuta" mat-list-item> <img class="imagenes" src="../../../../assets/Images/inventario-disponible.png" alt="inventarios"> Inventario</a>
+                <a class="linkRuta" mat-list-item routerLink="/InventarioG"> <img class="imagenes" src="../../../../assets/Images/inventario-disponible.png" alt="inventarios"> Inventario</a>
                 <a class="linkRuta" mat-list-item> <img class="imagenes" src="../../../../assets/Images/contabilidad.png" alt="contabilidad">Contabilidad</a>
             </div>
 
@@ -53,7 +53,7 @@
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-        <div style="height: 88vh;">
+        <div style="height: 90vh;">
             <router-outlet></router-outlet>
             <hr class="espacioArriba">
         </div>

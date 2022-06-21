@@ -1,14 +1,23 @@
-<div class="swiper mt-2">
+<div class="swiper mt-2 cajaMS">
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper" data-bs-interval="1000">
         <!-- Slides -->
         
         <div class="swiper-slide cont-produc" *ngFor="let producto of productos"data-swiper-autoplay="1000"[ngStyle]="{'background-position': 'center','background-repeat':'no-repeat','background-image':'url('+producto.imagen+')'}">
             <div class="prod-description">
-                <h1>{{producto.nombre_producto}}</h1>
-                <h2>{{producto.precio_producto | currency : 'USD' : 'symbol' : '1.0-0'}}</h2>
-                <p>{{producto.descripcion_producto}}</p>
-                <img src="" alt="">
+                <div class=" cont-exte">
+
+                    <div class="cont-interno">
+
+                        <h1>{{producto.nombre_producto}}</h1>
+                        <h2>{{producto.precio_producto | currency : 'USD' : 'symbol' : '1.0-0'}}</h2>
+                        <p>{{producto.descripcion_producto}}</p>
+                    </div>
+                    <div class="cont-interno2">
+                        <button class="btn btn-success">Agregar Producto</button>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
