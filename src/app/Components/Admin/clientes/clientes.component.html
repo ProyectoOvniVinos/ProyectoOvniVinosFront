@@ -1,1 +1,38 @@
-<p>clientes works!</p>
+<div class="container">
+    <table class="tabla">
+        <thead class="tablaHeaderG">
+            <tr>
+                <th>
+                    CLIENTES
+                </th>
+            </tr>
+        </thead>
+        <tbody class="tablabodyG">
+
+            <hr class="todo">
+
+            <table class="tabla2">
+                <thead class="tablaHeaderP">
+                    <tr>
+                        <th class="primero">CORREO</th>
+                        <th>NOMBRE</th>
+                        <th>APELLIDO</th>
+                        <th>DIRECCION</th>
+                        <th>CELULAR</th>
+                    </tr>
+                </thead>
+                <tbody class="tablabodyP">
+                    <tr *ngFor="let cliente of clientes">
+                        <td>{{cliente.correo_cliente}}</td>
+                        <td>{{cliente.nombre_cliente}}</td>
+                        <td>{{cliente.apellido_cliente}}</td>
+                        <td>{{cliente.direccion_cliente}}</td>
+                        <td>{{cliente.celular_cliente}}</td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </tbody>
+    </table>
+    
+</div>
