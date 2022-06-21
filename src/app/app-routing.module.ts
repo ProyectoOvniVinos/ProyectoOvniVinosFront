@@ -20,6 +20,7 @@ import { DatosAdminComponent } from './Components/Admin/datos-admin/datos-admin.
 import { EditarDatosAdmComponent } from './Components/Admin/editar-datos-adm/editar-datos-adm.component';
 import { ClientesComponent } from './Components/Admin/clientes/clientes.component';
 import { InventarioGeneralComponent } from './Components/Admin/inventario-general/inventario-general.component';
+import { ContabilidadComponent } from './Components/Admin/contabilidad/contabilidad.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,7 @@ const routes: Routes = [
   { path: 'datosA', component: DatosAdminComponent },
   { path: 'editarA', component: EditarDatosAdmComponent },
   { path: 'InventarioG', component: InventarioGeneralComponent },
+  { path: 'contabilidad', component: ContabilidadComponent },
 
   { path: '**', pathMatch: 'full', redirectTo: '/catalogo' }
 ];
