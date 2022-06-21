@@ -41,12 +41,12 @@
                     </tr>
                 </thead>
                 <tbody class="tablabodyP">
-                    <tr *ngFor="let producto of productos">
+                    <tr class="puntero" *ngFor="let producto of productos">
                         <td routerLink="/editarProducto/{{producto.codigo_producto}}">{{producto.codigo_producto}}</td>
-                        <td>{{producto.nombre_producto}}</td>
-                        <td>{{producto.precio_producto}}</td>
-                        <td>{{producto.precio_productoProveedor}}</td>
-                        <td>{{producto.descripcion_producto}}</td>
+                        <td routerLink="/editarProducto/{{producto.codigo_producto}}">{{producto.nombre_producto}}</td>
+                        <td routerLink="/editarProducto/{{producto.codigo_producto}}">{{producto.precio_producto}}</td>
+                        <td routerLink="/editarProducto/{{producto.codigo_producto}}">{{producto.precio_productoProveedor}}</td>
+                        <td routerLink="/editarProducto/{{producto.codigo_producto}}">{{producto.descripcion_producto}}</td>
                         <td>
                             <img (click)="abrirModal(producto.imagen)" class="imagen" src="{{producto.imagen}}" alt="{{producto.imagen}}">
                             
