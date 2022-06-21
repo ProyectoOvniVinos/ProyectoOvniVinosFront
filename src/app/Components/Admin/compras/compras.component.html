@@ -3,7 +3,7 @@
         <thead class="tablaHeaderG">
             <tr>
                 <th>
-                    Ventas Realizadas
+                    Compras Realizadas
                 </th>
             </tr>
         </thead>
@@ -14,8 +14,7 @@
             <table class="tabla2">
                 <thead class="tablaHeaderP">
                     <tr>
-                        <th class="primero">Codigo Venta</th>
-                        <th>Cliente</th>
+                        <th class="primero">Codigo Compra</th>
                         <th>Producto</th>
                         <th>Cantidad</th>
                         <th>Valor</th>
@@ -25,10 +24,9 @@
                 <tbody class="tablabodyP">
                     <tr *ngFor="let producto of productos">
                         <td>{{producto.codigo_producto*3}}</td>
-                        <td>correo cliente</td>
                         <td>{{producto.codigo_producto}}</td>
-                        <td>{{producto.codigo_producto + 4}}</td>
-                        <td>Valor venta</td>
+                        <td>{{producto.codigo_producto}}</td>
+                        <td>Valor Compra</td>
                         <td>Fecha venta</td>
                     </tr>
                 </tbody>
