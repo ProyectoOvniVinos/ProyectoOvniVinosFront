@@ -1,7 +1,7 @@
 <mat-toolbar>
     <mat-toolbar-row class="contenedor-header">
         <div [ngClass]="abierto?'cont-menu fmorado':'cerrado'" *ngIf="abierto else menucerrado">
-            <img class="menuIcon" (click)="sidenav.toggle()" (click)="abierto = !abierto" src="../../../../assets/Images/menuCerrado.png" alt="">
+            <img class="menuIcon" (click)="sidenav.toggle()" (click)="abierto = !abierto" src="../../../../assets/Images/menuAbierto.png" alt="">
         </div>
         <a routerLink="/catalogo" class="contenedor-titulo-header">Ovni Vinos</a>
         <ng-template #menucerrado >
@@ -17,40 +17,38 @@
 <mat-sidenav-container>
     <mat-sidenav #sidenav opened="true" mode="side" class="contenedor-sidebar fmorado">
         <mat-nav-list>
-            <div class="contenedor-logo text-center">
+            <div class="contenedor-logo">
 
                 <img routerLink="/catalogo" class="logo" src="../../../../assets/Images/logo.png" alt="">
             </div>
             <div *ngIf="!admin && !cliente" class="text-center">
-                <a class="linkRuta" routerLink="/iniciarSesion" routerLinkActive="activo" mat-list-item>Iniciar sesion</a>
-                <a class="linkRuta" routerLink="/registro" routerLinkActive="activo" mat-list-item>Registrarse</a>
+                <a class="linkRuta" routerLink="/iniciarSesion" routerLinkActive="activo" mat-list-item> <img class="imagenes" src="../../../../assets/Images/icons8-entrar-60.png" alt="iniciar Sesion"> Iniciar sesion</a>
+                <a class="linkRuta2" routerLink="/registro" routerLinkActive="activo" mat-list-item> <img class="imagenes" src="../../../../assets/Images/registrar.png" alt=""> Registrarse</a>
             </div>
 
-            <div *ngIf="admin" class="text-center">
+            <div *ngIf="admin">
 
-                <a class="linkRuta" routerLink="/productos" routerLinkActive="activo" mat-list-item >Productos</a>
-                <a class="linkRuta" mat-list-item routerLink="/datosA" routerLinkActive="activo">Mis Datos</a>
-                <a class="linkRuta" mat-list-item routerLink="/clientes" routerLinkActive="activo">Clientes</a>
-                <a class="linkRuta" mat-list-item>Inventario</a>
-                <a class="linkRuta" mat-list-item>Contabilidad</a>
+                <a class="linkRuta" routerLink="/productos" routerLinkActive="activo" mat-list-item > <img  class="imagenes" src="../../../../assets/Images/productos.png" alt="productos"> Productos</a>
+                <a class="linkRuta" mat-list-item routerLink="/datosA" routerLinkActive="activo"> <img class="imagenes" src="../../../../assets/Images/misDatos.png" alt="datos"> Mis Datos</a>
+                <a class="linkRuta" mat-list-item routerLink="/clientes" routerLinkActive="activo"><img class="imagenes" src="../../../../assets/Images/clientes}.png" alt="clientes"> Clientes</a>
+                <a class="linkRuta" mat-list-item> <img class="imagenes" src="../../../../assets/Images/inventario-disponible.png" alt="inventarios"> Inventario</a>
+                <a class="linkRuta" mat-list-item> <img class="imagenes" src="../../../../assets/Images/contabilidad.png" alt="contabilidad">Contabilidad</a>
             </div>
 
             <div *ngIf="cliente">
 
-                <a class="linkRuta" mat-list-item routerLinkActive="activo" (click)="validarCarrito = !validarCarrito">Carrito</a>
-                <a class="linkRuta" mat-list-item routerLink="/datosC" routerLinkActive="activo">Mis Datos</a>
-                <a class="linkRuta" mat-list-item routerLink="/historialC" routerLinkActive="activo">Ver Historial</a>
-                <a class="linkRuta" mat-list-item routerLink="/ayuda" routerLinkActive="activo">Ayuda</a>
+                <a *ngIf="getRuta()" class="linkRutaCarrito fadeInTwo animacionTwo" mat-list-item routerLinkActive="activo" (click)="validarCarrito = !validarCarrito"> <img class="imagenes" src="../../../../assets/Images/carrito.png" alt="Carrito">  Carrito</a>   
+                <a *ngIf="!getRuta()" class="linkRutaCarrito fadeInTwo animacionTwo" mat-list-item routerLinkActive="activo"> </a>
+                <a class="linkRuta" mat-list-item routerLink="/datosC" routerLinkActive="activo"> <img class="imagenes" src="../../../../assets/Images/misDatos.png" alt="datos"> Mis Datos</a>
+                <a class="linkRuta" mat-list-item routerLink="/historialC" routerLinkActive="activo" > <img class="imagenes" src="../../../../assets/Images/historial.png" alt="historial">  Ver Historial</a>
+                <a class="linkRuta" mat-list-item routerLink="/ayuda" routerLinkActive="activo"><img class="imagenes" src="../../../../assets/Images/ayuda.png" alt="ayuda"> Ayuda</a>
 
             </div>
 
             <div *ngIf="admin || cliente">
 
-                <a class="linkRuta" mat-list-item>Salir</a>
+                <a class="linkRuta" mat-list-item> <img class="imagenes" src="../../../../assets/Images/salir.png" alt="">  Salir</a>
             </div>
-
-            
-
 
         </mat-nav-list>
     </mat-sidenav>
@@ -63,9 +61,9 @@
     
 </mat-sidenav-container>
 
-<div *ngIf="validarCarrito">
+<div *ngIf="validarCarrito && getRuta()">
     <app-carrito></app-carrito>
-    <button type="button"class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <button (click)="validarCarrito=!validarCarrito" type="button"class="btn-close cerrar  animacion fadeIn" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
 <app-footer></app-footer>
 
