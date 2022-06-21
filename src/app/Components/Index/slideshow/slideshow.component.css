@@ -24,3 +24,14 @@
 .cont-produc {
     width: 20%;
 }
+
+.cont-exte{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.cont-interno{
+    color: white;
+}

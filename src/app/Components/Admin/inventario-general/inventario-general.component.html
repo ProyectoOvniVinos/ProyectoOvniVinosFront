@@ -1,1 +1,31 @@
-<p>inventario-general works!</p>
+<div class="container">
+    <table class="tabla">
+        <thead class="tablaHeaderG">
+            <tr>
+                <th>
+                    Inventario General
+                </th>
+            </tr>
+        </thead>
+        <tbody class="tablabodyG">
+
+            <hr class="todo">
+
+            <table class="tabla2">
+                <thead class="tablaHeaderP">
+                    <tr>
+                        <th class="primero">Codigo</th>
+                        <th class="ultimo">Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody class="tablabodyP">
+                    <tr *ngFor="let producto of productos">
+                        <td>{{producto.codigo_producto}}</td>
+                        <td>{{producto.codigo_producto +4}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </tbody>
+    </table>
+    
+</div>
