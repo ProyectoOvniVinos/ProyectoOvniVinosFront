@@ -148,7 +148,18 @@
 
 @media screen and (max-width: 1366px) and (max-height:768px){
 
+    .cajaMdatos{
+        width: 60%;
+    }
 
+    .cajaPdatos{
+        height: 77%;
+    }
+
+    .cajaMdatos{
+        height: 86%;
+        margin-top: 8%;
+    }
 }
 
 @media screen and (max-width: 1366px) and (max-height:617px){
