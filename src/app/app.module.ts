@@ -38,6 +38,8 @@ import { HistorialComponent } from './Components/Client/historial/historial.comp
 import { AyudaComponent } from './Components/Client/ayuda/ayuda.component';
 import { DatosAdminComponent } from './Components/Admin/datos-admin/datos-admin.component';
 import { EditarDatosAdmComponent } from './Components/Admin/editar-datos-adm/editar-datos-adm.component';
+import { VentasComponent } from './Components/Admin/ventas/ventas.component';
+import { ComprasComponent } from './Components/Admin/compras/compras.component';
 
 
 
@@ -70,6 +72,8 @@ import { EditarDatosAdmComponent } from './Components/Admin/editar-datos-adm/edi
     AyudaComponent,
     DatosAdminComponent,
     EditarDatosAdmComponent,
+    VentasComponent,
+    ComprasComponent,
 
 
   ],
