@@ -153,12 +153,14 @@
 @media screen and (max-width: 1366px) and (max-height:768px){
 
     .cajaPCarrito{
-        left: 134.8vh;
+        left: 161vh;
+        width: 54vh;
     }
 
     .viewport{
         width: 300px;
     }
+
 }
 
 @media screen and (max-width: 1366px) and (max-height:617px){
