@@ -35,7 +35,7 @@
 
 .cajaM-login{
     width: 50%;
-    height: 92%;
+    height: 100%;
     border: 2px solid black;
     background-color: white;
     border-radius: 5px;
@@ -71,7 +71,7 @@
 .cajaFormCompleto{
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 30px;
 }
 
 .cajaContraseña{
@@ -87,7 +87,7 @@
 }
 
 .input{
-    height: auto;
+    height: 5vh;
     width: 34vh;
     border-radius:5px;
     font-size: 2vh;

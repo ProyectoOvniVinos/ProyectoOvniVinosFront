@@ -11,7 +11,6 @@
             </div>
 
         </ng-template>
-
     </mat-toolbar-row>
 </mat-toolbar>
 <mat-sidenav-container>
@@ -53,7 +52,7 @@
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-        <div style="height: 90vh;">
+        <div class="contenedor-ruteo">
             <router-outlet></router-outlet>
             <div class="footer" [ngClass]="abierto ? 'sin' : 'todo'">
                 <div class="texts">
