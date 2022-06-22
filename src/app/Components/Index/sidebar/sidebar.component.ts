@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 export class SidebarComponent implements OnInit {
 
   abierto = true;
-  admin = false;
-  cliente = true;
+  admin = true;
+  cliente = false;
   validarCarrito = false;
   validarRuta= false;
   modal: boolean = true;
