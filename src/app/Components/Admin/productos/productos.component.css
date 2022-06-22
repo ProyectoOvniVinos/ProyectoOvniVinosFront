@@ -92,3 +92,18 @@
 .puntero{
     cursor: pointer;
 }
+
+@media screen and (max-width: 1010px) and (max-height:918px){
+
+    .tablaHeaderP{
+        
+        font-size: 1.0rem;
+        
+    }
+
+    .imagen{
+        width: 100px;
+        height: 100px;
+    }
+
+}
