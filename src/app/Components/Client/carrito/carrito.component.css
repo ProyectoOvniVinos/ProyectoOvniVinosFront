@@ -1,9 +1,10 @@
 .cajaPCarrito{   
-    background-color: rgba(189, 24, 82, 0.466);
+    background-color: rgb(184, 13, 72);
+    display: flex;
     position: absolute;
     width: 43vh;
     top: 0px;
-    bottom: 1vh;
+    bottom: 0;
     right: 0;
     z-index: 1;
     transition: 0.5s;
@@ -83,7 +84,7 @@
 .CajaComprar{
     position: absolute;
     left: 31%;
-    top: 79%;
+    top: 87%;
 }
 
 .btnComprar{
@@ -109,7 +110,7 @@
 
 .viewport{
     width: 353px;
-    height: 67vh;
+    height: 75vh;
 }
 
 @media screen and (max-width: 1920px) and (max-height:1080px){
