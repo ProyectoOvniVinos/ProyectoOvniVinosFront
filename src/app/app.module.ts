@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FooterComponent } from './Components/Index/footer/footer.component';
 import { RegistroComponent } from './Components/Client/registro/registro.component';
 import { InventarioGeneralComponent } from './Components/Admin/inventario-general/inventario-general.component';
 import { AgregarExistenciasComponent } from './Components/Admin/agregar-existencias/agregar-existencias.component';
@@ -48,7 +47,6 @@ import { ComprasComponent } from './Components/Admin/compras/compras.component';
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
     RegistroComponent,
     InventarioGeneralComponent,
     AgregarExistenciasComponent,
