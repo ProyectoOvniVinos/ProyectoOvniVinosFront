@@ -35,6 +35,9 @@
 
 .contenedor-sidebar {
     width: 135px;
+    position:fixed;
+    bottom: 0;
+    top: 60px;
 }
 .mat-toolbar{
     background-color:#fafafa
@@ -71,6 +74,7 @@
 .linkRuta{
     color: aliceblue;
     font-size: 1.41vh;
+    text-align: center;
 }
 
 .linkRuta2{
@@ -95,6 +99,11 @@
 
 .activo{
     transform: scale(1.1,1.1);
+    max-width:128px;
+}
+.activo2{
+    transform: scale(1.05,1.05);
+    max-width:130px;
 }
 
 .cerrar{
@@ -111,5 +120,89 @@
 }
 
 .iniciar{
-    width:20%
+    width:20%;
+}
+
+.adelante{
+    z-index: 2;
+}
+
+.mat-drawer-content{
+    overflow: hidden !important;
+}
+
+
+/* FOOTER */
+
+.footer {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 8rem;
+    background-color: #fafafa;
+    width: 100%;
+    
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.texts {
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+}
+
+.texts h3 {
+    font-size: 1.5rem;
+}
+
+.logos {
+    margin-right: 10px;
+    width: 8%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logos a img {
+    width: 100%;
+    max-width: 55px;
+    min-width: 40px;
+}
+
+@media screen and (max-width: 1366px) and (max-height:768px){
+
+    .footer{
+        height: 5.8rem;
+    }
+}
+
+@media screen and (max-width: 1280px) and (max-height:720px){
+
+    .footer{
+        height:7rem;
+    }
+
+    .texts h3 {
+        font-size: 1.3rem;
+    }
+
+}
+
+.bloquear{
+    cursor: not-allowed;
+    background-color: black;
+    pointer-events:none;
+}
+
+@media screen and (max-width: 960px) and (max-height:540px){
+    .footer{
+        height:6rem;
+    }
+
+    .texts h3 {
+        font-size: 1rem;
+    }
+
 }
