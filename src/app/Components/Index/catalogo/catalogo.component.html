@@ -50,7 +50,10 @@
 </div> -->
 <div class="row" *ngIf="productos.length>0">
     <div class="col">
-
+        <div class="buscador">
+            <label for="">Buscar Producto</label>
+            <input class="form-control" type="text" (keyup)="buscar(termino.value)" #termino>
+        </div>
         <app-slideshow [productos] = "productos"></app-slideshow>
     </div>
 </div>

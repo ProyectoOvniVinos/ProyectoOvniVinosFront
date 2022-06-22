@@ -26,6 +26,18 @@
     margin-bottom:1rem;
 }
 
+.buscador{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   font-size: 3rem;
+   margin-bottom: 40px;
+}
+
+.buscador input{
+    width: 70%;
+}
+
 @media screen and (max-height:780px) {
     .container-c{
         width:40%;

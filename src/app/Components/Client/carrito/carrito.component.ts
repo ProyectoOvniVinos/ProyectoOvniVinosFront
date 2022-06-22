@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ProductoModel } from 'src/app/Models/Producto.model';
 
 @Component({
-  selector: 'app-catalogo',
-  templateUrl: './catalogo.component.html',
-  styleUrls: ['./catalogo.component.css']
+  selector: 'app-carrito',
+  templateUrl: './carrito.component.html',
+  styleUrls: ['./carrito.component.css']
+  
 })
-export class CatalogoComponent implements OnInit {
+export class CarritoComponent implements OnInit {
 
   productos: ProductoModel[] = [
     {
@@ -30,15 +31,34 @@ export class CatalogoComponent implements OnInit {
       precio_productoProveedor: 5000,
       descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
       imagen: '../../../../assets/TEMPORALES/vino3.jpg'
+    },{
+      codigo_producto: 4,
+      nombre_producto: 'Vino De Cereza',
+      precio_producto: 40000,
+      precio_productoProveedor: 5000,
+      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
+      imagen: '../../../../assets/TEMPORALES/vino3.jpg'
     },
   ];
+
+  @Input() modal:boolean = false;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  buscar(termino:string){
-    
+  cerrarModal(){
+    this.modal = false;
   }
+
+  abrirModal(){
+    this.modal = true;
+  }
+
+  cantidadProductos(){
+    return this.productos.length;
+  }
+  
 
 }

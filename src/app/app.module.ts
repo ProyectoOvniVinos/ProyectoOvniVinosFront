@@ -21,6 +21,7 @@ import { RecuperandoPasswordComponent } from './Components/Index/recuperando-pas
 import { SidebarComponent } from './Components/Index/sidebar/sidebar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -29,6 +30,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { DatosClienteComponent } from './Components/Client/datos-cliente/datos-cliente.component';
 import { SlideshowComponent } from './Components/Index/slideshow/slideshow.component';
+import { CarritoComponent } from './Components/Client/carrito/carrito.component';
+
+import { AgregarProductoComponent } from './Components/Admin/agregar-producto/agregar-producto.component';
+
+import { HistorialComponent } from './Components/Client/historial/historial.component';
+import { AyudaComponent } from './Components/Client/ayuda/ayuda.component';
+import { DatosAdminComponent } from './Components/Admin/datos-admin/datos-admin.component';
+import { EditarDatosAdmComponent } from './Components/Admin/editar-datos-adm/editar-datos-adm.component';
+
 
 
 
@@ -53,6 +63,14 @@ import { SlideshowComponent } from './Components/Index/slideshow/slideshow.compo
     RecuperandoPasswordComponent,
     DatosClienteComponent,
     SlideshowComponent,
+    CarritoComponent,
+
+    AgregarProductoComponent,
+    HistorialComponent,
+    AyudaComponent,
+    DatosAdminComponent,
+    EditarDatosAdmComponent,
+
 
   ],
   imports: [
@@ -65,7 +83,8 @@ import { SlideshowComponent } from './Components/Index/slideshow/slideshow.compo
     MatIconModule,
     MatButtonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

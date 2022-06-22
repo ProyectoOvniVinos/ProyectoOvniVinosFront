@@ -1,1 +1,60 @@
-<p>productos works!</p>
+
+<div class="modal abrir-modal animacion fadeIn" tabindex="-1" style="display: block;" *ngIf="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body modalFooter centrar">
+            <div class="boton2">
+                <button type="button" (click)="cerrarModal()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <img class="tamano" [src]="[imgModal]" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="boton">
+    <button (click)="irAgregarProducto()"class="btn btn-success">Agregar Producto</button>
+</div>
+
+<div class="container">
+    <table class="tabla">
+        <thead class="tablaHeaderG">
+            <tr>
+                <th>
+                    productos
+                </th>
+            </tr>
+        </thead>
+        <tbody class="tablabodyG">
+
+            <hr class="todo">
+
+            <table class="tabla2">
+                <thead class="tablaHeaderP">
+                    <tr>
+                        <th class="primero">ID</th>
+                        <th>nombre</th>
+                        <th>precio</th>
+                        <th>precio_proveedor</th>
+                        <th>descripcion</th>
+                        <th class="ultimo">imagen</th>
+                    </tr>
+                </thead>
+                <tbody class="tablabodyP">
+                    <tr class="puntero" *ngFor="let producto of productos">
+                        <td routerLink="/editarProducto/{{producto.codigo_producto}}">{{producto.codigo_producto}}</td>
+                        <td routerLink="/editarProducto/{{producto.codigo_producto}}">{{producto.nombre_producto}}</td>
+                        <td routerLink="/editarProducto/{{producto.codigo_producto}}">{{producto.precio_producto}}</td>
+                        <td routerLink="/editarProducto/{{producto.codigo_producto}}">{{producto.precio_productoProveedor}}</td>
+                        <td routerLink="/editarProducto/{{producto.codigo_producto}}">{{producto.descripcion_producto}}</td>
+                        <td>
+                            <img (click)="abrirModal(producto.imagen)" class="imagen" src="{{producto.imagen}}" alt="{{producto.imagen}}">
+                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </tbody>
+    </table>
+    
+</div>

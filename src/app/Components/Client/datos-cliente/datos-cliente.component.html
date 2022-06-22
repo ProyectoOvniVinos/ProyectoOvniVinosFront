@@ -1,3 +1,21 @@
+<div class="modal abrir-modal animacion fadeIn" tabindex="-1" style="display: block;" *ngIf="modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title headerModal1">Deshabilitar</h5>
+          <button type="button" (click)="cerrarModal()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body modalFooter">
+          <p>Hola nombre cliente deseas deshabilitarte??</p>
+        </div>
+        <div class="modal-footer modalFooter">
+          <button type="button" (click)="cerrarModal()" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+          <button type="button" class="btn btn-primary">Si</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <div class="cajaPdatos">
 
     <div class="cajaMdatos">
@@ -34,11 +52,12 @@
             <div class="cajaBtns">
                 <button class="btnD btnAtras">Atras</button>
                 <button routerLink="/editarC" class="btnD btnEditar">Editar</button>
-                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" class="btnD btnDeshabilitar">Deshabilitar</button>
+
+                <button (click)="abrirModal()" class="btnD btnDeshabilitar">Deshabilitar</button>
+
             </div>
         </div>
     </div>
-
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">

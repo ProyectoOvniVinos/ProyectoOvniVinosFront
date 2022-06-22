@@ -61,3 +61,21 @@
     margin: 0 !important;
     padding: 0 !important;
 }
+
+.linkRuta{
+    color: aliceblue;
+}
+
+.bloquear{
+    cursor: not-allowed;
+    background-color: rgb(124, 10, 50);
+    pointer-events:none;
+}
+
+.espacioArriba{
+    margin-top: 150px;
+}
+
+.activo{
+    transform: scale(1.1,1.1);
+}
