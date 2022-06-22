@@ -153,10 +153,12 @@
 
 
 @media screen and (max-width: 1920px) and (max-height:1080px){
-
+    .cajaM-login{
+        width: 60%;
+    }
 }
 
-@media screen and (max-width: 1400px) and (max-height:1050px){
+@media screen and (max-width: 1500px) and (max-height:1050px){
     .cajaM-login{
         width: 70%;
     }
@@ -192,29 +194,78 @@
 
 @media screen and (max-width: 1280px) and (max-height:1024px){
     .cajaM-login{
-        width: 73%;
-    }
-}
-
-@media screen and (max-width: 1280px) and (max-height:720px){
-    .cajaM-login{
-        width: 60%;
+        width: 85%;
         margin-bottom: 5%;
-        height: 83%;
+        height: 90%;
     }
 }
 
-
-@media screen and (max-width: 960px) and (max-height:540px){
-    
+@media screen and (max-width: 1100px) and (max-height:1024px){
     .cajaM-login{
+        width: 90%;
+        margin-bottom: 5%;
         height: 90%;
-        margin-bottom: -1%;
     }
+}
+
+@media screen and (max-width: 900px) and (max-height:918px){
     
-    .cajaFormCompleto{
-        display: flex;
+    .row{
         flex-direction: column;
-        gap: 5px;
+    }
+    .cajaM-login{
+        width: 80%;
+        height: auto;
+    }
+    .cajaFormCompleto{
+        gap: 20px;
+        width: 100%;
+        align-items: center;
+    }
+    .cajaForm{
+        width: 90%;
+    }
+    .textArea{
+        width: 450px;
+        height: 110px;
+    }
+}
+
+@media screen and (max-width: 900px) and (max-height:820px){
+    
+    .row{
+        flex-direction: column;
+    }
+    .cajaM-login{
+        width: 80%;
+        height: auto;
+    }
+    .cajaFormCompleto{
+        gap: 20px;
+        width: 100%;
+        align-items: center;
+    }
+    .cajaForm{
+        width: 90%;
+    }
+    .textArea{
+        width: 450px;
+        height: 110px;
+    }
+}
+
+@media screen and (max-width: 700px) and (max-height:617px){
+    
+    .textArea{
+        width: 450px;
+        height: 110px;
+    }
+}
+
+@media screen and (max-width: 700px) and (max-height:820px){
+    
+    .textArea{
+        width: 300px;
+        height: 110px;
     }
 }
