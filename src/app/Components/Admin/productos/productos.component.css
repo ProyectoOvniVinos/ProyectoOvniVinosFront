@@ -83,3 +83,12 @@
 .tamano{
     width: 90%;
 }
+
+.viewport{
+    width: 353px;
+    height: 67vh;
+}
+
+.puntero{
+    cursor: pointer;
+}

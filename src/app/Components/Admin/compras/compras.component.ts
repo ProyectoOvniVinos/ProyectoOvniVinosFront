@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ProductoModel } from 'src/app/Models/Producto.model';
 
 @Component({
-  selector: 'app-inventario-general',
-  templateUrl: './inventario-general.component.html',
-  styleUrls: ['./inventario-general.component.css']
+  selector: 'app-compras',
+  templateUrl: './compras.component.html',
+  styleUrls: ['./compras.component.css']
 })
-export class InventarioGeneralComponent implements OnInit {
+export class ComprasComponent implements OnInit {
 
   productos: ProductoModel[] = [
     {
