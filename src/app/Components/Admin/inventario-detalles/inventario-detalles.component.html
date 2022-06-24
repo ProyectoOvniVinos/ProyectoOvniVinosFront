@@ -1,1 +1,37 @@
-<p>inventario-detalles works!</p>
+<button class="btn btn-success float-start mb-3 ms-2" routerLink="/inventarioG"><--</button>
+<div class="container">
+    
+    <table class="tabla">
+        <thead class="tablaHeaderG">
+            <tr>
+                <th>
+                    Inventario Detalles
+                </th>
+            </tr>
+        </thead>
+        <tbody class="tablabodyG">
+
+            <hr class="todo">
+
+            <table class="tabla2">
+                <thead class="tablaHeaderP">
+                    <tr>
+                        <th class="primero">Codigo</th>
+                        <th >Nombre</th>
+                        <th >Cantidad</th>
+                        <th class="ultimo">Fecha ingreso</th>
+                    </tr>
+                </thead>
+                <tbody class="tablabodyP">
+                    <tr *ngFor="let producto of productos">
+                        <td>{{producto.codigo_producto}}</td>
+                        <td>{{producto.nombre_producto}}</td>
+                        <td>Cantidad ultimo ingreso</td>
+                        <td>DD-MM-YYYY/HH-mm-ss</td>
+                    </tr>
+                </tbody>
+            </table>
+        </tbody>
+    </table>
+    
+</div>
