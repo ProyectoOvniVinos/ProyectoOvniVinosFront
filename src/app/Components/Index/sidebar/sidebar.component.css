@@ -206,5 +206,7 @@
     .texts h3 {
         font-size: 1rem;
     }
-
+}
+@media screen and (max-height:928px){
+    
 }
