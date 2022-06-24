@@ -23,6 +23,7 @@ import { InventarioGeneralComponent } from './Components/Admin/inventario-genera
 import { ContabilidadComponent } from './Components/Admin/contabilidad/contabilidad.component';
 import { VentasComponent } from './Components/Admin/ventas/ventas.component';
 import { ComprasComponent } from './Components/Admin/compras/compras.component';
+import { InventarioDetallesComponent } from './Components/Admin/inventario-detalles/inventario-detalles.component';
 
 
 const routes: Routes = [
@@ -39,11 +40,12 @@ const routes: Routes = [
   { path: 'historialC', component: HistorialComponent },
   { path: 'ayuda', component: AyudaComponent },
 
-  { path: 'clientes', component: ClientesComponent},
+  { path: 'clientes', component: ClientesComponent },
   { path: 'datosA', component: DatosAdminComponent },
   { path: 'editarA', component: EditarDatosAdmComponent },
   { path: 'contabilidad', component: ContabilidadComponent },
   { path: 'inventarioG', component: InventarioGeneralComponent },
+  { path: 'inventarioD', component: InventarioDetallesComponent },
   { path: 'ventas', component: VentasComponent },
   { path: 'compras', component: ComprasComponent },
 
