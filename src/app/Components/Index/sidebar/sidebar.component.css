@@ -162,9 +162,10 @@
 }
 
 .logos {
-    margin-right: 10px;
+    margin-right: 40px;
     width: 10%;
-    min-width: 120px;
+    min-width: 110px;
+    max-width: 150px;
     display: flex;
     justify-content: space-between;
 }
