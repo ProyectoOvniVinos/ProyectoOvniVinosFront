@@ -61,4 +61,10 @@ export class RecuperandoPasswordComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public prueba(){
+    console.log(window.screen);
+    console.log(screen.width)
+    console.log(screen.height)
+  }
+
 }
