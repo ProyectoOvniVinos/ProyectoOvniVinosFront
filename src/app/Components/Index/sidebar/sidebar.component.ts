@@ -1,5 +1,5 @@
 import { ThisReceiver } from '@angular/compiler';
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,21 +13,21 @@ export class SidebarComponent implements OnInit {
   admin = true;
   cliente = true;
   validarCarrito = false;
-  validarRuta= false;
+  validarRuta = false;
   modal: boolean = true;
 
-  constructor(private router: Router ) {
+  constructor(private router: Router) {
 
   }
 
   ngOnInit(): void {
   }
 
-  getRuta(){
+  getRuta() {
     console.log(this.router.url)
-    if(this.router.url=="/catalogo"){
+    if (this.router.url == "/catalogo") {
       return true;
-    }else{
+    } else {
       return false;
     }
   }

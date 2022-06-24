@@ -1,4 +1,5 @@
 <div class="container">
+    <button class="btn btn-success mb-3 float-end" routerLink="/inventarioD">Inventario Detalles</button>
     <table class="tabla">
         <thead class="tablaHeaderG">
             <tr>
@@ -15,12 +16,14 @@
                 <thead class="tablaHeaderP">
                     <tr>
                         <th class="primero">Codigo</th>
+                        <th >Nombre</th>
                         <th class="ultimo">Cantidad</th>
                     </tr>
                 </thead>
                 <tbody class="tablabodyP">
                     <tr *ngFor="let producto of productos">
                         <td>{{producto.codigo_producto}}</td>
+                        <td>{{producto.nombre_producto}}</td>
                         <td>{{producto.codigo_producto +4}}</td>
                     </tr>
                 </tbody>
