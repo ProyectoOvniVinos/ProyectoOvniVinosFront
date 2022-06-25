@@ -116,6 +116,15 @@
     max-width: 130px;
 }
 
+.activo3 {
+    transform: scale(1, 1.1);
+}
+
+.activo2 {
+    transform: scale(1.05, 1.05);
+    max-width: 130px;
+}
+
 .activo3 {}
 
 .cerrar {
