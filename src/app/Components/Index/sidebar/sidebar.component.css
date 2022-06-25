@@ -1,6 +1,7 @@
-.contenedor-ruteo{
-    height:93vh;
+.contenedor-ruteo {
+    height: 93vh;
 }
+
 .fmorado {
     background-color: rgb(184, 13, 72);
 }
@@ -26,8 +27,9 @@
 .menuIcon {
     width: 40px;
 }
-.contenedor-titulo-header{
-    width:20%;
+
+.contenedor-titulo-header {
+    width: 20%;
     text-decoration: none;
     color: black;
     display: flex;
@@ -38,13 +40,15 @@
 
 .contenedor-sidebar {
     width: 135px;
-    position:fixed;
+    position: fixed;
     bottom: 0;
     top: 60px;
 }
-.mat-toolbar{
-    background-color:#fafafa
+
+.mat-toolbar {
+    background-color: #fafafa
 }
+
 .cont-menu {
     height: 100%;
     width: 135px;
@@ -53,11 +57,13 @@
     align-items: center;
     animation: fadeIn 1s;
 }
+
 @keyframes fadeIn {
-    0%{
+    0% {
         opacity: 0.5;
     }
-    to{
+
+    to {
         opacity: 1;
     }
 }
@@ -68,50 +74,51 @@
     padding: 0 !important;
 }
 
-.linkRutaCarrito{
+.linkRutaCarrito {
     color: aliceblue;
     font-size: 1.41vh;
     transition: 1s;
 }
 
-.linkRuta{
+.linkRuta {
     color: aliceblue;
     font-size: 1.3vh;
     text-align: center;
 }
 
-.linkRuta2{
+.linkRuta2 {
     color: aliceblue;
     font-size: 1.5vh;
 }
 
-.imagenes{
-    width:20%;
+.imagenes {
+    width: 20%;
     margin-right: 5%;
 }
 
-.bloquear{
+.bloquear {
     cursor: not-allowed;
     background-color: rgb(124, 10, 50);
-    pointer-events:none;
+    pointer-events: none;
 }
 
-.espacioArriba{
+.espacioArriba {
     margin-top: 150px;
 }
 
-.activo{
-    transform: scale(1.1,1.1);
-    max-width:128px;
-}
-.activo2{
-    transform: scale(1.05,1.05);
-    max-width:130px;
-}
-.activo3{
+.activo {
+    transform: scale(1.1, 1.1);
+    max-width: 128px;
 }
 
-.cerrar{
+.activo2 {
+    transform: scale(1.05, 1.05);
+    max-width: 130px;
+}
+
+.activo3 {}
+
+.cerrar {
     position: absolute;
     right: 1%;
     top: 1%;
@@ -119,20 +126,20 @@
     z-index: 1;
 }
 
-.mat-list-item-content{
-    justify-content:center;
-    
+.mat-list-item-content {
+    justify-content: center;
+
 }
 
-.iniciar{
-    width:20%;
+.iniciar {
+    width: 20%;
 }
 
-.adelante{
+.adelante {
     z-index: 2;
 }
 
-.mat-drawer-content{
+.mat-drawer-content {
     overflow: hidden !important;
 }
 
@@ -143,10 +150,11 @@
     display: flex;
     align-items: center;
     flex-direction: row;
-    height: 8rem;
+    height: 13vh;
+    max-height: 110px;
     background-color: #fafafa;
     width: 100%;
-    
+
     position: fixed;
     bottom: 0;
     right: 0;
@@ -177,38 +185,86 @@
     max-width: 55px;
     min-width: 40px;
 }
-@media screen and (max-width: 1108px) and (max-height:695px){
 
-    .texts{
+@media screen and (max-width: 1108px) and (max-height:695px) {
+
+    .texts {
         margin-left: 30px;
         margin-right: 30px;
     }
-    .footer{
+
+    .footer {
         justify-content: center;
     }
 }
-@media screen and (max-width: 1366px) and (max-height:768px){
 
-    .footer{
-        height: 5.8rem;
-    }
-}
+@media screen and (max-width: 1366px) and (max-height:768px) {}
 
-.bloquear{
+.bloquear {
     cursor: not-allowed;
     background-color: black;
-    pointer-events:none;
+    pointer-events: none;
 }
 
-@media screen and (max-width: 960px) and (max-height:540px){
-    .footer{
-        height:6rem;
+@media screen and (max-height:928px) {
+    .contenedor-ruteo {
+        height: 90vh;
+    }
+
+}
+
+@media screen and (max-height:635px) {
+    .contenedor-ruteo {
+        height: 83vh;
+    }
+
+}
+
+@media screen and (max-height:390px) {
+    .contenedor-ruteo {
+        height: 77vh;
+    }
+
+}
+
+@media screen and (max-width:1138px) {
+    .texts {
+        margin: auto 20px auto auto;
+    }
+
+}
+
+@media screen and (max-width:1009px) {
+    .texts {
+        width: 54%;
     }
 
     .texts h3 {
         font-size: 1rem;
     }
+
 }
-@media screen and (max-height:928px){
-    
+
+
+@media screen and (max-width:870px) {
+    .texts {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width:788px) {
+    .logos {
+        min-width: 80px;
+        margin-right: 20px;
+    }
+
+    .texts {
+        margin: auto 20px auto 22%;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .contenedor-sidebar {
+        top: 50px;
+    }
 }

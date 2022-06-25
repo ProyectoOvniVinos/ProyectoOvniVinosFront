@@ -2,10 +2,11 @@
     width: 50%;
     min-width: 200px;
     max-width: 800px;
-    height: 70vh ;
+    height: 70vh;
     min-height: 250px;
     max-height: 1000px;
 }
+
 .swiper-wrapper {
     position: relative;
     width: 100%;
@@ -33,23 +34,46 @@
 .cont-produc {
     width: 77% !important;
     min-width: 200px;
-    height:99%  !important;
-    min-height: 300px;
+    height: 99% !important;
+    min-height: 250px;
 }
 
-.cont-exte{
+.cont-exte {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-end;
 }
 
-.cont-interno{
+.cont-interno {
     color: white;
 }
-@media screen and (max-width: 1326px) and (max-height:703px){
-    .swiper{
+
+@media screen and (max-width: 1326px) and (max-height:703px) {
+    .swiper {
         height: 60vh;
-        width:60%;
+        width: 60%;
+    }
+}
+
+
+@media screen and (max-height:667px) {
+    .swiper {
+        height: 65vh;
+        width: 60%;
+    }
+}
+
+@media screen and (max-height:592px) {
+    .swiper {
+        height: 60vh;
+        width: 60%;
+    }
+}
+
+@media screen and (max-height:482px) {
+    .swiper {
+        height: 56vh;
+        width: 60%;
     }
 }
