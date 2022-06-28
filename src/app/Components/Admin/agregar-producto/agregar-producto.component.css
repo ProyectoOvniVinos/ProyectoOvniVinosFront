@@ -11,7 +11,7 @@
     flex-direction: column;
     align-items: center;
     
-    height: 70vh;
+    height: 62vh;
 }
 
 .cajaP-login{
@@ -87,7 +87,7 @@
 }
 
 .input{
-    height: 5vh;
+    height:auto;
     width: 34vh;
     border-radius:5px;
     font-size: 2vh;
@@ -144,6 +144,7 @@
 }
 .container-envio{
     max-height:100px;
+    margin-top: 2%;
 }
 
 .textArea{
