@@ -16,8 +16,10 @@
                                     class="input form-control" 
                                     formControlName="nombre"
                                     [ngClass]="nombreNoValido == null ? '' : nombreNoValido ? 'is-invalid': 'is-valid'">
-                                     
-                                        <!-- [ngClass]=" nombreNoValido ? 'is-invalid': 'is-valid' "  -->
+                                    <div class="errors-container" *ngIf="nombreControl.invalid && (nombreControl.touched || nombreControl.dirty)">
+                                        <p class="text-danger" *ngIf="nombreControl.hasError('required')">El campo es obligatorio</p>
+                                        <p class="text-danger" *ngIf="!nombreControl.hasError('required')">El campo debe tener al menos 3 caracteres</p>
+                                    </div>
                                     
                                     
                         </div>
@@ -28,7 +30,9 @@
                                     class="input form-control" 
                                     formControlName="apellido"
                                     [ngClass]="apellidoNoValido == null ? '' : apellidoNoValido ? 'is-invalid': 'is-valid'">
-                                    <!-- [class.is-invalid]="apellidoNoValido"> -->
+                                    <div class="errors-container" *ngIf="apellidoControl.invalid && (apellidoControl.touched || apellidoControl.dirty)">
+                                        <p class="text-danger" *ngIf="apellidoControl.hasError('required')">El campo es obligatorio</p>
+                                    </div>
                         </div>
                     </div>
                     <div class="row">
@@ -40,8 +44,10 @@
                                     class="input form-control" 
                                     formControlName="direccion"
                                     [ngClass]="direccionNoValido == null ? '' : direccionNoValido ? 'is-invalid': 'is-valid'">
-
-                                    <!-- [class.is-invalid]="direccionNoValido"> -->
+                                    <div class="errors-container" *ngIf="direccionControl.invalid && (direccionControl.touched || direccionControl.dirty)">
+                                        <p class="text-danger" *ngIf="direccionControl.hasError('required')">El campo es obligatorio</p>
+                                        <p class="text-danger" *ngIf="!direccionControl.hasError('required')">El campo debe tener al menos 3 caracteres</p>
+                                    </div>
                         </div>
                         <div class="cajaInput col">
                             <label for="" class="label">Celular</label>
@@ -51,7 +57,10 @@
                                     formControlName="celular"
                                     
                                     [ngClass]="celularNoValido == null ? '' : celularNoValido ? 'is-invalid': 'is-valid'">
-                                    <!-- [class.is-invalid]="celularNoValido"> --> 
+                                    <div class="errors-container" *ngIf="celularControl.invalid && (celularControl.touched || celularControl.dirty)">
+                                        <p class="text-danger" *ngIf="celularControl.hasError('required')">El campo es obligatorio</p>
+                                        <p class="text-danger" *ngIf="!celularControl.hasError('required')">El campo debe tener 10 caracteres</p>
+                                    </div>
                         </div>
                     </div>
                     <div class="row">
@@ -63,8 +72,10 @@
                                     class="input form-control" 
                                     formControlName="correo"
                                     [ngClass]="correoNoValido == null ? '' : correoNoValido ? 'is-invalid': 'is-valid'">
-
-                                    <!-- [class.is-invalid]="correoNoValido"> -->
+                                    <div class="errors-container" *ngIf="correoControl.invalid && (correoControl.touched || correoControl.dirty)">
+                                        <p class="text-danger" *ngIf="correoControl.hasError('required')">El campo es obligatorio</p>
+                                        <p class="text-danger" *ngIf="!correoControl.hasError('required')">El campo debe tener formato de correo</p>
+                                    </div>
                         </div>
                         <div class="cajaInput col">
                             <div>
@@ -75,12 +86,15 @@
                                         class="input form-control" 
                                         formControlName="contrasena1"
                                         [ngClass]="contrasena1NoValido == null ? '' : contrasena1NoValido ? 'is-invalid': 'is-valid'">
-
-                                        <!-- [class.is-invalid]="contrasena1NoValido"> -->
+                                        <div class="errors-container" *ngIf="contrasena1Control.invalid && (contrasena1Control.touched || contrasena1Control.dirty)">
+                                            <p class="text-danger" *ngIf="contrasena1Control.hasError('required')">El campo es obligatorio</p>
+                                            <p class="text-danger" *ngIf="!contrasena1Control.hasError('required')">El campo debe tener al menos 8 caracteres</p>
+                                        
+                                        </div>
                             </div>
                         </div>
                     </div>
-                    <div class="cajaContraseña">
+                    <div class="cajaContraseña cajaInput">
                         <div>
 
                             <label for="" class="label">Repita la contraseña</label>
@@ -89,8 +103,9 @@
                                     class="input form-control" 
                                     formControlName="contrasena2"
                                     [ngClass]="contrasena2NoValido == null ? '' : contrasena2NoValido ? 'is-invalid': 'is-valid'">
-
-                                    <!-- [class.is-invalid]="contrasena2NoValido"> -->
+                                    <div class="errors-container" *ngIf="contrasena2Control.invalid && (contrasena2Control.touched || contrasena2Control.dirty)">
+                                        <p class="text-danger" *ngIf="contrasena2Control.hasError('required')">El campo es obligatorio</p>                                    
+                                    </div>
                         </div>
                     </div>
                     <div class="container-envio d-flex ">

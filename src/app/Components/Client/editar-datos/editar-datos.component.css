@@ -71,46 +71,87 @@
     box-shadow: 1px 1px 3px 1px rgb(184, 13, 72);
     border: 1px solid rgb(184, 13, 72);
 }
-
 .btnCancelar {
-    background-color: rgb(250, 135, 135);
-    border: 2px solid red;
-    color: white;
-    width: 70%;
-    height: 6vh;
-    border: none;
-    border-radius: 5px;
-    font-size: 2.5vh;
-    margin-top: 1%;
-    margin-left: 15%;
-    margin-right: 8%;
-    transition: 0.2s;
+    margin-left: 5%;
+    width: 35%;
+    height: 3rem;
+    background: #fff; /* color de fondo */
+    color: rgb(184, 13, 72); /* color de fuente */
+    border: 2px solid rgb(184, 13, 72); /* tamaño y color de borde */
+    padding: 16px 20px;
+    padding-top: 4px;
+    border-radius: 3px; /* redondear bordes */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 1.5rem;
 }
 
 .btnCancelar:hover {
-    transform: scale(1.1, 1.1);
-    background-color: rgb(252, 93, 93);
-    border: 2px solid rgb(163, 2, 2);
+    color: #fff;/* color de fuente hover */
 }
 
+.btnCancelar::after{
+    content: "";
+    background: rgb(184, 13, 72); /* color de fondo hover */
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(45deg) scale(0, 1);
+    transition: all 0.3s ease;
+}
+
+.btnCancelar:hover::after{
+    transition: all 0.3s ease-out;
+    transform: skewX(45deg) scale(1, 1);
+}
+
+
 .btnEditar {
-    background-color: rgb(124, 208, 124);
-    border: 2px solid green;
-    color: white;
-    width: 70%;
-    height: 6vh;
-    border: none;
-    border-radius: 5px;
-    font-size: 2.5vh;
-    margin-top: 1%;
-    margin-left: 15%;
-    transition: 0.2s;
+    margin-left: 12%;
+    width: 35%;
+    height: 3rem;
+    background: #fff; /* color de fondo */
+    color: rgb(14, 90, 24); /* color de fuente */
+    border: 2px solid rgb(14, 90, 24); /* tamaño y color de borde */
+    padding: 16px 20px;
+    padding-top: 3px;
+    border-radius: 3px; /* redondear bordes */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 1.5rem;
 }
 
 .btnEditar:hover {
-    transform: scale(1.1, 1.1);
-    background-color: rgb(108, 248, 108);
-    border: 2px solid rgb(1, 75, 1);
+    color: #fff;/* color de fuente hover */
+}
+
+.btnEditar::after{
+    content: "";
+    background: rgb(14, 90, 24); /* color de fondo hover */
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(45deg) scale(0, 1);
+    transition: all 0.3s ease;
+}
+
+.btnEditar:hover::after{
+    transition: all 0.3s ease-out;
+    transform: skewX(45deg) scale(1, 1);
 }
 
 .imgLogin {

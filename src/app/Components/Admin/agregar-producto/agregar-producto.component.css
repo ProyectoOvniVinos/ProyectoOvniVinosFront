@@ -117,21 +117,45 @@
 }
 
 .btnRegistrar{
-    background-color: rgb(184, 13, 72);
-    color: white;
-    width: 70%;
-    height: 6vh;
-    border: none;
-    border-radius: 5px;
-    font-size:2.5vh;
+    width: 45%;
+    height: 5vh;
     margin-top: 1%;
-    margin-left: 15%;
-    transition: 0.2s;
+    margin-left: 28%;
+    background: #fff; /* color de fondo */
+    color: rgb(184, 13, 72); /* color de fuente */
+    border: 2px solid rgb(184, 13, 72); /* tamaño y color de borde */
+    padding: 16px 20px;
+    padding-top: 4px;
+    border-radius: 3px; /* redondear bordes */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 1.5rem;
 }
 
 .btnRegistrar:hover{
-    transform: scale(1.1,1.1);
-    background-color: rgb(150, 8, 58);
+    color: #fff;/* color de fuente hover */
+}
+
+.btnRegistrar::after{
+    content: "";
+    background: rgb(184, 13, 72); /* color de fondo hover */
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(45deg) scale(0, 1);
+    transition: all 0.3s ease;
+}
+
+.btnRegistrar:hover::after{
+    transition: all 0.3s ease-out;
+    transform: skewX(45deg) scale(1, 1);
 }
 .imgLogin{
     width: 100%;
@@ -152,8 +176,98 @@
     resize: none;
 }
 
+.btnRegresar{
+    width: 25%;
+    height: 5vh;
+    background: #fff; /* color de fondo */
+    color: rgb(184, 13, 72); /* color de fuente */
+    border: 2px solid rgb(184, 13, 72); /* tamaño y color de borde */
+    padding: 16px 20px;
+    padding-top: 4px;
+    border-radius: 3px; /* redondear bordes */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 1.5rem;
+}
+
+.btnRegresar:hover{
+    color: #fff;/* color de fuente hover */
+}
+
+.btnRegresar::after{
+    content: "";
+    background: rgb(184, 13, 72); /* color de fondo hover */
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(45deg) scale(0, 1);
+    transition: all 0.3s ease;
+}
+
+.btnRegresar:hover::after{
+    transition: all 0.3s ease-out;
+    transform: skewX(45deg) scale(1, 1);
+}
 
 @media screen and (max-width: 1920px) and (max-height:1080px){
+    .cajaM-login{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 1920px) and (max-height:820px){
+    .cajaM-login{
+        height: 90%;
+        width: 50%;
+    }
+
+    .cajaFormCompleto{
+        gap: 5px;
+    }
+}
+
+@media screen and (max-width: 1920px) and (max-height:617px){
+    .btnRegresar{
+        width: 20%;
+        height: 1.5rem;
+        padding-bottom: 3%;
+    }
+
+    .btnRegistrar{
+        height: 2.8rem;
+        margin-top: 0%;
+    }
+
+    .boton{
+        margin-bottom: 0;
+    }
+
+    .cajaM-login{
+        width: 60%;
+        height: 100%;
+    }
+
+    .imgLogin{
+        width: 105%;
+        height: 54px;
+        margin-top: 26%;
+    }
+}
+
+@media screen and (max-width: 1680px) and (max-height:1080px){
+    .cajaM-login{
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 1680px) and (max-height:820px){
     .cajaM-login{
         width: 60%;
     }
@@ -164,6 +278,25 @@
         width: 70%;
     }
 }
+
+@media screen and (max-width: 1500px) and (max-height:820px){
+    .cajaM-login{
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 1480px) and (max-height:1080px){
+    .cajaM-login{
+        width: 75%;
+    }
+}
+
+@media screen and (max-width: 1480px) and (max-height:820px){
+    .cajaM-login{
+        width: 60%;
+    }
+}
+
 
 @media screen and (max-width: 1366px) and (max-height:768px){
     .cajaM-login{
@@ -193,19 +326,43 @@
     
 }
 
-@media screen and (max-width: 1280px) and (max-height:1024px){
+@media screen and (max-width: 1280px) and (max-height:1080px){
     .cajaM-login{
         width: 85%;
+    }
+}
+
+
+@media screen and (max-width: 1280px) and (max-height:1024px){
+    .cajaM-login{
+        width: 75%;
         margin-bottom: 5%;
+        height: 98%;
+    }
+}
+
+@media screen and (max-width: 1280px) and (max-height:820px){
+    .cajaM-login{
+        width: 65%;
         height: 90%;
     }
 }
 
+
+
 @media screen and (max-width: 1100px) and (max-height:1024px){
+    .cajaM-login{
+        width: 95%;
+        margin-bottom: 5%;
+        height: 95%;
+    }
+}
+
+@media screen and (max-width: 1100px) and (max-height:918px){
     .cajaM-login{
         width: 90%;
         margin-bottom: 5%;
-        height: 90%;
+        height: 97%;
     }
 }
 

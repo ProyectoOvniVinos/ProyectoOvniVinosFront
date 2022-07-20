@@ -9,8 +9,9 @@
                     <div class="cajaEmail">
                         <label for="" class="label">Correo Electronico</label>
                         <br>
-                        <input type="text" class="input form-control" formControlName="email" autocomplete='off'
-                                [ngClass]="emailNoValido == null ? '' : emailNoValido ? 'is-invalid': 'is-valid'">
+                        <input type="text" 
+                            class="input form-control" formControlName="email" autocomplete='off'
+                            [ngClass]="emailNoValido == null ? '' : emailNoValido ? 'is-invalid': 'is-valid'">
                         <div class="errors-container" *ngIf="emailControl.invalid && (emailControl.touched || emailControl.dirty)">
                             <p class="text-danger" *ngIf="emailControl.hasError('required')">El campo es obligatorio</p>
                             <p class="text-danger" *ngIf="emailControl.hasError('email')">El campo debe ser un email valido</p>

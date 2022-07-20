@@ -67,23 +67,79 @@
 }
 
 .btnAtras {
-    background-color: gray;
-    border: 2px solid rgb(73, 72, 72);
+    background: #fff; /* color de fondo */
+    color: rgb(90, 90, 90); /* color de fuente */
+    border: 2px solid rgb(90, 90, 90); /* tamaño y color de borde */
+    padding: 16px 20px;
+    padding-top: 3px;
+    border-radius: 6px; /* redondear bordes */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 1.5rem;
 }
 
 .btnAtras:hover {
-    background-color: rgb(103, 102, 102);
-    border: 2px solid rgb(42, 41, 41);
+    color: #fff;/* color de fuente hover */
+}
+
+.btnAtras::after{
+    content: "";
+    background: rgb(90, 90, 90); /* color de fondo hover */
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(45deg) scale(0, 1);
+    transition: all 0.3s ease;
+}
+
+.btnAtras:hover::after{
+    transition: all 0.3s ease-out;
+    transform: skewX(45deg) scale(1, 1);
 }
 
 .btnEditar {
-    background-color: rgb(124, 208, 124);
-    border: 2px solid green;
+    background: #fff; /* color de fondo */
+    color: rgb(14, 90, 24); /* color de fuente */
+    border: 2px solid rgb(14, 90, 24); /* tamaño y color de borde */
+    padding: 16px 20px;
+    padding-top: 3px;
+    border-radius: 6px; /* redondear bordes */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 1.5rem;
 }
 
 .btnEditar:hover {
-    background-color: rgb(108, 248, 108);
-    border: 2px solid rgb(1, 75, 1);
+    color: #fff;/* color de fuente hover */
+}
+
+.btnEditar::after{
+    content: "";
+    background: rgb(14, 90, 24); /* color de fondo hover */
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(45deg) scale(0, 1);
+    transition: all 0.3s ease;
+}
+
+.btnEditar:hover::after{
+    transition: all 0.3s ease-out;
+    transform: skewX(45deg) scale(1, 1);
 }
 
 

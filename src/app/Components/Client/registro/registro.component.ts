@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-registro',
@@ -34,6 +34,34 @@ export class RegistroComponent implements OnInit {
     this.registroForm.get('correo')?.valueChanges.subscribe(console.log);
   }
 
+  get nombreControl(): FormControl{
+    return this.registroForm.get('nombre') as FormControl
+  }
+
+  get apellidoControl(): FormControl{
+    return this.registroForm.get('apellido') as FormControl
+  }
+
+  get direccionControl(): FormControl{
+    return this.registroForm.get('direccion') as FormControl
+  }
+
+  get celularControl(): FormControl{
+    return this.registroForm.get('celular') as FormControl
+  }
+
+  get correoControl(): FormControl{
+    return this.registroForm.get('correo') as FormControl
+  }
+
+  get contrasena1Control(): FormControl{
+    return this.registroForm.get('contrasena1') as FormControl
+  }
+
+  get contrasena2Control(): FormControl{
+    return this.registroForm.get('contrasena2') as FormControl
+  }
+
   get nombreNoValido() {
     if(this.registroForm.get('nombre')?.touched){
       if(this.registroForm.get('nombre')?.invalid == false){
@@ -46,7 +74,6 @@ export class RegistroComponent implements OnInit {
     }
 
   }
-
   get apellidoNoValido() {
     if(this.registroForm.get('apellido')?.touched){
       if(this.registroForm.get('apellido')?.invalid == false){

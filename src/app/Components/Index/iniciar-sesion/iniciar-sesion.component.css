@@ -84,37 +84,85 @@
 }
 
 .btnIniciar{
-    background-color: rgb(184, 13, 72);
-    color: white;
     width: 70%;
     height: 6vh;
-    border: none;
-    border-radius: 5px;
-    font-size:2.5vh;
-    transition: 0.2s;
+    background: #fff; /* color de fondo */
+    color: rgb(184, 13, 72); /* color de fuente */
+    border: 2px solid rgb(184, 13, 72); /* tamaño y color de borde */
+    padding: 16px 20px;
+    padding-top: 8px;
+    border-radius: 3px; /* redondear bordes */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 1.5rem;
 }
 
 .btnIniciar:hover{
-    transform: scale(1.1,1.1);
-    background-color: rgb(150, 8, 58);
+    color: #fff;/* color de fuente hover */
+}
+
+.btnIniciar::after{
+    content: "";
+    background: rgb(184, 13, 72); /* color de fondo hover */
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(45deg) scale(0, 1);
+    transition: all 0.3s ease;
+}
+
+.btnIniciar:hover::after{
+    transition: all 0.3s ease-out;
+    transform: skewX(45deg) scale(1, 1);
 }
 
 .btnRegistrar{
-    background-color: rgb(184, 13, 72);
-    color: white;
     width: 70%;
     height: 6vh;
-    border: none;
-    border-radius: 5px;
-    font-size:2.5vh;
     margin-top: 8%;
     margin-left: 15%;
-    transition: 0.2s;
+    background: #fff; /* color de fondo */
+    color: rgb(184, 13, 72); /* color de fuente */
+    border: 2px solid rgb(184, 13, 72); /* tamaño y color de borde */
+    padding: 16px 20px;
+    padding-top: 8px;
+    border-radius: 3px; /* redondear bordes */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 1.5rem;
 }
 
 .btnRegistrar:hover{
-    transform: scale(1.1,1.1);
-    background-color: rgb(150, 8, 58);
+    color: #fff;/* color de fuente hover */
+}
+
+.btnRegistrar::after{
+    content: "";
+    background: rgb(184, 13, 72); /* color de fondo hover */
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(45deg) scale(0, 1);
+    transition: all 0.3s ease;
+}
+
+.btnRegistrar:hover::after{
+    transition: all 0.3s ease-out;
+    transform: skewX(45deg) scale(1, 1);
 }
 
 .imgLogin{
@@ -141,7 +189,7 @@
     height: 8.5vh;
     border-radius: 100%;
     opacity: 70%;
-    transition: 0.1s;
+    transition: 0.5s;
     border: 2px solid white;
 }
 
@@ -165,7 +213,7 @@
     height: 8.5vh;
     border-radius: 100%;
     opacity: 70%;
-    transition: 0.1s;
+    transition: 0.5s;
     border: 2px solid white;
 }
 
