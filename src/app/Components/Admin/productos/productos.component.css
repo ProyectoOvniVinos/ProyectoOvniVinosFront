@@ -62,7 +62,7 @@
 
 .boton{
     display: flex;
-    width: 90%;
+    width: 98.7%;
     justify-content: end;
     margin-bottom: 30px;
 }
@@ -91,6 +91,46 @@
 
 .puntero{
     cursor: pointer;
+}
+
+.btnAgregar{
+    width: 30%;
+    height: 3rem;
+    background: #fff; /* color de fondo */
+    color: rgb(14, 90, 24); /* color de fuente */
+    border: 5px solid rgb(14, 90, 24); /* tamaño y color de borde */
+    padding: 16px 20px;
+    padding-top: 0px;
+    border-radius: 6px; /* redondear bordes */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 1.5rem;
+}
+
+.btnAgregar:hover {
+    color: #fff;/* color de fuente hover */
+}
+
+.btnAgregar::after{
+    content: "";
+    background: rgb(14, 90, 24); /* color de fondo hover */
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(45deg) scale(0, 1);
+    transition: all 0.3s ease;
+}
+
+.btnAgregar:hover::after{
+    transition: all 0.3s ease-out;
+    transform: skewX(45deg) scale(1, 1);
 }
 
 @media screen and (max-width: 1010px) and (max-height:918px){

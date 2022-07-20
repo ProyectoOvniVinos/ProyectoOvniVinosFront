@@ -12,12 +12,41 @@
 }
 
 .btnEnviar{
-    background-color: rgb(184, 13, 72);
-    color: white;
+    height: 3rem;
+    background: #fff; /* color de fondo */
+    color: rgb(184, 13, 72); /* color de fuente */
+    border: 2px solid rgb(184, 13, 72); /* tamaño y color de borde */
+    padding: 16px 20px;
+    padding-top: 4px;
+    border-radius: 3px; /* redondear bordes */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 1.5rem;
 }
 
 .btnEnviar:hover{
-    transform: scale(1.1,1.1);
-    background-color: rgb(150, 8, 58);
+    color: #fff;/* color de fuente hover */
+}
+
+.btnEnviar::after{
+    content: "";
+    background: rgb(184, 13, 72); /* color de fondo hover */
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(45deg) scale(0, 1);
+    transition: all 0.3s ease;
+}
+
+.btnEnviar:hover::after{
+    transition: all 0.3s ease-out;
+    transform: skewX(45deg) scale(1, 1);
 }
 
