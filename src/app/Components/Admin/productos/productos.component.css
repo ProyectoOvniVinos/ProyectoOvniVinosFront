@@ -101,7 +101,7 @@
     border: 5px solid rgb(14, 90, 24); /* tamaño y color de borde */
     padding: 16px 20px;
     padding-top: 0px;
-    border-radius: 6px; /* redondear bordes */
+    border-radius: 20px; /* redondear bordes */
     position: relative;
     z-index: 1;
     overflow: hidden;
