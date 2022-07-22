@@ -1,6 +1,6 @@
 .cajaP-login {
     width: 100%;
-    height: 80%;
+    height: 65%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,7 +8,7 @@
 
 .cajaM-login {
     width: 50%;
-    height: 100%;
+    height: 75%;
     border: 2px solid black;
     background-color: white;
     border-radius: 5px;
@@ -33,7 +33,7 @@
 }
 
 .cajaForm {
-    height: 58vh;
+    height: 25vh;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -43,8 +43,8 @@
 .cajaFormCompleto {
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    padding-top: 3%;
+    gap: 45px;
+    padding-top: 2%;
 }
 
 .cajaContraseña {

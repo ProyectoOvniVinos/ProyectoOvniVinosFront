@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ProductoModel } from 'src/app/Models/Producto.model';
 
 @Component({
   selector: 'app-ingresar-compra',
@@ -8,14 +9,34 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class IngresarCompraComponent implements OnInit {
 
+  productos: ProductoModel[] = [
+    {
+      codigo_producto: 1,
+      nombre_producto: 'Vino Abocado',
+      precio_producto: 13000,
+      precio_productoProveedor: 6000,
+      descripcion_producto: 'Delicioso Vino Dulce',
+      imagen: '../../../../assets/TEMPORALES/vino1.jpg'
+    }, {
+      codigo_producto: 2,
+      nombre_producto: 'Vino tinto',
+      precio_producto: 13000,
+      precio_productoProveedor: 6000,
+      descripcion_producto: 'Delicioso Vino no tan Dulce',
+      imagen: '../../../../assets/TEMPORALES/vino2.jpg'
+    }, {
+      codigo_producto: 3,
+      nombre_producto: 'Nectar de uva',
+      precio_producto: 10000,
+      precio_productoProveedor: 5000,
+      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
+      imagen: '../../../../assets/TEMPORALES/vino3.jpg'
+    },
+  ];
   
-  banderaNombre: boolean = false;
-  banderaApellido: boolean = false;
-  banderaDireccion: boolean = false;
-  banderaCelular: boolean = false;
-  banderaCorreo: boolean = false;
-  banderaPasswordOne: boolean = false;
-  banderaPasswordTwo: boolean = false;
+  banderaProducto: boolean = false;
+  banderaCantidad: boolean = false;
+  banderaPrecio: boolean = false;
 
 
   registroForm !: FormGroup;
@@ -28,16 +49,15 @@ export class IngresarCompraComponent implements OnInit {
 
   }
   crearListeners() {
-    this.registroForm.get('nombre')?.valueChanges.subscribe(console.log);
-    this.registroForm.get('apellido')?.valueChanges.subscribe(console.log);
-    this.registroForm.get('direccion')?.valueChanges.subscribe(console.log);
-    this.registroForm.get('celular')?.valueChanges.subscribe(console.log);
-    this.registroForm.get('correo')?.valueChanges.subscribe(console.log);
+    this.registroForm.get('producto')?.valueChanges.subscribe(console.log);
+    this.registroForm.get('cantidad')?.valueChanges.subscribe(console.log);
+    this.registroForm.get('precio')?.valueChanges.subscribe(console.log);
+
   }
 
-  get nombreNoValido() {
-    if (this.registroForm.get('nombre')?.touched) {
-      if (this.registroForm.get('nombre')?.invalid == false) {
+  get productoNoValido() {
+    if (this.registroForm.get('producto')?.touched) {
+      if (this.registroForm.get('producto')?.invalid == false) {
         return false;
       } else {
         return true;
@@ -48,9 +68,9 @@ export class IngresarCompraComponent implements OnInit {
 
   }
 
-  get apellidoNoValido() {
-    if (this.registroForm.get('apellido')?.touched) {
-      if (this.registroForm.get('apellido')?.invalid == false) {
+  get cantidadNoValido() {
+    if (this.registroForm.get('cantidad')?.touched) {
+      if (this.registroForm.get('cantidad')?.invalid == false) {
         return false;
       } else {
         return true;
@@ -60,9 +80,9 @@ export class IngresarCompraComponent implements OnInit {
     }
     //return this.registroForm.get('apellido')?.invalid && this.registroForm.get('apellido')?.touched;
   }
-  get direccionNoValido() {
-    if (this.registroForm.get('direccion')?.touched) {
-      if (this.registroForm.get('direccion')?.invalid == false) {
+  get precioNoValido() {
+    if (this.registroForm.get('precio')?.touched) {
+      if (this.registroForm.get('precio')?.invalid == false) {
         return false;
       } else {
         return true;
@@ -72,88 +92,20 @@ export class IngresarCompraComponent implements OnInit {
     }
     //return this.registroForm.get('direccion')?.invalid && this.registroForm.get('direccion')?.touched;
   }
-  get celularNoValido() {
-    if (this.registroForm.get('celular')?.touched) {
-      try {
-        let numero = Number(this.registroForm.get('celular')?.value);
-        if (numero) {
-          if (this.registroForm.get('celular')?.invalid == false) {
-            return false;
-          } else {
-            return true;
-          }
-        } else {
-          return true;
-        }
-      } catch (error) {
-        return true;
-      }
-    } else {
-      return null;
-    }
-    //return this.registroForm.get('celular')?.invalid && this.registroForm.get('celular')?.touched;
-  }
-
-  get correoNoValido() {
-    if (this.registroForm.get('correo')?.touched) {
-      if (this.registroForm.get('correo')?.invalid == false) {
-        return false;
-      } else {
-        return true;
-      }
-    } else {
-      return null;
-    }
-    //return this.registroForm.get('correo')?.invalid && this.registroForm.get('correo')?.touched;
-  }
-
-  get contrasena1NoValido() {
-    if (this.registroForm.get('contrasena1')?.touched) {
-      if (this.registroForm.get('contrasena1')?.invalid == false) {
-        return false;
-      } else {
-        return true;
-      }
-    } else {
-      return null;
-    }
-    //return this.registroForm.get('contrasena1')?.invalid && this.registroForm.get('contrasena1')?.touched;
-  }
-
-  get contrasena2NoValido() {
-    const contrasena1 = this.registroForm.get('contrasena1')?.value;
-    const contrasena2 = this.registroForm.get('contrasena2')?.value;
-    if (this.registroForm.get('contrasena2')?.touched) {
-      if (this.registroForm.get('contrasena2')?.invalid == false) {
-        if (contrasena1 === contrasena2) {
-          return false;
-        } else {
-          return true;
-        }
-      } else {
-        return true;
-      }
-    } else {
-      return null;
-    }
-
-
-    //return (this.registroForm.get('contrasena2')?.touched && this.registroForm.get('contrasena2')?.invalid) ? true : (contrasena1 === contrasena2) ? false : true;
-    //return (contrasena1 === contrasena2) ? false : true && this.registroForm.get('contrasena2')?.touched;
-  }
-
+  
   crearFormulario() {
     this.registroForm = this.fb.group({
-      nombre: ['', [Validators.required, Validators.minLength(3)]],
-      apellido: ['', [Validators.required]],
-      direccion: ['', [Validators.required, Validators.minLength(3)]],
-      celular: ['', [Validators.required, Validators.minLength(10)]],
-      correo: ['', [Validators.required, Validators.pattern('[a-z0-9.%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
-      contrasena1: ['', [Validators.required, Validators.minLength(8)]],
-      contrasena2: ['', Validators.required]
+      producto: ['', [Validators.required]],
+      cantidad: ['', [Validators.required]],
+      precio: [ [Validators.required]]
     })
   }
 
+  ingresar(){
+    console.log(this.registroForm);
+    
+
+  }
 
 
 }
