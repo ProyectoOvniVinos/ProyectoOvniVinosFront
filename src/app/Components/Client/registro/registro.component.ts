@@ -35,7 +35,7 @@ export class RegistroComponent implements OnInit {
   crearArregloEdad(){
     console.log("entro");
     
-    let index:number = 1;
+    let index:number = 18;
     while(index < this.edades){
         this.arregloEdades.push(index);
         index++;

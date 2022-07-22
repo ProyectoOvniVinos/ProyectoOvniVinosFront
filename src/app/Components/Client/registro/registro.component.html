@@ -146,7 +146,7 @@
                 <form class="row g-3" [formGroup]="registroForm">
                     <div class="col-md-6 cajaInput">
                       <label for="inputNombre" class="">Nombre</label>
-                      <input type="text" class="form-control" id="inputNombre"  
+                      <input type="text" class="input form-control" id="inputNombre"  
                         formControlName="nombre"
                         [ngClass]="nombreNoValido == null ? '' : nombreNoValido ? 'is-invalid': 'is-valid'">
                         <div class="errors-container" *ngIf="nombreControl.invalid && (nombreControl.touched || nombreControl.dirty)">
@@ -154,8 +154,8 @@
                         </div>
                     </div>
                     <div class="col-md-6 cajaInput">
-                      <label for="inputPassword4" class="">Apellido</label>
-                      <input type="password" class="form-control" id="inputPassword4"
+                      <label for="inputApellido" class="">Apellido</label>
+                      <input type="password" class="input form-control" id="inputApellido"
                       formControlName="apellido"
                       [ngClass]="apellidoNoValido == null ? '' : apellidoNoValido ? 'is-invalid': 'is-valid'">
                       <div class="errors-container" *ngIf="apellidoControl.invalid && (apellidoControl.touched || apellidoControl.dirty)">
@@ -163,8 +163,8 @@
                       </div>
                     </div>
                     <div class="col-6 cajaInput">
-                      <label for="inputAddress" class="">Correo Electronico</label>
-                      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"
+                      <label for="inputCorreo" class="">Correo Electronico</label>
+                      <input type="text" class="input form-control" id="inputCorreo" placeholder="xxxxx@xxxxxx.com"
                       formControlName="correo"
                       [ngClass]="correoNoValido == null ? '' : correoNoValido ? 'is-invalid': 'is-valid'">
                       <div class="errors-container" *ngIf="correoControl.invalid && (correoControl.touched || correoControl.dirty)">
@@ -173,8 +173,8 @@
                       </div>
                     </div>
                     <div class="col-6 cajaInput">
-                      <label for="inputAddress2" class="">Direccion</label>
-                      <input type="text" class="form-control" id="inputAddress2" placeholder="Direccion Cra x # xx-xx"
+                      <label for="inputDireccion" class="">Direccion</label>
+                      <input type="text" class="input form-control" id="inputDireccion" placeholder="Direccion Cra x # xx-xx"
                       formControlName="direccion"
                       [ngClass]="direccionNoValido == null ? '' : direccionNoValido ? 'is-invalid': 'is-valid'">
                       <div class="errors-container" *ngIf="direccionControl.invalid && (direccionControl.touched || direccionControl.dirty)">
@@ -184,7 +184,7 @@
                     </div>
                     <div class="col-md-6 cajaInput">
                       <label for="inputCity" class="">Celular</label>
-                      <input type="text" class="form-control" id="inputCity"
+                      <input type="text" class="input form-control" id="inputCity"
                       formControlName="celular"
                       [ngClass]="celularNoValido == null ? '' : celularNoValido ? 'is-invalid': 'is-valid'">
                       <div class="errors-container" *ngIf="celularControl.invalid && (celularControl.touched || celularControl.dirty)">
@@ -193,15 +193,15 @@
                       </div>
                     </div>
                     <div class="col-md-6 cajaInput">
-                      <label for="inputState" class="">Edad</label>
-                      <select id="inputState" class="form-select">
+                      <label for="inputEdad" class="">Edad</label>
+                      <select id="inputEdad" class="input form-select">
                         <option selected>Seleccione su Edad</option>
                         <option *ngFor="let edad of arregloEdades">{{edad}}</option>
                       </select>
                     </div>
                     <div class="col-md-6 cajaInput">
-                        <label for="inputCity" class="">Contraseña</label>
-                        <input type="text" class="form-control" id="inputCity"
+                        <label for="inputContrasena1" class="">Contraseña</label>
+                        <input type="text" class="form-control input" id="inputContrasena1"
                         formControlName="contrasena1"
                         [ngClass]="contrasena1NoValido == null ? '' : contrasena1NoValido ? 'is-invalid': 'is-valid'">
                         <div class="errors-container" *ngIf="contrasena1Control.invalid && (contrasena1Control.touched || contrasena1Control.dirty)">
@@ -211,8 +211,8 @@
                         </div>
                     </div>
                     <div class="col-md-6 cajaInput">
-                        <label for="inputCity" class="">Repite Contraseña</label>
-                        <input type="text" class="form-control" id="inputCity"
+                        <label for="inputContrasena2" class="">Repite Contraseña</label>
+                        <input type="text" class="form-control input" id="inputContrasena2"
                         formControlName="contrasena2"
                         [ngClass]="contrasena2NoValido == null ? '' : contrasena2NoValido ? 'is-invalid': 'is-valid'">
                         <div class="errors-container" *ngIf="contrasena2Control.invalid && (contrasena2Control.touched || contrasena2Control.dirty)">
