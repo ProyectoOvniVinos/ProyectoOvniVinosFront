@@ -15,17 +15,33 @@ export class RegistroComponent implements OnInit {
   banderaCorreo: boolean = false;
   banderaPasswordOne: boolean = false;
   banderaPasswordTwo: boolean = false;
-  
 
+  edades=101;
+  arregloEdades: number[] = [];
+  
   registroForm !: FormGroup;
+
   constructor(private fb: FormBuilder) {
     this.crearFormulario();
     this.crearListeners();
   }
 
   ngOnInit(): void {
-
+    this.crearArregloEdad();
+    console.log(this.arregloEdades);
+    
   }
+
+  crearArregloEdad(){
+    console.log("entro");
+    
+    let index:number = 1;
+    while(index < this.edades){
+        this.arregloEdades.push(index);
+        index++;
+    }
+  }
+
   crearListeners() {
     this.registroForm.get('nombre')?.valueChanges.subscribe(console.log);
     this.registroForm.get('apellido')?.valueChanges.subscribe(console.log);
