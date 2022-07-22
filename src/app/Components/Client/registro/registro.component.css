@@ -2,8 +2,12 @@
     width: 100%;
     height: 90%;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+}
+
+h2{
+    margin: 0;
 }
 
 .cajaM-login{
@@ -27,7 +31,7 @@
 .cajaHijoLogin{
     display: flex;
     height:88%;
-    padding-top: 3%;
+    padding-top: 2%;
     justify-content:space-between;
     justify-content: space-around;
 }
@@ -43,7 +47,7 @@
 .cajaFormCompleto{
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 0px;
 }
 
 .cajaContraseña{
@@ -52,7 +56,7 @@
     justify-content:center;
 }
 .cajaInput{
-    height: 6.5rem;
+    height: 4.5rem;
 } 
 .label{
     font-size: 2.5vh;
@@ -89,15 +93,12 @@
 }
 
 .btnRegistrar{
-    margin-top: 1%;
-    margin-left: 15%;
-    width: 70%;
-    height: 6vh;
+
+    width: 50%;
+    height: 4rem;
     background: #fff; /* color de fondo */
     color: rgb(184, 13, 72); /* color de fuente */
     border: 2px solid rgb(184, 13, 72); /* tamaño y color de borde */
-    padding: 16px 20px;
-    padding-top: 8px;
     border-radius: 3px; /* redondear bordes */
     position: relative;
     z-index: 1;
@@ -144,10 +145,33 @@
     max-height:100px;
 }
 
+.cajaTerminos{
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0rem;
+}
+
+.labelCheck{
+    display: flex;
+    flex-direction: column
+}
+
+.inputCheck{
+    height: 1.5rem;
+}
+
+.cajaBtn{
+    display: flex;
+    justify-content: center;
+}
+
 @media screen and (max-width: 1920px) and (max-height:1080px){
     .cajaM-login{
         width: 55%;
-        height: 85%;
+        height: 77%;
     }
 }
 
@@ -160,20 +184,39 @@
 
     .cajaM-login{
         width: 45%;
+        height: 92%;
     }
 }
 
 @media screen and (max-width: 1920px) and (max-height:768px){
+
+    .cajaP-login{
+        height: 88%;
+        display: flex;
+        align-items:stretch;
+    }
+
+    .cajaHijoLogin{
+        padding-top:1%;
+    }
+    .btnRegistrar{
+        height:2.5rem;
+    }
     .cajaFormCompleto{
         gap: 0px;
     }
     .cajaInput{
-        height: 6rem;
-        font-size: 0.8rem;
+        height: 4rem;
+    }
+    .cajaInput p{
+        font-size:0.8rem;
     }
     .cajaM-login{
         width: 45%;
-        height: 88%;
+        height: 95%;
+    }
+    .cajaTitleLogin{
+        height: 2.5rem;
     }
 }
 
