@@ -1,0 +1,55 @@
+<div class="cajaP-login">
+
+    <div class="cajaM-login">
+        <div class="cajaTitleLogin">
+            <h2>INGRESAR COMPRA</h2>
+        </div>
+        <div class="cajaHijoLogin">
+            <div class="cajaForm">
+                <form action="" class="cajaFormCompleto" [formGroup]="registroForm">
+                    <div class="row">
+
+                        <div class="cajaInput col">
+                            <label for="" class="label">Producto</label>
+                            <br>
+                            <select name="miselect" formControlName="producto" class="input form-control">
+                                <option [value]="producto.codigo_producto" *ngFor="let producto of productos">{{producto.nombre_producto}}</option>
+                            </select>
+                                    
+                        </div>
+                        <div class="cajaInput col">
+                            <label for="" class="label">Cantidad</label>
+                            <br>
+                            <input type="text" 
+                                    class="input form-control" 
+                                    formControlName="cantidad"
+                                    [ngClass]="cantidadNoValido == null ? '' : cantidadNoValido ? 'is-invalid': 'is-valid'">
+                                    <!-- [class.is-invalid]="apellidoNoValido"> -->
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="cajaInput col">
+                            <label for="" class="label">Precio Unidad</label>
+                            <br>
+                            <input type="number" 
+                                    class="input form-control" 
+                                    formControlName="precio"
+                                    [ngClass]="precioNoValido == null ? '' : precioNoValido ? 'is-invalid': 'is-valid'">
+                                    <!-- [class.is-invalid]="apellidoNoValido"> -->
+                        </div>
+                    </div>
+                    <div class="container-envio d-flex ">
+
+                        <div class="cajaImg">
+                            <img src="../../../../assets/Images/manoCopada.png" alt="manoCopada" class="imgLogin">
+                        </div>
+                        <button class="btnEditar" (click)="ingresar()"> Ingresar </button>
+                        <button routerLink="/inventarioG"  class="btnCancelar"> Cancelar</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

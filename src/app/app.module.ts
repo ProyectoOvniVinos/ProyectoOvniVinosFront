@@ -39,6 +39,7 @@ import { DatosAdminComponent } from './Components/Admin/datos-admin/datos-admin.
 import { EditarDatosAdmComponent } from './Components/Admin/editar-datos-adm/editar-datos-adm.component';
 import { VentasComponent } from './Components/Admin/ventas/ventas.component';
 import { ComprasComponent } from './Components/Admin/compras/compras.component';
+import { IngresarCompraComponent } from './Components/Admin/ingresar-compra/ingresar-compra.component';
 
 
 
@@ -72,6 +73,7 @@ import { ComprasComponent } from './Components/Admin/compras/compras.component';
     EditarDatosAdmComponent,
     VentasComponent,
     ComprasComponent,
+    IngresarCompraComponent,
 
 
   ],
