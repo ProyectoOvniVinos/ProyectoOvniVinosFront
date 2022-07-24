@@ -32,7 +32,8 @@
 
 .btnEnviar::after{
     content: "";
-    background: rgb(184, 13, 72); /* color de fondo hover */
+    background: rgb(170,8,58);
+    background: linear-gradient(90deg, rgba(170,8,58,1) 0%, rgba(150,8,58,1) 51%, rgba(150,8,68,1) 99%);   
     position: absolute;
     z-index: -1;
     padding: 16px 20px;

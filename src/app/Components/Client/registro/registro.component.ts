@@ -27,15 +27,12 @@ export class RegistroComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.crearArregloEdad();
-    console.log(this.arregloEdades);
-    
+    this.crearArregloEdad();    
   }
 
   crearArregloEdad(){
-    console.log("entro");
     
-    let index:number = 1;
+    let index:number = 18;
     while(index < this.edades){
         this.arregloEdades.push(index);
         index++;

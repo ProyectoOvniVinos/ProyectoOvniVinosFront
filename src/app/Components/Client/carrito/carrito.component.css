@@ -1,9 +1,10 @@
 .cajaPCarrito{   
-    background-color: rgb(184, 13, 72);
+    background: rgb(170,8,58);
+    background: linear-gradient(90deg, rgba(170,8,58,1) 0%, rgba(150,8,58,1) 51%, rgba(150,8,68,1) 99%);   
     display: flex;
     position: absolute;
-    width: 43vh;
-    top: 0px;
+    width: 24.5rem;
+    top: 0;
     bottom: 0;
     right: 0;
     z-index: 1;
@@ -41,12 +42,12 @@
 }
 
 .cajaCardPadre{
+    width: 95%;
     border: 2px solid white;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: gainsboro;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: rgb(255, 255, 255);
     border-radius: 10px;
-    margin-right: 10px;
 }
 
 .cajaCard{
@@ -67,7 +68,7 @@
     border: 2px solid rgb(184, 13, 72); /* tamaño y color de borde */
     padding: 16px 20px;
     padding-top: 0px;
-    border-radius: 3px; /* redondear bordes */
+    border-radius: 8px; /* redondear bordes */
     position: relative;
     z-index: 1;
     overflow: hidden;
@@ -81,7 +82,8 @@
 
 .btnCancelar::after{
     content: "";
-    background: rgb(184, 13, 72); /* color de fondo hover */
+    background: rgb(170,8,58);
+    background: linear-gradient(90deg, rgba(170,8,58,1) 0%, rgba(150,8,58,1) 51%, rgba(150,8,68,1) 99%);   
     position: absolute;
     z-index: -1;
     padding: 16px 20px;
@@ -100,20 +102,20 @@
 }
 .CajaComprar{
     position: absolute;
-    left: 31%;
-    top: 87%;
+    left: 25%;
+    top: 90%;
 }
 
 .btnComprar {
-    margin-left: 12%;
-    width: 100%;
+    margin-left: 0;
+    width: 12rem;
     height: 3rem;
-    background: #fff; /* color de fondo */
-    color: rgb(32, 153, 48); /* color de fuente */
-    border: 2px solid rgb(32, 153, 48); /* tamaño y color de borde */
+    background: #fff;
+    color: rgb(32, 153, 48);
+    border: 2px solid rgb(32, 153, 48);
     padding: 16px 20px;
     padding-top: 3px;
-    border-radius: 3px; /* redondear bordes */
+    border-radius: 8px;
     position: relative;
     z-index: 1;
     overflow: hidden;
@@ -127,7 +129,8 @@
 
 .btnComprar::after{
     content: "";
-    background: rgb(32, 153, 48); /* color de fondo hover */
+    background: rgb(44,170,8);
+    background: linear-gradient(90deg, rgba(44,170,8,1) 0%, rgba(37,150,8,1) 51%, rgba(59,223,25,1) 100%);
     position: absolute;
     z-index: -1;
     padding: 16px 20px;
@@ -171,7 +174,6 @@
 
 @media screen and (max-width: 1366px) and (max-height:617px){
 
-    
     .viewport{
         width: 240px;
     }
@@ -179,7 +181,6 @@
 }
 
 @media screen and (max-width: 1280px) and (max-height:1024px){
-
 
     .viewport{
         width: 360px;

@@ -8,7 +8,8 @@
 }
 
 .tablaHeaderG{
-    background-color: rgb(184, 13, 72);
+    background: rgb(170,8,58);
+    background: linear-gradient(90deg, rgba(170,8,58,1) 0%, rgba(150,8,58,1) 51%, rgba(150,8,68,1) 99%);   
     border-radius: 10px;
     color: white;
     height: 3rem;
@@ -38,7 +39,8 @@
 }
 
 .tablaHeaderP{
-    background-color: rgba(184, 13, 73, 0.785);
+    background: rgb(170,8,58);
+    background: linear-gradient(90deg, rgba(170,8,58,1) 0%, rgba(150,8,58,1) 51%, rgba(150,8,68,1) 99%);   
     height: 2rem;
     font-size: 1.4rem;
     color: white;
@@ -115,7 +117,8 @@
 
 .btnAgregar::after{
     content: "";
-    background: rgb(14, 90, 24); /* color de fondo hover */
+    background: rgb(44,170,8);
+    background: linear-gradient(90deg, rgba(44,170,8,1) 0%, rgba(37,150,8,1) 51%, rgba(59,223,25,1) 100%);
     position: absolute;
     z-index: -1;
     padding: 16px 20px;
