@@ -46,8 +46,8 @@
                         </div>
                         </div>
                         <div class="cajaInput">
-                        <label for="inputCity" class="label">Celular</label>
-                        <input type="text" class="input form-control" id="inputCity"
+                        <label for="inputCelular" class="label">Celular</label>
+                        <input type="text" class="input form-control" id="inputCelular"
                         formControlName="celular"
                         [ngClass]="celularNoValido == null ? '' : celularNoValido ? 'is-invalid': 'is-valid'">
                         <div class="errors-container" *ngIf="celularControl.invalid && (celularControl.touched || celularControl.dirty)">
@@ -57,10 +57,7 @@
                         </div>
                         <div class="cajaInput">
                         <label for="inputEdad" class="label">Edad</label>
-                        <select id="inputEdad" class="input selectEdad form-select">
-                            <option >Seleccione su Edad</option>
-                            <option *ngFor="let edad of arregloEdades">{{edad}}</option>
-                        </select>
+                        <input type="text" class="input form-control" id="inputCity">
                         </div>
                         <div class="cajaInput">
                             <label for="inputContrasena1" class="label">Contraseña</label>
