@@ -1,6 +1,6 @@
 .cajaPCarrito{   
-    background: rgb(167,31,73);
-    background: linear-gradient(90deg, rgba(167,31,73,1) 11%, rgba(255,42,108,1) 55%, rgba(167,31,73,1) 100%);
+    background: rgb(217,18,79);
+    background: linear-gradient(90deg, rgba(217,18,79,1) 11%, rgba(230,24,88,1) 55%, rgba(214,20,80,1) 98%);
     display: flex;
     position: absolute;
     width: 24.5rem;
