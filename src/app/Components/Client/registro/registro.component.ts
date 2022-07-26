@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-registro',
@@ -14,16 +15,19 @@ export class RegistroComponent implements OnInit {
   banderaCelular : boolean = false;
   banderaCorreo: boolean = false;
   banderaPasswordOne: boolean = false;
-  banderaPasswordTwo: boolean = false;
+  banderaPasswordTwo: boolean = null;
+  banderaEdad: boolean = false;
+  banderaTerminos: boolean = false;
 
   edades=101;
   arregloEdades: number[] = [];
-  
+
   registroForm !: FormGroup;
 
   constructor(private fb: FormBuilder) {
     this.crearFormulario();
     this.crearListeners();
+
   }
 
   ngOnInit(): void {
@@ -60,6 +64,7 @@ export class RegistroComponent implements OnInit {
   }
 
   get celularControl(): FormControl{
+    console.log(this.registroForm.get('celular').hasError('minLength'));
     return this.registroForm.get('celular') as FormControl
   }
 
@@ -73,6 +78,14 @@ export class RegistroComponent implements OnInit {
 
   get contrasena2Control(): FormControl{
     return this.registroForm.get('contrasena2') as FormControl
+  }
+
+  get edadControl(): FormControl{
+    return this.registroForm.get('edad') as FormControl
+  }
+
+  get terminosControl(): FormControl{
+    return this.registroForm.get('terminos') as FormControl
   }
 
   get nombreNoValido() {
@@ -165,8 +178,11 @@ export class RegistroComponent implements OnInit {
     if(this.registroForm.get('contrasena2')?.touched){
       if(this.registroForm.get('contrasena2')?.invalid == false){
         if(contrasena1 === contrasena2){
+          this.banderaPasswordTwo=true;
           return false;
+
         }else{
+          this.banderaPasswordTwo=false;
           return true;
         }
       }else{
@@ -175,10 +191,32 @@ export class RegistroComponent implements OnInit {
     }else{
       return null;
     }
-    
-    
     //return (this.registroForm.get('contrasena2')?.touched && this.registroForm.get('contrasena2')?.invalid) ? true : (contrasena1 === contrasena2) ? false : true;
     //return (contrasena1 === contrasena2) ? false : true && this.registroForm.get('contrasena2')?.touched;
+  }
+
+  get edadNoValido(){
+    if(this.registroForm.get('edad')?.touched){
+      if(this.registroForm.get('edad')?.invalid == false){
+        return false;
+      }else{
+        return true;
+      }
+    }else{
+      return null;
+    }
+  }
+
+  get terminosNoValido(){
+    if(this.registroForm.get('terminos')?.touched){
+      if(this.registroForm.get('terminos')?.invalid == false){
+        return false;
+      }else{
+        return true;
+      }
+    }else{
+      return null;
+    }
   }
 
   crearFormulario() {
@@ -186,11 +224,26 @@ export class RegistroComponent implements OnInit {
       nombre: ['', [Validators.required, Validators.minLength(3)]],
       apellido: ['', [Validators.required]],
       direccion:['', [Validators.required, Validators.minLength(3)]],
-      celular:['',[Validators.required, Validators.minLength(10)]],
+      celular:['',[Validators.required, Validators.minLength(10), Validators.pattern(/^[0-9]/)]],
       correo: ['', [Validators.required, Validators.pattern('[a-z0-9.%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       contrasena1: ['', [Validators.required, Validators.minLength(8)]],
-      contrasena2: ['', Validators.required]
+      contrasena2: ['', Validators.required],
+      edad: ['',[Validators.required,  Validators.pattern(/^[0-9]/), Validators.maxLength(2)]],
+      terminos: ['', Validators.requiredTrue]
     })
+  }
+
+  registrar() {
+    if(this.registroForm.invalid){
+      this.banderaTerminos=false;
+    }else{
+      this.banderaTerminos=true;
+
+    }
+  }
+
+  cerrar(){
+
   }
 
 }

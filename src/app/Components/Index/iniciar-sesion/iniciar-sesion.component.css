@@ -18,12 +18,16 @@
 }
 
 .cajaRegistrar{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
     height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
 }
+
+
 
 .cajaRecuperar{
     position: absolute;
@@ -52,6 +56,7 @@
 
 .cajaForm{
     height: 100%;
+    width: 100%;
     display: flex;
     justify-content:center;
     align-items: center;
@@ -89,8 +94,8 @@
 }
 
 .btnIniciar{
-    width: 70%;
-    height: 6vh;
+    width: 12rem;
+    height: 3.5rem;
     background: #fff; /* color de fondo */
     color: rgb(184, 13, 72); /* color de fuente */
     border: 2px solid rgb(184, 13, 72); /* tamaño y color de borde */
@@ -127,11 +132,16 @@
     transform: skewX(45deg) scale(1, 1);
 }
 
+.cajaButtonRes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 5rem;
+}
+
 .btnRegistrar{
-    width: 70%;
-    height: 6vh;
-    margin-top: 8%;
-    margin-left: 15%;
+    width: 12rem;
+    height: 3.5rem;
     background: #fff; /* color de fondo */
     color: rgb(184, 13, 72); /* color de fuente */
     border: 2px solid rgb(184, 13, 72); /* tamaño y color de borde */
@@ -174,9 +184,9 @@
 }
 
 .cajaImg{
-    width: 100%;
+    width: 80%;
     margin-top: 0%;
-    height: 65%;
+    height: 66%;
 }
 
 .cajaBtnGooFa{
@@ -248,5 +258,159 @@
     flex-direction: column;
     align-items: center;
     height: 5rem;
+}
+
+
+/*1920x950*/
+@media screen and (max-width: 1920px) and (max-height:1080px){
+
+    .cajaM-login{
+        width: 48%;
+    }
+
+    .cajaInput{
+        height: 6rem;
+        width: 20rem;
+    }
+
+    .cajaInput p{
+        font-size: 1rem;
+    }
+}
+
+
+@media screen and (max-width: 1920px) and (max-height:1080px){
+
+    .cajaFormCompleto{
+        gap: 1.5rem;
+    }
+    .cajaRegistrar{
+        gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 1920px) and (max-height:1020px){
+
+    .cajaRegistrar{
+        gap: 3rem;
+    }
+}
+@media screen and (max-width: 1920px) and (max-height:980px){
+
+    .cajaRegistrar{
+        gap: 3.5rem;
+        padding-top: 1rem;
+    }
+}
+@media screen and (max-width: 1920px) and (max-height:940px){
+    .cajaM-login{
+        height: 80%;
+    }
+
+}
+
+@media screen and (max-width: 1920px) and (max-height:920px){
+    .cajaRegistrar{
+        gap: 4.5rem;
+    }
+}
+
+@media screen and (max-width: 1920px) and (max-height:880px){
+    .cajaM-login{
+        height: 85%;
+    }
+    .cajaRegistrar{
+        gap: 3.5rem;
+    }
+
+}
+@media screen and (max-width: 1920px) and (max-height:840px){
+    .cajaEmail{
+        height: 5rem;
+    }
+    .cajaPassword{
+        height: 5rem;
+    }
+    .cajaBtnGooFa{
+        height: 4rem;
+    }
+    .cajaBtnsYrecuperar{
+        height: 5rem;
+    }
+    .cajaRegistrar{
+        gap: 1rem;
+    }
+    .cajaImg{
+        width: 70%;
+        margin-top: 0%;
+        height: 62%;
+    }
+
+}
+
+@media screen and (max-width: 1920px) and (max-height:750px){
+    .cajaRegistrar{
+        gap: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 1840px) and (max-height:1080px){ 
+    .cajaM-login{
+        width: 55%;
+    }
+}
+
+@media screen and (max-width: 1680px) and (max-height:1080px){ 
+    .cajaM-login{
+        width: 65%;
+    }
+}
+
+
+@media screen and (max-width: 1460px) and (max-height:1080px){
+    .input{
+        width: 18rem;
+    }
+    .btnFacebook{
+        width:33%;
+    }
+    .btnGoogle{
+        width: 33%;
+    }
+}
+
+@media screen and (max-width: 1460px) and (max-height:960px){
+    .input{
+        width: 18rem;
+    }
+    .btnFacebook{
+        width:28%;
+    }
+    .btnGoogle{
+        width: 28%;
+    }
+}
+
+@media screen and (max-width: 1280px) and (max-height:1080px){
+    .imgLogin{
+        height: 90%;
+    }
+}
+
+@media screen and (max-width: 1280px) and (max-height:960px){
+    .imgLogin{
+        height: 105%;
+    }
+}
+
+@media screen and (max-width: 1120px) and (max-height:1080px){
+    .cajaM-login{
+        width: 80%;
+    }
+}
+@media screen and (max-width: 1120px) and (max-height:960px){
+    .cajaM-login{
+        width: 90%;
+    }
 }
 

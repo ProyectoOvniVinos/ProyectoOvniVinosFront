@@ -41,10 +41,6 @@ import { VentasComponent } from './Components/Admin/ventas/ventas.component';
 import { ComprasComponent } from './Components/Admin/compras/compras.component';
 import { IngresarCompraComponent } from './Components/Admin/ingresar-compra/ingresar-compra.component';
 
-
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
