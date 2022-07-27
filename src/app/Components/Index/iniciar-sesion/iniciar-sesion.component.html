@@ -1,4 +1,4 @@
-<div class="container-fluid cajaPIniciarSesion">
+<!-- <div class="container-fluid cajaPIniciarSesion">
     <div class="cajaM-login">
         <div class="cajaTitleLogin">
             <h2>Iniciar Sesion</h2>
@@ -49,6 +49,61 @@
 
  
         </div>
+
+    </div>
+</div> -->
+
+<div class="container-fluid cajaPIniciarSesion">
+    <div class="cajaM-login">
+        <div class="cajaTitleLogin">
+            <h2>Iniciar Sesion</h2>
+        </div>
+        <div class="cajaHijoLogin">
+
+            <div class="cajaForm">
+            <form class="cajaFormCompleto" [formGroup]="loginForm">
+                <div class="cajaEmail">
+                    <label for="" class="label">Correo Electronico</label>
+                    <br>
+                    <input type="text" 
+                        class="input form-control" formControlName="email" autocomplete='off'
+                        [ngClass]="emailNoValido == null ? '' : emailNoValido ? 'is-invalid': 'is-valid'">
+                    <div class="errors-container" *ngIf="emailControl.invalid && (emailControl.touched || emailControl.dirty)">
+                        <p class="text-danger" *ngIf="emailControl.hasError('required')">El campo es obligatorio</p>
+                        <p class="text-danger" *ngIf="emailControl.hasError('email')">El campo debe ser un email valido</p>
+                    </div>
+                </div>
+                <div class="cajaPassword">
+                    <label for="" class="label">Contraseña</label>
+                    <br>
+                    <input type="password" class="input form-control" formControlName="password"
+                            [ngClass]="passwordNoValido == null ? '' : passwordNoValido ? 'is-invalid': 'is-valid'">
+                    <div class="errors-container" *ngIf="passwordControl.invalid && (passwordControl.touched || passwordControl.dirty)">
+                        <p class="text-danger" *ngIf="passwordControl.hasError('required')">El campo es obligatorio</p>
+                    </div>
+                </div>
+                <div class="cajaBtnGooFa">
+                    <button class="btnGoogle"></button>
+                    <button class="btnFacebook"></button>
+                </div>
+
+                <div class="cajaBtnsYrecuperar">
+                    <button class="btnIniciar">Iniciar Sesion</button>
+                    <a routerLink="/recuperar">¿Olvidaste tu Contraseña?</a>
+                </div>
+            </form>
+            </div>
+            <div class="cajaRegistrar">
+                <div class="cajaImg">
+                    <img src="../../../../assets/Images/manoCopada.png" alt="manoCopada" class="imgLogin">
+                </div>
+                <div class="cajaButtonRes">
+                    <button routerLink="/registro" class="btnRegistrar"> Registrarse </button>
+                </div>                
+            </div>
+ 
+        </div>
+
 
     </div>
 </div>

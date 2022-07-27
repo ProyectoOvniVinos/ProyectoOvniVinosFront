@@ -40,10 +40,10 @@ import { EditarDatosAdmComponent } from './Components/Admin/editar-datos-adm/edi
 import { VentasComponent } from './Components/Admin/ventas/ventas.component';
 import { ComprasComponent } from './Components/Admin/compras/compras.component';
 import { IngresarCompraComponent } from './Components/Admin/ingresar-compra/ingresar-compra.component';
+import { ModalErrorComponent } from './Components/Modal/modal-error/modal-error.component';
 
-
-
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { ModalInteraccionComponent } from './Components/Modal/modal-interaccion/modal-interaccion.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +74,8 @@ import { IngresarCompraComponent } from './Components/Admin/ingresar-compra/ingr
     VentasComponent,
     ComprasComponent,
     IngresarCompraComponent,
+    ModalErrorComponent,
+    ModalInteraccionComponent
 
 
   ],
@@ -88,7 +90,8 @@ import { IngresarCompraComponent } from './Components/Admin/ingresar-compra/ingr
     MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
-    ScrollingModule
+    ScrollingModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

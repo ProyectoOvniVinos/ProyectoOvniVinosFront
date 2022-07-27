@@ -1,36 +1,39 @@
-.cajaPayuda{
-    height:70%;
-    display: flex;
+.mat-dialog-container{
+    box-shadow:  19px 19px 12px #000000,
+    -19px -19px 12px #000000 !important;
 }
-.cajaPadreAyuda{
-    width: 100%;
-    height: 110%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+.tituloModal{
+    color: rgb(167,31,73);
+    text-align: center;
+    font-size: 2rem;
 }
 
-.btnEnviar{
+.cajaBtns{
+    display:flex;
+    justify-content:space-between
+}
+
+.btnOk{
+
+    width: 45%;
     height: 3rem;
-    background: #fff; /* color de fondo */
+    background: rgb(255, 255, 255) !important; /* color de fondo */
     color: rgb(184, 13, 72); /* color de fuente */
     border: 2px solid rgb(184, 13, 72); /* tamaño y color de borde */
-    padding: 16px 20px;
-    padding-top: 4px;
-    border-radius: 3px; /* redondear bordes */
+    border-radius: 8px; /* redondear bordes */
     position: relative;
     z-index: 1;
     overflow: hidden;
     display: inline-block;
-    font-size: 1.5rem;
+    font-size: 1rem;
+
 }
 
-.btnEnviar:hover{
+.btnOk:hover{
     color: #fff;/* color de fuente hover */
 }
 
-.btnEnviar::after{
+.btnOk::after{
     content: "";
     background: rgb(167,31,73);
     background: linear-gradient(90deg, rgba(167,31,73,1) 11%, rgba(255,42,108,1) 55%, rgba(167,31,73,1) 100%);
@@ -46,7 +49,7 @@
     transition: all 0.3s ease;
 }
 
-.btnEnviar:hover::after{
+.btnOk:hover::after{
     transition: all 0.3s ease-out;
     transform: skewX(45deg) scale(1, 1);
 }
