@@ -24,7 +24,7 @@
                                     class="input form-control" 
                                     formControlName="cantidad"
                                     [ngClass]="cantidadNoValido == null ? '' : cantidadNoValido ? 'is-invalid': 'is-valid'">
-                                    <!-- [class.is-invalid]="apellidoNoValido"> -->
+
                         </div>
                         
                     </div>
@@ -36,7 +36,7 @@
                                     class="input form-control" 
                                     formControlName="precio"
                                     [ngClass]="precioNoValido == null ? '' : precioNoValido ? 'is-invalid': 'is-valid'">
-                                    <!-- [class.is-invalid]="apellidoNoValido"> -->
+
                         </div>
                     </div>
                     <div class="container-envio d-flex ">
@@ -44,7 +44,7 @@
                         <div class="cajaImg">
                             <img src="../../../../assets/Images/manoCopada.png" alt="manoCopada" class="imgLogin">
                         </div>
-                        <button class="btnEditar" (click)="ingresar()"> Ingresar </button>
+                        <button class="btnEditar" (click)="ingresar()"> Agregar </button>
                         <button routerLink="/inventarioG"  class="btnCancelar"> Cancelar</button>
                     </div>
                 </form>
@@ -52,4 +52,27 @@
 
         </div>
     </div>
+<!--     
+    <table class="table table-striped table-hover table-sm" *ngIf="factura.items.length>0">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of factura.items">
+                <td>{{item.producto.nombre}}</td>
+                <td>{{item.producto.precio}}</td>
+                <td>
+                    <input type="number" value="{{item.cantidad}}" class="form-contro col-sm-4" (change)="actualizarCantidad(item.producto.id, $event)">
+                </td>
+                <td>{{item.calcularImporte()}}</td>
+                <td><button class="btn btn-danger btn-sm" (click)="eliminarItemFactura(item.producto.id)">x</button></td>
+            </tr>
+        </tbody>
+    </table> -->
 </div>

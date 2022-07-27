@@ -9,6 +9,8 @@ import { ProductoModel } from 'src/app/Models/Producto.model';
 })
 export class IngresarCompraComponent implements OnInit {
 
+
+
   productos: ProductoModel[] = [
     {
       codigo_producto: 1,
