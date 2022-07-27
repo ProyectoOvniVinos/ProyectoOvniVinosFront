@@ -6,7 +6,7 @@
         </div>
         <div class="container-fluid cajaHijoLogin">
             <div class="container-fluid cajaForm">
-                <form class="cajaFormCompleto" [formGroup]="registroForm" (submit)="registrar()">
+                <form class="cajaFormCompleto" [formGroup]="registroForm" (submit)="verificar()">
                     <div class="cajaDeInputs">
                         <div class="cajaInput">
                             <label for="inputNombre" class="label">Nombre</label>
@@ -103,7 +103,7 @@
                       </div>
                     </div>
                     <div class="cajaBtn">
-                      <button type="submit" class="btnRegistrar" [disabled]="registroForm.invalid">Registrar</button>
+                      <button type="submit" class="btnRegistrar" >Registrar</button>
                     </div>
                   </form>
             </div>
@@ -112,7 +112,5 @@
     </div>
 </div>
 
-<div >Por favor Acepte los Terminos y Condiciones!</div>
-<div >
-    <button (click)="cerrar()">Ok</button>
-</div>
+
+

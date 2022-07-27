@@ -1,5 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 
 
 @Component({
@@ -9,38 +11,25 @@ import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms'
 })
 export class RegistroComponent implements OnInit {
 
-  banderaNombre : boolean = false;
-  banderaApellido : boolean = false;
-  banderaDireccion : boolean = false;
-  banderaCelular : boolean = false;
-  banderaCorreo: boolean = false;
-  banderaPasswordOne: boolean = false;
   banderaPasswordTwo: boolean = null;
-  banderaEdad: boolean = false;
   banderaTerminos: boolean = false;
-
-  edades=101;
-  arregloEdades: number[] = [];
-
   registroForm !: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, public dialog: MatDialog) {
     this.crearFormulario();
     this.crearListeners();
 
   }
 
-  ngOnInit(): void {
-    this.crearArregloEdad();    
+  openDialog(titleNew: string, mensajeNew: string): void {
+    const dialogRef = this.dialog.open(ModalErrorComponent, {
+      width: '300px',
+      data: {title: titleNew, mensaje: mensajeNew},
+    });
   }
 
-  crearArregloEdad(){
-    
-    let index:number = 18;
-    while(index < this.edades){
-        this.arregloEdades.push(index);
-        index++;
-    }
+  ngOnInit(): void {
+
   }
 
   crearListeners() {
@@ -64,7 +53,6 @@ export class RegistroComponent implements OnInit {
   }
 
   get celularControl(): FormControl{
-    console.log(this.registroForm.get('celular').hasError('minLength'));
     return this.registroForm.get('celular') as FormControl
   }
 
@@ -233,16 +221,32 @@ export class RegistroComponent implements OnInit {
     })
   }
 
-  registrar() {
+  verificar() {
     if(this.registroForm.invalid){
-      this.banderaTerminos=false;
-    }else{
-      this.banderaTerminos=true;
 
+      if(
+          this.registroForm.get("nombre").status == "INVALID" || this.registroForm.get("apellido").status == "INVALID" || 
+          this.registroForm.get("celular").status == "INVALID" || this.registroForm.get("correo").status == "INVALID" ||
+          this.registroForm.get("direccion").status == "INVALID" || this.registroForm.get("contrasena1").status == "INVALID" || 
+          this.registroForm.get("contrasena2").status == "INVALID" || this.registroForm.get("edad").status == "INVALID" 
+      ){
+        
+        let title="Error"
+        let mensaje="Porfavor llene los Campos Pedidos!!"
+        this.openDialog(title, mensaje);
+        
+      }else if(this.registroForm.get("terminos").status== "INVALID"){
+        let title="Advertencia"
+        let mensaje="Por favor Acepte Terminos y Condiciones!!"
+        this.openDialog(title, mensaje);
+      }
+
+    }else{
+      this.registrar();
     }
   }
 
-  cerrar(){
+  registrar(){
 
   }
 
