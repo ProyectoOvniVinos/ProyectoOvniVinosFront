@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CompraModel } from 'src/app/Models/Compra.model';
+import { Item_compraModel } from 'src/app/Models/Item_compra.model';
 import { ProductoModel } from 'src/app/Models/Producto.model';
 
 @Component({
@@ -9,6 +11,7 @@ import { ProductoModel } from 'src/app/Models/Producto.model';
 })
 export class IngresarCompraComponent implements OnInit {
 
+  compra = new CompraModel();
 
 
   productos: ProductoModel[] = [
@@ -107,6 +110,28 @@ export class IngresarCompraComponent implements OnInit {
     console.log(this.registroForm);
     
 
+  }
+
+  // Metodos para los items
+
+
+  actualizarCantidad(id: number, event: any): void {
+    let cantidad: number = event.target.value as number;
+
+    if (cantidad == 0) {
+      return this.eliminarItemFactura(id);
+    }
+    this.compra.items = this.compra.items.map((item: Item_compraModel) => {
+      if (id === item.producto.codigo_producto) {
+        item.cantidad_producto = cantidad;
+      }
+      return item;
+    });
+  }
+
+
+  eliminarItemFactura(id: number): void {
+    this.compra.items = this.compra.items.filter((item: Item_compraModel) => id !== item.producto.codigo_producto);
   }
 
 
