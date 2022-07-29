@@ -21,6 +21,11 @@
     animation-duration: 0.4s;
 }
 
+.fadeThre{
+    animation-name: animacion;
+    animation-duration: 0.2s;
+}
+
 @keyframes animacion {
 
     0%{
