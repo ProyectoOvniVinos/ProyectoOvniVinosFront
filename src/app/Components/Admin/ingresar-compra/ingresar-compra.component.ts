@@ -13,6 +13,7 @@ export class IngresarCompraComponent implements OnInit {
 
   compra = new CompraModel();
 
+  itemVaciar = new Item_compraModel();
 
   productos: ProductoModel[] = [
     {
@@ -38,13 +39,13 @@ export class IngresarCompraComponent implements OnInit {
       imagen: '../../../../assets/TEMPORALES/vino3.jpg'
     },
   ];
-  
+
   banderaProducto: boolean = false;
   banderaCantidad: boolean = false;
   banderaPrecio: boolean = false;
 
 
-  registroForm !: FormGroup;
+  compraForm !: FormGroup;
   constructor(private fb: FormBuilder) {
     this.crearFormulario();
     this.crearListeners();
@@ -54,15 +55,15 @@ export class IngresarCompraComponent implements OnInit {
 
   }
   crearListeners() {
-    this.registroForm.get('producto')?.valueChanges.subscribe(console.log);
-    this.registroForm.get('cantidad')?.valueChanges.subscribe(console.log);
-    this.registroForm.get('precio')?.valueChanges.subscribe(console.log);
+    // this.compraForm.get('producto')?.valueChanges.subscribe(console.log);
+    // this.compraForm.get('cantidad')?.valueChanges.subscribe(console.log);
+    // this.compraForm.get('precio')?.valueChanges.subscribe(console.log);
 
   }
 
   get productoNoValido() {
-    if (this.registroForm.get('producto')?.touched) {
-      if (this.registroForm.get('producto')?.invalid == false) {
+    if (this.compraForm.get('producto')?.touched) {
+      if (this.compraForm.get('producto')?.invalid == false) {
         return false;
       } else {
         return true;
@@ -74,8 +75,8 @@ export class IngresarCompraComponent implements OnInit {
   }
 
   get cantidadNoValido() {
-    if (this.registroForm.get('cantidad')?.touched) {
-      if (this.registroForm.get('cantidad')?.invalid == false) {
+    if (this.compraForm.get('cantidad')?.touched) {
+      if (this.compraForm.get('cantidad')?.invalid == false) {
         return false;
       } else {
         return true;
@@ -83,11 +84,11 @@ export class IngresarCompraComponent implements OnInit {
     } else {
       return null;
     }
-    //return this.registroForm.get('apellido')?.invalid && this.registroForm.get('apellido')?.touched;
+    //return this.compraForm.get('apellido')?.invalid && this.compraForm.get('apellido')?.touched;
   }
   get precioNoValido() {
-    if (this.registroForm.get('precio')?.touched) {
-      if (this.registroForm.get('precio')?.invalid == false) {
+    if (this.compraForm.get('precio')?.touched) {
+      if (this.compraForm.get('precio')?.invalid == false) {
         return false;
       } else {
         return true;
@@ -95,25 +96,75 @@ export class IngresarCompraComponent implements OnInit {
     } else {
       return null;
     }
-    //return this.registroForm.get('direccion')?.invalid && this.registroForm.get('direccion')?.touched;
+    //return this.compraForm.get('direccion')?.invalid && this.compraForm.get('direccion')?.touched;
   }
-  
+
   crearFormulario() {
-    this.registroForm = this.fb.group({
+    this.compraForm = this.fb.group({
       producto: ['', [Validators.required]],
       cantidad: ['', [Validators.required]],
-      precio: [ [Validators.required]]
+      precio: [[Validators.required]]
     })
   }
 
-  ingresar(){
-    console.log(this.registroForm);
-    
-
-  }
 
   // Metodos para los items
 
+  seleccionarProducto() {
+    let producto: ProductoModel = {
+      nombre_producto: this.productos.find(producto => producto.codigo_producto == this.compraForm.controls['producto'].value).nombre_producto,
+      precio_producto: this.compraForm.controls['precio'].value,
+      precio_productoProveedor: this.compraForm.controls['precio'].value - 100,
+      descripcion_producto: 'descripcion producto',
+      codigo_producto: this.compraForm.controls['producto'].value,
+      imagen: 'img',
+    }
+
+
+    // let producto1 = event.option.value as ProductoModel;
+    console.log("El codigo del producto elegido es " + this.compraForm.controls['producto'].value);
+
+    if (this.existeItem(producto.codigo_producto)) {
+      this.incrementaCantidad(producto.codigo_producto);
+    }
+    else {
+
+      let nuevoItem = new Item_compraModel();
+
+      nuevoItem.cantidad_producto = this.compraForm.controls['cantidad'].value;
+
+
+      nuevoItem.producto = producto;
+      this.compra.items.push(nuevoItem);
+
+    }
+
+  }
+  existeItem(id: number): boolean {
+    let existe = false;
+
+    this.compra.items.forEach((item: Item_compraModel) => {
+      if (id === item.producto.codigo_producto) {
+        existe = true
+      }
+    });
+    return existe;
+  }
+  incrementaCantidad(id: number): void {
+
+
+    this.compra.items = this.compra.items.map((item: Item_compraModel) => {
+      if (id === item.producto.codigo_producto) {
+        console.log("AAAAAAAAAAA " + item.cantidad_producto);
+
+        let suma: number = this.compraForm.controls['cantidad'].value;
+        item.cantidad_producto = item.cantidad_producto + suma;
+
+        // ++item.cantidad_producto;
+      }
+      return item;
+    });
+  }
 
   actualizarCantidad(id: number, event: any): void {
     let cantidad: number = event.target.value as number;

@@ -6,7 +6,7 @@
         </div>
         <div class="cajaHijoLogin">
             <div class="cajaForm">
-                <form action="" class="cajaFormCompleto" [formGroup]="registroForm">
+                <form action="" class="cajaFormCompleto" [formGroup]="compraForm" >
                     <div class="row">
 
                         <div class="cajaInput col">
@@ -20,7 +20,7 @@
                         <div class="cajaInput col">
                             <label for="" class="label">Cantidad</label>
                             <br>
-                            <input type="text" 
+                            <input type="number" 
                                     class="input form-control" 
                                     formControlName="cantidad"
                                     [ngClass]="cantidadNoValido == null ? '' : cantidadNoValido ? 'is-invalid': 'is-valid'">
@@ -44,35 +44,40 @@
                         <div class="cajaImg">
                             <img src="../../../../assets/Images/manoCopada.png" alt="manoCopada" class="imgLogin">
                         </div>
-                        <button class="btnEditar" (click)="ingresar()"> Agregar </button>
+                        <button class="btnEditar" 
+                        
+                                (click)="seleccionarProducto()"
+                                > Agregar </button>
                         <button routerLink="/inventarioG"  class="btnCancelar"> Cancelar</button>
                     </div>
                 </form>
             </div>
 
+            <table class="table table-striped table-hover table-sm miTabla" *ngIf="compra.items.length>0">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Total</th>
+                        <th>Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of compra.items">
+                        <td>{{item.producto.nombre_producto}}</td>
+                        <td>{{item.producto.precio_producto}}</td>
+                        <td>
+                            <input type="number" value="{{item.cantidad_producto}}" class="form-contro col-sm-4" (change)="actualizarCantidad(item.producto.codigo_producto, $event)">
+                        </td>
+                        <td>{{item.calcularImporte()}}</td>
+                        <td><button class="btn btn-danger btn-sm" (click)="eliminarItemFactura(item.producto.codigo_producto)">x</button></td>
+                    </tr>
+                </tbody>
+            </table>  
         </div>
+        
     </div>
-<!--    
-    <table class="table table-striped table-hover table-sm" *ngIf="compra.items.length>0">
-        <thead>
-            <tr>
-                <th>Producto</th>
-                <th>Precio</th>
-                <th>Cantidad</th>
-                <th>Total</th>
-                <th>Eliminar</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of compra.items">
-                <td>{{item.producto.nombre_producto}}</td>
-                <td>{{item.producto.precio_producto}}</td>
-                <td>
-                    <input type="number" value="{{item.cantidad}}" class="form-contro col-sm-4" (change)="actualizarCantidad(item.producto.codigo_producto, $event)">
-                </td>
-                <td>{{item.calcularImporte()}}</td>
-                <td><button class="btn btn-danger btn-sm" (click)="eliminarItemFactura(item.producto.codigo_producto)">x</button></td>
-            </tr>
-        </tbody>
-    </table>  -->
+ 
+    
 </div>
