@@ -45,7 +45,14 @@
 }
 
 .buscador input{
-    width: 50%;
+    width: 45%;
+}
+
+.buscador input:focus{
+
+    box-shadow:  1px 1px 3px 1px rgb(184, 13, 72);
+    border: 1px solid rgb(184, 13, 72);
+
 }
 
 @media screen and (max-height:780px) {

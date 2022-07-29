@@ -50,6 +50,8 @@ export class IniciarSesionComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    
+
   }
 
 }

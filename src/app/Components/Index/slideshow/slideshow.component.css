@@ -54,8 +54,8 @@
     width: 8rem;
     height: 3rem;
     background: rgb(255, 255, 255);
-    color: rgb(19, 99, 30);
-    border: 2px solid rgb(19, 90,30);
+    color: rgba(255,42,108,1);
+    border: 2px solid rgba(255,42,108,1);
     padding-top: 3px;
     border-radius: 8px;
     position: relative;
@@ -71,8 +71,8 @@
 
 .btnAgregar::after{
     content: "";
-    background: rgb(44,170,8);
-    background: linear-gradient(90deg, rgba(44,170,8,1) 0%, rgba(37,150,8,1) 51%, rgba(59,223,25,1) 100%);
+    background: rgb(167,31,73);
+    background: linear-gradient(90deg, rgba(167,31,73,1) 11%, rgba(255,42,108,1) 55%, rgba(167,31,73,1) 100%);
     position: absolute;
     z-index: -1;
     padding: 16px 20px;
