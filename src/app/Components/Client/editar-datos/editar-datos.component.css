@@ -224,8 +224,110 @@ a:hover{
 }
 
 @media screen and (max-width:1920px) and (max-height:1080px){
-    
+    .cajaM-login{
+        height: 62%;
+    }
 }
+
+@media screen and (max-width:1920px) and (max-height:1000px){
+    .cajaM-login{
+        height: 70%;
+    }
+}
+
+@media screen and (max-width:1920px) and (max-height:900px){
+    .cajaM-login{
+        height: 75%;
+    }
+}
+
+@media screen and (max-width:1920px) and (max-height:820px){
+    .cajaM-login{
+        height: 85%;
+    }
+    .btnRegistrar{
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width:1740px) and (max-height:1080px){
+    .cajaM-login{
+        width: 50%;
+    }
+}
+
+@media screen and (max-width:1600px) and (max-height:1080px){
+    .cajaM-login{
+        width: 55%;
+    }
+}
+
+@media screen and (max-width:1460px) and (max-height:1080px){
+    .cajaInput{
+        width: 17rem;
+    }
+}
+
+@media screen and (max-width:1280px) and (max-height:1080px){
+    .cajaInput{
+        width: 17rem;
+    }
+    .cajaM-login{
+        width: 65%;
+    }
+}
+
+@media screen and (max-width:1120px) and (max-height:1080px){
+    .cajaInput{
+        width: 17rem;
+    }
+    .cajaM-login{
+        width: 70%;
+    }
+}
+
+@media screen and (max-width:1040px) and (max-height:1080px){
+
+    .cajaM-login{
+        width: 75%;
+    }
+}
+
+@media screen and (max-width:980px) and (max-height:1080px){
+
+    .cajaM-login{
+        width: 85%;
+    }
+}
+
+@media screen and (max-width:880px) and (max-height:1080px){
+
+    .cajaInput{
+        width: 14rem;
+    }
+
+    .cajaM-login{
+        width: 85%;
+    }
+}
+
+@media screen and (max-width:760px) and (max-height:1080px){
+
+    .cajaInput{
+        width: 12rem;
+    }
+
+    .cajaM-login{
+        width: 85%;
+    }
+    .btnRegistrar{
+        width: 30%;
+    }
+}
+
+
+
+
 
 
 

@@ -232,7 +232,7 @@ export class RegistroComponent implements OnInit {
       ){
         
         let title="Error"
-        let mensaje="Porfavor llene los Campos Pedidos!!"
+        let mensaje="Verifique los campos por favor!!"
         this.openDialog(title, mensaje);
         
       }else if(this.registroForm.get("terminos").status== "INVALID"){

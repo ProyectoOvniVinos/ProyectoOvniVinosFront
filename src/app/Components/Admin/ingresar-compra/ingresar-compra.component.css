@@ -173,3 +173,11 @@
 .inputCantidad{
     width: 15%;
 }
+
+@media screen and (max-width: 1920px) and (max-height:1080px){
+
+}
+
+@media screen and (max-width: 1300px) and (max-height:1080px){
+    
+}
