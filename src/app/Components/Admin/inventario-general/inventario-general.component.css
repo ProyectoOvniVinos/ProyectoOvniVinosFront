@@ -86,8 +86,8 @@
     width: 30%;
     height: 3rem;
     background: #fff; /* color de fondo */
-    color: rgba(37,150,8,1); /* color de fuente */
-    border: 2px solid rgba(37,150,8,1); /* tamaño y color de borde */
+    color: rgba(167,31,73,1); /* color de fuente */
+    border: 2px solid rgba(167,31,73,1); /* tamaño y color de borde */
     border-radius: 6px; /* redondear bordes */
     position: relative;
     z-index: 1;
@@ -102,8 +102,8 @@
 
 .btnDetalles::after{
     content: "";
-    background: rgb(44,170,8);
-    background: linear-gradient(90deg, rgba(44,170,8,1) 0%, rgba(37,150,8,1) 51%, rgba(59,223,25,1) 100%);
+    background: rgb(167,31,73);
+    background: linear-gradient(90deg, rgba(167,31,73,1) 11%, rgba(255,42,108,1) 55%, rgba(167,31,73,1) 100%);
     position: absolute;
     z-index: -1;
     padding: 16px 20px;

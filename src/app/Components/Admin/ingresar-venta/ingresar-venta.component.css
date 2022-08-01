@@ -23,6 +23,17 @@
 
 }
 
+select:focus{
+    box-shadow:  1px 1px 3px 1px rgb(184, 13, 72);
+    border: 1px solid rgb(184, 13, 72);
+}
+
+input:focus {
+    box-shadow:  1px 1px 3px 1px rgb(184, 13, 72) !important;
+    border: 1px solid rgb(184, 13, 72) !important;
+}
+
+
 .cajaM-login {
     display: flex;
     width: 50%;
@@ -79,16 +90,6 @@
     flex-wrap: wrap;
     gap: 1rem;
     justify-content:center
-}
-
-select:focus{
-    box-shadow:  1px 1px 3px 1px rgb(184, 13, 72);
-    border: 1px solid rgb(184, 13, 72);
-}
-
-input:focus {
-    box-shadow:  1px 1px 3px 1px rgb(184, 13, 72) !important;
-    border: 1px solid rgb(184, 13, 72) !important;
 }
 
 .trContenido{
