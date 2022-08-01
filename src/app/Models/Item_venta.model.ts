@@ -9,4 +9,8 @@ export class Item_ventaModel {
     producto!:ProductoModel;
     cantidad_producto!:number;
     contabilidad_diaria!:Contabilidad_diariaModel;
+
+    public calcularImporte(): number {
+        return this.cantidad_producto * this.producto.precio_producto;
+    }
 }
