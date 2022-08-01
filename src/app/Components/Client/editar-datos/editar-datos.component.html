@@ -42,7 +42,7 @@
                             [ngClass]="celularNoValido == null ? '' : celularNoValido ? 'is-invalid': 'is-valid'">
                             <div class="errors-container" *ngIf="celularControl.invalid && (celularControl.touched || celularControl.dirty)">
                                 <p class="text-danger" *ngIf="celularControl.hasError('required')">El campo es obligatorio</p>
-                                <p class="text-danger" *ngIf="!celularControl.hasError('required') && !celularControl.hasError('pattern')">El campo debe tener 10 caracteres</p>
+                                <p class="text-danger" *ngIf="!celularControl.hasError('required') && !celularControl.hasError('pattern')">Debe tener 10 caracteres</p>
                                 <p class="text-danger" *ngIf="celularControl.hasError('pattern')">Solamente numeros porfavor</p>
 
                             </div>
@@ -54,7 +54,7 @@
                             [ngClass]="contrasena1NoValido == null ? '' : contrasena1NoValido ? 'is-invalid': 'is-valid'">
                             <div class="errors-container" *ngIf="contrasena1Control.invalid && (contrasena1Control.touched || contrasena1Control.dirty)">
                                 <p class="text-danger" *ngIf="contrasena1Control.hasError('required')">El campo es obligatorio</p>
-                                <p class="text-danger" *ngIf="!contrasena1Control.hasError('required')">El campo debe tener al menos 8 caracteres</p>
+                                <p class="text-danger" *ngIf="!contrasena1Control.hasError('required')">Al menos 8 caracteres</p>
                             
                             </div>
                         </div>

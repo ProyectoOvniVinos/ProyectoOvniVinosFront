@@ -10,6 +10,28 @@
     flex-direction: column;
 }
 
+/* width */
+::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 5px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(241, 241, 241); 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(231, 229, 229); 
+  }
+
 
 .fadeIn{
     animation-name: animacion;
@@ -19,6 +41,11 @@
 .fadeInTwo{
     animation-name: animacionTwo;
     animation-duration: 0.4s;
+}
+
+.fadeThre{
+    animation-name: animacion;
+    animation-duration: 0.2s;
 }
 
 @keyframes animacion {

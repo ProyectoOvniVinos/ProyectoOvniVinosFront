@@ -25,6 +25,7 @@ import { VentasComponent } from './Components/Admin/ventas/ventas.component';
 import { ComprasComponent } from './Components/Admin/compras/compras.component';
 import { InventarioDetallesComponent } from './Components/Admin/inventario-detalles/inventario-detalles.component';
 import { IngresarCompraComponent } from './Components/Admin/ingresar-compra/ingresar-compra.component';
+import { IngresarVentaComponent } from './Components/Admin/ingresar-venta/ingresar-venta.component';
 
 
 const routes: Routes = [
@@ -50,6 +51,7 @@ const routes: Routes = [
   { path: 'ventas', component: VentasComponent },
   { path: 'compras', component: ComprasComponent },
   { path: 'ingresarCompra', component: IngresarCompraComponent },
+  { path: 'ingresarVenta', component: IngresarVentaComponent},
 
   { path: '**', pathMatch: 'full', redirectTo: '/catalogo' }
 ];

@@ -1,22 +1,35 @@
 <div class="cajaPayuda">
 
     <div class="container cajaPadreAyuda mt-5">
-        <h2>Ingresa los Datos y se te Dara Respuesta</h2>
-        <form>
-            <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Correo Electronico</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">El correo es necesario para saber sus datos</div>
-            </div>
-            <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Error</label>
-            <input class="form-control" id="exampleInputPassword1">
-            </div>
-            <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-            <button type="submit" class="container btn btnEnviar">Enviar</button>
-        </form>
+        <div class="cajaMadre">
+            <h2>Ingresa los Datos</h2>
+            <form class="form"  [formGroup]="ayudaForm"> 
+                <div class="cajaInput">
+                    <label for="exampleInputEmail1" class="form-label">Correo Electronico</label>
+                    <input type="email" class="input form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
+                        formControlName="correo"
+                        [ngClass]="correoNoValido == null ? '' : correoNoValido ? 'is-invalid': 'is-valid'">
+                        <div class="errors-container" *ngIf="correoControl.invalid && (correoControl.touched || correoControl.dirty)">
+                            <p class="text-danger form-text" *ngIf="correoControl.hasError('required')">El campo es obligatorio</p>
+                            <p class="text-danger form-text" *ngIf="!correoControl.hasError('required')">No es formato de correo</p>
+                        </div>
+                    <div *ngIf="!correoControl.touched && !correoControl.dirty" id="emailHelp" class="form-text">El correo es necesario para saber sus datos</div>
+                </div>
+                <div class="cajaInput">
+                    <label for="exampleInputPassword1" class="form-label">Problema</label>
+                    <select class="inputSelect form-control"formControlName="problemas" (change)="validar()">
+                        <option value="Inquietud 1">Inquietud 1</option>
+                        <option value="Inquietud 2">Inquietud 2</option>
+                        <option value="Inquietud 3">Inquietud 3</option>
+                        <option value="Inquietud 4">Inquietud 4</option>
+                        <option value="Otra">Otra</option>
+                    </select>
+                </div>
+                <div *ngIf="banderaTextoOtro">
+                    <textarea formControlName="textoOtra" class="form-control textare fadeThre"></textarea>
+                </div>
+                <button type="submit" class="container btn btnEnviar">Enviar</button>
+            </form>
+        </div>
     </div>
 </div>

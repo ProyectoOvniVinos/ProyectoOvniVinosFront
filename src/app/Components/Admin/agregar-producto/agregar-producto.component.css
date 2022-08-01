@@ -1,7 +1,7 @@
 .boton{
     display: flex;
     width: 90%;
-    justify-content: end;
+    justify-content: flex-end;
     margin-bottom: 30px;
 }
 
