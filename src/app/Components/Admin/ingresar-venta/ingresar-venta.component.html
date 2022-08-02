@@ -61,9 +61,9 @@
                                 <td>{{item.producto.nombre_producto}}</td>
                                 <td>{{item.producto.precio_producto}}</td>
                                 <td>
-                                    <button class="btnSubir" (click)="aumentarCantidad(item.producto.codigo_producto)">+</button>
-                                    <input type="number" value="{{item.cantidad_producto}}" class="inputCantidad text-center" (change)="actualizarCantidad(item.producto.codigo_producto, $event)">
                                     <button class="btnBajar"(click)="disminuirCantidad(item.producto.codigo_producto, item.cantidad_producto)">-</button>
+                                    <input type="number" value="{{item.cantidad_producto}}" class="inputCantidad text-center" (change)="actualizarCantidad(item.producto.codigo_producto, $event)">
+                                    <button class="btnSubir" (click)="aumentarCantidad(item.producto.codigo_producto)">+</button>
                                 </td>
                                 <td>{{item.calcularImporte()}}</td>
                                 <td><button class="btnEliminar" (click)="eliminarItemFactura(item.producto.codigo_producto)">x</button></td>
