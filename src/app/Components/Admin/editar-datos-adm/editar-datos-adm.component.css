@@ -122,7 +122,7 @@ a:hover{
     width: 70%;
     height: 6vh;
     border: none;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size:2.5vh;
     margin-top: 8%;
     margin-left: 15%;
@@ -141,7 +141,7 @@ a:hover{
     background: #fff; /* color de fondo */
     color: rgb(184, 13, 72); /* color de fuente */
     border: 2px solid rgb(184, 13, 72); /* tamaño y color de borde */
-    border-radius: 8px; /* redondear bordes */
+    border-radius: 6px; /* redondear bordes */
     position: relative;
     z-index: 1;
     overflow: hidden;
