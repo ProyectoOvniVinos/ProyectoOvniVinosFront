@@ -7,19 +7,10 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class DatosClienteComponent implements OnInit {
 
-  @Input() modal: boolean = false;
-
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  cerrarModal() {
-    this.modal = false;
-  }
-
-  abrirModal() {
-    this.modal = true;
-  }
 
 }
