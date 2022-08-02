@@ -1,94 +1,91 @@
-<div class="cajaGrande">
+
+
 <div class="boton">
     <button (click)="irProductos()"class="btnRegresar">Regresar</button>
 </div>
 
-<hr>
+<div class="container-fluid cajaP">
 
-
-
-    <div class="cajaM-login">
-        <div class="cajaTitleLogin">
-            <h2>{{titulo}}</h2>
+    <div class="cajaM">
+        <div class="cajaTitle">
+            <h2>Agregar Producto</h2>
         </div>
-        <div class="cajaHijoLogin">
+        <div class="cajaHijo">
             <div class="cajaForm">
-                <form action="" class="cajaFormCompleto" [formGroup]="registroProductoForm" (ngSubmit)="crearProducto()">
-                    <div class="row">
-    
-                        <div class="cajaInput col">
-                            <label for="" class="label">Nombre Del Producto</label>
+                <form class="cajaFormCompleto" [formGroup]="registroProductoForm">
+                    <div class="cajainputs">
+                        <div class="cajaInput">
+                            <label class="label">Nombre Del Producto</label>
                             <br>
                             <input type="text" 
                                     class="input form-control" 
                                     formControlName="nombreProducto"
                                     [ngClass]="nombreProductoNoValido == null ? '' : nombreProductoNoValido ? 'is-invalid': 'is-valid'">
-                                     
-                                        <!-- [ngClass]=" nombreNoValido ? 'is-invalid': 'is-valid' "  -->
-                                    
-                                    
+                                    <div class="errors-container" *ngIf="nombreControl.invalid && (nombreControl.touched || nombreControl.dirty)">
+                                        <p class="text-danger" *ngIf="nombreControl.hasError('required')">El campo es obligatorio</p>
+                                    </div>
                         </div>
-                        <div class="cajaInput col">
-                            <label for="" class="label">Precio Producto</label>
+                        <div class="cajaInput">
+                            <label for="" class="label">Precio Del Producto</label>
                             <br>
                             <input type="text" 
                                     class="input form-control" 
                                     formControlName="precioProducto"
                                     [ngClass]="precioProductoNoValido == null ? '' : precioProductoNoValido ? 'is-invalid': 'is-valid'">
-                                  <!-- [class.is-invalid]="apellidoNoValido"> -->
+                                    <div class="errors-container" *ngIf="precioControl.invalid && (precioControl.touched || precioControl.dirty)">
+                                        <p class="text-danger" *ngIf="precioControl.hasError('required')">El campo es obligatorio</p>
+                                        <p class="text-danger" *ngIf="precioControl.hasError('pattern')">Solamente numeros porfavor</p>
+                                    </div>
                         </div>
-                    </div>
-                    <div class="row">
-    
-                        <div class="cajaInput col">
-                            <label for="" class="label">Precio Proveedor</label>
+                        <div class="cajaInput">
+                            <label for="" class="label">Precio Del Proveedor</label>
                             <br>
                             <input type="text" 
                                     class="input form-control" 
                                     formControlName="precioProveedor"
                                     [ngClass]="precioProveedorNoValido == null ? '' : precioProveedorNoValido ? 'is-invalid': 'is-valid'">
-    
-                                    <!-- [class.is-invalid]="direccionNoValido"> -->
+                                    <div class="errors-container" *ngIf="proveedorControl.invalid && (proveedorControl.touched || proveedorControl.dirty)">
+                                        <p class="text-danger" *ngIf="proveedorControl.hasError('required')">El campo es obligatorio</p>
+                                        <p class="text-danger" *ngIf="proveedorControl.hasError('pattern')">Solamente numeros porfavor</p>
+                                    </div>
                         </div>
-                        <div class="cajaInput col">
+                        <div class="cajaInput">
                             <label for="" class="label">Imagen Del Producto</label>
                             <br>
                             <input type="file" 
-                                    id="inputGroupFile04" 
-                                    aria-describedby="inputGroupFileAddon04" 
-                                    aria-label="Upload"
                                     (change)="seleccionarFoto($event)"
-                                    class="input form-control" 
+                                    class="inputImage form-control" 
                                     formControlName="imagenProducto">
-                            
-                        </div>
-                    </div>
-                    <div class="cajaInputfileF">
-    
-                        <div class="cajaInputfileA">
+
+                        </div> 
+
+                        <div class="cajaInputArea">
                             <label for="" class="label">Descripcion Del Producto</label>
                             <br>
                             <textarea type="" 
                             class="textArea form-control" 
                             formControlName="descripcionProducto"
                             [ngClass]="descripcionProductoNoValido == null ? '' : descripcionProductoNoValido ? 'is-invalid': 'is-valid'"></textarea>
-                            
-    <!--                                 [ngClass]="correoNoValido == null ? '' : correoNoValido ? 'is-invalid': 'is-valid'">
-     -->
-                                    <!-- [class.is-invalid]="correoNoValido"> -->
+                            <div class="errors-container" *ngIf="descripcionControl.invalid && (descripcionControl.touched || descripcionControl.dirty)">
+                                <p class="text-danger" *ngIf="descripcionControl.hasError('required')">El campo es obligatorio</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="container-envio d-flex ">
-    
-                        <div class="cajaImg">
-                            <img src="../../../../assets/Images/manoCopada.png" alt="manoCopada" class="imgLogin">
+                    <div class="cajaBtns">
+                        <div class="cajaMbtns">
+                            <div class="cajaImg">
+                                <img src="../../../../assets/Images/manoCopada.png" alt="manoCopada" class="imgLogin">
+                            </div>
+                            <div class="cajaBtnsTwo">
+                                <button type="submit" class="btnRegistrar"> {{boton}} </button>
+                                <button  type="submit" class="btnRegistrar"> Eliminar </button>
+                            </div>
+
                         </div>
-                        <button type="submit" class="btnRegistrar"> {{boton}} </button>
-                        <button *ngIf="boton=='Editar'" type="submit" class="btnRegistrar"> Eliminar </button>
                     </div>
                 </form>
             </div>
-    
         </div>
     </div>
+
 </div>
