@@ -61,7 +61,7 @@
     margin-bottom: 0px;
     text-align: center;
     color: white;
-    border-radius: 5px;
+    border-radius: 6px;
     border: 1px solid white;
     transition: 0.1s;
 }
@@ -166,7 +166,7 @@ input[type="date"] {
     background-color: rgba(255,42,108,1);
     color: white;
     outline: none;
-    border-radius: 5px;
+    border-radius: 6px;
 }
 
 ::-webkit-calendar-picker-indicator{
@@ -180,10 +180,50 @@ input[type="date"] {
     color:aqua;
 }
 
-@media screen and (max-width: 800px) and (max-height:1080px){
+@media screen and (max-width: 1920px) and (max-height:1080px){
 
     input[type="date"] {
-        width: 35%;
+        width: 15%;
+    }
+
+}
+
+@media screen and (max-width: 1680px) and (max-height:1080px){
+
+    input[type="date"] {
+        width: 20%;
+    }
+
+}
+
+@media screen and (max-width: 1480px) and (max-height:1080px){
+
+    input[type="date"] {
+        width: 20%;
+    }
+
+}
+
+@media screen and (max-width: 1220px) and (max-height:1080px){
+
+    input[type="date"] {
+        width: 20%;
+    }
+
+}
+
+@media screen and (max-width: 1080px) and (max-height:1080px){
+
+    input[type="date"] {
+        width: 25%;
+    }
+
+}
+
+@media screen and (max-width: 1000px) and (max-height:1080px){
+
+    input[type="date"] {
+        width: 25%;
     }
 
 }
@@ -192,6 +232,14 @@ input[type="date"] {
 
     input[type="date"] {
         width: 30%;
+    }
+
+}
+
+@media screen and (max-width: 800px) and (max-height:1080px){
+
+    input[type="date"] {
+        width: 35%;
     }
 
 }
