@@ -120,7 +120,7 @@ export class IngresarVentaComponent implements OnInit {
   seleccionarProducto() {
     let producto: ProductoModel = {
       nombre_producto: this.productos.find(producto => producto.codigo_producto == this.ventaForm.controls['producto'].value).nombre_producto,
-      precio_producto: this.ventaForm.controls['precio'].value,
+      precio_producto: this.productos.find(producto => producto.codigo_producto == this.ventaForm.controls['producto'].value).precio_producto,
       precio_productoProveedor: this.ventaForm.controls['precio'].value - 100,
       descripcion_producto: 'descripcion producto',
       codigo_producto: this.ventaForm.controls['producto'].value,
