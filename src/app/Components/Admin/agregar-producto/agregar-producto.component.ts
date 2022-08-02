@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductoModel } from 'src/app/Models/Producto.model';
 
@@ -18,10 +18,13 @@ export class AgregarProductoComponent implements OnInit {
     descripcion_producto: '',
     imagen: '../../../../assets/TEMPORALES/vino1.jpg'
   };
+
+
   boton:string = "registrar"
   titulo:string = "Crear Producto";
   registroProductoForm !: FormGroup;
   private fotoSeleccionada !: File;
+  
   productos: ProductoModel[] = [
     {
       codigo_producto: 1,
@@ -115,9 +118,9 @@ export class AgregarProductoComponent implements OnInit {
   crearFormulario(){
     this.registroProductoForm = this.fb.group({
       nombreProducto: ['', [Validators.required, Validators.minLength(3)]],
-      precioProducto: ['', [Validators.required]],
-      precioProveedor:['', [Validators.required]],
-      descripcionProducto:['',[Validators.required, Validators.minLength(5)]],
+      precioProducto: ['', [Validators.required, Validators.pattern(/^[0-9]/)]],
+      precioProveedor:['', [Validators.required, Validators.pattern(/^[0-9]/)]],
+      descripcionProducto:['',[Validators.required]],
       imagenProducto: ['', []]
     })
   }
@@ -213,6 +216,26 @@ export class AgregarProductoComponent implements OnInit {
       return null;
     }
     //return this.registroForm.get('contrasena1')?.invalid && this.registroForm.get('contrasena1')?.touched;
+  }
+
+  get nombreControl(): FormControl{
+    return this.registroProductoForm.get('nombreProducto') as FormControl
+  }
+
+  get precioControl(): FormControl{
+    return this.registroProductoForm.get('precioProducto') as FormControl
+  }
+
+  get proveedorControl(): FormControl{
+    return this.registroProductoForm.get('precioProveedor') as FormControl
+  }
+
+  get imagenControl(): FormControl{
+    return this.registroProductoForm.get('imagenProducto') as FormControl
+  }
+
+  get descripcionControl(): FormControl{
+    return this.registroProductoForm.get('descripcionProducto') as FormControl
   }
 
 }
