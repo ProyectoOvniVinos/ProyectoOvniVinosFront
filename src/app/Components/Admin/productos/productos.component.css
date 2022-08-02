@@ -1,6 +1,6 @@
 .imagen{
-    width: 145px;
-    height: 185px;
+    width: 20%;
+    height: 10%;
     margin: 5px;
 }
 
@@ -52,6 +52,7 @@
 .primero{
     border-end-start-radius: 10px;
     border-start-start-radius: 10px;
+    width: 15%;
 }
 
 .ultimo{
