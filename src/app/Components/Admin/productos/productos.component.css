@@ -49,6 +49,23 @@
     border-radius: 10px;
 }
 
+.btnEditar{
+    width: 30%;
+    height: 2rem;
+    outline: none;
+    border: none;
+    transition: 0.2s;
+}
+
+.btnEditar:hover{
+    transform: scale(1.2,1.2);
+}
+
+.imagenEditar{
+    width: 100%;
+    height: 100%;
+}
+
 .primero{
     border-end-start-radius: 10px;
     border-start-start-radius: 10px;
