@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Cloudinary, CloudinaryImage } from '@cloudinary/url-gen';
 import { ProductoModel } from 'src/app/Models/Producto.model';
 import { ImagenService } from 'src/app/Services/imagen.service';
 
@@ -22,12 +21,8 @@ export class AgregarProductoComponent implements OnInit {
     imagen: ''
   };
 
-<<<<<<< HEAD
 
   boton:string = "Registrar"
-=======
-  boton:string = "registrar"
->>>>>>> 88c9d95f95a158e5a879834129ad507222e5e65c
   titulo:string = "Crear Producto";
   registroProductoForm !: FormGroup;
   private fotoSeleccionada !: File;
