@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Cloudinary, CloudinaryImage } from '@cloudinary/url-gen';
 import { ProductoModel } from 'src/app/Models/Producto.model';
+import { ImagenService } from 'src/app/Services/imagen.service';
 
 @Component({
   selector: 'app-agregar-producto',
@@ -10,57 +12,33 @@ import { ProductoModel } from 'src/app/Models/Producto.model';
 })
 export class AgregarProductoComponent implements OnInit {
   
+
   producto: ProductoModel={
     codigo_producto: 0,
     nombre_producto: '',
     precio_producto: 0,
     precio_productoProveedor: 0,
     descripcion_producto: '',
-    imagen: '../../../../assets/TEMPORALES/vino1.jpg'
+    imagen: ''
   };
-
 
   boton:string = "registrar"
   titulo:string = "Crear Producto";
   registroProductoForm !: FormGroup;
   private fotoSeleccionada !: File;
-  
-  productos: ProductoModel[] = [
-    {
-      codigo_producto: 1,
-      nombre_producto: 'Vino Abocado',
-      precio_producto: 13000,
-      precio_productoProveedor: 6000,
-      descripcion_producto: 'Delicioso Vino Dulce',
-      imagen: '../../../../assets/TEMPORALES/vino1.jpg'
-    }, {
-      codigo_producto: 2,
-      nombre_producto: 'Vino tinto',
-      precio_producto: 13000,
-      precio_productoProveedor: 6000,
-      descripcion_producto: 'Delicioso Vino no tan Dulce',
-      imagen: '../../../../assets/TEMPORALES/vino2.jpg'
-    }, {
-      codigo_producto: 3,
-      nombre_producto: 'Nectar de uva',
-      precio_producto: 10000,
-      precio_productoProveedor: 5000,
-      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
-      imagen: '../../../../assets/TEMPORALES/vino3.jpg'
-    },
-  ];
 
   constructor(private router: Router,
               private fb: FormBuilder,
-              private activateRoute: ActivatedRoute) {
+              private activateRoute: ActivatedRoute,
+              private imagenServicio: ImagenService) {
     this.crearFormulario();
   }
 
   ngOnInit(): void {
     this.activateRoute.params.subscribe(params=>{
       let id  = params['id'];
-      console.log(id);
-      if(id){
+
+/*       if(id){
         this.titulo = "Editar Producto";
         this.boton = "Editar";
         this.productos.forEach(producto => {
@@ -71,8 +49,9 @@ export class AgregarProductoComponent implements OnInit {
             console.log(this.producto);
           }
         });
-      }
+      } */
     })
+
   }
 
   cargarData(){
@@ -101,6 +80,7 @@ export class AgregarProductoComponent implements OnInit {
         this.producto.precio_producto = precioP;
         this.producto.precio_productoProveedor = precioPp;
         this.producto.descripcion_producto = producto.descripcionProducto;
+        this.producto.imagen = foto;
         console.log(this.producto);
       }else{
         console.log("tiene que seleccionar una foto");
@@ -127,23 +107,26 @@ export class AgregarProductoComponent implements OnInit {
 
   seleccionarFoto(event:any){
     this.fotoSeleccionada = event.target.files[0];
-    console.log(this.fotoSeleccionada);
     if(this.fotoSeleccionada.type.indexOf('image') < 0){
       this.fotoSeleccionada = null;
     }  
   }
   
-  subirFoto():boolean{
-    let subio: boolean;
+  subirFoto():string{
+    let url: string;
     if(!this.fotoSeleccionada){
       console.log("por favor seleccionar una foto")
-      subio = false;
+      url = "";
     }else{
       console.log("listo para subir")
-      subio = true;
+      this.imagenServicio.subir(this.fotoSeleccionada).subscribe( (response:any) => {
+        if(response){
+          url=response.url
+        }
+      });
     }
     
-    return subio;
+    return url;
 
   }
 
@@ -236,6 +219,11 @@ export class AgregarProductoComponent implements OnInit {
 
   get descripcionControl(): FormControl{
     return this.registroProductoForm.get('descripcionProducto') as FormControl
+  }
+
+  registrar(){
+    console.log(this.registroProductoForm.get('imagenProducto'));
+    
   }
 
 }
