@@ -71,7 +71,7 @@
     background: #fff; /* color de fondo */
     color:  rgba(167,31,73,1) ; /* color de fuente */
     border: 2px solid  rgba(167,31,73,1) ; /* tamaño y color de borde */
-    border-radius: 6px; /* redondear bordes */
+    border-radius: 8px; /* redondear bordes */
     position: relative;
     z-index: 1;
     overflow: hidden;
@@ -108,7 +108,7 @@
     background: #fff; /* color de fondo */
     color: rgba(167,31,73,1); /* color de fuente */
     border: 2px solid rgba(167,31,73,1); /* tamaño y color de borde */
-    border-radius: 6px; /* redondear bordes */
+    border-radius: 8px; /* redondear bordes */
     position: relative;
     z-index: 1;
     overflow: hidden;
