@@ -55,7 +55,8 @@
                             <input type="file" 
                                     (change)="seleccionarFoto($event)"
                                     class="inputImage form-control" 
-                                    formControlName="imagenProducto">
+                                    formControlName="imagenProducto"
+                                    accept="image/png, image/jpeg">
 
                         </div> 
 
@@ -77,7 +78,7 @@
                                 <img src="../../../../assets/Images/manoCopada.png" alt="manoCopada" class="imgLogin">
                             </div>
                             <div class="cajaBtnsTwo">
-                                <button type="submit" class="btnRegistrar"> {{boton}} </button>
+                                <button type="submit" class="btnRegistrar" (click)="crearProducto()"> {{boton}} </button>
                                 <button  type="submit" class="btnRegistrar"> Eliminar </button>
                             </div>
 
