@@ -8,7 +8,7 @@
 
     <div class="cajaM">
         <div class="cajaTitle">
-            <h2>Agregar Producto</h2>
+            <h2>{{titulo}}</h2>
         </div>
         <div class="cajaHijo">
             <div class="cajaForm">
@@ -78,8 +78,8 @@
                                 <img src="../../../../assets/Images/manoCopada.png" alt="manoCopada" class="imgLogin">
                             </div>
                             <div class="cajaBtnsTwo">
-                                <button type="submit" class="btnRegistrar" (click)="crearProducto()"> {{boton}} </button>
-                                <button  type="submit" class="btnRegistrar"> Eliminar </button>
+                                <button type="submit" class="btnRegistrar" (click)="iniciarProceso()"> {{boton}} </button>
+                                <button *ngIf="" type="submit" class="btnRegistrar"> Eliminar </button>
                             </div>
 
                         </div>

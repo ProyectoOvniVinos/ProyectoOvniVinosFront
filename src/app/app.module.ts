@@ -95,7 +95,6 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     ScrollingModule,
     MatDialogModule,
-    
     HttpClientModule
   ],
   providers: [],

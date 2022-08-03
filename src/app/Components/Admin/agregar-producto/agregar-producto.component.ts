@@ -65,35 +65,50 @@ export class AgregarProductoComponent implements OnInit {
     
   }
 
-  crearProducto(){
+  iniciarProceso(){
     if(!this.registroProductoForm.invalid){
-      
-
-      let foto = this.subirFoto();
-      if(foto){
-
-        console.log("crear objeto");
-        const producto = this.registroProductoForm.value;
-        let precioP = Number(producto.precioProducto);
-        let precioPp = Number(producto.precioProveedor);
-        this.producto.nombre_producto = producto.nombreProducto;
-        this.producto.precio_producto = precioP;
-        this.producto.precio_productoProveedor = precioPp;
-        this.producto.descripcion_producto = producto.descripcionProducto;
-        this.producto.imagen = foto;
-        console.log(this.producto);
-      }else{
-        console.log("tiene que seleccionar una foto");
-      }
+      this.registrar();
     }else{
       console.log("esta malo el formulario")
-      console.log(this.registroProductoForm);
     }
   }
 
   irProductos(){
     this.router.navigate(['/productos'])
   }
+
+  seleccionarFoto(event:any){
+    this.fotoSeleccionada = event.target.files[0];
+    if(this.fotoSeleccionada.type.indexOf('image') < 0){
+      this.fotoSeleccionada = null;
+    }  
+  }
+
+  registrar(){
+    if(!this.fotoSeleccionada){
+      console.log("por favor seleccionar una foto")
+    }else{
+      console.log("listo para subir")
+      this.imagenServicio.subir(this.fotoSeleccionada).subscribe( (response:any) => {
+        if(response){
+          const productoForm = this.registroProductoForm.value;
+          let precioProducto = Number(productoForm.precioProducto);
+          let precioProveedor = Number(productoForm.precioProveedor);
+          this.producto.nombre_producto = productoForm.nombreProducto;
+          this.producto.precio_producto = precioProducto;
+          this.producto.precio_productoProveedor = precioProveedor;
+          this.producto.descripcion_producto = productoForm.descripcionProducto;
+          this.producto.imagen = response.url;
+          console.log(this.producto);
+        }
+      });
+    }
+  }
+
+
+
+
+
 
   crearFormulario(){
     this.registroProductoForm = this.fb.group({
@@ -104,33 +119,6 @@ export class AgregarProductoComponent implements OnInit {
       imagenProducto: ['', []]
     })
   }
-
-  seleccionarFoto(event:any){
-    this.fotoSeleccionada = event.target.files[0];
-    if(this.fotoSeleccionada.type.indexOf('image') < 0){
-      this.fotoSeleccionada = null;
-    }  
-  }
-  
-  subirFoto():string{
-    let url: string;
-    if(!this.fotoSeleccionada){
-      console.log("por favor seleccionar una foto")
-      url = "";
-    }else{
-      console.log("listo para subir")
-      this.imagenServicio.subir(this.fotoSeleccionada).subscribe( (response:any) => {
-        if(response){
-          url=response.url
-        }
-      });
-    }
-    
-    return url;
-
-  }
-
-
   get nombreProductoNoValido() {
     if(this.registroProductoForm.get('nombreProducto')?.touched){
       if(this.registroProductoForm.get('nombreProducto')?.invalid == false){
@@ -143,7 +131,6 @@ export class AgregarProductoComponent implements OnInit {
     }
     //return this.registroForm.get('contrasena1')?.invalid && this.registroForm.get('contrasena1')?.touched;
   }
-  
   get precioProductoNoValido() {
     if(this.registroProductoForm.get('precioProducto')?.touched){
       try {
@@ -186,8 +173,6 @@ export class AgregarProductoComponent implements OnInit {
     }
     //return this.registroForm.get('celular')?.invalid && this.registroForm.get('celular')?.touched;
   }
-  
-  
   get descripcionProductoNoValido() {
     if(this.registroProductoForm.get('descripcionProducto')?.touched){
       if(this.registroProductoForm.get('descripcionProducto')?.invalid == false){
@@ -200,30 +185,19 @@ export class AgregarProductoComponent implements OnInit {
     }
     //return this.registroForm.get('contrasena1')?.invalid && this.registroForm.get('contrasena1')?.touched;
   }
-
   get nombreControl(): FormControl{
     return this.registroProductoForm.get('nombreProducto') as FormControl
   }
-
   get precioControl(): FormControl{
     return this.registroProductoForm.get('precioProducto') as FormControl
   }
-
   get proveedorControl(): FormControl{
     return this.registroProductoForm.get('precioProveedor') as FormControl
   }
-
   get imagenControl(): FormControl{
     return this.registroProductoForm.get('imagenProducto') as FormControl
   }
-
   get descripcionControl(): FormControl{
     return this.registroProductoForm.get('descripcionProducto') as FormControl
   }
-
-  registrar(){
-    console.log(this.registroProductoForm.get('imagenProducto'));
-    
-  }
-
 }
