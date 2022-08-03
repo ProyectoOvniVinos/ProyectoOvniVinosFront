@@ -45,6 +45,9 @@ import { ModalErrorComponent } from './Components/Modal/modal-error/modal-error.
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalInteraccionComponent } from './Components/Modal/modal-interaccion/modal-interaccion.component';
 import { IngresarVentaComponent } from './Components/Admin/ingresar-venta/ingresar-venta.component';
+import { HttpClientModule } from '@angular/common/http';
+
+import {CloudinaryModule} from '@cloudinary/ng';
  
 @NgModule({
   declarations: [
@@ -93,7 +96,9 @@ import { IngresarVentaComponent } from './Components/Admin/ingresar-venta/ingres
     FormsModule,
     ReactiveFormsModule,
     ScrollingModule,
-    MatDialogModule
+    MatDialogModule,
+    CloudinaryModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
