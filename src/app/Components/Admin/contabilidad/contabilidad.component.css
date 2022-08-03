@@ -76,7 +76,7 @@
     height: 40vh;
     padding-top: 5px;
     display: flex;
-    justify-content: start;
+    justify-content: flex-start;
     flex-direction: column;
     align-items: center;
     
@@ -154,7 +154,7 @@
 .boton{
     display: flex;
     width: 90%;
-    justify-content: end;
+    justify-content: fend;
     margin-bottom: 30px;
 }
 

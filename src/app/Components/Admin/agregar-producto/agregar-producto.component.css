@@ -6,6 +6,13 @@
     justify-content: center;
 }
 
+.boton{
+    display: flex;
+    width: 98.7%;
+    justify-content: end;
+    margin-bottom: 30px;
+}
+
 .cajaM{
     width: 50%;
     height: 80%;
@@ -136,6 +143,50 @@ input[type="file"] {
     gap: 2%;
 }
 
+.btnRegresar{
+
+    width: 25%;
+    height: 3rem;
+    background: #fff; /* color de fondo */
+    color: rgb(184, 13, 72); /* color de fuente */
+    border: 2px solid rgb(184, 13, 72); /* tamaño y color de borde */
+    border-radius: 8px; /* redondear bordes */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 1.5rem;
+
+}
+
+.btnRegresar:hover{
+    color: #fff;/* color de fuente hover */
+}
+
+.btnRegresar::after{
+    content: "";
+    background: rgb(167,31,73);
+    background: linear-gradient(90deg, rgba(167,31,73,1) 11%, rgba(255,42,108,1) 55%, rgba(167,31,73,1) 100%);
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(45deg) scale(0, 1);
+    transition: all 0.3s ease;
+}
+
+.btnRegresar:hover::after{
+    transition: all 0.3s ease-out;
+    transform: skewX(45deg) scale(1, 1);
+}
+
+
+
+
 .btnRegistrar{
 
     width: 45%;
@@ -187,6 +238,24 @@ input[type="file"] {
 @media screen and (max-width: 1920px) and (max-height:1080px){
     .cajaM{
         height: 67%;
+    }
+}
+
+@media screen and (max-width: 1920px) and (max-height:1000px){
+    .cajaM{
+        height: 75%;
+    }
+}
+
+@media screen and (max-width: 1920px) and (max-height:900px){
+    .cajaM{
+        height: 80%;
+    }
+}
+
+@media screen and (max-width: 1920px) and (max-height:850px){
+    .cajaM{
+        height: 90%;
     }
 }
 
