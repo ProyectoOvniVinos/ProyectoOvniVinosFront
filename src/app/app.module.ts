@@ -46,8 +46,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ModalInteraccionComponent } from './Components/Modal/modal-interaccion/modal-interaccion.component';
 import { IngresarVentaComponent } from './Components/Admin/ingresar-venta/ingresar-venta.component';
 import { HttpClientModule } from '@angular/common/http';
-
-import {CloudinaryModule} from '@cloudinary/ng';
  
 @NgModule({
   declarations: [
@@ -97,7 +95,6 @@ import {CloudinaryModule} from '@cloudinary/ng';
     ReactiveFormsModule,
     ScrollingModule,
     MatDialogModule,
-    CloudinaryModule,
     HttpClientModule
   ],
   providers: [],

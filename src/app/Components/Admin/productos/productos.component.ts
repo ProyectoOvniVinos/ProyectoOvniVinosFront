@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProductoModel } from 'src/app/Models/Producto.model';
+import { ProductoService } from 'src/app/Services/producto.service';
 
 @Component({
   selector: 'app-productos',
@@ -13,34 +14,18 @@ export class ProductosComponent implements OnInit {
 
   imgModal: string = '';
 
-  productos: ProductoModel[] = [
-    {
-      codigo_producto: 1,
-      nombre_producto: 'Vino Abocado',
-      precio_producto: 13000,
-      precio_productoProveedor: 6000,
-      descripcion_producto: 'Delicioso Vino Dulce',
-      imagen: '../../../../assets/TEMPORALES/vino1.jpg'
-    }, {
-      codigo_producto: 2,
-      nombre_producto: 'Vino tinto',
-      precio_producto: 13000,
-      precio_productoProveedor: 6000,
-      descripcion_producto: 'Delicioso Vino no tan Dulce',
-      imagen: '../../../../assets/TEMPORALES/vino2.jpg'
-    }, {
-      codigo_producto: 3,
-      nombre_producto: 'Nectar de uva',
-      precio_producto: 10000,
-      precio_productoProveedor: 5000,
-      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
-      imagen: '../../../../assets/TEMPORALES/vino3.jpg'
-    },
-  ];
+  productos: ProductoModel[] = [];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private service: ProductoService ) { }
 
   ngOnInit(): void {
+    this.obtenerProductos();
+  }
+
+  obtenerProductos(){
+    this.service.getProducts().subscribe( productos => {
+      this.productos=productos;
+    });
   }
 
   cerrarModal(){
