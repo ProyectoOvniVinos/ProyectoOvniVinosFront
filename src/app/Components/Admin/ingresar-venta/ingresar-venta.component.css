@@ -124,7 +124,7 @@ input:focus {
     background: #fff; /* color de fondo */
     color: rgb(184, 13, 72); /* color de fuente */
     border: 2px solid rgb(184, 13, 72); /* tamaño y color de borde */
-    border-radius: 6px; /* redondear bordes */
+    border-radius: 8px; /* redondear bordes */
     position: relative;
     z-index: 1;
     overflow: hidden;

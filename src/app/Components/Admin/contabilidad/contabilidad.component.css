@@ -166,7 +166,7 @@ input[type="date"] {
     background-color: rgba(255,42,108,1);
     color: white;
     outline: none;
-    border-radius: 6px;
+    border-radius: 8px;
 }
 
 ::-webkit-calendar-picker-indicator{
