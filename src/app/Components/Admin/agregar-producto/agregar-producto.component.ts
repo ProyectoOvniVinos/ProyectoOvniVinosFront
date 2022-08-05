@@ -1,8 +1,11 @@
+import { ProductoService } from 'src/app/Services/producto.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ProductoModel } from 'src/app/Models/Producto.model';
 import { ImagenService } from 'src/app/Services/imagen.service';
+import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 
 @Component({
   selector: 'app-agregar-producto',
@@ -11,12 +14,13 @@ import { ImagenService } from 'src/app/Services/imagen.service';
 })
 export class AgregarProductoComponent implements OnInit {
   
+  productos: ProductoModel[] = [];
 
   producto: ProductoModel={
     codigo_producto: 0,
     nombre_producto: '',
     precio_producto: 0,
-    precio_productoProveedor: 0,
+    precio_producto_proveedor: 0,
     descripcion_producto: '',
     imagen: ''
   };
@@ -30,26 +34,31 @@ export class AgregarProductoComponent implements OnInit {
   constructor(private router: Router,
               private fb: FormBuilder,
               private activateRoute: ActivatedRoute,
-              private imagenServicio: ImagenService) {
+              private imagenServicio: ImagenService,
+              public dialog: MatDialog,
+              public servicioProducto: ProductoService) {
     this.crearFormulario();
+  }
+
+  openDialog(titleNew: string, mensajeNew: string): void {
+    const dialogRef = this.dialog.open(ModalErrorComponent, {
+      width: '300px',
+      data: {title: titleNew, mensaje: mensajeNew},
+    });
   }
 
   ngOnInit(): void {
     this.activateRoute.params.subscribe(params=>{
       let id  = params['id'];
 
-/*       if(id){
+      if(id){
         this.titulo = "Editar Producto";
         this.boton = "Editar";
-        this.productos.forEach(producto => {
-          if(producto.codigo_producto == id){
-            this.producto = producto;
-            this.fotoSeleccionada = null;
-            this.cargarData();
-            console.log(this.producto);
-          }
-        });
-      } */
+        this.servicioProducto.getProductById(id).subscribe((producto:ProductoModel)=>{
+          this.producto=producto;
+          this.fotoSeleccionada=null;
+        })
+      }
     })
 
   }
@@ -59,18 +68,29 @@ export class AgregarProductoComponent implements OnInit {
 
       nombreProducto : this.producto.nombre_producto,
       precioProducto : this.producto.precio_producto,
-      precioProveedor : this.producto.precio_productoProveedor,
+      precioProveedor : this.producto.precio_producto_proveedor,
       descripcionProducto : this.producto.descripcion_producto,
     });
     
   }
 
   iniciarProceso(){
-    if(!this.registroProductoForm.invalid){
-      this.registrar();
+
+    if(this.boton=="Registrar"){
+      if(!this.registroProductoForm.invalid){
+        this.registrar();
+      }else{
+        this.openDialog("Error","Verifique los campos por favor!!")
+      }
     }else{
-      console.log("esta malo el formulario")
+      if(!this.registroProductoForm.invalid){
+        this.actualizar();
+      }else{
+        this.openDialog("Error","Verifique los campos por favor!!")
+      }
     }
+
+
   }
 
   irProductos(){
@@ -87,8 +107,9 @@ export class AgregarProductoComponent implements OnInit {
   registrar(){
     if(!this.fotoSeleccionada){
       console.log("por favor seleccionar una foto")
+      this.openDialog("Advertencia","Porfavor seleccione una Foto")
     }else{
-      console.log("listo para subir")
+
       this.imagenServicio.subir(this.fotoSeleccionada).subscribe( (response:any) => {
         if(response){
           const productoForm = this.registroProductoForm.value;
@@ -96,20 +117,98 @@ export class AgregarProductoComponent implements OnInit {
           let precioProveedor = Number(productoForm.precioProveedor);
           this.producto.nombre_producto = productoForm.nombreProducto;
           this.producto.precio_producto = precioProducto;
-          this.producto.precio_productoProveedor = precioProveedor;
+          this.producto.precio_producto_proveedor = precioProveedor;
           this.producto.descripcion_producto = productoForm.descripcionProducto;
           this.producto.imagen = response.url;
-          console.log(this.producto);
+
+          this.servicioProducto.getProductByName(this.producto.nombre_producto).subscribe(productos=> {
+            this.openDialog("Error","Este producto ya existe!!")
+          },err=>{
+
+            this.servicioProducto.createProduct(this.producto).subscribe(response=>{
+              this.router.navigate(['/productos'])
+              this.openDialog("Exito!!","Se ha agregado correctamente el Producto")
+            },err=>{
+              this.openDialog("Error","Ha habido un error intentelo de Nuevo")
+              console.log(err.status);
+              
+            });
+          })
         }
       });
     }
   }
 
+  actualizar(){
+    if(!this.fotoSeleccionada){
+      this.actualizarSinImagen();
+    }else{
+      this.actualizarConImagen();
+    }
+  }
+  
+  actualizarSinImagen(){
+    const productoForm = this.registroProductoForm.value;
+    let productoNew: ProductoModel = {
+      codigo_producto: 0,
+      nombre_producto: '',
+      precio_producto: 0,
+      precio_producto_proveedor: 0,
+      descripcion_producto: '',
+      imagen: ''
+    };;
+    let precioProducto = Number(productoForm.precioProducto);
+    let precioProveedor = Number(productoForm.precioProveedor);
+    productoNew.codigo_producto = this.producto.codigo_producto;
+    productoNew.nombre_producto = productoForm.nombreProducto;
+    productoNew.precio_producto = precioProducto;
+    productoNew.precio_producto_proveedor = precioProveedor;
+    productoNew.descripcion_producto = productoForm.descripcionProducto;
+    productoNew.imagen = this.producto.imagen;
 
+    this.servicioProducto.updateProduct(productoNew.codigo_producto, productoNew).subscribe((response:any) => {
+      this.router.navigate(['/productos'])
+      this.openDialog("Exito!!","Se ha actualizado correctamente el Producto")
+    }, err => {
+      this.openDialog("Error","Ha habido un error intentelo de Nuevo")
+    })
+  }
 
+  actualizarConImagen(){
+    console.log("con imagen");
+    
+    this.imagenServicio.subir(this.fotoSeleccionada).subscribe( (response:any) => {
+      if(response){
+        const productoForm = this.registroProductoForm.value;
+        let productoNew: ProductoModel = {
+          codigo_producto: 0,
+          nombre_producto: '',
+          precio_producto: 0,
+          precio_producto_proveedor: 0,
+          descripcion_producto: '',
+          imagen: ''
+        };;
+        let precioProducto = Number(productoForm.precioProducto);
+        let precioProveedor = Number(productoForm.precioProveedor);
+        productoNew.codigo_producto = this.producto.codigo_producto;
+        productoNew.nombre_producto = productoForm.nombreProducto;
+        productoNew.precio_producto = precioProducto;
+        productoNew.precio_producto_proveedor = precioProveedor;
+        productoNew.descripcion_producto = productoForm.descripcionProducto;
+        productoNew.imagen = response.url;
 
+        this.servicioProducto.updateProduct(productoNew.codigo_producto, productoNew).subscribe((response:any) => {
+          this.router.navigate(['/productos'])
+          this.openDialog("Exito!!","Se ha actualizado correctamente el Producto")
+          console.log(productoNew);
+          
+        },err=>{
+          this.openDialog("Error","Ha habido un error intentelo de Nuevo")
+        })
 
-
+      }
+    });
+  }
   crearFormulario(){
     this.registroProductoForm = this.fb.group({
       nombreProducto: ['', [Validators.required, Validators.minLength(3)]],

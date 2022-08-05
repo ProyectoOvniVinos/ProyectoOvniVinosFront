@@ -22,35 +22,35 @@ export class IngresarVentaComponent implements OnInit {
       codigo_producto: 1,
       nombre_producto: 'Vino Abocado',
       precio_producto: 13000,
-      precio_productoProveedor: 6000,
+      precio_producto_proveedor: 6000,
       descripcion_producto: 'Delicioso Vino Dulce',
       imagen: '../../../../assets/TEMPORALES/vino1.jpg'
     }, {
       codigo_producto: 2,
       nombre_producto: 'Vino tinto',
       precio_producto: 13000,
-      precio_productoProveedor: 6000,
+      precio_producto_proveedor: 6000,
       descripcion_producto: 'Delicioso Vino no tan Dulce',
       imagen: '../../../../assets/TEMPORALES/vino2.jpg'
     }, {
       codigo_producto: 3,
       nombre_producto: 'Nectar de uva',
       precio_producto: 10000,
-      precio_productoProveedor: 5000,
+      precio_producto_proveedor: 5000,
       descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
       imagen: '../../../../assets/TEMPORALES/vino3.jpg'
     }, {
       codigo_producto: 4,
       nombre_producto: 'Nectar de uva azul',
       precio_producto: 10000,
-      precio_productoProveedor: 5000,
+      precio_producto_proveedor: 5000,
       descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
       imagen: '../../../../assets/TEMPORALES/vino3.jpg'
     }, {
       codigo_producto: 5,
       nombre_producto: 'Nectar x',
       precio_producto: 10000,
-      precio_productoProveedor: 5000,
+      precio_producto_proveedor: 5000,
       descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
       imagen: '../../../../assets/TEMPORALES/vino3.jpg'
     },
@@ -121,7 +121,7 @@ export class IngresarVentaComponent implements OnInit {
     let producto: ProductoModel = {
       nombre_producto: this.productos.find(producto => producto.codigo_producto == this.ventaForm.controls['producto'].value).nombre_producto,
       precio_producto: this.productos.find(producto => producto.codigo_producto == this.ventaForm.controls['producto'].value).precio_producto,
-      precio_productoProveedor: this.ventaForm.controls['precio'].value - 100,
+      precio_producto_proveedor: this.ventaForm.controls['precio'].value - 100,
       descripcion_producto: 'descripcion producto',
       codigo_producto: this.ventaForm.controls['producto'].value,
       imagen: 'img',

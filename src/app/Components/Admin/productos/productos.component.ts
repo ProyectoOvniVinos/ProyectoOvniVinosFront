@@ -14,17 +14,30 @@ export class ProductosComponent implements OnInit {
 
   imgModal: string = '';
 
+  bandera: boolean;
+  banderaErrores: boolean;
+
   productos: ProductoModel[] = [];
+  errores: string[];
 
   constructor(private router: Router, private service: ProductoService ) { }
 
   ngOnInit(): void {
     this.obtenerProductos();
+
+
   }
 
   obtenerProductos(){
     this.service.getProducts().subscribe( productos => {
       this.productos=productos;
+      console.log(this.productos);
+      if(this.productos.length==0){
+        this.bandera=false;
+      }else{
+        this.bandera=true;
+      }
+      
     });
   }
 
@@ -39,6 +52,31 @@ export class ProductosComponent implements OnInit {
 
   irAgregarProducto(){
     this.router.navigate(['/agregarProducto'])
+  }
+
+  buscar(event){
+    console.log(event.target.value);
+    let name: string =event.target.value;
+
+    if(name.length==0){
+      this.obtenerProductos();
+      this.banderaErrores=false
+      console.log(this.banderaErrores);
+      
+    }else{
+      this.service.getProductByName(name).subscribe((productos:any) => {
+        this.productos=productos;
+        this.banderaErrores=false;
+        console.log(this.banderaErrores);
+        
+  
+      }, err => {
+        this.errores = err.error.mensaje
+        this.banderaErrores=true
+        console.log(this.banderaErrores);
+        
+      })     
+    }
   }
 
 }

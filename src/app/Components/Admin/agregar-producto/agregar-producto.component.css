@@ -9,7 +9,7 @@
 .boton{
     display: flex;
     width: 98.7%;
-    justify-content: end;
+    justify-content: flex-end;
     margin-bottom: 30px;
 }
 
@@ -237,7 +237,7 @@ input[type="file"] {
 
 @media screen and (max-width: 1920px) and (max-height:1080px){
     .cajaM{
-        height: 67%;
+        height: 70%;
     }
 }
 
@@ -247,15 +247,25 @@ input[type="file"] {
     }
 }
 
-@media screen and (max-width: 1920px) and (max-height:900px){
+@media screen and (max-width: 1920px) and (max-height:950px){
     .cajaM{
         height: 80%;
     }
 }
 
+
+@media screen and (max-width: 1920px) and (max-height:900px){
+    .cajaM{
+        height: 88%;
+    }
+}
+
 @media screen and (max-width: 1920px) and (max-height:850px){
     .cajaM{
-        height: 90%;
+        height: 88%;
+    }
+    .cajaP{
+        padding-top: 1rem;
     }
 }
 

@@ -20,6 +20,7 @@
                             <input type="text" 
                                     class="input form-control" 
                                     formControlName="nombreProducto"
+                                    value="{{producto.nombre_producto}}"
                                     [ngClass]="nombreProductoNoValido == null ? '' : nombreProductoNoValido ? 'is-invalid': 'is-valid'">
                                     <div class="errors-container" *ngIf="nombreControl.invalid && (nombreControl.touched || nombreControl.dirty)">
                                         <p class="text-danger" *ngIf="nombreControl.hasError('required')">El campo es obligatorio</p>
@@ -31,6 +32,7 @@
                             <input type="text" 
                                     class="input form-control" 
                                     formControlName="precioProducto"
+                                    value="{{producto.precio_producto}}"
                                     [ngClass]="precioProductoNoValido == null ? '' : precioProductoNoValido ? 'is-invalid': 'is-valid'">
                                     <div class="errors-container" *ngIf="precioControl.invalid && (precioControl.touched || precioControl.dirty)">
                                         <p class="text-danger" *ngIf="precioControl.hasError('required')">El campo es obligatorio</p>
@@ -43,6 +45,7 @@
                             <input type="text" 
                                     class="input form-control" 
                                     formControlName="precioProveedor"
+                                    value="{{producto.precio_producto_proveedor}}"
                                     [ngClass]="precioProveedorNoValido == null ? '' : precioProveedorNoValido ? 'is-invalid': 'is-valid'">
                                     <div class="errors-container" *ngIf="proveedorControl.invalid && (proveedorControl.touched || proveedorControl.dirty)">
                                         <p class="text-danger" *ngIf="proveedorControl.hasError('required')">El campo es obligatorio</p>
@@ -66,6 +69,7 @@
                             <textarea type="" 
                             class="textArea form-control" 
                             formControlName="descripcionProducto"
+                            value="{{producto.descripcion_producto}}"
                             [ngClass]="descripcionProductoNoValido == null ? '' : descripcionProductoNoValido ? 'is-invalid': 'is-valid'"></textarea>
                             <div class="errors-container" *ngIf="descripcionControl.invalid && (descripcionControl.touched || descripcionControl.dirty)">
                                 <p class="text-danger" *ngIf="descripcionControl.hasError('required')">El campo es obligatorio</p>
@@ -79,7 +83,7 @@
                             </div>
                             <div class="cajaBtnsTwo">
                                 <button type="submit" class="btnRegistrar" (click)="iniciarProceso()"> {{boton}} </button>
-                                <button *ngIf="" type="submit" class="btnRegistrar"> Eliminar </button>
+                                <button *ngIf="boton=='Editar'" type="submit" class="btnRegistrar"> Eliminar </button>
                             </div>
 
                         </div>
