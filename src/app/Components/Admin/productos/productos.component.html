@@ -17,7 +17,16 @@
 </div>
 
 <div class="container">
-    <table class="tabla">
+
+    <div class="cajaMensaje" *ngIf="bandera==false">
+        <h1>No existen productos Aun</h1>
+    </div>
+
+    <div class="cajaMensaje" *ngIf="bandera==null">
+        <h1>Error al Comunicarse Con el Servidor</h1>
+    </div>
+
+    <table *ngIf="bandera==true" class="tabla">
         <thead class="tablaHeaderG">
             <tr>
                 <th>
@@ -29,7 +38,11 @@
 
             <hr class="todo">
 
-            <table class="tabla2">
+            <input type="text" class="form-control inputBuscar" placeholder="Buscar el Producto Que Desees" (keyup)="buscar($event)">
+
+            <hr class="todo">
+
+            <table class="tabla2"  *ngIf="!banderaErrores">
                 <thead class="tablaHeaderP">
                     <tr>
                         <th class="primero">Imagen</th>
@@ -40,14 +53,14 @@
                         <th class="ultimo">Editar</th>
                     </tr>
                 </thead>
-                <tbody class="tablabodyP">
+                <tbody class="tablabodyP"  >
                     <tr class="puntero" *ngFor="let producto of productos">
                         <td>
                             <img (click)="abrirModal(producto.imagen)" class="imagen" src="{{producto.imagen}}" alt="{{producto.imagen}}">
                         </td>
                         <td>{{producto.nombre_producto}}</td>
                         <td>{{producto.precio_producto}}</td>
-                        <td>{{producto.precio_productoProveedor}}</td>
+                        <td>{{producto.precio_producto_proveedor}}</td>
                         <td>{{producto.descripcion_producto}}</td>
                         <td><button class="btnEditar" routerLink="/editarProducto/{{producto.codigo_producto}}">
                             <img class="imagenEditar" src="../../../../assets/Images/editar.png" alt="">
@@ -56,6 +69,10 @@
                     </tr>
                 </tbody>
             </table>
+                
+            <div class="cajaMensajeError" *ngIf="banderaErrores">
+                <h1>{{errores}}</h1>
+            </div>
         </tbody>
     </table>
     
