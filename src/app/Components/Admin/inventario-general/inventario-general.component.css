@@ -61,7 +61,7 @@
 .boton{
     display: flex;
     width: 90%;
-    justify-content: end;
+    justify-content: flex-end;
     margin-bottom: 30px;
 }
 
@@ -74,7 +74,7 @@
 .boton2{
     display: flex;
     width: 100%;
-    justify-content: end;
+    justify-content: flex-end;
     margin-bottom: 10px;
 }
 
