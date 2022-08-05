@@ -14,10 +14,11 @@
     display: flex;
     justify-content: center;
     text-align: center;
-    margin-left: 10%;
-    margin-right: 10%;
-    box-shadow:  11px 11px 8px #9b9b9b,
-    -11px -11px 8px #ffffff;
+    position: absolute;
+    width: 50%;
+    box-shadow: 11px 11px 8px #9b9b9b, -11px -11px 8px #ffffff;
+    top: 35%;
+    left: 25%;
 }
 
 .cajaMensajeError{
