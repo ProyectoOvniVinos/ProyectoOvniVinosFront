@@ -3,7 +3,7 @@
     <div class="swiper-wrapper" data-bs-interval="1000">
         <!-- Slides -->
         
-        <div class="swiper-slide cont-produc" *ngFor="let producto of productos"data-swiper-autoplay="1000"[ngStyle]="{'background-position': 'center','background-repeat':'no-repeat','background-image':'url('+producto.imagen+')','background-size':'65%'}">
+        <div class="swiper-slide cont-produc" *ngFor="let producto of productos"data-swiper-autoplay="1000"[ngStyle]="{'background-position': 'center','background-repeat':'no-repeat','background-image':'url('+producto.foto_producto+')','background-size':'65%'}">
             <div class="prod-description">
                 <div class=" cont-exte">
 
@@ -29,3 +29,4 @@
     <div (click)="onSlideNext()" class="swiper-button-next"></div>
   
 </div>
+

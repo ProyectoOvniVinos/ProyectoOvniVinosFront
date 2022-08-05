@@ -22,7 +22,7 @@ export class AgregarProductoComponent implements OnInit {
     precio_producto: 0,
     precio_producto_proveedor: 0,
     descripcion_producto: '',
-    imagen: ''
+    foto_producto: ''
   };
 
 
@@ -57,6 +57,13 @@ export class AgregarProductoComponent implements OnInit {
         this.servicioProducto.getProductById(id).subscribe((producto:ProductoModel)=>{
           this.producto=producto;
           this.fotoSeleccionada=null;
+          console.log(this.registroProductoForm);
+          console.log(this.producto);
+          this.registroProductoForm.controls["nombreProducto"].setValue(this.producto.nombre_producto);
+          this.registroProductoForm.controls["precioProducto"].setValue(this.producto.precio_producto);
+          this.registroProductoForm.controls["precioProveedor"].setValue(this.producto.precio_producto_proveedor);
+          this.registroProductoForm.controls["descripcionProducto"].setValue(this.producto.descripcion_producto);
+          
         })
       }
     })
@@ -119,7 +126,7 @@ export class AgregarProductoComponent implements OnInit {
           this.producto.precio_producto = precioProducto;
           this.producto.precio_producto_proveedor = precioProveedor;
           this.producto.descripcion_producto = productoForm.descripcionProducto;
-          this.producto.imagen = response.url;
+          this.producto.foto_producto = response.url;
 
           this.servicioProducto.getProductByName(this.producto.nombre_producto).subscribe(productos=> {
             this.openDialog("Error","Este producto ya existe!!")
@@ -155,7 +162,7 @@ export class AgregarProductoComponent implements OnInit {
       precio_producto: 0,
       precio_producto_proveedor: 0,
       descripcion_producto: '',
-      imagen: ''
+      foto_producto: ''
     };;
     let precioProducto = Number(productoForm.precioProducto);
     let precioProveedor = Number(productoForm.precioProveedor);
@@ -164,7 +171,7 @@ export class AgregarProductoComponent implements OnInit {
     productoNew.precio_producto = precioProducto;
     productoNew.precio_producto_proveedor = precioProveedor;
     productoNew.descripcion_producto = productoForm.descripcionProducto;
-    productoNew.imagen = this.producto.imagen;
+    productoNew.foto_producto = this.producto.foto_producto;
 
     this.servicioProducto.updateProduct(productoNew.codigo_producto, productoNew).subscribe((response:any) => {
       this.router.navigate(['/productos'])
@@ -186,7 +193,7 @@ export class AgregarProductoComponent implements OnInit {
           precio_producto: 0,
           precio_producto_proveedor: 0,
           descripcion_producto: '',
-          imagen: ''
+          foto_producto: ''
         };;
         let precioProducto = Number(productoForm.precioProducto);
         let precioProveedor = Number(productoForm.precioProveedor);
@@ -195,7 +202,7 @@ export class AgregarProductoComponent implements OnInit {
         productoNew.precio_producto = precioProducto;
         productoNew.precio_producto_proveedor = precioProveedor;
         productoNew.descripcion_producto = productoForm.descripcionProducto;
-        productoNew.imagen = response.url;
+        productoNew.foto_producto = response.url;
 
         this.servicioProducto.updateProduct(productoNew.codigo_producto, productoNew).subscribe((response:any) => {
           this.router.navigate(['/productos'])
