@@ -2,19 +2,40 @@
 
 <div class="cajaPadre">
     <div class="buscador">
-        <label for="" class="label-buscar">Buscar Producto</label>
         <div class="cajaInput">
-            <input class="form-control input-buscar" type="text" (keyup)="buscar(termino.value)" #termino>
-            <button class="btn btnFiltro">P</button>
-            <button class="btn btnFiltro">V</button>
-            <button class="btn btnFiltro">T</button>
+            <input placeholder="Buscar" class="form-control input-buscar" type="text" (keyup)="buscar(termino.value)" #termino>
+            <button class="btn btnFiltro"><img class="imgBotonPlastico" src="../../../../assets/Images/botella-de-plastico copia.png" alt=""></button>
+            <button class="btn btnFiltro"><img class="imgBotonVino" src="../../../../assets/Images/vino copia.png" alt=""></button>
+            <button class="btn btnFiltro"><img class="imgBotonJuntas" src="../../../../assets/Images/juntas.png" alt=""></button>
         </div>
     </div>
 
-    <div>
+    <div class="cajaContenido">
+        <app-slideshow [productos] = "productos" ></app-slideshow>
+        <hr>
+        <div class="catalogoTwo">
+            <div>
+                <h1 class="text-center title">Bienvenidos A Ovni Vinos</h1>
+            </div>      
+            <div class="cajaCartas">
 
+                <div *ngFor="let producto of productos" class="cardP" (click)="openDialog(producto)">
+                    <div class="cardImg">
+                        <img class="imgCardBody" src="{{producto.foto_producto}}" alt="">
+                    </div>
+                    <div class="cardFootert">
+                        <p>{{producto.nombre_producto}}</p>
+                        <div style="display: flex; gap: 2rem;">
+                            <p>{{producto.precio_producto}}</p>
+                            <button class="btnAgregar">Agregar</button>
+                        </div>
 
-        
+                    </div>
+                </div>
+
+            </div>  
+        </div>
     </div>
-    <app-slideshow [productos] = "productos" ></app-slideshow>
+    
+
 </div>

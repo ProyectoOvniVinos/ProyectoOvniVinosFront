@@ -1,15 +1,16 @@
-import { ModalProductosComponent } from './../../Modal/modal-productos/modal-productos.component';
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { ProductoModel } from 'src/app/Models/Producto.model';
+import { DialogData } from './../DialogData';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-catalogo',
-  templateUrl: './catalogo.component.html',
-  styleUrls: ['./catalogo.component.css']
+  selector: 'app-modal-productos',
+  templateUrl: './modal-productos.component.html',
+  styleUrls: ['./modal-productos.component.css']
 })
-export class CatalogoComponent implements OnInit {
+export class ModalProductosComponent implements OnInit {
 
+  productoRecomendado: ProductoModel;
   productos: ProductoModel[] = [
     {
       codigo_producto: 1,
@@ -34,19 +35,24 @@ export class CatalogoComponent implements OnInit {
       foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
     },
   ];
-  constructor(public dialog: MatDialog) { }
+
+  constructor(
+    public dialogRef: MatDialogRef<ModalProductosComponent>,
+    @Inject(MAT_DIALOG_DATA) public producto:ProductoModel
+  ) { }
+
+  onNoClick(): void{
+    this.dialogRef.close();
+  }
 
   ngOnInit(): void {
+    this.productos.forEach( producto => {
+      if(producto.codigo_producto==this.producto.codigo_producto){
+        this.productoRecomendado=producto
+      }else{
+        this.productoRecomendado==null;
+      }
+    })
   }
 
-  buscar(termino:string){
-    
-  }
-
-  openDialog(producto: ProductoModel): void {
-    const dialogRef = this.dialog.open(ModalProductosComponent, {
-      width: '60%',
-      data: producto,
-    });
-  }
 }

@@ -1,3 +1,4 @@
+
 .catalogo{
     width:100%;
     justify-content:center;
@@ -27,6 +28,17 @@
     margin-bottom:1rem;
 }
 
+.cajaContenido{
+    height: 60rem;
+    overflow: auto;
+}
+
+.catalogoTwo{
+    width: 100%;
+    height: auto;
+    margin-bottom: 28%;
+}
+
 .buscador{
    display: flex;
    flex-direction: column;
@@ -42,7 +54,12 @@
     margin: 0;
 }
 .input-buscar{
-    max-height: 40px;
+    height: 3.2rem;
+    font-size: 2rem;
+}
+
+.input-buscar::placeholder{
+    color: rgb(184, 13, 72);
 }
 
 .buscador input{
@@ -55,6 +72,10 @@
     border: 1px solid rgb(184, 13, 72);
 }
 
+.title{
+    color: rgb(211, 21, 88);
+}
+
 .cajaInput{
     width: 100%;
     display: flex;
@@ -64,8 +85,126 @@
 }
 
 .btnFiltro{
+    width: 5%;
     background-color: rgb(211, 21, 88);
     color: white;
+}
+
+.btn:hover{
+    box-shadow:  1px 1px 3px 1px rgb(184, 13, 72) !important;
+    border: 1px solid rgb(184, 13, 72) !important;
+}
+
+.imgBotonPlastico{
+    width: 47%;
+    height: 2.5rem;
+}
+
+.imgBotonVino{
+    width: 47%;
+    height: 2.5rem;
+}
+
+
+.imgBotonJuntas{
+    width: 100%;
+    height: 2.5rem;
+}
+
+.cajaCartas{
+    height: 80%;
+    width: 100%;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5%;
+}
+
+p{
+    margin: 0;
+}
+
+.cardP{
+    width: 20%;
+    height: 18rem;
+    color: white;
+    margin-bottom: 2%;
+    border-radius: 1rem;
+    box-shadow:  11px 12px 12px #9b9b9b,
+    -19px -19px 12px #ffffff;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.cardP:hover{
+    transform: scale(1.05,1.05);
+}
+
+
+.cardFootert{
+    width: 100%;
+    height: 30%;
+    background-color: rgb(211, 21, 88);
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+
+.imgCardBody{
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 1rem;
+    border-top-right-radius:1rem ;
+    border: 5px solid rgb(211, 21, 88);
+}
+
+
+.cardImg{
+    height: 70%;
+}
+
+.btnAgregar {
+    height: 1.8rem;
+    background: #fff; /* color de fondo */
+    color: rgb(184, 13, 72); /* color de fuente */
+    border: 2px solid rgb(184, 13, 72); /* tamaño y color de borde */
+    padding: 16px 20px;
+    padding-top: 0px;
+    border-radius: 8px; /* redondear bordes */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 1rem;
+}
+
+.btnAgregar:hover {
+    color: #fff;/* color de fuente hover */
+}
+
+.btnAgregar::after{
+    content: "";
+    background: rgb(255, 62, 123);
+    background: linear-gradient(90deg, rgb(214, 47, 100) 11%, rgb(255, 78, 134) 55%, rrgb(207, 46, 97)100%);
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(45deg) scale(0, 1);
+    transition: all 0.3s ease;
+}
+
+.btnAgregar:hover::after{
+    transition: all 0.3s ease-out;
+    transform: skewX(45deg) scale(1, 1);
 }
 
 @media screen and (max-height:780px) {
