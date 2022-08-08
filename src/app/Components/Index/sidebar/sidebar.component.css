@@ -162,12 +162,16 @@
     height: 13vh;
     max-height: 110px;
     background-color: #fafafa;
-    width: 100%;
-
+    width: 79%;
     position: fixed;
     bottom: 0;
-    right: 0;
+    left: 14%;
+    /* right: 0; */
     z-index: 1;
+    box-shadow: 0px 3px 17px 3px grey;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem
+
 }
 
 .texts {
