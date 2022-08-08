@@ -1,14 +1,16 @@
-import { Component, OnInit, Input } from '@angular/core';
 import { ProductoModel } from 'src/app/Models/Producto.model';
+import { DialogData } from './../DialogData';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-carrito',
-  templateUrl: './carrito.component.html',
-  styleUrls: ['./carrito.component.css']
-  
+  selector: 'app-modal-productos',
+  templateUrl: './modal-productos.component.html',
+  styleUrls: ['./modal-productos.component.css']
 })
-export class CarritoComponent implements OnInit {
+export class ModalProductosComponent implements OnInit {
 
+  productoRecomendado: ProductoModel;
   productos: ProductoModel[] = [
     {
       codigo_producto: 1,
@@ -31,34 +33,26 @@ export class CarritoComponent implements OnInit {
       precio_producto_proveedor: 5000,
       descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
       foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
-    },{
-      codigo_producto: 4,
-      nombre_producto: 'Vino De Cereza',
-      precio_producto: 40000,
-      precio_producto_proveedor: 5000,
-      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
-      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
     },
   ];
 
-  @Input() modal:boolean = false;
+  constructor(
+    public dialogRef: MatDialogRef<ModalProductosComponent>,
+    @Inject(MAT_DIALOG_DATA) public producto:ProductoModel
+  ) { }
 
-  constructor() { }
+  onNoClick(): void{
+    this.dialogRef.close();
+  }
 
   ngOnInit(): void {
+    this.productos.forEach( producto => {
+      if(producto.codigo_producto==this.producto.codigo_producto){
+        this.productoRecomendado=producto
+      }else{
+        this.productoRecomendado==null;
+      }
+    })
   }
-
-  cerrarModal(){
-    this.modal = false;
-  }
-
-  abrirModal(){
-    this.modal = true;
-  }
-
-  cantidadProductos(){
-    return this.productos.length;
-  }
-  
 
 }
