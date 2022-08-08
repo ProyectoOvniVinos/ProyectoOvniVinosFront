@@ -56,7 +56,7 @@
                 <tbody class="tablabodyP"  >
                     <tr class="puntero" *ngFor="let producto of productos">
                         <td>
-                            <img (click)="abrirModal(producto.imagen)" class="imagen" src="{{producto.imagen}}" alt="{{producto.imagen}}">
+                            <img (click)="abrirModal(producto.foto_producto)" class="imagen" src="{{producto.foto_producto}}" alt="{{producto.foto_producto}}">
                         </td>
                         <td>{{producto.nombre_producto}}</td>
                         <td>{{producto.precio_producto}}</td>

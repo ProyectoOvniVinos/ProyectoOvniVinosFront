@@ -1,0 +1,43 @@
+<h2 class="tituloModal" mat-dialog-title>{{producto.nombre_producto}}</h2>
+<mat-dialog-content>
+    
+    <div class="cajaM">
+        <div class="cajaImg">
+            <img class="img" src="{{producto.foto_producto}}" alt="">
+        </div>
+        <div class="cajaInfoYreco">
+            <div class="cajaInfo">
+                <div>
+                    <p>Nombre: {{producto.nombre_producto}}</p>
+                </div>
+                <div>
+                    <p>Precio: {{producto.precio_producto}}</p>
+                </div>
+                <div>
+                    <p>Descripcion: <br>
+                         <span> {{producto.descripcion_producto}} </span>
+                    </p>
+                </div>
+            </div>
+            <div class="cajaRecomendaciones">
+                <div class="cajaImgRe">
+                    <img class="imgRecomendacion" src="{{productoRecomendado.foto_producto}}"/>
+                </div>
+                <div class="cajaInfoReco">
+                    <p>Nombre: </p>
+                    <p>Precio: </p>
+                    <div class="cajaBtns">
+                        <button class="btn">Ver</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</mat-dialog-content>
+<mat-dialog-actions class="cajaBtns">
+  <button class="btnOk" mat-button [mat-dialog-close]="true">Agregar</button>
+  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+  <button class="btnOk" mat-button [mat-dialog-close]="false">Cerrar</button>
+</mat-dialog-actions>

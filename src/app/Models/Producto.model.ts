@@ -5,6 +5,7 @@ export class ProductoModel {
     precio_producto_proveedor !: number;
     descripcion_producto !: string;
     codigo_producto?: number;
-    imagen ?: string;
+    foto_producto ?: string;
+    estado_producto ?: string;
 }
 

@@ -46,6 +46,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ModalInteraccionComponent } from './Components/Modal/modal-interaccion/modal-interaccion.component';
 import { IngresarVentaComponent } from './Components/Admin/ingresar-venta/ingresar-venta.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ModalProductosComponent } from './Components/Modal/modal-productos/modal-productos.component';
  
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { HttpClientModule } from '@angular/common/http';
     IngresarCompraComponent,
     ModalErrorComponent,
     ModalInteraccionComponent,
-    IngresarVentaComponent
+    IngresarVentaComponent,
+    ModalProductosComponent
 
 
   ],
