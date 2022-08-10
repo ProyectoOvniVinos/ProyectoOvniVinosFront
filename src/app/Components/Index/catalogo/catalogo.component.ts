@@ -32,7 +32,70 @@ export class CatalogoComponent implements OnInit {
       precio_producto_proveedor: 5000,
       descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
       foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
-    },
+    }, {
+      codigo_producto: 4,
+      nombre_producto: 'Nectar de uva',
+      precio_producto: 10000,
+      precio_producto_proveedor: 5000,
+      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
+      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
+    }, {
+      codigo_producto: 5,
+      nombre_producto: 'Nectar de uva',
+      precio_producto: 10000,
+      precio_producto_proveedor: 5000,
+      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
+      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
+    }, {
+      codigo_producto: 6,
+      nombre_producto: 'Nectar de uva',
+      precio_producto: 10000,
+      precio_producto_proveedor: 5000,
+      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
+      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
+    }, {
+      codigo_producto: 4,
+      nombre_producto: 'Nectar de uva',
+      precio_producto: 10000,
+      precio_producto_proveedor: 5000,
+      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
+      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
+    }, {
+      codigo_producto: 5,
+      nombre_producto: 'Nectar de uva',
+      precio_producto: 10000,
+      precio_producto_proveedor: 5000,
+      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
+      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
+    }, {
+      codigo_producto: 6,
+      nombre_producto: 'Nectar de uva',
+      precio_producto: 10000,
+      precio_producto_proveedor: 5000,
+      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
+      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
+    }, {
+      codigo_producto: 4,
+      nombre_producto: 'Nectar de uva',
+      precio_producto: 10000,
+      precio_producto_proveedor: 5000,
+      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
+      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
+    }, {
+      codigo_producto: 5,
+      nombre_producto: 'Nectar de uva',
+      precio_producto: 10000,
+      precio_producto_proveedor: 5000,
+      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
+      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
+    }, {
+      codigo_producto: 6,
+      nombre_producto: 'Nectar de uva',
+      precio_producto: 10000,
+      precio_producto_proveedor: 5000,
+      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
+      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
+    }
   ];
   constructor(public dialog: MatDialog) { }
 
@@ -41,6 +104,10 @@ export class CatalogoComponent implements OnInit {
 
   buscar(termino:string){
     
+  }
+
+  agregar(){
+    console.log("agregando");
   }
 
   openDialog(producto: ProductoModel): void {

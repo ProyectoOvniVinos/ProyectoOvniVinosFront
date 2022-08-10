@@ -1,5 +1,5 @@
 <h2 class="tituloModal" mat-dialog-title>{{producto.nombre_producto}}</h2>
-<mat-dialog-content>
+<mat-dialog-content class="cuadroProducto">
     
     <div class="cajaM">
         <div class="cajaImg">
@@ -15,7 +15,7 @@
                 </div>
                 <div>
                     <p>Descripcion: <br>
-                         <span> {{producto.descripcion_producto}} </span>
+                         <span class="descProduct"> {{producto.descripcion_producto}} </span>
                     </p>
                 </div>
             </div>
@@ -26,9 +26,9 @@
                 <div class="cajaInfoReco">
                     <p>Nombre: </p>
                     <p>Precio: </p>
-                    <div class="cajaBtns">
+                    <!-- <div class="cajaBtns"> -->
                         <button class="btn">Ver</button>
-                    </div>
+                    <!-- </div> -->
 
                 </div>
             </div>
