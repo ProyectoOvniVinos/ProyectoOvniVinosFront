@@ -4,9 +4,9 @@
     <div class="buscador">
         <div class="cajaInput">
             <input placeholder="Buscar" class="form-control input-buscar" type="text" (keyup)="buscar(termino.value)" #termino>
-            <button class="btn btnFiltro"><img class="imgBotonPlastico" src="../../../../assets/Images/botella-de-plastico copia.png" alt=""></button>
-            <button class="btn btnFiltro"><img class="imgBotonVino" src="../../../../assets/Images/vino copia.png" alt=""></button>
-            <button class="btn btnFiltro"><img class="imgBotonJuntas" src="../../../../assets/Images/juntas.png" alt=""></button>
+            <button class="btn btnFiltro"><img class="imgBotonPlastico"  title="Plasticos" src="../../../../assets/Images/botella-de-plastico copia.png" alt=""></button>
+            <button class="btn btnFiltro"><img class="imgBotonVino"  title="Vidrios" src="../../../../assets/Images/vino copia.png" alt=""></button>
+            <button class="btn btnFiltro"><img class="imgBotonJuntas"  title="Todos" src="../../../../assets/Images/juntas.png" alt=""></button>
         </div>
     </div>
 
@@ -22,13 +22,11 @@
                 <div *ngFor="let producto of productos" class="cardP" (click)="openDialog(producto)">
                     <div class="cardImg">
                         <img class="imgCardBody" src="{{producto.foto_producto}}" alt="">
+                        <img (click)="agregar()" class="imgCarrito" src="../../../../assets/Images/carritoVioleta.png" alt="">
                     </div>
                     <div class="cardFootert">
                         <p>{{producto.nombre_producto}}</p>
-                        <div style="display: flex; gap: 2rem;">
-                            <p>{{producto.precio_producto}}</p>
-                            <button class="btnAgregar">Agregar</button>
-                        </div>
+                        <p>${{producto.precio_producto}}</p>
 
                     </div>
                 </div>
