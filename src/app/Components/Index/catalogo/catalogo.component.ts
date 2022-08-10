@@ -116,4 +116,16 @@ export class CatalogoComponent implements OnInit {
       data: producto,
     });
   }
+
+  cambiarImg1(event){
+    console.log(event.target.src);
+
+  }
+
+  cambiarImg2(event){
+    console.log(event.target.src);
+    
+
+  }
+
 }

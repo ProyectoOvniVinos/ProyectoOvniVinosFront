@@ -17,14 +17,15 @@
 /**nuevos styles*/
 .padreCarrito{
     width: 100%;
-    height: 16rem;
+    height: 15rem;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .madreCarrito{
     width: 90%;
-    height: 70%;
+    height: 80%;
     background-color: white;
     border-radius: 10px;
     border: 2px solid rgb(255, 255, 255);
@@ -45,18 +46,29 @@
 }
 
 .cajaImg{
-    width: 80%;
-    height: 80%;
+    width: 90%;
+    height: 85%;
     top: 10%;
     right: 64%;
     border-radius: 10px;
     border: 2px solid rgb(255, 255, 255);
+    margin-left: 6%;
 }
 
 .img{
     width: 100%;
     height: 100%;
     border-radius: 5px;
+}
+
+.imgEliminar{
+    width: 15%;
+    height: 100%;
+    transition: 0.2s;
+}
+
+.imgEliminar:hover{
+    transform: scale(1.15,1.15)
 }
 
 .cajaInfoCarrito{
@@ -70,17 +82,13 @@
 
 .cajaEliminar{
 
-    width: 8%;
-    height: 10%;
+    width: 90%;
+    height: 12%;
     background-color: rgb(255, 255, 255);
-    position: absolute;
-    left: 80%;
-    top: 3%;
     cursor: pointer;
     transition: 0.2s;
-}
-.cajaEliminar:hover{
-    transform: scale(1.1,1.1);
+    display: flex;
+    justify-content: flex-end;
 }
 
 .cajaInfo{
@@ -227,67 +235,38 @@
 }
 
 .waves {
+    width: 20px;
     height: 100%;
-    width: 5%;
-    display: flex;
-    flex-direction: column;
 }
 
 .wave{
-    height: 20%;
+    background: url('../../../../assets/Images/wave2.png');
+    height: 100%;
     width: 100%;
-    background-color: rgb(247, 96, 141);
+    background-size: cover;
 }
 
-.a{ animation:1s a ease-in-out infinite alternate;}
-.b{ animation:1s b ease-in-out infinite alternate;}
 
-.c{ animation:1s a ease-in-out infinite alternate;}
+.wave.a{
 
-.d{ animation:1s b ease-in-out infinite alternate;}
-
-.e{ animation:1s a ease-in-out infinite alternate;}
-
-@keyframes a {
-    0% {
-      transform: scale(1.1,1);
-    } 
-    20% {
-        transform: scale(1.2,1);
-    }
-    40% {
-        transform: scale(1.3,1);
-    }
-    60% {
-        transform: scale(1.4,1);
-    }
-    80% {
-        transform: scale(1.5,1);
-    }
-    100% {
-        transform: scale(1.6,1);
-    }
-  }
-@keyframes b {
-    0% {
-      transform: scale(1.6,1);
-    } 
-    20% {
-        transform: scale(1.5,1);
-    }
-    40% {
-        transform: scale(1.4,1);
-    }
-    60% {
-        transform: scale(1.3,1);
-    }
-    80% {
-        transform: scale(1.2,1);
-    }
-    100% {
-        transform: scale(1.1,1);
-    }
+    animation: animate 25s linear infinite;
+    z-index: 1000;
+    opacity: 1;
+    animation-delay: 0s;
 }
+
+
+@keyframes animate {
+    
+    0%{
+        background-position-y: 0;
+    }
+    100%{
+        background-position-y:1000px;
+    }
+
+}
+
 
   
 
