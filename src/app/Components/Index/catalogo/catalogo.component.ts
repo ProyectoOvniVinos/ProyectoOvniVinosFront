@@ -106,6 +106,10 @@ export class CatalogoComponent implements OnInit {
     
   }
 
+  agregar(){
+    console.log("agregando");
+  }
+
   openDialog(producto: ProductoModel): void {
     const dialogRef = this.dialog.open(ModalProductosComponent, {
       width: '60%',
