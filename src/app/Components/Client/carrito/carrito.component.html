@@ -28,7 +28,7 @@
 
         <h2 class="hCarrito text-light text-center">Mi Carrito</h2>
         <cdk-virtual-scroll-viewport itemSize="50" class="viewport">
-            <div *ngFor="let producto of productos">
+<!--             <div *ngFor="let producto of productos">
                 <div class="cajaCardPadre" >
                     <div class="cardCarrito"> 
                         <div class="cajaCard">
@@ -46,6 +46,38 @@
                     </div>
                 </div>
                 <br>                
+            </div> -->
+            <div class="padreCarrito">
+
+                <div class="madreCarrito">
+                    <div class="caja1">
+                        <div class="cajaImg">
+                            <img class="img" src="../../../../assets/TEMPORALES/vino1.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="waves">
+                        <div class="wave a"></div>
+                        <div class="wave b"></div>
+                        <div class="wave c"></div>
+                        <div class="wave d"></div>
+                        <div class="wave e"></div>
+                    </div>
+                    <div class="cajaInfoCarrito">
+                        <div class="cajaEliminar">
+                           <img class="img" src="../../../../assets/Images/eliminar.png" alt=""> 
+                        </div>
+                        <div class="cajaInfo">
+                            <p>Vino Abocado</p>
+                            <p>$12.000</p>
+                            <p>Cantidad: 5</p>
+                        </div>
+                        <div class="cajaBtns">
+                            <button class="button btnMas">+</button>
+                            <button class="button btnMenos">-</button>
+                        </div>
+                    </div>
+                </div>
+                <br>
             </div>
         
 
