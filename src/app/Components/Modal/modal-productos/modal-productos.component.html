@@ -1,9 +1,26 @@
-<h2 class="tituloModal" mat-dialog-title>{{producto.nombre_producto}}</h2>
+<div class="headTitle">
+    <h2 class="tituloModal" mat-dialog-title>{{producto.nombre_producto}}</h2>
+    <img src="../../../../assets/Images/salir.png" alt="" class="imageCerrar" (click)="onNoClick()">
+</div>
+
 <mat-dialog-content class="cuadroProducto">
     
     <div class="cajaM">
         <div class="cajaImg">
             <img class="img" src="{{producto.foto_producto}}" alt="">
+            <div class="cajaRecomendaciones">
+                <div class="cajaImgRe">
+                    <img class="imgRecomendacion" src="{{productoRecomendado.foto_producto}}"/>
+                </div>
+                <div class="cajaInfoReco" >
+                    <p> <b> Recomendado </b> </p>
+                    <p> Vino Abocado </p>
+                    <p>$15000 </p>
+                    <!-- <div class="cajaBtns"> -->
+                        <button class="btn">Ver</button>
+                    <!-- </div> -->
+                </div>
+            </div>
         </div>
         <div class="cajaInfoYreco">
             <div class="cajaInfo">
@@ -19,25 +36,13 @@
                     </p>
                 </div>
             </div>
-            <div class="cajaRecomendaciones">
-                <div class="cajaImgRe">
-                    <img class="imgRecomendacion" src="{{productoRecomendado.foto_producto}}"/>
-                </div>
-                <div class="cajaInfoReco">
-                    <p>Nombre: </p>
-                    <p>Precio: </p>
-                    <!-- <div class="cajaBtns"> -->
-                        <button class="btn">Ver</button>
-                    <!-- </div> -->
-
-                </div>
-            </div>
+            <mat-dialog-actions class="cajaBtns">
+                <button class="btnOk" mat-button [mat-dialog-close]="true">Agregar al carrito</button>
+                <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+                <!-- <button class="btnOk" mat-button [mat-dialog-close]="false">Cerrar</button> -->
+            </mat-dialog-actions>
         </div>
+      
     </div>
 
 </mat-dialog-content>
-<mat-dialog-actions class="cajaBtns">
-  <button class="btnOk" mat-button [mat-dialog-close]="true">Agregar</button>
-  <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
-  <button class="btnOk" mat-button [mat-dialog-close]="false">Cerrar</button>
-</mat-dialog-actions>

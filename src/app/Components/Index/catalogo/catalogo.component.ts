@@ -112,7 +112,7 @@ export class CatalogoComponent implements OnInit {
 
   openDialog(producto: ProductoModel): void {
     const dialogRef = this.dialog.open(ModalProductosComponent, {
-      width: '60%',
+      width: '50%',
       data: producto,
     });
   }

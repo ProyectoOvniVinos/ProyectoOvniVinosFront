@@ -15,24 +15,32 @@
 }
 
 .cajaImg{
+    display: flex;
     width: 50%;
     height: 80%;
+    flex-direction: column;
+    align-items: center;
 }
 
 .img{
-    width: 80%;
-    height: 60%;
+    width: 75%;
+    height: 24rem;
     border-radius: 0.5rem;
+    margin-bottom: 5%;
 }
 
 .cajaInfoYreco{
     width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
 }
 
 .cajaRecomendaciones{
     border: 2px solid  rgb(126, 126, 126);
     border-radius: 0.5rem;
-    width: 85%;
+    width: 75%;
     height: 35%;
     display: flex;
 }
@@ -57,13 +65,13 @@
     background-color:  rgb(211, 21, 88);
     color: white;
 }
-
+/* 
 .cajaBtns{
     display: flex;
     gap: 8%;
     padding-left: 80%;
     
-}
+} */
 
 .btnOk {
     background: #fff; /* color de fondo */
@@ -148,9 +156,22 @@
 }
 
 .cuadroProducto{
-    margin: 0 20px;
+    margin: 0;
+    padding: 0;
 }
 
 .descProduct{
     font-size: 18px;
+}
+
+.headTitle{
+    display: flex;
+    justify-content: space-between;
+}
+
+.imageCerrar{
+    width:50px;
+    height: 50px;
+    margin: -1%;
+    cursor: pointer;
 }
