@@ -221,7 +221,7 @@ export class AgregarProductoComponent implements OnInit {
       nombreProducto: ['', [Validators.required, Validators.minLength(3)]],
       precioProducto: ['', [Validators.required, Validators.pattern(/^[0-9]/)]],
       precioProveedor:['', [Validators.required, Validators.pattern(/^[0-9]/)]],
-      descripcionProducto:['',[Validators.required]],
+      descripcionProducto:['',[Validators.required, Validators.maxLength(200)]],
       imagenProducto: ['', []]
     })
   }
