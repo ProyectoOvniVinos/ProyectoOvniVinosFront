@@ -73,6 +73,7 @@
                             [ngClass]="descripcionProductoNoValido == null ? '' : descripcionProductoNoValido ? 'is-invalid': 'is-valid'"></textarea>
                             <div class="errors-container" *ngIf="descripcionControl.invalid && (descripcionControl.touched || descripcionControl.dirty)">
                                 <p class="text-danger" *ngIf="descripcionControl.hasError('required')">El campo es obligatorio</p>
+                                <p class="text-danger" *ngIf="!descripcionControl.hasError('required')">Maximo 200 caracteres</p>
                             </div>
                         </div>
                     </div>
@@ -83,7 +84,6 @@
                             </div>
                             <div class="cajaBtnsTwo">
                                 <button type="submit" class="btnRegistrar" (click)="iniciarProceso()"> {{boton}} </button>
-                                <button *ngIf="boton=='Editar'" type="submit" class="btnRegistrar"> Eliminar </button>
                             </div>
 
                         </div>

@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { ProductoModel } from 'src/app/Models/Producto.model';
-import Swiper from 'swiper';
+import Swiper , {Autoplay} from 'swiper';
 @Component({
   selector: 'app-slideshow',
   templateUrl: './slideshow.component.html',
@@ -15,18 +15,19 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
   constructor() { }
   ngAfterViewInit(): void {
     this.swiper = new Swiper('.swiper', {
+      modules: [Autoplay],
 
       slidesPerView: 1.3,
       grabCursor: true,
       centeredSlides: true,
       freeMode: true,
-      spaceBetween: 20,
+      spaceBetween: 30,
       loop: true,
       autoplay: {
-        delay: 1000,
+        delay: 4000,
         disableOnInteraction: false,
       },
-      speed: 400,
+      speed: 800,
     });
     this.swiper.autoplay.start();
   }

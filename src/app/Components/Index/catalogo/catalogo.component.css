@@ -54,8 +54,9 @@
     margin: 0;
 }
 .input-buscar{
-    height: 3.2rem;
+    height: 3.3rem;
     font-size: 2rem;
+    border-color: rgb(211, 21, 88);;
 }
 
 .input-buscar::placeholder{
@@ -85,10 +86,27 @@
 }
 
 .btnFiltro{
-    width: 5%;
-    background-color: rgb(211, 21, 88);
+    width: 4%;
+    background-color: rgb(255, 255, 255);
     color: white;
+    border: 1px solid rgb(184, 13, 72);
+    transition: 0.5s;
 }
+
+.btnFiltro:hover{
+    background-color: rgb(211, 21, 88);
+}
+
+.btnFiltro:hover .a{
+    content: url("../../../../assets/Images/botella-de-plastico copia.png")
+}
+.btnFiltro:hover .b{
+    content: url("../../../../assets/Images/vino copia.png")
+}
+.btnFiltro:hover .c{
+    content: url("../../../../assets/Images/juntas.png")
+}
+
 
 .btn:hover{
     box-shadow:  1px 1px 3px 1px rgb(184, 13, 72) !important;

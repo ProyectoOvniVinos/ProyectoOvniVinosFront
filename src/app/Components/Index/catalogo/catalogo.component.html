@@ -4,9 +4,9 @@
     <div class="buscador">
         <div class="cajaInput">
             <input placeholder="Buscar" class="form-control input-buscar" type="text" (keyup)="buscar(termino.value)" #termino>
-            <button class="btn btnFiltro"><img class="imgBotonPlastico"  title="Plasticos" src="../../../../assets/Images/botella-de-plastico copia.png" alt=""></button>
-            <button class="btn btnFiltro"><img class="imgBotonVino"  title="Vidrios" src="../../../../assets/Images/vino copia.png" alt=""></button>
-            <button class="btn btnFiltro"><img class="imgBotonJuntas"  title="Todos" src="../../../../assets/Images/juntas.png" alt=""></button>
+            <button class="btn btnFiltro"><img class="imgBotonPlastico a" (mouseenter)="cambiarImg1($event)" (mouseleave)="cambiarImg2($event)" title="Plasticos" src="../../../../assets/Images/botella-de-plasticoRosado.png" alt=""></button>
+            <button class="btn btnFiltro"><img class="imgBotonVino b"  title="Vidrios" src="../../../../assets/Images/vinoRosado.png" alt=""></button>
+            <button class="btn btnFiltro"><img class="imgBotonJuntas c"  title="Todos" src="../../../../assets/Images/juntasRosado.png" alt=""></button>
         </div>
     </div>
 
