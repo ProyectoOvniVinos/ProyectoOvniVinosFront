@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CompraModel } from 'src/app/Models/Compra.model';
 import { Item_compraModel } from 'src/app/Models/Item_compra.model';
 import { ProductoModel } from 'src/app/Models/Producto.model';
+import { ProductoService } from 'src/app/Services/producto.service';
 
 @Component({
   selector: 'app-ingresar-compra',
@@ -16,57 +17,38 @@ export class IngresarCompraComponent implements OnInit {
 
   itemVaciar = new Item_compraModel();
 
-  productos: ProductoModel[] = [
-    {
-      codigo_producto: 1,
-      nombre_producto: 'Vino Abocado',
-      precio_producto: 13000,
-      precio_producto_proveedor: 6000,
-      descripcion_producto: 'Delicioso Vino Dulce',
-      foto_producto: '../../../../assets/TEMPORALES/vino1.jpg'
-    }, {
-      codigo_producto: 2,
-      nombre_producto: 'Vino tinto',
-      precio_producto: 13000,
-      precio_producto_proveedor: 6000,
-      descripcion_producto: 'Delicioso Vino no tan Dulce',
-      foto_producto: '../../../../assets/TEMPORALES/vino2.jpg'
-    }, {
-      codigo_producto: 3,
-      nombre_producto: 'Nectar de uva',
-      precio_producto: 10000,
-      precio_producto_proveedor: 5000,
-      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
-      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
-    }, {
-      codigo_producto: 4,
-      nombre_producto: 'Nectar de uva azul',
-      precio_producto: 10000,
-      precio_producto_proveedor: 5000,
-      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
-      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
-    }, {
-      codigo_producto: 5,
-      nombre_producto: 'Nectar x',
-      precio_producto: 10000,
-      precio_producto_proveedor: 5000,
-      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
-      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
-    },
-
-  ];
+  productos: ProductoModel[] = [];
 
   banderaProducto: boolean = false;
   banderaCantidad: boolean = false;
   banderaPrecio: boolean = false;
   compraForm !: FormGroup;
+  bandera !: boolean;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private service: ProductoService) {
     this.crearFormulario();
   }
 
   ngOnInit(): void {
+    this.service.getProducts().subscribe((productos: any) => {
+      this.productos=productos;
+      if(this.productos.length==0){
+        this.bandera=false;
+      }else{
+        this.bandera=true;
+      }
+    })
 
+  }
+
+  get productoControl(): FormControl{
+    return this.compraForm.get('producto') as FormControl
+  }
+  get cantidadControl(): FormControl{
+    return this.compraForm.get('cantidad') as FormControl
+  }
+  get precioControl(): FormControl{
+    return this.compraForm.get('precio') as FormControl
   }
 
   get productoNoValido() {
@@ -109,7 +91,7 @@ export class IngresarCompraComponent implements OnInit {
     this.compraForm = this.fb.group({
       producto: ['', [Validators.required]],
       cantidad: ['', [Validators.required]],
-      precio: [[Validators.required]]
+      precio: ['',[Validators.required]]
     })
   }
 
