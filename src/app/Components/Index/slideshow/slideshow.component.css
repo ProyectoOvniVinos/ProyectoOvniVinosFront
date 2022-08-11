@@ -31,11 +31,14 @@
     width: 100%;
 }
 
-.cont-produc {
-    width: 77% !important;
-    min-width: 200px;
-    height: 99% !important;
-    min-height: 250px;
+.imgCarrito{
+    width: 100%;
+    transition: 0.2s
+}
+
+.imgCarrito:hover{
+    transform: scale(1.1,1.1);
+    content: url("../../../../assets/Images/carritoVioleta.png");
 }
 
 .cont-exte {
@@ -47,6 +50,11 @@
 
 .cont-interno {
     color: white;
+}
+
+.cont-interno2{
+    margin-bottom: 2%;
+    width: 15%;
 }
 
 .btnAgregar {
