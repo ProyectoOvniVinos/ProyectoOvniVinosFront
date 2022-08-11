@@ -86,8 +86,13 @@
 
 .btnFiltro{
     width: 5%;
-    background-color: rgb(211, 21, 88);
+    background-color: rgb(255, 255, 255);
     color: white;
+    border: 2px solid black;
+}
+
+.btnFiltro:hover{
+    background-color: rgb(211, 21, 88);
 }
 
 .btn:hover{

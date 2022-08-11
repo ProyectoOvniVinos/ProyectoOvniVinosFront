@@ -49,6 +49,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ModalProductosComponent } from './Components/Modal/modal-productos/modal-productos.component';
 import { ModalInventarioGComponent } from './Components/Modal/modal-inventario-g/modal-inventario-g.component';
 import { ModalConfirmarCompraComponent } from './Components/Modal/modal-confirmar-compra/modal-confirmar-compra.component';
+import { ModalVentaComponent } from './Components/Modal/modal-venta/modal-venta.component';
  
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { ModalConfirmarCompraComponent } from './Components/Modal/modal-confirma
     IngresarVentaComponent,
     ModalProductosComponent,
     ModalInventarioGComponent,
-    ModalConfirmarCompraComponent
+    ModalConfirmarCompraComponent,
+    ModalVentaComponent
 
 
   ],
