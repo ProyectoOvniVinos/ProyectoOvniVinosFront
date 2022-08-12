@@ -1,1 +1,11 @@
-<p>modal-inventario-g works!</p>
+<div class="cajaModal">
+    <h1 class="tituloModal" mat-dialog-title>{{data.nombre_producto}}</h1>
+    <div mat-dialog-content>
+      <p class="text-dark">{{data.descripcion_producto}}</p>
+      <img src="{{data.foto_producto}}" class="text-dark">/>
+      <p class="text-dark">{{data.precio_producto_proveedor}}</p>
+    </div>
+    <div class="cajaButton" mat-dialog-actions>
+      <button class="btnOk"mat-button (click)="onNoClick()">Ok</button>
+    </div>
+  </div>
