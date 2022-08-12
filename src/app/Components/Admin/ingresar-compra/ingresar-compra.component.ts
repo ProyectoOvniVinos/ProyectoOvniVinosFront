@@ -209,6 +209,12 @@ export class IngresarCompraComponent implements OnInit {
   realizarCompra(){
     this.compra.precio_compra=this.total;
     this.compra.cantidad_compra = this.obtenerCantidadTotal()
+    this.compra.correo_admin.apellido_admin = "Amador"
+    this.compra.correo_admin.correo_admin = "cristian@gmail.com"
+    this.compra.correo_admin.direccion_admin = "centenario"
+    this.compra.correo_admin.nombre_admin = "Cristian"
+    this.compra.correo_admin.password_admin = "12345"
+    this.compra.correo_admin.telefono_admin = "323"
     console.log(this.compra);
     
 
