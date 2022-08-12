@@ -16,7 +16,6 @@ export class ProductoService {
 
   getProducts():Observable<ProductoModel[]> {
     const url: string = `${this.url}productos`
-
     return this.http.get<ProductoModel[]>(url);
   }
 
