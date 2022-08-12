@@ -183,7 +183,7 @@
 }
 
 .card{
-    height: 100%!important;
+    height: 100%;
     border: 2px solid  rgb(211, 21, 88);
     margin-bottom: 3%;
 }
@@ -222,4 +222,110 @@
 
 .card-footer{
     border-top: 2px solid  rgb(211, 21, 88);
+}
+
+/*REPONSIVE*/
+
+@media screen and (max-width: 1800px) and (max-height:1080px){
+
+    .img{
+        margin-bottom: 1%;
+    }
+
+    .card-body{
+        height: 26.7rem;
+    }
+    
+    .tituloModal{
+        margin: 0px 0px 7px;
+    }
+
+}
+
+@media screen and (max-width: 1700px) and (max-height:1080px){
+
+    .card-body{
+        height: 21rem;
+        padding: 15px;
+    }
+
+    .card-text{
+        font-size: 1.3rem;
+    }
+
+    .img{
+        margin-bottom: 0.3%;
+        height: 20.3rem;
+        width: 70%;
+    }
+
+    .cajaRecomendaciones{
+        width: 70%;
+    }
+
+}
+
+@media screen and (max-width: 1700px) and (max-height:1080px){
+
+    .card-text{
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 1300px) and (max-height:1080px){
+
+    .card-text{
+        font-size: 1.05rem;
+    }
+
+    .img{
+        height: 19.3rem;
+        width: 75%;
+    }
+
+    .cajaRecomendaciones{
+        width: 76%;
+    }
+
+    .card-body{
+        height: 20rem;
+    }
+
+    .recomended{
+        font-size: 0.99rem;
+    }
+}
+
+@media screen and (max-width: 1400px) and (max-height:1080px){
+
+    .card-text{
+        font-size: 1.07rem;
+    }
+
+    .img{
+        height: 17.3rem;
+        margin-bottom: 2.3%;
+    }
+
+    .card-body{
+        height: 20rem;
+    }
+    
+    .titleName{
+        font-size: 20px;
+    }
+
+    .recomended{
+        font-size: 0.8rem;
+    }
+
+    .btn{
+        margin-bottom: 8%;
+    }
+
+    .imageCerrar{
+        width: 40px;
+        height: 40px;
+        margin: -18%;
+    }
 }
