@@ -1,5 +1,6 @@
 .tituloModal{
     font-size: 30px;
+    color: rgb(211, 21, 88);
 }
 
 .cajaM{
@@ -26,7 +27,8 @@
     width: 75%;
     height: 24rem;
     border-radius: 0.5rem;
-    margin-bottom: 5%;
+    margin-bottom: 2%;
+    border: 2px solid  rgb(211, 21, 88);
 }
 
 .cajaInfoYreco{
@@ -38,7 +40,7 @@
 }
 
 .cajaRecomendaciones{
-    border: 2px solid  rgb(126, 126, 126);
+    /* border: 2px solid  rgb(126, 126, 88); */
     border-radius: 0.5rem;
     width: 75%;
     height: 35%;
@@ -50,6 +52,7 @@
     height: 100%;
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
+    border: 2px solid  rgb(211, 21, 88);
 }
 
 .cajaImgRe{
@@ -64,7 +67,10 @@
     align-items: center;
     background-color:  rgb(211, 21, 88);
     color: white;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
 }
+
 /* 
 .cajaBtns{
     display: flex;
@@ -170,8 +176,50 @@
 }
 
 .imageCerrar{
-    width:50px;
-    height: 50px;
-    margin: -1%;
+    width: 45px;
+    height: 45px;
+    margin: -14%;
     cursor: pointer;
+}
+
+.card{
+    height: 100%!important;
+    border: 2px solid  rgb(211, 21, 88);
+    margin-bottom: 3%;
+}
+
+.card-text{
+    font-size: 1.5rem;
+}
+
+/* .card-footer{
+    width: 10%;
+    height: 10%;
+} */
+
+.prueba{
+    width: 50%;
+    height: 100%;
+}
+
+.card-header{
+    height: 4rem;
+    padding-top: 4%;
+    border-bottom: 2px solid  rgb(211, 21, 88);
+}
+
+.cajaBtns{
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: center;
+    padding-bottom: 5%;
+}
+
+.card-body{
+    height: 27.7rem;
+}
+
+.card-footer{
+    border-top: 2px solid  rgb(211, 21, 88);
 }
