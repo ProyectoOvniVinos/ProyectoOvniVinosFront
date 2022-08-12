@@ -143,7 +143,7 @@
 .btn::after{
     content: "";
     background: rgb(255, 62, 123);
-    background: linear-gradient(90deg, rgb(214, 47, 100) 11%, rgb(255, 78, 134) 55%, rrgb(207, 46, 97)100%);
+    background: linear-gradient(90deg, rgb(214, 47, 100) 11%, rgb(255, 78, 134) 55%, rgb(207, 46, 97) 100%);
     position: absolute;
     z-index: -1;
     padding: 16px 20px;
