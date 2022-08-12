@@ -69,7 +69,7 @@
             <div class="contenedorTabla">
 
                 <div class="cajaTabla">
-                    <table class="table table-striped table-hover table-sm miTabla" *ngIf="compra.items.length>0">
+                    <table class="table table-striped table-hover table-sm miTabla" *ngIf="compra.compras.length>0">
                         <thead class="headerTable">
                             <tr class="text-center">
                                 <th>Producto</th>
@@ -80,23 +80,23 @@
                             </tr>
                         </thead>
                         <tbody class="">
-                            <tr class=" text-center" *ngFor="let item of compra.items">
-                                <td>{{item.producto.nombre_producto}}</td>
-                                <td>{{item.producto.precio_producto}}</td>
+                            <tr class=" text-center" *ngFor="let item of compra.compras">
+                                <td>{{item.codigo_producto.nombre_producto}}</td>
+                                <td>{{item.codigo_producto.precio_producto}}</td>
                                 <td>
-                                    <button class="btnBajar"(click)="disminuirCantidad(item.producto.codigo_producto, item.cantidad_producto)">-</button>
-                                    <input type="number" value="{{item.cantidad_producto}}" class="inputCantidad text-center" (change)="actualizarCantidad(item.producto.codigo_producto, $event)">
-                                    <button class="btnSubir" (click)="aumentarCantidad(item.producto.codigo_producto)">+</button>
+                                    <button class="btnBajar"(click)="disminuirCantidad(item.codigo_producto.codigo_producto, item.cantidad_producto)">-</button>
+                                    <input type="number" value="{{item.cantidad_producto}}" class="inputCantidad text-center" (change)="actualizarCantidad(item.codigo_producto.codigo_producto, $event)">
+                                    <button class="btnSubir" (click)="aumentarCantidad(item.codigo_producto.codigo_producto)">+</button>
                                 </td>
                                 <td>{{item.calcularImporte()}}</td>
-                                <td><button class="btnEliminar" (click)="eliminarItemFactura(item.producto.codigo_producto)">x</button></td>
+                                <td><button class="btnEliminar" (click)="eliminarItemFactura(item.codigo_producto.codigo_producto)">x</button></td>
                             </tr>
                         </tbody>
                     </table>  
                 </div>
             </div>
             <div class="cajaBtnEnviar">
-                <button class="btnRegistrar">Enviar</button>
+                <button class="btnRegistrar" (click)="realizarCompra()">Enviar</button>
             </div>
 
 </div>
