@@ -1,7 +1,8 @@
 import { ModalProductosComponent } from './../../Modal/modal-productos/modal-productos.component';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ProductoModel } from 'src/app/Models/Producto.model';
+import { ProductoModel } from '../../../Models/Producto.model';
+import { ProductoService } from '../../../Services/producto.service';
 
 @Component({
   selector: 'app-catalogo',
@@ -11,7 +12,7 @@ import { ProductoModel } from 'src/app/Models/Producto.model';
 export class CatalogoComponent implements OnInit {
 
   productos: ProductoModel[] = [
-    {
+    /* {
       codigo_producto: 1,
       nombre_producto: 'Vino Abocado',
       precio_producto: 13000,
@@ -95,11 +96,16 @@ export class CatalogoComponent implements OnInit {
       precio_producto_proveedor: 5000,
       descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
       foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
-    }
+    } */
   ];
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private productoService: ProductoService) { }
 
   ngOnInit(): void {
+    this.productoService.getProductsInventario().subscribe(productos => {
+
+      this.productos = productos;
+
+    })
   }
 
   buscar(termino:string){

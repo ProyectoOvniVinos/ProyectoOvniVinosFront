@@ -64,8 +64,22 @@ export class ProductoService {
     );
   }
 
-  deleteProduct(){
+  getProductsEstado():Observable<ProductoModel[]> {
+    const url: string = `${this.url}producto/estado`
 
+    return this.http.get<ProductoModel[]>(url);
   }
+
+  getProductsEstadoFiltro(filtro:string):Observable<ProductoModel[]> {
+    const url: string = `${this.url}producto/estadoFiltro/${filtro}`
+
+    return this.http.get<ProductoModel[]>(url);
+  }
+
+  getProductsInventario():Observable<ProductoModel[]> {
+    return this.http.get<ProductoModel[]>("http://localhost:8080/apiInventario/inventarioGeneralCompleto/positivo");
+  }
+
+  
 
 }
