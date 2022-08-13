@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ProductoModel } from 'src/app/Models/Producto.model';
+import { ModalInventarioGComponent } from '../../Modal/modal-inventario-g/modal-inventario-g.component';
 
 @Component({
   selector: 'app-inventario-general',
@@ -32,9 +34,16 @@ export class InventarioGeneralComponent implements OnInit {
       foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
     },
   ];
-  constructor() { }
+  constructor(public dialog:MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  openDialog(producto: ProductoModel): void {
+    const dialogRef = this.dialog.open(ModalInventarioGComponent, {
+      width: '50%',
+      data: producto,
+    });
   }
 
 }
