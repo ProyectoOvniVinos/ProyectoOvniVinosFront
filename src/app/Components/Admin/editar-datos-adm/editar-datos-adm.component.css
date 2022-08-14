@@ -249,6 +249,21 @@ a:hover{
         font-size: 1rem;
     }
 }
+@media screen and (max-width:1920px) and (max-height:700px){
+    .cajaM-login{
+        height: 100%;
+    }
+}
+@media screen and (max-width:1920px) and (max-height:635px){
+    .cajaInput{
+        height: 5rem;
+    }
+}
+@media screen and (max-width:1920px) and (max-height:550px){
+    .cajaInput{
+        height: 4rem;
+    }
+}
 
 @media screen and (max-width:1740px) and (max-height:1080px){
     .cajaM-login{
