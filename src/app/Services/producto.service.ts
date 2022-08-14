@@ -63,8 +63,12 @@ export class ProductoService {
     );
   }
 
-  deleteProduct(){
+  inhabilitarProduct(){
 
+  }
+
+  habilitarProduct(){
+    
   }
 
 }
