@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { Inventario_generalModel } from 'src/app/Models/Inventario_general.model';
 import { ProductoModel } from 'src/app/Models/Producto.model';
 import Swiper , {Autoplay} from 'swiper';
 @Component({
@@ -8,7 +9,7 @@ import Swiper , {Autoplay} from 'swiper';
 })
 export class SlideshowComponent implements OnInit, AfterViewInit {
 
-  @Input() productos!: ProductoModel[];
+  @Input() inventarios!: Inventario_generalModel[];
 
   public swiper!: Swiper;
 
@@ -40,5 +41,9 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
   }
   onSlidePrev() {
     this.swiper.slidePrev();
+  }
+
+  click(){
+    console.log(this.inventarios);
   }
 }

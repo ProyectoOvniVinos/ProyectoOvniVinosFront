@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
+import { Inventario_generalModel } from '../Models/Inventario_general.model';
 import { ProductoModel } from '../Models/Producto.model';
 
 @Injectable({
@@ -9,6 +10,8 @@ import { ProductoModel } from '../Models/Producto.model';
 export class ProductoService {
 
   url:string="http://localhost:8080/apiProd/";
+
+  url2:string="http://localhost:8080/apiInventario/inventarioGeneralCompleto/positivo";
 
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 
@@ -69,14 +72,14 @@ export class ProductoService {
     return this.http.get<ProductoModel[]>(url);
   }
 
-  getProductsEstadoFiltro(filtro:string):Observable<ProductoModel[]> {
-    const url: string = `${this.url}producto/estadoFiltro/${filtro}`
+  getProductsEstadoFiltro(filtro:string):Observable<Inventario_generalModel[]> {
+    const url: string = `${this.url2}Filtrado/${filtro}`;
 
-    return this.http.get<ProductoModel[]>(url);
+    return this.http.get<Inventario_generalModel[]>(url);
   }
 
-  getProductsInventario():Observable<ProductoModel[]> {
-    return this.http.get<ProductoModel[]>("http://localhost:8080/apiInventario/inventarioGeneralCompleto/positivo");
+  getProductsInventario():Observable<Inventario_generalModel[]> {
+    return this.http.get<Inventario_generalModel[]>(this.url2);
   }
 
 }

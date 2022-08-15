@@ -1,5 +1,5 @@
 <div class="headTitle">
-    <h2 class="tituloModal" mat-dialog-title>{{producto.nombreProducto}}</h2>
+    <h2 class="tituloModal" mat-dialog-title>{{inventario.codigoProducto.nombreProducto}}</h2>
     <div class="equis">
     <img src="../../../../assets/Images/salir.png" alt="" class="imageCerrar" (click)="onNoClick()">
     </div>  
@@ -9,7 +9,7 @@
     
     <div class="cajaM">
         <div class="cajaImg">
-            <img class="img" src="{{producto.fotoProducto}}" alt="">
+            <img class="img" src="{{inventario.codigoProducto.fotoProducto}}" alt="">
             <div class="cajaRecomendaciones">
                 <div class="cajaImgRe">
                     <img class="imgRecomendacion" src="{{productoRecomendado.fotoProducto}}"/>
@@ -42,11 +42,11 @@
         <!-- </div> -->
        <div class="prueba">
         <div class="card">
-            <h4 class="card-header"><b>Nombre: {{producto.nombreProducto}}</b></h4>
+            <h4 class="card-header"><b>Nombre: {{inventario.codigoProducto.nombreProducto}}</b></h4>
             <div class="card-body">
-              <p class="card-text"><b>Precio:</b> {{producto.precioProducto}}</p>
-              <p class="card-text"><b>Cantidad disponible:</b> </p>
-              <p class="card-text"><b>Descripción:</b>{{producto.descripcionProducto}}</p>
+              <p class="card-text"><b>Precio:</b> {{inventario.codigoProducto.precioProducto}}</p>
+              <p class="card-text"><b>Cantidad disponible:</b> {{inventario.cantidadProducto}}</p>
+              <p class="card-text"><b>Descripción:</b>{{inventario.codigoProducto.descripcionProducto}}</p>
             </div>
             <div class="card-footer">
                 <mat-dialog-actions class="cajaBtns">
