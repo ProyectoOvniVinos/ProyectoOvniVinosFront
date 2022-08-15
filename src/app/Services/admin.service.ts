@@ -15,12 +15,12 @@ export class AdminService {
   getClienteById(){
 
     let admin: AdministradorModel = {
-      correo_admin: "admin@gmail.com",
-      nombre_admin: "admin",
-      apellido_admin: "admin",
-      direccion_admin: "admin",
-      telefono_admin: "1234",
-      password_admin: "admin123",
+      correoAdmin: "admin@gmail.com",
+      nombreAdmin: "admin",
+      apellidoAdmin: "admin",
+      direccionAdmin: "admin",
+      telefonoAdmin: "1234",
+      passwordAdmin: "admin123"
     }
 
     return admin;

@@ -17,12 +17,12 @@ export class AgregarProductoComponent implements OnInit {
   productos: ProductoModel[] = [];
 
   producto: ProductoModel={
-    codigo_producto: 0,
-    nombre_producto: '',
-    precio_producto: 0,
-    precio_producto_proveedor: 0,
-    descripcion_producto: '',
-    foto_producto: ''
+    codigoProducto: 0,
+    nombreProducto: '',
+    precioProducto: 0,
+    precioProductoProveedor: 0,
+    descripcionProducto: '',
+    fotoProducto: ''
   };
 
 
@@ -59,10 +59,10 @@ export class AgregarProductoComponent implements OnInit {
           this.fotoSeleccionada=null;
           console.log(this.registroProductoForm);
           console.log(this.producto);
-          this.registroProductoForm.controls["nombreProducto"].setValue(this.producto.nombre_producto);
-          this.registroProductoForm.controls["precioProducto"].setValue(this.producto.precio_producto);
-          this.registroProductoForm.controls["precioProveedor"].setValue(this.producto.precio_producto_proveedor);
-          this.registroProductoForm.controls["descripcionProducto"].setValue(this.producto.descripcion_producto);
+          this.registroProductoForm.controls["nombreProducto"].setValue(this.producto.nombreProducto);
+          this.registroProductoForm.controls["precioProducto"].setValue(this.producto.precioProducto);
+          this.registroProductoForm.controls["precioProveedor"].setValue(this.producto.precioProductoProveedor);
+          this.registroProductoForm.controls["descripcionProducto"].setValue(this.producto.descripcionProducto);
           
         })
       }
@@ -73,10 +73,10 @@ export class AgregarProductoComponent implements OnInit {
   cargarData(){
     this.registroProductoForm.reset({
 
-      nombreProducto : this.producto.nombre_producto,
-      precioProducto : this.producto.precio_producto,
-      precioProveedor : this.producto.precio_producto_proveedor,
-      descripcionProducto : this.producto.descripcion_producto,
+      nombreProducto : this.producto.nombreProducto,
+      precioProducto : this.producto.precioProducto,
+      precioProveedor : this.producto.precioProductoProveedor,
+      descripcionProducto : this.producto.descripcionProducto,
     });
     
   }
@@ -122,13 +122,13 @@ export class AgregarProductoComponent implements OnInit {
           const productoForm = this.registroProductoForm.value;
           let precioProducto = Number(productoForm.precioProducto);
           let precioProveedor = Number(productoForm.precioProveedor);
-          this.producto.nombre_producto = productoForm.nombreProducto;
-          this.producto.precio_producto = precioProducto;
-          this.producto.precio_producto_proveedor = precioProveedor;
-          this.producto.descripcion_producto = productoForm.descripcionProducto;
-          this.producto.foto_producto = response.url;
+          this.producto.nombreProducto = productoForm.nombreProducto;
+          this.producto.precioProducto = precioProducto;
+          this.producto.precioProductoProveedor = precioProveedor;
+          this.producto.descripcionProducto = productoForm.descripcionProducto;
+          this.producto.fotoProducto = response.url;
 
-          this.servicioProducto.getProductByName(this.producto.nombre_producto).subscribe(productos=> {
+          this.servicioProducto.getProductByName(this.producto.nombreProducto).subscribe(productos=> {
             this.openDialog("Error","Este producto ya existe!!")
           },err=>{
 
@@ -157,23 +157,23 @@ export class AgregarProductoComponent implements OnInit {
   actualizarSinImagen(){
     const productoForm = this.registroProductoForm.value;
     let productoNew: ProductoModel = {
-      codigo_producto: 0,
-      nombre_producto: '',
-      precio_producto: 0,
-      precio_producto_proveedor: 0,
-      descripcion_producto: '',
-      foto_producto: ''
+      codigoProducto: 0,
+      nombreProducto: '',
+      precioProducto: 0,
+      precioProductoProveedor: 0,
+      descripcionProducto: '',
+      fotoProducto: ''
     };;
     let precioProducto = Number(productoForm.precioProducto);
     let precioProveedor = Number(productoForm.precioProveedor);
-    productoNew.codigo_producto = this.producto.codigo_producto;
-    productoNew.nombre_producto = productoForm.nombreProducto;
-    productoNew.precio_producto = precioProducto;
-    productoNew.precio_producto_proveedor = precioProveedor;
-    productoNew.descripcion_producto = productoForm.descripcionProducto;
-    productoNew.foto_producto = this.producto.foto_producto;
+    productoNew.codigoProducto = this.producto.codigoProducto;
+    productoNew.nombreProducto = productoForm.nombreProducto;
+    productoNew.precioProducto = precioProducto;
+    productoNew.precioProductoProveedor = precioProveedor;
+    productoNew.descripcionProducto = productoForm.descripcionProducto;
+    productoNew.fotoProducto = this.producto.fotoProducto;
 
-    this.servicioProducto.updateProduct(productoNew.codigo_producto, productoNew).subscribe((response:any) => {
+    this.servicioProducto.updateProduct(productoNew.codigoProducto, productoNew).subscribe((response:any) => {
       this.router.navigate(['/productos'])
       this.openDialog("Exito!!","Se ha actualizado correctamente el Producto")
     }, err => {
@@ -188,23 +188,23 @@ export class AgregarProductoComponent implements OnInit {
       if(response){
         const productoForm = this.registroProductoForm.value;
         let productoNew: ProductoModel = {
-          codigo_producto: 0,
-          nombre_producto: '',
-          precio_producto: 0,
-          precio_producto_proveedor: 0,
-          descripcion_producto: '',
-          foto_producto: ''
+          codigoProducto: 0,
+          nombreProducto: '',
+          precioProducto: 0,
+          precioProductoProveedor: 0,
+          descripcionProducto: '',
+          fotoProducto: ''
         };;
         let precioProducto = Number(productoForm.precioProducto);
         let precioProveedor = Number(productoForm.precioProveedor);
-        productoNew.codigo_producto = this.producto.codigo_producto;
-        productoNew.nombre_producto = productoForm.nombreProducto;
-        productoNew.precio_producto = precioProducto;
-        productoNew.precio_producto_proveedor = precioProveedor;
-        productoNew.descripcion_producto = productoForm.descripcionProducto;
-        productoNew.foto_producto = response.url;
+        productoNew.codigoProducto = this.producto.codigoProducto;
+        productoNew.nombreProducto = productoForm.nombreProducto;
+        productoNew.precioProducto = precioProducto;
+        productoNew.precioProductoProveedor = precioProveedor;
+        productoNew.descripcionProducto = productoForm.descripcionProducto;
+        productoNew.fotoProducto = response.url;
 
-        this.servicioProducto.updateProduct(productoNew.codigo_producto, productoNew).subscribe((response:any) => {
+        this.servicioProducto.updateProduct(productoNew.codigoProducto, productoNew).subscribe((response:any) => {
           this.router.navigate(['/productos'])
           this.openDialog("Exito!!","Se ha actualizado correctamente el Producto")
           console.log(productoNew);

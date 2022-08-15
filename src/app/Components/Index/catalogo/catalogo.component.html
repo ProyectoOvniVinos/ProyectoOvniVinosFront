@@ -21,12 +21,12 @@
 
                 <div *ngFor="let producto of productos" class="cardP">
                     <div class="cardImg">
-                        <img class="imgCardBody" src="{{producto.foto_producto}}" alt="" (click)="openDialog(producto)">
+                        <img class="imgCardBody" src="{{producto.fotoProducto}}" alt="" (click)="openDialog(producto)">
                         <img (click)="agregar()" class="imgCarrito" src="../../../../assets/Images/carritoVioleta.png" alt="">
                     </div>
                     <div class="cardFootert" (click)="openDialog(producto)">
-                        <p>{{producto.nombre_producto}}</p>
-                        <p>${{producto.precio_producto}}</p>
+                        <p>{{producto.nombreProducto}}</p>
+                        <p>${{producto.precioProducto}}</p>
 
                     </div>
                 </div>

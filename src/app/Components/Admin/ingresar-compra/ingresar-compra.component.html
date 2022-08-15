@@ -20,7 +20,7 @@
                             <label for="" class="label">Producto</label>
                             <br>
                             <select name="miselect" formControlName="producto" class="input form-control">
-                                <option [value]="producto.codigo_producto" *ngFor="let producto of productos">{{producto.nombre_producto}}</option>
+                                <option [value]="producto.codigoProducto" *ngFor="let producto of productos">{{producto.nombreProducto}}</option>
                             </select>
                             <div class="errors-container" *ngIf="productoControl.invalid && (productoControl.touched || productoControl.dirty)">
                                 <p class="text-danger" *ngIf="productoControl.hasError('required')">El campo es obligatorio</p>
@@ -81,15 +81,15 @@
                         </thead>
                         <tbody class="">
                             <tr class=" text-center" *ngFor="let item of compra.compras">
-                                <td>{{item.codigo_producto.nombre_producto}}</td>
-                                <td>{{item.codigo_producto.precio_producto}}</td>
+                                <td>{{item.codigoProducto.nombreProducto}}</td>
+                                <td>{{item.codigoProducto.precioProductoProveedor}}</td>
                                 <td>
-                                    <button class="btnBajar"(click)="disminuirCantidad(item.codigo_producto.codigo_producto, item.cantidad_producto)">-</button>
-                                    <input type="number" value="{{item.cantidad_producto}}" class="inputCantidad text-center" (change)="actualizarCantidad(item.codigo_producto.codigo_producto, $event)">
-                                    <button class="btnSubir" (click)="aumentarCantidad(item.codigo_producto.codigo_producto)">+</button>
+                                    <button class="btnBajar"(click)="disminuirCantidad(item.codigoProducto.codigoProducto, item.cantidadProducto)">-</button>
+                                    <input type="number" value="{{item.cantidadProducto}}" class="inputCantidad text-center" (change)="actualizarCantidad(item.codigoProducto.codigoProducto, $event)">
+                                    <button class="btnSubir" (click)="aumentarCantidad(item.codigoProducto.codigoProducto)">+</button>
                                 </td>
                                 <td>{{item.calcularImporte()}}</td>
-                                <td><button class="btnEliminar" (click)="eliminarItemFactura(item.codigo_producto.codigo_producto)">x</button></td>
+                                <td><button class="btnEliminar" (click)="eliminarItemFactura(item.codigoProducto.codigoProducto)">x</button></td>
                             </tr>
                         </tbody>
                     </table>  

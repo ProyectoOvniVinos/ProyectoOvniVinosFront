@@ -4,13 +4,12 @@ import { ProductoModel } from "./Producto.model";
 import { VentaModel } from "./Venta.model";
 
 export class Item_ventaModel {
-    id_puente!:number;
-    venta!:VentaModel;
-    producto!:ProductoModel;
-    cantidad_producto!:number;
-    contabilidad_diaria!:Contabilidad_diariaModel;
+    idPuente!:number;
+    codigoProducto!:ProductoModel;
+    cantidadProducto!:number;
+    precioVentaDetalle!:number;
 
     public calcularImporte(): number {
-        return this.cantidad_producto * this.producto.precio_producto;
+        return this.cantidadProducto * this.codigoProducto.precioProducto;
     }
 }

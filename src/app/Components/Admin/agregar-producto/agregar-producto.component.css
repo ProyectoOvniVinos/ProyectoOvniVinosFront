@@ -184,7 +184,9 @@ input[type="file"] {
     transform: skewX(45deg) scale(1, 1);
 }
 
-
+.scrol {
+    overflow: scroll !important;
+}
 
 
 .btnRegistrar{
