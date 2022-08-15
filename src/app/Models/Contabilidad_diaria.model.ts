@@ -1,8 +1,10 @@
+import { Contabilidad_mensualModel } from "./Contabilidad_mensual.model";
+
 export class Contabilidad_diariaModel {
-    id_registro_contabilidad_diaria!:number;
-	ventas_contabilidad_diaria !:number;
-	egresos_contabilidad_diaria !:number;
-	ingresos_contabilidad_diaria!:number;
-	id_registro_contabilidad_mensual!:number;
+    idRegistroContabilidadDiaria!:number;
+	ventasContabilidadDiaria !:number;
+	egresosContabilidadDiaria !:number;
+	ingresosContabilidadDiaria!:number;
+	idRegistroContabilidadMensual!:Contabilidad_mensualModel;
 	fecha!:Date;
 }

@@ -14,7 +14,7 @@
                             <label for="" class="label">Producto</label>
                             <br>
                             <select name="miselect" formControlName="producto" class="input form-control">
-                                <option [value]="producto.codigo_producto" *ngFor="let producto of productos">{{producto.nombre_producto}}</option>
+                                <option [value]="producto.codigoProducto" *ngFor="let producto of productos">{{producto.nombreProducto}}</option>
                             </select>
                         </div>
                         <div class="cajaInput">
@@ -46,7 +46,7 @@
             <div class="contenedorTabla">
 
                 <div class="cajaTabla">
-                    <table class="table table-striped table-hover table-sm miTabla" *ngIf="venta.items.length>0">
+                    <table class="table table-striped table-hover table-sm miTabla" *ngIf="venta.ventas.length>0">
                         <thead class="headerTable">
                             <tr class="text-center">
                                 <th>Producto</th>
@@ -57,16 +57,16 @@
                             </tr>
                         </thead>
                         <tbody class="">
-                            <tr class=" text-center" *ngFor="let item of venta.items">
-                                <td>{{item.producto.nombre_producto}}</td>
-                                <td>{{item.producto.precio_producto}}</td>
+                            <tr class=" text-center" *ngFor="let item of venta.ventas">
+                                <td>{{item.codigoProducto.nombreProducto}}</td>
+                                <td>{{item.codigoProducto.precioProducto}}</td>
                                 <td>
-                                    <button class="btnBajar"(click)="disminuirCantidad(item.producto.codigo_producto, item.cantidad_producto)">-</button>
-                                    <input type="number" value="{{item.cantidad_producto}}" class="inputCantidad text-center" (change)="actualizarCantidad(item.producto.codigo_producto, $event)">
-                                    <button class="btnSubir" (click)="aumentarCantidad(item.producto.codigo_producto)">+</button>
+                                    <button class="btnBajar"(click)="disminuirCantidad(item.codigoProducto.codigoProducto, item.cantidadProducto)">-</button>
+                                    <input type="number" value="{{item.cantidadProducto}}" class="inputCantidad text-center" (change)="actualizarCantidad(item.codigoProducto.codigoProducto, $event)">
+                                    <button class="btnSubir" (click)="aumentarCantidad(item.codigoProducto.codigoProducto)">+</button>
                                 </td>
                                 <td>{{item.calcularImporte()}}</td>
-                                <td><button class="btnEliminar" (click)="eliminarItemFactura(item.producto.codigo_producto)">x</button></td>
+                                <td><button class="btnEliminar" (click)="eliminarItemFactura(item.codigoProducto.codigoProducto)">x</button></td>
                             </tr>
                         </tbody>
                     </table>  

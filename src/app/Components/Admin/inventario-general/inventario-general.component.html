@@ -25,9 +25,9 @@
                 </thead>
                 <tbody class="tablabodyP">
                     <tr *ngFor="let producto of productos" (click)=openDialog(producto)>
-                        <td>{{producto.codigo_producto}}</td>
-                        <td>{{producto.nombre_producto}}</td>
-                        <td>{{producto.codigo_producto +4}}</td>
+                        <td>{{producto.codigoProducto}}</td>
+                        <td>{{producto.nombreProducto}}</td>
+                        <td>{{producto.codigoProducto +4}}</td>
                     </tr>
                 </tbody>
             </table>

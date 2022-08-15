@@ -1,8 +1,10 @@
+import { CompraModel } from "./Compra.model";
+
 export class AdministradorModel {
-    correo_admin!: string;
-    nombre_admin!: string;
-    apellido_admin!: string;
-    direccion_admin!: string;
-    telefono_admin!: string;
-    password_admin!: string;
+    correoAdmin!: string;
+    nombreAdmin!: string;
+    apellidoAdmin!: string;
+    direccionAdmin!: string;
+    telefonoAdmin!: string;
+    passwordAdmin!: string;
 }

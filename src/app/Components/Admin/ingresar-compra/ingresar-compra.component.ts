@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { AdministradorModel } from 'src/app/Models/Administrador.model';
 import { CompraModel } from 'src/app/Models/Compra.model';
 import { Item_compraModel } from 'src/app/Models/Item_compra.model';
 import { ProductoModel } from 'src/app/Models/Producto.model';
@@ -28,6 +29,8 @@ export class IngresarCompraComponent implements OnInit {
   banderaPrecio: boolean = false;
   compraForm !: FormGroup;
   bandera !: boolean;
+
+  admin:AdministradorModel;
 
   constructor(private fb: FormBuilder, 
               private serviceProducto: ProductoService,
@@ -114,22 +117,21 @@ export class IngresarCompraComponent implements OnInit {
   // Metodos para los items
 
   seleccionarProducto() {
-    let producto: ProductoModel = {
-      nombre_producto: this.productos.find(producto => producto.codigo_producto == this.compraForm.controls['producto'].value).nombre_producto,
-      precio_producto: this.compraForm.controls['precio'].value,
-      precio_producto_proveedor: this.compraForm.controls['precio'].value - 100,
-      descripcion_producto: 'descripcion producto',
-      codigo_producto: this.compraForm.controls['producto'].value,
-      foto_producto: 'img',
-    }
+    let producto2: ProductoModel;
+    this.productos.map(producto=>{
+      if(producto.codigoProducto == this.compraForm.controls['producto'].value){
+        producto2 = producto;
+        producto2.precioProductoProveedor = this.compraForm.controls['precio'].value;
+      }
+    })
     // let producto1 = event.option.value as ProductoModel
 
-    if (this.existeItem(producto.codigo_producto)) {
-      this.incrementaCantidad(producto.codigo_producto);
+    if (this.existeItem(producto2.codigoProducto)) {
+      this.incrementaCantidad(producto2.codigoProducto);
     }else {
       let nuevoItem = new Item_compraModel();
-      nuevoItem.cantidad_producto = this.compraForm.controls['cantidad'].value;
-      nuevoItem.codigo_producto = producto;
+      nuevoItem.cantidadProducto = this.compraForm.controls['cantidad'].value;
+      nuevoItem.codigoProducto = producto2;
       this.compra.compras.push(nuevoItem);
     }
 
@@ -140,7 +142,7 @@ export class IngresarCompraComponent implements OnInit {
   existeItem(id: number): boolean {
     let existe = false;
     this.compra.compras.forEach((item: Item_compraModel) => {
-      if (id === item.codigo_producto.codigo_producto) {
+      if (id === item.codigoProducto.codigoProducto) {
         existe = true
       }
     });
@@ -157,9 +159,9 @@ export class IngresarCompraComponent implements OnInit {
 
   incrementaCantidad(id: number): void {
     this.compra.compras = this.compra.compras.map((item: Item_compraModel) => {
-      if (id === item.codigo_producto.codigo_producto) {
+      if (id === item.codigoProducto.codigoProducto) {
         let suma: number = this.compraForm.controls['cantidad'].value;
-        item.cantidad_producto = item.cantidad_producto + suma;
+        item.cantidadProducto = item.cantidadProducto + suma;
       }
       return item;
     });
@@ -171,8 +173,8 @@ export class IngresarCompraComponent implements OnInit {
       return this.eliminarItemFactura(id);
     }
     this.compra.compras = this.compra.compras.map((item: Item_compraModel) => {
-      if (id === item.codigo_producto.codigo_producto) {
-        item.cantidad_producto = cantidad;
+      if (id === item.codigoProducto.codigoProducto) {
+        item.cantidadProducto = cantidad;
       }
       return item;
     });
@@ -181,8 +183,8 @@ export class IngresarCompraComponent implements OnInit {
 
   aumentarCantidad(id: number){
     this.compra.compras = this.compra.compras.map((item: Item_compraModel) => {
-      if (id === item.codigo_producto.codigo_producto) {
-        item.cantidad_producto++;
+      if (id === item.codigoProducto.codigoProducto) {
+        item.cantidadProducto++;
       }
       return item;
     })
@@ -193,8 +195,8 @@ export class IngresarCompraComponent implements OnInit {
       this.eliminarItemFactura(id);
     }
     this.compra.compras = this.compra.compras.map((item: Item_compraModel) => {
-      if (id === item.codigo_producto.codigo_producto) {
-        item.cantidad_producto--;
+      if (id === item.codigoProducto.codigoProducto) {
+        item.cantidadProducto--;
       }
       return item;
     })
@@ -202,19 +204,30 @@ export class IngresarCompraComponent implements OnInit {
   }
 
   eliminarItemFactura(id: number): void {
-    this.compra.compras = this.compra.compras.filter((item: Item_compraModel) => id !== item.codigo_producto.codigo_producto);
+    this.compra.compras = this.compra.compras.filter((item: Item_compraModel) => id !== item.codigoProducto.codigoProducto);
     this.actualizarTotal();
   }
 
   realizarCompra(){
-    this.compra.precio_compra=this.total;
-    this.compra.cantidad_compra = this.obtenerCantidadTotal()
+    this.compra.precioCompra=this.total;
+    this.compra.cantidadCompra = this.obtenerCantidadTotal()
+    
+    this.admin = new AdministradorModel();
+    this.admin.apellidoAdmin = "Amador"
+    this.admin.correoAdmin = "cristian@gmail.com"
+    this.admin.direccionAdmin = "centenario"
+    this.admin.nombreAdmin = "Cristian"
+    this.admin.passwordAdmin = "12345"
+    this.admin.telefonoAdmin = "323" 
+
+    this.compra.administradorCompra = this.admin;
     console.log(this.compra);
     
 
     this.serviceCompra.addCompra(this.compra).subscribe(e=>{
       this.openDialog("Exito!!!","Se ha agregado la compra satisfactoriamente!")
       this.vaciar()
+      console.log(e);
     },err => {
       this.openDialog("Error","Ha ocurrido un problema")
       
@@ -226,7 +239,7 @@ export class IngresarCompraComponent implements OnInit {
   obtenerCantidadTotal(){
     let cantidad: number=0;
     this.compra.compras.forEach((item: Item_compraModel) => {
-      cantidad= cantidad + item.cantidad_producto;
+      cantidad= cantidad + item.cantidadProducto;
     })
     return cantidad;
   }
