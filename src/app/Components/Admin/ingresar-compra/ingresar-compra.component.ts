@@ -227,10 +227,10 @@ export class IngresarCompraComponent implements OnInit {
     this.serviceCompra.addCompra(this.compra).subscribe(e=>{
       this.openDialog("Exito!!!","Se ha agregado la compra satisfactoriamente!")
       this.vaciar()
-      console.log(e);
+
     },err => {
       this.openDialog("Error","Ha ocurrido un problema")
-      
+
       
     })
     

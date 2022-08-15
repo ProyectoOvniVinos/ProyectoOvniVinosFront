@@ -76,7 +76,7 @@ export class ProductoService {
   }
 
   getProductsInventario():Observable<ProductoModel[]> {
-    return this.http.get<ProductoModel[]>("http://localhost:8080/apiInventario/inventarioGeneralCompleto/positivo");
+    return this.http.get<ProductoModel[]>("http://localhost:8080/apiInventario/inventarioGeneralCompleto/positvo");
   }
 
 }

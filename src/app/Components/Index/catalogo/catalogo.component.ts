@@ -104,7 +104,8 @@ export class CatalogoComponent implements OnInit {
     this.productoService.getProductsInventario().subscribe(productos => {
 
       this.productos = productos;
-
+      console.log(this,productos);
+      
     })
   }
 
