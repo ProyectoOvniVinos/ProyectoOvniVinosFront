@@ -63,9 +63,9 @@ export class ProductoService {
     );
   }
 
+
   getProductsEstado():Observable<ProductoModel[]> {
     const url: string = `${this.url}producto/estado`
-
     return this.http.get<ProductoModel[]>(url);
   }
 
@@ -78,7 +78,5 @@ export class ProductoService {
   getProductsInventario():Observable<ProductoModel[]> {
     return this.http.get<ProductoModel[]>("http://localhost:8080/apiInventario/inventarioGeneralCompleto/positivo");
   }
-
-  
 
 }
