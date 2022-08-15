@@ -216,6 +216,11 @@ export class AgregarProductoComponent implements OnInit {
       }
     });
   }
+
+  deshabilitar(){
+    
+  }
+
   crearFormulario(){
     this.registroProductoForm = this.fb.group({
       nombreProducto: ['', [Validators.required, Validators.minLength(3)]],
