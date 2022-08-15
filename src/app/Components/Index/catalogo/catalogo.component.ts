@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductoModel } from '../../../Models/Producto.model';
 import { ProductoService } from '../../../Services/producto.service';
+import { Inventario_generalModel } from 'src/app/Models/Inventario_general.model';
 
 @Component({
   selector: 'app-catalogo',
@@ -11,101 +12,14 @@ import { ProductoService } from '../../../Services/producto.service';
 })
 export class CatalogoComponent implements OnInit {
 
-  productos: ProductoModel[] = [
-    /* {
-      codigo_producto: 1,
-      nombre_producto: 'Vino Abocado',
-      precio_producto: 13000,
-      precio_producto_proveedor: 6000,
-      descripcion_producto: 'Delicioso Vino Dulce',
-      foto_producto: '../../../../assets/TEMPORALES/vino1.jpg'
-    }, {
-      codigo_producto: 2,
-      nombre_producto: 'Vino tinto',
-      precio_producto: 13000,
-      precio_producto_proveedor: 6000,
-      descripcion_producto: 'Delicioso Vino no tan Dulce',
-      foto_producto: '../../../../assets/TEMPORALES/vino2.jpg'
-    }, {
-      codigo_producto: 3,
-      nombre_producto: 'Nectar de uva',
-      precio_producto: 10000,
-      precio_producto_proveedor: 5000,
-      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
-      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
-    }, {
-      codigo_producto: 4,
-      nombre_producto: 'Nectar de uva',
-      precio_producto: 10000,
-      precio_producto_proveedor: 5000,
-      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
-      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
-    }, {
-      codigo_producto: 5,
-      nombre_producto: 'Nectar de uva',
-      precio_producto: 10000,
-      precio_producto_proveedor: 5000,
-      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
-      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
-    }, {
-      codigo_producto: 6,
-      nombre_producto: 'Nectar de uva',
-      precio_producto: 10000,
-      precio_producto_proveedor: 5000,
-      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
-      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
-    }, {
-      codigo_producto: 4,
-      nombre_producto: 'Nectar de uva',
-      precio_producto: 10000,
-      precio_producto_proveedor: 5000,
-      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
-      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
-    }, {
-      codigo_producto: 5,
-      nombre_producto: 'Nectar de uva',
-      precio_producto: 10000,
-      precio_producto_proveedor: 5000,
-      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
-      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
-    }, {
-      codigo_producto: 6,
-      nombre_producto: 'Nectar de uva',
-      precio_producto: 10000,
-      precio_producto_proveedor: 5000,
-      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
-      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
-    }, {
-      codigo_producto: 4,
-      nombre_producto: 'Nectar de uva',
-      precio_producto: 10000,
-      precio_producto_proveedor: 5000,
-      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
-      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
-    }, {
-      codigo_producto: 5,
-      nombre_producto: 'Nectar de uva',
-      precio_producto: 10000,
-      precio_producto_proveedor: 5000,
-      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
-      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
-    }, {
-      codigo_producto: 6,
-      nombre_producto: 'Nectar de uva',
-      precio_producto: 10000,
-      precio_producto_proveedor: 5000,
-      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
-      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
-    } */
-  ];
+  inventarioGeneral: Inventario_generalModel[] = [];
+
   constructor(public dialog: MatDialog, private productoService: ProductoService) { }
 
   ngOnInit(): void {
-    this.productoService.getProductsInventario().subscribe(productos => {
+    this.productoService.getProductsInventario().subscribe(inventario => {
 
-      this.productos = productos;
-      console.log(this,productos);
-      
+      this.inventarioGeneral = inventario;
     })
   }
 
@@ -117,22 +31,34 @@ export class CatalogoComponent implements OnInit {
     console.log("agregando");
   }
 
-  openDialog(producto: ProductoModel): void {
+  openDialog(inventario: Inventario_generalModel): void {
     const dialogRef = this.dialog.open(ModalProductosComponent, {
       width: '50%',
-      data: producto,
+      data: inventario,
     });
   }
 
   cambiarImg1(event){
-    console.log(event.target.src);
+    //console.log(event.target.src);
 
   }
 
   cambiarImg2(event){
-    console.log(event.target.src);
-    
+    //console.log(event.target.src);
+  }
 
+  filtro(text:string){
+    if(text!="Todos"){
+      this.productoService.getProductsEstadoFiltro(text).subscribe(inventario => {
+        this.inventarioGeneral = inventario;
+        console.log(inventario);
+      })
+    }else{
+      this.productoService.getProductsInventario().subscribe(inventario => {
+
+        this.inventarioGeneral = inventario;
+      })
+    }
   }
 
 }
