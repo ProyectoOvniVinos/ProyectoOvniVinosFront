@@ -34,6 +34,18 @@ export class ProductosComponent implements OnInit {
       if(this.productos.length==0){
         this.bandera=false;
       }else{
+        this.productos.sort(function (a, b) {
+          // A va primero que B
+          if (a.estado > b.estado)
+              return -1;
+          // B va primero que A
+          else if (a.estado < b.estado)
+              return 1;
+          // A y B son iguales
+          else 
+              return 0;
+      });
+        
         this.bandera=true;
       }
       

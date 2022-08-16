@@ -84,7 +84,7 @@
                             </div>
                             <div class="cajaBtnsTwo">
                                 <button type="submit" class="btnRegistrar" (click)="iniciarProceso()"> {{boton}} </button>
-                                <button *ngIf="boton=='Editar'" type="submit" class="btnRegistrar" (click)="deshabilitar()"> Deshabilitar</button>
+                                <button *ngIf="boton=='Editar'" type="submit" class="btnRegistrar" (click)="deshabilitar(producto.codigoProducto)"> {{botonAccion}}</button>
                             </div>
 
                         </div>
