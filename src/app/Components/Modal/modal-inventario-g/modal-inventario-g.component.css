@@ -1,0 +1,64 @@
+.headTitle{
+    display: flex;
+    justify-content: space-between;
+}
+
+.imageCerrar{
+    width: 45px;
+    height: 45px;
+    margin: -14%;
+    cursor: pointer;
+}
+.tituloModal{
+    font-size: 30px;
+    color: rgb(211, 21, 88);
+}
+
+.principalBox{
+    width: 70%;
+    height: 50%;
+    display: flex;
+}
+
+.boxImg{
+    display: flex;
+    width: 50%;
+    height: 80%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img{
+    width: 85%;
+    height: 20rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2%;
+}
+
+
+.secondBox{
+    display: flex;
+    height: 20rem;
+    justify-content: center;
+}
+
+.cuadroPrincipal{
+    display: flex;
+    width: 90%;
+    margin-top: 4%; 
+    height: 4rem;
+    background: linear-gradient(90deg, rgba(167,31,73,1) 11%, rgba(255,42,108,1) 55%, rgba(167,31,73,1) 100%);
+    border: 2px solid rgb(184, 13, 72); /* tamaño y color de borde */
+    border-radius: 26px;
+    align-items: center;
+}
+
+.datos{
+    display: flex;
+    justify-content: space-around;
+    width: 130%;
+    height: 45%;
+    color: white;
+    
+
+}

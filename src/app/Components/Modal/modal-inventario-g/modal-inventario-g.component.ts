@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ProductoModel } from 'src/app/Models/Producto.model';
+import { Inventario_detallesModel } from 'src/app/Models/Inventario_detalles.model';
 import { DialogData } from '../DialogData';
 
 @Component({
@@ -21,6 +22,8 @@ export class ModalInventarioGComponent implements OnInit {
   onNoClick(): void{
     this.dialogRef.close();
   }  
+
+  
 
   ngOnInit(): void {
 
