@@ -2,7 +2,14 @@
     width: 150px;
     height: 150px;
 }
-
+.puntero{
+    cursor: pointer;
+}
+.imagenes {
+    
+    width: 6%;
+    margin-top: 0.5%;
+}
 .boton{
     display: flex;
     width: 90%;

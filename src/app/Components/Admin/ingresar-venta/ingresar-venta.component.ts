@@ -4,6 +4,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Item_compraModel } from 'src/app/Models/Item_compra.model';
 import { ProductoModel } from 'src/app/Models/Producto.model';
+import { ProductoService } from 'src/app/Services/producto.service';
+import { ClienteModel } from 'src/app/Models/Cliente.model';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
+import { VentaService } from 'src/app/Services/venta.service';
 
 @Component({
   selector: 'app-ingresar-venta',
@@ -15,59 +20,39 @@ export class IngresarVentaComponent implements OnInit {
   venta = new VentaModel();
   total: number=0;
 
-  itemVaciar = new Item_compraModel();
-
-  productos: ProductoModel[] = [
-    {
-      codigoProducto: 1,
-      nombreProducto: 'Vino Abocado',
-      precioProducto: 13000,
-      precioProductoProveedor: 6000,
-      descripcionProducto: 'Delicioso Vino Dulce',
-      fotoProducto: '../../../../assets/TEMPORALES/vino1.jpg'
-    }, {
-      codigoProducto: 2,
-      nombreProducto: 'Vino tinto',
-      precioProducto: 13000,
-      precioProductoProveedor: 6000,
-      descripcionProducto: 'Delicioso Vino no tan Dulce',
-      fotoProducto: '../../../../assets/TEMPORALES/vino2.jpg'
-    }, {
-      codigoProducto: 3,
-      nombreProducto: 'Nectar de uva',
-      precioProducto: 10000,
-      precioProductoProveedor: 5000,
-      descripcionProducto: 'Delicioso nectar de uva libre de alcohol',
-      fotoProducto: '../../../../assets/TEMPORALES/vino3.jpg'
-    }, {
-      codigoProducto: 4,
-      nombreProducto: 'Nectar de uva azul',
-      precioProducto: 10000,
-      precioProductoProveedor: 5000,
-      descripcionProducto: 'Delicioso nectar de uva libre de alcohol',
-      fotoProducto: '../../../../assets/TEMPORALES/vino3.jpg'
-    }, {
-      codigoProducto: 5,
-      nombreProducto: 'Nectar x',
-      precioProducto: 10000,
-      precioProductoProveedor: 5000,
-      descripcionProducto: 'Delicioso nectar de uva libre de alcohol',
-      fotoProducto: '../../../../assets/TEMPORALES/vino3.jpg'
-    },
-
-  ];
+  productos: ProductoModel[];
 
   banderaProducto: boolean = false;
   banderaCantidad: boolean = false;
   banderaPrecio: boolean = false;
   ventaForm !: FormGroup;
+  bandera !: boolean;
 
-  constructor(private fb: FormBuilder) {
+  cliente:ClienteModel;
+
+  constructor(private fb: FormBuilder, private serviceProducto: ProductoService, public dialog: MatDialog, public serviceVenta: VentaService) {
     this.crearFormulario();
   }
 
   ngOnInit(): void {
 
+    this.serviceProducto.getProducts().subscribe((productos: any) => {
+      this.productos=productos;
+      console.log(productos);
+      
+      if(this.productos.length==0){
+        this.bandera=false;
+      }else{
+        this.bandera=true;
+      }
+    })
+  }
+
+  openDialog(titleNew: string, mensajeNew: string): void {
+    const dialogRef = this.dialog.open(ModalErrorComponent, {
+      width: '300px',
+      data: {title: titleNew, mensaje: mensajeNew},
+    });
   }
 
   get productoNoValido() {
@@ -94,52 +79,43 @@ export class IngresarVentaComponent implements OnInit {
       return null;
     }
   }
-  get precioNoValido() {
-    if (this.ventaForm.get('precio')?.touched) {
-      if (this.ventaForm.get('precio')?.invalid == false) {
-        return false;
-      } else {
-        return true;
-      }
-    } else {
-      return null;
-    }
-  }
 
   crearFormulario() {
     this.ventaForm = this.fb.group({
       producto: ['', [Validators.required]],
-      cantidad: ['', [Validators.required]],
-      precio: [[Validators.required]]
+      cantidad: ['', [Validators.required]]
     })
   }
 
 
   // Metodos para los items
-
   seleccionarProducto() {
-    let producto: ProductoModel = {
-      nombreProducto: this.productos.find(producto => producto.codigoProducto == this.ventaForm.controls['producto'].value).nombreProducto,
-      precioProducto: this.productos.find(producto => producto.codigoProducto == this.ventaForm.controls['producto'].value).precioProducto,
-      precioProductoProveedor: this.ventaForm.controls['precio'].value - 100,
-      descripcionProducto: 'descripcion producto',
-      codigoProducto: this.ventaForm.controls['producto'].value,
-      fotoProducto: 'img',
+    let producto2: ProductoModel;
+    if( this.ventaForm.controls['producto'].touched==true && this.ventaForm.controls['cantidad'].touched==true){
+
+      this.productos.map(producto=>{
+        if(producto.codigoProducto == this.ventaForm.controls['producto'].value){
+          
+
+          
+          producto2 = producto;
+          producto2.precioProducto = producto.precioProducto;
+        }
+      })
+      // let producto1 = event.option.value as ProductoModel
+  
+      
+      if (this.existeItem(producto2.codigoProducto)) {
+        this.incrementaCantidad(producto2.codigoProducto);
+      }else {
+        let nuevoItem = new Item_ventaModel();
+        nuevoItem.cantidadProducto = this.ventaForm.controls['cantidad'].value;
+        nuevoItem.codigoProducto = producto2;
+        this.venta.ventas.push(nuevoItem);
+      }
+  
+      this.actualizarTotal()
     }
-    // let producto1 = event.option.value as ProductoModel;
-    console.log("El codigo del producto elegido es " + this.ventaForm.controls['producto'].value);
-
-    if (this.existeItem(producto.codigoProducto)) {
-      this.incrementaCantidad(producto.codigoProducto);
-    }else {
-      let nuevoItem = new Item_ventaModel();
-      nuevoItem.cantidadProducto = this.ventaForm.controls['cantidad'].value;
-      nuevoItem.codigoProducto = producto;
-      this.venta.ventas.push(nuevoItem);
-    }
-
-    this.actualizarTotal()
-
 
   }
   existeItem(id: number): boolean {
@@ -163,7 +139,6 @@ export class IngresarVentaComponent implements OnInit {
   incrementaCantidad(id: number): void {
     this.venta.ventas = this.venta.ventas.map((item: Item_ventaModel) => {
       if (id === item.codigoProducto.codigoProducto) {
-        console.log("AAAAAAAAAAA " + item.cantidadProducto);
         let suma: number = this.ventaForm.controls['cantidad'].value;
         item.cantidadProducto = item.cantidadProducto + suma;
       }
@@ -212,4 +187,44 @@ export class IngresarVentaComponent implements OnInit {
     this.actualizarTotal();
   }
 
+  realizarVenta(){
+    this.venta.precioVenta=this.total;
+    this.venta.cantidadVenta = this.obtenerCantidadTotal()
+    
+    this.cliente = new ClienteModel();
+    this.cliente.apellidoCliente = "cliente"
+    this.cliente.correoCliente = "correoClienteOvni@gmail.com"
+    this.cliente.direccionCliente = "cliente"
+    this.cliente.nombreCliente = "cliente"
+    this.cliente.passwordCliente = "12345"
+    this.cliente.telefonoCliente = "323" 
+
+    this.venta.correoCliente = this.cliente;
+    console.log(this.venta);
+    
+
+    this.serviceVenta.addVenta(this.venta).subscribe(e=>{
+      this.openDialog("Exito!!!","Se ha agregado la compra satisfactoriamente!")
+      this.vaciar()
+
+    },err => {
+      this.openDialog("Error","Ha ocurrido un problema")
+
+      
+    })
+    
+  }
+  obtenerCantidadTotal(){
+    let cantidad: number=0;
+    this.venta.ventas.forEach((item: Item_ventaModel) => {
+      cantidad= cantidad + item.cantidadProducto;
+    })
+    return cantidad;
+  }
+
+  vaciar(){
+    this.ventaForm.reset();
+    this.venta.ventas=[];
+    this.total=0;
+  }
 }

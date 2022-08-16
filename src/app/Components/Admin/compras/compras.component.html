@@ -18,19 +18,22 @@
                 <thead class="tablaHeaderP">
                     <tr>
                         <th class="primero">Codigo Compra</th>
-                        <th>Producto</th>
-                        <th>Cantidad</th>
+                        <th>Cantidad Productos</th>
                         <th>Valor</th>
-                        <th class="ultimo">Fecha</th>
+                        <th>Fecha</th>
+                        <th  class="ultimo">Detalles</th>
                     </tr>
                 </thead>
                 <tbody class="tablabodyP">
-                    <tr *ngFor="let producto of productos">
-                        <td>{{producto.codigoProducto*3}}</td>
-                        <td>{{producto.codigoProducto}}</td>
-                        <td>{{producto.codigoProducto}}</td>
-                        <td>Valor Compra</td>
-                        <td>Fecha venta</td>
+                    <tr *ngFor="let compra of compras">
+                        <td>{{compra.codigoCompra}}</td>
+                        <td>{{compra.cantidadCompra}}</td>
+                        <td>{{compra.precioCompra}}</td>
+                        <td>{{compra.fechaCompra}}</td>
+                        <td class="puntero" (click)="abrirModal(compra)">
+                            <img class="imagenes" src="../../../../assets/Images/detalles.png" alt="">
+
+                        </td>
                     </tr>
                 </tbody>
             </table>

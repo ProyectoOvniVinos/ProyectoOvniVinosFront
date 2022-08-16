@@ -39,7 +39,6 @@ export class IngresarCompraComponent implements OnInit {
               private serviceAdmin: AdminService) {
     this.crearFormulario();
   }
-
   openDialog(titleNew: string, mensajeNew: string): void {
     const dialogRef = this.dialog.open(ModalErrorComponent, {
       width: '300px',
@@ -50,6 +49,7 @@ export class IngresarCompraComponent implements OnInit {
   ngOnInit(): void {
     this.serviceProducto.getProducts().subscribe((productos: any) => {
       this.productos=productos;
+      
       if(this.productos.length==0){
         this.bandera=false;
       }else{
@@ -118,24 +118,28 @@ export class IngresarCompraComponent implements OnInit {
 
   seleccionarProducto() {
     let producto2: ProductoModel;
-    this.productos.map(producto=>{
-      if(producto.codigoProducto == this.compraForm.controls['producto'].value){
-        producto2 = producto;
-        producto2.precioProductoProveedor = this.compraForm.controls['precio'].value;
+    if(this.compraForm.controls['cantidad'].touched==true && this.compraForm.controls['producto'].touched==true && this.compraForm.controls['precio'].touched==true){
+
+      this.productos.map(producto=>{
+        if(producto.codigoProducto == this.compraForm.controls['producto'].value){
+          producto2 = producto;
+          producto2.precioProductoProveedor = this.compraForm.controls['precio'].value;
+        }
+      })
+      // let producto1 = event.option.value as ProductoModel
+  
+      
+      if (this.existeItem(producto2.codigoProducto)) {
+        this.incrementaCantidad(producto2.codigoProducto);
+      }else {
+        let nuevoItem = new Item_compraModel();
+        nuevoItem.cantidadProducto = this.compraForm.controls['cantidad'].value;
+        nuevoItem.codigoProducto = producto2;
+        this.compra.compras.push(nuevoItem);
       }
-    })
-    // let producto1 = event.option.value as ProductoModel
-
-    if (this.existeItem(producto2.codigoProducto)) {
-      this.incrementaCantidad(producto2.codigoProducto);
-    }else {
-      let nuevoItem = new Item_compraModel();
-      nuevoItem.cantidadProducto = this.compraForm.controls['cantidad'].value;
-      nuevoItem.codigoProducto = producto2;
-      this.compra.compras.push(nuevoItem);
+  
+      this.actualizarTotal()
     }
-
-    this.actualizarTotal()
 
 
   }
