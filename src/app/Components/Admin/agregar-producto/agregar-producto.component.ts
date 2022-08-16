@@ -1,3 +1,5 @@
+import { InventarioGService } from './../../../Services/inventario-g.service';
+import { ModalInteraccionComponent } from './../../Modal/modal-interaccion/modal-interaccion.component';
 import { ProductoService } from 'src/app/Services/producto.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -22,10 +24,11 @@ export class AgregarProductoComponent implements OnInit {
     precioProducto: 0,
     precioProductoProveedor: 0,
     descripcionProducto: '',
-    fotoProducto: ''
+    fotoProducto: '',
+    estado: ''
   };
 
-
+  botonAccion = "Deshabilitar"
   boton:string = "Registrar"
   titulo:string = "Crear Producto";
   registroProductoForm !: FormGroup;
@@ -36,7 +39,8 @@ export class AgregarProductoComponent implements OnInit {
               private activateRoute: ActivatedRoute,
               private imagenServicio: ImagenService,
               public dialog: MatDialog,
-              public servicioProducto: ProductoService) {
+              public servicioProducto: ProductoService,
+              public servicioInventario: InventarioGService) {
     this.crearFormulario();
   }
 
@@ -44,6 +48,40 @@ export class AgregarProductoComponent implements OnInit {
     const dialogRef = this.dialog.open(ModalErrorComponent, {
       width: '300px',
       data: {title: titleNew, mensaje: mensajeNew},
+    });
+  }
+
+  openDialogInteraction(titleNew: string, mensajeNew: string):void{
+    const dialogRef = this.dialog.open(ModalInteraccionComponent, {
+      width: '300px',
+      data: {title: titleNew, mensaje: mensajeNew},
+    });
+    dialogRef.afterClosed().subscribe( (result:boolean) => {
+      console.log(`Dialog result: ${result}`); // Pizza!
+      if(result==true){
+        console.log("confirmo");
+        this.deshabilitarProducto();        
+      }else{
+        console.log("en else");
+        
+      }
+    });
+  }
+
+  openDialogInteractionTwo(titleNew: string, mensajeNew: string):void{
+    const dialogRef = this.dialog.open(ModalInteraccionComponent, {
+      width: '300px',
+      data: {title: titleNew, mensaje: mensajeNew},
+    });
+    dialogRef.afterClosed().subscribe( (result:boolean) => {
+      console.log(`Dialog result: ${result}`); // Pizza!
+      if(result==true){
+        console.log("confirmo");
+        this.habilitarProducto();        
+      }else{
+        console.log("en else");
+        
+      }
     });
   }
 
@@ -57,14 +95,19 @@ export class AgregarProductoComponent implements OnInit {
         this.servicioProducto.getProductById(id).subscribe((producto:ProductoModel)=>{
           this.producto=producto;
           this.fotoSeleccionada=null;
-          console.log(this.registroProductoForm);
-          console.log(this.producto);
           this.registroProductoForm.controls["nombreProducto"].setValue(this.producto.nombreProducto);
           this.registroProductoForm.controls["precioProducto"].setValue(this.producto.precioProducto);
           this.registroProductoForm.controls["precioProveedor"].setValue(this.producto.precioProductoProveedor);
           this.registroProductoForm.controls["descripcionProducto"].setValue(this.producto.descripcionProducto);
+          console.log(this.producto);
           
+          if(this.producto.estado==="1"){
+            this.botonAccion="Deshabilitar";
+          }else{
+            this.botonAccion="Habilitar"
+          }
         })
+        
       }
     })
 
@@ -182,7 +225,6 @@ export class AgregarProductoComponent implements OnInit {
   }
 
   actualizarConImagen(){
-    console.log("con imagen");
     
     this.imagenServicio.subir(this.fotoSeleccionada).subscribe( (response:any) => {
       if(response){
@@ -217,8 +259,45 @@ export class AgregarProductoComponent implements OnInit {
     });
   }
 
-  deshabilitar(){
-    
+  deshabilitar(id: number){
+
+
+    if(this.botonAccion=="Deshabilitar"){
+      this.servicioInventario.getInventarioGeneralByProducto(id).subscribe((res:any) => {
+        if(res.cantidadProducto>0){
+          this.openDialogInteraction("Advertencia",`Existen aun ${res.cantidadProducto} productos, Estas seguro de deshabilitarlo?`)
+        }else{
+          this.openDialogInteraction("Advertencia", "Estas seguro que desea desahabilitar este producto?")
+        }
+      })
+    }else{
+      this.openDialogInteractionTwo("Advertencia","Estas seguro que desea habilitar este producto?")
+      
+    }
+
+
+  }
+
+  deshabilitarProducto(){
+    let codigo= this.producto.codigoProducto;
+    this.servicioProducto.deshabilitarProduct(codigo).subscribe(res=>{
+      this.openDialog("Exito!!","Se ha desahibilitado correctamente el producto")
+      this.router.navigate(['/productos'])
+    }, err => {
+      console.log(err);
+      
+    })
+  }
+
+  habilitarProducto(){
+    let codigo= this.producto.codigoProducto;
+    this.servicioProducto.deshabilitarProduct(codigo).subscribe(res=>{
+      this.openDialog("Exito!!","Se ha habilitado correctamente el producto")
+      this.router.navigate(['/productos'])
+    }, err => {
+      console.log(err);
+      
+    })
   }
 
   crearFormulario(){

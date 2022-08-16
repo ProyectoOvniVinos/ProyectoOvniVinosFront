@@ -8,6 +8,10 @@
     cursor:pointer;
 }
 
+.puntero:hover{
+    background-color: rgb(255, 131, 174);
+}
+
 .cajaMensaje{
     border: 2px solid rgba(167,31,73,1);
     color: rgba(167,31,73,1);
@@ -21,6 +25,9 @@
     left: 25%;
 }
 
+.inhabilitado{
+    background-color: rgba(129, 129, 129, 0.356);
+}
 .cajaMensajeError{
     width: 60%;
     border: 2px solid rgba(167,31,73,1);

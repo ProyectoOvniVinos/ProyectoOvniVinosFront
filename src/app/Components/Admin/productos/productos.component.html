@@ -54,7 +54,7 @@
                     </tr>
                 </thead>
                 <tbody class="tablabodyP"  >
-                    <tr class="puntero" *ngFor="let producto of productos">
+                    <tr class="puntero" *ngFor="let producto of productos" [ngClass]="producto.estado=='0'? 'inhabilitado': ''">
                         <td>
                             <img (click)="abrirModal(producto.fotoProducto)" class="imagen" src="{{producto.fotoProducto}}" alt="{{producto.fotoProducto}}">
                         </td>

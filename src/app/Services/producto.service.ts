@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { actionToJson } from '@cloudinary/url-gen/internal/models/actionToJson';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Inventario_generalModel } from '../Models/Inventario_general.model';
 import { ProductoModel } from '../Models/Producto.model';
@@ -11,7 +12,7 @@ export class ProductoService {
 
   url:string="http://localhost:8080/apiProd/";
 
-  url2:string="http://localhost:8080/apiInventario/inventarioGeneralCompleto/positivo";
+  url2:string="http://localhost:8080/apiInventario/inventarioGeneralCompleto/positvo";
 
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 
@@ -82,4 +83,12 @@ export class ProductoService {
     return this.http.get<Inventario_generalModel[]>(this.url2);
   }
 
+  deshabilitarProduct(id:number){
+    const url: string=`${this.url}producto/estado/${id}`
+    return this.http.put<any>(url, {headers: this.httpHeaders}).pipe(
+      catchError(e => {
+        return throwError(e);
+      })
+    )
+  }
 }
