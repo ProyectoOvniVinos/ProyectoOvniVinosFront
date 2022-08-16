@@ -329,3 +329,14 @@
         margin: -18%;
     }
 }
+
+@media screen and (max-width: 1400px) and (max-height:1080px){
+
+    .card-header{
+        font-size: 19.5px;
+        display: flex;
+        align-items: center;
+    }
+
+    
+}
