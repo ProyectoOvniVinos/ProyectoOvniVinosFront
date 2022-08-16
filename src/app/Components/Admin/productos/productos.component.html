@@ -54,15 +54,15 @@
                     </tr>
                 </thead>
                 <tbody class="tablabodyP"  >
-                    <tr class="puntero" *ngFor="let producto of productos">
+                    <tr class="puntero" *ngFor="let producto of productos" [ngClass]="producto.estado=='0'? 'inhabilitado': ''">
                         <td>
-                            <img (click)="abrirModal(producto.foto_producto)" class="imagen" src="{{producto.foto_producto}}" alt="{{producto.foto_producto}}">
+                            <img (click)="abrirModal(producto.fotoProducto)" class="imagen" src="{{producto.fotoProducto}}" alt="{{producto.fotoProducto}}">
                         </td>
-                        <td>{{producto.nombre_producto}}</td>
-                        <td>{{producto.precio_producto}}</td>
-                        <td>{{producto.precio_producto_proveedor}}</td>
-                        <td>{{producto.descripcion_producto}}</td>
-                        <td><button class="btnEditar" routerLink="/editarProducto/{{producto.codigo_producto}}">
+                        <td>{{producto.nombreProducto}}</td>
+                        <td>{{producto.precioProducto}}</td>
+                        <td>{{producto.precioProductoProveedor}}</td>
+                        <td> {{producto.descripcionProducto | slice:0:25 }} ...</td>
+                        <td><button class="btnEditar" routerLink="/editarProducto/{{producto.codigoProducto}}">
                             <img class="imagenEditar" src="../../../../assets/Images/editar.png" alt="">
                         </button></td>
 

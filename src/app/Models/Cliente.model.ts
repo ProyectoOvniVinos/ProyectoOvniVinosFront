@@ -1,8 +1,13 @@
+import { CarritoClienteModel } from "./CarritoCliente.model";
+import { VentaModel } from "./Venta.model";
+
 export class ClienteModel {
-    correo_cliente!: string;
-    nombre_cliente!: string;
-    apellido_cliente!: string;
-    direccion_cliente!: string;
-    telefono_cliente!: string;
-    password_cliente!: string;
+    correoCliente!: string;
+    nombreCliente!: string;
+    apellidoCliente!: string;
+    direccionCliente!: string;
+    telefonoCliente!: string;
+    passwordCliente!: string;
+    carrito!: CarritoClienteModel;
+    ventas: VentaModel[] = [];
 }

@@ -184,7 +184,9 @@ input[type="file"] {
     transform: skewX(45deg) scale(1, 1);
 }
 
-
+.scrol {
+    overflow: scroll !important;
+}
 
 
 .btnRegistrar{
@@ -268,6 +270,87 @@ input[type="file"] {
         padding-top: 1rem;
     }
 }
+@media screen and (max-width: 1920px) and (max-height:800px){
+    .cajaM{
+        height: 93%;
+    }
+    .cajaP{
+        padding-top: 0rem;
+    }
+}
+@media screen and (max-width: 1920px) and (max-height:750px){
+    .cajaM{
+        height: 92%;
+    }
+    .cajaTitle{
+        height: 10%;
+    }
+}
+
+@media screen and (max-width: 1920px) and (max-height:710px){
+    .cajaImg{
+        display: none;
+    }
+    .cajaBtnsTwo{
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 1920px) and (max-height:700px){
+    .boton{
+        margin-bottom: 0.3rem;
+    }
+    .cajaM{
+        height: 94%;
+    }
+
+}
+
+@media screen and (max-width: 1920px) and (max-height:670px){
+    .cajaFormCompleto{
+        gap: 0rem;
+    }
+    .cajaHijo{
+        padding-top: 1%;
+    }
+}
+
+@media screen and (max-width: 1920px) and (max-height:650px){
+    .cajaM{
+        height: 89%;
+    }
+    .btnRegistrar{
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 1920px) and (max-height:630px){
+    .cajainputs{
+        font-size: 0.7rem;
+    }
+    .cajaInput{
+        height: 4rem;
+    }
+}
+
+@media screen and (max-width: 1920px) and (max-height:620px){
+    .btnRegistrar{
+        height: 2rem;
+        font-size: 1rem;
+    }
+}
+@media screen and (max-width: 1920px) and (max-height:580px){
+    .btnRegresar{
+        height: 1.5rem;
+        font-size: 1rem;
+    }
+    .cajaM{
+        height: 96%;
+    }
+}
+
+
 
 @media screen and (max-width: 1640px) and (max-height:1080px){
 

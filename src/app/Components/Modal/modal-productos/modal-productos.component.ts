@@ -2,6 +2,7 @@ import { ProductoModel } from 'src/app/Models/Producto.model';
 import { DialogData } from './../DialogData';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Component, Inject, OnInit } from '@angular/core';
+import { Inventario_generalModel } from 'src/app/Models/Inventario_general.model';
 
 @Component({
   selector: 'app-modal-productos',
@@ -13,33 +14,33 @@ export class ModalProductosComponent implements OnInit {
   productoRecomendado: ProductoModel;
   productos: ProductoModel[] = [
     {
-      codigo_producto: 1,
-      nombre_producto: 'Vino Abocado',
-      precio_producto: 13000,
-      precio_producto_proveedor: 6000,
-      descripcion_producto: 'Delicioso Vino Dulce',
-      foto_producto: '../../../../assets/TEMPORALES/vino1.jpg'
+      codigoProducto: 1,
+      nombreProducto: 'Vino Abocado',
+      precioProducto: 13000,
+      precioProductoProveedor: 6000,
+      descripcionProducto: 'Delicioso Vino Dulce',
+      fotoProducto: '../../../../assets/TEMPORALES/vino1.jpg'
     }, {
-      codigo_producto: 2,
-      nombre_producto: 'Vino tinto',
-      precio_producto: 13000,
-      precio_producto_proveedor: 6000,
-      descripcion_producto: 'Delicioso Vino no tan Dulce',
-      foto_producto: '../../../../assets/TEMPORALES/vino2.jpg'
+      codigoProducto: 2,
+      nombreProducto: 'Vino tinto',
+      precioProducto: 13000,
+      precioProductoProveedor: 6000,
+      descripcionProducto: 'Delicioso Vino no tan Dulce',
+      fotoProducto: '../../../../assets/TEMPORALES/vino2.jpg'
     }, {
-      codigo_producto: 3,
-      nombre_producto: 'Nectar de uva',
-      precio_producto: 10000,
-      precio_producto_proveedor: 5000,
-      descripcion_producto: 'Delicioso nectar de uva libre de alcohol',
-      foto_producto: '../../../../assets/TEMPORALES/vino3.jpg'
+      codigoProducto: 3,
+      nombreProducto: 'Nectar de uva',
+      precioProducto: 10000,
+      precioProductoProveedor: 5000,
+      descripcionProducto: 'Delicioso nectar de uva libre de alcohol',
+      fotoProducto: '../../../../assets/TEMPORALES/vino3.jpg'
     },
   ];
 
   constructor(
     public dialogRef: MatDialogRef<ModalProductosComponent>,
-    @Inject(MAT_DIALOG_DATA) public producto:ProductoModel
-  ) { }
+    @Inject(MAT_DIALOG_DATA) public inventario:Inventario_generalModel)
+   { }
 
   onNoClick(): void{
     this.dialogRef.close();
@@ -47,7 +48,7 @@ export class ModalProductosComponent implements OnInit {
 
   ngOnInit(): void {
     this.productos.forEach( producto => {
-      if(producto.codigo_producto==this.producto.codigo_producto){
+      if(producto.codigoProducto==this.inventario.codigoProducto.codigoProducto){
         this.productoRecomendado=producto
       }else{
         this.productoRecomendado==null;

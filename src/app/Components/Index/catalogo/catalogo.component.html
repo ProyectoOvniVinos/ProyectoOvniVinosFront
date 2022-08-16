@@ -4,14 +4,14 @@
     <div class="buscador">
         <div class="cajaInput">
             <input placeholder="Buscar" class="form-control input-buscar" type="text" (keyup)="buscar(termino.value)" #termino>
-            <button class="btn btnFiltro"><img class="imgBotonPlastico a" (mouseenter)="cambiarImg1($event)" (mouseleave)="cambiarImg2($event)" title="Plasticos" src="../../../../assets/Images/botella-de-plasticoRosado.png" alt=""></button>
-            <button class="btn btnFiltro"><img class="imgBotonVino b"  title="Vidrios" src="../../../../assets/Images/vinoRosado.png" alt=""></button>
-            <button class="btn btnFiltro"><img class="imgBotonJuntas c"  title="Todos" src="../../../../assets/Images/juntasRosado.png" alt=""></button>
+            <button class="btn btnFiltro"><img class="imgBotonPlastico a" (click)="filtro(boton1.title)" (mouseenter)="cambiarImg1($event)" (mouseleave)="cambiarImg2($event)" title="Plastico" src="../../../../assets/Images/botella-de-plasticoRosado.png" alt="" #boton1></button>
+            <button class="btn btnFiltro"><img class="imgBotonVino b"  title="Vidrio" (click)="filtro(boton2.title)" src="../../../../assets/Images/vinoRosado.png" alt="" #boton2></button>
+            <button class="btn btnFiltro"><img class="imgBotonJuntas c"  title="Todos" (click)="filtro(boton3.title)" src="../../../../assets/Images/juntasRosado.png" alt="" #boton3></button>
         </div>
     </div>
 
     <div class="cajaContenido">
-        <app-slideshow [productos] = "productos" ></app-slideshow>
+        <app-slideshow [inventarios] = "inventarioGeneral" ></app-slideshow>
         <hr>
         <div class="catalogoTwo">
             <div>
@@ -19,14 +19,14 @@
             </div>      
             <div class="cajaCartas">
 
-                <div *ngFor="let producto of productos" class="cardP" (click)="openDialog(producto)">
+                <div *ngFor="let inventario of inventarioGeneral" class="cardP">
                     <div class="cardImg">
-                        <img class="imgCardBody" src="{{producto.foto_producto}}" alt="">
+                        <img class="imgCardBody" src="{{inventario.codigoProducto.fotoProducto}}" alt="" (click)="openDialog(inventario)">
                         <img (click)="agregar()" class="imgCarrito" src="../../../../assets/Images/carritoVioleta.png" alt="">
                     </div>
-                    <div class="cardFootert">
-                        <p>{{producto.nombre_producto}}</p>
-                        <p>${{producto.precio_producto}}</p>
+                    <div class="cardFootert" (click)="openDialog(inventario)">
+                        <p>{{inventario.codigoProducto.nombreProducto}}</p>
+                        <p>${{inventario.codigoProducto.precioProducto}}</p>
 
                     </div>
                 </div>

@@ -31,10 +31,21 @@ export class ProductosComponent implements OnInit {
   obtenerProductos(){
     this.service.getProducts().subscribe( productos => {
       this.productos=productos;
-      console.log(this.productos);
       if(this.productos.length==0){
         this.bandera=false;
       }else{
+        this.productos.sort(function (a, b) {
+          // A va primero que B
+          if (a.estado > b.estado)
+              return -1;
+          // B va primero que A
+          else if (a.estado < b.estado)
+              return 1;
+          // A y B son iguales
+          else 
+              return 0;
+      });
+        
         this.bandera=true;
       }
       
