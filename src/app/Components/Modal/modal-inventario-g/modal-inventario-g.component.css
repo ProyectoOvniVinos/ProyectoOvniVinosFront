@@ -35,30 +35,22 @@
     margin-bottom: 2%;
 }
 
-
-.secondBox{
+.boxOfTable{
     display: flex;
-    height: 20rem;
     justify-content: center;
-}
+    margin-top: 2rem;
 
-.cuadroPrincipal{
-    display: flex;
-    width: 90%;
-    margin-top: 4%; 
-    height: 4rem;
+
+}
+.tableOne{
+    width: 85%;
+}
+.infoHeaderT{
+    background: rgb(167,31,73);
     background: linear-gradient(90deg, rgba(167,31,73,1) 11%, rgba(255,42,108,1) 55%, rgba(167,31,73,1) 100%);
-    border: 2px solid rgb(184, 13, 72); /* tamaño y color de borde */
-    border-radius: 26px;
-    align-items: center;
-}
-
-.datos{
-    display: flex;
-    justify-content: space-around;
-    width: 130%;
-    height: 45%;
+    height: 2rem;
+    font-size: 1.4rem;
     color: white;
-    
-
+    text-align: center;
+    border-radius: 10px;
 }

@@ -6,7 +6,37 @@
 </div>
 
 <mat-dialog-content class="boxInventoryDetails">
+  <div class="principalBox">
+    <div class="boxImg">
+      <img class="img" src=  "{{data.fotoProducto}}"/>
+    </div>
+    <div class="information">
+      <h1 class="tituloModal" mat-dialog-title>{{data.nombreProducto}}</h1>
+      <p class="text-dark">{{data.precioProductoProveedor}}</p>
+      <p class="text-dark">{{data.descripcionProducto}}</p>      
+    </div>
+  </div>
 
+  <div class="boxOfTable">
+    <table class="tableOne">
+      <thead class="infoHeaderT">
+        <tr>
+          <th>Fecha de ingreso</th>
+          <th>Cantidad</th>
+        </tr>
+      </thead>
+      <tbody class="tableBody">
+       <tr *ngFor="let datos of datos">
+
+        <td>{{datos.fechaUltimoIngreso}}</td>
+        <td>{{datos.cantidadProducto}}</td>
+       </tr>
+      </tbody>
+    </table>
+
+  </div>
+  
+</mat-dialog-content> 
 
 
 
