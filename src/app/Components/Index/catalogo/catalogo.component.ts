@@ -48,6 +48,7 @@ export class CatalogoComponent implements OnInit {
   }
 
   filtro(text:string){
+    this.inventarioGeneral = [];
     if(text!="Todos"){
       this.productoService.getProductsEstadoFiltro(text).subscribe(inventario => {
         this.inventarioGeneral = inventario;

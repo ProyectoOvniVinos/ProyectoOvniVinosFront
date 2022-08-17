@@ -24,10 +24,10 @@
                     </tr>
                 </thead>
                 <tbody class="tablabodyP">
-                    <tr *ngFor="let producto of productos" (click)=openDialog(producto)>
-                        <td>{{producto.codigoProducto}}</td>
-                        <td>{{producto.nombreProducto}}</td>
-                        <td>{{producto.codigoProducto +4}}</td>
+                    <tr class="puntero" *ngFor="let inventario of inventarioG" (click)=openDialog(inventario.codigoProducto)>
+                        <td>{{inventario.codigoProducto.codigoProducto}}</td>
+                        <td>{{inventario.codigoProducto.nombreProducto}}</td>
+                        <td>{{inventario.cantidadProducto}}</td>
                     </tr>
                 </tbody>
             </table>

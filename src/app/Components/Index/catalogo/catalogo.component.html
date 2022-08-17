@@ -4,14 +4,15 @@
     <div class="buscador">
         <div class="cajaInput">
             <input placeholder="Buscar" class="form-control input-buscar" type="text" (keyup)="buscar(termino.value)" #termino>
-            <button class="btn btnFiltro"><img class="imgBotonPlastico a" (click)="filtro(boton1.title)" (mouseenter)="cambiarImg1($event)" (mouseleave)="cambiarImg2($event)" title="Plastico" src="../../../../assets/Images/botella-de-plasticoRosado.png" alt="" #boton1></button>
-            <button class="btn btnFiltro"><img class="imgBotonVino b"  title="Vidrio" (click)="filtro(boton2.title)" src="../../../../assets/Images/vinoRosado.png" alt="" #boton2></button>
-            <button class="btn btnFiltro"><img class="imgBotonJuntas c"  title="Todos" (click)="filtro(boton3.title)" src="../../../../assets/Images/juntasRosado.png" alt="" #boton3></button>
+        
+            <button (click)="filtro(boton1.title)" title="Plastico" class="btn btnFiltro" #boton1><img class="imgBotonPlastico a"  (mouseenter)="cambiarImg1($event)" (mouseleave)="cambiarImg2($event)" src="../../../../assets/Images/botella-de-plasticoRosado.png" alt="" ></button>
+            <button (click)="filtro(boton2.title)" title="Vidrio" class="btn btnFiltro" #boton2><img class="imgBotonVino b" src="../../../../assets/Images/vinoRosado.png" alt=""></button>
+            <button (click)="filtro(boton3.title)" title="Todos" class="btn btnFiltro" #boton3><img class="imgBotonJuntas c" src="../../../../assets/Images/juntasRosado.png" alt=""></button>
         </div>
     </div>
 
     <div class="cajaContenido">
-        <app-slideshow [inventarios] = "inventarioGeneral" ></app-slideshow>
+        <app-slideshow *ngIf="inventarioGeneral.length > 0" [inventarios] = "inventarioGeneral" ></app-slideshow>
         <hr>
         <div class="catalogoTwo">
             <div>

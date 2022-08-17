@@ -22,6 +22,14 @@
     margin-top: 10px;
 }
 
+.puntero{
+    cursor:pointer;
+}
+
+.puntero:hover{
+    background-color: rgb(255, 131, 174);
+}
+
 .tabla{
     width: 100%;
 }
