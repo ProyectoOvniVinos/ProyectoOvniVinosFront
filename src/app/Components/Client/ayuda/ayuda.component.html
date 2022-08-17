@@ -2,10 +2,10 @@
 
     <div class="container cajaPadreAyuda mt-5">
         <div class="cajaMadre">
-            <h2>Ingresa los Datos</h2>
+            <h2>Ingresa los datos</h2>
             <form class="form"  [formGroup]="ayudaForm"> 
                 <div class="cajaInput">
-                    <label for="exampleInputEmail1" class="form-label">Correo Electronico</label>
+                    <label for="exampleInputEmail1" class="form-label">Correo electronico</label>
                     <input type="email" class="input form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
                         formControlName="correo"
                         [ngClass]="correoNoValido == null ? '' : correoNoValido ? 'is-invalid': 'is-valid'">
