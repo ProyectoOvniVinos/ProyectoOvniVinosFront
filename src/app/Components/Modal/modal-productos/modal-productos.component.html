@@ -15,7 +15,7 @@
                     <img class="imgRecomendacion" src="{{productoRecomendado.fotoProducto}}"/>
                 </div>
                 <div class="cajaInfoReco" >
-                    <p> <b> Recomendado </b> </p>
+                    <p> <b class="recomended"> Recomendado </b> </p>
                     <p> Vino Abocado </p>
                     <p>$15000 </p>
                     <!-- <div class="cajaBtns"> -->
@@ -42,11 +42,13 @@
         <!-- </div> -->
        <div class="prueba">
         <div class="card">
+
             <h4 class="card-header"><b>Nombre: {{inventario.codigoProducto.nombreProducto}}</b></h4>
+
             <div class="card-body">
               <p class="card-text"><b>Precio:</b> {{inventario.codigoProducto.precioProducto}}</p>
               <p class="card-text"><b>Cantidad disponible:</b> {{inventario.cantidadProducto}}</p>
-              <p class="card-text"><b>Descripción:</b>{{inventario.codigoProducto.descripcionProducto}}</p>
+              <p class="card-text"><b>Descripción:</b> {{inventario.codigoProducto.descripcionProducto}}</p>
             </div>
             <div class="card-footer">
                 <mat-dialog-actions class="cajaBtns">

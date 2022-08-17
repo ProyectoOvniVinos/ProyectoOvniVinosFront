@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { actionToJson } from '@cloudinary/url-gen/internal/models/actionToJson';
+// import { actionToJson } from '@cloudinary/url-gen/internal/models/actionToJson';
 import { catchError, Observable, throwError } from 'rxjs';
 import { Inventario_generalModel } from '../Models/Inventario_general.model';
 import { ProductoModel } from '../Models/Producto.model';

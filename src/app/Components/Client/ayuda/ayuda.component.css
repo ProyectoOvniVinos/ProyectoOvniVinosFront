@@ -119,14 +119,19 @@ p{
     outline: none;
 }
 
-
-
-
 .form{
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     width: 80%;
+}
+
+.form-text{
+    margin-top: 0;
+}
+
+.form-label {
+    margin-bottom: 0.2rem;
 }
 
 @media screen and (max-width: 1920px) and (max-height:1080px){
