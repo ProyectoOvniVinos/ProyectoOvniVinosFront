@@ -1,5 +1,5 @@
 .contenedor-ruteo {
-    height: 93vh;
+    height: 100vh;
 }
 
 .fmorado {
@@ -8,10 +8,24 @@
 
 }
 
+.headerAbierto{
+    margin-left: 40%;
+}
+
+.headerCerrado{
+    margin-left: 60%;
+}
+
 .contenedor-logo {
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.mat-toolbar-multiple-rows{
+    width: 10%;
+    position: absolute;
+    z-index: 4;
 }
 
 .cerrado {
@@ -127,14 +141,6 @@
     max-width: 130px;
 }
 
-.cerrar {
-    position: absolute;
-    right: 1.5%;
-    top: 1.5%;
-    border: 0.2rem solid white;
-    z-index: 1;
-}
-
 .mat-list-item-content {
     justify-content: center;
 
@@ -225,26 +231,8 @@
     pointer-events: none;
 }
 
-@media screen and (max-height:928px) {
-    .contenedor-ruteo {
-        height: 90vh;
-    }
 
-}
 
-@media screen and (max-height:635px) {
-    .contenedor-ruteo {
-        height: 83vh;
-    }
-
-}
-
-@media screen and (max-height:390px) {
-    .contenedor-ruteo {
-        height: 77vh;
-    }
-
-}
 
 @media screen and (max-width:1138px) {
     .texts {
