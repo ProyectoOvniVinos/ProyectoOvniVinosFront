@@ -3,12 +3,17 @@
     justify-content: space-between;
 }
 
+.equis{
+    display: flex;
+    justify-content: flex-end;
+}
+
 .imageCerrar{
     width: 45px;
     height: 45px;
-    margin: -14%;
     cursor: pointer;
 }
+
 .tituloModal{
     font-size: 30px;
     color: rgb(211, 21, 88);
@@ -18,6 +23,7 @@
     width: 70%;
     height: 50%;
     display: flex;
+    justify-content: center;
 }
 
 .boxImg{
@@ -26,24 +32,47 @@
     height: 80%;
     flex-direction: column;
     align-items: center;
+
 }
 
 .img{
     width: 85%;
     height: 20rem;
-    border-radius: 0.5rem;
+    border-radius: 2rem;
     margin-bottom: 2%;
+    border: 2px solid  rgb(211, 21, 88);
+
 }
 
 .boxOfTable{
     display: flex;
     justify-content: center;
     margin-top: 2rem;
+}
 
+.tableBody{
+    width: 92%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.datosTable{
+    display: flex;
+    width: 36rem;
+    justify-content: space-around;
+   
+}
+
+.headerA{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;    
 }
 .tableOne{
-    width: 85%;
+    width: 75%;
+    
+    
 }
 .infoHeaderT{
     background: rgb(167,31,73);
@@ -53,4 +82,57 @@
     color: white;
     text-align: center;
     border-radius: 10px;
+}
+
+.information h1{
+    text-align: center;
+}
+.information{
+    margin-top: 4rem;
+}
+
+.btnOk {
+    background: rgb(255, 252, 252); /* color de fondo */
+    color: rgb(184, 13, 72); /* color de fuente */
+    border: 2px solid rgb(184, 13, 72); /* tamaño y color de borde */
+    padding-top: 0px;
+    border-radius: 8px; /* redondear bordes */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 1.6rem;
+    width: 30%;
+    height: 3rem;
+}
+
+.btnOk:hover {
+    color: #fff;/* color de fuente hover */
+}
+
+.btnOk::after{
+    content: "";
+    background: rgb(167,31,73);
+    background: linear-gradient(90deg, rgba(167,31,73,1) 11%, rgba(255,42,108,1) 55%, rgba(167,31,73,1) 100%);
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(45deg) scale(0, 1);
+    transition: all 0.3s ease;
+}
+
+.btnOk:hover::after{
+    transition: all 0.3s ease-out;
+    transform: skewX(45deg) scale(1, 1);
+}
+
+.cajaButton{
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
 }

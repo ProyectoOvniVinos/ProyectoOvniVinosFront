@@ -4,6 +4,7 @@ import { ProductoModel } from 'src/app/Models/Producto.model';
 import { Inventario_detallesModel } from 'src/app/Models/Inventario_detalles.model';
 import { DialogData } from '../DialogData';
 import { DatePipe, DATE_PIPE_DEFAULT_TIMEZONE } from '@angular/common';
+import { Inventario_generalModel } from 'src/app/Models/Inventario_general.model';
 
 @Component({
   selector: 'app-modal-inventario-g',
@@ -12,31 +13,48 @@ import { DatePipe, DATE_PIPE_DEFAULT_TIMEZONE } from '@angular/common';
 })
 export class ModalInventarioGComponent implements OnInit {
 
-  datosRegistro: Inventario_detallesModel;
-  datos: Inventario_detallesModel[] = [
+  datosRegistro: Inventario_generalModel;
+  datos: Inventario_generalModel = 
     {
-      idDetalles: 3,
-      cantidadProducto: 4,
-      fechaUltimoIngreso: new Date(),
-    },
-
-    {
-      idDetalles: 6,
-      cantidadProducto: 12,
-      fechaUltimoIngreso: new Date ("12-08-2022"),
-    },
-
-    {
-      idDetalles: 8,
-      cantidadProducto: 3,
-      fechaUltimoIngreso: new Date ("12-08-2022"),
-    },
-    
-  ];
+      idRegistro:1,
+      cantidadProducto:24,
+      codigoProducto: {
+        codigoProducto: 1,
+        nombreProducto: "Vino Abocado",
+        precioProducto: 13000,
+        precioProductoProveedor: 10000,
+        descripcionProducto:"Lorem",
+        fotoProducto: "../../../../assets/TEMPORALES/vino1.jpg",
+        estado : "1"
+      },
+      detalles: [
+        {
+          idDetalles: 1,
+          cantidadProducto: 6,
+          fechaUltimoIngreso:  new Date("2020-05-16")
+        },
+        {
+          idDetalles: 1,
+          cantidadProducto: 6,
+          fechaUltimoIngreso:  new Date("2020-05-16")
+        },
+        {
+          idDetalles: 1,
+          cantidadProducto: 6,
+          fechaUltimoIngreso:  new Date("2020-05-16")
+        },
+        {
+          idDetalles: 1,
+          cantidadProducto: 6,
+          fechaUltimoIngreso:  new Date("2020-05-16")
+        }
+      ]
+    }
+  ;
   
   constructor(    
     public dialogRef: MatDialogRef<ModalInventarioGComponent>,
-    @Inject(MAT_DIALOG_DATA) public data:ProductoModel ) 
+    @Inject(MAT_DIALOG_DATA) public data:Inventario_generalModel ) 
     { }
 
   

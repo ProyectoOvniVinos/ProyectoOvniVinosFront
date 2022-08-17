@@ -1,5 +1,4 @@
 <div class="headTittle">
-  <h1 class="tituloModal" mat-dialog-title>{{data.nombreProducto}}</h1>
   <div class="equis"> 
     <img src="../../../../assets/Images/salir.png" alt="" class="imageCerrar" (click)="onNoClick()">
   </div>
@@ -8,32 +7,39 @@
 <mat-dialog-content class="boxInventoryDetails">
   <div class="principalBox">
     <div class="boxImg">
-      <img class="img" src=  "{{data.fotoProducto}}"/>
+      <img class="img" src=  "{{datos.codigoProducto.fotoProducto}}"/>
     </div>
     <div class="information">
-      <h1 class="tituloModal" mat-dialog-title>{{data.nombreProducto}}</h1>
-      <p class="text-dark">{{data.precioProductoProveedor}}</p>
-      <p class="text-dark">{{data.descripcionProducto}}</p>      
+      <h1 class="tituloModal" mat-dialog-title>{{datos.codigoProducto.nombreProducto}}</h1>
+      <div >
+        <p class="text-dark"><b>Precio del proveedor: </b>{{datos.codigoProducto.precioProductoProveedor}}</p>
+        <p class="text-dark"><b>Precio del producto: </b>{{datos.codigoProducto.precioProducto}}</p> 
+        <p class="text-dark"><b>Cantidad del producto: </b>{{datos.cantidadProducto}}</p>     
+      </div>
+    
     </div>
   </div>
 
   <div class="boxOfTable">
     <table class="tableOne">
       <thead class="infoHeaderT">
-        <tr>
+        <tr class="headerA">
           <th>Fecha de ingreso</th>
-          <th>Cantidad</th>
+          <th>Cantidad ingresada</th>
         </tr>
       </thead>
       <tbody class="tableBody">
-       <tr *ngFor="let datos of datos">
-
-        <td>{{datos.fechaUltimoIngreso}}</td>
-        <td>{{datos.cantidadProducto}}</td>
+       <tr *ngFor="let detalle of datos.detalles">
+         <div class="datosTable">
+            <td>{{detalle.fechaUltimoIngreso | date: 'EEE dd, MM, yyyy'}}</td>
+            <td>{{detalle.cantidadProducto}}</td>
+         </div>
        </tr>
       </tbody>
     </table>
-
+  </div>
+  <div class="cajaButton" mat-dialog-actions>
+    <button class="btnOk"mat-button (click)="onNoClick()">Agregar</button>
   </div>
   
 </mat-dialog-content> 
