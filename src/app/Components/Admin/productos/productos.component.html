@@ -13,17 +13,17 @@
   </div>
 
 <div class="boton mb-3">
-    <button (click)="irAgregarProducto()"class="btnAgregar">Agregar Producto</button>
+    <button (click)="irAgregarProducto()"class="btnAgregar">Agregar productos</button>
 </div>
 
 <div class="container">
 
     <div class="cajaMensaje" *ngIf="bandera==false">
-        <h1>No existen productos Aun</h1>
+        <h1>Lo sentimos, aún no existen productos</h1>
     </div>
 
     <div class="cajaMensaje" *ngIf="bandera==null">
-        <h1>Error al Comunicarse Con el Servidor</h1>
+        <h1>Error al comunicarse con el servidor</h1>
     </div>
 
     <table *ngIf="bandera==true" class="tabla">
@@ -45,11 +45,11 @@
             <table class="tabla2"  *ngIf="!banderaErrores">
                 <thead class="tablaHeaderP">
                     <tr>
-                        <th class="primero">Imagen</th>
+                        <th class="primero">Imágen</th>
                         <th>Nombre</th>
                         <th>Precio</th>
-                        <th>Precio Proveedor</th>
-                        <th>Descripcion</th>
+                        <th>Precio proveedor</th>
+                        <th>Descripción</th>
                         <th class="ultimo">Editar</th>
                     </tr>
                 </thead>
