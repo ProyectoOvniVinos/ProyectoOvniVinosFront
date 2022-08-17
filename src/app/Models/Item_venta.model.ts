@@ -1,5 +1,4 @@
 
-import { Contabilidad_diariaModel } from "./Contabilidad_diaria.model";
 import { ProductoModel } from "./Producto.model";
 import { VentaModel } from "./Venta.model";
 
