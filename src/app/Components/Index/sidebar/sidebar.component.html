@@ -3,7 +3,6 @@
         <div [ngClass]="abierto?'cont-menu fmorado':'cerrado'" *ngIf="abierto else menucerrado">
             <img class="menuIcon" (click)="sidenav.toggle()" (click)="abierto = !abierto" src="../../../../assets/Images/menuAbierto.png" alt="">
         </div>
-        <a routerLink="/catalogo" class="contenedor-titulo-header">Ovni Vinos</a>
         <ng-template #menucerrado >
             <div class="cont-menu">
 
@@ -36,8 +35,6 @@
 
             <div *ngIf="cliente">
 
-                <a *ngIf="getRuta()" class="linkRutaCarrito fadeInTwo animacionTwo" mat-list-item routerLinkActive="activo" (click)="validarCarrito = !validarCarrito"> <img class="imagenes" src="../../../../assets/Images/carrito.png" alt="Carrito">  Carrito</a>   
-                <a *ngIf="!getRuta()" class="linkRutaCarrito fadeInTwo animacionTwo" mat-list-item routerLinkActive="activo"> </a>
                 <a class="linkRuta" mat-list-item routerLink="/datosC" routerLinkActive="activo"> <img class="imagenes" src="../../../../assets/Images/misDatos.png" alt="datos"> Mis Datos</a>
                 <a class="linkRuta" mat-list-item routerLink="/historialC" routerLinkActive="activo2" > <img class="imagenes" src="../../../../assets/Images/historial.png" alt="historial">  Ver Historial</a>
                 <a class="linkRuta" mat-list-item routerLink="/ayuda" routerLinkActive="activo"><img class="imagenes" src="../../../../assets/Images/ayuda.png" alt="ayuda"> Ayuda</a>
@@ -53,6 +50,9 @@
     </mat-sidenav>
     <mat-sidenav-content>
         <div class="contenedor-ruteo">
+            
+            <app-header *ngIf="abierto" clase="true"></app-header>
+            <app-header *ngIf="!abierto" clase="false"></app-header> 
             <router-outlet></router-outlet>
             <div class="footer" [ngClass]="abierto ? 'sin' : 'footerAbierto'">
                 <div class="texts">
@@ -69,10 +69,6 @@
     
 </mat-sidenav-container>
 
-<div *ngIf="validarCarrito && getRuta()">
-    <app-carrito></app-carrito>
-    <button (click)="validarCarrito=!validarCarrito" type="button" class="btn-close cerrar  animacion fadeIn" data-bs-dismiss="modal" aria-label="Close"></button>
-</div>
 <!-- <app-footer></app-footer> -->
 
 

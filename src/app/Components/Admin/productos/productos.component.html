@@ -30,7 +30,7 @@
         <thead class="tablaHeaderG">
             <tr>
                 <th>
-                    Productos
+                    PRODUCTOS
                 </th>
             </tr>
         </thead>
@@ -38,7 +38,7 @@
 
             <hr class="todo">
 
-            <input type="text" class="form-control inputBuscar" placeholder="Buscar el Producto Que Desees" (keyup)="buscar($event)">
+            <input type="text" class="form-control inputBuscar" placeholder="¿Qué producto buscas?" (keyup)="buscar($event)">
 
             <hr class="todo">
 
@@ -55,13 +55,13 @@
                 </thead>
                 <tbody class="tablabodyP"  >
                     <tr class="puntero" *ngFor="let producto of productos" [ngClass]="producto.estado=='0'? 'inhabilitado': ''">
-                        <td>
-                            <img (click)="abrirModal(producto.fotoProducto)" class="imagen" src="{{producto.fotoProducto}}" alt="{{producto.fotoProducto}}">
+                        <td (click)="abrirModal(producto.fotoProducto)">
+                            <img class="imagen" src="{{producto.fotoProducto}}" alt="{{producto.fotoProducto}}">
                         </td>
-                        <td>{{producto.nombreProducto}}</td>
-                        <td>{{producto.precioProducto}}</td>
-                        <td>{{producto.precioProductoProveedor}}</td>
-                        <td> {{producto.descripcionProducto | slice:0:25 }} ...</td>
+                        <td (click)="abrirModal(producto.fotoProducto)">{{producto.nombreProducto}}</td>
+                        <td (click)="abrirModal(producto.fotoProducto)">{{producto.precioProducto}}</td>
+                        <td (click)="abrirModal(producto.fotoProducto)">{{producto.precioProductoProveedor}}</td>
+                        <td (click)="abrirModal(producto.fotoProducto)"> {{producto.descripcionProducto | slice:0:25 }} ...</td>
                         <td><button class="btnEditar" routerLink="/editarProducto/{{producto.codigoProducto}}">
                             <img class="imagenEditar" src="../../../../assets/Images/editar.png" alt="">
                         </button></td>

@@ -1,5 +1,4 @@
 import { CompraModel } from "./Compra.model";
-import { Contabilidad_diariaModel } from "./Contabilidad_diaria.model";
 import { ProductoModel } from "./Producto.model";
 
 export class Item_compraModel {
