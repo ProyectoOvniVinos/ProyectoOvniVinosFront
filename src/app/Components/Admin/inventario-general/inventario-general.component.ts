@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ProductoModel } from 'src/app/Models/Producto.model';
+import { Inventario_generalModel } from 'src/app/Models/Inventario_general.model';
+import { ProductoModel } from '../../../Models/Producto.model';
+import { InventarioGService } from '../../../Services/inventario-g.service';
 import { ModalInventarioGComponent } from '../../Modal/modal-inventario-g/modal-inventario-g.component';
 
 @Component({
@@ -10,33 +12,13 @@ import { ModalInventarioGComponent } from '../../Modal/modal-inventario-g/modal-
 })
 export class InventarioGeneralComponent implements OnInit {
 
-  productos: ProductoModel[] = [
-    {
-      codigoProducto: 1,
-      nombreProducto: 'Vino Abocado',
-      precioProducto: 13000,
-      precioProductoProveedor: 6000,
-      descripcionProducto: 'Delicioso Vino Dulce',
-      fotoProducto: '../../../../assets/TEMPORALES/vino1.jpg'
-    }, {
-      codigoProducto: 2,
-      nombreProducto: 'Vino tinto',
-      precioProducto: 13000,
-      precioProductoProveedor: 6000,
-      descripcionProducto: 'Delicioso Vino no tan Dulce',
-      fotoProducto: '../../../../assets/TEMPORALES/vino2.jpg'
-    }, {
-      codigoProducto: 3,
-      nombreProducto: 'Nectar de uva',
-      precioProducto: 10000,
-      precioProductoProveedor: 5000,
-      descripcionProducto: 'Delicioso nectar de uva libre de alcohol',
-      fotoProducto: '../../../../assets/TEMPORALES/vino3.jpg'
-    },
-  ];
-  constructor(public dialog:MatDialog) { }
+  inventarioG: Inventario_generalModel[] = [];
+  constructor(public dialog:MatDialog, private inventarioService: InventarioGService) { }
 
   ngOnInit(): void {
+    this.inventarioService.getInventarioGeneralCompleto().subscribe(inventarioGeneral=>{
+      this.inventarioG = inventarioGeneral; 
+    });
   }
 
   openDialog(producto: ProductoModel): void {

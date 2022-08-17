@@ -31,6 +31,8 @@ export class ProductosComponent implements OnInit {
   obtenerProductos(){
     this.service.getProducts().subscribe( productos => {
       this.productos=productos;
+      console.log(this.productos);
+      
       if(this.productos.length==0){
         this.bandera=false;
       }else{

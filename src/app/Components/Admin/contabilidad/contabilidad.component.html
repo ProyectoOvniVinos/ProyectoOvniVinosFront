@@ -7,9 +7,9 @@
         </div>
         <div class="cajaContenido">
             <div class="cajaBtns">
-                <button class="botones">Diaria</button>
-                <button class="botones">Mensual</button>
-                <button class="botones">Anual</button>
+                <button class="botones" (click)="traerContabiliad('Diaria')">Diaria</button>
+                <button class="botones" (click)="traerContabiliad('Mensual')">Mensual</button>
+                <button class="botones" (click)="traerContabiliad('Anual')">Anual</button>
                 <button routerLink="/ventas" class="botones">Ventas</button>
                 <button routerLink="/compras" class="botones">Compras</button>
             </div>
@@ -19,7 +19,7 @@
             <div class="cajaTable">
                 
                 <div>
-                    <h4>Contabilidad Variable</h4>
+                    <h4>Contabilidad {{contabilidad}}</h4>
                 </div>
 
                 <table class="tabla2">
@@ -32,9 +32,32 @@
                             <th class="ultimo">Fecha</th>
                         </tr>
                     </thead>
-                    <tbody class="tablabodyP">
-                        <tr>
+                    <tbody *ngIf="contabilidadesDiarias.length > 0" class="tablabodyP">
+                        <tr *ngFor="let contabilidad of contabilidadesDiarias">
+                            <td>{{contabilidad.idRegistroContabilidadDiaria}}</td>
+                            <td>{{contabilidad.ventasContabilidadDiaria}}</td>
+                            <td>{{contabilidad.egresosContabilidadDiaria}}</td>
+                            <td>{{contabilidad.ingresosContabilidadDiaria}}</td>
+                            <td>{{contabilidad.fecha | date:'dd/MM/yyyy'}}</td>
                         </tr>
+                    </tbody>
+                    <tbody *ngIf="contabilidadesMensuales.length > 0" class="tablabodyP">
+                        <tr *ngFor="let contabilidad of contabilidadesMensuales">
+                            <td>{{contabilidad.idRegistroContabilidadMensual}}</td>
+                            <td>{{contabilidad.ventasContabilidadMensual}}</td>
+                            <td>{{contabilidad.egresosContabilidadMensual}}</td>
+                            <td>{{contabilidad.ingresosContabilidadMensual}}</td>
+                            <td>{{contabilidad.fecha | date:'MM/yyyy'}}</td>
+                        </tr>
+                    </tbody>
+                    <tbody *ngIf="contabilidadesAnuales.length > 0" class="tablabodyP">                            
+                            <tr *ngFor="let contabilidad of contabilidadesAnuales">
+                                <td>{{contabilidad.idRegistroContabilidadAnual}}</td>
+                                <td>{{contabilidad.ventasContabilidadAnual}}</td>
+                                <td>{{contabilidad.egresosContabilidadAnual}}</td>
+                                <td>{{contabilidad.ingresosContabilidadAnual}}</td>
+                                <td>{{contabilidad.fecha | date:'yyyy'}}</td>
+                            </tr>
                     </tbody>
                 </table>
             </div>

@@ -3,6 +3,9 @@ import { catchError, Observable, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Inventario_detallesModel } from '../Models/Inventario_detalles.model';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalErrorComponent } from '../Components/Modal/modal-error/modal-error.component';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +15,14 @@ export class InventarioGService {
   
   url:string="http://localhost:8080/apiInventario/";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public dialog: MatDialog, private router: Router) { }
+
+  openDialog(titleNew: string, mensajeNew: string): void {
+    const dialogRef = this.dialog.open(ModalErrorComponent, {
+      width: '300px',
+      data: {title: titleNew, mensaje: mensajeNew},
+    });
+  }
 
   getInventarioGeneralCompleto(): Observable<Inventario_generalModel[]>{
     let url: string = `${this.url}inventarioGeneralCompleto`;
@@ -46,6 +56,8 @@ export class InventarioGService {
     let url: string = `${this.url}inventarioGeneralProducto/${producto}`
     return this.http.get(url).pipe(
       catchError(e => {
+        this.openDialog("Advertencia!!",`${e.error.mensaje}`)
+        this.router.navigate(['/productos'])
         return throwError(e);
       })
     )
