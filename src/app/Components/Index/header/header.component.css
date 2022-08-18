@@ -1,0 +1,18 @@
+.contenedor-titulo-header {
+    width: 20%;
+    text-decoration: none;
+    color: black;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 4%;
+    font-size: 6vh;
+    transition: 0.2s;
+    animation:animacionTwo;
+    animation-duration: 0.4s;
+}
+
+.headerCerrado{
+    margin-left: 10%;
+    animation:animacionTwo;
+    animation-duration: 0.4s;
+}

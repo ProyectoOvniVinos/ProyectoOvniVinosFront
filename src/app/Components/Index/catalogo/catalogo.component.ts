@@ -13,6 +13,7 @@ import { Inventario_generalModel } from 'src/app/Models/Inventario_general.model
 export class CatalogoComponent implements OnInit {
 
   inventarioGeneral: Inventario_generalModel[] = [];
+  validarCarrito = false;
 
   constructor(public dialog: MatDialog, private productoService: ProductoService) { }
 
@@ -48,6 +49,7 @@ export class CatalogoComponent implements OnInit {
   }
 
   filtro(text:string){
+    this.inventarioGeneral = [];
     if(text!="Todos"){
       this.productoService.getProductsEstadoFiltro(text).subscribe(inventario => {
         this.inventarioGeneral = inventario;
@@ -59,6 +61,10 @@ export class CatalogoComponent implements OnInit {
         this.inventarioGeneral = inventario;
       })
     }
+  }
+
+  mostrarCarrito(){
+    this.validarCarrito=!this.validarCarrito;
   }
 
 }

@@ -30,7 +30,7 @@ export class AgregarProductoComponent implements OnInit {
 
   botonAccion = "Deshabilitar"
   boton:string = "Registrar"
-  titulo:string = "Crear Producto";
+  titulo:string = "CREAR PRODUCTO";
   registroProductoForm !: FormGroup;
   private fotoSeleccionada !: File;
 
@@ -130,13 +130,13 @@ export class AgregarProductoComponent implements OnInit {
       if(!this.registroProductoForm.invalid){
         this.registrar();
       }else{
-        this.openDialog("Error","Verifique los campos por favor!!")
+        this.openDialog("ERROR","Verifique que todos los campos estén diligenciados. ")
       }
     }else{
       if(!this.registroProductoForm.invalid){
         this.actualizar();
       }else{
-        this.openDialog("Error","Verifique los campos por favor!!")
+        this.openDialog("ERROR","Verifique que todos los campos estén diligenciados. ")
       }
     }
 
@@ -156,8 +156,8 @@ export class AgregarProductoComponent implements OnInit {
 
   registrar(){
     if(!this.fotoSeleccionada){
-      console.log("por favor seleccionar una foto")
-      this.openDialog("Advertencia","Porfavor seleccione una Foto")
+      console.log("Por favor seleccione una foto")
+      this.openDialog("ADVERTENCIA","Por favor seleccione una foto")
     }else{
 
       this.imagenServicio.subir(this.fotoSeleccionada).subscribe( (response:any) => {
@@ -172,14 +172,14 @@ export class AgregarProductoComponent implements OnInit {
           this.producto.fotoProducto = response.url;
 
           this.servicioProducto.getProductByName(this.producto.nombreProducto).subscribe(productos=> {
-            this.openDialog("Error","Este producto ya existe!!")
+            this.openDialog("Error","Lo sentimos, este producto ya existe. ")
           },err=>{
 
             this.servicioProducto.createProduct(this.producto).subscribe(response=>{
               this.router.navigate(['/productos'])
-              this.openDialog("Exito!!","Se ha agregado correctamente el Producto")
+              this.openDialog("¡¡ÉXITO!!","El producto se ha agregado satisfactoriamente. ")
             },err=>{
-              this.openDialog("Error","Ha habido un error intentelo de Nuevo")
+              this.openDialog("ERROR","Lo sentimos, no se pudo agregar el producto. Inténtalo de nuevo. ")
               console.log(err.status);
               
             });

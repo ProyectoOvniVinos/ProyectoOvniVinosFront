@@ -13,24 +13,24 @@
   </div>
 
 <div class="boton mb-3">
-    <button (click)="irAgregarProducto()"class="btnAgregar">Agregar Producto</button>
+    <button (click)="irAgregarProducto()"class="btnAgregar">Agregar productos</button>
 </div>
 
 <div class="container">
 
     <div class="cajaMensaje" *ngIf="bandera==false">
-        <h1>No existen productos Aun</h1>
+        <h1>Lo sentimos, aún no existen productos</h1>
     </div>
 
     <div class="cajaMensaje" *ngIf="bandera==null">
-        <h1>Error al Comunicarse Con el Servidor</h1>
+        <h1>Error al comunicarse con el servidor</h1>
     </div>
 
     <table *ngIf="bandera==true" class="tabla">
         <thead class="tablaHeaderG">
             <tr>
                 <th>
-                    Productos
+                    PRODUCTOS
                 </th>
             </tr>
         </thead>
@@ -38,30 +38,30 @@
 
             <hr class="todo">
 
-            <input type="text" class="form-control inputBuscar" placeholder="Buscar el Producto Que Desees" (keyup)="buscar($event)">
+            <input type="text" class="form-control inputBuscar" placeholder="¿Qué producto buscas?" (keyup)="buscar($event)">
 
             <hr class="todo">
 
             <table class="tabla2"  *ngIf="!banderaErrores">
                 <thead class="tablaHeaderP">
                     <tr>
-                        <th class="primero">Imagen</th>
+                        <th class="primero">Imágen</th>
                         <th>Nombre</th>
                         <th>Precio</th>
-                        <th>Precio Proveedor</th>
-                        <th>Descripcion</th>
+                        <th>Precio proveedor</th>
+                        <th>Descripción</th>
                         <th class="ultimo">Editar</th>
                     </tr>
                 </thead>
                 <tbody class="tablabodyP"  >
                     <tr class="puntero" *ngFor="let producto of productos" [ngClass]="producto.estado=='0'? 'inhabilitado': ''">
-                        <td>
-                            <img (click)="abrirModal(producto.fotoProducto)" class="imagen" src="{{producto.fotoProducto}}" alt="{{producto.fotoProducto}}">
+                        <td (click)="abrirModal(producto.fotoProducto)">
+                            <img class="imagen" src="{{producto.fotoProducto}}" alt="{{producto.fotoProducto}}">
                         </td>
-                        <td>{{producto.nombreProducto}}</td>
-                        <td>{{producto.precioProducto}}</td>
-                        <td>{{producto.precioProductoProveedor}}</td>
-                        <td> {{producto.descripcionProducto | slice:0:25 }} ...</td>
+                        <td (click)="abrirModal(producto.fotoProducto)">{{producto.nombreProducto}}</td>
+                        <td (click)="abrirModal(producto.fotoProducto)">{{producto.precioProducto}}</td>
+                        <td (click)="abrirModal(producto.fotoProducto)">{{producto.precioProductoProveedor}}</td>
+                        <td (click)="abrirModal(producto.fotoProducto)"> {{producto.descripcionProducto | slice:0:25 }} ...</td>
                         <td><button class="btnEditar" routerLink="/editarProducto/{{producto.codigoProducto}}">
                             <img class="imagenEditar" src="../../../../assets/Images/editar.png" alt="">
                         </button></td>

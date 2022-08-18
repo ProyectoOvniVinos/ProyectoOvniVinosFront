@@ -2,7 +2,7 @@
 
     <div class="cajaM-login">
         <div class="cajaTitleLogin">
-            <h2>Registrate</h2>
+            <h2>REGISTRARSE</h2>
         </div>
         <div class="container-fluid cajaHijoLogin">
             <div class="container-fluid cajaForm">
@@ -27,7 +27,7 @@
                         </div>
                         </div>
                         <div class="cajaInput">
-                            <label for="inputCorreo" class="label">Correo Electronico</label>
+                            <label for="inputCorreo" class="label">Correo electrónico</label>
                             <input type="text" class="input form-control" id="inputCorreo" placeholder="xxxxx@xxxxxx.com"
                             formControlName="correo"
                             [ngClass]="correoNoValido == null ? '' : correoNoValido ? 'is-invalid': 'is-valid'">
@@ -37,7 +37,7 @@
                             </div>
                         </div>
                         <div class="cajaInput">
-                            <label for="inputDireccion" class="label">Direccion</label>
+                            <label for="inputDireccion" class="label">Dirección</label>
                             <input type="text" class="input form-control" id="inputDireccion" placeholder="Direccion Cra x # xx-xx"
                             formControlName="direccion"
                             [ngClass]="direccionNoValido == null ? '' : direccionNoValido ? 'is-invalid': 'is-valid'">
@@ -53,7 +53,7 @@
                             <div class="errors-container" *ngIf="celularControl.invalid && (celularControl.touched || celularControl.dirty)">
                                 <p class="text-danger" *ngIf="celularControl.hasError('required')">El campo es obligatorio</p>
                                 <p class="text-danger" *ngIf="!celularControl.hasError('required') && !celularControl.hasError('pattern')">Debe tener 10 caracteres</p>
-                                <p class="text-danger" *ngIf="celularControl.hasError('pattern')">Solamente numeros porfavor</p>
+                                <p class="text-danger" *ngIf="celularControl.hasError('pattern')">Ingrese solamente números por favor</p>
 
                             </div>
                         </div>
@@ -63,8 +63,8 @@
                             [ngClass]="edadNoValido == null ? '' : edadNoValido ? 'is-invalid': 'is-valid'">
                             <div class="errors-container" *ngIf="edadControl.invalid && (edadControl.touched || edadControl.dirty)">
                                 <p class="text-danger" *ngIf="edadControl.hasError('required')">El campo es obligatorio</p>
-                                <p class="text-danger" *ngIf="!edadControl.hasError('required') && !edadControl.hasError('pattern')">Debe tener 2 caracteres</p>
-                                <p class="text-danger" *ngIf="edadControl.hasError('pattern')">Solamente numeros porfavor</p>
+                                <p class="text-danger" *ngIf="!edadControl.hasError('required') && !edadControl.hasError('pattern')">Debe ingresar solo 2 caracteres</p>
+                                <p class="text-danger" *ngIf="edadControl.hasError('pattern')">Ingrese solamente números por favor</p>
                             </div>
                         </div>
                         <div class="cajaInput">
@@ -74,7 +74,7 @@
                             [ngClass]="contrasena1NoValido == null ? '' : contrasena1NoValido ? 'is-invalid': 'is-valid'">
                             <div class="errors-container" *ngIf="contrasena1Control.invalid && (contrasena1Control.touched || contrasena1Control.dirty)">
                                 <p class="text-danger" *ngIf="contrasena1Control.hasError('required')">El campo es obligatorio</p>
-                                <p class="text-danger" *ngIf="!contrasena1Control.hasError('required')">Al menos 8 caracteres</p>
+                                <p class="text-danger" *ngIf="!contrasena1Control.hasError('required')">Debe ingresar al menos 8 caracteres</p>
                             
                             </div>
                         </div>
@@ -89,7 +89,7 @@
                             </div>
                             <div *ngIf="!
                             contrasena2Control.hasError('required')==true">
-                                <p class="text-danger" *ngIf="banderaPasswordTwo==false && banderaPasswordTwo!=null">Las contraseñas no son iguales</p>                   
+                                <p class="text-danger" *ngIf="banderaPasswordTwo==false && banderaPasswordTwo!=null">Las contraseñas no coinciden</p>                   
                             </div>
                         </div>
                     </div>
@@ -97,13 +97,13 @@
                       <div class="form-check">
                         <input class="form-check-input termino" type="checkbox" id="gridCheck" formControlName="terminos">
                         <label class="form-check-label formCheck" for="gridCheck">
-                          Terminos y Condiciones
-                          <a href="">Terminos y Condiciones aqui</a>
+                          Términos y condiciones
+                          <a href="">Términos y condiciones aquí</a>
                         </label>
                       </div>
                     </div>
                     <div class="cajaBtn">
-                      <button type="submit" class="btnRegistrar">Registrar</button>
+                      <button type="submit" class="btnRegistrar" >Registrarse</button>
                     </div>
                   </form>
             </div>

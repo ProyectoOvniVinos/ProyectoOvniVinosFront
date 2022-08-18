@@ -18,7 +18,7 @@ import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.compone
 export class IngresarCompraComponent implements OnInit {
 
   compra = new CompraModel();
-  total: number=0;
+  total: number = 0;
 
   itemVaciar = new Item_compraModel();
 
@@ -30,42 +30,42 @@ export class IngresarCompraComponent implements OnInit {
   compraForm !: FormGroup;
   bandera !: boolean;
 
-  admin:AdministradorModel;
+  admin: AdministradorModel;
 
-  constructor(private fb: FormBuilder, 
-              private serviceProducto: ProductoService,
-              public dialog: MatDialog, 
-              private serviceCompra: CompraService,
-              private serviceAdmin: AdminService) {
+  constructor(private fb: FormBuilder,
+    private serviceProducto: ProductoService,
+    public dialog: MatDialog,
+    private serviceCompra: CompraService,
+    private serviceAdmin: AdminService) {
     this.crearFormulario();
   }
   openDialog(titleNew: string, mensajeNew: string): void {
     const dialogRef = this.dialog.open(ModalErrorComponent, {
       width: '300px',
-      data: {title: titleNew, mensaje: mensajeNew},
+      data: { title: titleNew, mensaje: mensajeNew },
     });
   }
 
   ngOnInit(): void {
     this.serviceProducto.getProducts().subscribe((productos: any) => {
-      this.productos=productos;
-      
-      if(this.productos.length==0){
-        this.bandera=false;
-      }else{
-        this.bandera=true;
+      this.productos = productos;
+
+      if (this.productos.length == 0) {
+        this.bandera = false;
+      } else {
+        this.bandera = true;
       }
     })
 
   }
 
-  get productoControl(): FormControl{
+  get productoControl(): FormControl {
     return this.compraForm.get('producto') as FormControl
   }
-  get cantidadControl(): FormControl{
+  get cantidadControl(): FormControl {
     return this.compraForm.get('cantidad') as FormControl
   }
-  get precioControl(): FormControl{
+  get precioControl(): FormControl {
     return this.compraForm.get('precio') as FormControl
   }
 
@@ -109,7 +109,7 @@ export class IngresarCompraComponent implements OnInit {
     this.compraForm = this.fb.group({
       producto: ['', [Validators.required]],
       cantidad: ['', [Validators.required]],
-      precio: ['',[Validators.required]]
+      precio: ['', [Validators.required]]
     })
   }
 
@@ -118,30 +118,30 @@ export class IngresarCompraComponent implements OnInit {
 
   seleccionarProducto() {
     let producto2: ProductoModel;
-    if(this.compraForm.controls['cantidad'].touched==true && this.compraForm.controls['producto'].touched==true && this.compraForm.controls['precio'].touched==true){
+    if (this.compraForm.controls['cantidad'].touched == true && this.compraForm.controls['producto'].touched == true && this.compraForm.controls['precio'].touched == true) {
 
-      this.productos.map(producto=>{
-        if(producto.codigoProducto == this.compraForm.controls['producto'].value){
+      this.productos.map(producto => {
+        if (producto.codigoProducto == this.compraForm.controls['producto'].value) {
           producto2 = producto;
           producto2.precioProductoProveedor = this.compraForm.controls['precio'].value;
         }
       })
       // let producto1 = event.option.value as ProductoModel
-  
-      
+
+
       if (this.existeItem(producto2.codigoProducto)) {
         this.incrementaCantidad(producto2.codigoProducto);
-      }else {
+      } else {
         let nuevoItem = new Item_compraModel();
         nuevoItem.cantidadProducto = this.compraForm.controls['cantidad'].value;
         nuevoItem.codigoProducto = producto2;
         this.compra.compras.push(nuevoItem);
       }
-  
+
       this.actualizarTotal()
+    } else {
+      this.openDialog("Advertencia", "llene todos lo campos");
     }
-
-
   }
   existeItem(id: number): boolean {
     let existe = false;
@@ -153,12 +153,12 @@ export class IngresarCompraComponent implements OnInit {
     return existe;
   }
 
-  actualizarTotal(){
+  actualizarTotal() {
     let total = 0;
     this.compra.compras.forEach((item: Item_compraModel) => {
       total = total + item.calcularImporte();
     })
-    this.total=total;
+    this.total = total;
   }
 
   incrementaCantidad(id: number): void {
@@ -185,7 +185,7 @@ export class IngresarCompraComponent implements OnInit {
     this.actualizarTotal();
   }
 
-  aumentarCantidad(id: number){
+  aumentarCantidad(id: number) {
     this.compra.compras = this.compra.compras.map((item: Item_compraModel) => {
       if (id === item.codigoProducto.codigoProducto) {
         item.cantidadProducto++;
@@ -194,8 +194,8 @@ export class IngresarCompraComponent implements OnInit {
     })
     this.actualizarTotal();
   }
-  disminuirCantidad(id: number, cantidad:number){
-    if(cantidad == 1){
+  disminuirCantidad(id: number, cantidad: number) {
+    if (cantidad == 1) {
       this.eliminarItemFactura(id);
     }
     this.compra.compras = this.compra.compras.map((item: Item_compraModel) => {
@@ -212,45 +212,57 @@ export class IngresarCompraComponent implements OnInit {
     this.actualizarTotal();
   }
 
-  realizarCompra(){
-    this.compra.precioCompra=this.total;
+  realizarCompra() {
+    this.compra.precioCompra = this.total;
     this.compra.cantidadCompra = this.obtenerCantidadTotal()
-    
+
     this.admin = new AdministradorModel();
     this.admin.apellidoAdmin = "Amador"
     this.admin.correoAdmin = "cristian@gmail.com"
     this.admin.direccionAdmin = "centenario"
     this.admin.nombreAdmin = "Cristian"
     this.admin.passwordAdmin = "12345"
-    this.admin.telefonoAdmin = "323" 
+    this.admin.telefonoAdmin = "323"
 
     this.compra.administradorCompra = this.admin;
     console.log(this.compra);
-    
 
-    this.serviceCompra.addCompra(this.compra).subscribe(e=>{
-      this.openDialog("Exito!!!","Se ha agregado la compra satisfactoriamente!")
+
+    this.serviceCompra.addCompra(this.compra).subscribe(e => {
+      this.openDialog("Exito!!!", "Se ha agregado la compra satisfactoriamente!")
       this.vaciar()
 
-    },err => {
-      this.openDialog("Error","Ha ocurrido un problema")
+    }, err => {
+      this.openDialog("Error", "Ha ocurrido un problema")
 
-      
+
     })
-    
+
   }
 
-  obtenerCantidadTotal(){
-    let cantidad: number=0;
+  mirar() {
+    if (this.compraForm.controls['producto'].value) {
+
+      this.productos.map(producto => {
+        if (producto.codigoProducto == this.compraForm.controls['producto'].value) {
+          this.compraForm.controls['precio'].setValue(producto.precioProducto);
+        }
+      })
+    }
+  }
+
+  obtenerCantidadTotal() {
+    let cantidad: number = 0;
     this.compra.compras.forEach((item: Item_compraModel) => {
-      cantidad= cantidad + item.cantidadProducto;
+      cantidad = cantidad + item.cantidadProducto;
     })
     return cantidad;
   }
 
-  vaciar(){
+  vaciar() {
     this.compraForm.reset();
-    this.compra.compras=[]
+    this.compra.compras = []
+    this.total = 0;
   }
 
 }
