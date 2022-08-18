@@ -171,7 +171,7 @@
     width: 70%;
     position: fixed;
     bottom: 0;
-    left: 20%;
+    left: 18.5%;
     right: 10%;
     /* right: 0; */
     z-index: 1;
@@ -210,6 +210,12 @@
     max-width: 55px;
     min-width: 40px;
 }
+@media screen and (max-width: 1500px) and (max-height:1080px) {
+
+    .footer{
+        left: 20%;
+    }
+}
 
 @media screen and (max-width: 1108px) and (max-height:695px) {
 
@@ -223,7 +229,13 @@
     }
 }
 
-@media screen and (max-width: 1366px) and (max-height:768px) {}
+@media screen and (max-width: 1366px) and (max-height:1080px) {
+
+    .texts h3 {
+        font-size: 1.2rem;
+    }
+
+}
 
 .bloquear {
     cursor: not-allowed;
