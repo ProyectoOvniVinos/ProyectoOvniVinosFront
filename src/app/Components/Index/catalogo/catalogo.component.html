@@ -9,7 +9,7 @@
             <button (click)="filtro(boton3.title)" title="Todos" class="btn btnFiltro" #boton3><img class="imgBotonJuntas c" src="../../../../assets/Images/juntasRosado.png" alt=""></button>
         </div>
         <div class="cajaCarrito" (click)="mostrarCarrito()">
-            <p class="pCarrito">10</p>
+            <p class="pCarrito" *ngIf="clienteInp">{{clienteInp.carrito.itemCarrito.length}}</p>
             <img src="../../../../assets/Images/carritoVioleta.png" alt="">
         </div>
     </div>
@@ -43,7 +43,7 @@
 </div>
 
 <div *ngIf="validarCarrito">
-    <app-carrito></app-carrito>
+    <app-carrito [clienteInp]="clienteInp"></app-carrito>
     <button type="button" class="btn-close cerrar" data-bs-dismiss="modal" aria-label="Close"></button>
     <button (click)="validarCarrito=!validarCarrito" type="button" class="btn-close cerrar" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>

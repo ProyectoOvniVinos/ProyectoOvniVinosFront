@@ -1,5 +1,5 @@
 import { ModalProductosComponent } from './../../Modal/modal-productos/modal-productos.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductoModel } from '../../../Models/Producto.model';
 import { ProductoService } from '../../../Services/producto.service';
@@ -15,19 +15,27 @@ import { ItemCarritoModel } from 'src/app/Models/itemCarrito.model';
   templateUrl: './catalogo.component.html',
   styleUrls: ['./catalogo.component.css']
 })
-export class CatalogoComponent implements OnInit {
+export class CatalogoComponent implements OnInit, OnChanges {
 
   inventarioGeneral: Inventario_generalModel[] = [];
   validarCarrito = false;
 
-  
+  clienteInp:ClienteModel;
 
   constructor(public dialog: MatDialog, private productoService: ProductoService, private carritoService:CarritoService, private clienteService:ClienteService) { }
+  ngOnChanges() {
+    this.clienteService.getByEmail("c@gmail.com").subscribe(resp=>{
+      this.clienteInp = resp;
+    })
+  }
 
   ngOnInit(): void {
     this.productoService.getProductsInventario().subscribe(inventario => {
 
       this.inventarioGeneral = inventario;
+    })
+    this.clienteService.getByEmail("c@gmail.com").subscribe(resp=>{
+      this.clienteInp = resp;
     })
   }
 

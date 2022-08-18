@@ -18,12 +18,15 @@ export class CarritoComponent implements OnInit {
 
   @Input() modal:boolean = false;
 
+  @Input() clienteInp:ClienteModel;
+
   constructor(private clienteService:ClienteService, private carritoCliente:CarritoService) {
 
   }
 
   ngOnInit(): void {
-    this.clienteService.getByEmail('c@gmail.com').subscribe((resp:ClienteModel)=>{
+    this.carrito =this.clienteInp.carrito
+    this.clienteService.getByEmail(this.clienteInp.correoCliente).subscribe((resp:ClienteModel)=>{
       console.log(resp);
       
       this.carrito = resp.carrito;
