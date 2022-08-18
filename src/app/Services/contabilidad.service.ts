@@ -46,4 +46,19 @@ export class ContabilidadService {
       )
     );
   }
+
+  getContabilidadAnualFecha(term:string):Observable<ContabilidadAnualModel[]>{
+    const url = `${this.url}contabilidadesAnuales/fecha/${term}`;
+    return this.http.get<ContabilidadAnualModel[]>(url);
+  }
+
+  getContabilidadMensualFecha(term:string):Observable<Contabilidad_mensualModel[]>{
+    const url = `${this.url}contabilidadesMensuales/fecha/${term}`;
+    return this.http.get<Contabilidad_mensualModel[]>(url);
+  }
+
+  getContabilidadDiariaFecha(term:string):Observable<ContabilidadDiariaModel[]>{
+    const url = `${this.url}contabilidadesDiarias/fecha/${term}`;
+    return this.http.get<ContabilidadDiariaModel[]>(url);
+  }
 }

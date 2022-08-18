@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CompraModel } from 'src/app/Models/Compra.model';
 import { ProductoModel } from 'src/app/Models/Producto.model';
 import { CompraService } from 'src/app/Services/compra.service';
+import { ModalDetallesCompraComponent } from '../../Modal/modal-detalles-compra/modal-detalles-compra.component';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 
 @Component({
@@ -21,23 +22,13 @@ export class ComprasComponent implements OnInit {
     })
   }
   abrirModal(compra:CompraModel){
-    let data = ""
-    let contador =1;
-    compra.compras.forEach(itemCompra=>{
-      console.log(contador);
-      
-      data += "      Item numero       " + contador +"\tNombre producto: "+itemCompra.codigoProducto.nombreProducto + "\n" +
-      "\tCantidad: " + itemCompra.cantidadProducto+ "\t" +
-      "\tPrecio item: "+ itemCompra.precioCompraDetalle + "\t"
-      contador+=1
-    })
-    this.openDialog("Items",data)
+    this.openDialog(compra)
   }
 
-  openDialog(titleNew: string, mensajeNew: string): void {
-    const dialogRef = this.dialog.open(ModalErrorComponent, {
+  openDialog( compra: CompraModel): void {
+    const dialogRef = this.dialog.open(ModalDetallesCompraComponent, {
       width: '700px',
-      data: {title: titleNew, mensaje: mensajeNew},
+      data: compra,
     });
   }
 
