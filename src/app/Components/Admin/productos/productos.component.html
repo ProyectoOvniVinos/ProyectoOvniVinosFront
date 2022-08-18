@@ -1,16 +1,4 @@
 
-<div class="modal abrir-modal animacion fadeInTwo" tabindex="-1" style="display: block;" *ngIf="modal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body modalFooter centrar">
-            <div class="boton2">
-                <button type="button" (click)="cerrarModal()" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <img class="tamano" [src]="[imgModal]" alt="">
-        </div>
-      </div>
-    </div>
-  </div>
 
 <div class="boton mb-3">
     <button (click)="irAgregarProducto()"class="btnAgregar">Agregar productos</button>
@@ -42,33 +30,35 @@
 
             <hr class="todo">
 
-            <table class="tabla2"  *ngIf="!banderaErrores">
-                <thead class="tablaHeaderP">
-                    <tr>
-                        <th class="primero">Imágen</th>
-                        <th>Nombre</th>
-                        <th>Precio</th>
-                        <th>Precio proveedor</th>
-                        <th>Descripción</th>
-                        <th class="ultimo">Editar</th>
-                    </tr>
-                </thead>
-                <tbody class="tablabodyP"  >
-                    <tr class="puntero" *ngFor="let producto of productos" [ngClass]="producto.estado=='0'? 'inhabilitado': ''">
-                        <td (click)="abrirModal(producto.fotoProducto)">
-                            <img class="imagen" src="{{producto.fotoProducto}}" alt="{{producto.fotoProducto}}">
-                        </td>
-                        <td (click)="abrirModal(producto.fotoProducto)">{{producto.nombreProducto}}</td>
-                        <td (click)="abrirModal(producto.fotoProducto)">{{producto.precioProducto}}</td>
-                        <td (click)="abrirModal(producto.fotoProducto)">{{producto.precioProductoProveedor}}</td>
-                        <td (click)="abrirModal(producto.fotoProducto)"> {{producto.descripcionProducto | slice:0:25 }} ...</td>
-                        <td><button class="btnEditar" routerLink="/editarProducto/{{producto.codigoProducto}}">
-                            <img class="imagenEditar" src="../../../../assets/Images/editar.png" alt="">
-                        </button></td>
+            <div class="cajaTable">
+                <table class="tabla2"  *ngIf="!banderaErrores">
+                    <thead class="tablaHeaderP">
+                        <tr>
+                            <th class="primero">Imágen</th>
+                            <th>Nombre</th>
+                            <th>Precio</th>
+                            <th>Precio proveedor</th>
+                            <th>Descripción</th>
+                            <th class="ultimo">Editar</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tablabodyP"  >
+                        <tr class="puntero" *ngFor="let producto of productos" [ngClass]="producto.estado=='0'? 'inhabilitado': ''">
+                            <td (click)="abrirModal(producto.fotoProducto)">
+                                <img class="imagen" src="{{producto.fotoProducto}}" alt="{{producto.fotoProducto}}">
+                            </td>
+                            <td (click)="abrirModal(producto.fotoProducto)">{{producto.nombreProducto}}</td>
+                            <td (click)="abrirModal(producto.fotoProducto)">{{producto.precioProducto}}</td>
+                            <td (click)="abrirModal(producto.fotoProducto)">{{producto.precioProductoProveedor}}</td>
+                            <td (click)="abrirModal(producto.fotoProducto)"> {{producto.descripcionProducto | slice:0:25 }} ...</td>
+                            <td><button class="btnEditar" routerLink="/editarProducto/{{producto.codigoProducto}}">
+                                <img class="imagenEditar" src="../../../../assets/Images/editar.png" alt="">
+                            </button></td>
 
-                    </tr>
-                </tbody>
-            </table>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
                 
             <div class="cajaMensajeError" *ngIf="banderaErrores">
                 <h1>{{errores}}</h1>

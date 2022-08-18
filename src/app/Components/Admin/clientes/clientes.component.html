@@ -11,27 +11,28 @@
 
             <hr class="todo">
 
-            <table class="tabla2" *ngIf="clientes">
-                <thead class="tablaHeaderP">
-                    <tr>
-                        <th class="primero">Correo</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Dirección</th>
-                        <th class="ultimo">Celular</th>
-                    </tr>
-                </thead>
-                <tbody class="tablabodyP">
-                    <tr *ngFor="let cliente of clientes">
-                        <td>{{cliente.correoCliente}}</td>
-                        <td>{{cliente.nombreCliente}}</td>
-                        <td>{{cliente.apellidoCliente}}</td>
-                        <td>{{cliente.direccionCliente}}</td>
-                        <td>{{cliente.telefonoCliente}}</td>
-                    </tr>
-                </tbody>
-                
-            </table>
+            <div class="cajaTable">
+                <table class="tabla2" *ngIf="clientes">
+                    <thead class="tablaHeaderP">
+                        <tr>
+                            <th class="primero">Correo</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Dirección</th>
+                            <th class="ultimo">Celular</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tablabodyP">
+                        <tr *ngFor="let cliente of clientes">
+                            <td>{{cliente.correoCliente}}</td>
+                            <td>{{cliente.nombreCliente}}</td>
+                            <td>{{cliente.apellidoCliente}}</td>
+                            <td>{{cliente.direccionCliente}}</td>
+                            <td>{{cliente.telefonoCliente}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </tbody>
     </table>
     
