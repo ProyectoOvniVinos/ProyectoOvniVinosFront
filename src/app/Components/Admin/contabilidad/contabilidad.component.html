@@ -14,7 +14,7 @@
                 <button routerLink="/compras" class="botones">Compras</button>
             </div>
             <div class="cajaBuscar">
-                <input type="date" placeholder="Busca" class="form-control input">
+                <input (change)="buscar()" type="date" placeholder="Busca" class="form-control input" [(ngModel)]="fecha">
             </div>
             <div class="cajaTable">
                 
@@ -51,14 +51,26 @@
                         </tr>
                     </tbody>
                     <tbody *ngIf="contabilidadesAnuales.length > 0" class="tablabodyP">                            
-                            <tr *ngFor="let contabilidad of contabilidadesAnuales">
-                                <td>{{contabilidad.idRegistroContabilidadAnual}}</td>
-                                <td>{{contabilidad.ventasContabilidadAnual}}</td>
-                                <td>{{contabilidad.egresosContabilidadAnual}}</td>
-                                <td>{{contabilidad.ingresosContabilidadAnual}}</td>
-                                <td>{{contabilidad.fecha | date:'yyyy'}}</td>
-                            </tr>
+                        <tr *ngFor="let contabilidad of contabilidadesAnuales">
+                            <td>{{contabilidad.idRegistroContabilidadAnual}}</td>
+                            <td>{{contabilidad.ventasContabilidadAnual}}</td>
+                            <td>{{contabilidad.egresosContabilidadAnual}}</td>
+                            <td>{{contabilidad.ingresosContabilidadAnual}}</td>
+                            <td>{{contabilidad.fecha | date:'yyyy'}}</td>
+                        </tr>
                     </tbody>
+                    <div class="cajaMensaje"  *ngIf="fecha !== '' && 
+                                contabilidadesDiarias.length == 0 &&
+                                contabilidadesMensuales.length == 0 &&
+                                contabilidadesAnuales.length == 0">
+                        <h1>No encontro registros</h1>
+                    </div>
+                    <div class="cajaMensaje"  *ngIf="fecha === '' && 
+                                contabilidadesDiarias.length == 0 &&
+                                contabilidadesMensuales.length == 0 &&
+                                contabilidadesAnuales.length == 0">
+                        <h1>No existen registros</h1>
+                    </div>
                 </table>
             </div>
             

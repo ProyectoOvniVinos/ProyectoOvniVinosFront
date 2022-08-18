@@ -19,7 +19,7 @@
                         <div class="cajaInput">
                             <label for="" class="label">Producto</label>
                             <br>
-                            <select (click)="mirar()" name="miselect" formControlName="producto" class="input form-control">
+                            <select (change)="mirar()" name="miselect" formControlName="producto" class="input form-control">
                                 <option [value]="producto.codigoProducto" *ngFor="let producto of productos">{{producto.nombreProducto}}</option>
                             </select>
                             <div class="errors-container" *ngIf="productoControl.invalid && (productoControl.touched || productoControl.dirty)">
