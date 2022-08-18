@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { CompraModel } from 'src/app/Models/Compra.model';
 import { ProductoModel } from 'src/app/Models/Producto.model';
+import { CompraService } from 'src/app/Services/compra.service';
+import { ModalDetallesCompraComponent } from '../../Modal/modal-detalles-compra/modal-detalles-compra.component';
+import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 
 @Component({
   selector: 'app-compras',
@@ -8,33 +13,23 @@ import { ProductoModel } from 'src/app/Models/Producto.model';
 })
 export class ComprasComponent implements OnInit {
 
-  productos: ProductoModel[] = [
-    {
-      codigoProducto: 1,
-      nombreProducto: 'Vino Abocado',
-      precioProducto: 13000,
-      precioProductoProveedor: 6000,
-      descripcionProducto: 'Delicioso Vino Dulce',
-      fotoProducto: '../../../../assets/TEMPORALES/vino1.jpg'
-    }, {
-      codigoProducto: 2,
-      nombreProducto: 'Vino tinto',
-      precioProducto: 13000,
-      precioProductoProveedor: 6000,
-      descripcionProducto: 'Delicioso Vino no tan Dulce',
-      fotoProducto: '../../../../assets/TEMPORALES/vino2.jpg'
-    }, {
-      codigoProducto: 3,
-      nombreProducto: 'Nectar de uva',
-      precioProducto: 10000,
-      precioProductoProveedor: 5000,
-      descripcionProducto: 'Delicioso nectar de uva libre de alcohol',
-      fotoProducto: '../../../../assets/TEMPORALES/vino3.jpg'
-    },
-  ];
-  constructor() { }
+  compras:CompraModel[];
+  constructor(public compraService:CompraService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.compraService.getCompras().subscribe(resp=>{
+      this.compras = resp
+    })
+  }
+  abrirModal(compra:CompraModel){
+    this.openDialog(compra)
+  }
+
+  openDialog( compra: CompraModel): void {
+    const dialogRef = this.dialog.open(ModalDetallesCompraComponent, {
+      width: '700px',
+      data: compra,
+    });
   }
 
 }

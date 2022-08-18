@@ -1,7 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ProductoModel } from 'src/app/Models/Producto.model';
 import { ProductoService } from 'src/app/Services/producto.service';
+import { ModalImagenComponent } from '../../Modal/modal-imagen/modal-imagen.component';
 
 @Component({
   selector: 'app-productos',
@@ -12,15 +14,15 @@ export class ProductosComponent implements OnInit {
   
   @Input() modal:boolean = false;
 
-  imgModal: string = '';
-
   bandera: boolean;
   banderaErrores: boolean;
 
   productos: ProductoModel[] = [];
   errores: string[];
 
-  constructor(private router: Router, private service: ProductoService ) { }
+  constructor(private router: Router, 
+              private service: ProductoService, 
+              private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.obtenerProductos();
@@ -28,9 +30,18 @@ export class ProductosComponent implements OnInit {
 
   }
 
+  openDialog(img:string): void {
+    const dialogRef = this.dialog.open(ModalImagenComponent, {
+      width: '500px',
+      data: img ,
+    });
+  }
+
   obtenerProductos(){
     this.service.getProducts().subscribe( productos => {
       this.productos=productos;
+      console.log(this.productos);
+      
       if(this.productos.length==0){
         this.bandera=false;
       }else{
@@ -57,8 +68,10 @@ export class ProductosComponent implements OnInit {
   }
 
   abrirModal(imgModal:string){
-    this.imgModal = imgModal;
-    this.modal = true;
+    
+    console.log(imgModal);
+    
+    this.openDialog(imgModal);
   }
 
   irAgregarProducto(){

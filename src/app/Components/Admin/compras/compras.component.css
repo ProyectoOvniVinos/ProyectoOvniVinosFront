@@ -2,7 +2,17 @@
     width: 150px;
     height: 150px;
 }
-
+.puntero{
+    cursor: pointer;
+}
+.imagenes {
+    width: 10%;
+    margin-top: 1.5%;
+    transition:0.1s;
+}
+.imagenes:hover{
+    transform: scale(0.9,0.9)
+}
 .boton{
     display: flex;
     width: 90%;
@@ -101,6 +111,7 @@
 .ultimo{
     border-start-end-radius: 10px;
     border-end-end-radius: 10px;
+    width: 35%;
 }
 
 .tablabodyP{

@@ -1,6 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
+import { ClienteModel } from 'src/app/Models/Cliente.model';
+import { ClienteService } from 'src/app/Services/cliente.service';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 
 
@@ -15,7 +18,7 @@ export class RegistroComponent implements OnInit {
   banderaTerminos: boolean = false;
   registroForm !: FormGroup;
 
-  constructor(private fb: FormBuilder, public dialog: MatDialog) {
+  constructor(private fb: FormBuilder, public dialog: MatDialog, public clienteService:ClienteService) {
     this.crearFormulario();
     this.crearListeners();
 
@@ -222,6 +225,8 @@ export class RegistroComponent implements OnInit {
   }
 
   verificar() {
+    console.log("ASDASD");
+    
     if(this.registroForm.invalid){
 
       if(
@@ -230,24 +235,38 @@ export class RegistroComponent implements OnInit {
           this.registroForm.get("direccion").status == "INVALID" || this.registroForm.get("contrasena1").status == "INVALID" || 
           this.registroForm.get("contrasena2").status == "INVALID" || this.registroForm.get("edad").status == "INVALID" 
       ){
+        console.log("BBBBBBBBBBBBBBBBBBBBBB");
         
         let title="Error"
         let mensaje="Verifique los campos por favor!!"
         this.openDialog(title, mensaje);
         
       }else if(this.registroForm.get("terminos").status== "INVALID"){
+        console.log("CCCCCCCCCCCCCCCCCCCCCCCCC");
         let title="Advertencia"
         let mensaje="Por favor Acepte Terminos y Condiciones!!"
         this.openDialog(title, mensaje);
       }
 
     }else{
+      console.log("DDDDDDDDDDDDDDDDDDDDDDDDDD");
       this.registrar();
     }
   }
 
   registrar(){
+    let cliente = new ClienteModel();
+    cliente.correoCliente = this.registroForm.controls['correo'].value
+    cliente.nombreCliente = this.registroForm.controls['nombre'].value
+    cliente.apellidoCliente = this.registroForm.controls['apellido'].value
+    cliente.direccionCliente= this.registroForm.controls['direccion'].value
+    cliente.telefonoCliente= this.registroForm.controls['celular'].value
+    cliente.passwordCliente=this.registroForm.controls['contrasena1'].value
 
+    this.clienteService.registro(cliente).subscribe(res=>{
+      console.log(res);
+      
+    });
   }
 
 }

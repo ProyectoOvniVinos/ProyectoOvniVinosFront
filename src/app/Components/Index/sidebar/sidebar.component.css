@@ -1,5 +1,5 @@
 .contenedor-ruteo {
-    height: 93vh;
+    height: 100vh;
 }
 
 .fmorado {
@@ -8,10 +8,24 @@
 
 }
 
+.headerAbierto{
+    margin-left: 40%;
+}
+
+.headerCerrado{
+    margin-left: 60%;
+}
+
 .contenedor-logo {
     width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.mat-toolbar-multiple-rows{
+    width: 10%;
+    position: absolute;
+    z-index: 4;
 }
 
 .cerrado {
@@ -127,14 +141,6 @@
     max-width: 130px;
 }
 
-.cerrar {
-    position: absolute;
-    right: 1.5%;
-    top: 1.5%;
-    border: 0.2rem solid white;
-    z-index: 1;
-}
-
 .mat-list-item-content {
     justify-content: center;
 
@@ -165,7 +171,7 @@
     width: 70%;
     position: fixed;
     bottom: 0;
-    left: 20%;
+    left: 18.5%;
     right: 10%;
     /* right: 0; */
     z-index: 1;
@@ -204,6 +210,12 @@
     max-width: 55px;
     min-width: 40px;
 }
+@media screen and (max-width: 1500px) and (max-height:1080px) {
+
+    .footer{
+        left: 20%;
+    }
+}
 
 @media screen and (max-width: 1108px) and (max-height:695px) {
 
@@ -217,7 +229,13 @@
     }
 }
 
-@media screen and (max-width: 1366px) and (max-height:768px) {}
+@media screen and (max-width: 1366px) and (max-height:1080px) {
+
+    .texts h3 {
+        font-size: 1.2rem;
+    }
+
+}
 
 .bloquear {
     cursor: not-allowed;
@@ -225,26 +243,8 @@
     pointer-events: none;
 }
 
-@media screen and (max-height:928px) {
-    .contenedor-ruteo {
-        height: 90vh;
-    }
 
-}
 
-@media screen and (max-height:635px) {
-    .contenedor-ruteo {
-        height: 83vh;
-    }
-
-}
-
-@media screen and (max-height:390px) {
-    .contenedor-ruteo {
-        height: 77vh;
-    }
-
-}
 
 @media screen and (max-width:1138px) {
     .texts {

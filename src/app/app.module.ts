@@ -9,7 +9,6 @@ import { AgregarExistenciasComponent } from './Components/Admin/agregar-existenc
 import { EditarDatosComponent } from './Components/Client/editar-datos/editar-datos.component';
 import { CatalogoComponent } from './Components/Index/catalogo/catalogo.component';
 import { ClientesComponent } from './Components/Admin/clientes/clientes.component';
-import { EditarProductoComponent } from './Components/Admin/editar-producto/editar-producto.component';
 import { InventarioDetallesComponent } from './Components/Admin/inventario-detalles/inventario-detalles.component';
 import { IniciarSesionComponent } from './Components/Index/iniciar-sesion/iniciar-sesion.component';
 import { ProductosComponent } from './Components/Admin/productos/productos.component';
@@ -50,6 +49,9 @@ import { ModalProductosComponent } from './Components/Modal/modal-productos/moda
 import { ModalInventarioGComponent } from './Components/Modal/modal-inventario-g/modal-inventario-g.component';
 import { ModalConfirmarCompraComponent } from './Components/Modal/modal-confirmar-compra/modal-confirmar-compra.component';
 import { ModalVentaComponent } from './Components/Modal/modal-venta/modal-venta.component';
+import { HeaderComponent } from './Components/Index/header/header.component';
+import { ModalDetallesCompraComponent } from './Components/Modal/modal-detalles-compra/modal-detalles-compra.component';
+import { ModalImagenComponent } from './Components/Modal/modal-imagen/modal-imagen.component';
  
 @NgModule({
   declarations: [
@@ -60,7 +62,6 @@ import { ModalVentaComponent } from './Components/Modal/modal-venta/modal-venta.
     EditarDatosComponent,
     CatalogoComponent,
     ClientesComponent,
-    EditarProductoComponent,
     InventarioDetallesComponent,
     IniciarSesionComponent,
     ProductosComponent,
@@ -86,7 +87,10 @@ import { ModalVentaComponent } from './Components/Modal/modal-venta/modal-venta.
     ModalProductosComponent,
     ModalInventarioGComponent,
     ModalConfirmarCompraComponent,
-    ModalVentaComponent
+    ModalVentaComponent,
+    HeaderComponent,
+    ModalDetallesCompraComponent,
+    ModalImagenComponent
 
 
   ],

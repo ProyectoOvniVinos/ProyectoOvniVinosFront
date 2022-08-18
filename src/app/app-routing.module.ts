@@ -12,7 +12,6 @@ import { EditarDatosComponent } from './Components/Client/editar-datos/editar-da
 
 import { CarritoComponent } from './Components/Client/carrito/carrito.component';
 import { AgregarProductoComponent } from './Components/Admin/agregar-producto/agregar-producto.component';
-import { EditarProductoComponent } from './Components/Admin/editar-producto/editar-producto.component';
 
 import { HistorialComponent } from './Components/Client/historial/historial.component';
 import { AyudaComponent } from './Components/Client/ayuda/ayuda.component';

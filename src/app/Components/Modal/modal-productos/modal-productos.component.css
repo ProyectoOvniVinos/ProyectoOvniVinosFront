@@ -1,6 +1,7 @@
 .tituloModal{
     font-size: 30px;
-    color: rgb(211, 21, 88);
+    color: rgb(211, 21, 88);    
+    margin-left: 15%;
 }
 
 .cajaM{
@@ -183,7 +184,7 @@
 }
 
 .card{
-    height: 100%!important;
+    height: 100%;
     border: 2px solid  rgb(211, 21, 88);
     margin-bottom: 3%;
 }
@@ -222,4 +223,345 @@
 
 .card-footer{
     border-top: 2px solid  rgb(211, 21, 88);
+}
+
+/*REPONSIVE*/
+
+@media screen and (max-width: 1920px) and (max-height:1080px){
+
+    .card-body{
+        height: 27.5rem;
+    }
+
+    .img{
+        margin-bottom: 3%;
+    }
+}
+
+@media screen and (max-width: 1920px) and (max-height:900px){
+
+    .card-body{
+        height: 24.5rem;
+    }
+
+    .img{
+        margin-bottom: 1%;
+        width: 60%;
+    }
+
+    .cajaRecomendaciones{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 1880px) and (max-height:874px){
+
+    .cajaRecomendaciones{
+        width: 68%;
+    }
+
+    .img{
+        width: 68%;
+        height: 23rem;
+    }
+
+    .card-body{
+        height: 25rem;
+    }
+
+}
+
+@media screen and (max-width: 1920px) and (max-height:830px){
+
+    .card-body{
+        height: 23.7rem;
+    }
+
+    .img{
+        height: 23rem;
+    }
+}
+
+@media screen and (max-width: 1920px) and (max-height:800px){
+
+    .card-body{
+        height: 22.7rem;
+    }
+
+    .img{
+        height: 22rem;
+    }
+}
+
+@media screen and (max-width: 1920px) and (max-height:780px){
+
+    .card-body{
+        height: 21.7rem;
+    }
+
+    .img{
+        height: 21rem;
+    }
+}
+
+@media screen and (max-width: 1920px) and (max-height:760px){
+
+    .card-body{
+        height: 19.7rem;
+    }
+
+    .img{
+        height: 19rem;
+    }
+}
+
+@media screen and (max-width: 1920px) and (max-height:710px){
+
+    .prueba{
+        width: 45%;
+    }
+
+    .cajaRecomendaciones{
+        width: 57%;
+    }
+
+    .img{
+        width: 16rem;
+    }
+}
+
+@media screen and (max-width: 1920px) and (max-height:700px){
+
+    .prueba{
+        width: 49%;
+    }
+
+    .cajaRecomendaciones{
+        width: 53%;
+    }
+
+    .img{
+        width: 15rem;
+        height: 18rem;
+    }
+
+    .card-body{
+        height: 18.8rem;
+    }
+}
+
+@media screen and (max-width: 1920px) and (max-height:678px){
+
+    .prueba{
+        width: 48%;
+    }
+
+    .cajaRecomendaciones{
+        width: 50%;
+    }
+
+    .img{
+        width: 14rem;
+        height: 17rem;
+    }
+
+    .card-body{
+        height: 17.7rem;
+    }
+}
+
+@media screen and (max-width: 1920px) and (max-height:652px){
+
+    .prueba{
+        width: 47%;
+    }
+
+    .cajaRecomendaciones{
+        width: 50%;
+    }
+
+    .img{
+        height: 16rem;
+        margin-bottom: 2%;
+    }
+
+    .card-body{
+        height: 17rem;
+    }
+}
+
+@media screen and (max-width: 1920px) and (max-height:635px){
+
+    .prueba{
+        width: 48%;
+    }
+
+    .cajaRecomendaciones{
+        width: 57%;
+    }
+
+    .img{
+        width: 16rem;
+        height: 16rem;
+    }
+
+    .card-body{
+        height: 16.7rem;
+    }
+}
+
+@media screen and (max-width: 1920px) and (max-height:600px){
+
+    .prueba{
+        width: 45%;
+    }
+
+    .cajaRecomendaciones{
+        width: 54%;
+    }
+
+    .img{
+        width: 15rem;
+        height: 14rem;
+        margin-bottom: 1%;
+    }
+
+    .card-body{
+        height: 14.7rem;
+    }
+}
+
+@media screen and (max-width: 1800px) and (max-height:1080px){
+
+    .img{
+        margin-bottom: 1%;
+        height: 23rem;
+    }
+
+    .cajaRecomendaciones{
+        width: 76%;
+    }
+
+    .card-body{
+        height: 25.5rem;
+    }
+    
+    .tituloModal{
+        margin: 0px 0px 7px;
+    }
+
+}
+
+@media screen and (max-width: 1700px) and (max-height:1080px){
+
+    .card-body{
+        height: 21rem;
+        padding: 15px;
+    }
+
+    .card-text{
+        font-size: 1.3rem;
+    }
+
+    .img{
+        margin-bottom: 0.3%;
+        height: 20.3rem;
+        width: 70%;
+    }
+
+    .cajaRecomendaciones{
+        width: 70%;
+    }
+
+}
+
+@media screen and (max-width: 1700px) and (max-height:1080px){
+
+    .card-text{
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 1300px) and (max-height:1080px){
+
+    .card-text{
+        font-size: 1.05rem;
+    }
+
+    .img{
+        height: 19.3rem;
+        width: 75%;
+    }
+
+    .cajaRecomendaciones{
+        width: 76%;
+    }
+
+    .card-body{
+        height: 20rem;
+    }
+
+    .recomended{
+        font-size: 0.99rem;
+    }
+}
+
+@media screen and (max-width: 1400px) and (max-height:1080px){
+
+    .card-text{
+        font-size: 1.07rem;
+    }
+
+    .img{
+        height: 18rem;
+        margin-bottom: 2.3%;
+    }
+
+    .card-body{
+        height: 20rem;
+    }
+    
+    .titleName{
+        font-size: 20px;
+    }
+
+    .recomended{
+        font-size: 0.8rem;
+    }
+
+    .btn{
+        margin-bottom: 8%;
+    }
+
+    .imageCerrar{
+        width: 40px;
+        height: 40px;
+        margin: -18%;
+    }
+}
+
+@media screen and (max-width: 1400px) and (max-height:1080px){
+
+    .card-header{
+        font-size: 19.5px;
+        display: flex;
+        align-items: center;
+    }
+
+}
+
+@media screen and (max-width: 1000px) and (max-height:1080px){
+
+    .cajaRecomendaciones{
+        height: 12rem;
+    }
+
+    .cajaInfoReco{
+        font-size: 15px;
+    }
+
+    .card-body{
+        height: 22rem;
+    }
+
 }

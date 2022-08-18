@@ -11,27 +11,28 @@
 
             <hr class="todo">
 
-            <table class="tabla2">
-                <thead class="tablaHeaderP">
-                    <tr>
-                        <th class="primero">CORREO</th>
-                        <th>NOMBRE</th>
-                        <th>APELLIDO</th>
-                        <th>DIRECCION</th>
-                        <th class="ultimo">CELULAR</th>
-                    </tr>
-                </thead>
-                <tbody class="tablabodyP">
-                    <tr *ngFor="let cliente of clientes">
-                        <td>{{cliente.correo_cliente}}</td>
-                        <td>{{cliente.nombre_cliente}}</td>
-                        <td>{{cliente.apellido_cliente}}</td>
-                        <td>{{cliente.direccion_cliente}}</td>
-                        <td>{{cliente.celular_cliente}}</td>
-                    </tr>
-                </tbody>
-                
-            </table>
+            <div class="cajaTable">
+                <table class="tabla2" *ngIf="clientes">
+                    <thead class="tablaHeaderP">
+                        <tr>
+                            <th class="primero">Correo</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Dirección</th>
+                            <th class="ultimo">Celular</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tablabodyP">
+                        <tr *ngFor="let cliente of clientes">
+                            <td>{{cliente.correoCliente}}</td>
+                            <td>{{cliente.nombreCliente}}</td>
+                            <td>{{cliente.apellidoCliente}}</td>
+                            <td>{{cliente.direccionCliente}}</td>
+                            <td>{{cliente.telefonoCliente}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </tbody>
     </table>
     

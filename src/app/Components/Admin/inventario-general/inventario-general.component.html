@@ -1,13 +1,14 @@
 <div class="container">
-    <button class="btnDetalles mb-3 float-end me-2" routerLink="/inventarioD">Inventario Detalles</button>
-    <button class="btnDetalles mb-3 float-end me-5" routerLink="/ingresarCompra">Ingresar Compra</button>
-    <button class="btnDetalles mb-3 float-end me-5" routerLink="/ingresarVenta">Ingresar Venta</button>
-   
+    <div class="cajaBtnsCV">
+        <button class="btnDetalles mb-3 float-end me-5" routerLink="/ingresarCompra">Ingresar compras</button>
+        <button class="btnDetalles mb-3 float-end me-5" routerLink="/ingresarVenta">Ingresar ventas</button>
+    </div>
+
     <table class="tabla">
         <thead class="tablaHeaderG">
             <tr>
                 <th>
-                    Inventario General
+                    INVENTARIO GENERAL
                 </th>
             </tr>
         </thead>
@@ -15,22 +16,24 @@
 
             <hr class="todo">
 
-            <table class="tabla2">
-                <thead class="tablaHeaderP">
-                    <tr>
-                        <th class="primero">Codigo</th>
-                        <th >Nombre</th>
-                        <th class="ultimo">Cantidad</th>
-                    </tr>
-                </thead>
-                <tbody class="tablabodyP">
-                    <tr class="puntero" *ngFor="let inventario of inventarioG" (click)=openDialog(inventario.codigoProducto)>
-                        <td>{{inventario.codigoProducto.codigoProducto}}</td>
-                        <td>{{inventario.codigoProducto.nombreProducto}}</td>
-                        <td>{{inventario.cantidadProducto}}</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="containerTabla">
+                <table class="tabla2">
+                    <thead class="tablaHeaderP">
+                        <tr>
+                            <th class="primero">Código</th>
+                            <th >Nombre</th>
+                            <th class="ultimo">Cantidad</th>
+                        </tr>
+                    </thead>
+                    <tbody class="tablabodyP">
+                        <tr class="puntero" *ngFor="let inventario of inventarioG" (click)=openDialog(inventario.codigoProducto)>
+                            <td>{{inventario.codigoProducto.codigoProducto}}</td>
+                            <td>{{inventario.codigoProducto.nombreProducto}}</td>
+                            <td>{{inventario.cantidadProducto}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </tbody>
     </table>
     
