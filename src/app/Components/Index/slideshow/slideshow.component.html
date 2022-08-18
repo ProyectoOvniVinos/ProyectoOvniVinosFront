@@ -13,8 +13,8 @@
                         <h2>{{inventario.codigoProducto.precioProducto | currency : 'USD' : 'symbol' : '1.0-0'}}</h2>
                         <p> Cantidad disponible : {{inventario.cantidadProducto}}</p>
                     </div>
-                    <div class="cont-interno2">
-                        <img src="../../../../assets/Images/carrito.png" class="imgCarrito" (click)="actualizarCarrito(inventario.codigoProducto)"/>
+                    <div class="cont-interno2" (click)="actualizarCarrito(inventario.codigoProducto)">
+                        <img src="../../../../assets/Images/carrito.png" class="imgCarrito" />
                     </div>
 
                 </div>

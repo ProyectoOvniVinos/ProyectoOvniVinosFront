@@ -4,6 +4,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProductoModel } from '../../../Models/Producto.model';
 import { ProductoService } from '../../../Services/producto.service';
 import { Inventario_generalModel } from 'src/app/Models/Inventario_general.model';
+import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
+import { CarritoService } from 'src/app/Services/carrito.service';
+import { ClienteService } from 'src/app/Services/cliente.service';
+import { ClienteModel } from 'src/app/Models/Cliente.model';
+import { ItemCarritoModel } from 'src/app/Models/itemCarrito.model';
 
 @Component({
   selector: 'app-catalogo',
@@ -15,7 +20,9 @@ export class CatalogoComponent implements OnInit {
   inventarioGeneral: Inventario_generalModel[] = [];
   validarCarrito = false;
 
-  constructor(public dialog: MatDialog, private productoService: ProductoService) { }
+  
+
+  constructor(public dialog: MatDialog, private productoService: ProductoService, private carritoService:CarritoService, private clienteService:ClienteService) { }
 
   ngOnInit(): void {
     this.productoService.getProductsInventario().subscribe(inventario => {
@@ -28,8 +35,21 @@ export class CatalogoComponent implements OnInit {
     
   }
 
-  agregar(){
-    console.log("agregando");
+  agregar(producto:ProductoModel){
+    this.clienteService.getByEmail("c@gmail.com").subscribe((resp:ClienteModel)=>{
+      let newItem = new ItemCarritoModel();
+      newItem.cantidadProducto = 1;
+      newItem.codigoProducto = producto
+      newItem.precioItem = producto.precioProducto
+
+      resp.carrito.itemCarrito.push(newItem);
+      this.carritoService.actualizarCarrito(resp.carrito).subscribe(resp=>{
+        console.log(resp);
+        
+      })
+      
+      
+    })
   }
 
   openDialog(inventario: Inventario_generalModel): void {
@@ -65,6 +85,8 @@ export class CatalogoComponent implements OnInit {
 
   mostrarCarrito(){
     this.validarCarrito=!this.validarCarrito;
+
+
   }
 
 }

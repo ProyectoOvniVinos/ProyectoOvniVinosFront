@@ -5,6 +5,7 @@ import { Inventario_generalModel } from 'src/app/Models/Inventario_general.model
 import { ItemCarritoModel } from 'src/app/Models/itemCarrito.model';
 import { ProductoModel } from 'src/app/Models/Producto.model';
 import { CarritoService } from 'src/app/Services/carrito.service';
+import { ClienteService } from 'src/app/Services/cliente.service';
 import Swiper , {Autoplay} from 'swiper';
 @Component({
   selector: 'app-slideshow',
@@ -19,7 +20,7 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
 
   public cliente:ClienteModel = new ClienteModel();
 
-  constructor(public carritoService:CarritoService) { }
+  constructor(public carritoService:CarritoService, public clienteService:ClienteService) { }
   ngAfterViewInit(): void {
     this.swiper = new Swiper('.swiper', {
       modules: [Autoplay],
@@ -31,8 +32,7 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
       spaceBetween: 30,
       loop: true,
       autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
+        delay: 3000
       },
       speed: 800,
     });
@@ -50,21 +50,21 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
     this.swiper.slidePrev();
   }
   actualizarCarrito(producto: ProductoModel){
-    let item = new ItemCarritoModel();
-    item.codigoProducto = producto;
-    item.cantidadProducto = 1;
-    item.precioItem = producto.precioProducto;
-    console.log(this.cliente.carrito);
+    console.log("AAAAAAAAA");
     
-    if(this.cliente.carrito===null){
-      let carrito = new CarritoClienteModel();
-      this.cliente.carrito = carrito;
-      this.cliente.carrito.itemCarrito.push(item);
-    }else{
-      this.cliente.carrito.itemCarrito.push(item);
-    }
-    this.carritoService.actualizarCarrito(this.cliente.carrito).subscribe(resp => {
-      console.log(resp);
+    this.clienteService.getByEmail("c@gmail.com").subscribe((resp:ClienteModel)=>{
+      let newItem = new ItemCarritoModel();
+      newItem.cantidadProducto = 1;
+      newItem.codigoProducto = producto
+      newItem.precioItem = producto.precioProducto
+
+      resp.carrito.itemCarrito.push(newItem);
+      this.carritoService.actualizarCarrito(resp.carrito).subscribe(resp=>{
+        console.log(resp);
+        
+      })
+      
+      
     })
     
   }

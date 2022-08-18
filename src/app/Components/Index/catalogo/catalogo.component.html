@@ -26,7 +26,7 @@
                 <div *ngFor="let inventario of inventarioGeneral" class="cardP">
                     <div class="cardImg">
                         <img class="imgCardBody" src="{{inventario.codigoProducto.fotoProducto}}" alt="" (click)="openDialog(inventario)">
-                        <img (click)="agregar()" class="imgCarrito" src="../../../../assets/Images/carritoVioleta.png" alt="">
+                        <img (click)="agregar(inventario.codigoProducto)" class="imgCarrito" src="../../../../assets/Images/carritoVioleta.png" alt="">
                     </div>
                     <div class="cardFootert" (click)="openDialog(inventario)">
                         <p>{{inventario.codigoProducto.nombreProducto}}</p>
