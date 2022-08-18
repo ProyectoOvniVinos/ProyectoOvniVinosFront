@@ -63,29 +63,53 @@
         width: 0%;
     }
 
+    5%{
+        transform: scale(0.2,0.2);
+        width:2%;
+    }
+
+    10%{
+        transform: scale(0.3,0.3);
+        width:4%
+    }
+
+    15%{
+        transform: scale(0.4,0.4);
+        width: 6%;
+    }
     20%{
         transform: scale(0.2,0.2);
-        width:10%;
+        width:8%;
+    }
+
+    25%{
+        transform: scale(0.3,0.3);
+        width:10%
+    }
+
+    30%{
+        transform: scale(0.4,0.4);
+        width: 12%;
+    }
+    35%{
+        transform: scale(0.3,0.3);
+        width:14%
     }
 
     40%{
-        transform: scale(0.3,0.3);
-        width:20%
-    }
-
-    60%{
         transform: scale(0.4,0.4);
-        width: 30%;
+        width: 16%;
+    }    
+    45%{
+        transform: scale(0.3,0.3);
+        width:18%
     }
 
-    80%{
-        transform: scale(0.5,0.5);
-        width: 40%;
+    50%{
+        transform: scale(0.4,0.4);
+        width: 20%;
     }
 
-    100%{
-        opacity: 100%;
-    }
 
 }
 
