@@ -8,6 +8,6 @@ export class ClienteModel {
     direccionCliente!: string;
     telefonoCliente!: string;
     passwordCliente!: string;
-    carrito!: CarritoClienteModel;
+    carrito: CarritoClienteModel = new CarritoClienteModel()
     ventas: VentaModel[] = [];
 }

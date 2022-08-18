@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { CompraModel } from 'src/app/Models/Compra.model';
 import { ProductoModel } from 'src/app/Models/Producto.model';
+import { CompraService } from 'src/app/Services/compra.service';
+import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 
 @Component({
   selector: 'app-compras',
@@ -8,33 +12,33 @@ import { ProductoModel } from 'src/app/Models/Producto.model';
 })
 export class ComprasComponent implements OnInit {
 
-  productos: ProductoModel[] = [
-    {
-      codigoProducto: 1,
-      nombreProducto: 'Vino Abocado',
-      precioProducto: 13000,
-      precioProductoProveedor: 6000,
-      descripcionProducto: 'Delicioso Vino Dulce',
-      fotoProducto: '../../../../assets/TEMPORALES/vino1.jpg'
-    }, {
-      codigoProducto: 2,
-      nombreProducto: 'Vino tinto',
-      precioProducto: 13000,
-      precioProductoProveedor: 6000,
-      descripcionProducto: 'Delicioso Vino no tan Dulce',
-      fotoProducto: '../../../../assets/TEMPORALES/vino2.jpg'
-    }, {
-      codigoProducto: 3,
-      nombreProducto: 'Nectar de uva',
-      precioProducto: 10000,
-      precioProductoProveedor: 5000,
-      descripcionProducto: 'Delicioso nectar de uva libre de alcohol',
-      fotoProducto: '../../../../assets/TEMPORALES/vino3.jpg'
-    },
-  ];
-  constructor() { }
+  compras:CompraModel[];
+  constructor(public compraService:CompraService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.compraService.getCompras().subscribe(resp=>{
+      this.compras = resp
+    })
+  }
+  abrirModal(compra:CompraModel){
+    let data = ""
+    let contador =1;
+    compra.compras.forEach(itemCompra=>{
+      console.log(contador);
+      
+      data += "      Item numero       " + contador +"\tNombre producto: "+itemCompra.codigoProducto.nombreProducto + "\n" +
+      "\tCantidad: " + itemCompra.cantidadProducto+ "\t" +
+      "\tPrecio item: "+ itemCompra.precioCompraDetalle + "\t"
+      contador+=1
+    })
+    this.openDialog("Items",data)
+  }
+
+  openDialog(titleNew: string, mensajeNew: string): void {
+    const dialogRef = this.dialog.open(ModalErrorComponent, {
+      width: '700px',
+      data: {title: titleNew, mensaje: mensajeNew},
+    });
   }
 
 }
