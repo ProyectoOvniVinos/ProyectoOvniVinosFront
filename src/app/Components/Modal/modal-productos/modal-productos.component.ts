@@ -41,8 +41,7 @@ export class ModalProductosComponent implements OnInit {
     public dialogRef: MatDialogRef<ModalProductosComponent>,
     @Inject(MAT_DIALOG_DATA) public inventario:Inventario_generalModel)
    {
-    dialogRef.disableClose = true
-    dialogRef.backdropClick()
+
   }
    
 
