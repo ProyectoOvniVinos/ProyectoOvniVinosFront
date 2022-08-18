@@ -1,28 +1,26 @@
 
 <h2 class="tituloModal" mat-dialog-title>Hola</h2>
-<mat-dialog-content class="text-center">
-    <div>
-        <div class="cajaImg">
-            <img class="img" src="" alt="">
-        </div>
-        <div class="prueba">
-            <div class="card">
-    
-                <h4 class="card-header"><b>Nombre: </b></h4>
-    
-                <div class="card-body">
-                  <p class="card-text"><b>Precio:</b> </p>
-                  <p class="card-text">Cantidad disponible:</p>
-                  <p class="card-text"><b>Descripción:</b></p>
-                </div>
-                <div class="card-footer">
-                    <mat-dialog-actions class="cajaBtns">
-                        <button class="btnOk" mat-button [mat-dialog-close]="true">Agregar al carrito</button>
-                    </mat-dialog-actions>
-                </div>
-              </div>
+<div>
+    <div class="cajaImg">
+        <img class="img" src="" alt="">
     </div>
-</mat-dialog-content>
+    <div class="prueba">
+        <div class="card">
+
+            <h4 class="card-header"><b>Nombre: </b></h4>
+
+            <div class="card-body">
+                <p class="card-text"><b>Precio:</b> </p>
+                <p class="card-text">Cantidad disponible:</p>
+                <p class="card-text"><b>Descripción:</b></p>
+            </div>
+            <div class="card-footer">
+                <mat-dialog-actions class="cajaBtns">
+                    <button class="btnOk" mat-button [mat-dialog-close]="true">Agregar al carrito</button>
+                </mat-dialog-actions>
+            </div>
+            </div>
+    </div>
 <mat-dialog-actions class="cajaBtns">
   <button class="btnOk" mat-button [mat-dialog-close]="true" >Confirmar</button>
   <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
