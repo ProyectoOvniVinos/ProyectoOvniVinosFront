@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ClienteModel } from 'src/app/Models/Cliente.model';
+import { ClienteService } from 'src/app/Services/cliente.service';
 
 @Component({
   selector: 'app-clientes',
@@ -7,32 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ClientesComponent implements OnInit {
 
-  constructor() { }
+  clientes:ClienteModel[];
+  constructor(public clienteService:ClienteService) { }
 
   ngOnInit(): void {
+    this.clienteService.getAll().subscribe(resp=>{
+      console.log(resp);
+      
+      this.clientes = resp
+    })
   }
 
-  clientes: any = [
-    {
-      correo_cliente: "ivanhshs1@gmail.com",
-      nombre_cliente: 'ivan Daniel',
-      apellido_cliente: 'Hincapie',
-      direccion_cliente: 'cra 27',
-      celular_cliente: '3124563539',
-    }, {
-      correo_cliente: "felipe64@gmail.com",
-      nombre_cliente: 'felipe',
-      apellido_cliente: 'Sanchez',
-      direccion_cliente: 'cra 17',
-      celular_cliente: '3034452011',
-    }, {
-      correo_cliente: "camilo1234@gmail.com",
-      nombre_cliente: 'Camilo ',
-      apellido_cliente: 'Gomez',
-      direccion_cliente: 'cra 10',
-      celular_cliente: '3114587020',
-    },
-  ];
 
 
 }

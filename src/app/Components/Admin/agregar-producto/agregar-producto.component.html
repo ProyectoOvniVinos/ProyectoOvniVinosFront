@@ -15,7 +15,7 @@
                 <form class="cajaFormCompleto" [formGroup]="registroProductoForm">
                     <div class="cajainputs">
                         <div class="cajaInput">
-                            <label class="label">Nombre Del Producto</label>
+                            <label class="label">Nombre del producto</label>
                             <br>
                             <input type="text" 
                                     class="input form-control" 
@@ -27,7 +27,7 @@
                                     </div>
                         </div>
                         <div class="cajaInput">
-                            <label for="" class="label">Precio Del Producto</label>
+                            <label for="" class="label">Precio del producto</label>
                             <br>
                             <input type="text" 
                                     class="input form-control" 
@@ -36,11 +36,11 @@
                                     [ngClass]="precioProductoNoValido == null ? '' : precioProductoNoValido ? 'is-invalid': 'is-valid'">
                                     <div class="errors-container" *ngIf="precioControl.invalid && (precioControl.touched || precioControl.dirty)">
                                         <p class="text-danger" *ngIf="precioControl.hasError('required')">El campo es obligatorio</p>
-                                        <p class="text-danger" *ngIf="precioControl.hasError('pattern')">Solamente numeros porfavor</p>
+                                        <p class="text-danger" *ngIf="precioControl.hasError('pattern')">Solamente ingrese números por favor</p>
                                     </div>
                         </div>
                         <div class="cajaInput">
-                            <label for="" class="label">Precio Del Proveedor</label>
+                            <label for="" class="label">Precio del proveedor</label>
                             <br>
                             <input type="text" 
                                     class="input form-control" 
@@ -49,11 +49,11 @@
                                     [ngClass]="precioProveedorNoValido == null ? '' : precioProveedorNoValido ? 'is-invalid': 'is-valid'">
                                     <div class="errors-container" *ngIf="proveedorControl.invalid && (proveedorControl.touched || proveedorControl.dirty)">
                                         <p class="text-danger" *ngIf="proveedorControl.hasError('required')">El campo es obligatorio</p>
-                                        <p class="text-danger" *ngIf="proveedorControl.hasError('pattern')">Solamente numeros porfavor</p>
+                                        <p class="text-danger" *ngIf="proveedorControl.hasError('pattern')">Solamente ingrese números por favor</p>
                                     </div>
                         </div>
                         <div class="cajaInput">
-                            <label for="" class="label">Imagen Del Producto</label>
+                            <label for="" class="label">Imágen del producto</label>
                             <br>
                             <input type="file" 
                                     (change)="seleccionarFoto($event)"
@@ -64,7 +64,7 @@
                         </div> 
 
                         <div class="cajaInputArea">
-                            <label for="" class="label">Descripcion Del Producto</label>
+                            <label for="" class="label">Descripción del producto</label>
                             <br>
                             <textarea type="" 
                             class="textArea form-control" 
@@ -73,7 +73,7 @@
                             [ngClass]="descripcionProductoNoValido == null ? '' : descripcionProductoNoValido ? 'is-invalid': 'is-valid'"></textarea>
                             <div class="errors-container" *ngIf="descripcionControl.invalid && (descripcionControl.touched || descripcionControl.dirty)">
                                 <p class="text-danger" *ngIf="descripcionControl.hasError('required')">El campo es obligatorio</p>
-                                <p class="text-danger" *ngIf="!descripcionControl.hasError('required')">Maximo 200 caracteres</p>
+                                <p class="text-danger" *ngIf="!descripcionControl.hasError('required')">Máximo 200 caracteres</p>
                             </div>
                         </div>
                     </div>
