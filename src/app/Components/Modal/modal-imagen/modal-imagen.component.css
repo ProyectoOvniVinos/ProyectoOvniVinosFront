@@ -1,0 +1,17 @@
+.cajaP{
+    display:flex;
+    flex-direction:column;
+}
+
+.cajaHijo1{
+    width:100%;
+    height:10%;
+    display:flex;
+    justify-content:flex-end;
+    cursor:pointer;
+}
+
+.cajaHijo2{
+    width:100%;
+    height:90%;
+}

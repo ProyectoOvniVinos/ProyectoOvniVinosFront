@@ -1,0 +1,21 @@
+<div class="boxOfTable">
+  <table class="tabla2">
+    <thead class="tablaHeaderP">
+        <tr>
+            <th class="primero">#</th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th class="ultimo">Precio</th>
+        </tr>
+    </thead>
+    <tbody class="tablabodyP">
+      <tr *ngFor="let detalle of compra.compras;let indice=index">
+        <td >{{indice+1}} </td>
+        <td >{{detalle.codigoProducto.nombreProducto}}</td>
+        <td >{{detalle.cantidadProducto}}</td>
+        <td >{{detalle.precioCompraDetalle}}</td>
+     </tr>
+    </tbody>
+  </table>
+</div>
+

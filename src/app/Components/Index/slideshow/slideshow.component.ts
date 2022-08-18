@@ -1,4 +1,5 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
 import { ClienteModel } from 'src/app/Models/Cliente.model';
 import { Inventario_generalModel } from 'src/app/Models/Inventario_general.model';
@@ -6,6 +7,7 @@ import { ItemCarritoModel } from 'src/app/Models/itemCarrito.model';
 import { ProductoModel } from 'src/app/Models/Producto.model';
 import { CarritoService } from 'src/app/Services/carrito.service';
 import Swiper , {Autoplay} from 'swiper';
+import { ModalProductosComponent } from '../../Modal/modal-productos/modal-productos.component';
 @Component({
   selector: 'app-slideshow',
   templateUrl: './slideshow.component.html',
@@ -19,7 +21,8 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
 
   public cliente:ClienteModel = new ClienteModel();
 
-  constructor(public carritoService:CarritoService) { }
+  constructor(public carritoService:CarritoService,
+              public dialog: MatDialog) { }
   ngAfterViewInit(): void {
     this.swiper = new Swiper('.swiper', {
       modules: [Autoplay],
@@ -39,6 +42,13 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
     this.swiper.autoplay.start();
   }
 
+  openDialog(inventario: Inventario_generalModel): void {
+    const dialogRef = this.dialog.open(ModalProductosComponent, {
+      width: '50%',
+      data: inventario,
+    });
+  }
+
   ngOnInit(): void {
     console.log(this.inventarios);
   }
@@ -49,7 +59,9 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
   onSlidePrev() {
     this.swiper.slidePrev();
   }
-  actualizarCarrito(producto: ProductoModel){
+  actualizarCarrito(event, producto: ProductoModel){
+    event.stopPropagation();
+    
     let item = new ItemCarritoModel();
     item.codigoProducto = producto;
     item.cantidadProducto = 1;

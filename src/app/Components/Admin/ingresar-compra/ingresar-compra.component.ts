@@ -118,7 +118,7 @@ export class IngresarCompraComponent implements OnInit {
 
   seleccionarProducto() {
     let producto2: ProductoModel;
-    if (this.compraForm.controls['cantidad'].touched == true && this.compraForm.controls['producto'].touched == true && this.compraForm.controls['precio'].touched == true) {
+    if (this.compraForm.controls['cantidad'].touched == true && this.compraForm.controls['producto'].touched == true ) {
 
       this.productos.map(producto => {
         if (producto.codigoProducto == this.compraForm.controls['producto'].value) {
