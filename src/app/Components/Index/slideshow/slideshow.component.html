@@ -4,7 +4,7 @@
         <!-- Slides -->
         
         <div class="swiper-slide cont-produc" *ngFor="let inventario of inventarios" data-swiper-autoplay="4000"[ngStyle]="{'background-position': 'center','background-repeat':'no-repeat','background-image':'url('+inventario.codigoProducto.fotoProducto+')','background-size':'65%'}">
-            <div class="prod-description" (click)="click()">
+            <div class="prod-description">
                 <div class=" cont-exte">
 
                     <div class="cont-interno">
@@ -14,7 +14,7 @@
                         <p> Cantidad disponible : {{inventario.cantidadProducto}}</p>
                     </div>
                     <div class="cont-interno2">
-                        <img src="../../../../assets/Images/carrito.png" class="imgCarrito"/>
+                        <img src="../../../../assets/Images/carrito.png" class="imgCarrito" (click)="actualizarCarrito(inventario.codigoProducto)"/>
                     </div>
 
                 </div>
