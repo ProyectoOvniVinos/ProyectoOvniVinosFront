@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ProductoModel } from './../../../Models/Producto.model';
+import { Inventario_generalModel } from './../../../Models/Inventario_general.model';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-modal-productos-admin',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ModalProductosAdminComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialogRef: MatDialogRef<ModalProductosAdminComponent>,
+              @Inject(MAT_DIALOG_DATA) public producto:ProductoModel ) { }
+
+  
+  onNoClick(): void{
+    this.dialogRef.close();
+  }  
+
+  
 
   ngOnInit(): void {
-  }
 
+  }
 }

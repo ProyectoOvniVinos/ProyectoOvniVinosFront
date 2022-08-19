@@ -53,6 +53,7 @@ import { HeaderComponent } from './Components/Index/header/header.component';
 import { ModalDetallesCompraComponent } from './Components/Modal/modal-detalles-compra/modal-detalles-compra.component';
 import { ModalImagenComponent } from './Components/Modal/modal-imagen/modal-imagen.component';
 import { ModalProductosAdminComponent } from './Components/Modal/modal-productos-admin/modal-productos-admin.component';
+import { ModalLoadingComponent } from './Components/Modal/modal-loading/modal-loading.component';
  
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { ModalProductosAdminComponent } from './Components/Modal/modal-productos
     HeaderComponent,
     ModalDetallesCompraComponent,
     ModalImagenComponent,
-    ModalProductosAdminComponent
+    ModalProductosAdminComponent,
+    ModalLoadingComponent
 
 
   ],
