@@ -31,4 +31,7 @@ export class ClienteService {
   getAll(){
     return this.http.get<any>(`${this.url}clientes`);
   }
+  getByEmail(email:String){
+    return this.http.get<any>(`${this.url}cliente/${email}`);
+  }
 }

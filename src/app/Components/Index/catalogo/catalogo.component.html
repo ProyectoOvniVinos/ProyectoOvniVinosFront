@@ -9,13 +9,13 @@
             <button (click)="filtro(boton3.title)" title="Todos" class="btn btnFiltro" #boton3><img class="imgBotonJuntas c" src="../../../../assets/Images/juntasRosado.png" alt=""></button>
         </div>
         <div class="cajaCarrito" (click)="mostrarCarrito()">
-            <p class="pCarrito">10</p>
+            <p class="pCarrito" *ngIf="clienteInp">{{clienteInp.carrito.itemCarrito.length}}</p>
             <img src="../../../../assets/Images/carritoVioleta.png" alt="">
         </div>
     </div>
 
     <div class="cajaContenido">
-        <app-slideshow *ngIf="inventarioGeneral.length > 0" [inventarios] = "inventarioGeneral" ></app-slideshow>
+        <app-slideshow *ngIf="inventarioGeneral.length > 0" [inventarios] = "inventarioGeneral" (devolver)="procesarDevolver($event)"></app-slideshow>
         <hr>
         <div class="catalogoTwo">
             <div>
@@ -26,7 +26,7 @@
                 <div *ngFor="let inventario of inventarioGeneral" class="cardP">
                     <div class="cardImg">
                         <img class="imgCardBody" src="{{inventario.codigoProducto.fotoProducto}}" alt="" (click)="openDialog(inventario)">
-                        <img (click)="agregar()" class="imgCarrito" src="../../../../assets/Images/carritoVioleta.png" alt="">
+                        <img (click)="agregar(inventario.codigoProducto)" class="imgCarrito" src="../../../../assets/Images/carritoVioleta.png" alt="">
                     </div>
                     <div class="cardFootert" (click)="openDialog(inventario)">
                         <p>{{inventario.codigoProducto.nombreProducto}}</p>
@@ -43,7 +43,7 @@
 </div>
 
 <div *ngIf="validarCarrito">
-    <app-carrito></app-carrito>
+    <app-carrito [clienteInp]="clienteInp" (devolver)="procesarDevolver($event)"></app-carrito>
     <button type="button" class="btn-close cerrar" data-bs-dismiss="modal" aria-label="Close"></button>
     <button (click)="validarCarrito=!validarCarrito" type="button" class="btn-close cerrar" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
