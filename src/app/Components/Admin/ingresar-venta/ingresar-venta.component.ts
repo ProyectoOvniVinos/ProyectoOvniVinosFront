@@ -204,11 +204,11 @@ export class IngresarVentaComponent implements OnInit {
     
 
     this.serviceVenta.addVenta(this.venta).subscribe(e=>{
-      this.openDialog("Exito!!!","Se ha agregado la compra satisfactoriamente!")
+      this.openDialog("¡¡ÉXITO!!!","La venta se ha guardado satisfactoriamente. ")
       this.vaciar()
 
     },err => {
-      this.openDialog("Error","Ha ocurrido un problema")
+      this.openDialog("ERROR","Lo sentimos, no se pudo guardar la venta. Inténtalo de nuevo. ")
 
       
     })

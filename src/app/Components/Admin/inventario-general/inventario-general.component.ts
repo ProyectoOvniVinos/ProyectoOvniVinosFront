@@ -13,9 +13,19 @@ import { ModalInventarioGComponent } from '../../Modal/modal-inventario-g/modal-
 export class InventarioGeneralComponent implements OnInit {
 
   inventarioG: Inventario_generalModel[] = [];
+  producto: ProductoModel = {
+    codigoProducto :1,
+    nombreProducto :"vino abocado",
+    precioProducto : 4000,
+    precioProductoProveedor : 50000,
+    descripcionProducto : "Es muy rico",
+    fotoProducto : "../../../../assets/TEMPORALES/vino1.jpg",
+    estado : "1"
+  }
   constructor(public dialog:MatDialog, private inventarioService: InventarioGService) { }
 
   ngOnInit(): void {
+    this.openDialog(this.producto);
     this.inventarioService.getInventarioGeneralCompleto().subscribe(inventarioGeneral=>{
       this.inventarioG = inventarioGeneral; 
     });
@@ -23,7 +33,7 @@ export class InventarioGeneralComponent implements OnInit {
 
   openDialog(producto: ProductoModel): void {
     const dialogRef = this.dialog.open(ModalInventarioGComponent, {
-      width: '50%',
+      width: '40%',
       data: producto,
     });
   }

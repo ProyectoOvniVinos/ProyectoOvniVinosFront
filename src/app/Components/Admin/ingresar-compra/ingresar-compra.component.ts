@@ -140,7 +140,7 @@ export class IngresarCompraComponent implements OnInit {
 
       this.actualizarTotal()
     } else {
-      this.openDialog("Advertencia", "llene todos lo campos");
+      this.openDialog("ADVERTENCIA", "Por favor llene todos lo campos. ");
     }
   }
   existeItem(id: number): boolean {
@@ -229,11 +229,11 @@ export class IngresarCompraComponent implements OnInit {
 
 
     this.serviceCompra.addCompra(this.compra).subscribe(e => {
-      this.openDialog("Exito!!!", "Se ha agregado la compra satisfactoriamente!")
+      this.openDialog("¡¡ÉXITO!!!", "La compra se ha agregado satisfactoriamente. ")
       this.vaciar()
 
     }, err => {
-      this.openDialog("Error", "Ha ocurrido un problema")
+      this.openDialog("ERROR", "Lo sentimos, no se pudo agregar la compra. Inténtalo de nuevo. ")
 
 
     })
