@@ -14,8 +14,7 @@ export class CarritoService {
   constructor(private http: HttpClient) { }
 
   actualizarCarrito(carrito:CarritoClienteModel){
-    const url: string = `${this.url}carrito/${carrito.idCarrito}`;
-    return this.http.put<any>(url,carrito,{headers: this.httpHeaders}).pipe(
+    return this.http.put<any>(`${this.url}carrito/${carrito.idCarrito}`,carrito,{headers: this.httpHeaders}).pipe(
         catchError(e => {
   
           if(e.status==500){
