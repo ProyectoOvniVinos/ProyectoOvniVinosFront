@@ -3,6 +3,10 @@ import { DialogData } from './../DialogData';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Component, Inject, OnInit } from '@angular/core';
 import { Inventario_generalModel } from 'src/app/Models/Inventario_general.model';
+import { ClienteService } from 'src/app/Services/cliente.service';
+import { CarritoService } from 'src/app/Services/carrito.service';
+import { ClienteModel } from 'src/app/Models/Cliente.model';
+import { ItemCarritoModel } from 'src/app/Models/itemCarrito.model';
 
 @Component({
   selector: 'app-modal-productos',
@@ -39,7 +43,9 @@ export class ModalProductosComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<ModalProductosComponent>,
-    @Inject(MAT_DIALOG_DATA) public inventario:Inventario_generalModel)
+    @Inject(MAT_DIALOG_DATA) public inventario:Inventario_generalModel,
+    public clienteService:ClienteService,
+    public carritoService:CarritoService)
    {
 
   }
@@ -50,6 +56,8 @@ export class ModalProductosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.inventario);
+    
     this.productos.forEach( producto => {
       if(producto.codigoProducto==this.inventario.codigoProducto.codigoProducto){
         this.productoRecomendado=producto
@@ -58,5 +66,6 @@ export class ModalProductosComponent implements OnInit {
       }
     })
   }
+  
 
 }

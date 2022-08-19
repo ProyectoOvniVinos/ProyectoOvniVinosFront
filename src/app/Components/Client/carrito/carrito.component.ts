@@ -1,5 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, EventEmitter , Output } from '@angular/core';
+import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
+import { ClienteModel } from 'src/app/Models/Cliente.model';
+import { ItemCarritoModel } from 'src/app/Models/itemCarrito.model';
 import { ProductoModel } from 'src/app/Models/Producto.model';
+import { CarritoService } from 'src/app/Services/carrito.service';
+import { ClienteService } from 'src/app/Services/cliente.service';
 
 @Component({
   selector: 'app-carrito',
@@ -7,43 +12,29 @@ import { ProductoModel } from 'src/app/Models/Producto.model';
   styleUrls: ['./carrito.component.css']
   
 })
-export class CarritoComponent implements OnInit {
+export class CarritoComponent implements OnInit, OnChanges {
 
-  productos: ProductoModel[] = [
-    {
-      codigoProducto: 1,
-      nombreProducto: 'Vino Abocado',
-      precioProducto: 13000,
-      precioProductoProveedor: 6000,
-      descripcionProducto: 'Delicioso Vino Dulce',
-      fotoProducto: '../../../../assets/TEMPORALES/vino1.jpg'
-    }, {
-      codigoProducto: 2,
-      nombreProducto: 'Vino tinto',
-      precioProducto: 13000,
-      precioProductoProveedor: 6000,
-      descripcionProducto: 'Delicioso Vino no tan Dulce',
-      fotoProducto: '../../../../assets/TEMPORALES/vino2.jpg'
-    }, {
-      codigoProducto: 3,
-      nombreProducto: 'Nectar de uva',
-      precioProducto: 10000,
-      precioProductoProveedor: 5000,
-      descripcionProducto: 'Delicioso nectar de uva libre de alcohol',
-      fotoProducto: '../../../../assets/TEMPORALES/vino3.jpg'
-    },{
-      codigoProducto: 4,
-      nombreProducto: 'Vino De Cereza',
-      precioProducto: 40000,
-      precioProductoProveedor: 5000,
-      descripcionProducto: 'Delicioso nectar de uva libre de alcohol',
-      fotoProducto: '../../../../assets/TEMPORALES/vino3.jpg'
-    },
-  ];
+  carrito:CarritoClienteModel;
+  variable:boolean = true
 
   @Input() modal:boolean = false;
 
-  constructor() { }
+  @Input() clienteInp:ClienteModel;
+  
+  @Output()
+  devolver = new EventEmitter<any>();
+
+  constructor(private clienteService:ClienteService, private carritoService:CarritoService) {
+
+  }
+  ngOnChanges(): void {
+    this.carrito =this.clienteInp.carrito
+    this.clienteService.getByEmail(this.clienteInp.correoCliente).subscribe((resp:ClienteModel)=>{
+      console.log(resp);
+      
+      this.carrito = resp.carrito;
+    })
+  }
 
   ngOnInit(): void {
   }
@@ -57,7 +48,40 @@ export class CarritoComponent implements OnInit {
   }
 
   cantidadProductos(){
-    return this.productos.length;
+    return this.carrito.itemCarrito.length;
+  }
+
+  eliminarItem(item:ItemCarritoModel){
+
+    this.carrito.itemCarrito = this.carrito.itemCarrito.filter((res) => res !== item)
+    this.carritoService.actualizarCarrito(this.carrito).subscribe(resp=>{
+      console.log(resp);
+      
+    });
+
+    let list:Object={
+      objeto:this.carrito,
+      variable:true
+    }
+
+    
+    this.devolver.emit(list);
+  }
+  aumentarCantidad(item:ItemCarritoModel){
+    
+    item.cantidadProducto += 1
+    
+    this.carritoService.actualizarCarrito(this.carrito).subscribe(resp=>{
+      console.log(resp);
+      
+    });
+  }
+  disminuirCantidad(item:ItemCarritoModel){
+    item.cantidadProducto-=1;
+    this.carritoService.actualizarCarrito(this.carrito).subscribe(resp=>{
+      console.log(resp);
+      
+    });
   }
   
 

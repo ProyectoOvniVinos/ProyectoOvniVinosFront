@@ -8,10 +8,10 @@
         <div class="modal-body modalFooter">
           <p>Cantidad de produtos: {{cantidadProductos()}}</p>
         </div>
-        <div class="container" *ngFor="let producto of productos">
+        <div class="container" *ngFor="let item of carrito.itemCarrito">
             <hr>
-            <div>
-                <p>Nombre: {{producto.nombreProducto}} = Precio: {{producto.precioProducto}}</p>
+            <div *ngIf="carrito.itemCarrito.length > 0">
+                <p>Nombre: {{item.codigoProducto.nombreProducto}} = Precio: {{item.codigoProducto.precioProducto}}</p>
             </div>
         </div>
         <div class="modal-footer modalFooter">
@@ -23,58 +23,45 @@
   </div>
 
 
-<div class="cajaPCarrito fadeIn">
-    <div class="cajaMCarrito">
+<div class="cajaPCarrito fadeIn" [ngClass]="{'sinAnimacion': variable==false}">
+    <div class="cajaMCarrito" >
 
         <h2 class="hCarrito text-light text-center">Mi Carrito</h2>
         <cdk-virtual-scroll-viewport itemSize="50" class="viewport">
-<!--             <div *ngFor="let producto of productos">
-                <div class="cajaCardPadre" >
-                    <div class="cardCarrito"> 
-                        <div class="cajaCard">
-                            <h3>{{producto.nombre_producto}}</h3>
-                            <p>Precio: {{producto.precio_producto}} </p>
-                            <p>Cantidad: 5</p>
-                        </div>
-                        <div class="cajaImgCard">
-                            <img class="img" src="{{producto.foto_producto}}" alt="">
-                        </div>
-                    </div>
-                
-                    <div class="cajaButton">
-                        <button class="btnCancelar">Cancelar</button>
-                    </div>
-                </div>
-                <br>                
-            </div> -->
-            <div class="padreCarrito">
+            <div *ngIf="carrito">
 
-                <div class="madreCarrito">
-                    <div class="caja1">
-                        <div class="cajaImg">
-                            <img class="img" src="../../../../assets/TEMPORALES/vino1.jpg" alt="">
+                <div class="padreCarrito"  *ngFor="let item of carrito.itemCarrito" >
+    
+                    <div class="madreCarrito" >
+                        <div class="caja1">
+                            <div class="cajaImg">
+                                <img class="img" src={{item.codigoProducto.fotoProducto}} alt="">
+                            </div>
+                        </div>
+                        <div class="waves">
+                            <div class="wave a"></div>
+    
+                        </div>
+                        <div class="cajaInfoCarrito">
+                            <div class="cajaEliminar">
+                               <img (click)="eliminarItem(item)" class="imgEliminar" src="../../../../assets/Images/eliminar.png" alt=""> 
+                            </div>
+                            <div class="cajaInfo">
+                                <p>{{item.codigoProducto.nombreProducto}}</p>
+                                <p>{{item.precioItem | currency : 'USD' : 'symbol' : '1.0-0'}}</p>
+                                <p>{{item.cantidadProducto}}</p>
+                            </div>
+                            <div class="cajaBtns">
+                                <button class="button btnMenos"(click)="disminuirCantidad(item)">-</button>
+                                <button class="button btnMas"(click)="aumentarCantidad(item)">+</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="waves">
-                        <div class="wave a"></div>
-
-                    </div>
-                    <div class="cajaInfoCarrito">
-                        <div class="cajaEliminar">
-                           <img class="imgEliminar" src="../../../../assets/Images/eliminar.png" alt=""> 
-                        </div>
-                        <div class="cajaInfo">
-                            <p>Vino Abocado</p>
-                            <p>$12.000</p>
-                            <p>Cantidad: 5</p>
-                        </div>
-                        <div class="cajaBtns">
-                            <button class="button btnMenos">-</button>
-                            <button class="button btnMas">+</button>
-                        </div>
-                    </div>
+                    
+                    
                 </div>
             </div>
+            
 
 
         </cdk-virtual-scroll-viewport>
