@@ -29,13 +29,11 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
       slidesPerView: 1.3,
       grabCursor: true,
       centeredSlides: true,
-      freeMode: true,
       spaceBetween: 30,
-      loop: true,
       autoplay: {
         delay: 3000
       },
-      speed: 800,
+      speed: 400,
     });
     this.swiper.autoplay.start();
   }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ProductoModel } from 'src/app/Models/Producto.model';
 import { ProductoService } from 'src/app/Services/producto.service';
 import { ModalImagenComponent } from '../../Modal/modal-imagen/modal-imagen.component';
+import { ModalProductosAdminComponent } from '../../Modal/modal-productos-admin/modal-productos-admin.component';
 
 @Component({
   selector: 'app-productos',
@@ -34,6 +35,13 @@ export class ProductosComponent implements OnInit {
     const dialogRef = this.dialog.open(ModalImagenComponent, {
       width: '500px',
       data: img ,
+    });
+  }
+
+  openDialogTwo(producto: ProductoModel): void {
+    const dialogRef = this.dialog.open(ModalProductosAdminComponent, {
+      width: '50%',
+      data: producto ,
     });
   }
 
@@ -72,6 +80,10 @@ export class ProductosComponent implements OnInit {
     console.log(imgModal);
     
     this.openDialog(imgModal);
+  }
+
+  abrirModalTwo(producto: ProductoModel){
+    this.openDialogTwo(producto);
   }
 
   irAgregarProducto(){

@@ -1,3 +1,7 @@
+.mat-dialog-actions{
+    margin: 0;
+}
+
 .tituloModal{
     font-size: 30px;
     color: rgb(211, 21, 88);    
@@ -472,38 +476,10 @@
     .cajaRecomendaciones{
         width: 70%;
     }
-
-}
-
-@media screen and (max-width: 1700px) and (max-height:1080px){
-
     .card-text{
         font-size: 1.2rem;
     }
-}
 
-@media screen and (max-width: 1300px) and (max-height:1080px){
-
-    .card-text{
-        font-size: 1.05rem;
-    }
-
-    .img{
-        height: 19.3rem;
-        width: 75%;
-    }
-
-    .cajaRecomendaciones{
-        width: 76%;
-    }
-
-    .card-body{
-        height: 20rem;
-    }
-
-    .recomended{
-        font-size: 0.99rem;
-    }
 }
 
 @media screen and (max-width: 1400px) and (max-height:1080px){
@@ -538,17 +514,40 @@
         height: 40px;
         margin: -18%;
     }
-}
-
-@media screen and (max-width: 1400px) and (max-height:1080px){
 
     .card-header{
         font-size: 19.5px;
         display: flex;
         align-items: center;
     }
-
 }
+
+
+@media screen and (max-width: 1300px) and (max-height:1080px){
+
+    .card-text{
+        font-size: 1.05rem;
+    }
+
+    .img{
+        height: 19.3rem;
+        width: 75%;
+    }
+
+    .cajaRecomendaciones{
+        width: 76%;
+    }
+
+    .card-body{
+        height: 20rem;
+    }
+
+    .recomended{
+        font-size: 0.99rem;
+    }
+}
+
+
 
 @media screen and (max-width: 1000px) and (max-height:1080px){
 
