@@ -12,7 +12,9 @@
     padding: 20px;
     border: 2px dotted rgb(0, 0, 0);
 }
-
+.sinAnimacion{
+    animation: none;
+}
 
 /**nuevos styles*/
 .padreCarrito{
