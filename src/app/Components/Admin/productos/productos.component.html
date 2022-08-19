@@ -47,10 +47,10 @@
                             <td (click)="abrirModal(producto.fotoProducto)">
                                 <img class="imagen" src="{{producto.fotoProducto}}" alt="{{producto.fotoProducto}}">
                             </td>
-                            <td (click)="abrirModal(producto.fotoProducto)">{{producto.nombreProducto}}</td>
-                            <td (click)="abrirModal(producto.fotoProducto)">{{producto.precioProducto}}</td>
-                            <td (click)="abrirModal(producto.fotoProducto)">{{producto.precioProductoProveedor}}</td>
-                            <td (click)="abrirModal(producto.fotoProducto)"> {{producto.descripcionProducto | slice:0:25 }} ...</td>
+                            <td (click)="abrirModalTwo(producto)">{{producto.nombreProducto}}</td>
+                            <td (click)="abrirModalTwo(producto)">{{producto.precioProducto}}</td>
+                            <td (click)="abrirModalTwo(producto)">{{producto.precioProductoProveedor}}</td>
+                            <td (click)="abrirModalTwo(producto)"> {{producto.descripcionProducto | slice:0:25 }} ...</td>
                             <td><button class="btnEditar" routerLink="/editarProducto/{{producto.codigoProducto}}">
                                 <img class="imagenEditar" src="../../../../assets/Images/editar.png" alt="">
                             </button></td>

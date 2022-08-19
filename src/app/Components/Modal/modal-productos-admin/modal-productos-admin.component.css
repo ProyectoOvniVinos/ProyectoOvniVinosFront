@@ -1,0 +1,226 @@
+.tituloModal{
+    font-size: 30px;
+    color: rgb(211, 21, 88);    
+    margin-left: 15%;
+}
+
+.cajaM{
+    width: 100%;
+    height: 50%;
+    display: flex;
+}
+
+.cajaInfo{
+    width: 100%;
+    height: 60%;
+    font-size: 1.5rem;
+}
+
+.cajaImg{
+    display: flex;
+    width: 50%;
+    height: 80%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img{
+    width: 75%;
+    height: 24rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2%;
+    border: 2px solid  rgb(211, 21, 88);
+}
+
+.cajaInfoYreco{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.cajaRecomendaciones{
+    /* border: 2px solid  rgb(126, 126, 88); */
+    border-radius: 0.5rem;
+    width: 75%;
+    height: 35%;
+    display: flex;
+}
+
+.imgRecomendacion{
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border: 2px solid  rgb(211, 21, 88);
+}
+
+.cajaImgRe{
+    width: 38%;
+}
+
+.cajaInfoReco{
+    width: 62%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color:  rgb(211, 21, 88);
+    color: white;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+/* 
+.cajaBtns{
+    display: flex;
+    gap: 8%;
+    padding-left: 80%;
+    
+} */
+
+.btnOk {
+    background: #fff; /* color de fondo */
+    color: rgb(184, 13, 72); /* color de fuente */
+    border: 2px solid rgb(184, 13, 72); /* tamaño y color de borde */
+    padding-top: 0px;
+    border-radius: 8px; /* redondear bordes */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 1rem;
+}
+
+.btnOk:hover {
+    color: #fff;/* color de fuente hover */
+}
+
+.btnOk::after{
+    content: "";
+    background: rgb(167,31,73);
+    background: linear-gradient(90deg, rgba(167,31,73,1) 11%, rgba(255,42,108,1) 55%, rgba(167,31,73,1) 100%);
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(45deg) scale(0, 1);
+    transition: all 0.3s ease;
+}
+
+.btnOk:hover::after{
+    transition: all 0.3s ease-out;
+    transform: skewX(45deg) scale(1, 1);
+}
+
+.tBtn{
+    width: 65% !important;
+}
+
+.btn {
+    height: 1.8rem;
+    width: 55%;
+    background: #fff; /* color de fondo */
+    color: rgb(184, 13, 72); /* color de fuente */
+    border: 2px solid rgb(184, 13, 72); /* tamaño y color de borde */
+    padding-top: 0px;
+    border-radius: 8px; /* redondear bordes */
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    display: inline-block;
+    font-size: 1rem;
+}
+
+.btn:hover {
+    color: #fff;/* color de fuente hover */
+}
+
+.btn::after{
+    content: "";
+    background: rgb(255, 62, 123);
+    background: linear-gradient(90deg, rgb(214, 47, 100) 11%, rgb(255, 78, 134) 55%, rgb(207, 46, 97) 100%);
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(45deg) scale(0, 1);
+    transition: all 0.3s ease;
+}
+
+.btn:hover::after{
+    transition: all 0.3s ease-out;
+    transform: skewX(45deg) scale(1, 1);
+}
+
+.cuadroProducto{
+    margin: 0;
+    padding: 0;
+}
+
+.descProduct{
+    font-size: 18px;
+}
+
+.headTitle{
+    display: flex;
+    justify-content: space-between;
+}
+
+.imageCerrar{
+    width: 45px;
+    height: 45px;
+    margin: -14%;
+    cursor: pointer;
+}
+
+.card{
+    height: 100%;
+    border: 2px solid  rgb(211, 21, 88);
+    margin-bottom: 3%;
+}
+
+.card-text{
+    font-size: 1.5rem;
+}
+
+/* .card-footer{
+    width: 10%;
+    height: 10%;
+} */
+
+.prueba{
+    width: 50%;
+    height: 100%;
+}
+
+.card-header{
+    height: 4rem;
+    padding-top: 4%;
+    border-bottom: 2px solid  rgb(211, 21, 88);
+}
+
+.cajaBtns{
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+    align-items: center;
+    padding-bottom: 5%;
+}
+
+.card-body{
+    height: 27.7rem;
+}
+
+.card-footer{
+    border-top: 2px solid  rgb(211, 21, 88);
+}
