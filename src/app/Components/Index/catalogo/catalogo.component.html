@@ -15,7 +15,7 @@
     </div>
 
     <div class="cajaContenido">
-        <app-slideshow *ngIf="inventarioGeneral.length > 0" [inventarios] = "inventarioGeneral" ></app-slideshow>
+        <app-slideshow *ngIf="inventarioGeneral.length > 0" [inventarios] = "inventarioGeneral" (devolver)="procesarDevolver($event)"></app-slideshow>
         <hr>
         <div class="catalogoTwo">
             <div>
@@ -43,7 +43,7 @@
 </div>
 
 <div *ngIf="validarCarrito">
-    <app-carrito [clienteInp]="clienteInp"></app-carrito>
+    <app-carrito [clienteInp]="clienteInp" (devolver)="procesarDevolver($event)"></app-carrito>
     <button type="button" class="btn-close cerrar" data-bs-dismiss="modal" aria-label="Close"></button>
     <button (click)="validarCarrito=!validarCarrito" type="button" class="btn-close cerrar" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>

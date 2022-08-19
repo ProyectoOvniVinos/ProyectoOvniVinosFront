@@ -52,8 +52,8 @@
                                 <p>{{item.cantidadProducto}}</p>
                             </div>
                             <div class="cajaBtns">
-                                <button class="button btnMenos">-</button>
-                                <button class="button btnMas">+</button>
+                                <button class="button btnMenos"(click)="disminuirCantidad(item)">-</button>
+                                <button class="button btnMas"(click)="aumentarCantidad(item)">+</button>
                             </div>
                         </div>
                     </div>

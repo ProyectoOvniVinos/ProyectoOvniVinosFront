@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, EventEmitter , Output } from '@angular/core';
 import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
 import { ClienteModel } from 'src/app/Models/Cliente.model';
 import { ItemCarritoModel } from 'src/app/Models/itemCarrito.model';
@@ -12,25 +12,31 @@ import { ClienteService } from 'src/app/Services/cliente.service';
   styleUrls: ['./carrito.component.css']
   
 })
-export class CarritoComponent implements OnInit {
+export class CarritoComponent implements OnInit, OnChanges {
 
   carrito:CarritoClienteModel;
 
   @Input() modal:boolean = false;
 
   @Input() clienteInp:ClienteModel;
+  
+  @Output()
+  devolver = new EventEmitter<any>();
 
-  constructor(private clienteService:ClienteService, private carritoCliente:CarritoService) {
+  constructor(private clienteService:ClienteService, private carritoService:CarritoService) {
 
   }
-
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.carrito =this.clienteInp.carrito
     this.clienteService.getByEmail(this.clienteInp.correoCliente).subscribe((resp:ClienteModel)=>{
       console.log(resp);
       
       this.carrito = resp.carrito;
     })
+  }
+
+  ngOnInit(): void {
+    
   }
 
   cerrarModal(){
@@ -48,7 +54,25 @@ export class CarritoComponent implements OnInit {
   eliminarItem(item:ItemCarritoModel){
 
     this.carrito.itemCarrito = this.carrito.itemCarrito.filter((res) => res !== item)
-    this.carritoCliente.actualizarCarrito(this.carrito).subscribe(resp=>{
+    this.carritoService.actualizarCarrito(this.carrito).subscribe(resp=>{
+      console.log(resp);
+      
+    });
+
+    this.devolver.emit(this.carrito)
+  }
+  aumentarCantidad(item:ItemCarritoModel){
+    
+    item.cantidadProducto += 1
+    
+    this.carritoService.actualizarCarrito(this.carrito).subscribe(resp=>{
+      console.log(resp);
+      
+    });
+  }
+  disminuirCantidad(item:ItemCarritoModel){
+    item.cantidadProducto-=1;
+    this.carritoService.actualizarCarrito(this.carrito).subscribe(resp=>{
       console.log(resp);
       
     });
