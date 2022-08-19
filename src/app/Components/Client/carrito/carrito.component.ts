@@ -15,6 +15,7 @@ import { ClienteService } from 'src/app/Services/cliente.service';
 export class CarritoComponent implements OnInit, OnChanges {
 
   carrito:CarritoClienteModel;
+  variable:boolean = true
 
   @Input() modal:boolean = false;
 
@@ -36,7 +37,6 @@ export class CarritoComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    
   }
 
   cerrarModal(){
@@ -59,7 +59,13 @@ export class CarritoComponent implements OnInit, OnChanges {
       
     });
 
-    this.devolver.emit(this.carrito)
+    let list:Object={
+      objeto:this.carrito,
+      variable:true
+    }
+
+    
+    this.devolver.emit(list);
   }
   aumentarCantidad(item:ItemCarritoModel){
     

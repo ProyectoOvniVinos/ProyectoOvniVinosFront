@@ -56,6 +56,8 @@ export class ModalProductosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.inventario);
+    
     this.productos.forEach( producto => {
       if(producto.codigoProducto==this.inventario.codigoProducto.codigoProducto){
         this.productoRecomendado=producto

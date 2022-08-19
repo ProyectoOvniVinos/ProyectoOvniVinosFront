@@ -91,7 +91,11 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
       
       this.carritoService.actualizarCarrito(resp.carrito).subscribe(resp=>{
         this.cliente.carrito = resp.carrito;
-        this.devolver.emit(resp.carrito)
+        let list:Object={
+          objeto:resp.carrito,
+          variable:false
+        }
+        this.devolver.emit(list)
         
       })
       
@@ -124,7 +128,12 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
       
       this.carritoService.actualizarCarrito(resp.carrito).subscribe(resp=>{
         this.cliente.carrito = resp.carrito;
-        this.devolver.emit(resp.carrito)
+        let list:Object={
+          objeto:resp.carrito,
+          variable:false
+        }
+    
+        this.devolver.emit(list)
         
       })
       
