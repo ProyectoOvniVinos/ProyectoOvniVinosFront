@@ -291,26 +291,17 @@ export class AgregarProductoComponent implements OnInit {
     if(this.botonAccion=="Deshabilitar"){
       this.servicioInventario.getInventarioGeneralByProducto(id).subscribe((res:any) => {
         if(res.cantidadProducto>0){
-<<<<<<< HEAD
+          this.closeDialogLoading()
           this.openDialogInteraction("ADVERTENCIA",`Existen aún ${res.cantidadProducto} productos, ¿EstAs seguro de deshabilitar este producto?`)
         }else{
+          this.closeDialogLoading()
           this.openDialogInteraction("ADVERTENCIA", "¿Estas seguro de desahabilitar este producto?")
         }
       })
     }else{
+      this.closeDialogLoading()
       this.openDialogInteractionTwo("ADVERTENCIA","¿Estas seguro de desea habilitar este producto?")
-=======
-          this.closeDialogLoading()
-          this.openDialogInteraction("Advertencia",`Existen aun ${res.cantidadProducto} productos, Estas seguro de deshabilitarlo?`)
-        }else{
-          this.closeDialogLoading()
-          this.openDialogInteraction("Advertencia", "Estas seguro que desea desahabilitar este producto?")
-        }
-      })
-    }else{
-      this.closeDialogLoading();
-      this.openDialogInteractionTwo("Advertencia","Estas seguro que desea habilitar este producto?")
->>>>>>> 79135f7a4088a835e1f7b454368b26e757c234e0
+
       
     }
 
@@ -320,12 +311,8 @@ export class AgregarProductoComponent implements OnInit {
   deshabilitarProducto(){
     let codigo= this.producto.codigoProducto;
     this.servicioProducto.deshabilitarProduct(codigo).subscribe(res=>{
-<<<<<<< HEAD
-      this.openDialog("¡¡ÉXITO!!","Se ha desahibilitado correctamente el producto. ")
-=======
       this.closeDialogLoading()
-      this.openDialog("Exito!!","Se ha desahibilitado correctamente el producto")
->>>>>>> 79135f7a4088a835e1f7b454368b26e757c234e0
+      this.openDialog("¡¡ÉXITO!!","Se ha desahibilitado correctamente el producto. ")
       this.router.navigate(['/productos'])
     }, err => {
       console.log(err);
