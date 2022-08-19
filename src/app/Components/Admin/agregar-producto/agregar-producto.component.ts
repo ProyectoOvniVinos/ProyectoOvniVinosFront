@@ -61,6 +61,7 @@ export class AgregarProductoComponent implements OnInit {
     dialogRef.afterClosed().subscribe( (result:boolean) => {
       console.log(`Dialog result: ${result}`); // Pizza!
       if(result==true){
+        this.openDialogLoading();
         console.log("confirmo");
         this.deshabilitarProducto();        
       }else{
@@ -75,10 +76,10 @@ export class AgregarProductoComponent implements OnInit {
       width: '300px',
       data: {title: titleNew, mensaje: mensajeNew},
     });
+    this.closeDialogLoading()
     dialogRef.afterClosed().subscribe( (result:boolean) => {
-      console.log(`Dialog result: ${result}`); // Pizza!
       if(result==true){
-        console.log("confirmo");
+        this.openDialogLoading();
         this.habilitarProducto();        
       }else{
         console.log("en else");
@@ -102,6 +103,7 @@ export class AgregarProductoComponent implements OnInit {
       let id  = params['id'];
 
       if(id){
+        this.openDialogLoading()
         this.titulo = "Editar Producto";
         this.boton = "Editar";
         this.servicioProducto.getProductById(id).subscribe((producto:ProductoModel)=>{
@@ -118,6 +120,7 @@ export class AgregarProductoComponent implements OnInit {
           }else{
             this.botonAccion="Habilitar"
           }
+          this.closeDialogLoading();
         })
         
       }
@@ -284,16 +287,19 @@ export class AgregarProductoComponent implements OnInit {
 
   deshabilitar(id: number){
 
-
+    this.openDialogLoading()
     if(this.botonAccion=="Deshabilitar"){
       this.servicioInventario.getInventarioGeneralByProducto(id).subscribe((res:any) => {
         if(res.cantidadProducto>0){
+          this.closeDialogLoading()
           this.openDialogInteraction("Advertencia",`Existen aun ${res.cantidadProducto} productos, Estas seguro de deshabilitarlo?`)
         }else{
+          this.closeDialogLoading()
           this.openDialogInteraction("Advertencia", "Estas seguro que desea desahabilitar este producto?")
         }
       })
     }else{
+      this.closeDialogLoading();
       this.openDialogInteractionTwo("Advertencia","Estas seguro que desea habilitar este producto?")
       
     }
@@ -304,6 +310,7 @@ export class AgregarProductoComponent implements OnInit {
   deshabilitarProducto(){
     let codigo= this.producto.codigoProducto;
     this.servicioProducto.deshabilitarProduct(codigo).subscribe(res=>{
+      this.closeDialogLoading()
       this.openDialog("Exito!!","Se ha desahibilitado correctamente el producto")
       this.router.navigate(['/productos'])
     }, err => {
@@ -315,6 +322,7 @@ export class AgregarProductoComponent implements OnInit {
   habilitarProducto(){
     let codigo= this.producto.codigoProducto;
     this.servicioProducto.deshabilitarProduct(codigo).subscribe(res=>{
+      this.closeDialogLoading();
       this.openDialog("Exito!!","Se ha habilitado correctamente el producto")
       this.router.navigate(['/productos'])
     }, err => {

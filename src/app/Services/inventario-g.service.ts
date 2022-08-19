@@ -22,6 +22,15 @@ export class InventarioGService {
       width: '300px',
       data: {title: titleNew, mensaje: mensajeNew},
     });
+    dialogRef.afterClosed().subscribe((res:Boolean) => {
+      if(res!=false){
+        this.closeDialogs();
+      }
+    })
+  }
+
+  closeDialogs(){
+    const dialogRef = this.dialog.closeAll();
   }
 
   getInventarioGeneralCompleto(): Observable<Inventario_generalModel[]>{

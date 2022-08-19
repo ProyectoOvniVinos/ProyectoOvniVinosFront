@@ -12,11 +12,13 @@ import { ModalInventarioGComponent } from '../../Modal/modal-inventario-g/modal-
 })
 export class InventarioGeneralComponent implements OnInit {
 
+  bandera:Boolean;
   inventarioG: Inventario_generalModel[] = [];
   constructor(public dialog:MatDialog, private inventarioService: InventarioGService) { }
 
   ngOnInit(): void {
     this.inventarioService.getInventarioGeneralCompleto().subscribe(inventarioGeneral=>{
+      this.bandera=true;
       this.inventarioG = inventarioGeneral; 
     });
   }

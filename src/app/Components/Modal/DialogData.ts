@@ -1,4 +1,5 @@
 export interface DialogData {
     title: string; 
-    mensaje: string
+    mensaje: string;
+    estado:Boolean;
 }
