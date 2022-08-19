@@ -223,8 +223,14 @@ export class IngresarVentaComponent implements OnInit {
       this.vaciar()
 
     },err => {
-      this.closeDialogLoading();
-      this.openDialog("Error","Ha ocurrido un problema")
+      console.log(err);
+      if(err.error.mensaje=="cantidad insuficiente"){
+        this.openDialog("Advertencia!!",`${err.error.mensaje}`)
+      }else{
+        this.openDialog("Error","Ha ocurrido un problema")
+      }
+      
+      
 
       
     })

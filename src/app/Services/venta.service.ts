@@ -1,6 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { catchError, Observable, throwError } from 'rxjs';
+import { ModalErrorComponent } from '../Components/Modal/modal-error/modal-error.component';
 import { VentaModel } from '../Models/Venta.model';
 
 @Injectable({
@@ -12,7 +14,7 @@ export class VentaService {
 
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,public dialog: MatDialog) { }
 
   getVentas():Observable<VentaModel[]>{
     let url: string = `${this.url}ventas`;
@@ -33,9 +35,17 @@ export class VentaService {
     const url: string=`${this.url}venta`;
     return this.http.post<any>(url, venta, {headers: this.httpHeaders}).pipe(
       catchError(e => {
+        
+        
         return throwError(e);
       })
     )
+  }
+  openDialog(titleNew: string, mensajeNew: string): void {
+    const dialogRef = this.dialog.open(ModalErrorComponent, {
+      width: '300px',
+      data: {title: titleNew, mensaje: mensajeNew},
+    });
   }
 
   
