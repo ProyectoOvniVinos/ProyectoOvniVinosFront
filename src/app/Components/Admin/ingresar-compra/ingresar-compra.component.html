@@ -7,6 +7,9 @@
         <button class="btnAgregarProducto"routerLink="/agregarProducto">Ingresar nuevo producto</button>
     </div>
 
+    
+    <div *ngIf="bandera==null" class='spinner'></div>
+
     <div class="cajaM-login" *ngIf="!bandera==false">
         <div class="cajaTitleLogin">
             <h2>INGRESAR COMPRA</h2>

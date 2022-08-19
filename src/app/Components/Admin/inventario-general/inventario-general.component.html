@@ -4,6 +4,8 @@
         <button class="btnDetalles mb-3 float-end me-5" routerLink="/ingresarVenta">Ingresar ventas</button>
     </div>
 
+    <div *ngIf="bandera==null" class='spinner'></div>
+
     <table class="tabla">
         <thead class="tablaHeaderG">
             <tr>

@@ -9,6 +9,7 @@ import { AdminService } from 'src/app/Services/admin.service';
 import { CompraService } from 'src/app/Services/compra.service';
 import { ProductoService } from 'src/app/Services/producto.service';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
+import { ModalLoadingComponent } from '../../Modal/modal-loading/modal-loading.component';
 
 @Component({
   selector: 'app-ingresar-compra',
@@ -28,7 +29,7 @@ export class IngresarCompraComponent implements OnInit {
   banderaCantidad: boolean = false;
   banderaPrecio: boolean = false;
   compraForm !: FormGroup;
-  bandera !: boolean;
+  bandera !: Boolean;
 
   admin: AdministradorModel;
 
@@ -46,9 +47,20 @@ export class IngresarCompraComponent implements OnInit {
     });
   }
 
+  openDialogLoading(){
+    const dialogRef = this.dialog.open(ModalLoadingComponent, {
+      width: '130px'
+    });
+  }
+
+  closeDialogLoading(){
+    const dialogRef = this.dialog.closeAll();
+  }
+
   ngOnInit(): void {
     this.serviceProducto.getProducts().subscribe((productos: any) => {
       this.productos = productos;
+      this.bandera= true;
 
       if (this.productos.length == 0) {
         this.bandera = false;
@@ -213,6 +225,7 @@ export class IngresarCompraComponent implements OnInit {
   }
 
   realizarCompra() {
+    this.openDialogLoading();
     this.compra.precioCompra = this.total;
     this.compra.cantidadCompra = this.obtenerCantidadTotal()
 
@@ -229,10 +242,12 @@ export class IngresarCompraComponent implements OnInit {
 
 
     this.serviceCompra.addCompra(this.compra).subscribe(e => {
+      this.closeDialogLoading();
       this.openDialog("Exito!!!", "Se ha agregado la compra satisfactoriamente!")
       this.vaciar()
 
     }, err => {
+      this.closeDialogLoading();
       this.openDialog("Error", "Ha ocurrido un problema")
 
 
