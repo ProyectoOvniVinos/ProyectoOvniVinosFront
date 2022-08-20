@@ -174,9 +174,9 @@ export class AgregarProductoComponent implements OnInit {
 
   registrar(){
     if(!this.fotoSeleccionada){
-      console.log("Por favor seleccione una foto")
+      console.log("Por favor seleccione una foto. ")
       this.closeDialogLoading();
-      this.openDialog("ADVERTENCIA","Por favor seleccione una foto")
+      this.openDialog("ADVERTENCIA","Por favor seleccione una foto. ")
     }else{
 
       this.imagenServicio.subir(this.fotoSeleccionada).subscribe( (response:any) => {
@@ -192,7 +192,7 @@ export class AgregarProductoComponent implements OnInit {
 
           this.servicioProducto.getProductByName(this.producto.nombreProducto).subscribe(productos=> {
             this.closeDialogLoading();
-            this.openDialog("Error","Lo sentimos, este producto ya existe. ")
+            this.openDialog("ERROR","Lo sentimos, este producto ya existe. ")
           },err=>{
 
             this.servicioProducto.createProduct(this.producto).subscribe(response=>{
@@ -241,10 +241,10 @@ export class AgregarProductoComponent implements OnInit {
     this.servicioProducto.updateProduct(productoNew.codigoProducto, productoNew).subscribe((response:any) => {
       this.closeDialogLoading();
       this.router.navigate(['/productos'])
-      this.openDialog("Exito!!","Se ha actualizado correctamente el Producto")
+      this.openDialog("¡¡ÉXITO!!","El producto se ha actualizado correctamente. ")
     }, err => {
       this.closeDialogLoading();
-      this.openDialog("Error","Ha habido un error intentelo de Nuevo")
+      this.openDialog("ERROR","Lo sentimos, los datos no se actualizaron. Inténtalo de nuevo. ")
     })
   }
 
@@ -273,12 +273,12 @@ export class AgregarProductoComponent implements OnInit {
         this.servicioProducto.updateProduct(productoNew.codigoProducto, productoNew).subscribe((response:any) => {
           this.closeDialogLoading();
           this.router.navigate(['/productos'])
-          this.openDialog("Exito!!","Se ha actualizado correctamente el Producto")
+          this.openDialog("¡¡ÉXITO!!","El producto se ha actualizado correctamente. ")
           console.log(productoNew);
           
         },err=>{
           this.closeDialogLoading();
-          this.openDialog("Error","Ha habido un error intentelo de Nuevo")
+          this.openDialog("ERROR","Lo sentimos, los datos no se actualizaron. Inténtalo de nuevo. ")
         })
 
       }
@@ -292,15 +292,16 @@ export class AgregarProductoComponent implements OnInit {
       this.servicioInventario.getInventarioGeneralByProducto(id).subscribe((res:any) => {
         if(res.cantidadProducto>0){
           this.closeDialogLoading()
-          this.openDialogInteraction("Advertencia",`Existen aun ${res.cantidadProducto} productos, Estas seguro de deshabilitarlo?`)
+          this.openDialogInteraction("ADVERTENCIA",`Existen aún ${res.cantidadProducto} productos, ¿EstAs seguro de deshabilitar este producto?`)
         }else{
           this.closeDialogLoading()
-          this.openDialogInteraction("Advertencia", "Estas seguro que desea desahabilitar este producto?")
+          this.openDialogInteraction("ADVERTENCIA", "¿Estas seguro de desahabilitar este producto?")
         }
       })
     }else{
-      this.closeDialogLoading();
-      this.openDialogInteractionTwo("Advertencia","Estas seguro que desea habilitar este producto?")
+      this.closeDialogLoading()
+      this.openDialogInteractionTwo("ADVERTENCIA","¿Estas seguro de desea habilitar este producto?")
+
       
     }
 
@@ -311,7 +312,7 @@ export class AgregarProductoComponent implements OnInit {
     let codigo= this.producto.codigoProducto;
     this.servicioProducto.deshabilitarProduct(codigo).subscribe(res=>{
       this.closeDialogLoading()
-      this.openDialog("Exito!!","Se ha desahibilitado correctamente el producto")
+      this.openDialog("¡¡ÉXITO!!","Se ha desahibilitado correctamente el producto. ")
       this.router.navigate(['/productos'])
     }, err => {
       console.log(err);
@@ -323,7 +324,7 @@ export class AgregarProductoComponent implements OnInit {
     let codigo= this.producto.codigoProducto;
     this.servicioProducto.deshabilitarProduct(codigo).subscribe(res=>{
       this.closeDialogLoading();
-      this.openDialog("Exito!!","Se ha habilitado correctamente el producto")
+      this.openDialog("¡¡ÉXITO!!","Se ha habilitado correctamente el producto. ")
       this.router.navigate(['/productos'])
     }, err => {
       console.log(err);

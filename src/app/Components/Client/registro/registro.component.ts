@@ -244,7 +244,7 @@ export class RegistroComponent implements OnInit {
       }else if(this.registroForm.get("terminos").status== "INVALID"){
         console.log("CCCCCCCCCCCCCCCCCCCCCCCCC");
         let title="Advertencia"
-        let mensaje="Por favor Acepte Terminos y Condiciones!!"
+        let mensaje="Por favor acepte los términos y condiciones"
         this.openDialog(title, mensaje);
       }
 

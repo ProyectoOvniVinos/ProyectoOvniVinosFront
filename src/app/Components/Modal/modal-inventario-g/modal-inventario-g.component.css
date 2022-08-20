@@ -6,11 +6,16 @@
 .equis{
     display: flex;
     justify-content: flex-end;
+    
+}
+
+.mat-dialog-content{
+    height: 30rem !important;
 }
 
 .imageCerrar{
     width: 45px;
-    height: 45px;
+    height: auto;
     cursor: pointer;
 }
 
@@ -20,58 +25,95 @@
 }
 
 .principalBox{
-    width: 70%;
+    width: 100%;
     height: 50%;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .boxImg{
     display: flex;
-    width: 50%;
-    height: 80%;
+    width: 30%;
+    height: 100%;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    box-shadow: 11px 11px 8px #9b9b9b, -11px -11px 8px #ffffff;
 
 }
 
 .img{
-    width: 85%;
-    height: 20rem;
-    border-radius: 2rem;
-    margin-bottom: 2%;
+    width: 100%;
+    height: 100%;
     border: 2px solid  rgb(211, 21, 88);
+
+}
+
+.principalBoxTa{
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+
+
+}
+
+.boxInventoryDetails{
+
+  
 
 }
 
 .boxOfTable{
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
+    height: 7rem;
+    width: 86%;
+    overflow: auto;
 }
 
 .tableBody{
-    width: 92%;
+    width: 82%;
     display: flex;
     flex-direction: column;
     align-items: center;
+
+
 }
+
 
 .datosTable{
     display: flex;
-    width: 36rem;
-    justify-content: space-around;
-   
+    width: 44rem;
+    justify-content: space-evenly; 
+    
 }
 
+.datosTableTwo{
+    display: flex;
+    width: 68%;
+    text-align: center;
+    justify-content: space-around;
+    margin-left: 5%;
+    gap: 2rem;
+  
+}
+
+.boxP{
+    display: flex;
+    justify-content: center;
+}
 .headerA{
     display: flex;
     justify-content: space-evenly;
     width: 100%;    
+    
+
+
 }
 .tableOne{
-    width: 75%;
-    
+    width: 96%;
+    display: flex;
+    flex-direction: column;
     
 }
 .infoHeaderT{
@@ -86,9 +128,16 @@
 
 .information h1{
     text-align: center;
+    font-size: 2.5rem;
 }
 .information{
-    margin-top: 4rem;
+    margin-top: 3rem;
+}
+
+.informationTwo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .btnOk {
@@ -104,6 +153,7 @@
     font-size: 1.6rem;
     width: 30%;
     height: 3rem;
+    margin-top: 2rem;
 }
 
 .btnOk:hover {
@@ -134,5 +184,4 @@
 .cajaButton{
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
 }

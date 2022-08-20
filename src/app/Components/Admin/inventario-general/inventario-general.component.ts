@@ -14,6 +14,15 @@ export class InventarioGeneralComponent implements OnInit {
 
   bandera:Boolean;
   inventarioG: Inventario_generalModel[] = [];
+  producto: ProductoModel = {
+    codigoProducto :1,
+    nombreProducto :"vino abocado",
+    precioProducto : 4000,
+    precioProductoProveedor : 50000,
+    descripcionProducto : "Es muy rico",
+    fotoProducto : "../../../../assets/TEMPORALES/vino1.jpg",
+    estado : "1"
+  }
   constructor(public dialog:MatDialog, private inventarioService: InventarioGService) { }
 
   ngOnInit(): void {
@@ -25,7 +34,7 @@ export class InventarioGeneralComponent implements OnInit {
 
   openDialog(producto: ProductoModel): void {
     const dialogRef = this.dialog.open(ModalInventarioGComponent, {
-      width: '50%',
+      width: '40%',
       data: producto,
     });
   }

@@ -11,36 +11,45 @@
     </div>
     <div class="information">
       <h1 class="tituloModal" mat-dialog-title>{{datos.codigoProducto.nombreProducto}}</h1>
-      <div >
-        <p class="text-dark"><b>Precio del proveedor: </b>{{datos.codigoProducto.precioProductoProveedor}}</p>
-        <p class="text-dark"><b>Precio del producto: </b>{{datos.codigoProducto.precioProducto}}</p> 
-        <p class="text-dark"><b>Cantidad del producto: </b>{{datos.cantidadProducto}}</p>     
+      <div class="boxP">
+        <div class="informationTwo">
+          <p class="text-dark"><b>Precio del proveedor: </b>{{datos.codigoProducto.precioProductoProveedor}}</p>
+          <p class="text-dark"><b>Precio del producto: </b>{{datos.codigoProducto.precioProducto}}</p> 
+          <p class="text-dark"><b>Cantidad del producto: </b>{{datos.cantidadProducto}}</p>     
+        </div>
       </div>
     
     </div>
   </div>
 
-  <div class="boxOfTable">
-    <table class="tableOne">
-      <thead class="infoHeaderT">
-        <tr class="headerA">
-          <th>Fecha de ingreso</th>
-          <th>Cantidad ingresada</th>
-        </tr>
-      </thead>
-      <tbody class="tableBody">
-       <tr *ngFor="let detalle of datos.detalles">
-         <div class="datosTable">
-            <td>{{detalle.fechaUltimoIngreso | date: 'EEE dd, MM, yyyy'}}</td>
-            <td>{{detalle.cantidadProducto}}</td>
-         </div>
-       </tr>
-      </tbody>
-    </table>
+  <div class="principalBoxTa">
+    <div class="boxOfTable">
+      <table class="tableOne">
+        <thead class="infoHeaderT">
+          <tr class="headerA">
+            <th>Fecha de ingreso</th>
+            <th>Cantidad ingresada</th>
+          </tr>
+        </thead>
+        <tbody class="tableBody">
+         <tr *ngFor="let detalle of datos.detalles">
+           <div class="datosTable">
+              <div class="datosTableTwo">
+                <td>{{detalle.fechaUltimoIngreso | date: 'EEE dd, MM, yyyy'}}</td>
+                <td>{{detalle.cantidadProducto}}</td>
+             </div>
+           </div>
+         
+         </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
+
   <div class="cajaButton" mat-dialog-actions>
     <button class="btnOk"mat-button (click)="onNoClick()">Agregar</button>
   </div>
+ 
   
 </mat-dialog-content> 
 
