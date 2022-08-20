@@ -242,23 +242,16 @@ export class IngresarCompraComponent implements OnInit {
 
 
     this.serviceCompra.addCompra(this.compra).subscribe(e => {
-<<<<<<< HEAD
+      this.closeDialogLoading();
       this.openDialog("¡¡ÉXITO!!!", "La compra se ha agregado satisfactoriamente. ")
       this.vaciar()
 
     }, err => {
       this.openDialog("ERROR", "Lo sentimos, no se pudo agregar la compra. Inténtalo de nuevo. ")
-=======
+
       this.closeDialogLoading();
       this.openDialog("Exito!!!", "Se ha agregado la compra satisfactoriamente!")
       this.vaciar()
-
-    }, err => {
-      this.closeDialogLoading();
-      this.openDialog("Error", "Ha ocurrido un problema")
->>>>>>> 79135f7a4088a835e1f7b454368b26e757c234e0
-
-
     })
 
   }

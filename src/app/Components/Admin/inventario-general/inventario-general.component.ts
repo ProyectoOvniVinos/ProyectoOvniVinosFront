@@ -26,7 +26,6 @@ export class InventarioGeneralComponent implements OnInit {
   constructor(public dialog:MatDialog, private inventarioService: InventarioGService) { }
 
   ngOnInit(): void {
-    this.openDialog(this.producto);
     this.inventarioService.getInventarioGeneralCompleto().subscribe(inventarioGeneral=>{
       this.bandera=true;
       this.inventarioG = inventarioGeneral; 

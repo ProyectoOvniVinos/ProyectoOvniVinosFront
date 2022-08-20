@@ -218,30 +218,20 @@ export class IngresarVentaComponent implements OnInit {
     
 
     this.serviceVenta.addVenta(this.venta).subscribe(e=>{
-<<<<<<< HEAD
+      this.closeDialogLoading();
       this.openDialog("¡¡ÉXITO!!!","La venta se ha guardado satisfactoriamente. ")
       this.vaciar()
 
     },err => {
       this.openDialog("ERROR","Lo sentimos, no se pudo guardar la venta. Inténtalo de nuevo. ")
-=======
-      this.closeDialogLoading();
+
+
       this.openDialog("Exito!!!","Se ha agregado la compra satisfactoriamente!")
       this.vaciar()
 
-    },err => {
-      console.log(err);
-      if(err.error.mensaje=="cantidad insuficiente"){
-        this.openDialog("Advertencia!!",`${err.error.mensaje}`)
-      }else{
-        this.openDialog("Error","Ha ocurrido un problema")
-      }
-      
-      
->>>>>>> 79135f7a4088a835e1f7b454368b26e757c234e0
-
-      
     })
+
+    
     
   }
   obtenerCantidadTotal(){
