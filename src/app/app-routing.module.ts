@@ -1,3 +1,4 @@
+import { AdministradoresComponent } from './Components/Admin/administradores/administradores.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductosComponent } from './Components/Admin/productos/productos.component';
@@ -42,6 +43,7 @@ const routes: Routes = [
   { path: 'ayuda', component: AyudaComponent },
 
   { path: 'clientes', component: ClientesComponent },
+  { path: 'administradores', component: AdministradoresComponent },
   { path: 'datosA', component: DatosAdminComponent },
   { path: 'editarA', component: EditarDatosAdmComponent },
   { path: 'contabilidad', component: ContabilidadComponent },
