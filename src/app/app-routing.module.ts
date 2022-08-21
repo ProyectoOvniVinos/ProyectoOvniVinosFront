@@ -1,3 +1,4 @@
+import { RegistrarAdminComponent } from './Components/Admin/registrar-admin/registrar-admin.component';
 import { AdministradoresComponent } from './Components/Admin/administradores/administradores.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -53,6 +54,7 @@ const routes: Routes = [
   { path: 'compras', component: ComprasComponent },
   { path: 'ingresarCompra', component: IngresarCompraComponent },
   { path: 'ingresarVenta', component: IngresarVentaComponent},
+  { path: 'agregarAdmin', component: RegistrarAdminComponent },
 
   { path: '**', pathMatch: 'full', redirectTo: '/catalogo' }
 ];

@@ -59,6 +59,7 @@ import localeEs from '@angular/common/locales/es';
 
 import { AdministradoresComponent } from './Components/Admin/administradores/administradores.component';
 import { ModalDetallesVentaComponent } from './Components/Modal/modal-detalles-venta/modal-detalles-venta.component';
+import { RegistrarAdminComponent } from './Components/Admin/registrar-admin/registrar-admin.component';
  
 registerLocaleData(localeEs, 'es');
 @NgModule({
@@ -102,7 +103,8 @@ registerLocaleData(localeEs, 'es');
     ModalProductosAdminComponent,
     ModalLoadingComponent,
     AdministradoresComponent,
-    ModalDetallesVentaComponent
+    ModalDetallesVentaComponent,
+    RegistrarAdminComponent
 
 
 
