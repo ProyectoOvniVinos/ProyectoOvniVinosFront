@@ -32,10 +32,10 @@ export class InventarioGeneralComponent implements OnInit {
     });
   }
 
-  openDialog(producto: ProductoModel): void {
+  openDialog(inventario: Inventario_generalModel): void {
     const dialogRef = this.dialog.open(ModalInventarioGComponent, {
-      width: '40%',
-      data: producto,
+      width: '50%',
+      data: inventario,
     });
   }
 

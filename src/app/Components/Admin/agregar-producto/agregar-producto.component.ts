@@ -72,11 +72,11 @@ export class AgregarProductoComponent implements OnInit {
   }
 
   openDialogInteractionTwo(titleNew: string, mensajeNew: string):void{
+    this.closeDialogLoading()
     const dialogRef = this.dialog.open(ModalInteraccionComponent, {
       width: '300px',
       data: {title: titleNew, mensaje: mensajeNew},
     });
-    this.closeDialogLoading()
     dialogRef.afterClosed().subscribe( (result:boolean) => {
       if(result==true){
         this.openDialogLoading();
