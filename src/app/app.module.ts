@@ -56,6 +56,7 @@ import { ModalProductosAdminComponent } from './Components/Modal/modal-productos
 import { ModalLoadingComponent } from './Components/Modal/modal-loading/modal-loading.component';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
+import { ModalDetallesVentaComponent } from './Components/Modal/modal-detalles-venta/modal-detalles-venta.component';
  
 registerLocaleData(localeEs, 'es');
 @NgModule({
@@ -97,7 +98,8 @@ registerLocaleData(localeEs, 'es');
     ModalDetallesCompraComponent,
     ModalImagenComponent,
     ModalProductosAdminComponent,
-    ModalLoadingComponent
+    ModalLoadingComponent,
+    ModalDetallesVentaComponent
 
 
   ],
