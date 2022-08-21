@@ -10,17 +10,35 @@
     <div class="cajaM">
         <div class="cajaImg">
             <img class="img" src="{{inventario.codigoProducto.fotoProducto}}" alt="">
-            <div class="cajaRecomendaciones">
+<!--             <div class="cajaRecomendaciones">
                 <div class="cajaImgRe">
                     <img class="imgRecomendacion" src="{{productoRecomendado.fotoProducto}}"/>
                 </div>
                 <div class="cajaInfoReco" >
                     <p> <b class="recomended"> Recomendado </b> </p>
                     <p> Vino Abocado </p>
-                    <p>$15000 </p>
+                    <p>$15000 </p> -->
                     <!-- <div class="cajaBtns"> -->
-                        <button class="btn">Ver</button>
                     <!-- </div> -->
+<!--                 </div>
+            </div> -->
+            <div class="swiper">
+                <div class="swiper-wrapper" data-bs-interval="3000">
+                    <div class="swiper-slide cont-produc" data-swiper-autoplay="3000" *ngFor="let producto of productos">
+                        <div class="cajaInfoReco" >
+                            <div class="cajaImgS">
+                                <img src={{producto.fotoProducto}} alt="">
+                            </div>
+                            <div class="cajaInfoS">
+                                <p class="text-center">{{producto.nombreProducto}}</p>
+                                <p class="text-center">{{producto.precioProducto}} </p> 
+                                <div class="cajaBtns"> 
+                                    <button class="btn">Ver</button>
+                                </div> 
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -6,7 +6,7 @@
 
     <div *ngIf="bandera==null" class='spinner'></div>
 
-    <table class="tabla">
+    <table *ngIf="bandera==true" class="tabla">
         <thead class="tablaHeaderG">
             <tr>
                 <th>
@@ -28,7 +28,7 @@
                         </tr>
                     </thead>
                     <tbody class="tablabodyP">
-                        <tr class="puntero" *ngFor="let inventario of inventarioG" (click)=openDialog(inventario.codigoProducto)>
+                        <tr class="puntero" *ngFor="let inventario of inventarioG" (click)=openDialog(inventario)>
                             <td>{{inventario.codigoProducto.codigoProducto}}</td>
                             <td>{{inventario.codigoProducto.nombreProducto}}</td>
                             <td>{{inventario.cantidadProducto}}</td>

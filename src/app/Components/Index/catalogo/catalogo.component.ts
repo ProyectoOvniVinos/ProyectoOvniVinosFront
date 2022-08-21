@@ -33,8 +33,10 @@ export class CatalogoComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.productoService.getProductsInventario().subscribe(inventario => {
-
       this.inventarioGeneral = inventario;
+    },err => {
+      console.log(err);
+      
     })
     this.clienteService.getByEmail("c@gmail.com").subscribe(resp=>{
       this.clienteInp = resp;
@@ -94,9 +96,14 @@ export class CatalogoComponent implements OnInit, OnChanges {
       },50)
   }
   openDialog(inventario: Inventario_generalModel): void {
+    const pageWidth  = document.documentElement.scrollWidth;
+    let width='50%'
+    if(pageWidth<=1400){
+        width='70%'
+    }
     const dialogRef = this.dialog.open(ModalProductosComponent, {
-      width: '50%',
-      data: inventario,
+      width: width,
+      data: inventario
     });
     dialogRef.afterClosed().subscribe( (result:boolean) => {
       if(result==true){

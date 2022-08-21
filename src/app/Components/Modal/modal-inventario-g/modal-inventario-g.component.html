@@ -7,15 +7,15 @@
 <mat-dialog-content class="boxInventoryDetails">
   <div class="principalBox">
     <div class="boxImg">
-      <img class="img" src=  "{{datos.codigoProducto.fotoProducto}}"/>
+      <img class="img" src=  "{{inventario.codigoProducto.fotoProducto}}"/>
     </div>
     <div class="information">
-      <h1 class="tituloModal" mat-dialog-title>{{datos.codigoProducto.nombreProducto}}</h1>
+      <h1 class="tituloModal" mat-dialog-title>{{inventario.codigoProducto.nombreProducto}}</h1>
       <div class="boxP">
         <div class="informationTwo">
-          <p class="text-dark"><b>Precio del proveedor: </b>{{datos.codigoProducto.precioProductoProveedor}}</p>
-          <p class="text-dark"><b>Precio del producto: </b>{{datos.codigoProducto.precioProducto}}</p> 
-          <p class="text-dark"><b>Cantidad del producto: </b>{{datos.cantidadProducto}}</p>     
+          <p class="text-dark"><b>Precio del proveedor: </b>{{inventario.codigoProducto.precioProductoProveedor}}</p>
+          <p class="text-dark"><b>Precio del producto: </b>{{inventario.codigoProducto.precioProducto}}</p> 
+          <p class="text-dark"><b>Cantidad del producto: </b>{{inventario.cantidadProducto}}</p>     
         </div>
       </div>
     
@@ -32,10 +32,10 @@
           </tr>
         </thead>
         <tbody class="tableBody">
-         <tr *ngFor="let detalle of datos.detalles">
+         <tr *ngFor="let detalle of inventario.detalles">
            <div class="datosTable">
               <div class="datosTableTwo">
-                <td>{{detalle.fechaUltimoIngreso | date: 'EEE dd, MM, yyyy'}}</td>
+                <td>{{detalle.fechaUltimoIngresoInventario | date: 'EEE dd, MM, yyyy'}}</td>
                 <td>{{detalle.cantidadProducto}}</td>
              </div>
            </div>
