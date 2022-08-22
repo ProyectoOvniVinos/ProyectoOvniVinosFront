@@ -142,26 +142,3 @@
     transition: all 0.3s ease-out;
     transform: skewX(45deg) scale(1, 1);
 }
-
-.spinner {
-    border: 6px solid rgb(184, 13, 72);
-    border-left-color: transparent;
-    width: 5rem;
-    height: 5rem;  
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    position: absolute;
-    left: 46%;
-    top: 45%;
-    top: center;
-  }
-
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-  
-    100% {
-      transform: rotate(360deg);
-    }
-  }

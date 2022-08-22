@@ -10,9 +10,9 @@
         <h1>Lo sentimos, aún no existen productos</h1>
     </div>
 
-
-    <div *ngIf="bandera==null" class='spinner'></div>
-
+    <div class="cajaMensaje" *ngIf="bandera==null">
+        <h1>Error al comunicarse con el servidor</h1>
+    </div>
 
     <table *ngIf="bandera==true" class="tabla">
         <thead class="tablaHeaderG">

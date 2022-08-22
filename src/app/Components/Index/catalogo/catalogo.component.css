@@ -16,7 +16,6 @@
     justify-content:center;
     align-items:center;
 }
-
 .slider-entero{
     width:50%;
 }
@@ -313,41 +312,15 @@ p{
         margin-bottom: 28%;
     }
 }
-@media screen and (max-width:1920px) and (max-height:720px){
-    .catalogoTwo{
-
-        margin-bottom: 35%;
-    }
-}
 @media screen and (max-width:1780px) and (max-height:940px){
     .catalogoTwo{
         margin-bottom: 24%;
-    }
-}
-@media screen and (max-width:1780px) and (max-height:754px){
-    .catalogoTwo{
-        margin-bottom: 38%;
     }
 }
 
 @media screen and (max-width:1600px) and (max-height:960px){
     .catalogoTwo{
         margin-bottom: 20%;
-    }
-}
-@media screen and (max-width:1600px) and (max-height:700px){
-    .catalogoTwo{
-        margin-bottom: 35%;
-    }
-}
-@media screen and (max-width:1550px) and (max-height:754px){
-    .catalogoTwo{
-        margin-bottom: 35%;
-    }
-}
-@media screen and (max-width:1450px) and (max-height:700px){
-    .catalogoTwo{
-        margin-bottom: 40%;
     }
 }
 
@@ -372,16 +345,6 @@ p{
         margin-bottom:22%;
     }
 }
-@media screen and (max-width:1380px) and (max-height:754px){
-    .catalogoTwo{
-        margin-bottom:38%;
-    }
-}
-@media screen and (max-width:1380px) and (max-height:700px){
-    .catalogoTwo{
-        margin-bottom:50%;
-    }
-}
 
 @media screen and (max-width:1300px) and (max-height:1080px){
     .cardP{
@@ -393,11 +356,6 @@ p{
 @media screen and (max-width:1280px) and (max-height:940px){
     .catalogoTwo{
         margin-bottom:26%
-    }
-}
-@media screen and (max-width:1280px) and (max-height:700px){
-    .catalogoTwo{
-        margin-bottom:46%
     }
 }
 
@@ -424,38 +382,11 @@ p{
 
 }
 
-@media screen and (max-width:1120px) and (max-height:754px){
-    .catalogoTwo{
-        margin-bottom:45%;
-    }
-
-}
-
-@media screen and (max-width:1120px) and (max-height:700px){
-    .catalogoTwo{
-        margin-bottom:50%;
-    }
-
-}
-
 @media screen and (max-width:1060px) and (max-height:940px){
     .catalogoTwo{
         margin-bottom:30%;
     }
 }
-
-@media screen and (max-width:1060px) and (max-height:754px){
-    .catalogoTwo{
-        margin-bottom:50%;
-    }
-}
-
-@media screen and (max-width:1060px) and (max-height:700px){
-    .catalogoTwo{
-        margin-bottom:55%;
-    }
-}
-
 
 @media screen and (max-width:1020px) and (max-height:1080px){
     .cajaCarrito{
@@ -467,9 +398,9 @@ p{
         margin-bottom:26%;
     }
 }
-@media screen and (max-width:1020px) and (max-height:754px){
+@media screen and (max-width:1020px) and (max-height:1000px){
     .catalogoTwo{
-        margin-bottom:55%;
+        margin-bottom:35%;
     }
 }
 
@@ -508,21 +439,6 @@ p{
         margin-bottom: 40%;
     }
 }
-
-@media screen and (max-width:920px) and (max-height:754px){
-
-    .catalogoTwo{
-        margin-bottom: 65%;
-    }
-}
-
-@media screen and (max-width:840px) and (max-height:700px){
-
-    .catalogoTwo{
-        margin-bottom: 75%;
-    }
-}
-
 
 @media screen and (max-width:780px) and (max-height:1080px){
 

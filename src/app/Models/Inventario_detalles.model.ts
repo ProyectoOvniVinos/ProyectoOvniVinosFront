@@ -4,5 +4,5 @@ import { ProductoModel } from "./Producto.model";
 export class Inventario_detallesModel {
     idDetalles!:number;
     cantidadProducto !:number;
-    fechaUltimoIngresoInventario!:Date;
+    fechaUltimoIngreso!:Date;
 }

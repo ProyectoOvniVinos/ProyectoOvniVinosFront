@@ -11,9 +11,6 @@ import { ContabilidadService } from '../../../Services/contabilidad.service';
 })
 export class ContabilidadComponent implements OnInit {
 
-  banderaD: Boolean =false;
-  banderaC: Boolean;
-
   contabilidad: string = "Diaria";
 
   contabilidadesMensuales: Contabilidad_mensualModel[]=[];
@@ -27,38 +24,25 @@ export class ContabilidadComponent implements OnInit {
   ngOnInit(): void {
     this.contabilidad = "Diaria";
       this.contabilidadService.getContabilidadDiaria(0).subscribe( contabilidad => {
-        this.banderaD=true;
         this.contabilidadesDiarias = contabilidad;
       });
   }
 
   traerContabiliad(term: string){
     if(term == "Diaria"){
-      this.vaciar();
       this.contabilidad = "Diaria";
       this.contabilidadDiaria();
     }else if(term == "Mensual"){
-      this.vaciar();
       this.contabilidad = "Mensual";
       this.contabilidadMensual();    
     }else{
-      this.vaciar();
       this.contabilidad = "Anual";     
       this.contabilidadAnual();
     }
   }
 
   contabilidadDiaria(){
-    this.banderaD=false;
     this.contabilidadService.getContabilidadDiaria(0).subscribe( contabilidad => {
-
-      if(contabilidad.length>0){
-        this.banderaC=true;
-      }else{
-        this.banderaC=false
-      }
-
-      this.banderaD=true;
       this.contabilidadesDiarias = contabilidad;
       this.contabilidadesMensuales = [];
       this.contabilidadesAnuales = [];
@@ -66,14 +50,7 @@ export class ContabilidadComponent implements OnInit {
   }
 
   contabilidadMensual(){
-    this.banderaD=false;
     this.contabilidadService.getContabilidadMensual(0).subscribe( contabilidad => {
-      if(contabilidad.length>0){
-        this.banderaC=true;
-      }else{
-        this.banderaC=false
-      }
-      this.banderaD=true;
       this.contabilidadesMensuales = contabilidad;
       this.contabilidadesDiarias = [];
       this.contabilidadesAnuales = [];
@@ -81,14 +58,7 @@ export class ContabilidadComponent implements OnInit {
   }
 
   contabilidadAnual(){
-    this.banderaD=false;
     this.contabilidadService.getContabilidadAnual(0).subscribe( contabilidad => {
-      if(contabilidad.length>0){
-        this.banderaC=true;
-      }else{
-        this.banderaC=false
-      }
-      this.banderaD=true;
       this.contabilidadesAnuales = contabilidad;
       this.contabilidadesMensuales = [];
       this.contabilidadesDiarias = [];
@@ -122,11 +92,5 @@ export class ContabilidadComponent implements OnInit {
         this.contabilidadService.getContabilidadAnualFecha(fechaAno).subscribe(contabilidad => this.contabilidadesAnuales = contabilidad);
       }
     }
-  }
-
-  vaciar(){
-    this.contabilidadesDiarias=[]
-    this.contabilidadesMensuales=[];
-    this.contabilidadesAnuales=[];
   }
 }

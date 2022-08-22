@@ -28,9 +28,6 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
     this.swiper = new Swiper('.swiper', {
       modules: [Autoplay],
 
-
-
-
       slidesPerView: 1.3,
       grabCursor: true,
       centeredSlides: true,
@@ -44,14 +41,9 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
   }
 
   openDialog(inventario: Inventario_generalModel): void {
-    const pageWidth  = document.documentElement.scrollWidth;
-    let width='50%'
-    if(pageWidth<=1400){
-        width='70%'
-    }
     const dialogRef = this.dialog.open(ModalProductosComponent, {
-      width: width,
-      data: inventario
+      width: '50%',
+      data: inventario,
     });
     dialogRef.afterClosed().subscribe( (result:boolean) => {
       console.log(`Dialog result: ${result}`); // Pizza!
@@ -59,8 +51,6 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
         this.agregar(inventario.codigoProducto);
         
       }else{
-
-        
         console.log("en else");
         
       }

@@ -61,7 +61,6 @@ export class AgregarProductoComponent implements OnInit {
     dialogRef.afterClosed().subscribe( (result:boolean) => {
       console.log(`Dialog result: ${result}`); // Pizza!
       if(result==true){
-        this.openDialogLoading();
         console.log("confirmo");
         this.deshabilitarProducto();        
       }else{
@@ -72,14 +71,14 @@ export class AgregarProductoComponent implements OnInit {
   }
 
   openDialogInteractionTwo(titleNew: string, mensajeNew: string):void{
-    this.closeDialogLoading()
     const dialogRef = this.dialog.open(ModalInteraccionComponent, {
       width: '300px',
       data: {title: titleNew, mensaje: mensajeNew},
     });
     dialogRef.afterClosed().subscribe( (result:boolean) => {
+      console.log(`Dialog result: ${result}`); // Pizza!
       if(result==true){
-        this.openDialogLoading();
+        console.log("confirmo");
         this.habilitarProducto();        
       }else{
         console.log("en else");
@@ -103,7 +102,6 @@ export class AgregarProductoComponent implements OnInit {
       let id  = params['id'];
 
       if(id){
-        this.openDialogLoading()
         this.titulo = "Editar Producto";
         this.boton = "Editar";
         this.servicioProducto.getProductById(id).subscribe((producto:ProductoModel)=>{
@@ -120,7 +118,6 @@ export class AgregarProductoComponent implements OnInit {
           }else{
             this.botonAccion="Habilitar"
           }
-          this.closeDialogLoading();
         })
         
       }
@@ -174,9 +171,9 @@ export class AgregarProductoComponent implements OnInit {
 
   registrar(){
     if(!this.fotoSeleccionada){
-      console.log("Por favor seleccione una foto. ")
+      console.log("Por favor seleccione una foto")
       this.closeDialogLoading();
-      this.openDialog("ADVERTENCIA","Por favor seleccione una foto. ")
+      this.openDialog("ADVERTENCIA","Por favor seleccione una foto")
     }else{
 
       this.imagenServicio.subir(this.fotoSeleccionada).subscribe( (response:any) => {
@@ -192,7 +189,7 @@ export class AgregarProductoComponent implements OnInit {
 
           this.servicioProducto.getProductByName(this.producto.nombreProducto).subscribe(productos=> {
             this.closeDialogLoading();
-            this.openDialog("ERROR","Lo sentimos, este producto ya existe. ")
+            this.openDialog("Error","Lo sentimos, este producto ya existe. ")
           },err=>{
 
             this.servicioProducto.createProduct(this.producto).subscribe(response=>{
@@ -241,10 +238,10 @@ export class AgregarProductoComponent implements OnInit {
     this.servicioProducto.updateProduct(productoNew.codigoProducto, productoNew).subscribe((response:any) => {
       this.closeDialogLoading();
       this.router.navigate(['/productos'])
-      this.openDialog("¡¡ÉXITO!!","El producto se ha actualizado correctamente. ")
+      this.openDialog("Exito!!","Se ha actualizado correctamente el Producto")
     }, err => {
       this.closeDialogLoading();
-      this.openDialog("ERROR","Lo sentimos, los datos no se actualizaron. Inténtalo de nuevo. ")
+      this.openDialog("Error","Ha habido un error intentelo de Nuevo")
     })
   }
 
@@ -273,12 +270,12 @@ export class AgregarProductoComponent implements OnInit {
         this.servicioProducto.updateProduct(productoNew.codigoProducto, productoNew).subscribe((response:any) => {
           this.closeDialogLoading();
           this.router.navigate(['/productos'])
-          this.openDialog("¡¡ÉXITO!!","El producto se ha actualizado correctamente. ")
+          this.openDialog("Exito!!","Se ha actualizado correctamente el Producto")
           console.log(productoNew);
           
         },err=>{
           this.closeDialogLoading();
-          this.openDialog("ERROR","Lo sentimos, los datos no se actualizaron. Inténtalo de nuevo. ")
+          this.openDialog("Error","Ha habido un error intentelo de Nuevo")
         })
 
       }
@@ -287,21 +284,17 @@ export class AgregarProductoComponent implements OnInit {
 
   deshabilitar(id: number){
 
-    this.openDialogLoading()
+
     if(this.botonAccion=="Deshabilitar"){
       this.servicioInventario.getInventarioGeneralByProducto(id).subscribe((res:any) => {
         if(res.cantidadProducto>0){
-          this.closeDialogLoading()
-          this.openDialogInteraction("ADVERTENCIA",`Existen aún ${res.cantidadProducto} productos, ¿EstAs seguro de deshabilitar este producto?`)
+          this.openDialogInteraction("Advertencia",`Existen aun ${res.cantidadProducto} productos, Estas seguro de deshabilitarlo?`)
         }else{
-          this.closeDialogLoading()
-          this.openDialogInteraction("ADVERTENCIA", "¿Estas seguro de desahabilitar este producto?")
+          this.openDialogInteraction("Advertencia", "Estas seguro que desea desahabilitar este producto?")
         }
       })
     }else{
-      this.closeDialogLoading()
-      this.openDialogInteractionTwo("ADVERTENCIA","¿Estas seguro de desea habilitar este producto?")
-
+      this.openDialogInteractionTwo("Advertencia","Estas seguro que desea habilitar este producto?")
       
     }
 
@@ -311,8 +304,7 @@ export class AgregarProductoComponent implements OnInit {
   deshabilitarProducto(){
     let codigo= this.producto.codigoProducto;
     this.servicioProducto.deshabilitarProduct(codigo).subscribe(res=>{
-      this.closeDialogLoading()
-      this.openDialog("¡¡ÉXITO!!","Se ha desahibilitado correctamente el producto. ")
+      this.openDialog("Exito!!","Se ha desahibilitado correctamente el producto")
       this.router.navigate(['/productos'])
     }, err => {
       console.log(err);
@@ -323,8 +315,7 @@ export class AgregarProductoComponent implements OnInit {
   habilitarProducto(){
     let codigo= this.producto.codigoProducto;
     this.servicioProducto.deshabilitarProduct(codigo).subscribe(res=>{
-      this.closeDialogLoading();
-      this.openDialog("¡¡ÉXITO!!","Se ha habilitado correctamente el producto. ")
+      this.openDialog("Exito!!","Se ha habilitado correctamente el producto")
       this.router.navigate(['/productos'])
     }, err => {
       console.log(err);

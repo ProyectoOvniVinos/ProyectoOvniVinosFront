@@ -24,7 +24,6 @@
 
 .todo{
     width: 100%;
-    margin-left: 2%;
 }
 
 .tabla2{
@@ -53,13 +52,4 @@
 
 .tablabodyP{
     text-align: center;
-}
-
-.organizar{
-    display: flex;
-    justify-content: space-between;
-}
-
-.tamano{
-    width: 94%;
 }

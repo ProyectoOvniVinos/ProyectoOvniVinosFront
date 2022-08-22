@@ -2,7 +2,6 @@
     background: rgb(217,18,79);
     background: linear-gradient(90deg, rgba(217,18,79,1) 11%, rgba(230,24,88,1) 55%, rgba(214,20,80,1) 98%);
     display: flex;
-    flex-direction: column;
     position: absolute;
     width: 24.5rem;
     top: 0;
@@ -50,7 +49,7 @@
 
 .cajaImg{
     width: 90%;
-    height: 89%;
+    height: 85%;
     top: 10%;
     right: 64%;
     border-radius: 10px;
@@ -183,25 +182,19 @@
 }
 
 
-.cajaComprar{
-    width: 100%;
-    height: 20%;
-    background-color: whitesmoke;
-    border-radius: 0.5rem;
-    box-shadow: 16px 17px 4px -9px rgb(105 5 35);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.CajaComprar{
+    position: absolute;
+    left: 25%;
+    top: 90%;
 }
 
 .btnComprar {
     margin-left: 0;
-    width: 90%;
+    width: 12rem;
     height: 3rem;
     background: #fff;
-    color: rgba(255,42,108,1);
-    border: 2px solid rgba(255,42,108,1);
+    color: rgb(32, 153, 48);
+    border: 2px solid rgb(32, 153, 48);
     padding: 16px 20px;
     padding-top: 3px;
     border-radius: 8px;
@@ -218,8 +211,8 @@
 
 .btnComprar::after{
     content: "";
-    background: rgb(167,31,73);
-    background: linear-gradient(90deg, rgba(167,31,73,1) 11%, rgba(255,42,108,1) 55%, rgba(167,31,73,1) 100%);   
+    background: rgb(44,170,8);
+    background: linear-gradient(90deg, rgba(44,170,8,1) 0%, rgba(37,150,8,1) 51%, rgba(59,223,25,1) 100%);
     position: absolute;
     z-index: -1;
     padding: 16px 20px;
@@ -237,19 +230,6 @@
     transform: skewX(45deg) scale(1, 1);
 }
 
-.cajaInfoTotal{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.cajaBtnComprar{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
 
 .viewport{
     width: 353px;

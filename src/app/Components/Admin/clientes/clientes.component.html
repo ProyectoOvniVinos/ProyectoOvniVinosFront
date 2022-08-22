@@ -1,14 +1,5 @@
 <div class="container">
-
-    
-    <div class="cajaMensaje" *ngIf="bandera==false">
-        <h1>Lo sentimos, aún no existen clientes registrados</h1>
-    </div>
-
-
-    <div *ngIf="bandera==null" class='spinner'></div>
-
-    <table *ngIf="bandera==true" class="tabla">
+    <table class="tabla">
         <thead class="tablaHeaderG">
             <tr>
                 <th>

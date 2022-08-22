@@ -15,7 +15,6 @@ export class SidebarComponent implements OnInit {
   validarCarrito = false;
   validarRuta = false;
   modal: boolean = true;
-  
 
   constructor(private router: Router) {
 

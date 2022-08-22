@@ -15,42 +15,6 @@
     align-items: center;
 }
 
-.spinner {
-    border: 6px solid rgb(184, 13, 72);
-    border-left-color: transparent;
-    width: 5rem;
-    height: 5rem;  
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    position: absolute;
-    left: 48%;
-    top: 45%;
-    top: center;
-  }
-
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-  
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
-.cajaMensaje{
-    border: 2px solid rgba(167,31,73,1);
-    color: rgba(167,31,73,1);
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    position: absolute;
-    width: 50%;
-    box-shadow: 11px 11px 8px #9b9b9b, -11px -11px 8px #ffffff;
-    top: 35%;
-    left: 25%;
-}
-
 .cajaTable{
     width: 100%;
     height: 35rem;

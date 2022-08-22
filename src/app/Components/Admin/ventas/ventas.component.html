@@ -18,24 +18,22 @@
             <table class="tabla2">
                 <thead class="tablaHeaderP">
                     <tr>
-                        <th class="primero">Código</th>
+                        <th class="primero">Código de la Venta</th>
                         <th>Cliente</th>
+                        <th>Producto</th>
                         <th>Cantidad</th>
                         <th>Valor</th>
-                        <th>Fecha</th>
-                        <th class="ultimo">Detalles</th>
+                        <th class="ultimo">Fecha</th>
                     </tr>
                 </thead>
                 <tbody class="tablabodyP">
-                    <tr *ngFor="let venta of ventas">
-                        <td>{{venta.codigoVenta}}</td>
-                        <td>{{venta.correoCliente.correoCliente}}</td>
-                        <td>{{venta.cantidadVenta}}</td>
-                        <td>{{venta.precioVenta}}</td>
-                        <td>{{venta.fechaVenta}}</td>
-                        <td class="puntero" (click)="abrirModal(venta)">
-                            <img class="imagenes" src="../../../../assets/Images/detalles.png" alt="">
-                        </td>
+                    <tr *ngFor="let producto of productos">
+                        <td>{{producto.codigoProducto*3}}</td>
+                        <td>correo cliente</td>
+                        <td>{{producto.codigoProducto}}</td>
+                        <td>{{producto.codigoProducto + 4}}</td>
+                        <td>Valor venta</td>
+                        <td>Fecha venta</td>
                     </tr>
                 </tbody>
             </table>

@@ -1,14 +1,7 @@
 
 <div class="cajaP-login">
 
-    <div class="cajaMensaje" *ngIf="bandera==false">
-        <h1 class="titleAlert">Lo sentimos, aún no existen productos para la venta</h1>
-        <button class="btnAgregarProducto"routerLink="/agregarProducto">Ingresar nuevo producto</button>
-    </div>
-
-    <div *ngIf="bandera==null" class='spinner'></div>
-
-    <div *ngIf="bandera==true" class ="cajaM-login">
+    <div class="cajaM-login">
         <div class="cajaTitleLogin">
             <h2>INGRESAR VENTA</h2>
         </div>

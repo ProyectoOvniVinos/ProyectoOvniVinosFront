@@ -193,28 +193,6 @@ input[type="date"] {
     color:aqua;
 }
 
-.spinner {
-    border: 6px solid rgb(184, 13, 72);
-    border-left-color: transparent;
-    width: 5rem;
-    height: 5rem;  
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    position: absolute;
-    left:48%;
-    bottom: 40%;
-  }
-
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-  
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-
 @media screen and (max-width: 1920px) and (max-height:1080px){
 
     input[type="date"] {
