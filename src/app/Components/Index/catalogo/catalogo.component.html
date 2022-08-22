@@ -9,6 +9,7 @@
             <button (click)="filtro(boton3.title)" title="Todos" class="btn btnFiltro" #boton3><img class="imgBotonJuntas c" src="../../../../assets/Images/juntasRosado.png" alt=""></button>
         </div>
         <div class="cajaCarrito" (click)="mostrarCarrito()">
+            
             <p class="pCarrito" *ngIf="clienteInp">{{clienteInp.carrito.itemCarrito.length}}</p>
             <img src="../../../../assets/Images/carritoVioleta.png" alt="" [ngClass]="{'agrandarCarrito': agrandar==true}">
         </div>

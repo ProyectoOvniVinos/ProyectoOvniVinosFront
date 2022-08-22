@@ -96,6 +96,7 @@ export class CatalogoComponent implements OnInit, OnChanges {
   openDialog(inventario: Inventario_generalModel): void {
     const dialogRef = this.dialog.open(ModalProductosComponent, {
       width: '50%',
+      
       data: inventario,
     });
     dialogRef.afterClosed().subscribe( (result:boolean) => {

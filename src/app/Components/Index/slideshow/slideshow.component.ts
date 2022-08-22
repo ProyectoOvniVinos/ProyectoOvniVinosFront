@@ -29,7 +29,7 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
       modules: [Autoplay],
 
 
-      
+
 
       slidesPerView: 1.3,
       grabCursor: true,
@@ -54,6 +54,8 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
         this.agregar(inventario.codigoProducto);
         
       }else{
+
+        
         console.log("en else");
         
       }
