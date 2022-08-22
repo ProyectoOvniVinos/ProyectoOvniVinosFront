@@ -19,8 +19,12 @@
                             <th class="ultimo">Valor</th>
                         </tr>
                     </thead>
-                    <tbody class="tablabodyP">
-
+                    <tbody class="tablabodyP" *ngIf="cliente">
+                        <tr *ngFor="let venta of cliente.ventas">
+                            <td>{{venta.codigoVenta}}</td>
+                            <td>{{venta.fechaVenta}}</td>
+                            <td>{{venta.precioVenta}}</td>
+                        </tr>
                     </tbody>
                     
                 </table>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ClienteModel } from 'src/app/Models/Cliente.model';
+import { ClienteService } from 'src/app/Services/cliente.service';
 
 @Component({
   selector: 'app-historial',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistorialComponent implements OnInit {
 
-  constructor() { }
+  cliente:ClienteModel;
+  constructor(private clienteService:ClienteService) { }
 
   ngOnInit(): void {
+    this.clienteService.getByEmail("c@gmail.com").subscribe(resp=>{
+      
+      this.cliente = resp;
+      
+    })
   }
 
 }
