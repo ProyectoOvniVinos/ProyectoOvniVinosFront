@@ -28,6 +28,9 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
     this.swiper = new Swiper('.swiper', {
       modules: [Autoplay],
 
+
+      
+
       slidesPerView: 1.3,
       grabCursor: true,
       centeredSlides: true,
