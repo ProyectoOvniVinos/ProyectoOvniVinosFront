@@ -67,7 +67,14 @@
         </cdk-virtual-scroll-viewport>
 
     </div>
-    <div class="CajaComprar">
-        <Button class="btnComprar" (click)="abrirModal()">Comprar</Button>
+    <div class="cajaComprar">
+        <div class="cajaInfoTotal">
+            <p>Productos en Total: {{cantidadTotal}} </p>
+            <p>Valor Total: {{valorTotal}} </p>
+        </div>
+        <div class="cajaBtnComprar">
+            <Button class="btnComprar" (click)="abrirModal()">Comprar</Button>
+        </div>
+
     </div>
 </div>

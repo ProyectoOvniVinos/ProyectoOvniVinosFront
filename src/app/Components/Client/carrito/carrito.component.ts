@@ -1,3 +1,4 @@
+import { importExpr } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, Input, OnChanges, EventEmitter , Output } from '@angular/core';
 import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
 import { ClienteModel } from 'src/app/Models/Cliente.model';
@@ -16,6 +17,8 @@ export class CarritoComponent implements OnInit, OnChanges {
 
   carrito:CarritoClienteModel;
   variable:boolean = true
+  valorTotal:number=0;
+  cantidadTotal:number=0;
 
   @Input() modal:boolean = false;
 
@@ -33,6 +36,13 @@ export class CarritoComponent implements OnInit, OnChanges {
       console.log(resp);
       
       this.carrito = resp.carrito;
+      this.carrito.itemCarrito.forEach(item => {
+        
+        this.valorTotal+=(item.precioItem*item.cantidadProducto);
+        this.cantidadTotal+=(item.cantidadProducto);
+
+      });
+
     })
   }
 
@@ -64,13 +74,15 @@ export class CarritoComponent implements OnInit, OnChanges {
       variable:true
     }
 
-    
+    this.valorTotal-=(item.precioItem*item.cantidadProducto)
+    this.cantidadTotal-=item.cantidadProducto;
     this.devolver.emit(list);
   }
   aumentarCantidad(item:ItemCarritoModel){
     
     item.cantidadProducto += 1
-    
+    this.cantidadTotal+=1;
+    this.valorTotal+=item.precioItem;
     this.carritoService.actualizarCarrito(this.carrito).subscribe(resp=>{
       console.log(resp);
       
@@ -78,6 +90,8 @@ export class CarritoComponent implements OnInit, OnChanges {
   }
   disminuirCantidad(item:ItemCarritoModel){
     item.cantidadProducto-=1;
+    this.cantidadTotal-=1;
+    this.valorTotal-=item.precioItem;
     this.carritoService.actualizarCarrito(this.carrito).subscribe(resp=>{
       console.log(resp);
       

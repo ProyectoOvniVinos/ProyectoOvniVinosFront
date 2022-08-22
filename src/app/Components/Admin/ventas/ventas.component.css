@@ -10,6 +10,19 @@
     margin-bottom: 30px;
 }
 
+.puntero{
+    cursor: pointer;
+}
+.imagenes {
+    width: 2.5rem;
+    margin-top: 1.5%;
+    transition:0.1s;
+}
+
+.imagenes:hover{
+    transform: scale(0.9,0.9)
+}
+
 .btnRegresar{
     width: 25%;
     height: 5vh;

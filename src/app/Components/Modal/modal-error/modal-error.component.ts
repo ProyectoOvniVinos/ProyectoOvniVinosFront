@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { DialogData } from '../DialogData';
@@ -10,9 +10,12 @@ import { DialogData } from '../DialogData';
 })
 export class ModalErrorComponent implements OnInit {
 
+  
+
   constructor(
     public dialogRef: MatDialogRef<ModalErrorComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    
   ) { }
 
   onNoClick(): void{

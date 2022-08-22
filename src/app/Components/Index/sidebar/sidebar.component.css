@@ -216,6 +216,10 @@
     .footer{
         left: 20%;
     }
+
+    .footerAbierto{
+        left: 10%;
+    }
 }
 
 @media screen and (max-width: 1108px) and (max-height:695px) {

@@ -1,24 +1,21 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { AdministradorModel } from './../../../Models/Administrador.model';
+import { ModalErrorComponent } from './../../Modal/modal-error/modal-error.component';
 import { MatDialog } from '@angular/material/dialog';
-import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
-import { ClienteModel } from 'src/app/Models/Cliente.model';
-import { ClienteService } from 'src/app/Services/cliente.service';
-import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
-
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.component.html',
-  styleUrls: ['./registro.component.css']
+  selector: 'app-registrar-admin',
+  templateUrl: './registrar-admin.component.html',
+  styleUrls: ['./registrar-admin.component.css']
 })
-export class RegistroComponent implements OnInit {
+export class RegistrarAdminComponent implements OnInit {
 
   banderaPasswordTwo: boolean = null;
   banderaTerminos: boolean = false;
   registroForm !: FormGroup;
 
-  constructor(private fb: FormBuilder, public dialog: MatDialog, public clienteService:ClienteService) {
+  constructor(private fb: FormBuilder, public dialog: MatDialog) {
     this.crearFormulario();
     this.crearListeners();
 
@@ -255,18 +252,15 @@ export class RegistroComponent implements OnInit {
   }
 
   registrar(){
-    let cliente = new ClienteModel();
-    cliente.correoCliente = this.registroForm.controls['correo'].value
-    cliente.nombreCliente = this.registroForm.controls['nombre'].value
-    cliente.apellidoCliente = this.registroForm.controls['apellido'].value
-    cliente.direccionCliente= this.registroForm.controls['direccion'].value
-    cliente.telefonoCliente= this.registroForm.controls['celular'].value
-    cliente.passwordCliente=this.registroForm.controls['contrasena1'].value
+    let admin = new AdministradorModel();
+    admin.correoAdmin = this.registroForm.controls['correo'].value
+    admin.nombreAdmin = this.registroForm.controls['nombre'].value
+    admin.apellidoAdmin = this.registroForm.controls['apellido'].value
+    admin.direccionAdmin= this.registroForm.controls['direccion'].value
+    admin.telefonoAdmin= this.registroForm.controls['celular'].value
+    admin.passwordAdmin=this.registroForm.controls['contrasena1'].value
 
-    this.clienteService.registro(cliente).subscribe(res=>{
-      console.log(res);
-      
-    });
   }
+
 
 }

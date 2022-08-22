@@ -1,3 +1,5 @@
+import { RegistrarAdminComponent } from './Components/Admin/registrar-admin/registrar-admin.component';
+import { AdministradoresComponent } from './Components/Admin/administradores/administradores.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ProductosComponent } from './Components/Admin/productos/productos.component';
@@ -42,6 +44,7 @@ const routes: Routes = [
   { path: 'ayuda', component: AyudaComponent },
 
   { path: 'clientes', component: ClientesComponent },
+  { path: 'administradores', component: AdministradoresComponent },
   { path: 'datosA', component: DatosAdminComponent },
   { path: 'editarA', component: EditarDatosAdmComponent },
   { path: 'contabilidad', component: ContabilidadComponent },
@@ -51,6 +54,7 @@ const routes: Routes = [
   { path: 'compras', component: ComprasComponent },
   { path: 'ingresarCompra', component: IngresarCompraComponent },
   { path: 'ingresarVenta', component: IngresarVentaComponent},
+  { path: 'agregarAdmin', component: RegistrarAdminComponent },
 
   { path: '**', pathMatch: 'full', redirectTo: '/catalogo' }
 ];
