@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductoModel } from 'src/app/Models/Producto.model';
-import { VentaModel } from 'src/app/Models/Venta.model';
-import { VentaService } from 'src/app/Services/venta.service';
+import { VentaService } from '../../../Services/venta.service';
+import { VentaModel } from '../../../Models/Venta.model';
 import { ModalDetallesVentaComponent } from '../../Modal/modal-detalles-venta/modal-detalles-venta.component';
 
 @Component({
@@ -13,7 +13,6 @@ import { ModalDetallesVentaComponent } from '../../Modal/modal-detalles-venta/mo
 export class VentasComponent implements OnInit {
   
   ventas: VentaModel[] = [];
-
   productos: ProductoModel[] = [];
   constructor(private ventasService: VentaService, public dialog: MatDialog) { }
 
