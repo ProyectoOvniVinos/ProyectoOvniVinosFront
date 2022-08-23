@@ -3,6 +3,7 @@ import { Component, OnInit, Input, OnChanges, EventEmitter , Output } from '@ang
 import { MatDialog } from '@angular/material/dialog';
 import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
 import { ClienteModel } from 'src/app/Models/Cliente.model';
+import { Inventario_generalModel } from 'src/app/Models/Inventario_general.model';
 import { ItemCarritoModel } from 'src/app/Models/itemCarrito.model';
 import { Item_ventaModel } from 'src/app/Models/Item_venta.model';
 import { ProductoModel } from 'src/app/Models/Producto.model';
@@ -25,7 +26,9 @@ import { ModalInteraccionComponent } from '../../Modal/modal-interaccion/modal-i
 export class CarritoComponent implements OnInit, OnChanges {
 
   carrito:CarritoClienteModel;
-  variable:boolean = true
+  variable:boolean = true;
+  advertirCantidad = false;
+  cantidadP:number = 0;
   valorTotal:number=0;
   cantidadTotal:number=0;
 
@@ -38,8 +41,11 @@ export class CarritoComponent implements OnInit, OnChanges {
 
 
  
-  constructor(private clienteService:ClienteService, private carritoService:CarritoService, private inventarioService:InventarioGService,public dialog: MatDialog, private ventaService:VentaService) {
-
+  constructor(private clienteService:ClienteService, 
+              private carritoService:CarritoService, 
+              private inventarioService:InventarioGService,
+              public dialog: MatDialog, 
+              private ventaService: VentaService) {
 
   }
   ngOnChanges(): void {
@@ -92,22 +98,39 @@ export class CarritoComponent implements OnInit, OnChanges {
   }
   aumentarCantidad(item:ItemCarritoModel){
     
-    item.cantidadProducto += 1
-    this.cantidadTotal+=1;
-    this.valorTotal+=item.precioItem;
-    this.carritoService.actualizarCarrito(this.carrito).subscribe(resp=>{
-      console.log(resp);
-      
-    });
+    this.inventarioService.getInventarioGeneralByProducto(item.codigoProducto.codigoProducto).subscribe((resp:Inventario_generalModel)=>{
+      this.cantidadP = resp.cantidadProducto
+      if(this.cantidadP>item.cantidadProducto){
+        item.cantidadProducto += 1
+        this.advertirCantidad = false;
+        console.log(this.cantidadP + "disponible");
+        console.log(item.cantidadProducto + "solicitada");
+
+        this.carritoService.actualizarCarrito(this.carrito).subscribe(resp=>{
+          console.log(resp);
+
+        });
+      }else{
+        console.log(this.cantidadP + "disponible");
+        console.log(item.cantidadProducto + "solicitada");
+        console.log("BBBBBBBBBBBBBBBBBB");
+        this.advertirCantidad = true;
+
+      }
+    })
   }
   disminuirCantidad(item:ItemCarritoModel){
-    item.cantidadProducto-=1;
-    this.cantidadTotal-=1;
-    this.valorTotal-=item.precioItem;
-    this.carritoService.actualizarCarrito(this.carrito).subscribe(resp=>{
-      console.log(resp);
-      
-    });
+    if(item.cantidadProducto==1){
+      this.openDialogInteraction("Advertencia",`Eliminara el producto de su carrito. ¿Desea eliminarlo?`, item);
+    }else{
+      this.advertirCantidad = false;
+      item.cantidadProducto-=1;
+
+      this.carritoService.actualizarCarrito(this.carrito).subscribe(resp=>{
+        console.log(resp);
+
+      });
+    }
   }
   
   abrirModal(){
@@ -167,6 +190,21 @@ export class CarritoComponent implements OnInit, OnChanges {
             this.openDialogConfirmacion("Error","Ha ocurrido un problema")
           }
             });
+      }
+    });
+  }
+  openDialogInteraction(titleNew: string, mensajeNew: string, item:ItemCarritoModel):void{
+    const dialogRef = this.dialog.open(ModalInteraccionComponent, {
+      width: '300px',
+      data: {title: titleNew, mensaje: mensajeNew},
+    });
+    dialogRef.afterClosed().subscribe( (result:boolean) => {
+      console.log(`Dialog result: ${result}`); // Pizza!
+      if(result==true){
+        this.eliminarItem(item);
+      }else{
+        console.log("en else");
+
       }
     });
   }

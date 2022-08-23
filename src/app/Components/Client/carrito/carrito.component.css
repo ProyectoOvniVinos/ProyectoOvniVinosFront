@@ -16,6 +16,10 @@
 .sinAnimacion{
     animation: none;
 }
+.advertirCanti{
+    color:red;
+    font-size: 80%;
+}
 
 /**nuevos styles*/
 .padreCarrito{
