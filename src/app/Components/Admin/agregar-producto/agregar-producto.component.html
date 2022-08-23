@@ -83,8 +83,8 @@
                                 <img src="../../../../assets/Images/manoCopada.png" alt="manoCopada" class="imgLogin">
                             </div>
                             <div class="cajaBtnsTwo">
-                                <button type="submit" class="btnRegistrar" (click)="iniciarProceso()"> {{boton}} </button>
                                 <button *ngIf="boton=='Editar'" type="submit" class="btnRegistrar" (click)="deshabilitar(producto.codigoProducto)"> {{botonAccion}}</button>
+                                <button type="submit" class="btnRegistrar" (click)="iniciarProceso()"> {{boton}} </button>
                             </div>
 
                         </div>

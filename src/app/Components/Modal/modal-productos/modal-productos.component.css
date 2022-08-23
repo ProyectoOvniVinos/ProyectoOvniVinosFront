@@ -97,6 +97,7 @@
     overflow: hidden;
     display: inline-block;
     font-size: 1rem;
+    top: 0.45rem;
 }
 
 .btnOk:hover {
@@ -218,7 +219,7 @@
 .cajaBtns{
     display: flex;
     justify-content: center;
-    align-content: flex-start;
+    /* align-content: flex-start; */
     align-items: center;
     padding-bottom: 5%;
 }

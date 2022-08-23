@@ -104,7 +104,7 @@ export class AgregarProductoComponent implements OnInit {
 
       if(id){
         this.openDialogLoading()
-        this.titulo = "Editar Producto";
+        this.titulo = "EDITAR PRODUCTO";
         this.boton = "Editar";
         this.servicioProducto.getProductById(id).subscribe((producto:ProductoModel)=>{
           this.producto=producto;
@@ -292,15 +292,15 @@ export class AgregarProductoComponent implements OnInit {
       this.servicioInventario.getInventarioGeneralByProducto(id).subscribe((res:any) => {
         if(res.cantidadProducto>0){
           this.closeDialogLoading()
-          this.openDialogInteraction("ADVERTENCIA",`Existen aún ${res.cantidadProducto} productos, ¿EstAs seguro de deshabilitar este producto?`)
+          this.openDialogInteraction("ADVERTENCIA",`Existen aún ${res.cantidadProducto} productos, ¿Estás seguro de deshabilitar este producto?`)
         }else{
           this.closeDialogLoading()
-          this.openDialogInteraction("ADVERTENCIA", "¿Estas seguro de desahabilitar este producto?")
+          this.openDialogInteraction("ADVERTENCIA", "¿Estás seguro de desahabilitar este producto?")
         }
       })
     }else{
       this.closeDialogLoading()
-      this.openDialogInteractionTwo("ADVERTENCIA","¿Estas seguro de desea habilitar este producto?")
+      this.openDialogInteractionTwo("ADVERTENCIA","¿Estás seguro de habilitar este producto?")
 
       
     }
