@@ -1,14 +1,11 @@
+import { importExpr } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, Input, OnChanges, EventEmitter , Output } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
 import { ClienteModel } from 'src/app/Models/Cliente.model';
-import { Inventario_generalModel } from 'src/app/Models/Inventario_general.model';
 import { ItemCarritoModel } from 'src/app/Models/itemCarrito.model';
 import { ProductoModel } from 'src/app/Models/Producto.model';
 import { CarritoService } from 'src/app/Services/carrito.service';
 import { ClienteService } from 'src/app/Services/cliente.service';
-import { InventarioGService } from 'src/app/Services/inventario-g.service';
-import { ModalInteraccionComponent } from '../../Modal/modal-interaccion/modal-interaccion.component';
 
 @Component({
   selector: 'app-carrito',
@@ -19,9 +16,9 @@ import { ModalInteraccionComponent } from '../../Modal/modal-interaccion/modal-i
 export class CarritoComponent implements OnInit, OnChanges {
 
   carrito:CarritoClienteModel;
-  variable:boolean = true;
-  advertirCantidad = false;
-  cantidadP:number = 0;
+  variable:boolean = true
+  valorTotal:number=0;
+  cantidadTotal:number=0;
 
   @Input() modal:boolean = false;
 
@@ -30,8 +27,7 @@ export class CarritoComponent implements OnInit, OnChanges {
   @Output()
   devolver = new EventEmitter<any>();
 
- 
-  constructor(private clienteService:ClienteService, private carritoService:CarritoService, private inventarioService:InventarioGService,public dialog: MatDialog) {
+  constructor(private clienteService:ClienteService, private carritoService:CarritoService) {
 
   }
   ngOnChanges(): void {
@@ -40,6 +36,13 @@ export class CarritoComponent implements OnInit, OnChanges {
       console.log(resp);
       
       this.carrito = resp.carrito;
+      this.carrito.itemCarrito.forEach(item => {
+        
+        this.valorTotal+=(item.precioItem*item.cantidadProducto);
+        this.cantidadTotal+=(item.cantidadProducto);
+
+      });
+
     })
   }
 
@@ -71,63 +74,29 @@ export class CarritoComponent implements OnInit, OnChanges {
       variable:true
     }
 
-    
+    this.valorTotal-=(item.precioItem*item.cantidadProducto)
+    this.cantidadTotal-=item.cantidadProducto;
     this.devolver.emit(list);
   }
   aumentarCantidad(item:ItemCarritoModel){
-    this.inventarioService.getInventarioGeneralByProducto(item.codigoProducto.codigoProducto).subscribe((resp:Inventario_generalModel)=>{
-      this.cantidadP = resp.cantidadProducto
+    
+    item.cantidadProducto += 1
+    this.cantidadTotal+=1;
+    this.valorTotal+=item.precioItem;
+    this.carritoService.actualizarCarrito(this.carrito).subscribe(resp=>{
+      console.log(resp);
       
-      if(this.cantidadP>item.cantidadProducto){
-        item.cantidadProducto += 1
-        this.advertirCantidad = false;
-        console.log(this.cantidadP + "disponible");
-        console.log(item.cantidadProducto + "solicitada");
-        
-        this.carritoService.actualizarCarrito(this.carrito).subscribe(resp=>{
-          console.log(resp);
-          
-        });
-      }else{
-        console.log(this.cantidadP + "disponible");
-        console.log(item.cantidadProducto + "solicitada");
-        console.log("BBBBBBBBBBBBBBBBBB");
-        this.advertirCantidad = true;
-
-      }
-    })
-
+    });
+  }
+  disminuirCantidad(item:ItemCarritoModel){
+    item.cantidadProducto-=1;
+    this.cantidadTotal-=1;
+    this.valorTotal-=item.precioItem;
+    this.carritoService.actualizarCarrito(this.carrito).subscribe(resp=>{
+      console.log(resp);
+      
+    });
   }
   
-  disminuirCantidad(item:ItemCarritoModel){
-    if(item.cantidadProducto==1){
-      this.openDialogInteraction("Advertencia",`Eliminara el producto de su carrito. ¿Desea eliminarlo?`, item);
-    }else{
-      this.advertirCantidad = false;
-      item.cantidadProducto-=1;
-      
-      this.carritoService.actualizarCarrito(this.carrito).subscribe(resp=>{
-        console.log(resp);
-        
-      });
-    }
-    
-    
-  }
-  openDialogInteraction(titleNew: string, mensajeNew: string, item:ItemCarritoModel):void{
-    const dialogRef = this.dialog.open(ModalInteraccionComponent, {
-      width: '300px',
-      data: {title: titleNew, mensaje: mensajeNew},
-    });
-    dialogRef.afterClosed().subscribe( (result:boolean) => {
-      console.log(`Dialog result: ${result}`); // Pizza!
-      if(result==true){
-        this.eliminarItem(item);
-      }else{
-        console.log("en else");
-        
-      }
-    });
-  }
 
 }
