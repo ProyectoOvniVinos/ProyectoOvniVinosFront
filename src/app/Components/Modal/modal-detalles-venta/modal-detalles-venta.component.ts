@@ -1,5 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Item_ventaModel } from 'src/app/Models/Item_venta.model';
 import { VentaModel } from 'src/app/Models/Venta.model';
 
 @Component({

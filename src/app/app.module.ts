@@ -54,11 +54,10 @@ import { ModalDetallesCompraComponent } from './Components/Modal/modal-detalles-
 import { ModalImagenComponent } from './Components/Modal/modal-imagen/modal-imagen.component';
 import { ModalProductosAdminComponent } from './Components/Modal/modal-productos-admin/modal-productos-admin.component';
 import { ModalLoadingComponent } from './Components/Modal/modal-loading/modal-loading.component';
+import { ModalDetallesVentaComponent } from './Components/Modal/modal-detalles-venta/modal-detalles-venta.component';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
-
 import { AdministradoresComponent } from './Components/Admin/administradores/administradores.component';
-import { ModalDetallesVentaComponent } from './Components/Modal/modal-detalles-venta/modal-detalles-venta.component';
 import { RegistrarAdminComponent } from './Components/Admin/registrar-admin/registrar-admin.component';
  
 registerLocaleData(localeEs, 'es');
@@ -102,9 +101,11 @@ registerLocaleData(localeEs, 'es');
     ModalImagenComponent,
     ModalProductosAdminComponent,
     ModalLoadingComponent,
+    ModalDetallesVentaComponent,
     AdministradoresComponent,
     ModalDetallesVentaComponent,
     RegistrarAdminComponent
+
 
 
 

@@ -36,8 +36,8 @@
                         <tr *ngFor="let contabilidad of contabilidadesDiarias">
                             <td>{{contabilidad.idRegistroContabilidadDiaria}}</td>
                             <td>{{contabilidad.ventasContabilidadDiaria}}</td>
-                            <td>{{contabilidad.egresosContabilidadDiaria}}</td>
                             <td>{{contabilidad.ingresosContabilidadDiaria}}</td>
+                            <td>{{contabilidad.egresosContabilidadDiaria}}</td>
                             <td>{{contabilidad.fecha | date:'dd/MM/yyyy'}}</td>
                         </tr>
                     </tbody>
@@ -45,8 +45,8 @@
                         <tr *ngFor="let contabilidad of contabilidadesMensuales">
                             <td>{{contabilidad.idRegistroContabilidadMensual}}</td>
                             <td>{{contabilidad.ventasContabilidadMensual}}</td>
-                            <td>{{contabilidad.egresosContabilidadMensual}}</td>
                             <td>{{contabilidad.ingresosContabilidadMensual}}</td>
+                            <td>{{contabilidad.egresosContabilidadMensual}}</td>
                             <td>{{contabilidad.fecha | date:'MM/yyyy'}}</td>
                         </tr>
                     </tbody>
@@ -54,8 +54,8 @@
                         <tr *ngFor="let contabilidad of contabilidadesAnuales">
                             <td>{{contabilidad.idRegistroContabilidadAnual}}</td>
                             <td>{{contabilidad.ventasContabilidadAnual}}</td>
-                            <td>{{contabilidad.egresosContabilidadAnual}}</td>
                             <td>{{contabilidad.ingresosContabilidadAnual}}</td>
+                            <td>{{contabilidad.egresosContabilidadAnual}}</td>
                             <td>{{contabilidad.fecha | date:'yyyy'}}</td>
                         </tr>
                     </tbody>

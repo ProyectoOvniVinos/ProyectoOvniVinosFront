@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ProductoModel } from 'src/app/Models/Producto.model';
 import { VentaService } from '../../../Services/venta.service';
 import { VentaModel } from '../../../Models/Venta.model';
-import { MatDialog } from '@angular/material/dialog';
 import { ModalDetallesVentaComponent } from '../../Modal/modal-detalles-venta/modal-detalles-venta.component';
 
 @Component({
@@ -10,18 +11,19 @@ import { ModalDetallesVentaComponent } from '../../Modal/modal-detalles-venta/mo
   styleUrls: ['./ventas.component.css']
 })
 export class VentasComponent implements OnInit {
-
+  
   ventas: VentaModel[] = [];
-  constructor(private ventaService: VentaService, public dialog: MatDialog) { }
+  productos: ProductoModel[] = [];
+  constructor(private ventasService: VentaService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.ventaService.getVentas().subscribe(ventas=>{
-      this.ventas = ventas
+    this.ventasService.getVentas().subscribe(ventas => {
+      this.ventas = ventas;
     });
   }
 
-  abrirModal(venta:VentaModel){
-    this.openDialog(venta);
+  abrirModal(venta: VentaModel){
+    this.openDialog(venta)
   }
 
   openDialog( venta: VentaModel): void {
