@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -54,7 +54,14 @@ import { ModalDetallesCompraComponent } from './Components/Modal/modal-detalles-
 import { ModalImagenComponent } from './Components/Modal/modal-imagen/modal-imagen.component';
 import { ModalProductosAdminComponent } from './Components/Modal/modal-productos-admin/modal-productos-admin.component';
 import { ModalLoadingComponent } from './Components/Modal/modal-loading/modal-loading.component';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+
+import { AdministradoresComponent } from './Components/Admin/administradores/administradores.component';
+import { ModalDetallesVentaComponent } from './Components/Modal/modal-detalles-venta/modal-detalles-venta.component';
+import { RegistrarAdminComponent } from './Components/Admin/registrar-admin/registrar-admin.component';
  
+registerLocaleData(localeEs, 'es');
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,7 +101,11 @@ import { ModalLoadingComponent } from './Components/Modal/modal-loading/modal-lo
     ModalDetallesCompraComponent,
     ModalImagenComponent,
     ModalProductosAdminComponent,
-    ModalLoadingComponent
+    ModalLoadingComponent,
+    AdministradoresComponent,
+    ModalDetallesVentaComponent,
+    RegistrarAdminComponent
+
 
 
   ],
@@ -113,7 +124,7 @@ import { ModalLoadingComponent } from './Components/Modal/modal-loading/modal-lo
     MatDialogModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{provide: LOCALE_ID, useValue: 'es'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
