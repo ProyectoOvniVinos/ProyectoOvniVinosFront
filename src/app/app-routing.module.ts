@@ -33,6 +33,7 @@ const routes: Routes = [
   { path: 'catalogo', component: CatalogoComponent },
   { path: 'productos', component: ProductosComponent, canActivate: [AuthGuard] },
   { path: 'agregarProducto', component: AgregarProductoComponent },
+
   { path: 'editarProducto/:id', component: AgregarProductoComponent },
   { path: 'iniciarSesion', component: IniciarSesionComponent },
   { path: 'recuperar', component: RecuperarPasswordComponent },
@@ -53,8 +54,10 @@ const routes: Routes = [
   { path: 'ventas', component: VentasComponent },
   { path: 'compras', component: ComprasComponent },
   { path: 'ingresarCompra', component: IngresarCompraComponent },
+  { path: 'ingresarCompra/:id', component: IngresarCompraComponent },
   { path: 'ingresarVenta', component: IngresarVentaComponent},
   { path: 'agregarAdmin', component: RegistrarAdminComponent },
+  { path: 'recuperacion/:correo', component: RecuperandoPasswordComponent },
 
   { path: '**', pathMatch: 'full', redirectTo: '/catalogo' }
 ];

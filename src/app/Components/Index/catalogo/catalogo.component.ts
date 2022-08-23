@@ -35,16 +35,24 @@ export class CatalogoComponent implements OnInit, OnChanges {
     this.productoService.getProductsInventario().subscribe(inventario => {
       this.inventarioGeneral = inventario;
     },err => {
-      console.log(err);
       
     })
-    this.clienteService.getByEmail("c@gmail.com").subscribe(resp=>{
-      this.clienteInp = resp;
+    this.clienteService.getAll().subscribe((respu:ClienteModel[])=>{
+ 
+      if(respu.length>0){
+        this.clienteService.getByEmail("c@gmail.com").subscribe(resp=>{
+      
+          this.clienteInp = resp;
+        })
+      }
+      
+      
     })
+
+    
   }
 
   buscar(termino:String){
-    console.log(termino);
     
     
   }
@@ -110,7 +118,6 @@ export class CatalogoComponent implements OnInit, OnChanges {
         this.agregar(inventario.codigoProducto);
         
       }else{
-        console.log("en else");
         
       }
     });
