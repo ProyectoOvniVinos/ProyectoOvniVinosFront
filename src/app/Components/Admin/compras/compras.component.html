@@ -17,7 +17,8 @@
             <table class="tabla2">
                 <thead class="tablaHeaderP">
                     <tr>
-                        <th class="primero">Código de la compra</th>
+                        <th class="primero">Código</th>
+                        <th>Administrador</th>
                         <th>Cantidad</th>
                         <th>Valor</th>
                         <th>Fecha</th>
@@ -27,6 +28,7 @@
                 <tbody class="tablabodyP">
                     <tr *ngFor="let compra of compras">
                         <td>{{compra.codigoCompra}}</td>
+                        <td>{{compra.administradorCompra.correoAdmin}}</td>
                         <td>{{compra.cantidadCompra}}</td>
                         <td>{{compra.precioCompra}}</td>
                         <td>{{compra.fechaCompra}}</td>

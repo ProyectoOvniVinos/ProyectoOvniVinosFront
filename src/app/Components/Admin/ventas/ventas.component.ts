@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ProductoModel } from 'src/app/Models/Producto.model';
+import { VentaModel } from 'src/app/Models/Venta.model';
+import { VentaService } from 'src/app/Services/venta.service';
+import { ModalDetallesVentaComponent } from '../../Modal/modal-detalles-venta/modal-detalles-venta.component';
 
 @Component({
   selector: 'app-ventas',
@@ -7,34 +11,27 @@ import { ProductoModel } from 'src/app/Models/Producto.model';
   styleUrls: ['./ventas.component.css']
 })
 export class VentasComponent implements OnInit {
+  
+  ventas: VentaModel[] = [];
 
-  productos: ProductoModel[] = [
-    {
-      codigoProducto: 1,
-      nombreProducto: 'Vino Abocado',
-      precioProducto: 13000,
-      precioProductoProveedor: 6000,
-      descripcionProducto: 'Delicioso Vino Dulce',
-      fotoProducto: '../../../../assets/TEMPORALES/vino1.jpg'
-    }, {
-      codigoProducto: 2,
-      nombreProducto: 'Vino tinto',
-      precioProducto: 13000,
-      precioProductoProveedor: 6000,
-      descripcionProducto: 'Delicioso Vino no tan Dulce',
-      fotoProducto: '../../../../assets/TEMPORALES/vino2.jpg'
-    }, {
-      codigoProducto: 3,
-      nombreProducto: 'Nectar de uva',
-      precioProducto: 10000,
-      precioProductoProveedor: 5000,
-      descripcionProducto: 'Delicioso nectar de uva libre de alcohol',
-      fotoProducto: '../../../../assets/TEMPORALES/vino3.jpg'
-    },
-  ];
-  constructor() { }
+  productos: ProductoModel[] = [];
+  constructor(private ventasService: VentaService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
+    this.ventasService.getVentas().subscribe(ventas => {
+      this.ventas = ventas;
+    });
+  }
+
+  abrirModal(venta: VentaModel){
+    this.openDialog(venta)
+  }
+
+  openDialog( venta: VentaModel): void {
+    const dialogRef = this.dialog.open(ModalDetallesVentaComponent, {
+      width: '700px',
+      data: venta,
+    });
   }
 
 }

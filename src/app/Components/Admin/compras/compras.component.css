@@ -6,7 +6,7 @@
     cursor: pointer;
 }
 .imagenes {
-    width: 10%;
+    width: 2.5rem;
     margin-top: 1.5%;
     transition:0.1s;
 }
@@ -111,7 +111,7 @@
 .ultimo{
     border-start-end-radius: 10px;
     border-end-end-radius: 10px;
-    width: 35%;
+    width: 20%;
 }
 
 .tablabodyP{

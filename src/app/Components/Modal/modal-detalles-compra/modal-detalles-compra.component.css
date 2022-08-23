@@ -53,3 +53,12 @@
 .tablabodyP{
     text-align: center;
 }
+
+.organizar{
+    display: flex;
+    justify-content: space-between;
+}
+
+.tamano{
+    width: 94%;
+}

@@ -4,10 +4,15 @@ import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
 import { ClienteModel } from 'src/app/Models/Cliente.model';
 import { Inventario_generalModel } from 'src/app/Models/Inventario_general.model';
 import { ItemCarritoModel } from 'src/app/Models/itemCarrito.model';
+import { Item_ventaModel } from 'src/app/Models/Item_venta.model';
 import { ProductoModel } from 'src/app/Models/Producto.model';
+import { VentaModel } from 'src/app/Models/Venta.model';
 import { CarritoService } from 'src/app/Services/carrito.service';
 import { ClienteService } from 'src/app/Services/cliente.service';
 import { InventarioGService } from 'src/app/Services/inventario-g.service';
+import { VentaService } from 'src/app/Services/venta.service';
+import { ModalConfirmarCompraComponent } from '../../Modal/modal-confirmar-compra/modal-confirmar-compra.component';
+import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 import { ModalInteraccionComponent } from '../../Modal/modal-interaccion/modal-interaccion.component';
 
 @Component({
@@ -31,7 +36,7 @@ export class CarritoComponent implements OnInit, OnChanges {
   devolver = new EventEmitter<any>();
 
  
-  constructor(private clienteService:ClienteService, private carritoService:CarritoService, private inventarioService:InventarioGService,public dialog: MatDialog) {
+  constructor(private clienteService:ClienteService, private carritoService:CarritoService, private inventarioService:InventarioGService,public dialog: MatDialog, private ventaService:VentaService) {
 
   }
   ngOnChanges(): void {
@@ -50,9 +55,9 @@ export class CarritoComponent implements OnInit, OnChanges {
     this.modal = false;
   }
 
-  abrirModal(){
+  /* abrirModal(){
     this.modal = true;
-  }
+  } */
 
   cantidadProductos(){
     return this.carrito.itemCarrito.length;
@@ -127,6 +132,74 @@ export class CarritoComponent implements OnInit, OnChanges {
         console.log("en else");
         
       }
+    });
+  }
+
+  abrirModal(){
+    let venta: VentaModel = new VentaModel();
+    
+    console.log(this.carrito);
+    let cantidad = 0; 
+    this.carrito.itemCarrito.map(item=>{
+      let ventas: Item_ventaModel = new Item_ventaModel();
+      cantidad += item.cantidadProducto;
+      ventas.cantidadProducto = item.cantidadProducto;
+      ventas.codigoProducto = item.codigoProducto;
+      ventas.precioVentaDetalle = item.precioItem;
+      venta.ventas.push(ventas);
+    });
+    
+    venta.correoCliente = this.clienteInp;
+    venta.precioVenta = this.carrito.precioCarrito;
+    venta.cantidadVenta = cantidad;
+
+    this.openDialog(venta);
+  }
+
+  openDialog( venta: VentaModel): void {
+    let ventaInterna: VentaModel; 
+    const dialogRef = this.dialog.open(ModalConfirmarCompraComponent, {
+      width: '700px',
+      data: venta,
+    });
+    dialogRef.afterClosed().subscribe( (result:any)=>{
+      if(result==false){
+        console.log("cancelo");
+      }else{
+        ventaInterna = result;
+      }
+
+      if(ventaInterna!=null){
+        this.ventaService.addVenta(ventaInterna).subscribe(venta =>{
+
+          this.openDialogConfirmacion("Exito!!!","Se ha realizado la compra satisfactoriamente!")
+          for(let i = this.carrito.itemCarrito.length; i>0;i--){
+            this.carrito.itemCarrito.pop()
+          }
+          this.carritoService.actualizarCarrito(this.carrito).subscribe();
+          let list:Object={
+            objeto:this.carrito,
+            variable:true
+          }
+      
+          
+          this.devolver.emit(list);
+        },err => {
+          console.log(err);
+          if(err.error.mensaje=="cantidad insuficiente"){
+            this.openDialogConfirmacion("Advertencia!!",`${err.error.mensaje}`)
+          }else{
+            this.openDialogConfirmacion("Error","Ha ocurrido un problema")
+          }
+            });
+      }
+    });
+  }
+
+  openDialogConfirmacion(titleNew: string, mensajeNew: string): void {
+    const dialogRef = this.dialog.open(ModalErrorComponent, {
+      width: '300px',
+      data: {title: titleNew, mensaje: mensajeNew},
     });
   }
 
