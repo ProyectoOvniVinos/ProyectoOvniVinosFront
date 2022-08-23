@@ -47,7 +47,7 @@
                             <td (click)="abrirModal(producto.fotoProducto)">
                                 <img class="imagen" src="{{producto.fotoProducto}}" alt="{{producto.fotoProducto}}">
                             </td>
-                            <td (click)="abrirModalTwo(producto)">{{producto.nombreProducto}}</td>
+                            <td (click)="abrirModalTwo(producto)">{{producto.nombreProducto | slice:0:25 }}</td>
                             <td (click)="abrirModalTwo(producto)">{{producto.precioProducto}}</td>
                             <td (click)="abrirModalTwo(producto)">{{producto.precioProductoProveedor}}</td>
                             <td (click)="abrirModalTwo(producto)"> {{producto.descripcionProducto | slice:0:25 }} ...</td>

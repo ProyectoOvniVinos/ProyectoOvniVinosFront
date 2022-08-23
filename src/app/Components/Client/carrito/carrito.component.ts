@@ -15,6 +15,7 @@ import { VentaService } from 'src/app/Services/venta.service';
 import { ModalConfirmarCompraComponent } from '../../Modal/modal-confirmar-compra/modal-confirmar-compra.component';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 import { ModalInteraccionComponent } from '../../Modal/modal-interaccion/modal-interaccion.component';
+import { ModalProductosComponent } from '../../Modal/modal-productos/modal-productos.component';
 
 
 @Component({
@@ -51,13 +52,12 @@ export class CarritoComponent implements OnInit, OnChanges {
   ngOnChanges(): void {
     this.carrito =this.clienteInp.carrito
     this.clienteService.getByEmail(this.clienteInp.correoCliente).subscribe((resp:ClienteModel)=>{
-      console.log(resp);
-      
+
       this.carrito = resp.carrito;
       this.carrito.itemCarrito.forEach(item => {
         
-        this.valorTotal+=(item.precioItem*item.cantidadProducto);
-        this.cantidadTotal+=(item.cantidadProducto);
+        this.valorTotal= this.carrito.precioCarrito;
+        this.cantidadTotal+= item.cantidadProducto;
 
       });
 
@@ -65,21 +65,60 @@ export class CarritoComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
+    console.log(this.carrito);
+    
+  }
+
+  calcularTotal(){
+   let valores:number=0;
+    this.carrito.itemCarrito.forEach(res=>{
+      valores = valores + (res.cantidadProducto*res.precioItem)
+    })
+    this.valorTotal=valores;
   }
 
   cerrarModal(){
-    this.modal = false;
+    this.modal=false
   }
 
-  /* abrirModal(){
-    this.modal = true;
-  } */
+  abrirModalProducto(item:ItemCarritoModel){
+
+    this.inventarioService.getInventarioGeneralByProducto(item.codigoProducto.codigoProducto).subscribe((inventario:Inventario_generalModel)=>{
+      inventario.cantidadProducto=0;
+      this.openDialogtwo(inventario)
+      
+    });
+  }
+
+  openDialogtwo(inventario: Inventario_generalModel): void {
+    const pageWidth  = document.documentElement.scrollWidth;
+    let width='50%'
+    if(pageWidth<=1400){
+        width='70%'
+    }
+    const dialogRef = this.dialog.open(ModalProductosComponent, {
+      width: width,
+      data: inventario
+    });
+    dialogRef.afterClosed().subscribe( (result:boolean) => {
+      if(result==true){
+/*         this.agregar(inventario.codigoProducto); */
+        
+      }else{
+        console.log("en else");
+        
+      }
+    });
+  }
 
   cantidadProductos(){
     return this.carrito.itemCarrito.length;
   }
 
-  eliminarItem(item:ItemCarritoModel){
+  eliminarItem(event, item:ItemCarritoModel){
+    if(event!=""){
+      event.stopPropagation();
+    }
 
     this.carrito.itemCarrito = this.carrito.itemCarrito.filter((res) => res !== item)
     this.carritoService.actualizarCarrito(this.carrito).subscribe(resp=>{
@@ -91,35 +130,35 @@ export class CarritoComponent implements OnInit, OnChanges {
       objeto:this.carrito,
       variable:true
     }
+    console.log(item.precioItem+"cantidad: "+item.cantidadProducto);
 
-    this.valorTotal-=(item.precioItem*item.cantidadProducto)
+   
+    this.valorTotal-=item.precioItem;
     this.cantidadTotal-=item.cantidadProducto;
     this.devolver.emit(list);
   }
-  aumentarCantidad(item:ItemCarritoModel){
-    
+  aumentarCantidad(event, item:ItemCarritoModel){
+    event.stopPropagation();
     this.inventarioService.getInventarioGeneralByProducto(item.codigoProducto.codigoProducto).subscribe((resp:Inventario_generalModel)=>{
       this.cantidadP = resp.cantidadProducto
       if(this.cantidadP>item.cantidadProducto){
         item.cantidadProducto += 1
         this.advertirCantidad = false;
-        console.log(this.cantidadP + "disponible");
-        console.log(item.cantidadProducto + "solicitada");
-
+        
         this.carritoService.actualizarCarrito(this.carrito).subscribe(resp=>{
-          console.log(resp);
-
+          this.cantidadTotal=this.cantidadTotal + 1;
+          this.valorTotal=resp.carrito.precioCarrito;
         });
+
       }else{
-        console.log(this.cantidadP + "disponible");
-        console.log(item.cantidadProducto + "solicitada");
-        console.log("BBBBBBBBBBBBBBBBBB");
+
         this.advertirCantidad = true;
 
       }
     })
   }
-  disminuirCantidad(item:ItemCarritoModel){
+  disminuirCantidad(event, item:ItemCarritoModel){
+    event.stopPropagation();
     if(item.cantidadProducto==1){
       this.openDialogInteraction("Advertencia",`Eliminara el producto de su carrito. ¿Desea eliminarlo?`, item);
     }else{
@@ -127,7 +166,8 @@ export class CarritoComponent implements OnInit, OnChanges {
       item.cantidadProducto-=1;
 
       this.carritoService.actualizarCarrito(this.carrito).subscribe(resp=>{
-        console.log(resp);
+        this.cantidadTotal=this.cantidadTotal - 1;
+        this.valorTotal=resp.carrito.precioCarrito;
 
       });
     }
@@ -201,7 +241,7 @@ export class CarritoComponent implements OnInit, OnChanges {
     dialogRef.afterClosed().subscribe( (result:boolean) => {
       console.log(`Dialog result: ${result}`); // Pizza!
       if(result==true){
-        this.eliminarItem(item);
+        this.eliminarItem("",item);
       }else{
         console.log("en else");
 
