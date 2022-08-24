@@ -1,5 +1,5 @@
 <div class="headTitle">
-    <h2 class="tituloModal" mat-dialog-title>{{inventario.codigoProducto.nombreProducto}}</h2>
+    <h2 [ngClass]="{'cuadrarH2': bandera!=true}" class="tituloModal" mat-dialog-title>{{inventario.codigoProducto.nombreProducto}}</h2>
     <div class="equis">
     <img src="../../../../assets/Images/salir.png" alt="" class="imageCerrar" (click)="onNoClick()">
     </div>  
@@ -8,8 +8,12 @@
 <mat-dialog-content class="cuadroProducto">
     
     <div class="cajaM">
-        <div class="cajaImg">
-            <img class="img" src="{{inventario.codigoProducto.fotoProducto}}" alt="">
+        <div class="cajaImg"[ngClass]="{'cuadrarCardImg': bandera!=true}">
+
+            <div class="img" >
+                <img class="imgReco" src="{{inventario.codigoProducto.fotoProducto}}" alt="">
+            </div>
+
 <!--             <div class="cajaRecomendaciones">
                 <div class="cajaImgRe">
                     <img class="imgRecomendacion" src="{{productoRecomendado.fotoProducto}}"/>
@@ -22,23 +26,17 @@
                     <!-- </div> -->
 <!--                 </div>
             </div> -->
-            <div class="swiper">
-                <div class="swiper-wrapper" data-bs-interval="3000">
-                    <div class="swiper-slide cont-produc" data-swiper-autoplay="3000" *ngFor="let producto of productos">
-                        <div class="cajaInfoReco" >
-                            <div class="cajaImgS">
-                                <img src={{producto.fotoProducto}} alt="">
-                            </div>
-                            <div class="cajaInfoS">
-                                <p class="text-center">{{producto.nombreProducto}}</p>
-                                <p class="text-center">{{producto.precioProducto}} </p> 
-                                <div class="cajaBtns"> 
-                                    <button class="btn">Ver</button>
-                                </div> 
-                            </div>
 
-                        </div>
-                    </div>
+            <div *ngIf="bandera" class="cajaInfoReco" >
+                <div class="cajaImgS">
+                    <img class="imgProductoRecomendado" src={{productoRecomendado.fotoProducto}} alt="">
+                </div>
+                <div class="cajaInfoS">
+                    <p class="text-center">{{productoRecomendado.nombreProducto}}</p>
+                    <p class="text-center">{{productoRecomendado.precioProducto}} </p> 
+                    <div class="cajaBtns"> 
+                        <button (click)="dialogo(productoRecomendado)" class="btn">Ver</button>
+                    </div> 
                 </div>
             </div>
         </div>
@@ -55,7 +53,7 @@
             </div>
             <div class="card-footer">
                 <mat-dialog-actions class="cajaBtns">
-                    <button class="btnOk" mat-button [mat-dialog-close]="true">Agregar al carrito</button>
+                    <button *ngIf="bandera" class="btnOk" mat-button [mat-dialog-close]="true">Agregar al carrito</button>
                 </mat-dialog-actions>
             </div>
           </div>
