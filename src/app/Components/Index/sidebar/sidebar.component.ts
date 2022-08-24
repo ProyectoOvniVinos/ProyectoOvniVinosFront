@@ -24,7 +24,7 @@ export class SidebarComponent implements OnInit {
   }
 
   getRuta() {
-    
+
 
     if (this.router.url == "/catalogo") {
       return true;
