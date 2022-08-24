@@ -18,8 +18,7 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
 
   @Input() inventarios!: Inventario_generalModel[];
 
-  @Output()
-  devolver = new EventEmitter<any>();
+  @Output() devolver = new EventEmitter<any>();
   public swiper!: Swiper;
 
   public cliente:ClienteModel = new ClienteModel();
