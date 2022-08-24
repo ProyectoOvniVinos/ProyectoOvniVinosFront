@@ -133,7 +133,7 @@ export class CarritoComponent implements OnInit, OnChanges {
     console.log(item.precioItem+"cantidad: "+item.cantidadProducto);
 
    
-    this.valorTotal-=item.precioItem;
+    this.valorTotal-=(item.codigoProducto.precioProducto*item.cantidadProducto);
     this.cantidadTotal-=item.cantidadProducto;
     this.devolver.emit(list);
   }

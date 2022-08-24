@@ -48,7 +48,7 @@
                             </div>
                             <div class="cajaInfo">
                                 <p>{{item.codigoProducto.nombreProducto | slice:0:16 }}...</p>
-                                <p>{{item.codigoProducto.precioProducto | currency : 'USD' : 'symbol' : '1.0-0'}}</p>
+                                <p>{{item.codigoProducto.precioProducto | currency : '$' : 'symbol' : '1.0-0'}}</p>
                                 <p>{{item.cantidadProducto}} <span *ngIf="advertirCantidad" class="advertirCanti">Es la cantidad  maxima</span></p>
                             </div>
                             <div class="cajaBtns">
