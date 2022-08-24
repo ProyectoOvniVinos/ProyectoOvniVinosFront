@@ -38,7 +38,6 @@ export class ProductoService {
       })
     );
   }
-
   createProduct(producto: ProductoModel): Observable<any>{
     const url: string = `${this.url}producto`
     return this.http.post<any>(url, producto, {headers: this.httpHeaders}).pipe(

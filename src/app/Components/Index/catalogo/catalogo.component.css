@@ -9,6 +9,19 @@
     transition: all 0.3s; */
     animation:animacionTwo 0.5s;
 }
+.cajaMensajeError{
+    margin: auto;
+    width: 60%;
+    border: 2px solid rgba(167,31,73,1);
+    color: rgba(167,31,73,1);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-left: 10%;
+    margin-right: 10%;
+    box-shadow:  11px 11px 8px #9b9b9b,
+    -11px -11px 8px #ffffff;
+}
 .container-c{
     width:70%;
     height:70vh;
@@ -41,6 +54,9 @@
     width: 100%;
     height: auto;
     margin-bottom: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .buscador{
