@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -52,7 +52,15 @@ import { ModalVentaComponent } from './Components/Modal/modal-venta/modal-venta.
 import { HeaderComponent } from './Components/Index/header/header.component';
 import { ModalDetallesCompraComponent } from './Components/Modal/modal-detalles-compra/modal-detalles-compra.component';
 import { ModalImagenComponent } from './Components/Modal/modal-imagen/modal-imagen.component';
+import { ModalProductosAdminComponent } from './Components/Modal/modal-productos-admin/modal-productos-admin.component';
+import { ModalLoadingComponent } from './Components/Modal/modal-loading/modal-loading.component';
+import { ModalDetallesVentaComponent } from './Components/Modal/modal-detalles-venta/modal-detalles-venta.component';
+import { registerLocaleData } from '@angular/common';
+import localeEs from '@angular/common/locales/es';
+import { AdministradoresComponent } from './Components/Admin/administradores/administradores.component';
+import { RegistrarAdminComponent } from './Components/Admin/registrar-admin/registrar-admin.component';
  
+registerLocaleData(localeEs, 'es');
 @NgModule({
   declarations: [
     AppComponent,
@@ -90,7 +98,15 @@ import { ModalImagenComponent } from './Components/Modal/modal-imagen/modal-imag
     ModalVentaComponent,
     HeaderComponent,
     ModalDetallesCompraComponent,
-    ModalImagenComponent
+    ModalImagenComponent,
+    ModalProductosAdminComponent,
+    ModalLoadingComponent,
+    ModalDetallesVentaComponent,
+    AdministradoresComponent,
+    ModalDetallesVentaComponent,
+    RegistrarAdminComponent
+
+
 
 
   ],
@@ -109,7 +125,7 @@ import { ModalImagenComponent } from './Components/Modal/modal-imagen/modal-imag
     MatDialogModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{provide: LOCALE_ID, useValue: 'es'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

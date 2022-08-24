@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { ProductoModel } from 'src/app/Models/Producto.model';
 import { ProductoService } from 'src/app/Services/producto.service';
 import { ModalImagenComponent } from '../../Modal/modal-imagen/modal-imagen.component';
+import { ModalLoadingComponent } from '../../Modal/modal-loading/modal-loading.component';
+import { ModalProductosAdminComponent } from '../../Modal/modal-productos-admin/modal-productos-admin.component';
 
 @Component({
   selector: 'app-productos',
@@ -26,8 +28,6 @@ export class ProductosComponent implements OnInit {
 
   ngOnInit(): void {
     this.obtenerProductos();
-
-
   }
 
   openDialog(img:string): void {
@@ -37,10 +37,27 @@ export class ProductosComponent implements OnInit {
     });
   }
 
+  openDialogTwo(producto: ProductoModel): void {
+    const dialogRef = this.dialog.open(ModalProductosAdminComponent, {
+      width: '50%',
+      data: producto ,
+    });
+  }
+
+  openDialogLoading(){
+    const dialogRef = this.dialog.open(ModalLoadingComponent, {
+      width: '130px'
+    });
+  }
+
+  closeDialogLoading(){
+    const dialogRef = this.dialog.closeAll();
+  }
+
   obtenerProductos(){
+
     this.service.getProducts().subscribe( productos => {
       this.productos=productos;
-      console.log(this.productos);
       
       if(this.productos.length==0){
         this.bandera=false;
@@ -55,11 +72,12 @@ export class ProductosComponent implements OnInit {
           // A y B son iguales
           else 
               return 0;
-      });
-        
+        });
         this.bandera=true;
       }
       
+    }, err => {
+
     });
   }
 
@@ -69,9 +87,11 @@ export class ProductosComponent implements OnInit {
 
   abrirModal(imgModal:string){
     
-    console.log(imgModal);
-    
     this.openDialog(imgModal);
+  }
+
+  abrirModalTwo(producto: ProductoModel){
+    this.openDialogTwo(producto);
   }
 
   irAgregarProducto(){

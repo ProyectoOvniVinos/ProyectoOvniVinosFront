@@ -238,6 +238,29 @@ input[type=number]::-webkit-outer-spin-button{
     overflow: auto;
 }
 
+.spinner {
+    border: 6px solid rgb(184, 13, 72);
+    border-left-color: transparent;
+    width: 5rem;
+    height: 5rem;  
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    position: absolute;
+    left: 46%;
+    top: 45%;
+    top: center;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
 .btnSubir{
     width: 10%;
     background: rgb(167,31,73);

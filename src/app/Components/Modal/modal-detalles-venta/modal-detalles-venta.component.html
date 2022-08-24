@@ -1,0 +1,29 @@
+<div class="boxOfTable todo">
+  <div class="tamano">
+    <p>Correo Cliente: {{venta.correoCliente.correoCliente}}</p>
+    <p>Nombre Cliente: {{venta.correoCliente.nombreCliente}} {{venta.correoCliente.apellidoCliente}}</p>
+    <hr>
+    <div class="organizar">
+      <p>Cantidad total: {{venta.cantidadVenta}}</p>
+      <p>Precio total: {{venta.precioVenta}}</p>
+    </div>
+  </div>
+  <table class="tabla2">
+    <thead class="tablaHeaderP">
+        <tr>
+            <th class="primero">#</th>
+            <th>Nombre</th>
+            <th>Cantidad</th>
+            <th class="ultimo">Precio</th>
+        </tr>
+    </thead>
+    <tbody class="tablabodyP">
+      <tr *ngFor="let detalle of venta.ventas;let indice=index">
+        <td >{{indice+1}} </td>
+        <td >{{detalle.codigoProducto.nombreProducto}}</td>
+        <td >{{detalle.cantidadProducto}}</td>
+        <td >{{detalle.precioVentaDetalle}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

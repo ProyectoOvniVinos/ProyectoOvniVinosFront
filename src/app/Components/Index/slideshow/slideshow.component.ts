@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
 import { ClienteModel } from 'src/app/Models/Cliente.model';
@@ -18,6 +18,8 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
 
   @Input() inventarios!: Inventario_generalModel[];
 
+  @Output()
+  devolver = new EventEmitter<any>();
   public swiper!: Swiper;
 
   public cliente:ClienteModel = new ClienteModel();
@@ -43,6 +45,16 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
       width: '50%',
       data: inventario,
     });
+    dialogRef.afterClosed().subscribe( (result:boolean) => {
+      console.log(`Dialog result: ${result}`); // Pizza!
+      if(result==true){
+        this.agregar(inventario.codigoProducto);
+        
+      }else{
+        console.log("en else");
+        
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -57,27 +69,77 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
   }
   actualizarCarrito(event, producto: ProductoModel){
     event.stopPropagation();
-    
-    let item = new ItemCarritoModel();
-    item.codigoProducto = producto;
-    item.cantidadProducto = 1;
-    item.precioItem = producto.precioProducto;
-    console.log(this.cliente.carrito);
-    
     this.clienteService.getByEmail("c@gmail.com").subscribe((resp:ClienteModel)=>{
-      let newItem = new ItemCarritoModel();
-      newItem.cantidadProducto = 1;
-      newItem.codigoProducto = producto
-      newItem.precioItem = producto.precioProducto
-
-      resp.carrito.itemCarrito.push(newItem);
+      let flag = false;
+      resp.carrito.itemCarrito.forEach(item=>{
+        if(item.codigoProducto.codigoProducto == producto.codigoProducto){
+          item.cantidadProducto = item.cantidadProducto+1;
+          flag=true;
+          
+        }
+      })
+      if(flag==false){
+        let newItem = new ItemCarritoModel();
+        newItem.cantidadProducto = 1;
+        newItem.codigoProducto = producto
+        newItem.precioItem = producto.precioProducto
+  
+        resp.carrito.itemCarrito.push(newItem);
+      }
+      console.log(flag);
+      
+      
       this.carritoService.actualizarCarrito(resp.carrito).subscribe(resp=>{
-        console.log(resp);
+        this.cliente.carrito = resp.carrito;
+        let list:Object={
+          objeto:resp.carrito,
+          variable:false
+        }
+        this.devolver.emit(list)
         
       })
       
       
     })
+        
+    
+  }
+  agregar( producto: ProductoModel){
+    event.stopPropagation();
+    this.clienteService.getByEmail("c@gmail.com").subscribe((resp:ClienteModel)=>{
+      let flag = false;
+      resp.carrito.itemCarrito.forEach(item=>{
+        if(item.codigoProducto.codigoProducto == producto.codigoProducto){
+          item.cantidadProducto = item.cantidadProducto+1;
+          flag=true;
+          
+        }
+      })
+      if(flag==false){
+        let newItem = new ItemCarritoModel();
+        newItem.cantidadProducto = 1;
+        newItem.codigoProducto = producto
+        newItem.precioItem = producto.precioProducto
+  
+        resp.carrito.itemCarrito.push(newItem);
+      }
+      console.log(flag);
+      
+      
+      this.carritoService.actualizarCarrito(resp.carrito).subscribe(resp=>{
+        this.cliente.carrito = resp.carrito;
+        let list:Object={
+          objeto:resp.carrito,
+          variable:false
+        }
+    
+        this.devolver.emit(list)
+        
+      })
+      
+      
+    })
+        
     
   }
 }

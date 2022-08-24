@@ -1,9 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
 import { ClienteModel } from 'src/app/Models/Cliente.model';
+import { VentaModel } from 'src/app/Models/Venta.model';
 import { ClienteService } from 'src/app/Services/cliente.service';
+import { ModalDetallesVentaComponent } from '../../Modal/modal-detalles-venta/modal-detalles-venta.component';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 
 
@@ -18,7 +21,7 @@ export class RegistroComponent implements OnInit {
   banderaTerminos: boolean = false;
   registroForm !: FormGroup;
 
-  constructor(private fb: FormBuilder, public dialog: MatDialog, public clienteService:ClienteService) {
+  constructor(private fb: FormBuilder, public dialog: MatDialog, public clienteService:ClienteService,private router: Router) {
     this.crearFormulario();
     this.crearListeners();
 
@@ -224,6 +227,7 @@ export class RegistroComponent implements OnInit {
     })
   }
 
+  
   verificar() {
     console.log("ASDASD");
     
@@ -265,8 +269,10 @@ export class RegistroComponent implements OnInit {
 
     this.clienteService.registro(cliente).subscribe(res=>{
       console.log(res);
-      
+      this.openDialog("Felicitaciones", "Se ha registrado satisfactoriamente.")
+      this.router.navigate(['/catalogo']);
     });
   }
+  
 
 }

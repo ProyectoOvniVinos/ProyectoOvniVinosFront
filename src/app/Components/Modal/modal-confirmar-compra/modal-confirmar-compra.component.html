@@ -1,1 +1,32 @@
-<p>modal-confirmar-compra works!</p>
+<div class="scrol">
+    <li class="contenedor" *ngFor="let item of venta.ventas;let indice = index">
+        <div class="lista">
+            <img class="imagen" src={{item.codigoProducto.fotoProducto}} alt="">
+            <div class="item">
+                <p>producto:</p>
+                <p>{{item.codigoProducto.nombreProducto}}</p>
+            </div>
+            <div class="item">
+                <p>cantidad:</p>
+                <p>{{item.cantidadProducto}}</p>
+            </div>
+            <div class="item">
+                <p>precio:</p>
+                <p>{{item.precioVentaDetalle}}</p>
+            </div>
+        </div>
+        <hr *ngIf="indice != venta.ventas.length-1" class="completo">
+    </li>
+</div>
+<div class="contenedorP">
+    <hr>
+    <div class="general">
+        <p>total: {{venta.precioVenta}}</p>
+        <p>cantidad: {{venta.cantidadVenta}}</p>
+    </div>
+</div>
+
+<div class="botones">
+    <button class="btnOk" [mat-dialog-close]="venta">confirmar compra</button>
+    <button class="btnOk" [mat-dialog-close]="false">cancelar</button>
+</div>

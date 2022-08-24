@@ -9,6 +9,7 @@ import { ClienteModel } from 'src/app/Models/Cliente.model';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 import { VentaService } from 'src/app/Services/venta.service';
+import { ModalLoadingComponent } from '../../Modal/modal-loading/modal-loading.component';
 
 @Component({
   selector: 'app-ingresar-venta',
@@ -20,13 +21,14 @@ export class IngresarVentaComponent implements OnInit {
   venta = new VentaModel();
   total: number=0;
 
+
   productos: ProductoModel[];
 
   banderaProducto: boolean = false;
   banderaCantidad: boolean = false;
   banderaPrecio: boolean = false;
   ventaForm !: FormGroup;
-  bandera !: boolean;
+  bandera : Boolean;
 
   cliente:ClienteModel;
 
@@ -37,6 +39,7 @@ export class IngresarVentaComponent implements OnInit {
   ngOnInit(): void {
 
     this.serviceProducto.getProducts().subscribe((productos: any) => {
+      this.bandera=true;
       this.productos=productos;
       console.log(productos);
       
@@ -53,6 +56,16 @@ export class IngresarVentaComponent implements OnInit {
       width: '300px',
       data: {title: titleNew, mensaje: mensajeNew},
     });
+  }
+
+  openDialogLoading(){
+    const dialogRef = this.dialog.open(ModalLoadingComponent, {
+      width: '130px'
+    });
+  }
+
+  closeDialogLoading(){
+    const dialogRef = this.dialog.closeAll();
   }
 
   get productoNoValido() {
@@ -188,6 +201,7 @@ export class IngresarVentaComponent implements OnInit {
   }
 
   realizarVenta(){
+    this.openDialogLoading();
     this.venta.precioVenta=this.total;
     this.venta.cantidadVenta = this.obtenerCantidadTotal()
     
@@ -204,14 +218,18 @@ export class IngresarVentaComponent implements OnInit {
     
 
     this.serviceVenta.addVenta(this.venta).subscribe(e=>{
-      this.openDialog("Exito!!!","Se ha agregado la compra satisfactoriamente!")
+      this.closeDialogLoading();
+      this.openDialog("¡¡ÉXITO!!!","La venta se ha guardado satisfactoriamente. ")
       this.vaciar()
 
     },err => {
-      this.openDialog("Error","Ha ocurrido un problema")
+      this.closeDialogLoading();
+      this.openDialog("ERROR","Lo sentimos, no se pudo guardar la venta. Inténtalo de nuevo. ")
+      this.vaciar()
 
-      
     })
+
+    
     
   }
   obtenerCantidadTotal(){
@@ -228,3 +246,4 @@ export class IngresarVentaComponent implements OnInit {
     this.total=0;
   }
 }
+

@@ -23,14 +23,14 @@
   </div>
 
 
-<div class="cajaPCarrito fadeIn">
+<div class="cajaPCarrito fadeIn" [ngClass]="{'sinAnimacion': variable==false}">
     <div class="cajaMCarrito" >
 
         <h2 class="hCarrito text-light text-center">Mi Carrito</h2>
         <cdk-virtual-scroll-viewport itemSize="50" class="viewport">
             <div *ngIf="carrito">
 
-                <div class="padreCarrito"  *ngFor="let item of carrito.itemCarrito" >
+                <div class="padreCarrito"  *ngFor="let item of carrito.itemCarrito;let indice = index" >
     
                     <div class="madreCarrito" >
                         <div class="caja1">
@@ -49,11 +49,11 @@
                             <div class="cajaInfo">
                                 <p>{{item.codigoProducto.nombreProducto}}</p>
                                 <p>{{item.precioItem | currency : 'USD' : 'symbol' : '1.0-0'}}</p>
-                                <p>{{item.cantidadProducto}}</p>
+                                <p>{{item.cantidadProducto}} <span *ngIf="advertirCantidad && item.codigoProducto.codigoProducto == itemClick" class="advertirCanti">Es la cantidad  maxima</span></p>
                             </div>
                             <div class="cajaBtns">
-                                <button class="button btnMenos">-</button>
-                                <button class="button btnMas">+</button>
+                                <button class="button btnMenos"(click)="disminuirCantidad(item)">-</button>
+                                <button class="button btnMas"(click)="aumentarCantidad(item)">+</button>
                             </div>
                         </div>
                     </div>
@@ -67,7 +67,14 @@
         </cdk-virtual-scroll-viewport>
 
     </div>
-    <div class="CajaComprar">
-        <Button class="btnComprar" (click)="abrirModal()">Comprar</Button>
+    <div class="cajaComprar">
+        <div class="cajaInfoTotal">
+            <p>Productos en Total: {{cantidadTotal}} </p>
+            <p>Valor Total: {{valorTotal}} </p>
+        </div>
+        <div class="cajaBtnComprar">
+            <Button class="btnComprar" (click)="abrirModal()">Comprar</Button>
+        </div>
+
     </div>
 </div>
