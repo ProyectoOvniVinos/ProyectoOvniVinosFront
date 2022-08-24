@@ -15,7 +15,6 @@ export class ClienteService {
   registro(cliente:ClienteModel): Observable<any>{
     console.log(cliente);
     
-    console.log("ZZZZZZZZZZZZZZ");
     return this.http.post<any>(`${this.url}registro`, cliente, {headers: this.httpHeaders})
     .pipe(
       catchError(e => {
@@ -33,5 +32,21 @@ export class ClienteService {
   }
   getByEmail(email:String){
     return this.http.get<any>(`${this.url}cliente/${email}`);
+  }
+
+  recuperarPassword(url:String,correoEncrypt:string){
+    let data:any={
+      url:url,
+      correoEncrypt:correoEncrypt,
+      correo:this.desencriptar(correoEncrypt)
+    }
+    return this.http.post<any>(`${this.url}recuperar`, data, {headers: this.httpHeaders})
+  }
+  desencriptar(correo:string){
+    let desencriptado = atob(correo)
+    return desencriptado;
+  }
+  actualizar(cliente:ClienteModel){
+    return this.http.put<any>(`${this.url}cliente/${cliente.correoCliente}`,cliente,{headers: this.httpHeaders})
   }
 }

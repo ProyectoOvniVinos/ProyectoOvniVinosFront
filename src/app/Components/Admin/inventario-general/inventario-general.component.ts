@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { Inventario_generalModel } from 'src/app/Models/Inventario_general.model';
 import { ProductoModel } from '../../../Models/Producto.model';
 import { InventarioGService } from '../../../Services/inventario-g.service';
@@ -23,7 +24,7 @@ export class InventarioGeneralComponent implements OnInit {
     fotoProducto : "../../../../assets/TEMPORALES/vino1.jpg",
     estado : "1"
   }
-  constructor(public dialog:MatDialog, private inventarioService: InventarioGService) { }
+  constructor(public dialog:MatDialog, private inventarioService: InventarioGService, private router:Router) { }
 
   ngOnInit(): void {
     this.inventarioService.getInventarioGeneralCompleto().subscribe(inventarioGeneral=>{
@@ -37,6 +38,15 @@ export class InventarioGeneralComponent implements OnInit {
       width: '50%',
       data: inventario,
     });
+    dialogRef.afterClosed().subscribe( (result:any)=>{
+      if(result==false){
+        console.log("cancelo");
+      }else{
+        this.router.navigate([`/ingresarCompra/${inventario.codigoProducto.codigoProducto}`])
+        console.log("Acepto");
+        
+      }
+    })
   }
 
 }
