@@ -30,7 +30,7 @@
         <cdk-virtual-scroll-viewport itemSize="50" class="viewport">
             <div *ngIf="carrito">
 
-                <div class="padreCarrito"  (click)="abrirModalProducto(item)" *ngFor="let item of carrito.itemCarrito" >
+                <div class="padreCarrito"  (click)="abrirModalProducto(item)" *ngFor="let item of carrito.itemCarrito;let indice = index" >
     
                     <div class="madreCarrito" >
                         <div class="caja1">
@@ -49,7 +49,7 @@
                             <div class="cajaInfo">
                                 <p>{{item.codigoProducto.nombreProducto | slice:0:16 }}...</p>
                                 <p>{{item.codigoProducto.precioProducto | currency : '$' : 'symbol' : '1.0-0'}}</p>
-                                <p>{{item.cantidadProducto}} <span *ngIf="advertirCantidad" class="advertirCanti">Es la cantidad  maxima</span></p>
+                                <p>{{item.cantidadProducto}} <span *ngIf="advertirCantidad && item.codigoProducto.codigoProducto == itemClick" class="advertirCanti">Es la cantidad  maxima</span></p>
                             </div>
                             <div class="cajaBtns">
                                 <button class="button btnMenos"(click)="disminuirCantidad($event, item)">-</button>

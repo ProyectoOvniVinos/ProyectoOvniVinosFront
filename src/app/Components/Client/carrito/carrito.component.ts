@@ -32,6 +32,7 @@ export class CarritoComponent implements OnInit, OnChanges {
   cantidadP:number = 0;
   valorTotal:number=0;
   cantidadTotal:number=0;
+  itemClick:number;
 
   @Input() modal:boolean = false;
 
@@ -52,7 +53,6 @@ export class CarritoComponent implements OnInit, OnChanges {
   ngOnChanges(): void {
     this.carrito =this.clienteInp.carrito
     this.clienteService.getByEmail(this.clienteInp.correoCliente).subscribe((resp:ClienteModel)=>{
-
       this.carrito = resp.carrito;
       this.carrito.itemCarrito.forEach(item => {
         
@@ -120,9 +120,9 @@ export class CarritoComponent implements OnInit, OnChanges {
       event.stopPropagation();
     }
 
+    this.itemClick=item.codigoProducto.codigoProducto
     this.carrito.itemCarrito = this.carrito.itemCarrito.filter((res) => res !== item)
     this.carritoService.actualizarCarrito(this.carrito).subscribe(resp=>{
-      console.log(resp);
       
     });
 
@@ -132,13 +132,13 @@ export class CarritoComponent implements OnInit, OnChanges {
     }
     console.log(item.precioItem+"cantidad: "+item.cantidadProducto);
 
-   
     this.valorTotal-=(item.codigoProducto.precioProducto*item.cantidadProducto);
     this.cantidadTotal-=item.cantidadProducto;
     this.devolver.emit(list);
   }
   aumentarCantidad(event, item:ItemCarritoModel){
     event.stopPropagation();
+    this.itemClick=item.codigoProducto.codigoProducto
     this.inventarioService.getInventarioGeneralByProducto(item.codigoProducto.codigoProducto).subscribe((resp:Inventario_generalModel)=>{
       this.cantidadP = resp.cantidadProducto
       if(this.cantidadP>item.cantidadProducto){
@@ -151,7 +151,6 @@ export class CarritoComponent implements OnInit, OnChanges {
         });
 
       }else{
-
         this.advertirCantidad = true;
 
       }
@@ -202,7 +201,6 @@ export class CarritoComponent implements OnInit, OnChanges {
     });
     dialogRef.afterClosed().subscribe( (result:any)=>{
       if(result==false){
-        console.log("cancelo");
       }else{
         ventaInterna = result;
       }
@@ -223,7 +221,6 @@ export class CarritoComponent implements OnInit, OnChanges {
           
           this.devolver.emit(list);
         },err => {
-          console.log(err);
           if(err.error.mensaje=="cantidad insuficiente"){
             this.openDialogConfirmacion("Advertencia!!",`${err.error.mensaje}`)
           }else{
@@ -239,7 +236,6 @@ export class CarritoComponent implements OnInit, OnChanges {
       data: {title: titleNew, mensaje: mensajeNew},
     });
     dialogRef.afterClosed().subscribe( (result:boolean) => {
-      console.log(`Dialog result: ${result}`); // Pizza!
       if(result==true){
         this.eliminarItem("",item);
       }else{

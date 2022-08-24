@@ -1,6 +1,6 @@
 <div class="headTittle">
   <div class="equis"> 
-    <img src="../../../../assets/Images/salir.png" alt="" class="imageCerrar" (click)="onNoClick()">
+    <img src="../../../../assets/Images/salir.png" alt="" class="imageCerrar" mat-button [mat-dialog-close]="false">
   </div>
 </div>
 
@@ -47,7 +47,7 @@
   </div>
 
   <div class="cajaButton" mat-dialog-actions>
-    <button class="btnOk"mat-button (click)="onNoClick()">Agregar</button>
+    <button class="btnOk"mat-button [mat-dialog-close]="true" (click)="onNoClick()">Agregar</button>
   </div>
  
   
