@@ -29,7 +29,7 @@
                         <img (click)="agregar(inventario.codigoProducto)" class="imgCarrito" src="../../../../assets/Images/carritoVioleta.png" alt="">
                     </div>
                     <div class="cardFootert" (click)="openDialog(inventario)">
-                        <p>{{inventario.codigoProducto.nombreProducto}}</p>
+                        <p>{{inventario.codigoProducto.nombreProducto | slice:0:16 }}...</p>
                         <p>${{inventario.codigoProducto.precioProducto}}</p>
 
                     </div>
