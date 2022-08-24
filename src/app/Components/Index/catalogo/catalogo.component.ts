@@ -38,18 +38,9 @@ export class CatalogoComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.obtenerProductos()
-
     
-  }
-  obtenerProductos(){
-    this.productoService.getProductsInventario().subscribe(inventario => {
-      this.banderaErrores=false
-      this.inventarioGeneral = inventario;
-
-    },err => {
-      
-    })
+    this.obtenerProductos();
+    
     this.clienteService.getAll().subscribe((respu:ClienteModel[])=>{
  
       if(respu.length>0){
@@ -61,6 +52,16 @@ export class CatalogoComponent implements OnInit, OnChanges {
       
       
     })
+  }
+
+  obtenerProductos(){
+    this.inventarioGeneral=[]
+    this.productoService.getProductsInventario().subscribe(inventario => {
+      this.inventarioGeneral = inventario;
+    },err => {
+      
+    })
+
   }
 
   buscar(event){
@@ -168,9 +169,14 @@ export class CatalogoComponent implements OnInit, OnChanges {
     },1000)
     this.clienteInp.carrito=mensaje.objeto;
     if(this.validarCarrito && mensaje.variable==false){
-      
+
       this.recargarCarrito();
     }
+
+    if(mensaje.banderaCarrito==true){
+      this.obtenerProductos();
+    }
+
     
   }
   filtro(text:string){
