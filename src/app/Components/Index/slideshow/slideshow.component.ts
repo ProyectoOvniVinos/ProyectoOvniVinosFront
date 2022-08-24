@@ -18,8 +18,7 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
 
   @Input() inventarios!: Inventario_generalModel[];
 
-  @Output()
-  devolver = new EventEmitter<any>();
+  @Output() devolver = new EventEmitter<any>();
   public swiper!: Swiper;
 
   public cliente:ClienteModel = new ClienteModel();
@@ -46,19 +45,16 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
       data: inventario,
     });
     dialogRef.afterClosed().subscribe( (result:boolean) => {
-      console.log(`Dialog result: ${result}`); // Pizza!
       if(result==true){
         this.agregar(inventario.codigoProducto);
         
       }else{
-        console.log("en else");
         
       }
     });
   }
 
   ngOnInit(): void {
-    console.log(this.inventarios);
   }
 
   onSlideNext() {
@@ -86,7 +82,7 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
   
         resp.carrito.itemCarrito.push(newItem);
       }
-      console.log(flag);
+
       
       
       this.carritoService.actualizarCarrito(resp.carrito).subscribe(resp=>{
@@ -123,7 +119,6 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
   
         resp.carrito.itemCarrito.push(newItem);
       }
-      console.log(flag);
       
       
       this.carritoService.actualizarCarrito(resp.carrito).subscribe(resp=>{

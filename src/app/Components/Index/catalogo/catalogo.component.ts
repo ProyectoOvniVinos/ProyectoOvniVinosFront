@@ -9,6 +9,7 @@ import { CarritoService } from 'src/app/Services/carrito.service';
 import { ClienteService } from 'src/app/Services/cliente.service';
 import { ClienteModel } from 'src/app/Models/Cliente.model';
 import { ItemCarritoModel } from 'src/app/Models/itemCarrito.model';
+import { InventarioGService } from 'src/app/Services/inventario-g.service';
 
 @Component({
   selector: 'app-catalogo',
@@ -21,10 +22,15 @@ export class CatalogoComponent implements OnInit, OnChanges {
   validarCarrito = false;
   agrandar = false;
   eliminar=false;
-
+  errores: string[];
+  error:string ;
   clienteInp:ClienteModel;
-
-  constructor(public dialog: MatDialog, private productoService: ProductoService, private carritoService:CarritoService, private clienteService:ClienteService) { }
+  banderaErrores: boolean=false;
+  constructor(public dialog: MatDialog, 
+            private productoService: ProductoService, 
+            private carritoService:CarritoService, 
+            private clienteService:ClienteService,
+            private inventarioService: InventarioGService) { }
   ngOnChanges() {
     this.clienteService.getByEmail("c@gmail.com").subscribe(resp=>{
       this.clienteInp = resp;
@@ -34,6 +40,7 @@ export class CatalogoComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     
     this.obtenerProductos();
+    
     this.clienteService.getAll().subscribe((respu:ClienteModel[])=>{
  
       if(respu.length>0){
@@ -57,8 +64,35 @@ export class CatalogoComponent implements OnInit, OnChanges {
 
   }
 
-  buscar(termino:String){
-    
+  buscar(event){
+    console.log(event.target.value);
+    if(event.target.value==""){
+      this.obtenerProductos()
+      this.banderaErrores=false
+    }{
+
+      let name: string =event.target.value;
+      this.inventarioGeneral=[];
+      this.inventarioService.getInventarioGeneralComPositivoNombre(name).subscribe((resp:any) => {
+        
+        this.inventarioGeneral=resp;
+        console.log(this.inventarioGeneral.length);
+
+
+        if(this.inventarioGeneral.length==0){
+          this.error = "No se encontraron productos por ese nombre"
+          this.banderaErrores=true
+          
+        }else{
+          this.banderaErrores=false
+        }
+  
+      }, err => {
+        this.errores = err.error.mensaje
+        this.banderaErrores=true
+        console.log(this.banderaErrores);
+      })
+    }
     
   }
 

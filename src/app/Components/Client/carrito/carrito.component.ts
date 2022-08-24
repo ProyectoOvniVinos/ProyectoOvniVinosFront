@@ -66,7 +66,6 @@ export class CarritoComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    console.log(this.carrito);
     
   }
 
@@ -106,7 +105,6 @@ export class CarritoComponent implements OnInit, OnChanges {
 /*         this.agregar(inventario.codigoProducto); */
         
       }else{
-        console.log("en else");
         
       }
     });
@@ -132,7 +130,6 @@ export class CarritoComponent implements OnInit, OnChanges {
       variable:true,
       banderaCarrito:this.banderaCarrito
     }
-    console.log(item.precioItem+"cantidad: "+item.cantidadProducto);
 
     this.valorTotal-=(item.codigoProducto.precioProducto*item.cantidadProducto);
     this.cantidadTotal-=item.cantidadProducto;
@@ -175,26 +172,36 @@ export class CarritoComponent implements OnInit, OnChanges {
   }
   
   abrirModal(){
-    let venta: VentaModel = new VentaModel();
+    console.log(this.carrito.itemCarrito.length);
     
-    console.log(this.carrito);
-    let cantidad = 0; 
-    this.carrito.itemCarrito.map(item=>{
-      let ventas: Item_ventaModel = new Item_ventaModel();
-      cantidad += item.cantidadProducto;
-      ventas.cantidadProducto = item.cantidadProducto;
-      ventas.codigoProducto = item.codigoProducto;
-      ventas.precioVentaDetalle = item.precioItem;
-      venta.ventas.push(ventas);
-    });
-    
-    venta.correoCliente = this.clienteInp;
-    venta.precioVenta = this.carrito.precioCarrito;
-    venta.cantidadVenta = cantidad;
+    if(this.carrito.itemCarrito.length==0){
+      this.openDialog2("Advertencia","Su carrito esta vacio para hacer una compra debe haber minimo un producto.")
+    }else{
+      let venta: VentaModel = new VentaModel();
+      let cantidad = 0; 
+      this.carrito.itemCarrito.map(item=>{
+        let ventas: Item_ventaModel = new Item_ventaModel();
+        cantidad += item.cantidadProducto;
+        ventas.cantidadProducto = item.cantidadProducto;
+        ventas.codigoProducto = item.codigoProducto;
+        ventas.precioVentaDetalle = item.precioItem;
+        venta.ventas.push(ventas);
+      });
+      
+      venta.correoCliente = this.clienteInp;
+      venta.precioVenta = this.carrito.precioCarrito;
+      venta.cantidadVenta = cantidad;
 
-    this.openDialog(venta);
+      this.openDialog(venta);
+    }
+    
   }
-
+  openDialog2(titleNew: string, mensajeNew: string): void {
+    const dialogRef = this.dialog.open(ModalErrorComponent, {
+      width: '300px',
+      data: {title: titleNew, mensaje: mensajeNew},
+    });
+  }
   openDialog( venta: VentaModel): void {
     let ventaInterna: VentaModel; 
     const dialogRef = this.dialog.open(ModalConfirmarCompraComponent, {
@@ -242,7 +249,6 @@ export class CarritoComponent implements OnInit, OnChanges {
       if(result==true){
         this.eliminarItem("",item);
       }else{
-        console.log("en else");
 
       }
     });
