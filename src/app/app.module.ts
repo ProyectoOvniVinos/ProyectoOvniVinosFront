@@ -44,7 +44,7 @@ import { ModalErrorComponent } from './Components/Modal/modal-error/modal-error.
 import { MatDialogModule } from '@angular/material/dialog';
 import { ModalInteraccionComponent } from './Components/Modal/modal-interaccion/modal-interaccion.component';
 import { IngresarVentaComponent } from './Components/Admin/ingresar-venta/ingresar-venta.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ModalProductosComponent } from './Components/Modal/modal-productos/modal-productos.component';
 import { ModalInventarioGComponent } from './Components/Modal/modal-inventario-g/modal-inventario-g.component';
 import { ModalConfirmarCompraComponent } from './Components/Modal/modal-confirmar-compra/modal-confirmar-compra.component';
@@ -59,6 +59,7 @@ import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { AdministradoresComponent } from './Components/Admin/administradores/administradores.component';
 import { RegistrarAdminComponent } from './Components/Admin/registrar-admin/registrar-admin.component';
+import { HttpIntercepterBasicAuthService } from './Services/http-intercepter-basic-auth.service';
  
 registerLocaleData(localeEs, 'es');
 @NgModule({
@@ -125,7 +126,7 @@ registerLocaleData(localeEs, 'es');
     MatDialogModule,
     HttpClientModule
   ],
-  providers: [{provide: LOCALE_ID, useValue: 'es'}],
+  providers: [{provide: LOCALE_ID, useValue: 'es'},{provide: HTTP_INTERCEPTORS, useClass: HttpIntercepterBasicAuthService, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
