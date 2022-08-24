@@ -152,7 +152,9 @@
 .btnFiltro:hover .c{
     content: url("../../../../assets/Images/juntas.png")
 }
-
+.btnFiltro:hover .d{
+    content: url("../../../../assets/Images/estrellaBlanca.png")
+}
 
 .btn:hover{
     box-shadow:  1px 1px 3px 1px rgb(184, 13, 72) !important;

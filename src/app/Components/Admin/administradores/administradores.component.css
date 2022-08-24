@@ -28,6 +28,10 @@
     top: center;
   }
 
+  .inhabilitado{
+    background-color: rgba(129, 129, 129, 0.356);
+    }
+
   @keyframes spin {
     0% {
       transform: rotate(0deg);

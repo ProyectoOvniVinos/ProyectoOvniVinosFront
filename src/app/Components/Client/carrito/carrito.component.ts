@@ -33,6 +33,7 @@ export class CarritoComponent implements OnInit, OnChanges {
   valorTotal:number=0;
   cantidadTotal:number=0;
   itemClick:number;
+  banderaCarrito:Boolean=false;
 
   @Input() modal:boolean = false;
 
@@ -125,10 +126,11 @@ export class CarritoComponent implements OnInit, OnChanges {
     this.carritoService.actualizarCarrito(this.carrito).subscribe(resp=>{
       
     });
-
+    this.banderaCarrito=false;
     let list:Object={
       objeto:this.carrito,
-      variable:true
+      variable:true,
+      banderaCarrito:this.banderaCarrito
     }
     console.log(item.precioItem+"cantidad: "+item.cantidadProducto);
 
@@ -207,18 +209,19 @@ export class CarritoComponent implements OnInit, OnChanges {
 
       if(ventaInterna!=null){
         this.ventaService.addVenta(ventaInterna).subscribe(venta =>{
-
+          this.banderaCarrito=true
           this.openDialogConfirmacion("Exito!!!","Se ha realizado la compra satisfactoriamente!")
           for(let i = this.carrito.itemCarrito.length; i>0;i--){
             this.carrito.itemCarrito.pop()
           }
           this.carritoService.actualizarCarrito(this.carrito).subscribe();
+
           let list:Object={
             objeto:this.carrito,
-            variable:true
+            variable:true,
+            banderaCarrito:this.banderaCarrito
           }
       
-          
           this.devolver.emit(list);
         },err => {
           if(err.error.mensaje=="cantidad insuficiente"){
