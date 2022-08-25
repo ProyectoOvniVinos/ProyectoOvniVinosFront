@@ -33,6 +33,9 @@
                             <td>{{inventario.codigoProducto.nombreProducto}}</td>
                             <td>{{inventario.cantidadProducto}}</td>
                         </tr>
+                        <div class="cajaMensaje"  *ngIf="banderaC==false">
+                            <h1>aún no hay registros en inventario</h1>
+                        </div>
                     </tbody>
                 </table>
             </div>
