@@ -40,8 +40,13 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
   }
 
   openDialog(inventario: Inventario_generalModel): void {
+    const pageWidth  = document.documentElement.scrollWidth;
+    let width='50%'
+    if(pageWidth<=1400){
+        width='70%'
+    }
     const dialogRef = this.dialog.open(ModalProductosComponent, {
-      width: '50%',
+      width: width,
       data: inventario,
     });
     dialogRef.afterClosed().subscribe( (result:boolean) => {

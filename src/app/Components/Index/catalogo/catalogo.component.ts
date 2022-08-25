@@ -159,8 +159,10 @@ export class CatalogoComponent implements OnInit, OnChanges {
       width: width,
       data: inventario
     });
-    dialogRef.afterClosed().subscribe((result: boolean) => {
-      if (result == true) {
+
+    dialogRef.afterClosed().subscribe( (result:Boolean) => {
+      if(result==true){
+        
         this.agregar(inventario.codigoProducto);
 
       } else {
@@ -188,11 +190,27 @@ export class CatalogoComponent implements OnInit, OnChanges {
   }
   filtro(text: string) {
     this.inventarioGeneral = [];
-    if (text != "Todos") {
+
+    if(text=="Vidrio" || text=="Plastico"){
+      console.log(text);
+      
       this.productoService.getProductsEstadoFiltro(text).subscribe(inventario => {
         this.inventarioGeneral = inventario;
       })
-    } else {
+    }else if(text=="Destacados"){
+      console.log("destacados");
+      
+      this.inventarioService.getInventarioDestacado().subscribe(inventario => {
+        console.log(inventario);
+        
+        this.inventarioGeneral = inventario
+      },err=>{
+        console.log(err);
+        
+      })
+    }else{
+      console.log(text);
+
       this.productoService.getProductsInventario().subscribe(inventario => {
 
         this.inventarioGeneral = inventario;
