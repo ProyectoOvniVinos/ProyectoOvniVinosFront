@@ -27,7 +27,7 @@
 <!--                 </div>
             </div> -->
 
-            <div *ngIf="bandera" class="cajaInfoReco" >
+            <div *ngIf="bandera==true" class="cajaInfoReco" >
                 <div class="cajaImgS">
                     <img class="imgProductoRecomendado" src={{productoRecomendado.fotoProducto}} alt="">
                 </div>
@@ -53,7 +53,7 @@
             </div>
             <div class="card-footer">
                 <mat-dialog-actions class="cajaBtns">
-                    <button *ngIf="bandera" class="btnOk" mat-button [mat-dialog-close]="true">Agregar al carrito</button>
+                    <button *ngIf="bandera" class="btnOk" mat-button (click)="agregar(inventario)">Agregar al carrito</button>
                 </mat-dialog-actions>
             </div>
           </div>
