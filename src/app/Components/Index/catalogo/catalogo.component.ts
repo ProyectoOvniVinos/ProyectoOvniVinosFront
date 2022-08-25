@@ -170,6 +170,7 @@ export class CatalogoComponent implements OnInit, OnChanges {
       }
     });
   }
+  
 
   procesarDevolver(mensaje: any) {
     this.agrandar = true;
