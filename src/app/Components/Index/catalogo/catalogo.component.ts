@@ -21,167 +21,176 @@ export class CatalogoComponent implements OnInit, OnChanges {
   inventarioGeneral: Inventario_generalModel[] = [];
   validarCarrito = false;
   agrandar = false;
-  eliminar=false;
+  eliminar = false;
   errores: string[];
-  error:string ;
-  clienteInp:ClienteModel;
-  banderaErrores: boolean=false;
-  constructor(public dialog: MatDialog, 
-            private productoService: ProductoService, 
-            private carritoService:CarritoService, 
-            private clienteService:ClienteService,
-            private inventarioService: InventarioGService) { }
+  error: string;
+  clienteInp: ClienteModel;
+  banderaErrores: boolean = false;
+  constructor(public dialog: MatDialog,
+    private productoService: ProductoService,
+    private carritoService: CarritoService,
+    private clienteService: ClienteService,
+    private inventarioService: InventarioGService) { }
   ngOnChanges() {
-    this.clienteService.getByEmail("c@gmail.com").subscribe(resp=>{
+    this.clienteService.getByEmail("c@gmail.com").subscribe(resp => {
       this.clienteInp = resp;
     })
+    if (this.inventarioGeneral.length == 0) {
+      this.banderaErrores = false
+      console.log(this.banderaErrores);
+
+    }
   }
 
   ngOnInit(): void {
-    
+
     this.obtenerProductos();
-    
-    this.clienteService.getAll().subscribe((respu:ClienteModel[])=>{
- 
-      if(respu.length>0){
-        this.clienteService.getByEmail("c@gmail.com").subscribe(resp=>{
-      
+
+    this.clienteService.getAll().subscribe((respu: ClienteModel[]) => {
+
+      if (respu.length > 0) {
+        this.clienteService.getByEmail("c@gmail.com").subscribe(resp => {
+
           this.clienteInp = resp;
         })
       }
-      
-      
+
+
     })
   }
 
-  obtenerProductos(){
-    this.inventarioGeneral=[]
+  obtenerProductos() {
+    this.inventarioGeneral = []
     this.productoService.getProductsInventario().subscribe(inventario => {
       this.inventarioGeneral = inventario;
-    },err => {
-      
+    }, err => {
+
     })
 
   }
 
-  buscar(event){
+  buscar(event) {
     console.log(event.target.value);
-    if(event.target.value==""){
-      this.obtenerProductos()
-      this.banderaErrores=false
-    }{
+    if (event.target.value == "") {
+      console.log("AAAAAAAAAAAAAAAAAAAAAAA");
 
-      let name: string =event.target.value;
-      this.inventarioGeneral=[];
-      this.inventarioService.getInventarioGeneralComPositivoNombre(name).subscribe((resp:any) => {
-        
-        this.inventarioGeneral=resp;
+      this.obtenerProductos()
+      this.banderaErrores = false
+    } else {
+
+      let name: string = event.target.value;
+      this.inventarioGeneral = [];
+      this.inventarioService.getInventarioGeneralComPositivoNombre(name).subscribe((resp: any) => {
+
+        this.inventarioGeneral = resp;
         console.log(this.inventarioGeneral.length);
 
 
-        if(this.inventarioGeneral.length==0){
+        if (this.inventarioGeneral.length == 0) {
           this.error = "No se encontraron productos por ese nombre"
-          this.banderaErrores=true
-          
-        }else{
-          this.banderaErrores=false
+          this.banderaErrores = true
+
+        } else {
+          this.banderaErrores = false
         }
-  
+
       }, err => {
         this.errores = err.error.mensaje
-        this.banderaErrores=true
+        this.banderaErrores = true
         console.log(this.banderaErrores);
       })
     }
-    
+
   }
 
-  agregar(producto:ProductoModel){
-    this.clienteService.getByEmail("c@gmail.com").subscribe((resp:ClienteModel)=>{
+  agregar(producto: ProductoModel) {
+    this.clienteService.getByEmail("c@gmail.com").subscribe((resp: ClienteModel) => {
       let flag = false;
-      resp.carrito.itemCarrito.forEach(item=>{
-        if(item.codigoProducto.codigoProducto == producto.codigoProducto){
-          item.cantidadProducto = item.cantidadProducto+1;
-          flag=true;
-          
+      resp.carrito.itemCarrito.forEach(item => {
+        if (item.codigoProducto.codigoProducto == producto.codigoProducto) {
+          item.cantidadProducto = item.cantidadProducto + 1;
+          flag = true;
+
         }
       })
-      if(flag==false){
+      if (flag == false) {
         let newItem = new ItemCarritoModel();
         newItem.cantidadProducto = 1;
         newItem.codigoProducto = producto
         newItem.precioItem = producto.precioProducto
-  
+
         resp.carrito.itemCarrito.push(newItem);
       }
-      
-      
-      this.carritoService.actualizarCarrito(resp.carrito).subscribe(resp=>{
+
+
+      this.carritoService.actualizarCarrito(resp.carrito).subscribe(resp => {
         this.clienteInp.carrito = resp.carrito;
-        
-        
-        
+
+
+
       })
-      
-      
+
+
     })
-    
-    this.agrandar=true;
-    setTimeout(()=>{
+
+    this.agrandar = true;
+    setTimeout(() => {
       this.agrandar = false;
-    },1000)
-    if(this.validarCarrito){
+    }, 1000)
+    if (this.validarCarrito) {
       this.recargarCarrito();
-      
+
     }
   }
 
-  recargarCarrito(){
+  recargarCarrito() {
     this.validarCarrito = false;
-      setTimeout(()=>{
-        this.validarCarrito = true;
-      },50)
+    setTimeout(() => {
+      this.validarCarrito = true;
+    }, 50)
   }
   openDialog(inventario: Inventario_generalModel): void {
-    const pageWidth  = document.documentElement.scrollWidth;
-    let width='50%'
-    if(pageWidth<=1400){
-        width='70%'
+    const pageWidth = document.documentElement.scrollWidth;
+    let width = '50%'
+    if (pageWidth <= 1400) {
+      width = '70%'
     }
     const dialogRef = this.dialog.open(ModalProductosComponent, {
       width: width,
       data: inventario
     });
-    dialogRef.afterClosed().subscribe( (result:any) => {
-      if(result.res==true){
+
+    dialogRef.afterClosed().subscribe( (result:Boolean) => {
+      if(result==true){
         
         this.agregar(inventario.codigoProducto);
-        
-      }else{
-        
+
+      } else {
+
       }
     });
   }
 
-  procesarDevolver(mensaje:any){
-    this.agrandar=true;
-    setTimeout(()=>{
+  procesarDevolver(mensaje: any) {
+    this.agrandar = true;
+    setTimeout(() => {
       this.agrandar = false;
-    },1000)
-    this.clienteInp.carrito=mensaje.objeto;
-    if(this.validarCarrito && mensaje.variable==false){
+    }, 1000)
+    this.clienteInp.carrito = mensaje.objeto;
+    if (this.validarCarrito && mensaje.variable == false) {
 
       this.recargarCarrito();
     }
 
-    if(mensaje.banderaCarrito==true){
+    if (mensaje.banderaCarrito == true) {
       this.obtenerProductos();
     }
 
-    
+
   }
-  filtro(text:string){
+  filtro(text: string) {
     this.inventarioGeneral = [];
+
     if(text=="Vidrio" || text=="Plastico"){
       console.log(text);
       
@@ -201,7 +210,7 @@ export class CatalogoComponent implements OnInit, OnChanges {
       })
     }else{
       console.log(text);
-      
+
       this.productoService.getProductsInventario().subscribe(inventario => {
 
         this.inventarioGeneral = inventario;
@@ -209,8 +218,8 @@ export class CatalogoComponent implements OnInit, OnChanges {
     }
   }
 
-  mostrarCarrito(){
-    this.validarCarrito=!this.validarCarrito;
+  mostrarCarrito() {
+    this.validarCarrito = !this.validarCarrito;
   }
 
 }
