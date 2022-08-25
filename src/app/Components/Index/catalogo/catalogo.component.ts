@@ -160,17 +160,20 @@ export class CatalogoComponent implements OnInit, OnChanges {
       data: inventario
     });
 
-    dialogRef.afterClosed().subscribe( (result:Boolean) => {
-      if(result==true){
+    dialogRef.afterClosed().subscribe( (result:any) => {
+      console.log(result);
+      
+      if(result.resultado==true){
         
-        this.agregar(inventario.codigoProducto);
+        this.agregar(result.inventarioG.codigoProducto);
 
       } else {
-
+        console.log("EN ELSE");
+        
       }
     });
   }
-  
+
 
   procesarDevolver(mensaje: any) {
     this.agrandar = true;
