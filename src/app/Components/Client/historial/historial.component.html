@@ -16,7 +16,8 @@
                         <tr>
                             <th class="primero">Id</th>
                             <th>Fecha</th>
-                            <th class="ultimo">Valor</th>
+                            <th>Valor</th>
+                            <th class="ultimo">Detalles</th>
                         </tr>
                     </thead>
                     <tbody class="tablabodyP" *ngIf="cliente">
@@ -24,6 +25,9 @@
                             <td>{{venta.codigoVenta}}</td>
                             <td>{{venta.fechaVenta}}</td>
                             <td>{{venta.precioVenta}}</td>
+                            <td class="puntero" (click)="abrirModal(venta)">
+                                <img class="imagenes" src="../../../../assets/Images/detalles.png" alt="">
+                            </td>
                         </tr>
                     </tbody>
                     

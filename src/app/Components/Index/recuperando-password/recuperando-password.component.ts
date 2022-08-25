@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
+import { ClienteModel } from 'src/app/Models/Cliente.model';
+import { ClienteService } from 'src/app/Services/cliente.service';
+import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 
 @Component({
   selector: 'app-recuperando-password',
@@ -7,23 +12,41 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
   styleUrls: ['./recuperando-password.component.css']
 })
 export class RecuperandoPasswordComponent implements OnInit {
+  banderaPasswordTwo: boolean = null;
+  banderaTerminos: boolean = false;
+  correo:String;
+  recuperandoForm:FormGroup;
 
-  public recuperandoForm = new FormGroup({
-    password: new FormControl('',[Validators.required, Validators.minLength(8)]),
-    passwordConfirmacion: new FormControl('',[Validators.required]),
-  });
+  constructor(private fb: FormBuilder, public dialog: MatDialog, public clienteService:ClienteService,private activateRoute: ActivatedRoute) {
+    this.crearFormulario();
 
-  get passwordControl(): FormControl{
-    return this.recuperandoForm.get('password') as FormControl;
+  }
+  crearFormulario() {
+    this.recuperandoForm = this.fb.group({
+      correo: ['', [Validators.required, Validators.pattern('[a-z0-9.%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      contrasena1: ['', [Validators.required, Validators.minLength(8)]],
+      contrasena2: ['', Validators.required]
+    })
   }
 
-  get passwordConfirmacionControl(): FormControl{
-    return this.recuperandoForm.get('passwordConfirmacion') as FormControl;
+  ngOnInit(): void {
+    this.activateRoute.params.subscribe(params=>{
+      let correo  = params['correo'];
+      this.clienteService.getByEmail(this.desencriptar(correo)).subscribe((resp:ClienteModel)=>{
+        this.recuperandoForm.controls["correo"].setValue(resp.correoCliente)
+      })
+    })
   }
-  
+  get contrasena1Control(): FormControl{
+    return this.recuperandoForm.get('contrasena1') as FormControl
+  }
+
+  get contrasena2Control(): FormControl{
+    return this.recuperandoForm.get('contrasena2') as FormControl
+  }
   get contrasena1NoValido() {
-    if(this.recuperandoForm.get('password')?.touched){
-      if(this.recuperandoForm.get('password')?.invalid == false){
+    if(this.recuperandoForm.get('contrasena1')?.touched){
+      if(this.recuperandoForm.get('contrasena1')?.invalid == false){
         return false;
       }else{
         return true;
@@ -33,15 +56,32 @@ export class RecuperandoPasswordComponent implements OnInit {
     }
     //return this.registroForm.get('contrasena1')?.invalid && this.registroForm.get('contrasena1')?.touched;
   }
-
+  get correoControl(): FormControl{
+    return this.recuperandoForm.get('correo') as FormControl
+  }
+  get correoNoValido() {
+    if(this.recuperandoForm.get('correo')?.touched){
+      if(this.recuperandoForm.get('correo')?.invalid == false){
+        return false;
+      }else{
+        return true;
+      }
+    }else{
+      return null;
+    }
+    //return this.registroForm.get('correo')?.invalid && this.registroForm.get('correo')?.touched;
+  }
   get contrasena2NoValido() {
-    const contrasena1 = this.recuperandoForm.get('password')?.value;
-    const contrasena2 = this.recuperandoForm.get('passwordConfirmacion')?.value;
-    if(this.recuperandoForm.get('passwordConfirmacion')?.touched){
-      if(this.recuperandoForm.get('passwordConfirmacion')?.invalid == false){
+    const contrasena1 = this.recuperandoForm.get('contrasena1')?.value;
+    const contrasena2 = this.recuperandoForm.get('contrasena2')?.value;
+    if(this.recuperandoForm.get('contrasena2')?.touched){
+      if(this.recuperandoForm.get('contrasena2')?.invalid == false){
         if(contrasena1 === contrasena2){
+          this.banderaPasswordTwo=true;
           return false;
+
         }else{
+          this.banderaPasswordTwo=false;
           return true;
         }
       }else{
@@ -50,18 +90,51 @@ export class RecuperandoPasswordComponent implements OnInit {
     }else{
       return null;
     }
-    
-    
     //return (this.registroForm.get('contrasena2')?.touched && this.registroForm.get('contrasena2')?.invalid) ? true : (contrasena1 === contrasena2) ? false : true;
     //return (contrasena1 === contrasena2) ? false : true && this.registroForm.get('contrasena2')?.touched;
   }
-
-  constructor() { }
-
-  ngOnInit(): void {
+  openDialog(titleNew: string, mensajeNew: string): void {
+    const dialogRef = this.dialog.open(ModalErrorComponent, {
+      width: '300px',
+      data: {title: titleNew, mensaje: mensajeNew},
+    });
   }
+  verificar() {
+    console.log(this.recuperandoForm.invalid);
+    
+    if(this.recuperandoForm.invalid){
 
-  public prueba(){
+      if(this.recuperandoForm.get("contrasena2").status == "INVALID"){
+        console.log("BBBBBBBBBBBBBBBBBBBBBB");
+        
+        let title="Error"
+        let mensaje="Verifique los campos por favor!!"
+        this.openDialog(title, mensaje);
+        
+      }
+
+    }else{
+      console.log("DDDDDDDDDDDDDDDDDDDDDDDDDD");
+      this.actualizar();
+    }
+  }
+  desencriptar(correo:string){
+    let desencriptado = atob(correo)
+    return desencriptado;
+  }
+  actualizar(){
+    this.clienteService.getByEmail(this.recuperandoForm.controls["correo"].value).subscribe((resp:ClienteModel)=>{
+      console.log(resp);
+      resp.passwordCliente = this.recuperandoForm.controls["contrasena1"].value
+      this.clienteService.actualizar(resp).subscribe(respue=>{
+        console.log(respue);
+        
+      })
+    })
+  }
+  
+
+   prueba(){
     console.log(window.screen);
     console.log(screen.width)
     console.log(screen.height)

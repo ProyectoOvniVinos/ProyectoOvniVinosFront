@@ -30,7 +30,7 @@
         <cdk-virtual-scroll-viewport itemSize="50" class="viewport">
             <div *ngIf="carrito">
 
-                <div class="padreCarrito"  *ngFor="let item of carrito.itemCarrito" >
+                <div class="padreCarrito"  (click)="abrirModalProducto(item)" *ngFor="let item of carrito.itemCarrito;let indice = index" >
     
                     <div class="madreCarrito" >
                         <div class="caja1">
@@ -44,16 +44,16 @@
                         </div>
                         <div class="cajaInfoCarrito">
                             <div class="cajaEliminar">
-                               <img (click)="eliminarItem(item)" class="imgEliminar" src="../../../../assets/Images/eliminar.png" alt=""> 
+                               <img (click)="eliminarItem($event,item)" class="imgEliminar" src="../../../../assets/Images/eliminar.png" alt=""> 
                             </div>
                             <div class="cajaInfo">
-                                <p>{{item.codigoProducto.nombreProducto}}</p>
-                                <p>{{item.precioItem | currency : 'USD' : 'symbol' : '1.0-0'}}</p>
-                                <p>{{item.cantidadProducto}} <span *ngIf="advertirCantidad" class="advertirCanti">Es la cantidad  maxima</span></p>
+                                <p>{{item.codigoProducto.nombreProducto | slice:0:16 }}...</p>
+                                <p>{{item.codigoProducto.precioProducto | currency : '$' : 'symbol' : '1.0-0'}}</p>
+                                <p>{{item.cantidadProducto}} <span *ngIf="advertirCantidad && item.codigoProducto.codigoProducto == itemClick" class="advertirCanti">Es la cantidad  maxima</span></p>
                             </div>
                             <div class="cajaBtns">
-                                <button class="button btnMenos"(click)="disminuirCantidad(item)">-</button>
-                                <button class="button btnMas"(click)="aumentarCantidad(item)">+</button>
+                                <button class="button btnMenos"(click)="disminuirCantidad($event, item)">-</button>
+                                <button class="button btnMas"(click)="aumentarCantidad($event,item)">+</button>
                             </div>
                         </div>
                     </div>

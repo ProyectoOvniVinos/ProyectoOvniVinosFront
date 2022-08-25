@@ -2,11 +2,12 @@
 <div class="cajaPadre">
     <div class="buscador">
         <div class="cajaInput">
-            <input placeholder="Buscar" class="form-control input-buscar" type="text" (keyup)="buscar(termino.value)" #termino>
+            <input placeholder="Buscar" class="form-control input-buscar" type="text" (keyup)="buscar($event)" #termino>
         
             <button (click)="filtro(boton1.value)" value="Plastico" data-title="Plastico" class="btn btnFiltro" #boton1><img class="imgBotonPlastico a"src="../../../../assets/Images/botella-de-plasticoRosado.png" alt="" ></button>
             <button (click)="filtro(boton2.value)" value="Vidrio" data-title="Vidrio" class="btn btnFiltro" #boton2><img class="imgBotonVino b" src="../../../../assets/Images/vinoRosado.png" alt=""></button>
             <button (click)="filtro(boton3.value)" value="Todos" data-title="Todos" class="btn btnFiltro" #boton3><img class="imgBotonJuntas c" src="../../../../assets/Images/juntasRosado.png" alt=""></button>
+            <button (click)="filtro(boton4.value)" value="Destacados" data-title="Destacados" class="btn btnFiltro" #boton4><img class="imgBotonJuntas d" src="../../../../assets/Images/estrellaVioleta.png" alt=""></button>
         </div>
         <div class="cajaCarrito" (click)="mostrarCarrito()">
             <p class="pCarrito" *ngIf="clienteInp">{{clienteInp.carrito.itemCarrito.length}}</p>
@@ -15,12 +16,17 @@
     </div>
 
     <div class="cajaContenido">
+
+        
         <app-slideshow *ngIf="inventarioGeneral.length > 0" [inventarios] = "inventarioGeneral" (devolver)="procesarDevolver($event)"></app-slideshow>
         <hr>
         <div class="catalogoTwo">
             <div>
                 <h1 class="text-center title">Bienvenidos a Ovni Vinos</h1>
-            </div>      
+            </div>
+            <div class="cajaMensajeError" *ngIf="banderaErrores">
+                <h1>{{error}}</h1>
+            </div>    
             <div class="cajaCartas">
 
                 <div *ngFor="let inventario of inventarioGeneral" class="cardP">
@@ -29,7 +35,7 @@
                         <img (click)="agregar(inventario.codigoProducto)" class="imgCarrito" src="../../../../assets/Images/carritoVioleta.png" alt="">
                     </div>
                     <div class="cardFootert" (click)="openDialog(inventario)">
-                        <p>{{inventario.codigoProducto.nombreProducto}}</p>
+                        <p>{{inventario.codigoProducto.nombreProducto | slice:0:16 }}...</p>
                         <p>${{inventario.codigoProducto.precioProducto}}</p>
 
                     </div>
@@ -47,3 +53,4 @@
     <button type="button" class="btn-close cerrar" data-bs-dismiss="modal" aria-label="Close"></button>
     <button (click)="validarCarrito=!validarCarrito" type="button" class="btn-close cerrar" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
+
