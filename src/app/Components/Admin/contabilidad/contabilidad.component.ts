@@ -12,7 +12,7 @@ import { ContabilidadService } from '../../../Services/contabilidad.service';
 export class ContabilidadComponent implements OnInit {
 
   banderaD: Boolean =false;
-  banderaC: Boolean;
+  banderaC: Boolean = true;
 
   contabilidad: string = "Diaria";
 
@@ -28,6 +28,9 @@ export class ContabilidadComponent implements OnInit {
     this.contabilidad = "Diaria";
       this.contabilidadService.getContabilidadDiaria(0).subscribe( contabilidad => {
         this.banderaD=true;
+        if(contabilidad.length==0){
+          this.banderaC = false;
+        }
         this.contabilidadesDiarias = contabilidad;
       });
   }

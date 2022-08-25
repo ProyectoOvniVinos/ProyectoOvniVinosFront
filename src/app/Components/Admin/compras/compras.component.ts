@@ -14,11 +14,16 @@ import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.compone
 export class ComprasComponent implements OnInit {
 
   compras:CompraModel[];
+  banderaC:boolean = true;
+
   constructor(public compraService:CompraService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.compraService.getCompras().subscribe(resp=>{
       this.compras = resp
+      if(this.compras.length==0){
+        this.banderaC = false;
+      }
     })
   }
   abrirModal(compra:CompraModel){

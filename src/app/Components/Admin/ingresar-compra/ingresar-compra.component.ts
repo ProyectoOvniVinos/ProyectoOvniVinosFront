@@ -258,8 +258,6 @@ export class IngresarCompraComponent implements OnInit {
     this.admin.telefonoAdmin = "323"
 
     this.compra.administradorCompra = this.admin;
-    console.log(this.compra);
-
 
     this.serviceCompra.addCompra(this.compra).subscribe(e => {
       this.closeDialogLoading();
@@ -267,11 +265,8 @@ export class IngresarCompraComponent implements OnInit {
       this.vaciar()
 
     }, err => {
-      this.openDialog("ERROR", "Lo sentimos, no se pudo agregar la compra. Inténtalo de nuevo. ")
-
       this.closeDialogLoading();
-      this.openDialog("Exito!!!", "Se ha agregado la compra satisfactoriamente!")
-      this.vaciar()
+      this.openDialog("ERROR", "Lo sentimos, no se pudo agregar la compra. Inténtalo de nuevo. ")
     })
 
   }

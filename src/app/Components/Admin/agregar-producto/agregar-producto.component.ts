@@ -297,6 +297,10 @@ export class AgregarProductoComponent implements OnInit {
           this.closeDialogLoading()
           this.openDialogInteraction("ADVERTENCIA", "¿Estas seguro de desahabilitar este producto?")
         }
+      },err =>{
+        this.closeDialogLoading();
+        this.openDialog("Advertencia!!",`${err.error.mensaje}`)
+        this.router.navigate(['/productos'])
       })
     }else{
       this.closeDialogLoading()
