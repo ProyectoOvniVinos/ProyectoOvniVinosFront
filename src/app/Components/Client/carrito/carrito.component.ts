@@ -217,6 +217,8 @@ export class CarritoComponent implements OnInit, OnChanges {
       if(ventaInterna!=null){
         this.ventaService.addVenta(ventaInterna).subscribe(venta =>{
           this.banderaCarrito=true
+          this.valorTotal=0
+          this.cantidadTotal=0
           this.openDialogConfirmacion("Exito!!!","Se ha realizado la compra satisfactoriamente!")
           for(let i = this.carrito.itemCarrito.length; i>0;i--){
             this.carrito.itemCarrito.pop()
