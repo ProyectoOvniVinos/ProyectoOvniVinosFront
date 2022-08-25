@@ -39,11 +39,11 @@ export class RegistroComponent implements OnInit {
   }
 
   crearListeners() {
-    this.registroForm.get('nombre')?.valueChanges.subscribe(console.log);
-    this.registroForm.get('apellido')?.valueChanges.subscribe(console.log);
-    this.registroForm.get('direccion')?.valueChanges.subscribe(console.log);
-    this.registroForm.get('celular')?.valueChanges.subscribe(console.log);
-    this.registroForm.get('correo')?.valueChanges.subscribe(console.log);
+    this.registroForm.get('nombre')?.valueChanges.subscribe();
+    this.registroForm.get('apellido')?.valueChanges.subscribe();
+    this.registroForm.get('direccion')?.valueChanges.subscribe();
+    this.registroForm.get('celular')?.valueChanges.subscribe();
+    this.registroForm.get('correo')?.valueChanges.subscribe();
   }
 
   get nombreControl(): FormControl{
@@ -229,7 +229,6 @@ export class RegistroComponent implements OnInit {
 
   
   verificar() {
-    console.log("ASDASD");
     
     if(this.registroForm.invalid){
 
@@ -239,21 +238,18 @@ export class RegistroComponent implements OnInit {
           this.registroForm.get("direccion").status == "INVALID" || this.registroForm.get("contrasena1").status == "INVALID" || 
           this.registroForm.get("contrasena2").status == "INVALID" || this.registroForm.get("edad").status == "INVALID" 
       ){
-        console.log("BBBBBBBBBBBBBBBBBBBBBB");
         
         let title="Error"
         let mensaje="Verifique los campos por favor!!"
         this.openDialog(title, mensaje);
         
       }else if(this.registroForm.get("terminos").status== "INVALID"){
-        console.log("CCCCCCCCCCCCCCCCCCCCCCCCC");
         let title="Advertencia"
         let mensaje="Por favor Acepte Terminos y Condiciones!!"
         this.openDialog(title, mensaje);
       }
 
     }else{
-      console.log("DDDDDDDDDDDDDDDDDDDDDDDDDD");
       this.registrar();
     }
   }
@@ -268,7 +264,6 @@ export class RegistroComponent implements OnInit {
     cliente.passwordCliente=this.registroForm.controls['contrasena1'].value
 
     this.clienteService.registro(cliente).subscribe(res=>{
-      console.log(res);
       this.openDialog("Felicitaciones", "Se ha registrado satisfactoriamente.")
       this.router.navigate(['/catalogo']);
     });

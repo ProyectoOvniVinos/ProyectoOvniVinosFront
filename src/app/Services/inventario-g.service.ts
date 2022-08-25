@@ -72,4 +72,13 @@ export class InventarioGService {
     let url: string = `${this.url}inventarioGeneralCompleto/positvo`
     return this.http.get<Inventario_generalModel[]>(url);
   }
+
+  getInventarioGeneralComPositivoNombre(name: string):Observable<Inventario_generalModel[]>{
+    const url: string = `${this.url}inventarioGeneralCompleto/positvoFiltradoNombre/${name}`
+    return this.http.get<Inventario_generalModel[]>(url).pipe(
+      catchError(e => {
+        return throwError(e);
+      })
+    );
+  }
 }

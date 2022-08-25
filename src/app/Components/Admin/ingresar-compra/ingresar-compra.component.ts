@@ -74,15 +74,14 @@ export class IngresarCompraComponent implements OnInit {
         if(id){
   
           let producto:ProductoModel[]=this.productos.filter((item:ProductoModel) => item.codigoProducto==id)
-          console.log(producto);
-          console.log(id);
-          console.log(this.productos);
           
           producto.forEach(product=>{
             
             
             this.compraForm.controls["producto"].setValue(product.codigoProducto)
+            this.compraForm.controls["producto"].markAsTouched()
             this.compraForm.controls["precio"].setValue(product.precioProducto)
+            this.compraForm.controls["precio"].markAsTouched()
           })
         }
         
