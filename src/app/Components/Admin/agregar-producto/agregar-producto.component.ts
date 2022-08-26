@@ -297,6 +297,10 @@ export class AgregarProductoComponent implements OnInit {
           this.closeDialogLoading()
           this.openDialogInteraction("ADVERTENCIA", "¿Estás seguro de desahabilitar este producto?")
         }
+      },err =>{
+        this.closeDialogLoading();
+        this.openDialog("Advertencia!!",`${err.error.mensaje}`)
+        this.router.navigate(['/productos'])
       })
     }else{
       this.closeDialogLoading()
@@ -312,7 +316,7 @@ export class AgregarProductoComponent implements OnInit {
     let codigo= this.producto.codigoProducto;
     this.servicioProducto.deshabilitarProduct(codigo).subscribe(res=>{
       this.closeDialogLoading()
-      this.openDialog("¡¡ÉXITO!!","Se ha desahibilitado correctamente el producto. ")
+      this.openDialog("¡¡ÉXITO!!","Se ha desahabilitado correctamente el producto. ")
       this.router.navigate(['/productos'])
     }, err => {
       console.log(err);

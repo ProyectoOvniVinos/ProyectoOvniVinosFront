@@ -15,21 +15,16 @@ export class InventarioGeneralComponent implements OnInit {
 
   bandera:Boolean;
   inventarioG: Inventario_generalModel[] = [];
-  producto: ProductoModel = {
-    codigoProducto :1,
-    nombreProducto :"vino abocado",
-    precioProducto : 4000,
-    precioProductoProveedor : 50000,
-    descripcionProducto : "Es muy rico",
-    fotoProducto : "../../../../assets/TEMPORALES/vino1.jpg",
-    estado : "1"
-  }
+  banderaC: boolean = true;
   constructor(public dialog:MatDialog, private inventarioService: InventarioGService, private router:Router) { }
 
   ngOnInit(): void {
     this.inventarioService.getInventarioGeneralCompleto().subscribe(inventarioGeneral=>{
       this.bandera=true;
       this.inventarioG = inventarioGeneral; 
+      if(this.inventarioG.length==0){
+        this.banderaC = false;
+      }
     });
   }
 

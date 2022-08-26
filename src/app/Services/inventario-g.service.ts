@@ -17,13 +17,6 @@ export class InventarioGService {
 
   constructor(private http: HttpClient, public dialog: MatDialog, private router: Router) { }
 
-  openDialog(titleNew: string, mensajeNew: string): void {
-    const dialogRef = this.dialog.open(ModalErrorComponent, {
-      width: '300px',
-      data: {title: titleNew, mensaje: mensajeNew},
-    });
-  }
-
   getInventarioGeneralCompleto(): Observable<Inventario_generalModel[]>{
     let url: string = `${this.url}inventarioGeneralCompleto`;
     return this.http.get<Inventario_generalModel[]>(url);
@@ -54,13 +47,7 @@ export class InventarioGService {
 
   getInventarioGeneralByProducto(producto: number){
     let url: string = `${this.url}inventarioGeneralProducto/${producto}`
-    return this.http.get(url).pipe(
-      catchError(e => {
-        this.openDialog("Advertencia!!",`${e.error.mensaje}`)
-        this.router.navigate(['/productos'])
-        return throwError(e);
-      })
-    )
+    return this.http.get(url)
   }
 
   getInventarioGeneralComCantidad():Observable<Inventario_generalModel[]>{

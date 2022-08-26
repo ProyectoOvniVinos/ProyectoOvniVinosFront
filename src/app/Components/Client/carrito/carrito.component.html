@@ -30,7 +30,7 @@
         <cdk-virtual-scroll-viewport itemSize="50" class="viewport">
             <div *ngIf="carrito">
 
-                <div class="padreCarrito"  (click)="abrirModalProducto(item)" *ngFor="let item of carrito.itemCarrito;let indice = index" >
+                <div class="padreCarrito" *ngFor="let item of carrito.itemCarrito;let indice = index" >
     
                     <div class="madreCarrito" >
                         <div class="caja1">
