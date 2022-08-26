@@ -32,9 +32,7 @@ export class CatalogoComponent implements OnInit, OnChanges {
     private clienteService: ClienteService,
     private inventarioService: InventarioGService) { }
   ngOnChanges() {
-    this.clienteService.getByEmail("c@gmail.com").subscribe(resp => {
-      this.clienteInp = resp;
-    })
+
     if (this.inventarioGeneral.length == 0) {
       this.banderaErrores = false
       console.log(this.banderaErrores);
