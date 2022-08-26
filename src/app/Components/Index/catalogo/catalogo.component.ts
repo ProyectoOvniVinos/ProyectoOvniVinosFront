@@ -45,17 +45,8 @@ export class CatalogoComponent implements OnInit, OnChanges {
   ngOnInit(): void {
 
     this.obtenerProductos();
-
-    this.clienteService.getAll().subscribe((respu: ClienteModel[]) => {
-
-      if (respu.length > 0) {
-        this.clienteService.getByEmail("c@gmail.com").subscribe(resp => {
-
-          this.clienteInp = resp;
-        })
-      }
-
-
+    this.clienteService.getByEmail("c@gmail.com").subscribe(resp => {
+      this.clienteInp = resp;
     })
   }
 
