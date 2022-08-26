@@ -47,6 +47,13 @@ export class ClienteService {
     return desencriptado;
   }
   actualizar(cliente:ClienteModel){
-    return this.http.put<any>(`${this.url}cliente/${cliente.correoCliente}`,cliente,{headers: this.httpHeaders})
+    let clienteNew = new ClienteModel()
+    clienteNew.apellidoCliente=cliente.apellidoCliente
+    clienteNew.nombreCliente=cliente.nombreCliente
+    clienteNew.direccionCliente=cliente.direccionCliente
+    clienteNew.passwordCliente=cliente.passwordCliente
+    clienteNew.telefonoCliente=cliente.telefonoCliente
+    clienteNew.correoCliente=cliente.correoCliente
+    return this.http.put<any>(`${this.url}cliente/${clienteNew.correoCliente}`,clienteNew,{headers: this.httpHeaders})
   }
 }

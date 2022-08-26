@@ -12,7 +12,7 @@ export class SidebarComponent implements OnInit {
   abierto = true;
 
   admin = true;
-  cliente = true;
+  cliente = false;
   validarCarrito = false;
   validarRuta = false;
   modal: boolean = true;

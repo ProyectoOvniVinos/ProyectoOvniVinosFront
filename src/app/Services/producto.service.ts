@@ -12,7 +12,7 @@ export class ProductoService {
 
   url:string="http://localhost:8080/apiProd/";
 
-  url2:string="http://localhost:8080/apiInventario/inventarioGeneralCompleto/positvo";
+  url2:string="http://localhost:8080/apiInventario/inventarioGeneralCompleto/positivo";
 
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 
@@ -75,6 +75,10 @@ export class ProductoService {
   getProductsEstadoFiltro(filtro:string):Observable<Inventario_generalModel[]> {
     const url: string = `${this.url2}Filtrado/${filtro}`;
 
+    console.log("AAAAAAAAAA");
+    
+    console.log(url);
+    
     return this.http.get<Inventario_generalModel[]>(url);
   }
 
