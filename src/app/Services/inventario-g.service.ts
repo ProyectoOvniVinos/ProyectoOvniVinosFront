@@ -81,4 +81,14 @@ export class InventarioGService {
       })
     );
   }
+
+  getInventarioDestacado():Observable<Inventario_generalModel[]>{
+    const url: string= `${this.url}inventarioGeneralCompleto/destacado`;
+    return this.http.get<Inventario_generalModel[]>(url).pipe(
+      catchError(e=>{
+        return throwError(e);
+      })
+    )
+
+  }
 }

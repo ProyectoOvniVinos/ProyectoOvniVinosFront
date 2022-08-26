@@ -10,8 +10,9 @@ import { Router } from '@angular/router';
 export class SidebarComponent implements OnInit {
 
   abierto = true;
+
   admin = true;
-  cliente = false;
+  cliente = true;
   validarCarrito = false;
   validarRuta = false;
   modal: boolean = true;
@@ -24,7 +25,7 @@ export class SidebarComponent implements OnInit {
   }
 
   getRuta() {
-    
+
 
     if (this.router.url == "/catalogo") {
       return true;
