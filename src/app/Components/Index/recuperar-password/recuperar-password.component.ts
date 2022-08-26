@@ -64,6 +64,7 @@ export class RecuperarPasswordComponent implements OnInit {
       
       
     },err=>{
+
       this.openDialog("Error", err.error.mensaje);
     })
   }

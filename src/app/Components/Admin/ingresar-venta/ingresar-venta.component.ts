@@ -25,7 +25,7 @@ export class IngresarVentaComponent implements OnInit {
   total: number=0;
 
 
-  productos: ProductoModel[];
+  productos: ProductoModel[] = [];
 
   banderaProducto: boolean = false;
   banderaCantidad: boolean = false;
@@ -41,10 +41,11 @@ export class IngresarVentaComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.serviceProducto.getProducts().subscribe((productos: any) => {
+    this.serviceProducto.getProductsInventario().subscribe((productos: Inventario_generalModel[]) => {
+      productos.map( inventario => {
+        this.productos.push(inventario.codigoProducto)
+      } );
       this.bandera=true;
-      this.productos=productos;
-      
       if(this.productos.length==0){
         this.bandera=false;
       }else{

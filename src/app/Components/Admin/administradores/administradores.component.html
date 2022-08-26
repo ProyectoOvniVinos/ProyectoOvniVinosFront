@@ -1,12 +1,12 @@
 <div class="container">
 
     
-<!--     <div class="cajaMensaje" *ngIf="bandera==false">
-        <h1>Lo sentimos, aún no existen clientes registrados</h1>
+    <div class="cajaMensaje" *ngIf="bandera==false">
+        <h1>Lo sentimos, aún no existen administradores registrados</h1>
     </div>
 
 
-    <div *ngIf="bandera==null" class='spinner'></div> -->
+    <div *ngIf="bandera==null" class='spinner'></div>
 
     <table  class="tabla">
         <thead class="tablaHeaderG">
@@ -19,7 +19,7 @@
         <tbody class="tablabodyG">
             <hr class="todo">
             <div class="cajaAgregar">
-                <button class="btnAgregar" routerLink="/agregarAdmin">Agregar Administrador</button>
+                <button class="btnAgregar" routerLink="/agregarAdmin">Agregar administrador</button>
             </div>
             <hr class="todo">
 
@@ -36,13 +36,13 @@
                         </tr>
                     </thead>
                     <tbody class="tablabodyP">
-                        <tr class="trMargin">
-                            <td>admin@gmail.com</td>
-                            <td>admin</td>
-                            <td>admin</td>
-                            <td>admin</td>
-                            <td>admin</td>
-                            <td data-title="Deshabilitar"><img class="img" src="../../../../assets/Images/borrarAdmin.png" alt="borrars"></td>
+                        <tr class="trMargin" *ngFor="let admin of administradores" [ngClass]="admin.estado=='0'? 'inhabilitado': ''">
+                            <td>{{admin.correoAdmin}}</td>
+                            <td>{{admin.nombreAdmin}}</td>
+                            <td>{{admin.apellidoAdmin}}</td>
+                            <td>{{admin.direccionAdmin}}</td>
+                            <td>{{admin.telefonoAdmin}}</td>
+                            <td (click)="deshabilitar(admin.correoAdmin,admin.estado)" data-title="Deshabilitar"><img class="img" src="../../../../assets/Images/borrarAdmin.png" alt="borrars"></td>
                         </tr>
                     </tbody>
                 </table>

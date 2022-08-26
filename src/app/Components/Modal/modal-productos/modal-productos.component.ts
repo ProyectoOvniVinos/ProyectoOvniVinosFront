@@ -19,8 +19,7 @@ export class ModalProductosComponent implements OnInit {
 
   productoRecomendado: ProductoModel;
   productos: ProductoModel[] = [];
-  productosRecomendados:ProductoModel[] = [];
-  bandera:Boolean = true;
+  bandera:Boolean;
 
   constructor(private productoService: ProductoService,
     public dialogRef: MatDialogRef<ModalProductosComponent>,
@@ -31,7 +30,15 @@ export class ModalProductosComponent implements OnInit {
 
 
   onNoClick(): void{
-    this.dialogRef.close();
+    this.dialogRef.close("cerro");
+  }
+
+  agregar(inventario: Inventario_generalModel){
+    let list:Object={
+      resultado:true,
+      inventarioG:inventario
+    }
+    this.dialogRef.close(list)
   }
 
   dialogo(producto: ProductoModel): void{
@@ -39,9 +46,9 @@ export class ModalProductosComponent implements OnInit {
       inventario.forEach(inven => {
         if(inven.codigoProducto.codigoProducto==producto.codigoProducto){
           this.inventario=inven;
-          this.filtrando()
         }
       })
+      this.filtrando()
     });
   }
 
@@ -79,21 +86,25 @@ export class ModalProductosComponent implements OnInit {
         this.productos.push(inven.codigoProducto);
       })
       this.filtrando();
+      this.bandera=true
     });
       
   }
 
   filtrando(){
-    
-    this.productos.forEach( producto => {
-      if(producto.codigoProducto == this.inventario.codigoProducto.codigoProducto){
-      }else{
-        this.productosRecomendados.push(producto);
-      }
-    })
 
-    let posicion: number = Math.floor(Math.random()*this.productosRecomendados.length)
-    this.productoRecomendado = this.productosRecomendados[posicion];
+    let productosRecomendados = this.productos.filter(
+      (friend) => {
+        let ok = true;
+        for (let i = 0; i < this.productos.length && ok; i++) { // Corta cuando no hay mas productos o cuando ya se encontró uno
+          if (this.inventario.codigoProducto.codigoProducto == friend.codigoProducto)
+            ok = false;
+        }
+        return ok;
+    })
+    
+    let posicion: number = Math.floor(Math.random()*productosRecomendados.length)
+    this.productoRecomendado = productosRecomendados[posicion];
 
     
   }
