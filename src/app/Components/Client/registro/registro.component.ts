@@ -265,7 +265,7 @@ export class RegistroComponent implements OnInit {
 
     this.clienteService.registro(cliente).subscribe(res=>{
       this.openDialog("Felicitaciones", "Se ha registrado satisfactoriamente.")
-      this.router.navigate(['/catalogo']);
+      this.router.navigate(['/iniciarSesion']);
     });
   }
   

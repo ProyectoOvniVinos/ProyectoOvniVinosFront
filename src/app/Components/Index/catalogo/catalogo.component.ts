@@ -10,6 +10,7 @@ import { ClienteService } from 'src/app/Services/cliente.service';
 import { ClienteModel } from 'src/app/Models/Cliente.model';
 import { ItemCarritoModel } from 'src/app/Models/itemCarrito.model';
 import { InventarioGService } from 'src/app/Services/inventario-g.service';
+import { LoginService } from 'src/app/Services/login.service';
 
 @Component({
   selector: 'app-catalogo',
@@ -17,6 +18,11 @@ import { InventarioGService } from 'src/app/Services/inventario-g.service';
   styleUrls: ['./catalogo.component.css']
 })
 export class CatalogoComponent implements OnInit, OnChanges {
+
+  private usuario = {
+    correo:null,
+    rol:null
+  }
 
   inventarioGeneral: Inventario_generalModel[] = [];
   validarCarrito = false;
@@ -30,11 +36,9 @@ export class CatalogoComponent implements OnInit, OnChanges {
     private productoService: ProductoService,
     private carritoService: CarritoService,
     private clienteService: ClienteService,
-    private inventarioService: InventarioGService) { }
+    private inventarioService: InventarioGService,
+    private loginService: LoginService) { }
   ngOnChanges() {
-    this.clienteService.getByEmail("c@gmail.com").subscribe(resp => {
-      this.clienteInp = resp;
-    })
     if (this.inventarioGeneral.length == 0) {
       this.banderaErrores = false
       console.log(this.banderaErrores);
@@ -46,17 +50,14 @@ export class CatalogoComponent implements OnInit, OnChanges {
 
     this.obtenerProductos();
 
-    this.clienteService.getAll().subscribe((respu: ClienteModel[]) => {
+    this.usuario = this.loginService.usuario;
 
-      if (respu.length > 0) {
-        this.clienteService.getByEmail("c@gmail.com").subscribe(resp => {
-
-          this.clienteInp = resp;
-        })
-      }
-
-
-    })
+    if(this.loginService.isAuthenticated()){
+      this.clienteService.getByEmail(this.usuario.correo).subscribe(resp => {
+        this.clienteInp = resp;
+      })
+    }
+      
   }
 
   obtenerProductos() {
