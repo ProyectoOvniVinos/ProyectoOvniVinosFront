@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
 import { AdministradorModel } from 'src/app/Models/Administrador.model';
 import { CompraModel } from 'src/app/Models/Compra.model';
 import { Item_compraModel } from 'src/app/Models/Item_compra.model';
@@ -37,7 +38,8 @@ export class IngresarCompraComponent implements OnInit {
     private serviceProducto: ProductoService,
     public dialog: MatDialog,
     private serviceCompra: CompraService,
-    private serviceAdmin: AdminService) {
+    private serviceAdmin: AdminService,
+    private activateRoute: ActivatedRoute) {
     this.crearFormulario();
   }
   openDialog(titleNew: string, mensajeNew: string): void {
@@ -67,8 +69,26 @@ export class IngresarCompraComponent implements OnInit {
       } else {
         this.bandera = true;
       }
+      this.activateRoute.params.subscribe(params=>{
+        let id  = params['id'];
+        if(id){
+  
+          let producto:ProductoModel[]=this.productos.filter((item:ProductoModel) => item.codigoProducto==id)
+          
+          producto.forEach(product=>{
+            
+            
+            this.compraForm.controls["producto"].setValue(product.codigoProducto)
+            this.compraForm.controls["producto"].markAsTouched()
+            this.compraForm.controls["precio"].setValue(product.precioProducto)
+            this.compraForm.controls["precio"].markAsTouched()
+          })
+        }
+        
+      })
     })
 
+    
   }
 
   get productoControl(): FormControl {
@@ -238,8 +258,6 @@ export class IngresarCompraComponent implements OnInit {
     this.admin.telefonoAdmin = "323"
 
     this.compra.administradorCompra = this.admin;
-    console.log(this.compra);
-
 
     this.serviceCompra.addCompra(this.compra).subscribe(e => {
       this.closeDialogLoading();
@@ -247,11 +265,8 @@ export class IngresarCompraComponent implements OnInit {
       this.vaciar()
 
     }, err => {
-      this.openDialog("ERROR", "Lo sentimos, no se pudo agregar la compra. Inténtalo de nuevo. ")
-
       this.closeDialogLoading();
-      this.openDialog("Exito!!!", "Se ha agregado la compra satisfactoriamente!")
-      this.vaciar()
+      this.openDialog("ERROR", "Lo sentimos, no se pudo agregar la compra. Inténtalo de nuevo. ")
     })
 
   }

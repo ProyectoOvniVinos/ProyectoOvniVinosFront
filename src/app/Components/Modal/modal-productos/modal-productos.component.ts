@@ -1,6 +1,6 @@
 import { ProductoModel } from 'src/app/Models/Producto.model';
 import { DialogData } from './../DialogData';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Component, Inject, OnInit } from '@angular/core';
 import { Inventario_generalModel } from 'src/app/Models/Inventario_general.model';
 import { ClienteService } from 'src/app/Services/cliente.service';
@@ -17,50 +17,95 @@ import { ProductoService } from 'src/app/Services/producto.service';
 })
 export class ModalProductosComponent implements OnInit {
 
-  public swiper!: Swiper
   productoRecomendado: ProductoModel;
   productos: ProductoModel[] = [];
+  bandera:Boolean;
 
   constructor(private productoService: ProductoService,
     public dialogRef: MatDialogRef<ModalProductosComponent>,
     @Inject(MAT_DIALOG_DATA) public inventario:Inventario_generalModel,
     public clienteService:ClienteService,
-    public carritoService:CarritoService){}
+    public carritoService:CarritoService,
+    public dialog: MatDialog){}
 
-  ngAfterViewInit(): void {
-    this.swiper = new Swiper('.swiper', {
-      modules: [Autoplay],
 
-      slidesPerView: 1,
-      grabCursor: true,
-      centeredSlides: false,
-      autoplay: {
-        delay: 4000
-      },
-      speed: 400,
+  onNoClick(): void{
+    this.dialogRef.close("cerro");
+  }
+
+  agregar(inventario: Inventario_generalModel){
+    let list:Object={
+      resultado:true,
+      inventarioG:inventario
+    }
+    this.dialogRef.close(list)
+  }
+
+  dialogo(producto: ProductoModel): void{
+    this.productoService.getProductsInventario().subscribe(inventario => {
+      inventario.forEach(inven => {
+        if(inven.codigoProducto.codigoProducto==producto.codigoProducto){
+          this.inventario=inven;
+        }
+      })
+      this.filtrando()
     });
   }
 
-  onSlideNext() {
-    this.swiper.slideNext();
-  }
-  onSlidePrev() {
-    this.swiper.slidePrev();
-  }
-   
-
-  onNoClick(): void{
-    this.dialogRef.close();
+  openDialog(inventario: Inventario_generalModel): void {
+    const pageWidth  = document.documentElement.scrollWidth;
+    let width='50%'
+    if(pageWidth<=1400){
+        width='70%'
+    }
+    this.dialog.closeAll()
+    const dialogRef = this.dialog.open(ModalProductosComponent, {
+      width: width,
+      data: inventario,
+    });
+    dialogRef.afterClosed().subscribe( (result:boolean) => {
+      console.log(`Dialog result: ${result}`); // Pizza!
+      if(result==true){
+/*         this.agregar(inventario.codigoProducto);  */
+        
+      }else{
+        console.log("en else");
+        
+      }
+    });
   }
 
   ngOnInit(): void {
+
+    if(this.inventario.cantidadProducto==0){
+      this.bandera=false;
+    }
+    
     this.productoService.getProductsInventario().subscribe(inventario => {
-      inventario.map(inve =>{
-        if(inve.codigoProducto.codigoProducto!=this.inventario.codigoProducto.codigoProducto){
-          this.productos.push(inve.codigoProducto);
-        }
-      });
+      inventario.forEach(inven => {
+        this.productos.push(inven.codigoProducto);
+      })
+      this.filtrando();
+      this.bandera=true
     });
+      
+  }
+
+  filtrando(){
+
+    let productosRecomendados = this.productos.filter(
+      (friend) => {
+        let ok = true;
+        for (let i = 0; i < this.productos.length && ok; i++) { // Corta cuando no hay mas productos o cuando ya se encontró uno
+          if (this.inventario.codigoProducto.codigoProducto == friend.codigoProducto)
+            ok = false;
+        }
+        return ok;
+    })
+    
+    let posicion: number = Math.floor(Math.random()*productosRecomendados.length)
+    this.productoRecomendado = productosRecomendados[posicion];
+
     
   }
   

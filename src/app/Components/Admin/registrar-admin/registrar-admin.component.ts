@@ -3,6 +3,8 @@ import { ModalErrorComponent } from './../../Modal/modal-error/modal-error.compo
 import { MatDialog } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from 'src/app/Services/admin.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registrar-admin',
@@ -15,7 +17,7 @@ export class RegistrarAdminComponent implements OnInit {
   banderaTerminos: boolean = false;
   registroForm !: FormGroup;
 
-  constructor(private fb: FormBuilder, public dialog: MatDialog) {
+  constructor(private fb: FormBuilder, public dialog: MatDialog, private adminService: AdminService, private router: Router) {
     this.crearFormulario();
     this.crearListeners();
 
@@ -259,6 +261,19 @@ export class RegistrarAdminComponent implements OnInit {
     admin.direccionAdmin= this.registroForm.controls['direccion'].value
     admin.telefonoAdmin= this.registroForm.controls['celular'].value
     admin.passwordAdmin=this.registroForm.controls['contrasena1'].value
+
+    console.log(admin);
+    
+
+    this.adminService.createAdmin(admin).subscribe((res:any)=>{
+      
+      this.openDialog("Exito!!!",res.mensaje)
+      this.router.navigate(['/administradores'])
+
+    },err =>{
+      console.log(err);
+      
+    })
 
   }
 

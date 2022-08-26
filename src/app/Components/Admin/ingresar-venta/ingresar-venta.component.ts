@@ -10,6 +10,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 import { VentaService } from 'src/app/Services/venta.service';
 import { ModalLoadingComponent } from '../../Modal/modal-loading/modal-loading.component';
+import { Inventario_generalModel } from 'src/app/Models/Inventario_general.model';
+import { InventarioGService } from 'src/app/Services/inventario-g.service';
+import { ModalInteraccionComponent } from '../../Modal/modal-interaccion/modal-interaccion.component';
 
 @Component({
   selector: 'app-ingresar-venta',
@@ -22,7 +25,7 @@ export class IngresarVentaComponent implements OnInit {
   total: number=0;
 
 
-  productos: ProductoModel[];
+  productos: ProductoModel[] = [];
 
   banderaProducto: boolean = false;
   banderaCantidad: boolean = false;
@@ -32,17 +35,17 @@ export class IngresarVentaComponent implements OnInit {
 
   cliente:ClienteModel;
 
-  constructor(private fb: FormBuilder, private serviceProducto: ProductoService, public dialog: MatDialog, public serviceVenta: VentaService) {
+  constructor(private fb: FormBuilder, private serviceProducto: ProductoService, public dialog: MatDialog, public serviceVenta: VentaService, private inventarioGService:InventarioGService) {
     this.crearFormulario();
   }
 
   ngOnInit(): void {
 
-    this.serviceProducto.getProducts().subscribe((productos: any) => {
+    this.serviceProducto.getProductsInventario().subscribe((productos: Inventario_generalModel[]) => {
+      productos.map( inventario => {
+        this.productos.push(inventario.codigoProducto)
+      } );
       this.bandera=true;
-      this.productos=productos;
-      console.log(productos);
-      
       if(this.productos.length==0){
         this.bandera=false;
       }else{
@@ -106,30 +109,60 @@ export class IngresarVentaComponent implements OnInit {
     let producto2: ProductoModel;
     if( this.ventaForm.controls['producto'].touched==true && this.ventaForm.controls['cantidad'].touched==true){
 
-      this.productos.map(producto=>{
-        if(producto.codigoProducto == this.ventaForm.controls['producto'].value){
-          
-
-          
-          producto2 = producto;
-          producto2.precioProducto = producto.precioProducto;
+      this.inventarioGService.getInventarioGeneralByProducto(this.ventaForm.controls['producto'].value).subscribe((resp:Inventario_generalModel)=>{
+        if(resp.cantidadProducto!=0){
+          if(resp.cantidadProducto>=this.ventaForm.controls['cantidad'].value){
+            this.productos.map(producto=>{
+              if(producto.codigoProducto == this.ventaForm.controls['producto'].value){
+                
+                
+                producto2 = producto;
+                producto2.precioProducto = producto.precioProducto;
+              }
+            })
+            // let producto1 = event.option.value as ProductoModel
+        
+            
+            if (this.existeItem(producto2.codigoProducto)) {
+              this.incrementaCantidad(producto2.codigoProducto);
+            }else {
+              let nuevoItem = new Item_ventaModel();
+              nuevoItem.cantidadProducto = this.ventaForm.controls['cantidad'].value;
+              nuevoItem.codigoProducto = producto2;
+              this.venta.ventas.push(nuevoItem);
+            }
+        
+            this.actualizarTotal()
+          }else{
+            this.openDialogInteraction("Advertencia excede cantidad",`El producto tiene ${resp.cantidadProducto} unidades disponibles. ¿Desea agregarlas todas`, resp.cantidadProducto);
+            
+          }
+        }else{
+          this.openDialog("Lo sentimos", "No hay existencias de ese producto en el momento")
+          this.ventaForm.controls['producto'].reset()
+          this.ventaForm.controls['cantidad'].reset()
         }
+        
       })
-      // let producto1 = event.option.value as ProductoModel
-  
       
-      if (this.existeItem(producto2.codigoProducto)) {
-        this.incrementaCantidad(producto2.codigoProducto);
-      }else {
-        let nuevoItem = new Item_ventaModel();
-        nuevoItem.cantidadProducto = this.ventaForm.controls['cantidad'].value;
-        nuevoItem.codigoProducto = producto2;
-        this.venta.ventas.push(nuevoItem);
-      }
-  
-      this.actualizarTotal()
     }
 
+  }
+  openDialogInteraction(titleNew: string, mensajeNew: string, cantidad:number):void{
+    const dialogRef = this.dialog.open(ModalInteraccionComponent, {
+      width: '300px',
+      data: {title: titleNew, mensaje: mensajeNew},
+    });
+    dialogRef.afterClosed().subscribe( (result:boolean) => {
+      if(result==true){
+        this.ventaForm.controls['cantidad'].setValue(cantidad)
+        this.seleccionarProducto()
+        
+      }else{
+        console.log("en else");
+
+      }
+    });
   }
   existeItem(id: number): boolean {
     let existe = false;
@@ -214,7 +247,6 @@ export class IngresarVentaComponent implements OnInit {
     this.cliente.telefonoCliente = "323" 
 
     this.venta.correoCliente = this.cliente;
-    console.log(this.venta);
     
 
     this.serviceVenta.addVenta(this.venta).subscribe(e=>{

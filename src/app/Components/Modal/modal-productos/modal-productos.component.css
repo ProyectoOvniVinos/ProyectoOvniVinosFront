@@ -26,15 +26,25 @@
     height: 80%;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .img{
     width: 75%;
-    height: 24rem;
+    height: 20rem;
     border-radius: 0.5rem;
     margin-bottom: 2%;
-    border: 2px solid  rgb(211, 21, 88);
-    box-shadow: 4px 4px 3px #9b9b9b, -3px -3px 3px #ffffff;
+    border: 2px solid rgba(211, 21, 88, 0);
+    box-shadow: 4px 4px 7px #9b9b9b, -3px -3px 3px #ededed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imgReco{
+    width: 90%;
+    height: 90%;
 }
 
 .cajaInfoYreco{
@@ -58,7 +68,7 @@
     height: 100%;
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
-    border: 2px solid  rgb(211, 21, 88);
+    border: 2px solid  rgba(211, 21, 88, 0.266);
 }
 
 .cajaImgRe{
@@ -66,17 +76,18 @@
 }
 
 .cajaInfoReco{
-    width: 100%;
+    width: 75%;
     height: 10rem;
     display: flex;
     gap: 9%;
     flex-direction: row;
     background-color: rgb(211, 21, 88);
     color: white;
-    /* border-top-right-radius: 0.5rem; */
-    /* border-bottom-right-radius: 0.5rem; */
     border-radius: 0.5rem;
+    box-shadow: 5px 5px 7px #9b9b9b, -2px -3px 5px #ededed;
 }
+
+
 
 /* 
 .cajaBtns{
@@ -191,7 +202,7 @@
 
 .card{
     height: 100%;
-    border: 2px solid  rgb(211, 21, 88);
+    border: 2px solid  rgba(211, 21, 88, 0.152);
     margin-bottom: 3%;
 }
 
@@ -204,13 +215,22 @@
     height: 10%;
 } */
 
+.cuadrarCardImg{
+
+    height: 36rem;
+}
+
+.cuadrarH2{
+    opacity: 0;
+    cursor: context-menu;
+}
 .prueba{
     width: 50%;
     height: 100%;
 }
 
 .card-header{
-    height: 4rem;
+    height: 5rem;
     padding-top: 4%;
     border-bottom: 2px solid  rgb(211, 21, 88);
 }
@@ -220,92 +240,33 @@
     justify-content: center;
     align-content: flex-start;
     align-items: center;
-    padding-bottom: 5%;
+    padding-bottom: 0%;
 }
 
 .card-body{
-    height: 27.7rem;
+    height: 26rem;
 }
 
 .card-footer{
     border-top: 2px solid  rgb(211, 21, 88);
 }
 
-.swiper {
-    width: 75%;
-    display: flex;
-    height: 10.1;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(211, 21, 88);
-    color: white;
-    border-radius: 0.5rem;
-}
-
-.swiper-slide {
-    flex-shrink: 0;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transition-property: transform;
-
-}
-
-.swiper-slide-active{
-    width: 100%!important;
-    margin-right: 0px !important;
-}
-
-.swiper-wrapper {
-    position: relative;
-    width: 100%;
-    height: 95%;
-    z-index: 1;
-    display: flex;
-    transition-property: transform;
-    box-sizing: content-box;
-}
-
-.swiper-button-prev,
-.swiper-button-next {
-    color: black;
-}
-
-.prod-description {
-    background-color: rgba(0, 0, 0, 0.3);
-
-    bottom: 0;
-    padding: 5px 30px;
-    position: absolute;
-    width: 100%;
-}
-
-.cont-exte {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-}
-
-.cont-interno {
-    color: white;
-}
-
-.cont-interno2{
-    margin-bottom: 2%;
-    width: 15%;
-}
-
 .cajaImgS{
     width: 35%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:white;
+    border-top-left-radius:0.3rem;
+    border-bottom-left-radius: 0.3rem;
 }
 
-.cajaImgS img{
-    width: 100%;
-    height: 100%;
+.imgProductoRecomendado{
+    width: 90%;
+    height: 80%;
 }
+
 
 .cajaInfoS{
     display: flex;
@@ -317,7 +278,7 @@
 
 @media screen and (max-width:1920px) and (max-height:1080px) {
     .cajaInfoReco{
-        height: 13.5rem;
+        height: 12.5rem;
     }
 }
 

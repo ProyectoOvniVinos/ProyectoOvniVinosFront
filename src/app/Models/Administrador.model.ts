@@ -7,4 +7,5 @@ export class AdministradorModel {
     direccionAdmin!: string;
     telefonoAdmin!: string;
     passwordAdmin!: string;
+    estado!:string
 }

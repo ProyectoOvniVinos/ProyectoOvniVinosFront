@@ -17,13 +17,6 @@ export class InventarioGService {
 
   constructor(private http: HttpClient, public dialog: MatDialog, private router: Router) { }
 
-  openDialog(titleNew: string, mensajeNew: string): void {
-    const dialogRef = this.dialog.open(ModalErrorComponent, {
-      width: '300px',
-      data: {title: titleNew, mensaje: mensajeNew},
-    });
-  }
-
   getInventarioGeneralCompleto(): Observable<Inventario_generalModel[]>{
     let url: string = `${this.url}inventarioGeneralCompleto`;
     return this.http.get<Inventario_generalModel[]>(url);
@@ -54,13 +47,7 @@ export class InventarioGService {
 
   getInventarioGeneralByProducto(producto: number){
     let url: string = `${this.url}inventarioGeneralProducto/${producto}`
-    return this.http.get(url).pipe(
-      catchError(e => {
-        this.openDialog("Advertencia!!",`${e.error.mensaje}`)
-        this.router.navigate(['/productos'])
-        return throwError(e);
-      })
-    )
+    return this.http.get(url)
   }
 
   getInventarioGeneralComCantidad():Observable<Inventario_generalModel[]>{
@@ -71,5 +58,24 @@ export class InventarioGService {
   getInventarioGeneralComPositivo():Observable<Inventario_generalModel[]>{
     let url: string = `${this.url}inventarioGeneralCompleto/positvo`
     return this.http.get<Inventario_generalModel[]>(url);
+  }
+
+  getInventarioGeneralComPositivoNombre(name: string):Observable<Inventario_generalModel[]>{
+    const url: string = `${this.url}inventarioGeneralCompleto/positvoFiltradoNombre/${name}`
+    return this.http.get<Inventario_generalModel[]>(url).pipe(
+      catchError(e => {
+        return throwError(e);
+      })
+    );
+  }
+
+  getInventarioDestacado():Observable<Inventario_generalModel[]>{
+    const url: string= `${this.url}inventarioGeneralCompleto/destacado`;
+    return this.http.get<Inventario_generalModel[]>(url).pipe(
+      catchError(e=>{
+        return throwError(e);
+      })
+    )
+
   }
 }

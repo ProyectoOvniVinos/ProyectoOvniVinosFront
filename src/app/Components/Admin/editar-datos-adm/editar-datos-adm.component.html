@@ -43,7 +43,7 @@
                             <div class="errors-container" *ngIf="celularControl.invalid && (celularControl.touched || celularControl.dirty)">
                                 <p class="text-danger" *ngIf="celularControl.hasError('required')">El campo es obligatorio</p>
                                 <p class="text-danger" *ngIf="!celularControl.hasError('required') && !celularControl.hasError('pattern')">Debe tener 10 caracteres</p>
-                                <p class="text-danger" *ngIf="celularControl.hasError('pattern')">Solamente numeros porfavor</p>
+                                <p class="text-danger" *ngIf="celularControl.hasError('pattern')">Solamente ingrese número por favor</p>
 
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                             [ngClass]="contrasena1NoValido == null ? '' : contrasena1NoValido ? 'is-invalid': 'is-valid'">
                             <div class="errors-container" *ngIf="contrasena1Control.invalid && (contrasena1Control.touched || contrasena1Control.dirty)">
                                 <p class="text-danger" *ngIf="contrasena1Control.hasError('required')">El campo es obligatorio</p>
-                                <p class="text-danger" *ngIf="!contrasena1Control.hasError('required')">Al menos 8 caracteres</p>
+                                <p class="text-danger" *ngIf="!contrasena1Control.hasError('required')">Ingrese al menos 8 caracteres</p>
                             
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                             </div>
                             <div *ngIf="!
                             contrasena2Control.hasError('required')==true">
-                                <p class="text-danger" *ngIf="banderaPasswordTwo==false && banderaPasswordTwo!=null">Las contraseñas no son iguales</p>                   
+                                <p class="text-danger" *ngIf="banderaPasswordTwo==false && banderaPasswordTwo!=null">Las contraseñas no coinciden</p>                   
                             </div>
                         </div>
                     </div>

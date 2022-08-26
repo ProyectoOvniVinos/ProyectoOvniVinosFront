@@ -1,9 +1,12 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
 import { ClienteModel } from 'src/app/Models/Cliente.model';
+import { VentaModel } from 'src/app/Models/Venta.model';
 import { ClienteService } from 'src/app/Services/cliente.service';
+import { ModalDetallesVentaComponent } from '../../Modal/modal-detalles-venta/modal-detalles-venta.component';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 
 
@@ -18,7 +21,7 @@ export class RegistroComponent implements OnInit {
   banderaTerminos: boolean = false;
   registroForm !: FormGroup;
 
-  constructor(private fb: FormBuilder, public dialog: MatDialog, public clienteService:ClienteService) {
+  constructor(private fb: FormBuilder, public dialog: MatDialog, public clienteService:ClienteService,private router: Router) {
     this.crearFormulario();
     this.crearListeners();
 
@@ -36,11 +39,11 @@ export class RegistroComponent implements OnInit {
   }
 
   crearListeners() {
-    this.registroForm.get('nombre')?.valueChanges.subscribe(console.log);
-    this.registroForm.get('apellido')?.valueChanges.subscribe(console.log);
-    this.registroForm.get('direccion')?.valueChanges.subscribe(console.log);
-    this.registroForm.get('celular')?.valueChanges.subscribe(console.log);
-    this.registroForm.get('correo')?.valueChanges.subscribe(console.log);
+    this.registroForm.get('nombre')?.valueChanges.subscribe();
+    this.registroForm.get('apellido')?.valueChanges.subscribe();
+    this.registroForm.get('direccion')?.valueChanges.subscribe();
+    this.registroForm.get('celular')?.valueChanges.subscribe();
+    this.registroForm.get('correo')?.valueChanges.subscribe();
   }
 
   get nombreControl(): FormControl{
@@ -224,8 +227,8 @@ export class RegistroComponent implements OnInit {
     })
   }
 
+  
   verificar() {
-    console.log("ASDASD");
     
     if(this.registroForm.invalid){
 
@@ -235,21 +238,18 @@ export class RegistroComponent implements OnInit {
           this.registroForm.get("direccion").status == "INVALID" || this.registroForm.get("contrasena1").status == "INVALID" || 
           this.registroForm.get("contrasena2").status == "INVALID" || this.registroForm.get("edad").status == "INVALID" 
       ){
-        console.log("BBBBBBBBBBBBBBBBBBBBBB");
         
         let title="Error"
         let mensaje="Verifique los campos por favor!!"
         this.openDialog(title, mensaje);
         
       }else if(this.registroForm.get("terminos").status== "INVALID"){
-        console.log("CCCCCCCCCCCCCCCCCCCCCCCCC");
         let title="Advertencia"
         let mensaje="Por favor Acepte Terminos y Condiciones!!"
         this.openDialog(title, mensaje);
       }
 
     }else{
-      console.log("DDDDDDDDDDDDDDDDDDDDDDDDDD");
       this.registrar();
     }
   }
@@ -264,9 +264,10 @@ export class RegistroComponent implements OnInit {
     cliente.passwordCliente=this.registroForm.controls['contrasena1'].value
 
     this.clienteService.registro(cliente).subscribe(res=>{
-      console.log(res);
-      
+      this.openDialog("Felicitaciones", "Se ha registrado satisfactoriamente.")
+      this.router.navigate(['/catalogo']);
     });
   }
+  
 
 }

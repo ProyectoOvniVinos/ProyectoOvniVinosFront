@@ -1,6 +1,6 @@
 <div class="headTittle">
   <div class="equis"> 
-    <img src="../../../../assets/Images/salir.png" alt="" class="imageCerrar" (click)="onNoClick()">
+    <img src="../../../../assets/Images/salir.png" alt="" class="imageCerrar" mat-button [mat-dialog-close]="false">
   </div>
 </div>
 
@@ -47,47 +47,8 @@
   </div>
 
   <div class="cajaButton" mat-dialog-actions>
-    <button class="btnOk"mat-button (click)="onNoClick()">Agregar</button>
+    <button class="btnOk"mat-button [mat-dialog-close]="true" (click)="onNoClick()">Agregar</button>
   </div>
  
   
 </mat-dialog-content> 
-
-
-
-  
-<!--  <div class="principalBox">
-    <div class="boxImg">
-      <img class="img" src=  "{{data.fotoProducto}}"/>
-    </div>
-    <div class="information">
-      <h1 class="tituloModal" mat-dialog-title>{{data.nombreProducto}}</h1>
-      <p class="text-dark">{{data.precioProductoProveedor}}</p>
-      <p class="text-dark">{{data.descripcionProducto}}</p>      
-    </div>
-  </div>
-
-  <div class="secondBox">
-    <div class="cuadroPrincipal">
-     
-        <div class="datos">
-          <p> <b> FECHA DE INGRESO </b></p>
-          <p> <b> CANTIDAD </b></p>
-     
-      </div>
-    </div>
-  </div>
-</mat-dialog-content> -->
- 
-
- <!--
-<div class="cajaModal">
-    <div mat-dialog-content>
-      <p class="text-dark">{{data.descripcionProducto}}</p>
-      <p class="text-dark">{{data.precioProductoProveedor}}</p>
-    </div>
-    <div class="cajaButton" mat-dialog-actions>
-      <button class="btnOk"mat-button (click)="onNoClick()">Okffff</button>
-    </div>
-  </div>
- -->

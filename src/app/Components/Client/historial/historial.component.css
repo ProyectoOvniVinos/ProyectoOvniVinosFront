@@ -2,7 +2,18 @@
     width: 150px;
     height: 150px;
 }
+.puntero{
+    cursor: pointer;
+}
+.imagenes {
+    width: 2.5rem;
+    margin-top: 1.5%;
+    transition:0.1s;
+}
 
+.imagenes:hover{
+    transform: scale(0.9,0.9)
+}
 .tablaHeaderG{
     background: rgb(167,31,73);
     background: linear-gradient(90deg, rgba(167,31,73,1) 11%, rgba(255,42,108,1) 55%, rgba(167,31,73,1) 100%);

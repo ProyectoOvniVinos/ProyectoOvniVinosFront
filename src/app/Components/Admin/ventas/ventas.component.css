@@ -22,19 +22,6 @@
     margin-bottom: 30px;
 }
 
-.puntero{
-    cursor: pointer;
-}
-.imagenes {
-    width: 2.5rem;
-    margin-top: 1.5%;
-    transition:0.1s;
-}
-
-.imagenes:hover{
-    transform: scale(0.9,0.9)
-}
-
 .btnRegresar{
     width: 25%;
     height: 5vh;
@@ -115,6 +102,19 @@
     color: white;
     text-align: center;
     border-radius: 10px;
+}
+
+.cajaMensaje{
+    border: 2px solid rgba(167,31,73,1);
+    color: rgba(167,31,73,1);
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    width: 50%;
+    box-shadow: 11px 11px 8px #9b9b9b, -11px -11px 8px #ffffff;
+    top: 55%;
+    left: 25%;
 }
 
 .primero{
