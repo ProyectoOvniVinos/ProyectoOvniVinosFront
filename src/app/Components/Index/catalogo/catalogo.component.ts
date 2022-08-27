@@ -20,8 +20,8 @@ import { LoginService } from 'src/app/Services/login.service';
 export class CatalogoComponent implements OnInit, OnChanges {
 
   private usuario = {
-    correo:null,
-    rol:null
+    correo: null,
+    rol: null
   }
 
   inventarioGeneral: Inventario_generalModel[] = [];
@@ -52,12 +52,12 @@ export class CatalogoComponent implements OnInit, OnChanges {
 
     this.usuario = this.loginService.usuario;
 
-    if(this.loginService.isAuthenticated()){
+    if (this.loginService.isAuthenticated()) {
       this.clienteService.getByEmail(this.usuario.correo).subscribe(resp => {
         this.clienteInp = resp;
       })
     }
-      
+
   }
 
   obtenerProductos() {
@@ -73,7 +73,6 @@ export class CatalogoComponent implements OnInit, OnChanges {
   buscar(event) {
     console.log(event.target.value);
     if (event.target.value == "") {
-      console.log("AAAAAAAAAAAAAAAAAAAAAAA");
 
       this.obtenerProductos()
       this.banderaErrores = false
@@ -161,16 +160,16 @@ export class CatalogoComponent implements OnInit, OnChanges {
       data: inventario
     });
 
-    dialogRef.afterClosed().subscribe( (result:any) => {
+    dialogRef.afterClosed().subscribe((result: any) => {
       console.log(result);
-      
-      if(result.resultado==true){
-        
+
+      if (result.resultado == true) {
+
         this.agregar(result.inventarioG.codigoProducto);
 
       } else {
         console.log("EN ELSE");
-        
+
       }
     });
   }
@@ -196,24 +195,24 @@ export class CatalogoComponent implements OnInit, OnChanges {
   filtro(text: string) {
     this.inventarioGeneral = [];
 
-    if(text=="Vidrio" || text=="Plastico"){
+    if (text == "Vidrio" || text == "Plastico") {
       console.log(text);
-      
+
       this.productoService.getProductsEstadoFiltro(text).subscribe(inventario => {
         this.inventarioGeneral = inventario;
       })
-    }else if(text=="Destacados"){
+    } else if (text == "Destacados") {
       console.log("destacados");
-      
+
       this.inventarioService.getInventarioDestacado().subscribe(inventario => {
         console.log(inventario);
-        
+
         this.inventarioGeneral = inventario
-      },err=>{
+      }, err => {
         console.log(err);
-        
+
       })
-    }else{
+    } else {
       console.log(text);
 
       this.productoService.getProductsInventario().subscribe(inventario => {
