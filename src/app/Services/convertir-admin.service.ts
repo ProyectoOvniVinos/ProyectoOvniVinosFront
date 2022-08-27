@@ -15,8 +15,9 @@ export class ConvertirAdminService {
     newAdmin.direccionAdmin = admin.direccionAdmin;
     newAdmin.estado = admin.estado;
     newAdmin.nombreAdmin = admin.nombreAdmin;
-    newAdmin.passwordAdmin = admin.telefonoAdmin;
+    newAdmin.passwordAdmin = admin.passwordAdmin;
     newAdmin.telefonoAdmin = admin.telefonoAdmin;
+    newAdmin.compras = admin.compras;
     return newAdmin;
-}
+  }
 }
