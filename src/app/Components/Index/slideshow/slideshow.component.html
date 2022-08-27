@@ -13,7 +13,7 @@
                         <h2>{{inventario.codigoProducto.precioProducto | currency : '$' : 'symbol' : '1.0-0'}}</h2>
                         <p> Cantidad disponible : {{inventario.cantidadProducto}}</p>
                     </div>
-                    <div class="cont-interno2">
+                    <div class="cont-interno2" *ngIf="loginService.hasRole('ROLE_CLIENTE')">
                         <img src="../../../../assets/Images/carrito.png" class="imgCarrito" (click)="actualizarCarrito($event,inventario.codigoProducto)"/>
                     </div>
 

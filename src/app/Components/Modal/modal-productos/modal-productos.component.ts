@@ -9,6 +9,7 @@ import { ClienteModel } from 'src/app/Models/Cliente.model';
 import { ItemCarritoModel } from 'src/app/Models/itemCarrito.model';
 import Swiper, { Autoplay } from 'swiper';
 import { ProductoService } from 'src/app/Services/producto.service';
+import { LoginService } from 'src/app/Services/login.service';
 
 @Component({
   selector: 'app-modal-productos',
@@ -26,7 +27,8 @@ export class ModalProductosComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public inventario:Inventario_generalModel,
     public clienteService:ClienteService,
     public carritoService:CarritoService,
-    public dialog: MatDialog){}
+    public dialog: MatDialog,
+    public loginService: LoginService){}
 
 
   onNoClick(): void{

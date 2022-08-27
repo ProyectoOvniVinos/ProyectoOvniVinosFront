@@ -213,8 +213,19 @@ export class CarritoComponent implements OnInit, OnChanges {
       }else{
         ventaInterna = result;
       }
-
+      console.log(ventaInterna);
+      
       if(ventaInterna!=null){
+        let cliente = new ClienteModel();
+        cliente.correoCliente = ventaInterna.correoCliente.correoCliente;
+        cliente.direccionCliente = ventaInterna.correoCliente.direccionCliente;
+        cliente.nombreCliente = ventaInterna.correoCliente.nombreCliente;
+        cliente.passwordCliente = ventaInterna.correoCliente.passwordCliente;
+        cliente.telefonoCliente = ventaInterna.correoCliente.telefonoCliente;
+        cliente.ventas = ventaInterna.correoCliente.ventas;
+        cliente.carrito = ventaInterna.correoCliente.carrito;
+        ventaInterna.correoCliente = cliente;
+
         this.ventaService.addVenta(ventaInterna).subscribe(venta =>{
           this.banderaCarrito=true
           this.valorTotal=0

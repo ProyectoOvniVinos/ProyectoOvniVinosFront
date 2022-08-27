@@ -1,4 +1,4 @@
-<div class="cajaPdatos container-fluid">
+<div class="cajaPdatos container-fluid" *ngIf="cliente">
 
     <div class="cajaMdatos">
         <div class="cajaTitle">
@@ -8,31 +8,27 @@
            <div class="cajaInputs" >
                 <div class="cajaInput">
                   <label for="inputNombre" class="">Nombre</label>
-                  <input type="text" class="input form-control" id="inputNombre" disabled>
+                  <input type="text" class="input form-control" id="inputNombre" disabled [ngModel]="cliente.nombreCliente">
                 </div>
                 <div class="cajaInput">
                   <label for="inputPassword4" class="">Apellido</label>
-                  <input type="password" class="input form-control" id="inputPassword4" disabled>
+                  <input type="text" class="input form-control" id="inputPassword4" disabled [ngModel]="cliente.apellidoCliente">
                 </div>
                 <div class="cajaInput">
                   <label for="inputAddress" class="">Correo electrónico</label>
-                  <input type="text" class="input form-control" id="inputAddress" disabled>
+                  <input type="text" class="input form-control" id="inputAddress" disabled [ngModel]="cliente.correoCliente">
                 </div>
                 <div class="cajaInput">
                   <label for="inputAddress2" class="">Dirección</label>
-                  <input type="text" class="input form-control" id="inputAddress2" disabled>
+                  <input type="text" class="input form-control" id="inputAddress2" disabled [ngModel]="cliente.direccionCliente">
                 </div>
                 <div class="cajaInput">
                   <label for="inputCity" class="">Celular</label>
-                  <input type="text" class="input form-control" id="inputCity" disabled>
-                </div>
-                <div class="cajaInput">
-                  <label for="inputState" class="">Edad</label>
-                  <input id="inputState" class="input form-control" disabled>
+                  <input type="text" class="input form-control" id="inputCity" disabled [ngModel]="cliente.telefonoCliente">
                 </div>
                 <div class="cajaInput">
                     <label for="inputCity" class="">Contraseña</label>
-                    <input type="text" class="form-control input" id="inputCity" disabled>
+                    <input type="text" class="form-control input" id="inputCity" disabled [ngModel]="cliente.passwordCliente">
                 </div>
             </div> 
             <div class="cajaBtns">

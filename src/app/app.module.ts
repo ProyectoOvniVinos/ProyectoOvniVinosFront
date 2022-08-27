@@ -60,6 +60,8 @@ import localeEs from '@angular/common/locales/es';
 import { AdministradoresComponent } from './Components/Admin/administradores/administradores.component';
 import { RegistrarAdminComponent } from './Components/Admin/registrar-admin/registrar-admin.component';
 import { HttpIntercepterBasicAuthService } from './Services/http-intercepter-basic-auth.service';
+import { TokenInterceptorService } from './Services/tokenInterceptor.service';
+import { AutoInterceptorService } from './Services/auto-interceptor.service';
  
 registerLocaleData(localeEs, 'es');
 @NgModule({
@@ -126,7 +128,10 @@ registerLocaleData(localeEs, 'es');
     MatDialogModule,
     HttpClientModule
   ],
-  providers: [{provide: LOCALE_ID, useValue: 'es'},{provide: HTTP_INTERCEPTORS, useClass: HttpIntercepterBasicAuthService, multi: true}],
+  providers: [{provide: LOCALE_ID, useValue: 'es'},
+  {provide: HTTP_INTERCEPTORS, useClass: HttpIntercepterBasicAuthService, multi: true},
+  { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
+  { provide: HTTP_INTERCEPTORS, useClass: AutoInterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
