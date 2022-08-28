@@ -12,7 +12,7 @@ export class ProductoService {
 
   url:string="http://localhost:8080/apiProd/";
 
-  url2:string="http://localhost:8080/apiInventario/inventarioGeneralCompleto/positivo";
+  url2:string="http://localhost:8080/apiInventario/inventarioGeneralCompleto/positvo";
 
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 

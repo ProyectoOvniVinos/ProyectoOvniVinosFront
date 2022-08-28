@@ -11,8 +11,8 @@
     <div *ngIf="bandera==null" class='spinner'></div>
 
     <div class="cajaM-login" *ngIf="!bandera==false">
-        <div class="cajaTitleLogin">
-            <h2>INGRESAR COMPRA</h2>
+        <div >
+            <h3 class="text-center mt-3">INGRESAR COMPRA</h3>
         </div>
         <div class="cajaHijoLogin">
             <div class="cajaForm">
@@ -58,8 +58,8 @@
                             <div class="cajaImg">
                                 <img src="../../../../assets/Images/manoCopada.png" alt="manoCopada" class="imgLogin">
                             </div>
-                            <button class="btnRegistrar" (click)="seleccionarProducto()"> Agregar </button>
-                            <button routerLink="/inventarioG"  class="btnRegistrar"> Cancelar</button>
+                            <button class="btnOvni btnRegistrar" (click)="seleccionarProducto()"> Agregar </button>
+                            <button routerLink="/inventarioG"  class="btnOvni btnRegistrar"> Cancelar</button>
                         </div>
                     </div>
 
@@ -99,7 +99,7 @@
                 </div>
             </div>
             <div class="cajaBtnEnviar">
-                <button class="btnRegistrar" (click)="realizarCompra()">Enviar</button>
+                <button class="btnOvni btnRegistrar" (click)="realizarCompra()">Enviar</button>
             </div>
 
 </div>

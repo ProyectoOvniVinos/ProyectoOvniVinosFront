@@ -53,7 +53,9 @@ export class CatalogoComponent implements OnInit, OnChanges {
     this.productoService.getProductsInventario().subscribe(inventario => {
       this.inventarioGeneral = inventario;
     }, err => {
-
+      console.log("error en catalogo");
+      console.log(err);
+      
     })
 
   }
