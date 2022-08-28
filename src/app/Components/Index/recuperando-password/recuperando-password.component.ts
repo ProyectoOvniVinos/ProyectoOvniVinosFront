@@ -14,10 +14,10 @@ import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.compone
 export class RecuperandoPasswordComponent implements OnInit {
   banderaPasswordTwo: boolean = null;
   banderaTerminos: boolean = false;
-  correo:String;
-  recuperandoForm:FormGroup;
+  correo: String;
+  recuperandoForm: FormGroup;
 
-  constructor(private fb: FormBuilder, public dialog: MatDialog, public clienteService:ClienteService,private activateRoute: ActivatedRoute) {
+  constructor(private fb: FormBuilder, public dialog: MatDialog, public clienteService: ClienteService, private activateRoute: ActivatedRoute) {
     this.crearFormulario();
 
   }
@@ -30,43 +30,43 @@ export class RecuperandoPasswordComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activateRoute.params.subscribe(params=>{
-      let correo  = params['correo'];
-      this.clienteService.getByEmail(this.desencriptar(correo)).subscribe((resp:ClienteModel)=>{
+    this.activateRoute.params.subscribe(params => {
+      let correo = params['correo'];
+      this.clienteService.getByEmail(this.desencriptar(correo)).subscribe((resp: ClienteModel) => {
         this.recuperandoForm.controls["correo"].setValue(resp.correoCliente)
       })
     })
   }
-  get contrasena1Control(): FormControl{
+  get contrasena1Control(): FormControl {
     return this.recuperandoForm.get('contrasena1') as FormControl
   }
 
-  get contrasena2Control(): FormControl{
+  get contrasena2Control(): FormControl {
     return this.recuperandoForm.get('contrasena2') as FormControl
   }
   get contrasena1NoValido() {
-    if(this.recuperandoForm.get('contrasena1')?.touched){
-      if(this.recuperandoForm.get('contrasena1')?.invalid == false){
+    if (this.recuperandoForm.get('contrasena1')?.touched) {
+      if (this.recuperandoForm.get('contrasena1')?.invalid == false) {
         return false;
-      }else{
+      } else {
         return true;
       }
-    }else{
+    } else {
       return null;
     }
     //return this.registroForm.get('contrasena1')?.invalid && this.registroForm.get('contrasena1')?.touched;
   }
-  get correoControl(): FormControl{
+  get correoControl(): FormControl {
     return this.recuperandoForm.get('correo') as FormControl
   }
   get correoNoValido() {
-    if(this.recuperandoForm.get('correo')?.touched){
-      if(this.recuperandoForm.get('correo')?.invalid == false){
+    if (this.recuperandoForm.get('correo')?.touched) {
+      if (this.recuperandoForm.get('correo')?.invalid == false) {
         return false;
-      }else{
+      } else {
         return true;
       }
-    }else{
+    } else {
       return null;
     }
     //return this.registroForm.get('correo')?.invalid && this.registroForm.get('correo')?.touched;
@@ -74,20 +74,20 @@ export class RecuperandoPasswordComponent implements OnInit {
   get contrasena2NoValido() {
     const contrasena1 = this.recuperandoForm.get('contrasena1')?.value;
     const contrasena2 = this.recuperandoForm.get('contrasena2')?.value;
-    if(this.recuperandoForm.get('contrasena2')?.touched){
-      if(this.recuperandoForm.get('contrasena2')?.invalid == false){
-        if(contrasena1 === contrasena2){
-          this.banderaPasswordTwo=true;
+    if (this.recuperandoForm.get('contrasena2')?.touched) {
+      if (this.recuperandoForm.get('contrasena2')?.invalid == false) {
+        if (contrasena1 === contrasena2) {
+          this.banderaPasswordTwo = true;
           return false;
 
-        }else{
-          this.banderaPasswordTwo=false;
+        } else {
+          this.banderaPasswordTwo = false;
           return true;
         }
-      }else{
+      } else {
         return true;
       }
-    }else{
+    } else {
       return null;
     }
     //return (this.registroForm.get('contrasena2')?.touched && this.registroForm.get('contrasena2')?.invalid) ? true : (contrasena1 === contrasena2) ? false : true;
@@ -96,45 +96,44 @@ export class RecuperandoPasswordComponent implements OnInit {
   openDialog(titleNew: string, mensajeNew: string): void {
     const dialogRef = this.dialog.open(ModalErrorComponent, {
       width: '300px',
-      data: {title: titleNew, mensaje: mensajeNew},
+      data: { title: titleNew, mensaje: mensajeNew },
     });
   }
   verificar() {
     console.log(this.recuperandoForm.invalid);
-    
-    if(this.recuperandoForm.invalid){
 
-      if(this.recuperandoForm.get("contrasena2").status == "INVALID"){
-        console.log("BBBBBBBBBBBBBBBBBBBBBB");
-        
-        let title="Error"
-        let mensaje="Verifique los campos por favor!!"
+    if (this.recuperandoForm.invalid) {
+
+      if (this.recuperandoForm.get("contrasena2").status == "INVALID") {
+
+        let title = "Error"
+        let mensaje = "Verifique los campos por favor!!"
         this.openDialog(title, mensaje);
-        
+
       }
 
-    }else{
+    } else {
       this.actualizar();
     }
   }
-  desencriptar(correo:string){
+  desencriptar(correo: string) {
     let desencriptado = atob(correo)
     return desencriptado;
   }
-  actualizar(){
-    this.clienteService.getByEmail(this.recuperandoForm.controls["correo"].value).subscribe((resp:ClienteModel)=>{
-      
+  actualizar() {
+    this.clienteService.getByEmail(this.recuperandoForm.controls["correo"].value).subscribe((resp: ClienteModel) => {
+
       resp.passwordCliente = this.recuperandoForm.controls["contrasena1"].value
       console.log(resp);
-      this.clienteService.actualizar(resp).subscribe(respue=>{
+      this.clienteService.actualizar(resp).subscribe(respue => {
         console.log(respue);
-        
+
       })
     })
   }
-  
 
-   prueba(){
+
+  prueba() {
     console.log(window.screen);
     console.log(screen.width)
     console.log(screen.height)

@@ -4,11 +4,11 @@
         <div >
             <h3 class="text-center mt-3">MIS DATOS</h3>
         </div>
-        <div class="container-fluid cajaDatos">
+        <div class="container-fluid cajaDatos" *ngIf="admin">
            <div class="cajaInputs" >
                 <div class="cajaInput">
                   <label for="inputNombre" class="">Nombre</label>
-                  <input type="text" class="input form-control" id="inputNombre" disabled [ngModel]="admin.nombreAdmin">
+                  <input type="text" class="input form-control" id="inputNombre" disabled [ngModel]="admin.nombreAdmin" >
                 </div>
                 <div class="cajaInput">
                   <label for="inputPassword4" class="">Apellido</label>

@@ -49,6 +49,8 @@ export class CatalogoComponent implements OnInit, OnChanges {
     this.obtenerProductos();
     this.usuario = this.loginService.usuario;
     if (this.loginService.isAuthenticated() && this.loginService.hasRole('ROLE_CLIENTE')) {
+
+
       this.clienteService.getByEmail(this.usuario.correo).subscribe(resp => {
         this.clienteInp = resp;
       })
