@@ -62,7 +62,11 @@ import { RegistrarAdminComponent } from './Components/Admin/registrar-admin/regi
 import { HttpIntercepterBasicAuthService } from './Services/http-intercepter-basic-auth.service';
 import { TokenInterceptorService } from './Services/tokenInterceptor.service';
 import { AutoInterceptorService } from './Services/auto-interceptor.service';
- 
+
+import { CambioPasswordAComponent } from './Components/Admin/cambio-password-a/cambio-password-a.component';
+import { CambioPasswordCComponent } from './Components/Client/cambio-password-c/cambio-password-c.component';
+
+
 registerLocaleData(localeEs, 'es');
 @NgModule({
   declarations: [
@@ -107,7 +111,9 @@ registerLocaleData(localeEs, 'es');
     ModalDetallesVentaComponent,
     AdministradoresComponent,
     ModalDetallesVentaComponent,
-    RegistrarAdminComponent
+    RegistrarAdminComponent,
+    CambioPasswordAComponent,
+    CambioPasswordCComponent
 
 
 
@@ -128,7 +134,7 @@ registerLocaleData(localeEs, 'es');
     MatDialogModule,
     HttpClientModule
   ],
-  providers: [{provide: LOCALE_ID, useValue: 'es'},
+  providers: [{ provide: LOCALE_ID, useValue: 'es' },
   //{provide: HTTP_INTERCEPTORS, useClass: HttpIntercepterBasicAuthService, multi: true},
   { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptorService, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: AutoInterceptorService, multi: true }],

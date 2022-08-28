@@ -47,7 +47,6 @@ export class CatalogoComponent implements OnInit, OnChanges {
   ngOnInit(): void {
 
     this.obtenerProductos();
-
     this.usuario = this.loginService.usuario;
     if (this.loginService.isAuthenticated() && this.loginService.hasRole('ROLE_CLIENTE')) {
       this.clienteService.getByEmail(this.usuario.correo).subscribe(resp => {
@@ -62,6 +61,8 @@ export class CatalogoComponent implements OnInit, OnChanges {
     this.productoService.getProductsInventario().subscribe(inventario => {
       this.inventarioGeneral = inventario;
     }, err => {
+      console.log("error en catalogo");
+      console.log(err);
 
     })
 

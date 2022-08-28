@@ -1,10 +1,11 @@
 <div class="container-fluid cajaP-login">
 
     <div class="cajaM-login">
-        <div class="cajaTitleLogin">
-            <h2>REGISTRARSE</h2>
+        <div>
+            <h3 class="text-center mt-3">REGISTRARSE</h3>
         </div>
         <div class="container-fluid cajaHijoLogin">
+
             <div class="container-fluid cajaForm">
                 <form class="cajaFormCompleto" [formGroup]="registroForm" (submit)="verificar()">
                     <div class="cajaDeInputs">
@@ -74,7 +75,7 @@
                             [ngClass]="contrasena1NoValido == null ? '' : contrasena1NoValido ? 'is-invalid': 'is-valid'">
                             <div class="errors-container" *ngIf="contrasena1Control.invalid && (contrasena1Control.touched || contrasena1Control.dirty)">
                                 <p class="text-danger" *ngIf="contrasena1Control.hasError('required')">El campo es obligatorio</p>
-                                <p class="text-danger" *ngIf="!contrasena1Control.hasError('required')">Debe ingresar al menos 8 caracteres</p>
+                                <p class="text-danger" *ngIf="!contrasena1Control.hasError('required')">Al menos 8 caracteres</p>
                             
                             </div>
                         </div>
@@ -103,7 +104,7 @@
                       </div>
                     </div>
                     <div class="cajaBtn">
-                      <button type="submit" class="btnRegistrar" >Registrarse</button>
+                      <button type="submit" class="btnOvni btnRegistrar" >Registrarse</button>
                     </div>
                   </form>
             </div>

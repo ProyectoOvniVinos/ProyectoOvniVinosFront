@@ -1,14 +1,14 @@
 
 
 <div class="boton">
-    <button (click)="irProductos() "class="btnRegresar">Regresar</button>
+    <button (click)="irProductos() "class="btnOvni btnRegresar">Regresar</button>
 </div>
 
 <div class="container-fluid cajaP">
 
     <div class="cajaM">
-        <div class="cajaTitle">
-            <h2>{{titulo}}</h2>
+        <div >
+            <h3 class="text-center mt-3">AGREGAR PRODUCTO</h3>
         </div>
         <div class="cajaHijo">
             <div class="cajaForm">
@@ -83,8 +83,8 @@
                                 <img src="../../../../assets/Images/manoCopada.png" alt="manoCopada" class="imgLogin">
                             </div>
                             <div class="cajaBtnsTwo">
-                                <button *ngIf="boton=='Editar'" type="submit" class="btnRegistrar" (click)="deshabilitar(producto.codigoProducto)"> {{botonAccion}}</button>
-                                <button type="submit" class="btnRegistrar" (click)="iniciarProceso()"> {{boton}} </button>
+                                <button *ngIf="boton=='Editar'" type="submit" class="btnOvni btnRegistrar" (click)="deshabilitar(producto.codigoProducto)"> {{botonAccion}}</button>
+                                <button type="submit" class="btnOvni btnRegistrar" (click)="iniciarProceso()"> {{boton}} </button>
                             </div>
 
                         </div>

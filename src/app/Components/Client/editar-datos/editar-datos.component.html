@@ -1,8 +1,8 @@
 <div class="container-fluid cajaP-login">
 
     <div class="cajaM-login">
-        <div class="cajaTitleLogin">
-            <h2>ACTUALIZAR DATOS</h2>
+        <div >
+            <h2 class="text-center mt-3">ACTUALIZAR DATOS</h2>
         </div>
         <div class="container-fluid cajaHijoLogin">
             <div class="container-fluid cajaForm">
@@ -47,36 +47,17 @@
 
                             </div>
                         </div>
-                        <div class="cajaInput">
-                            <label for="inputContrasena1" class="label">Contraseña</label>
-                            <input type="password" class="form-control input" id="inputContrasena1"
-                            formControlName="contrasena1"
-                            [ngClass]="contrasena1NoValido == null ? '' : contrasena1NoValido ? 'is-invalid': 'is-valid'">
-                            <div class="errors-container" *ngIf="contrasena1Control.invalid && (contrasena1Control.touched || contrasena1Control.dirty)">
-                                <p class="text-danger" *ngIf="contrasena1Control.hasError('required')">El campo es obligatorio</p>
-                                <p class="text-danger" *ngIf="!contrasena1Control.hasError('required')">Debe ingresar al menos 8 caracteres</p>
-                            
-                            </div>
-                        </div>
-                        <div class="cajaInput">
-                            <label for="inputContrasena2" class="label">Repite la contraseña</label>
-                            <input type="password" class="form-control input" id="inputContrasena2"
-                            formControlName="contrasena2"
-                            [ngClass]="contrasena2NoValido == null ? '' : contrasena2NoValido ? 'is-invalid': 'is-valid'">
-                            <div class="errors-container" *ngIf="contrasena2Control.invalid && (contrasena2Control.touched || contrasena2Control.dirty)">
-                                <p class="text-danger" *ngIf="contrasena2Control.hasError('required')">El campo es obligatorio</p> 
-                                                
-                            </div>
-                            <div *ngIf="!
-                            contrasena2Control.hasError('required')==true">
-                                <p class="text-danger" *ngIf="banderaPasswordTwo==false && banderaPasswordTwo!=null">Las contraseñas no coinciden</p>                   
-                            </div>
-                        </div>
                     </div>
                 
                     <div class="cajaBtn">
+<<<<<<< HEAD
                       <button type="submit" class="btnRegistrar" routerLink="/datosC" >Cancelar</button>
                       <button (click)="editar()" type="submit" class="btnRegistrar" >Editar</button>
+=======
+                      <button type="submit" class="btnOvni btnRegistrar" routerLink="/datosC" >Cancelar</button>
+                      <button type="submit" class="btnOvni btnRegistrar" >Editar</button>
+                      <button type="submit" class="btnOvni btnRegistrar" routerLink="/cambiarContraseñaC" >Contraseña</button>
+>>>>>>> 3c75714c15ca427f310e27cce0cc5a42568a1d49
                     </div>
                 </form>
             </div>

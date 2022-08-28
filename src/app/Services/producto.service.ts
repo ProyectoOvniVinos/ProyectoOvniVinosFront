@@ -75,6 +75,10 @@ export class ProductoService {
   getProductsEstadoFiltro(filtro:string):Observable<Inventario_generalModel[]> {
     const url: string = `${this.url2}positvoFiltrado/${filtro}`;
 
+    console.log("AAAAAAAAAA");
+    
+    console.log(url);
+    
     return this.http.get<Inventario_generalModel[]>(url);
   }
 

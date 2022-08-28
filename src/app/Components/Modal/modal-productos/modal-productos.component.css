@@ -5,7 +5,7 @@
 .tituloModal{
     font-size: 30px;
     color: rgb(211, 21, 88);    
-    margin-left: 15%;
+    /* margin-left: 15%; */
 }
 
 .cajaM{
@@ -22,7 +22,7 @@
 
 .cajaImg{
     display: flex;
-    width: 50%;
+    width: 55%;
     height: 80%;
     flex-direction: column;
     align-items: center;
@@ -34,7 +34,7 @@
     width: 75%;
     height: 20rem;
     border-radius: 0.5rem;
-    margin-bottom: 2%;
+    margin-bottom: 1%;
     border: 2px solid rgba(211, 21, 88, 0);
     box-shadow: 4px 4px 7px #9b9b9b, -3px -3px 3px #ededed;
     display: flex;
@@ -44,7 +44,7 @@
 
 .imgReco{
     width: 90%;
-    height: 90%;
+    height: 100%;
 }
 
 .cajaInfoYreco{
@@ -108,7 +108,7 @@
     overflow: hidden;
     display: inline-block;
     font-size: 1rem;
-    top: 0.45rem;
+    top: -0.2rem;
 }
 
 .btnOk:hover {
@@ -245,7 +245,7 @@
 }
 
 .card-body{
-    height: 26rem;
+    height: 23.6rem;
 }
 
 .card-footer{
@@ -254,7 +254,7 @@
 
 .cajaImgS{
     width: 35%;
-    height: 100%;
+    height: 99.779%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -264,8 +264,8 @@
 }
 
 .imgProductoRecomendado{
-    width: 90%;
-    height: 80%;
+    width: 100%;
+    height: 90%;
 }
 
 
@@ -283,7 +283,7 @@
     }
 }
 
-@media screen and (max-width:1920px) and (max-height:950px) {
+@media screen and (max-height:950px) {
     .cajaInfoReco{
         height: 12.5rem;
     }
@@ -295,53 +295,203 @@
     .card{
         margin-bottom: 0%;
     }
+    .cajaInfoReco{
+        height: 11.5rem;
+        width: 76%;
+    }
+    .card-body{
+        height: 22.8rem;
+    }
 }
 @media screen and (max-width:1920px) and (max-height:900px) {
     .card-body{
-        height:20.7rem;
+        height:20.4rem;
     }
     .img{
-        height: 17rem;
+        height: 18rem;
+        width: 70%;
+    }
+    .cajaInfoReco{
+        height: 11.5rem;
+        width: 70%;
+    }
+    .cajaImg{
+        gap: 0;
     }
 }
 
-@media screen and (max-width:1920px) and (max-height:750px) {
+@media screen and (max-width:1920px) and (max-height:835px) {
     .card-body{
-        height: 15.7rem;;
+        height: 21.3rem;
     }
     .img{
-        height: 14rem;
-        width: 66%;
+        height: 19rem;
+    }
+    .cajaImg{
+        gap: 0.5rem;
+    }
+}
+
+@media screen and (max-width:1920px) and (max-height:785px) {
+    .card-body{
+        height: 21.1rem;;
+    }
+    .img{
+        height: 19rem;
+        width: 70%;
+        margin-bottom: 2%;
     }
     .swiper{
         width: 65%;
         height: 10.5rem;
     }
+    .cajaInfo{
+        width: 71%;
+        height: 11.5rem;
+    }
+}
+@media screen and (max-width:1920px) and (max-height:765px) {
+    .card-body{
+        height: 19.7rem;;
+    }
+    .img{
+        height: 18rem;
+        width: 70%;
+        margin-bottom: 1%;
+    }
+    .cajaInfo{
+        height: 11.5rem;
+        width: 69%;
+    }
+    .cajaImg{
+        gap: 0rem;
+    }
+    .card-text{
+        font-size: 1.4rem;
+    }
+}
+@media screen and (max-width:1920px) and (max-height:730px) {
+    .card-body{
+        height: 18.8rem;;
+    }
+    .img{
+        height: 17rem;
+        width: 71%;
+        margin-bottom: 1%;
+    }
+    .cajaInfo{
+        height: 11.5rem;
+        width: 69%;
+    }
+    .cajaImg{
+        gap: 0rem;
+    }
+    .card-text{
+        font-size: 1.4rem;
+    }
+}
+@media screen and (max-width:1920px) and (max-height:700px) {
+    .card-body{
+        height: 17.3rem;;
+    }
+    .img{
+        height: 15.5rem;
+        width: 60%;
+        margin-bottom: 1%;
+    }
+    .cajaInfoReco{
+        height: 11.5rem;
+        width: 60%;
+    }
+    .card-text{
+        font-size: 1.2rem;
+    }
+}
+@media screen and (max-width:1920px) and (max-height:675px) {
+    .card-body{
+        height: 17.3rem;;
+    }
+    .img{
+        height: 15.5rem;
+        width: 60%;
+        margin-bottom: 1%;
+    }
+    .cajaInfoReco{
+        height: 11.5rem;
+        width: 60%;
+    }
+    .card-text{
+        font-size: 1.2rem;
+    }
+}
+@media screen and (max-height:640px) {
+    .img{
+        height: 15rem;
+        width: 55%;
+        margin-bottom: 1%;
+    }
+    .cajaInfoReco{
+        height: 10.5rem;
+        width: 55%;
+    }
+    .cajaInfo{
+        padding-top: 6%;
+    }
+    .card-body{
+        height: 15.7rem;
+    }
 }
 @media screen and (max-width:1920px) and (max-height:620px) {
     .card-body{
-        height: 12.7rem;;
+        height: 14rem;;
     }
     .img{
-        height: 11rem;
-        width: 66%;
+        height: 14rem;
+        width: 60%;
     }
     .cajaInfoReco{
         height: 10rem;
+        width: 60%;
     }
     .card-text{
         font-size: 1rem !important;
     }
+    .cajaInfoS{
+        padding-top: 5%;
+    }
 }
-
-
-
+@media screen and (max-width:1880) and (max-height:874px){
+    .card-body{
+        height: 19.8rem;
+    }
+}
 @media screen and (max-width:1500px) and (max-height:1080px){
     .card-body{
         height: 23.7rem;
     }
     .img{
         height: 20rem;
+    }
+}
+@media screen and (max-width:1500px) and (max-height:900px){
+    .card-body{
+        height: 21.9rem;
+    }
+}
+@media screen and (max-width:1400px) and (max-height:800px){
+    .card-body{
+        height: 20.9rem;
+    }
+    .card-text{
+        font-size: 1.35rem;
+    }
+    .img{
+        height: 18rem;
+        width: 63%;
+    }
+    .cajaInfoReco{
+        height: 11.5rem;
+        width: 63%;
     }
 }
 @media screen and (max-width:1366px) and (max-height:650px) {
@@ -356,4 +506,54 @@
     .card-body{
         height: 23.7rem;
     }
-}   
+}
+@media screen and (max-width:1200px) and (max-height:650px){
+    .img{
+        height: 14rem;
+    }
+    .cajaInfoReco{
+        height: 11.5rem;
+        width: 63%;
+    }
+    .card-body{
+        height: 15.7rem;
+    }
+    .card-text{
+        font-size: 1.1rem;
+    }
+}
+@media screen and (max-width:1300px) and (max-height:800px){
+    .card-body{
+        height: 18.7rem;
+    }
+    .card-text{
+        font-size: 1.2rem;
+    }
+    .img{
+        height: 17rem;
+        width: 60%;
+    }
+    .cajaInfoReco{
+        height: 11.5rem;
+        width: 60%;
+    }
+}
+@media screen and (max-width:700px) and (max-height:1080px){
+    .card-body{
+        height: 21.7rem;
+    }
+    .card-text{
+        font-size: 1.3rem;
+    }
+    .img{
+        height: 18rem;
+        width: 85%;
+    }
+    .cajaInfoReco{
+        height: 12.5rem;
+        width: 85%;
+    }
+    .cajaInfoS{
+        padding-top: 20%;
+    }
+}

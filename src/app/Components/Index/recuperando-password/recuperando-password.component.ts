@@ -114,7 +114,6 @@ export class RecuperandoPasswordComponent implements OnInit {
       }
 
     }else{
-      console.log("DDDDDDDDDDDDDDDDDDDDDDDDDD");
       this.actualizar();
     }
   }
@@ -124,8 +123,9 @@ export class RecuperandoPasswordComponent implements OnInit {
   }
   actualizar(){
     this.clienteService.getByEmail(this.recuperandoForm.controls["correo"].value).subscribe((resp:ClienteModel)=>{
-      console.log(resp);
+      
       resp.passwordCliente = this.recuperandoForm.controls["contrasena1"].value
+      console.log(resp);
       this.clienteService.actualizar(resp).subscribe(respue=>{
         console.log(respue);
         

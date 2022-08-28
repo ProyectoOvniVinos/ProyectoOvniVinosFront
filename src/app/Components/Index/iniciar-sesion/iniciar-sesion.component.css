@@ -1,61 +1,23 @@
-.cajaP-login{
-    width: 100%;
-    height: 95%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .cajaM-login{
     width: 50%;
-    height: 75%;
-    border: 2px solid black;
+    height: 55%;
     background-color: white;
     border-radius: 10px;
-
-    box-shadow:  19px 19px 12px #9b9b9b,
-    -19px -19px 12px #ffffff;
+    box-shadow: 10px 10px 11px #9b9b9b, -8px -8px 12px #ffffff;
+    display: flex;
 }
 
-.cajaRegistrar{
-    height: 100%;
-    width: 100%;
+
+
+.cajaBtnsGlobal{
     display: flex;
-    justify-content:center;
-    align-items: center;
-    flex-direction: column;
     gap: 1rem;
 }
 
 
-
-.cajaRecuperar{
-    position: absolute;
-    right: 59%;
-    margin-top: 3%;
-    top: 70%;
-}
-
-.cajaTitleLogin{
-    border-bottom: 2px solid black;
-    background: rgb(167,31,73);
-    background: linear-gradient(90deg, rgba(167,31,73,1) 11%, rgba(255,42,108,1) 55%, rgba(167,31,73,1) 100%);
-    color: white;
-    height: 8vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.cajaHijoLogin{
-    display: flex;
-    justify-content: space-around;
-    height: 85%;
-    
-}
-
 .cajaForm{
-    height: 100%;
+    height: 80%;
     width: 100%;
     display: flex;
     justify-content:center;
@@ -63,18 +25,27 @@
 
 } 
 
+.title{
+    text-align: center;
+    margin-top: 2rem;
+}
+
 .cajaFormCompleto{
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0rem;
 }
 
 .cajaEmail{
     height: 7rem;
+    width: 90%;
 }
 
 .cajaPassword{
     height: 7rem;
+    width: 90%;
 }
 
 .label{
@@ -82,10 +53,11 @@
 }
 
 .input{
-    height: 5vh;
-    width: 34vh;
-    border-radius:5px;
+    width: 100%;
+    border-radius: 5px;
     font-size: 2vh;
+    background-color: transparent;
+    border: 1px solid black;
 }
 
 .input:focus{
@@ -93,44 +65,17 @@
     border: 1px solid rgb(199, 119, 147);
 }
 
+.olvidaste{
+    font-size: 0.8rem;
+}
+
 .btnIniciar{
-    width: 12rem;
-    height: 3.5rem;
-    background: #fff; /* color de fondo */
-    color: rgb(184, 13, 72); /* color de fuente */
-    border: 2px solid rgb(184, 13, 72); /* tamaño y color de borde */
-    border-radius: 3px; /* redondear bordes */
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-    display: inline-block;
+    width: 10rem;
+    height: 3rem;
     font-size: 1.5rem;
 }
 
-.btnIniciar:hover{
-    color: #fff;/* color de fuente hover */
-}
 
-.btnIniciar::after{
-    content: "";
-    background: rgb(167,31,73);
-    background: linear-gradient(90deg, rgba(167,31,73,1) 11%, rgba(255,42,108,1) 55%, rgba(167,31,73,1) 100%);
-    position: absolute;
-    z-index: -1;
-    padding: 16px 20px;
-    display: block;
-    left: -20%;
-    right: -20%;
-    top: 0;
-    bottom: 0;
-    transform: skewX(45deg) scale(0, 1);
-    transition: all 0.3s ease;
-}
-
-.btnIniciar:hover::after{
-    transition: all 0.3s ease-out;
-    transform: skewX(45deg) scale(1, 1);
-}
 
 .cajaButtonRes{
     display: flex;
@@ -140,12 +85,12 @@
 }
 
 .btnRegistrar{
-    width: 12rem;
-    height: 3.5rem;
+    width: 10rem;
+    height: 3rem;
     background: #fff; /* color de fondo */
     color: rgb(184, 13, 72); /* color de fuente */
     border: 2px solid rgb(184, 13, 72); /* tamaño y color de borde */
-    border-radius: 3px; /* redondear bordes */
+    border-radius: 10px; /* redondear bordes */
     position: relative;
     z-index: 1;
     overflow: hidden;
@@ -163,53 +108,54 @@
     background: linear-gradient(90deg, rgba(167,31,73,1) 11%, rgba(255,42,108,1) 55%, rgba(167,31,73,1) 100%);
     position: absolute;
     z-index: -1;
-    padding: 16px 20px;
     display: block;
     left: -20%;
     right: -20%;
     top: 0;
     bottom: 0;
     transform: skewX(45deg) scale(0, 1);
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
 }
 
 .btnRegistrar:hover::after{
-    transition: all 0.3s ease-out;
+    transition: all 0.2s ease-out;
     transform: skewX(45deg) scale(1, 1);
 }
 
 .imgLogin{
     width: 100%;
     height: 100%;
+    border-radius: 50%;
 }
 
 .cajaImg{
-    width: 80%;
+    width: 65%;
     margin-top: 0%;
-    height: 66%;
+    height: 50%;
+    border-radius: 50%;
+    border: 3px solid rgb(139, 139, 139);
 }
 
-.cajaBtnGooFa{
+.cajaHijo1{
+    width: 55%;
+    border-bottom-left-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    background-color: #f1efef;
+    transform: skewX(1rem);
+}
+
+.cajaHijo2{
+    width: 45%;
     display: flex;
-    gap: 50px;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    height: 5rem;
 }
 
-.btnGoogle{
-    background-image: url('../../../../assets/Images/icons8-logo-de-google-48.png');
-    background-size: cover;
-    width: 25%;
-    height: 8.5vh;
-    border-radius: 100%;
-    opacity: 70%;
-    transition: 0.5s;
-    border: 2px solid white;
-}
-
-.btnGoogle:hover{
-    opacity: 100%;
-    border-color: rgb(85, 83, 83);
+.eslogan{
+    text-align: center;
+    font-family: cursive;
+    font-size: 1.5rem;
 }
 
 .cajaPIniciarSesion{
@@ -217,23 +163,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-
-.btnFacebook{
-    background-image: url('../../../../assets/Images/icons8-facebook-nuevo-48.png');
-    background-size: cover;
-    width: 25%;
-    height: 8.5vh;
-    border-radius: 100%;
-    opacity: 70%;
-    transition: 0.5s;
-    border: 2px solid white;
-}
-
-.btnFacebook:hover{
-    opacity: 100%;
-    border-color: rgb(92, 90, 90);
 }
 
 .ng-touched.ng-invalid:is(input, textarea),
@@ -261,191 +190,118 @@
 }
 
 
-/*1920x950*/
 @media screen and (max-width: 1920px) and (max-height:1080px){
 
-    .cajaM-login{
-        width: 48%;
-    }
-
-    .cajaInput{
-        height: 6rem;
-        width: 20rem;
-    }
-
-    .cajaInput p{
-        font-size: 1rem;
-    }
-    .cajaFormCompleto{
-        gap: 1.5rem;
-    }
-    .cajaRegistrar{
-        gap: 2rem;
-    }
-}
-
-
-
-@media screen and (max-width: 1920px) and (max-height:1020px){
-
-    .cajaRegistrar{
-        gap: 3rem;
-    }
-}
-@media screen and (max-width: 1920px) and (max-height:980px){
-
-    .cajaRegistrar{
-        gap: 3.5rem;
-        padding-top: 1rem;
-    }
-}
-@media screen and (max-width: 1920px) and (max-height:940px){
-    .cajaM-login{
-        height: 80%;
-    }
-
-}
-
-@media screen and (max-width: 1920px) and (max-height:920px){
-    .cajaRegistrar{
-        gap: 4.5rem;
-    }
-}
-
-@media screen and (max-width: 1920px) and (max-height:880px){
-    .cajaM-login{
-        height: 85%;
-    }
-    .cajaRegistrar{
-        gap: 3.5rem;
-    }
-
-}
-@media screen and (max-width: 1920px) and (max-height:840px){
-    .cajaEmail{
-        height: 5rem;
-    }
-    .cajaPassword{
-        height: 5rem;
-    }
-    .cajaBtnGooFa{
-        height: 4rem;
-    }
-    .cajaBtnsYrecuperar{
-        height: 5rem;
-    }
-    .cajaRegistrar{
-        gap: 1rem;
-    }
-    .cajaImg{
-        width: 70%;
-        margin-top: 0%;
-        height: 62%;
-    }
-
-}
-
-@media screen and (max-width: 1920px) and (max-height:750px){
-    .cajaRegistrar{
-        gap: 2.5rem;
-    }
-}
-@media screen and (max-width: 1920px) and (max-height:720px){
-    .btnIniciar{
-        height: 2.5rem;
-    }
-    .btnRegistrar{
-        height: 2.5rem;
-    }
-    .cajaFormCompleto{
-        gap: 0rem;
-    }
-    .cajaRegistrar{
-        gap: 1.5rem;
-        justify-content: flex-start;
-    }
-    .cajaImg{
-        width: 50%;
-    }
-}
-
-@media screen and (max-width: 1920px) and (max-height:600px){
-    .cajaM-login{
-        height: 100%;
-    }
-}
-@media screen and (max-width: 1920px) and (max-height:540px){
-    .cajaM-login{
-        height: 92%;
-    }
-    .cajaInput{
-        height: 3rem;
-    }
-    .btnFacebook{
-        width:16%;
-    }
-    .btnGoogle{
-        width: 16%;
-    }
-
-}
-
-@media screen and (max-width: 1840px) and (max-height:1080px){ 
     .cajaM-login{
         width: 55%;
     }
 }
 
-@media screen and (max-width: 1680px) and (max-height:1080px){ 
-    .cajaM-login{
-        width: 65%;
+@media screen and (max-width: 1920px) and (max-height:800px){
+    .cajaEmail {
+        height: 5rem;
+        width: 90%;
     }
-}
-@media screen and (max-width: 1550px) and (max-height:1080px){ 
-    .cajaM-login{
-        width: 60%;
+    .cajaPassword {
+        height: 5rem;
+        width: 90%;
     }
-}
 
+    .btnIniciar{
+        height: 2rem;
+        font-size: 1rem;
+    }
 
-@media screen and (max-width: 1460px) and (max-height:1080px){
-    .cajaM-login{
-        width: 65%;
+    .btnRegistrar{
+        height: 2rem;
+        font-size: 1rem;
     }
-    .input{
-        width: 18rem;
-    }
-    .btnFacebook{
-        width: 25%;
-        height: 89%;
-    }
-    .btnGoogle{
-        width: 25%;
-        height: 89%;
+
+    .cajaBtnsYrecuperar{
+        height: 3.5rem;
     }
 }
 
+@media screen and (max-width: 1920px) and (max-height:800px){
+    .title{
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        margin-top: 1rem;
+    }
+}
 
-@media screen and (max-width: 1280px) and (max-height:1080px){
-    .imgLogin{
+@media screen and (max-width:1920px) and (max-height:620px){
+    .cajaPIniciarSesion{
+        height: 70%;
+    }
+    .cajaM-login{
+        width: 75%;
+        height: 70%;
+    }
+}
+
+@media screen and (max-width:1920px) and (max-height:550px){
+    .cajaPIniciarSesion{
+        height: 70%;
+    }
+    .cajaM-login{
+        width: 75%;
         height: 90%;
     }
 }
 
-@media screen and (max-width: 1280px) and (max-height:960px){
-    .imgLogin{
-        height: 105%;
+
+@media screen and (max-width: 1480px) and (max-height:1080px){
+
+    .cajaM-login{
+        width: 65%;
+    }
+}
+
+@media screen and (max-width: 1300px) and (max-height:1080px){
+
+    .cajaM-login{
+        width: 75%;
     }
 }
 
 @media screen and (max-width: 1120px) and (max-height:1080px){
-    .cajaM-login{
-        width: 80%;
+
+    .eslogan{
+        font-size: 2rem;
+    }
+    .cajaImg{
+        width: 60%;
+        height: 40%;
     }
 }
-@media screen and (max-width: 1120px) and (max-height:960px){
-    .cajaM-login{
-        width: 90%;
+
+@media screen and (max-width: 1000px) and (max-height:1080px){
+
+    .eslogan{
+        font-size: 2rem;
+    }
+    .cajaImg{
+        width: 60%;
+        height: 40%;
+    }
+    .cajaBtnsGlobal{
+        flex-direction: column;
+        gap: 0.2rem;
     }
 }
+
+
+@media screen and (max-width: 860px) and (max-height:1080px){
+
+    .cajaHijo1{
+        width: 100%;
+    }
+
+    .cajaHijo2{
+        display: none;
+    }
+}
+
+
 
