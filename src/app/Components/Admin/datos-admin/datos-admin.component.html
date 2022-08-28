@@ -8,27 +8,23 @@
            <div class="cajaInputs" >
                 <div class="cajaInput">
                   <label for="inputNombre" class="">Nombre</label>
-                  <input type="text" class="input form-control" id="inputNombre" disabled>
+                  <input type="text" class="input form-control" id="inputNombre" disabled [ngModel]="admin.nombreAdmin">
                 </div>
                 <div class="cajaInput">
                   <label for="inputPassword4" class="">Apellido</label>
-                  <input type="password" class="input form-control" id="inputPassword4" disabled>
+                  <input type="password" class="input form-control" id="inputPassword4" disabled [ngModel]="admin.apellidoAdmin">
                 </div>
                 <div class="cajaInput">
                   <label for="inputAddress" class="">Correo electrónico</label>
-                  <input type="text" class="input form-control" id="inputAddress" disabled>
+                  <input type="text" class="input form-control" id="inputAddress" disabled [ngModel]="admin.correoAdmin">
                 </div>
                 <div class="cajaInput">
                   <label for="inputAddress2" class="">Dirección</label>
-                  <input type="text" class="input form-control" id="inputAddress2" disabled>
+                  <input type="text" class="input form-control" id="inputAddress2" disabled [ngModel]="admin.direccionAdmin">
                 </div>
                 <div class="cajaInput">
                   <label for="inputCity" class="">Celular</label>
-                  <input type="text" class="input form-control" id="inputCity" disabled>
-                </div>
-                <div class="cajaInput">
-                  <label for="inputState" class="">Edad</label>
-                  <input id="inputState" class="input form-control" disabled>
+                  <input type="text" class="input form-control" id="inputCity" disabled [ngModel]="admin.telefonoAdmin">
                 </div>
             </div> 
             <div class="cajaBtns">

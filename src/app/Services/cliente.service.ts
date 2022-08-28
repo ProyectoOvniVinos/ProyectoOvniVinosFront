@@ -51,19 +51,14 @@ export class ClienteService {
     let desencriptado = atob(correo)
     return desencriptado;
   }
-<<<<<<< HEAD
   actualizar(cliente: ClienteModel) {
-    return this.http.put<any>(`${this.url}cliente/${cliente.correoCliente}`, cliente, { headers: this.httpHeaders })
-=======
-  actualizar(cliente:ClienteModel){
     let clienteNew = new ClienteModel()
-    clienteNew.apellidoCliente=cliente.apellidoCliente
-    clienteNew.nombreCliente=cliente.nombreCliente
-    clienteNew.direccionCliente=cliente.direccionCliente
-    clienteNew.passwordCliente=cliente.passwordCliente
-    clienteNew.telefonoCliente=cliente.telefonoCliente
-    clienteNew.correoCliente=cliente.correoCliente
-    return this.http.put<any>(`${this.url}cliente/${clienteNew.correoCliente}`,clienteNew,{headers: this.httpHeaders})
->>>>>>> 3c75714c15ca427f310e27cce0cc5a42568a1d49
+    clienteNew.apellidoCliente = cliente.apellidoCliente
+    clienteNew.nombreCliente = cliente.nombreCliente
+    clienteNew.direccionCliente = cliente.direccionCliente
+    clienteNew.passwordCliente = cliente.passwordCliente
+    clienteNew.telefonoCliente = cliente.telefonoCliente
+    clienteNew.correoCliente = cliente.correoCliente
+    return this.http.put<any>(`${this.url}cliente/${clienteNew.correoCliente}`, clienteNew, { headers: this.httpHeaders })
   }
 }
