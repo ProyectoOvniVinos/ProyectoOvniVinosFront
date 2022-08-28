@@ -12,7 +12,7 @@ export class ProductoService {
 
   url:string="http://localhost:8080/apiProd/";
 
-  url2:string="http://localhost:8080/apiInventario/inventarioGeneralCompleto/positivo";
+  url2:string="http://localhost:8080/apiInventario/inventarioGeneralCompleto/";
 
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 
@@ -73,13 +73,13 @@ export class ProductoService {
   }
 
   getProductsEstadoFiltro(filtro:string):Observable<Inventario_generalModel[]> {
-    const url: string = `${this.url2}Filtrado/${filtro}`;
+    const url: string = `${this.url2}positvoFiltrado/${filtro}`;
 
     return this.http.get<Inventario_generalModel[]>(url);
   }
 
   getProductsInventario():Observable<Inventario_generalModel[]> {
-    return this.http.get<Inventario_generalModel[]>(this.url2);
+    return this.http.get<Inventario_generalModel[]>(`${this.url2}positivo`);
   }
 
   deshabilitarProduct(id:number){

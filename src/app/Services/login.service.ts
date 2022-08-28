@@ -36,7 +36,7 @@ export class LoginService {
 
   login(username:string, password:string):Observable<any>{
     const urlEnpoint = 'http://localhost:8080/oauth/token';
-    const credenciales = btoa('angularapp' + ':' + '12345');
+    const credenciales = btoa('ovniVinos' + ':' + '12345');
     const httpHeaders = new HttpHeaders({'Content-Type':'application/x-www-form-urlencoded',
     'Authorization':'Basic '+ credenciales}); 
     let params = new URLSearchParams();

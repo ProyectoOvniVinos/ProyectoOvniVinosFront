@@ -8,6 +8,8 @@ import { Item_compraModel } from 'src/app/Models/Item_compra.model';
 import { ProductoModel } from 'src/app/Models/Producto.model';
 import { AdminService } from 'src/app/Services/admin.service';
 import { CompraService } from 'src/app/Services/compra.service';
+import { ConvertirAdminService } from 'src/app/Services/convertir-admin.service';
+import { LoginService } from 'src/app/Services/login.service';
 import { ProductoService } from 'src/app/Services/producto.service';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 import { ModalLoadingComponent } from '../../Modal/modal-loading/modal-loading.component';
@@ -21,6 +23,7 @@ export class IngresarCompraComponent implements OnInit {
 
   compra = new CompraModel();
   total: number = 0;
+  usuario;
 
   itemVaciar = new Item_compraModel();
 
@@ -39,7 +42,9 @@ export class IngresarCompraComponent implements OnInit {
     public dialog: MatDialog,
     private serviceCompra: CompraService,
     private serviceAdmin: AdminService,
-    private activateRoute: ActivatedRoute) {
+    private activateRoute: ActivatedRoute,
+    private loginService: LoginService,
+    private convertirAdmin: ConvertirAdminService) {
     this.crearFormulario();
   }
   openDialog(titleNew: string, mensajeNew: string): void {
@@ -248,26 +253,27 @@ export class IngresarCompraComponent implements OnInit {
     this.openDialogLoading();
     this.compra.precioCompra = this.total;
     this.compra.cantidadCompra = this.obtenerCantidadTotal()
+    
+    this.usuario = this.loginService.usuario;
 
-    this.admin = new AdministradorModel();
-    this.admin.apellidoAdmin = "Amador"
-    this.admin.correoAdmin = "cristian@gmail.com"
-    this.admin.direccionAdmin = "centenario"
-    this.admin.nombreAdmin = "Cristian"
-    this.admin.passwordAdmin = "12345"
-    this.admin.telefonoAdmin = "323"
+    this.serviceAdmin.getAdminById(this.usuario.correo).subscribe(admin =>{
 
-    this.compra.administradorCompra = this.admin;
+      this.admin = this.convertirAdmin.convertir(admin);
+      this.compra.administradorCompra = this.admin;
+  
+      this.serviceCompra.addCompra(this.compra).subscribe(e => {
+        this.closeDialogLoading();
+        this.openDialog("¡¡ÉXITO!!!", "La compra se ha agregado satisfactoriamente. ")
+        this.vaciar()
+  
+      }, err => {
+        this.closeDialogLoading();
+        this.openDialog("ERROR", "Lo sentimos, no se pudo agregar la compra. Inténtalo de nuevo. ")
+      })
+    });
 
-    this.serviceCompra.addCompra(this.compra).subscribe(e => {
-      this.closeDialogLoading();
-      this.openDialog("¡¡ÉXITO!!!", "La compra se ha agregado satisfactoriamente. ")
-      this.vaciar()
 
-    }, err => {
-      this.closeDialogLoading();
-      this.openDialog("ERROR", "Lo sentimos, no se pudo agregar la compra. Inténtalo de nuevo. ")
-    })
+
 
   }
 

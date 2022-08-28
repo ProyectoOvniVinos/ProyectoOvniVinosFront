@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { ClienteModel } from 'src/app/Models/Cliente.model';
+import { ClienteService } from 'src/app/Services/cliente.service';
+import { ConvertirClienteService } from 'src/app/Services/convertir-cliente.service';
+import { LoginService } from 'src/app/Services/login.service';
+import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 
 @Component({
   selector: 'app-editar-datos',
@@ -9,15 +16,29 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 export class EditarDatosComponent implements OnInit {
 
   banderaPasswordTwo: boolean = false;
-  
+  cliente:ClienteModel;
+  usuario;
 
   actualizarForm !: FormGroup;
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,public loginService:LoginService,
+    private clienteService: ClienteService, private convertirCliente:ConvertirClienteService,
+    private router:Router,public dialog: MatDialog) {
     this.crearFormulario();
     this.crearListeners();
   } 
   
   ngOnInit(): void {
+
+    this.usuario = this.loginService.usuario;
+    this.clienteService.getByEmail(this.usuario.correo).subscribe(cliente=>{
+      this.actualizarForm.controls['nombre'].setValue(cliente.nombreCliente); 
+      this.actualizarForm.controls['apellido'].setValue(cliente.apellidoCliente); 
+      this.actualizarForm.controls['direccion'].setValue(cliente.direccionCliente); 
+      this.actualizarForm.controls['celular'].setValue(cliente.telefonoCliente); 
+      this.actualizarForm.controls['contrasena1'].setValue(cliente.passwordCliente); 
+      this.actualizarForm.controls['contrasena2'].setValue(cliente.passwordCliente);
+      this.cliente = cliente;
+    });
 
   }
 
@@ -157,6 +178,31 @@ export class EditarDatosComponent implements OnInit {
       contrasena1: ['', [Validators.required, Validators.minLength(8)]],
       contrasena2: ['', Validators.required]
     })
+  }
+
+  editar(){
+    if(this.actualizarForm.valid){
+      this.cliente.nombreCliente = this.actualizarForm.controls['nombre'].value;
+      this.cliente.apellidoCliente = this.actualizarForm.controls['apellido'].value;
+      this.cliente.direccionCliente = this.actualizarForm.controls['direccion'].value;
+      this.cliente.telefonoCliente = this.actualizarForm.controls['celular'].value;
+      this.cliente.passwordCliente = this.actualizarForm.controls['contrasena1'].value;
+      this.cliente = this.convertirCliente.convertir(this.cliente);
+      this.clienteService.actualizar(this.cliente).subscribe(cliente=>{
+        
+        this.router.navigate(['/datosC']);
+        this.openDialog("Felicitaciones","Se actualizaron sus datos con exito")
+      },error=>{
+        this.openDialog("Error",error.error.mensaje)
+      });
+    }
+  }
+
+  openDialog(titleNew: string, mensajeNew: string): void {
+    const dialogRef = this.dialog.open(ModalErrorComponent, {
+      width: '300px',
+      data: {title: titleNew, mensaje: mensajeNew},
+    });
   }
 
 }

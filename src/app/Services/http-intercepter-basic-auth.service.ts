@@ -12,6 +12,7 @@ export class HttpIntercepterBasicAuthService implements HttpInterceptor {
     let username = 'ovniVinos'
     let password = '12345'
     let basicAuthHeaderString = 'Basic ' + window.btoa(username + ':' + password);
+    console.log(req)
 
     req = req.clone({
       setHeaders : {

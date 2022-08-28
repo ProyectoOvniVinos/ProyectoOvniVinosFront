@@ -7,6 +7,7 @@ import { ItemCarritoModel } from 'src/app/Models/itemCarrito.model';
 import { ProductoModel } from 'src/app/Models/Producto.model';
 import { CarritoService } from 'src/app/Services/carrito.service';
 import { ClienteService } from 'src/app/Services/cliente.service';
+import { LoginService } from 'src/app/Services/login.service';
 import Swiper , {Autoplay} from 'swiper';
 import { ModalProductosComponent } from '../../Modal/modal-productos/modal-productos.component';
 @Component({
@@ -22,7 +23,8 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
   public swiper!: Swiper;
 
   public cliente:ClienteModel = new ClienteModel();
-  constructor(public carritoService:CarritoService, public clienteService:ClienteService, public dialog: MatDialog) { }
+  constructor(public carritoService:CarritoService, public clienteService:ClienteService, public dialog: MatDialog,
+    public loginService: LoginService) { }
   ngAfterViewInit(): void {
     this.swiper = new Swiper('.swiper', {
       modules: [Autoplay],

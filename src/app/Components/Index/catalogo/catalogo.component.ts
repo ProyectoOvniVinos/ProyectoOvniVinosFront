@@ -19,10 +19,8 @@ import { LoginService } from 'src/app/Services/login.service';
 })
 export class CatalogoComponent implements OnInit, OnChanges {
 
-  private usuario = {
-    correo: null,
-    rol: null
-  }
+
+  private usuario;
 
   inventarioGeneral: Inventario_generalModel[] = [];
   validarCarrito = false;
@@ -37,7 +35,7 @@ export class CatalogoComponent implements OnInit, OnChanges {
     private carritoService: CarritoService,
     private clienteService: ClienteService,
     private inventarioService: InventarioGService,
-    private loginService: LoginService) { }
+    public loginService: LoginService) { }
   ngOnChanges() {
     if (this.inventarioGeneral.length == 0) {
       this.banderaErrores = false
@@ -51,8 +49,7 @@ export class CatalogoComponent implements OnInit, OnChanges {
     this.obtenerProductos();
 
     this.usuario = this.loginService.usuario;
-
-    if (this.loginService.isAuthenticated()) {
+    if (this.loginService.isAuthenticated() && this.loginService.hasRole('ROLE_CLIENTE')) {
       this.clienteService.getByEmail(this.usuario.correo).subscribe(resp => {
         this.clienteInp = resp;
       })
@@ -104,7 +101,8 @@ export class CatalogoComponent implements OnInit, OnChanges {
   }
 
   agregar(producto: ProductoModel) {
-    this.clienteService.getByEmail("c@gmail.com").subscribe((resp: ClienteModel) => {
+    this.usuario = this.loginService.usuario;
+    this.clienteService.getByEmail(this.usuario.correo).subscribe((resp: ClienteModel) => {
       let flag = false;
       resp.carrito.itemCarrito.forEach(item => {
         if (item.codigoProducto.codigoProducto == producto.codigoProducto) {

@@ -9,6 +9,7 @@ import { ClienteModel } from '../Models/Cliente.model';
 export class ClienteService {
 
   url: string = "http://localhost:8080/apiCliente/";
+  url2: string = "http://localhost:8080/apiAdmin/";
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' })
   constructor(private http: HttpClient) { }
@@ -32,6 +33,10 @@ export class ClienteService {
   }
   getByEmail(email: String) {
     return this.http.get<any>(`${this.url}cliente/${email}`);
+  }
+
+  getUsuarioById(correo: String) {
+    return this.http.get<any>(`${this.url2}usuario/${correo}`)
   }
 
   recuperarPassword(url: String, correoEncrypt: string) {

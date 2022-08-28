@@ -243,8 +243,8 @@ export class IngresarVentaComponent implements OnInit {
     this.cliente.correoCliente = "correoClienteOvni@gmail.com"
     this.cliente.direccionCliente = "cliente"
     this.cliente.nombreCliente = "cliente"
-    this.cliente.passwordCliente = "12345"
-    this.cliente.telefonoCliente = "323" 
+    this.cliente.passwordCliente = "tatiana1004"
+    this.cliente.telefonoCliente = "3005208221" 
 
     this.venta.correoCliente = this.cliente;
     

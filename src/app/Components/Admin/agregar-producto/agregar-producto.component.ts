@@ -207,6 +207,9 @@ export class AgregarProductoComponent implements OnInit {
             });
           })
         }
+      },err=>{
+        this.closeDialogLoading();
+        this.openDialog("ERROR","Lo sentimos, no se pudo alojar la imagen")
       });
     }
   }
