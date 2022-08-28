@@ -3,14 +3,14 @@
 
     <div class="cajaMensaje" *ngIf="bandera==false">
         <h1 class="titleAlert">Lo sentimos, aún no hay existencia de productos</h1>
-        <button class="btnAgregarProducto"routerLink="/ingresarCompra">Ingresar Compra</button>
+        <button class="btnOvni btnAgregarProducto"routerLink="/ingresarCompra">Ingresar Compra</button>
     </div>
 
     <div *ngIf="bandera==null" class='spinner'></div>
 
     <div *ngIf="bandera==true" class ="cajaM-login">
-        <div class="cajaTitleLogin">
-            <h2>INGRESAR VENTA</h2>
+        <div >
+            <h3 class="text-center mt-3">INGRESAR VENTA</h3>
         </div>
         <div class="cajaHijoLogin">
             <div class="cajaForm">
@@ -39,8 +39,8 @@
                             <div class="cajaImg">
                                 <img src="../../../../assets/Images/manoCopada.png" alt="manoCopada" class="imgLogin">
                             </div>
-                            <button class="btnRegistrar" (click)="seleccionarProducto()"> Agregar </button>
-                            <button routerLink="/inventarioG"  class="btnRegistrar"> Cancelar</button>
+                            <button class="btnOvni btnRegistrar" (click)="seleccionarProducto()"> Agregar </button>
+                            <button routerLink="/inventarioG"  class="btnOvni btnRegistrar"> Cancelar</button>
                         </div>
                     </div>
 
@@ -80,7 +80,7 @@
                 </div>
             </div>
             <div class="cajaBtnEnviar">
-                <button class="btnRegistrar" (click)="realizarVenta()">Enviar</button>
+                <button class="btnOvni btnRegistrar" (click)="realizarVenta()">Enviar</button>
             </div>
 
 </div>

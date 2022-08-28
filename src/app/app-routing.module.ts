@@ -1,3 +1,4 @@
+import { CambioPasswordAComponent } from './Components/Admin/cambio-password-a/cambio-password-a.component';
 import { RegistrarAdminComponent } from './Components/Admin/registrar-admin/registrar-admin.component';
 import { AdministradoresComponent } from './Components/Admin/administradores/administradores.component';
 import { NgModule } from '@angular/core';
@@ -27,6 +28,7 @@ import { ComprasComponent } from './Components/Admin/compras/compras.component';
 import { InventarioDetallesComponent } from './Components/Admin/inventario-detalles/inventario-detalles.component';
 import { IngresarCompraComponent } from './Components/Admin/ingresar-compra/ingresar-compra.component';
 import { IngresarVentaComponent } from './Components/Admin/ingresar-venta/ingresar-venta.component';
+import { CambioPasswordCComponent } from './Components/Client/cambio-password-c/cambio-password-c.component';
 
 
 const routes: Routes = [
@@ -58,6 +60,8 @@ const routes: Routes = [
   { path: 'ingresarVenta', component: IngresarVentaComponent},
   { path: 'agregarAdmin', component: RegistrarAdminComponent },
   { path: 'recuperacion/:correo', component: RecuperandoPasswordComponent },
+  { path: 'cambiarContraseñaC', component: CambioPasswordCComponent },
+  { path: 'cambiarContraseñaA', component: CambioPasswordAComponent},
 
   { path: '**', pathMatch: 'full', redirectTo: '/catalogo' }
 ];
