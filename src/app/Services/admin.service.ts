@@ -21,6 +21,12 @@ export class AdminService {
     return this.http.get<any>(`${this.url}admin/${correo}`)
   }
 
+  getUsuarioById(correo: String) {
+    return this.http.get<any>(`${this.url}usuario/${correo}`)
+  }
+
+
+
   createAdmin(adminNuevo: AdministradorModel):Observable<any>{
 
     let url=`${this.url}registro`

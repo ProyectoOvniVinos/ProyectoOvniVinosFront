@@ -257,22 +257,23 @@ export class IngresarCompraComponent implements OnInit {
     this.usuario = this.loginService.usuario;
 
     this.serviceAdmin.getAdminById(this.usuario.correo).subscribe(admin =>{
+
       this.admin = this.convertirAdmin.convertir(admin);
+      this.compra.administradorCompra = this.admin;
+  
+      this.serviceCompra.addCompra(this.compra).subscribe(e => {
+        this.closeDialogLoading();
+        this.openDialog("¡¡ÉXITO!!!", "La compra se ha agregado satisfactoriamente. ")
+        this.vaciar()
+  
+      }, err => {
+        this.closeDialogLoading();
+        this.openDialog("ERROR", "Lo sentimos, no se pudo agregar la compra. Inténtalo de nuevo. ")
+      })
     });
 
-    
 
-    this.compra.administradorCompra = this.admin;
 
-    this.serviceCompra.addCompra(this.compra).subscribe(e => {
-      this.closeDialogLoading();
-      this.openDialog("¡¡ÉXITO!!!", "La compra se ha agregado satisfactoriamente. ")
-      this.vaciar()
-
-    }, err => {
-      this.closeDialogLoading();
-      this.openDialog("ERROR", "Lo sentimos, no se pudo agregar la compra. Inténtalo de nuevo. ")
-    })
 
   }
 

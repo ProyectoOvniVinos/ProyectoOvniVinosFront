@@ -16,14 +16,14 @@ export class TokenInterceptorService implements HttpInterceptor{
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
       
       let token = this.loginService.token;
-
-      if(token != null){
-          const authReq = req.clone({
-              headers: req.headers.set('Authorization', 'Bearer ' + token) 
-          });
-          return next.handle(authReq);
+      if(req.url != "https://api.cloudinary.com/v1_1/dqbrhsn8x/image/upload/"){
+        if(token != null){
+            const authReq = req.clone({
+                headers: req.headers.set('Authorization', 'Bearer ' + token) 
+            });
+            return next.handle(authReq);
+        }
       }
-
       return next.handle(req);
   }
 }
