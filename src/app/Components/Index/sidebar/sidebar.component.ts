@@ -32,10 +32,12 @@ export class SidebarComponent implements OnInit {
       return false;
     }
   }
-
   salir(){
     this.loginService.logout();
     this.router.navigate(['/catalogo']);
+  }
+  cambiarMode(){
+    document.body.classList.toggle("darkMode");
   }
 
 }

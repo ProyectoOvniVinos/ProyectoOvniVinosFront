@@ -39,7 +39,6 @@ export class CatalogoComponent implements OnInit, OnChanges {
   ngOnChanges() {
     if (this.inventarioGeneral.length == 0) {
       this.banderaErrores = false
-      console.log(this.banderaErrores);
 
     }
   }
@@ -63,15 +62,13 @@ export class CatalogoComponent implements OnInit, OnChanges {
     this.productoService.getProductsInventario().subscribe(inventario => {
       this.inventarioGeneral = inventario;
     }, err => {
-      console.log("error en catalogo");
-      console.log(err);
 
     })
 
   }
 
-  buscar(event) {
-    console.log(event.target.value);
+  buscar(event) {    
+    
     if (event.target.value == "") {
 
       this.obtenerProductos()
@@ -79,11 +76,11 @@ export class CatalogoComponent implements OnInit, OnChanges {
     } else {
 
       let name: string = event.target.value;
+
       this.inventarioGeneral = [];
       this.inventarioService.getInventarioGeneralComPositivoNombre(name).subscribe((resp: any) => {
 
         this.inventarioGeneral = resp;
-        console.log(this.inventarioGeneral.length);
 
 
         if (this.inventarioGeneral.length == 0) {
@@ -97,7 +94,39 @@ export class CatalogoComponent implements OnInit, OnChanges {
       }, err => {
         this.errores = err.error.mensaje
         this.banderaErrores = true
-        console.log(this.banderaErrores);
+      })
+    }
+
+  }
+
+
+  buscarPorBoton(event) {    
+    
+    if (event.value == "") {
+
+      this.obtenerProductos()
+      this.banderaErrores = false
+    } else {
+
+      let name: string = event.value;
+
+      this.inventarioGeneral = [];
+      this.inventarioService.getInventarioGeneralComPositivoNombre(name).subscribe((resp: any) => {
+
+        this.inventarioGeneral = resp;
+
+
+        if (this.inventarioGeneral.length == 0) {
+          this.error = "No se encontraron productos por ese nombre"
+          this.banderaErrores = true
+
+        } else {
+          this.banderaErrores = false
+        }
+
+      }, err => {
+        this.errores = err.error.mensaje
+        this.banderaErrores = true
       })
     }
 
@@ -162,14 +191,12 @@ export class CatalogoComponent implements OnInit, OnChanges {
     });
 
     dialogRef.afterClosed().subscribe((result: any) => {
-      console.log(result);
 
       if (result.resultado == true) {
 
         this.agregar(result.inventarioG.codigoProducto);
 
       } else {
-        console.log("EN ELSE");
 
       }
     });
@@ -197,24 +224,20 @@ export class CatalogoComponent implements OnInit, OnChanges {
     this.inventarioGeneral = [];
 
     if (text == "Vidrio" || text == "Plastico") {
-      console.log(text);
 
       this.productoService.getProductsEstadoFiltro(text).subscribe(inventario => {
         this.inventarioGeneral = inventario;
       })
     } else if (text == "Destacados") {
-      console.log("destacados");
 
       this.inventarioService.getInventarioDestacado().subscribe(inventario => {
-        console.log(inventario);
 
         this.inventarioGeneral = inventario
       }, err => {
-        console.log(err);
 
       })
-    } else {
-      console.log(text);
+    
+    }else{
 
       this.productoService.getProductsInventario().subscribe(inventario => {
 
