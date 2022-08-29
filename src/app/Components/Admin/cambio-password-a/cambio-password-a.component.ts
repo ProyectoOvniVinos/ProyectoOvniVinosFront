@@ -8,12 +8,25 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 })
 export class CambioPasswordAComponent implements OnInit {
   cambioForm: FormGroup;
-  banderaPasswordTwo: boolean ;
+  banderaPasswordTwo: boolean = false ;
+  activar:Boolean;
 
   constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
     this.crearFormulario();
+  }
+
+  ver(event){
+    this.activar = !this.activar;
+    console.log();
+    
+    if(this.activar==true){
+      event.type='text';
+      
+    }else{
+      event.type='password';
+    }
   }
 
   get passwordOneControl(): FormControl{
