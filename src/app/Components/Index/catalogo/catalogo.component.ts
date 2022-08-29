@@ -60,8 +60,9 @@ export class CatalogoComponent implements OnInit, OnChanges {
 
   }
 
-  buscar(event) {
-    console.log(event.target.value);
+  buscar(event) {    
+    console.log();
+    
     if (event.target.value == "") {
       console.log("AAAAAAAAAAAAAAAAAAAAAAA");
 
@@ -70,6 +71,44 @@ export class CatalogoComponent implements OnInit, OnChanges {
     } else {
 
       let name: string = event.target.value;
+
+      this.inventarioGeneral = [];
+      this.inventarioService.getInventarioGeneralComPositivoNombre(name).subscribe((resp: any) => {
+
+        this.inventarioGeneral = resp;
+        console.log(this.inventarioGeneral.length);
+
+
+        if (this.inventarioGeneral.length == 0) {
+          this.error = "No se encontraron productos por ese nombre"
+          this.banderaErrores = true
+
+        } else {
+          this.banderaErrores = false
+        }
+
+      }, err => {
+        this.errores = err.error.mensaje
+        this.banderaErrores = true
+        console.log(this.banderaErrores);
+      })
+    }
+
+  }
+
+
+  buscarPorBoton(event) {    
+    console.log();
+    
+    if (event.value == "") {
+      console.log("AAAAAAAAAAAAAAAAAAAAAAA");
+
+      this.obtenerProductos()
+      this.banderaErrores = false
+    } else {
+
+      let name: string = event.value;
+
       this.inventarioGeneral = [];
       this.inventarioService.getInventarioGeneralComPositivoNombre(name).subscribe((resp: any) => {
 
@@ -203,6 +242,7 @@ export class CatalogoComponent implements OnInit, OnChanges {
         console.log(err);
         
       })
+    
     }else{
       console.log(text);
 

@@ -300,7 +300,22 @@
 
 
 }
+@media screen and (max-width: 1920px) and (max-height:910px){
+    .viewport{
+        height: 70vh;
+    }
 
+}
+
+@media screen and (max-width: 1920px) and (max-height:760px){
+    .viewport{
+        height: 65vh;
+    }
+    .cajaComprar{
+        height: 25%;
+    }
+
+}
 @media screen and (max-width: 1400px) and (max-height:1050px){
 
 
