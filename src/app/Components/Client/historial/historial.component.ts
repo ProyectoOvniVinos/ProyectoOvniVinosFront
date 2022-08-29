@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ClienteModel } from 'src/app/Models/Cliente.model';
 import { VentaModel } from 'src/app/Models/Venta.model';
 import { ClienteService } from 'src/app/Services/cliente.service';
+import { LoginService } from 'src/app/Services/login.service';
 import { ModalDetallesVentaComponent } from '../../Modal/modal-detalles-venta/modal-detalles-venta.component';
 
 @Component({
@@ -11,12 +12,13 @@ import { ModalDetallesVentaComponent } from '../../Modal/modal-detalles-venta/mo
   styleUrls: ['./historial.component.css']
 })
 export class HistorialComponent implements OnInit {
-
+  usuario;
   cliente:ClienteModel;
-  constructor(private clienteService:ClienteService, public dialog: MatDialog) { }
+  constructor(private clienteService:ClienteService, public dialog: MatDialog, private loginService:LoginService) { }
 
   ngOnInit(): void {
-    this.clienteService.getByEmail("c@gmail.com").subscribe(resp=>{
+    this.usuario = this.loginService.usuario;
+    this.clienteService.getByEmail(this.usuario.correo).subscribe(resp=>{
       
       this.cliente = resp;
       

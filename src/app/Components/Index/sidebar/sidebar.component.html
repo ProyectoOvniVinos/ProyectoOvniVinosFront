@@ -19,13 +19,13 @@
 
                 <img routerLink="/catalogo" class="logo" src="../../../../assets/Images/logo.png" alt="">
             </div>
-            <div *ngIf="!admin && !cliente" class="text-center">
+            <div *ngIf="!loginService.isAuthenticated()" class="text-center">
                 <a class="linkRuta" routerLink="/iniciarSesion" routerLinkActive="activo3" mat-list-item> <img class="imagenes" src="../../../../assets/Images/icons8-entrar-60.png" alt="iniciar Sesion"> Iniciar sesion</a>
                 <a class="linkRuta2" routerLink="/registro" routerLinkActive="activo" mat-list-item> <img class="imagenes" src="../../../../assets/Images/registrar.png" alt=""> Registrarse</a>
                 <a class="linkRuta" mat-list-item routerLink="/ayuda" routerLinkActive="activo"><img class="imagenes" src="../../../../assets/Images/ayuda.png" alt="ayuda"> Ayuda</a>
             </div>
 
-            <div *ngIf="admin">
+            <div *ngIf="loginService.hasRole('ROLE_ADMIN')">
 
                 <a class="linkRuta" routerLink="/productos" routerLinkActive="activo" mat-list-item > <img  class="imagenes" src="../../../../assets/Images/productos.png" alt="productos"> Productos</a>
                 <a class="linkRuta" mat-list-item routerLink="/datosA" routerLinkActive="activo"> <img class="imagenes" src="../../../../assets/Images/misDatos.png" alt="datos"> Mis Datos</a>
@@ -35,7 +35,7 @@
                 <a class="linkRuta" mat-list-item routerLink="/inventarioG" routerLinkActive="activo"> <img class="imagenes" src="../../../../assets/Images/inventario-disponible.png" alt="inventarios"> Inventario</a>
             </div>
 
-            <div *ngIf="cliente">
+            <div *ngIf="loginService.hasRole('ROLE_CLIENTE')">
 
                 <a class="linkRuta" mat-list-item routerLink="/datosC" routerLinkActive="activo"> <img class="imagenes" src="../../../../assets/Images/misDatos.png" alt="datos"> Mis Datos</a>
                 <a class="linkRuta" mat-list-item routerLink="/historialC" routerLinkActive="activo2" > <img class="imagenes" src="../../../../assets/Images/historial.png" alt="historial">  Ver Historial</a>
@@ -43,9 +43,9 @@
 
             </div>
 
-            <div *ngIf="admin || cliente">
+            <div *ngIf="loginService.isAuthenticated()">
 
-                <a class="linkRuta" mat-list-item> <img class="imagenes" src="../../../../assets/Images/ssalir.png" alt="">  Salir</a>
+                <a (click)="salir()" class="linkRuta" mat-list-item> <img class="imagenes" src="../../../../assets/Images/ssalir.png" alt="">  Salir</a>
             </div>
             <div>
                 <button (click)="cambiarMode()" >Dark Mode</button>
