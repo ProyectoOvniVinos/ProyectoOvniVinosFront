@@ -94,6 +94,11 @@
     color: aliceblue;
     font-size: 1.3vh;
     text-align: center;
+    transition: 0.2s;
+}
+
+.linkRuta:hover{
+    background-color: rgba(250, 12, 95, 0.905);
 }
 
 .linkRuta2 {
