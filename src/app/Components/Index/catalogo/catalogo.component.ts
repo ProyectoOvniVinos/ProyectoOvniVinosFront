@@ -10,6 +10,7 @@ import { ClienteService } from 'src/app/Services/cliente.service';
 import { ClienteModel } from 'src/app/Models/Cliente.model';
 import { ItemCarritoModel } from 'src/app/Models/itemCarrito.model';
 import { InventarioGService } from 'src/app/Services/inventario-g.service';
+import { LoginService } from 'src/app/Services/login.service';
 
 @Component({
   selector: 'app-catalogo',
@@ -17,6 +18,9 @@ import { InventarioGService } from 'src/app/Services/inventario-g.service';
   styleUrls: ['./catalogo.component.css']
 })
 export class CatalogoComponent implements OnInit, OnChanges {
+
+
+  private usuario;
 
   inventarioGeneral: Inventario_generalModel[] = [];
   validarCarrito = false;
@@ -30,12 +34,11 @@ export class CatalogoComponent implements OnInit, OnChanges {
     private productoService: ProductoService,
     private carritoService: CarritoService,
     private clienteService: ClienteService,
-    private inventarioService: InventarioGService) { }
+    private inventarioService: InventarioGService,
+    public loginService: LoginService) { }
   ngOnChanges() {
-
     if (this.inventarioGeneral.length == 0) {
       this.banderaErrores = false
-      console.log(this.banderaErrores);
 
     }
   }
@@ -43,9 +46,15 @@ export class CatalogoComponent implements OnInit, OnChanges {
   ngOnInit(): void {
 
     this.obtenerProductos();
-    this.clienteService.getByEmail("c@gmail.com").subscribe(resp => {
-      this.clienteInp = resp;
-    })
+    this.usuario = this.loginService.usuario;
+    if (this.loginService.isAuthenticated() && this.loginService.hasRole('ROLE_CLIENTE')) {
+
+
+      this.clienteService.getByEmail(this.usuario.correo).subscribe(resp => {
+        this.clienteInp = resp;
+      })
+    }
+
   }
 
   obtenerProductos() {
@@ -53,18 +62,14 @@ export class CatalogoComponent implements OnInit, OnChanges {
     this.productoService.getProductsInventario().subscribe(inventario => {
       this.inventarioGeneral = inventario;
     }, err => {
-      console.log("error en catalogo");
-      console.log(err);
-      
+
     })
 
   }
 
   buscar(event) {    
-    console.log();
     
     if (event.target.value == "") {
-      console.log("AAAAAAAAAAAAAAAAAAAAAAA");
 
       this.obtenerProductos()
       this.banderaErrores = false
@@ -76,7 +81,6 @@ export class CatalogoComponent implements OnInit, OnChanges {
       this.inventarioService.getInventarioGeneralComPositivoNombre(name).subscribe((resp: any) => {
 
         this.inventarioGeneral = resp;
-        console.log(this.inventarioGeneral.length);
 
 
         if (this.inventarioGeneral.length == 0) {
@@ -90,7 +94,6 @@ export class CatalogoComponent implements OnInit, OnChanges {
       }, err => {
         this.errores = err.error.mensaje
         this.banderaErrores = true
-        console.log(this.banderaErrores);
       })
     }
 
@@ -98,10 +101,8 @@ export class CatalogoComponent implements OnInit, OnChanges {
 
 
   buscarPorBoton(event) {    
-    console.log();
     
     if (event.value == "") {
-      console.log("AAAAAAAAAAAAAAAAAAAAAAA");
 
       this.obtenerProductos()
       this.banderaErrores = false
@@ -113,7 +114,6 @@ export class CatalogoComponent implements OnInit, OnChanges {
       this.inventarioService.getInventarioGeneralComPositivoNombre(name).subscribe((resp: any) => {
 
         this.inventarioGeneral = resp;
-        console.log(this.inventarioGeneral.length);
 
 
         if (this.inventarioGeneral.length == 0) {
@@ -127,14 +127,14 @@ export class CatalogoComponent implements OnInit, OnChanges {
       }, err => {
         this.errores = err.error.mensaje
         this.banderaErrores = true
-        console.log(this.banderaErrores);
       })
     }
 
   }
 
   agregar(producto: ProductoModel) {
-    this.clienteService.getByEmail("c@gmail.com").subscribe((resp: ClienteModel) => {
+    this.usuario = this.loginService.usuario;
+    this.clienteService.getByEmail(this.usuario.correo).subscribe((resp: ClienteModel) => {
       let flag = false;
       resp.carrito.itemCarrito.forEach(item => {
         if (item.codigoProducto.codigoProducto == producto.codigoProducto) {
@@ -190,16 +190,14 @@ export class CatalogoComponent implements OnInit, OnChanges {
       data: inventario
     });
 
-    dialogRef.afterClosed().subscribe( (result:any) => {
-      console.log(result);
-      
-      if(result.resultado==true){
-        
+    dialogRef.afterClosed().subscribe((result: any) => {
+
+      if (result.resultado == true) {
+
         this.agregar(result.inventarioG.codigoProducto);
 
       } else {
-        console.log("EN ELSE");
-        
+
       }
     });
   }
@@ -225,26 +223,21 @@ export class CatalogoComponent implements OnInit, OnChanges {
   filtro(text: string) {
     this.inventarioGeneral = [];
 
-    if(text=="Vidrio" || text=="Plastico"){
-      console.log(text);
-      
+    if (text == "Vidrio" || text == "Plastico") {
+
       this.productoService.getProductsEstadoFiltro(text).subscribe(inventario => {
         this.inventarioGeneral = inventario;
       })
-    }else if(text=="Destacados"){
-      console.log("destacados");
-      
+    } else if (text == "Destacados") {
+
       this.inventarioService.getInventarioDestacado().subscribe(inventario => {
-        console.log(inventario);
-        
+
         this.inventarioGeneral = inventario
-      },err=>{
-        console.log(err);
-        
+      }, err => {
+
       })
     
     }else{
-      console.log(text);
 
       this.productoService.getProductsInventario().subscribe(inventario => {
 

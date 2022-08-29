@@ -51,7 +51,7 @@
               <p class="card-text"><b>Cantidad disponible:</b> {{inventario.cantidadProducto}}</p>
               <p class="card-text"><b>Descripción:</b> {{inventario.codigoProducto.descripcionProducto}}</p>
             </div>
-            <div class="card-footer">
+            <div *ngIf="loginService.hasRole('ROLE_CLIENTE')" class="card-footer">
                 <mat-dialog-actions class="cajaBtns">
                     <button *ngIf="bandera" class="btnOk" mat-button (click)="agregar(inventario)">Agregar al carrito</button>
                 </mat-dialog-actions>

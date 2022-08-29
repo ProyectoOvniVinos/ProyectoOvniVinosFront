@@ -9,7 +9,7 @@
             <button (click)="filtro(boton3.value)" value="Todos" data-title="Todos" class="btn btnFiltro" #boton3><img class="imgBotonJuntas c" src="../../../../assets/Images/juntasRosado.png" alt=""></button>
             <button (click)="filtro(boton4.value)" value="Destacados" data-title="Destacados" class="btn btnFiltro" #boton4><img class="imgBotonJuntas d" src="../../../../assets/Images/estrellaVioleta.png" alt=""></button>
         </div>
-        <div class="cajaCarrito" (click)="mostrarCarrito()">
+        <div *ngIf="loginService.hasRole('ROLE_CLIENTE')" class="cajaCarrito" (click)="mostrarCarrito()">
             <p class="pCarrito" *ngIf="clienteInp">{{clienteInp.carrito.itemCarrito.length}}</p>
             <img src="../../../../assets/Images/carritoVioleta.png" alt="" [ngClass]="{'agrandarCarrito': agrandar==true}">
         </div>
@@ -32,7 +32,7 @@
                 <div *ngFor="let inventario of inventarioGeneral" class="cardP">
                     <div class="cardImg">
                         <img class="imgCardBody" src="{{inventario.codigoProducto.fotoProducto}}" alt="" (click)="openDialog(inventario)">
-                        <img (click)="agregar(inventario.codigoProducto)" class="imgCarrito" src="../../../../assets/Images/carritoVioleta.png" alt="">
+                        <img *ngIf="loginService.hasRole('ROLE_CLIENTE')" (click)="agregar(inventario.codigoProducto)" class="imgCarrito" src="../../../../assets/Images/carritoVioleta.png" alt="">
                     </div>
                     <div class="cardFootert" (click)="openDialog(inventario)">
                         <p>{{inventario.codigoProducto.nombreProducto | slice:0:16 }}...</p>

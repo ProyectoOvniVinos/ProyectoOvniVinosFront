@@ -7,7 +7,8 @@ import { ItemCarritoModel } from 'src/app/Models/itemCarrito.model';
 import { ProductoModel } from 'src/app/Models/Producto.model';
 import { CarritoService } from 'src/app/Services/carrito.service';
 import { ClienteService } from 'src/app/Services/cliente.service';
-import Swiper , {Autoplay} from 'swiper';
+import { LoginService } from 'src/app/Services/login.service';
+import Swiper, { Autoplay } from 'swiper';
 import { ModalProductosComponent } from '../../Modal/modal-productos/modal-productos.component';
 @Component({
   selector: 'app-slideshow',
@@ -21,8 +22,11 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
   @Output() devolver = new EventEmitter<any>();
   public swiper!: Swiper;
 
-  public cliente:ClienteModel = new ClienteModel();
-  constructor(public carritoService:CarritoService, public clienteService:ClienteService, public dialog: MatDialog) { }
+  private usuario;
+
+  public cliente: ClienteModel = new ClienteModel();
+  constructor(public carritoService: CarritoService, public clienteService: ClienteService, public dialog: MatDialog,
+    public loginService: LoginService) { }
   ngAfterViewInit(): void {
     this.swiper = new Swiper('.swiper', {
       modules: [Autoplay],
@@ -40,25 +44,25 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
   }
 
   openDialog(inventario: Inventario_generalModel): void {
-    const pageWidth  = document.documentElement.scrollWidth;
-    let width='50%'
-    if(pageWidth<=1400){
-        width='70%'
+    const pageWidth = document.documentElement.scrollWidth;
+    let width = '50%'
+    if (pageWidth <= 1400) {
+      width = '70%'
     }
     const dialogRef = this.dialog.open(ModalProductosComponent, {
       width: width,
       data: inventario,
     });
-    dialogRef.afterClosed().subscribe( (result:any) => {
+    dialogRef.afterClosed().subscribe((result: any) => {
       console.log(result);
-      
-      if(result.resultado==true){
-        
+
+      if (result.resultado == true) {
+
         this.agregar(result.inventarioG.codigoProducto);
 
       } else {
         console.log("EN ELSE");
-        
+
       }
     });
   }
@@ -72,78 +76,80 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
   onSlidePrev() {
     this.swiper.slidePrev();
   }
-  actualizarCarrito(event, producto: ProductoModel){
+  actualizarCarrito(event, producto: ProductoModel) {
     event.stopPropagation();
-    this.clienteService.getByEmail("c@gmail.com").subscribe((resp:ClienteModel)=>{
+    this.usuario = this.loginService.usuario;
+    this.clienteService.getByEmail(this.usuario.correo).subscribe((resp: ClienteModel) => {
       let flag = false;
-      resp.carrito.itemCarrito.forEach(item=>{
-        if(item.codigoProducto.codigoProducto == producto.codigoProducto){
-          item.cantidadProducto = item.cantidadProducto+1;
-          flag=true;
-          
+      resp.carrito.itemCarrito.forEach(item => {
+        if (item.codigoProducto.codigoProducto == producto.codigoProducto) {
+          item.cantidadProducto = item.cantidadProducto + 1;
+          flag = true;
+
         }
       })
-      if(flag==false){
+      if (flag == false) {
         let newItem = new ItemCarritoModel();
         newItem.cantidadProducto = 1;
         newItem.codigoProducto = producto
         newItem.precioItem = producto.precioProducto
-  
+
         resp.carrito.itemCarrito.push(newItem);
       }
 
-      
-      
-      this.carritoService.actualizarCarrito(resp.carrito).subscribe(resp=>{
+
+
+      this.carritoService.actualizarCarrito(resp.carrito).subscribe(resp => {
         this.cliente.carrito = resp.carrito;
-        let list:Object={
-          objeto:resp.carrito,
-          variable:false
+        let list: Object = {
+          objeto: resp.carrito,
+          variable: false
         }
         this.devolver.emit(list)
-        
+
       })
-      
-      
+
+
     })
-        
-    
+
+
   }
-  agregar( producto: ProductoModel){
+  agregar(producto: ProductoModel) {
     event.stopPropagation();
-    this.clienteService.getByEmail("c@gmail.com").subscribe((resp:ClienteModel)=>{
+    this.usuario = this.loginService.usuario;
+    this.clienteService.getByEmail(this.usuario.correo).subscribe((resp: ClienteModel) => {
       let flag = false;
-      resp.carrito.itemCarrito.forEach(item=>{
-        if(item.codigoProducto.codigoProducto == producto.codigoProducto){
-          item.cantidadProducto = item.cantidadProducto+1;
-          flag=true;
-          
+      resp.carrito.itemCarrito.forEach(item => {
+        if (item.codigoProducto.codigoProducto == producto.codigoProducto) {
+          item.cantidadProducto = item.cantidadProducto + 1;
+          flag = true;
+
         }
       })
-      if(flag==false){
+      if (flag == false) {
         let newItem = new ItemCarritoModel();
         newItem.cantidadProducto = 1;
         newItem.codigoProducto = producto
         newItem.precioItem = producto.precioProducto
-  
+
         resp.carrito.itemCarrito.push(newItem);
       }
-      
-      
-      this.carritoService.actualizarCarrito(resp.carrito).subscribe(resp=>{
+
+
+      this.carritoService.actualizarCarrito(resp.carrito).subscribe(resp => {
         this.cliente.carrito = resp.carrito;
-        let list:Object={
-          objeto:resp.carrito,
-          variable:false
+        let list: Object = {
+          objeto: resp.carrito,
+          variable: false
         }
-    
+
         this.devolver.emit(list)
-        
+
       })
-      
-      
+
+
     })
-        
-    
+
+
   }
 }

@@ -7,13 +7,13 @@ import { AdministradorModel } from '../Models/Administrador.model';
   providedIn: 'root'
 })
 export class AdminService {
-  url:string="http://localhost:8080/apiAdmin/";
+  url: string = "http://localhost:8080/apiAdmin/";
 
-  private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
+  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' })
 
   constructor(private http: HttpClient) { }
 
-  getAllAdmins():Observable<AdministradorModel[]> {
+  getAllAdmins(): Observable<AdministradorModel[]> {
     return this.http.get<AdministradorModel[]>(`${this.url}admins`);
   }
 
@@ -21,11 +21,17 @@ export class AdminService {
     return this.http.get<any>(`${this.url}admin/${correo}`)
   }
 
-  createAdmin(adminNuevo: AdministradorModel):Observable<any>{
+  getUsuarioById(correo: String) {
+    return this.http.get<any>(`${this.url}usuario/${correo}`)
+  }
 
-    let url=`${this.url}registro`
-    return this.http.post<any>(url, adminNuevo, {headers: this.httpHeaders}).pipe(catchError(e=>{
-      if(e.status==500){
+
+
+  createAdmin(adminNuevo: AdministradorModel): Observable<any> {
+
+    let url = `${this.url}registro`
+    return this.http.post<any>(url, adminNuevo, { headers: this.httpHeaders }).pipe(catchError(e => {
+      if (e.status == 500) {
         return throwError(e);
       }
       return throwError(e);
@@ -33,12 +39,24 @@ export class AdminService {
 
   }
 
-  updateCliente(correo: String, adminNuevo: AdministradorModel){
+  updateAdmin(correo: String, adminNuevo: AdministradorModel) {
+    let newAdmin = new AdministradorModel()
+    newAdmin.apellidoAdmin = adminNuevo.apellidoAdmin
+    newAdmin.correoAdmin = adminNuevo.correoAdmin
+    newAdmin.direccionAdmin = adminNuevo.direccionAdmin
+    newAdmin.estado = adminNuevo.estado
+    newAdmin.nombreAdmin = adminNuevo.nombreAdmin
+    newAdmin.passwordAdmin = adminNuevo.passwordAdmin
+    newAdmin.telefonoAdmin = adminNuevo.telefonoAdmin
+
     const url: string = `${this.url}admin/${correo}`
-    return this.http.put<any>(url, adminNuevo, {headers: this.httpHeaders}).pipe(
+
+    console.log(url);
+
+    return this.http.put<any>(url, newAdmin, { headers: this.httpHeaders }).pipe(
       catchError(e => {
 
-        if(e.status==500){
+        if (e.status == 500) {
           return throwError(e);
         }
 
@@ -47,12 +65,12 @@ export class AdminService {
     );
   }
 
-  UpdateEstado(correo:string){
-    const url: string=`${this.url}admin/estado/${correo}`
-    return this.http.put<any>(url, {headers: this.httpHeaders}).pipe(
+  UpdateEstado(correo: string) {
+    const url: string = `${this.url}admin/estado/${correo}`
+    return this.http.put<any>(url, { headers: this.httpHeaders }).pipe(
       catchError(e => {
 
-        if(e.status==500){
+        if (e.status == 500) {
           return throwError(e);
         }
 

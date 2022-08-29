@@ -264,16 +264,22 @@ export class RegistrarAdminComponent implements OnInit {
 
     console.log(admin);
     
-
-    this.adminService.createAdmin(admin).subscribe((res:any)=>{
-      
-      this.openDialog("Exito!!!",res.mensaje)
-      this.router.navigate(['/administradores'])
-
-    },err =>{
-      console.log(err);
-      
-    })
+    this.adminService.getUsuarioById(admin.correoAdmin).subscribe(admin=>{
+      if(admin!=null){
+        this.openDialog("Advertencia","este correo ya esta registrado");
+      }
+    },err=>{
+      this.adminService.createAdmin(admin).subscribe((res:any)=>{
+        
+        this.openDialog("Exito!!!",res.mensaje)
+        this.router.navigate(['/administradores'])
+  
+      },err =>{
+        console.log(err);
+        
+      })
+    });
+    
 
   }
 

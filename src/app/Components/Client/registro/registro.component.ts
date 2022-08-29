@@ -262,11 +262,18 @@ export class RegistroComponent implements OnInit {
     cliente.direccionCliente= this.registroForm.controls['direccion'].value
     cliente.telefonoCliente= this.registroForm.controls['celular'].value
     cliente.passwordCliente=this.registroForm.controls['contrasena1'].value
-
-    this.clienteService.registro(cliente).subscribe(res=>{
-      this.openDialog("Felicitaciones", "Se ha registrado satisfactoriamente.")
-      this.router.navigate(['/catalogo']);
+    this.clienteService.getUsuarioById(cliente.correoCliente).subscribe(cliente=>{
+      if(cliente!=null){
+        this.openDialog("Advertencia", "El correo ya se encontraba registrado");
+      }
+    },error=>{
+      this.clienteService.registro(cliente).subscribe(res=>{
+        this.openDialog("Felicitaciones", "Se ha registrado satisfactoriamente.")
+        this.router.navigate(['/iniciarSesion']);
+      });
     });
+    
+    
   }
   
 

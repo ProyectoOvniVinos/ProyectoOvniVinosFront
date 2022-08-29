@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-cambio-password-a',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cambio-password-a.component.css']
 })
 export class CambioPasswordAComponent implements OnInit {
-
+  cambioForm: FormGroup;
   constructor() { }
 
   ngOnInit(): void {
