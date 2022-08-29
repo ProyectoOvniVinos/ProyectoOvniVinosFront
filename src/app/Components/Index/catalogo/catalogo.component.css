@@ -116,7 +116,7 @@
 }
 .input-buscar{
     height: 3.3rem;
-    font-size: 2rem;
+    font-size: 1.4rem;
     border-color: rgb(211, 21, 88);;
 }
 
@@ -171,6 +171,9 @@
 .btnFiltro:hover .d{
     content: url("../../../../assets/Images/estrellaBlanca.png")
 }
+.btnFiltro:hover .z{
+    content: url("../../../../assets/Images/lupaBlanca.png")
+}
 
 .btn:hover{
     box-shadow:  1px 1px 3px 1px rgb(184, 13, 72) !important;
@@ -189,6 +192,11 @@
 
 
 .imgBotonJuntas{
+    width: 100%;
+    height: 2.5rem;
+}
+
+.imgBotonBuscar{
     width: 100%;
     height: 2.5rem;
 }

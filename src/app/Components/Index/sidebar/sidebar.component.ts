@@ -34,4 +34,8 @@ export class SidebarComponent implements OnInit {
     }
   }
 
+  cambiarMode(){
+    document.body.classList.toggle("darkMode");
+  }
+
 }

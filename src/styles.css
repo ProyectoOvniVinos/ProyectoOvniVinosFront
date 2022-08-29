@@ -181,3 +181,52 @@
     transition: all 0.3s ease-out;
     transform: skewX(45deg) scale(1, 1);
 }
+
+.fmorado {
+    background: rgb(217,18,79);
+    background: linear-gradient(90deg, rgba(217,18,79,1) 11%, rgba(230,24,88,1) 55%, rgba(214,20,80,1) 98%);
+
+}
+
+body.darkMode{
+    background-color: rgb(0, 0, 0);
+}
+
+body.darkMode .btnOvni{
+    color: rgb(15, 0, 6); /* color de fuente */
+    border: 2px solid rgb(12, 0, 4); /* tamaño y color de borde */
+}
+
+body.darkMode .btnOvni:hover{
+    color: #fff;/* color de fuente hover */
+}
+
+body.darkMode .btnOvni::after{
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(59,58,58,1) 51%, rgba(0,0,0,1) 100%);
+}
+
+body.darkMode .fmorado{
+    background: rgb(0,0,0) !important;
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgb(29, 28, 28) 51%, rgb(53, 52, 52) 100%) !important;
+}
+
+body.darkMode .title{
+    color: rgb(0, 0, 0) !important;
+}
+
+body.darkMode .input-buscar{
+    border-color: #111111 !important;
+}
+
+body.darkMode .input-buscar::placeholder{
+    color: #111111 !important;
+}
+
+body.darkMode .btnFiltro{
+    border-color: #111111 !important;
+}
+
+body.darkMode .cardFootert{
+    background-color: black;
+}
