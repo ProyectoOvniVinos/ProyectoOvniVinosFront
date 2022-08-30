@@ -69,26 +69,33 @@
                         </div>
                         <div class="cajaInput">
                             <label for="inputContrasena1" class="label">Contraseña</label>
-                            <input type="password" class="form-control input" id="inputContrasena1"
-                            formControlName="contrasena1"
-                            [ngClass]="contrasena1NoValido == null ? '' : contrasena1NoValido ? 'is-invalid': 'is-valid'">
+                            <div class="passwordVer">   
+                                <input type="password" class="form-control inputPass" id="inputContrasena1"
+                                formControlName="contrasena1" 
+                                [ngClass]="contrasena1NoValido == null ? '' : contrasena1NoValido ? 'is-invalid': 'is-valid'" #inputOne>
+                                <div class="cajaVer" (click)="ver(inputOne, img)"> 
+                                    <img src="../../../../assets/Images/ver.png" alt="" #img>
+                                </div>
+                            </div>
                             <div class="errors-container" *ngIf="contrasena1Control.invalid && (contrasena1Control.touched || contrasena1Control.dirty)">
                                 <p class="text-danger" *ngIf="contrasena1Control.hasError('required')">El campo es obligatorio</p>
                                 <p class="text-danger" *ngIf="!contrasena1Control.hasError('required')">Al menos 8 caracteres</p>
-                            
                             </div>
                         </div>
                         <div class="cajaInput">
-                            <label for="inputContrasena2" class="label">Repite Contraseña</label>
-                            <input type="password" class="form-control input" id="inputContrasena2"
-                            formControlName="contrasena2"
-                            [ngClass]="contrasena2NoValido == null ? '' : contrasena2NoValido ? 'is-invalid': 'is-valid'">
-                            <div class="errors-container" *ngIf="contrasena2Control.invalid && (contrasena2Control.touched || contrasena2Control.dirty)">
-                                <p class="text-danger" *ngIf="contrasena2Control.hasError('required')">El campo es obligatorio</p> 
-                                                
+                            <label for="inputContrasena2" class="label">Repite la contraseña</label>
+                            <div class="passwordVer">   
+                                <input type="password" class="form-control inputPass" id="inputContrasena1"
+                                formControlName="contrasena2" 
+                                [ngClass]="contrasena2NoValido == null ? '' : contrasena2NoValido ? 'is-invalid': 'is-valid'" #inputTwo>
+                                <div class="cajaVer" (click)="ver(inputTwo, img2)"> 
+                                    <img src="../../../../assets/Images/ver.png" alt="" #img2>
+                                </div>
                             </div>
-                            <div *ngIf="!
-                            contrasena2Control.hasError('required')==true">
+                            <div class="errors-container" *ngIf="contrasena2Control.invalid && (contrasena2Control.touched || contrasena2Control.dirty)">
+                                <p class="text-danger" *ngIf="contrasena2Control.hasError('required')">El campo es obligatorio</p>        
+                            </div>
+                            <div *ngIf="!contrasena2Control.hasError('required')==true">
                                 <p class="text-danger" *ngIf="banderaPasswordTwo==false && banderaPasswordTwo!=null">Las contraseñas no coinciden</p>                   
                             </div>
                         </div>
