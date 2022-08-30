@@ -78,8 +78,13 @@
                     <div class="cajaPassword">
                         <label for="" class="label">Contraseña</label>
                         <br>
-                        <input type="password" class="input form-control" formControlName="password"
-                                [ngClass]="passwordNoValido == null ? '' : passwordNoValido ? 'is-invalid': 'is-valid'" placeholder="ingrese su Contraseña">
+                        <div class="passwordVer">
+                            <input type="password" class="input inputPass form-control" formControlName="password"
+                                    [ngClass]="passwordNoValido == null ? '' : passwordNoValido ? 'is-invalid': 'is-valid'" placeholder="ingrese su Contraseña" #password>
+                            <div class="cajaVer" (click)="ver(password, img)">
+                                <img src="../../../../assets/Images/ver.png" alt="" #img>
+                            </div>
+                        </div>
                         <div class="errors-container" *ngIf="passwordControl.invalid && (passwordControl.touched || passwordControl.dirty)">
                             <p class="text-danger" *ngIf="passwordControl.hasError('required')">El campo es obligatorio</p>
                         </div>

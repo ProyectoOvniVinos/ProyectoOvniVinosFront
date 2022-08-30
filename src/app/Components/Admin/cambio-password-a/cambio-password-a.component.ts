@@ -17,15 +17,17 @@ export class CambioPasswordAComponent implements OnInit {
     this.crearFormulario();
   }
 
-  ver(event){
+  ver(event, img){
     this.activar = !this.activar;
     console.log();
     
     if(this.activar==true){
       event.type='text';
-      
+      img.src='../../../../assets/Images/oculto.png'
+
     }else{
       event.type='password';
+      img.src='../../../../assets/Images/ver.png'
     }
   }
 
