@@ -49,20 +49,42 @@
     width: 25%;
     height: 5vh;
     border-radius: 10px;
-    font-size: 2.2vh;
     transition: 0.1s;
 }
 
 .btnAtras {
-
     font-size: 1.5rem;
 }
 
 .btnEditar {
+
     font-size: 1.5rem;
 }
 
+.btnEditar:hover {
+    color: #fff;/* color de fuente hover */
+}
 
+.btnEditar::after{
+    content: "";
+    background: rgb(167,31,73);
+    background: linear-gradient(90deg, rgba(167,31,73,1) 11%, rgba(255,42,108,1) 55%, rgba(167,31,73,1) 100%);
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(45deg) scale(0, 1);
+    transition: all 0.3s ease;
+}
+
+.btnEditar:hover::after{
+    transition: all 0.3s ease-out;
+    transform: skewX(45deg) scale(1, 1);
+}
 
 @media screen and (max-width: 1920px) and (max-height:1080px){
 
@@ -73,28 +95,28 @@
 
 @media screen and (max-width: 1920px) and (max-height:1000px){
 
-    .cajaMdatos{
-        height: 68%;
+    .cajaInputs{
+        height: 16rem;
     }
 }
 
 @media screen and (max-width: 1920px) and (max-height:960px){
 
     .cajaMdatos{
-        height: 70%;
+        height: 62%;
     }
 }
 
 @media screen and (max-width: 1920px) and (max-height:920px){
 
     .cajaInputs{
-        height:18rem;
+        height:15rem;
     }
 }
 @media screen and (max-width: 1920px) and (max-height:840px){
 
     .cajaInputs{
-        height:16rem;
+        height:15rem;
     }
 }
 
@@ -102,6 +124,10 @@
 
     .cajaInputs{
         height:14rem;
+    }
+
+    .cajaMdatos{
+        height: 70%;
     }
 
     .cajaBtns{
@@ -191,7 +217,4 @@
     }
 
 }
-
-
-
 

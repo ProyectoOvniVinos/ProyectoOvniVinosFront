@@ -16,11 +16,27 @@ export class RecuperandoPasswordComponent implements OnInit {
   banderaTerminos: boolean = false;
   correo: String;
   recuperandoForm: FormGroup;
+  activar: Boolean;
 
   constructor(private fb: FormBuilder, public dialog: MatDialog, public clienteService: ClienteService, private activateRoute: ActivatedRoute, private router:Router) {
     this.crearFormulario();
 
   }
+
+  ver(event, img){
+    this.activar = !this.activar;
+    console.log();
+    
+    if(this.activar==true){
+      event.type='text';
+      img.src='../../../../assets/Images/oculto.png'
+
+    }else{
+      event.type='password';
+      img.src='../../../../assets/Images/ver.png'
+    }
+  }
+
   crearFormulario() {
     this.recuperandoForm = this.fb.group({
       correo: ['', [Validators.required, Validators.pattern('[a-z0-9.%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
