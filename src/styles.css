@@ -134,7 +134,19 @@
 
 }
 
+.termino{
+    border-color:#be2558 ;
+}
 
+.termino:focus{
+    box-shadow:  1px 1px 3px 1px rgb(184, 13, 72);
+    border: 1px solid rgb(184, 13, 72);
+}
+
+.termino:checked{
+    background-color: #be2558;
+    color: #be2558;
+}
 
 .text-dark{
     text-align: center;
@@ -233,4 +245,173 @@ body.darkMode .cardFootert{
 
 body.darkMode .linkRuta:hover{
     background-color: rgba(61, 56, 58, 0.905);
+}
+
+body.darkMode .input:focus {
+    box-shadow: 1px 1px 3px 1px rgb(58, 57, 57) !important;
+    border: 1px solid rgb(73, 71, 72) !important;
+}
+
+body.darkMode .inputPass:focus {
+    box-shadow: 1px 1px 3px 1px rgb(58, 57, 57) !important;
+    border: 1px solid rgb(73, 71, 72) !important;
+}
+
+
+body.darkMode .termino{
+    border-color: black !important;
+}
+
+body.darkMode .termino:focus {
+    box-shadow:  1px 1px 3px 1px rgb(27, 23, 24)!important;
+    border: 1px solid rgb(43, 38, 39)!important;
+}
+
+body.darkMode .termino:checked {
+    background-color: #3d282f !important;
+    color: #2e1e23 !important; 
+}
+
+body.darkMode .terminosLink{
+    color: blue !important;
+}
+body.darkMode .btnFiltro:hover{
+    background-color: black;
+}
+
+body.darkMode .btn:hover{
+    box-shadow:  1px 1px 3px 1px rgb(36, 32, 33) !important;
+    border: 1px solid rgb(54, 50, 51) !important;
+}
+body.darkMode .btnFiltro .z{
+    content: url("assets/Images/lupaNegra.png") !important;
+}
+
+body.darkMode .btnFiltro .a{
+    content: url("assets/Images/botella-de-plasticoNegra.png") !important;
+}
+
+body.darkMode .btnFiltro .b{
+    content: url("assets/Images/vinoNegro.png") !important;
+}
+body.darkMode .btnFiltro .c{
+    content: url("assets/Images/juntasNegra.png") !important;
+}
+body.darkMode .btnFiltro .d{
+    content: url("assets/Images/estrellaNegra.png") !important;
+}
+
+body.darkMode .btnFiltro:hover .z{
+    content: url("assets/Images/lupaBlanca.png") !important;
+}
+
+body.darkMode .btnFiltro:hover .a{
+    content: url("assets/Images/botella-de-plastico copia.png") !important;
+}
+
+body.darkMode .btnFiltro:hover .b{
+    content: url("assets/Images/vino copia.png") !important;
+}
+body.darkMode .btnFiltro:hover .c{
+    content: url("assets/Images/juntas.png") !important;
+}
+
+body.darkMode .btnFiltro:hover .d{
+    content: url("assets/Images/estrellaBlanca.png") !important;
+}
+
+body.darkMode .input-buscar{
+    height: 3.3rem;
+    font-size: 1.4rem;
+    border-color: rgb(32, 30, 31);;
+}
+
+body.darkMode .input-buscar::placeholder{
+    color: rgb(29, 26, 27);
+}
+
+body.darkMode .buscador input:focus{
+
+    box-shadow:  1px 1px 3px 1px rgb(41, 38, 39)!important;
+    border: 1px solid rgb(29, 24, 26)!important;
+}
+
+body.darkMode ::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  
+  /* Track */
+body.darkMode ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 156px rgb(255, 255, 255); 
+    border-radius: 5px;
+  }
+   
+  /* Handle */
+body.darkMode ::-webkit-scrollbar-thumb {
+    background:  rgb(32, 29, 30);
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+body.darkMode ::-webkit-scrollbar-thumb:hover {
+    background:  rgb(39, 37, 38);
+  }
+
+body.darkMode [data-title]:hover:after {
+    opacity: 1;
+    transition: all 0.1s ease 0.5s;
+    visibility: visible;
+}
+body.darkMode [data-title]:after {
+    content: attr(data-title);
+    background-color:rgb(15, 14, 14);
+    color: #fff;
+    font-size: 18px;
+    font-family: Raleway;
+    position: absolute;
+    padding: 0px 10px;
+    bottom: -2em;
+    left: 0%;
+    white-space: nowrap;
+    box-shadow: 1px 1px 3px #222222;
+    opacity: 0;
+    border: 1px solid #111111;
+    z-index: 99999;
+    visibility: hidden;
+    border-radius: 6px;
+    
+}
+body.darkMode [data-title] {
+    position: relative;
+}
+
+body.darkMode .cajaCarrito img{
+    content: url('assets/Images/carritoNegro.png')!important;
+}
+
+body.darkMode .cardImg .imgCarrito{
+    content: url('assets/Images/carritoNegro.png')!important;
+}
+
+body.darkMode .cont-interno2 img:hover{
+    content: url('assets/Images/carritoNegro.png')!important;
+}
+
+body.darkMode .tituloModal{
+    color: black!important;
+}
+
+body.darkMode .imgRecomendacion{
+    border: 2px solid  rgba(20, 17, 18, 0.266)!important;
+}
+
+body.darkMode .card-header{
+    border-bottom: 2px solid  rgb(20, 19, 19)!important;
+}
+
+body.darkMode .card-footer{
+    border-top: 2px solid  rgb(0, 0, 0)!important;
+}
+body.darkMode .cajaInfoReco{
+    background-color: rgb(27, 26, 26);
 }
