@@ -1,7 +1,6 @@
-import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/Services/login.service';
+import { LoginService } from '../../../Services/login.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -38,6 +37,7 @@ export class SidebarComponent implements OnInit {
   }
   cambiarMode(){
     document.body.classList.toggle("darkMode");
+
   }
 
 }

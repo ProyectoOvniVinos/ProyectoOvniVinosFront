@@ -1,36 +1,44 @@
 import { Injectable } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+import { ModalErrorComponent } from '../Components/Modal/modal-error/modal-error.component';
+import { LoginService } from '../Services/login.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RoleGuard implements CanActivate {
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return true;
-  }
-  // constructor(private authService: AuthService, private router: Router) {
-
-  // }
-
   // canActivate(
   //   route: ActivatedRouteSnapshot,
   //   state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
-  //   if (!this.authService.isAuthenticated()) {
-  //     this.router.navigate(['/login']);
-  //     return false;
-  //   }
-  //   let role = route.data['role'] as string;
-
-  //   if (this.authService.hasRole(role)) {
-  //     return true;
-  //   }
-  //   Swal.fire('Acceso denegado', `Hola ${this.authService.usuario.username} no tenes acceso a este recurso`, 'warning');
-  //   this.router.navigate(['/clientes']);
-  //   return false;
+  //   return true;
   // }
+  constructor(private authService: LoginService, private router: Router, private dialog: MatDialog) {
+
+  }
+
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot):boolean{
+      
+    if (!this.authService.isAuthenticated()) {
+      this.router.navigate(['/iniciarSesion']);
+      return false;
+    }
+    let role = route.data['role'] as string;
+    if (this.authService.hasRole(role)) {
+      return true;
+    }
+    this.openDialog('Acceso denegado', `Hola ${this.authService.usuario.correo} no tenes acceso a este recurso`);
+    this.router.navigate(['/catalogo']);
+    return false;
+  }
+  openDialog(titleNew: string, mensajeNew: string): void {
+    const dialogRef = this.dialog.open(ModalErrorComponent, {
+      width: '300px',
+      data: {title: titleNew, mensaje: mensajeNew},
+    });
+  }
   
 }

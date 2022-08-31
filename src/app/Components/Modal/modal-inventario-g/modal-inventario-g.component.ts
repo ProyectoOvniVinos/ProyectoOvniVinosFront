@@ -1,10 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ProductoModel } from 'src/app/Models/Producto.model';
-import { Inventario_detallesModel } from 'src/app/Models/Inventario_detalles.model';
-import { DialogData } from '../DialogData';
-import { DatePipe, DATE_PIPE_DEFAULT_TIMEZONE } from '@angular/common';
-import { Inventario_generalModel } from 'src/app/Models/Inventario_general.model';
+import { Inventario_generalModel } from '../../../Models/Inventario_general.model';
 
 @Component({
   selector: 'app-modal-inventario-g',

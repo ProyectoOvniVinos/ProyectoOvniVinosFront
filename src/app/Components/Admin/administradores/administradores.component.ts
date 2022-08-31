@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { AdministradorModel } from 'src/app/Models/Administrador.model';
-import { AdminService } from 'src/app/Services/admin.service';
+import { AdministradorModel } from '../../../Models/Administrador.model'
+import { AdminService } from '../../../Services/admin.service';
 import { ModalInteraccionComponent } from '../../Modal/modal-interaccion/modal-interaccion.component';
 import { ModalLoadingComponent } from '../../Modal/modal-loading/modal-loading.component';
 

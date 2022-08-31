@@ -1,13 +1,13 @@
-import { ModalLoadingComponent } from './../../Modal/modal-loading/modal-loading.component';
-import { InventarioGService } from './../../../Services/inventario-g.service';
-import { ModalInteraccionComponent } from './../../Modal/modal-interaccion/modal-interaccion.component';
-import { ProductoService } from 'src/app/Services/producto.service';
+import { ModalLoadingComponent } from '../../Modal/modal-loading/modal-loading.component';
+import { InventarioGService } from '../../../Services/inventario-g.service';
+import { ModalInteraccionComponent } from '../../Modal/modal-interaccion/modal-interaccion.component';
+import { ProductoService } from '../../../Services/producto.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ProductoModel } from 'src/app/Models/Producto.model';
-import { ImagenService } from 'src/app/Services/imagen.service';
+import { ProductoModel } from '../../../Models/Producto.model';
+import { ImagenService } from '../../../Services/imagen.service';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 
 @Component({

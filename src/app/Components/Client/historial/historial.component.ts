@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ClienteModel } from 'src/app/Models/Cliente.model';
-import { VentaModel } from 'src/app/Models/Venta.model';
-import { ClienteService } from 'src/app/Services/cliente.service';
-import { LoginService } from 'src/app/Services/login.service';
+import { ClienteModel } from '../../../Models/Cliente.model';
+import { VentaModel } from '../../../Models/Venta.model';
+import { ClienteService } from '../../../Services/cliente.service';
+import { LoginService } from '../../../Services/login.service';
 import { ModalDetallesVentaComponent } from '../../Modal/modal-detalles-venta/modal-detalles-venta.component';
 
 @Component({

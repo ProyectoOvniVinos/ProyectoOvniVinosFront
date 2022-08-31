@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AdministradorModel } from 'src/app/Models/Administrador.model';
-import { AdminService } from 'src/app/Services/admin.service';
-import { LoginService } from 'src/app/Services/login.service';
+import { AdministradorModel } from '../../../Models/Administrador.model';
+import { AdminService } from '../../../Services/admin.service';
+import { LoginService } from '../../../Services/login.service';
 
 @Component({
   selector: 'app-datos-admin',
