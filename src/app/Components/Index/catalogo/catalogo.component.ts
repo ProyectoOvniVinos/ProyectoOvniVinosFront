@@ -3,14 +3,13 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { MatDialog } from '@angular/material/dialog';
 import { ProductoModel } from '../../../Models/Producto.model';
 import { ProductoService } from '../../../Services/producto.service';
-import { Inventario_generalModel } from 'src/app/Models/Inventario_general.model';
-import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
-import { CarritoService } from 'src/app/Services/carrito.service';
-import { ClienteService } from 'src/app/Services/cliente.service';
-import { ClienteModel } from 'src/app/Models/Cliente.model';
-import { ItemCarritoModel } from 'src/app/Models/itemCarrito.model';
-import { InventarioGService } from 'src/app/Services/inventario-g.service';
-import { LoginService } from 'src/app/Services/login.service';
+import { Inventario_generalModel } from '../../../Models/Inventario_general.model';
+import { CarritoService } from '../../../Services/carrito.service';
+import { ClienteService } from '../../../Services/cliente.service';
+import { ClienteModel } from '../../../Models/Cliente.model';
+import { ItemCarritoModel } from '../../../Models/itemCarrito.model';
+import { InventarioGService } from '../../../Services/inventario-g.service';
+import { LoginService } from '../../../Services/login.service';
 
 @Component({
   selector: 'app-catalogo',
@@ -155,12 +154,7 @@ export class CatalogoComponent implements OnInit, OnChanges {
 
       this.carritoService.actualizarCarrito(resp.carrito).subscribe(resp => {
         this.clienteInp.carrito = resp.carrito;
-
-
-
       })
-
-
     })
 
     this.agrandar = true;

@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { ProductoModel } from 'src/app/Models/Producto.model';
-import { ProductoService } from 'src/app/Services/producto.service';
+import { ProductoModel } from '../../../Models/Producto.model';
+import { ProductoService } from '../../../Services/producto.service';
 import { ModalImagenComponent } from '../../Modal/modal-imagen/modal-imagen.component';
 import { ModalLoadingComponent } from '../../Modal/modal-loading/modal-loading.component';
 import { ModalProductosAdminComponent } from '../../Modal/modal-productos-admin/modal-productos-admin.component';

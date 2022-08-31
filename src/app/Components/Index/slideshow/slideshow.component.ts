@@ -1,13 +1,12 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
-import { ClienteModel } from 'src/app/Models/Cliente.model';
-import { Inventario_generalModel } from 'src/app/Models/Inventario_general.model';
-import { ItemCarritoModel } from 'src/app/Models/itemCarrito.model';
-import { ProductoModel } from 'src/app/Models/Producto.model';
-import { CarritoService } from 'src/app/Services/carrito.service';
-import { ClienteService } from 'src/app/Services/cliente.service';
-import { LoginService } from 'src/app/Services/login.service';
+import { ClienteModel } from '../../../Models/Cliente.model';
+import { Inventario_generalModel } from '../../../Models/Inventario_general.model';
+import { ItemCarritoModel } from '../../../Models/itemCarrito.model';
+import { ProductoModel } from '../../../Models/Producto.model';
+import { CarritoService } from '../../../Services/carrito.service';
+import { ClienteService } from '../../../Services/cliente.service';
+import { LoginService } from '../../../Services/login.service';
 import Swiper, { Autoplay } from 'swiper';
 import { ModalProductosComponent } from '../../Modal/modal-productos/modal-productos.component';
 @Component({

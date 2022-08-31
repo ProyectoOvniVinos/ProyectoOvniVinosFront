@@ -1,5 +1,4 @@
-import { ProductoModel } from './../../../Models/Producto.model';
-import { Inventario_generalModel } from './../../../Models/Inventario_general.model';
+import { ProductoModel } from '../../../Models/Producto.model';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Component, Inject, OnInit } from '@angular/core';
 

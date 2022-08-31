@@ -3,7 +3,7 @@ import { ModalErrorComponent } from './../../Modal/modal-error/modal-error.compo
 import { MatDialog } from '@angular/material/dialog';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { AdminService } from 'src/app/Services/admin.service';
+import { AdminService } from '../../../Services/admin.service';
 import { Router } from '@angular/router';
 
 @Component({

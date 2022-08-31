@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/Services/login.service';
+import { AdministradorModel } from 'src/app/Models/Administrador.model';
+import { AdminService } from 'src/app/Services/admin.service';
+import { ClienteService } from 'src/app/Services/cliente.service';
+import { LoginService } from '../../../Services/login.service';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 
 @Component({
@@ -12,7 +15,8 @@ import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.compone
 })
 export class IniciarSesionComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, private loginService: LoginService, private router: Router) { }
+  constructor(public dialog: MatDialog, private loginService: LoginService, private router: Router,
+              private adminservice: AdminService, private clienteService: ClienteService) { }
 
   ngOnInit(): void {
     
@@ -66,12 +70,32 @@ export class IniciarSesionComponent implements OnInit {
 
   iniciarSecion(){
 
+
     if(!this.loginForm.invalid){
 
+
+
       this.loginService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value).subscribe(response => {
+        
+        
+
         this.loginService.guardarUsuario(response.access_token);
         this.loginService.guardarToken(response.access_token);
-        this.router.navigate(['/catalogo']);
+        
+        if(this.loginService.usuario.rol=="ROLE_ADMIN"){
+          this.adminservice.getAdminById(this.loginService.usuario.correo).subscribe((resp:AdministradorModel)=>{
+            console.log(resp);
+            
+            if(resp.estado=='1'){
+              this.router.navigate(['/catalogo']);
+            }else{
+              this.loginService.logout();
+              this.openDialog("Inicio de sesion fallido", "Su usuario administrador se encuentra deshabilitado.")
+            }
+          });
+        }else{
+          this.router.navigate(['/catalogo']);
+        }
       }, error => {
         this.openDialog("Advertencia","datos incorrectos")
       });
@@ -81,5 +105,6 @@ export class IniciarSesionComponent implements OnInit {
     }
     
   }
+
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ProductoModel } from 'src/app/Models/Producto.model';
+import { ProductoModel } from '../../../Models/Producto.model';
 import { VentaService } from '../../../Services/venta.service';
 import { VentaModel } from '../../../Models/Venta.model';
 import { ModalDetallesVentaComponent } from '../../Modal/modal-detalles-venta/modal-detalles-venta.component';

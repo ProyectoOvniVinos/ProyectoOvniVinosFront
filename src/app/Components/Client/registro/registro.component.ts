@@ -2,11 +2,8 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
-import { ClienteModel } from 'src/app/Models/Cliente.model';
-import { VentaModel } from 'src/app/Models/Venta.model';
-import { ClienteService } from 'src/app/Services/cliente.service';
-import { ModalDetallesVentaComponent } from '../../Modal/modal-detalles-venta/modal-detalles-venta.component';
+import { ClienteModel } from '../../../Models/Cliente.model';
+import { ClienteService } from '../../../Services/cliente.service';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 
 

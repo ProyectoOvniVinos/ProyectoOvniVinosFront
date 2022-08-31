@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ClienteModel } from 'src/app/Models/Cliente.model';
-import { ClienteService } from 'src/app/Services/cliente.service';
+import { ClienteModel } from '../../../Models/Cliente.model';
+import { ClienteService } from '../../../Services/cliente.service';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 
 @Component({
