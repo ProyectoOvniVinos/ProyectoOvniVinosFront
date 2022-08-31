@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
-import { ClienteModel } from 'src/app/Models/Cliente.model';
-import { ClienteService } from 'src/app/Services/cliente.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ClienteModel } from '../../../Models/Cliente.model';
+import { ClienteService } from '../../../Services/cliente.service';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 
 @Component({
@@ -18,7 +18,7 @@ export class RecuperandoPasswordComponent implements OnInit {
   recuperandoForm: FormGroup;
   activar: Boolean;
 
-  constructor(private fb: FormBuilder, public dialog: MatDialog, public clienteService: ClienteService, private activateRoute: ActivatedRoute) {
+  constructor(private fb: FormBuilder, public dialog: MatDialog, public clienteService: ClienteService, private activateRoute: ActivatedRoute, private router:Router) {
     this.crearFormulario();
 
   }
@@ -142,8 +142,8 @@ export class RecuperandoPasswordComponent implements OnInit {
       resp.passwordCliente = this.recuperandoForm.controls["contrasena1"].value
       console.log(resp);
       this.clienteService.actualizar(resp).subscribe(respue => {
-        console.log(respue);
-
+        this.openDialog("Actualizados", "Actualizo la contraseña con exito.");
+        this.router.navigate(['/iniciarSesion'])
       })
     })
   }

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Inventario_generalModel } from 'src/app/Models/Inventario_general.model';
-import { ProductoModel } from '../../../Models/Producto.model';
+import { Inventario_generalModel } from '../../../Models/Inventario_general.model';
 import { InventarioGService } from '../../../Services/inventario-g.service';
 import { ModalInventarioGComponent } from '../../Modal/modal-inventario-g/modal-inventario-g.component';
 

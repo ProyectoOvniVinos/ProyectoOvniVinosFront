@@ -2,16 +2,15 @@ import { Item_ventaModel } from './../../../Models/Item_venta.model';
 import { VentaModel } from './../../../Models/Venta.model';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Item_compraModel } from 'src/app/Models/Item_compra.model';
-import { ProductoModel } from 'src/app/Models/Producto.model';
-import { ProductoService } from 'src/app/Services/producto.service';
-import { ClienteModel } from 'src/app/Models/Cliente.model';
+import { ProductoModel } from '../../../Models/Producto.model';
+import { ProductoService } from '../../../Services/producto.service';
+import { ClienteModel } from '../../../Models/Cliente.model';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
-import { VentaService } from 'src/app/Services/venta.service';
+import { VentaService } from '../../../Services/venta.service';
 import { ModalLoadingComponent } from '../../Modal/modal-loading/modal-loading.component';
-import { Inventario_generalModel } from 'src/app/Models/Inventario_general.model';
-import { InventarioGService } from 'src/app/Services/inventario-g.service';
+import { Inventario_generalModel } from '../../../Models/Inventario_general.model';
+import { InventarioGService } from '../../../Services/inventario-g.service';
 import { ModalInteraccionComponent } from '../../Modal/modal-interaccion/modal-interaccion.component';
 
 @Component({

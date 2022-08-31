@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ClienteModel } from 'src/app/Models/Cliente.model';
-import { ClienteService } from 'src/app/Services/cliente.service';
-import { LoginService } from 'src/app/Services/login.service';
+import { Component, OnInit } from '@angular/core';
+import { ClienteModel } from '../../../Models/Cliente.model';
+import { ClienteService } from '../../../Services/cliente.service';
+import { LoginService } from '../../../Services/login.service';
 
 @Component({
   selector: 'app-datos-cliente',

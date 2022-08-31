@@ -1,15 +1,11 @@
-import { ProductoModel } from 'src/app/Models/Producto.model';
-import { DialogData } from './../DialogData';
+import { ProductoModel } from '../../../Models/Producto.model';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Component, Inject, OnInit } from '@angular/core';
-import { Inventario_generalModel } from 'src/app/Models/Inventario_general.model';
-import { ClienteService } from 'src/app/Services/cliente.service';
-import { CarritoService } from 'src/app/Services/carrito.service';
-import { ClienteModel } from 'src/app/Models/Cliente.model';
-import { ItemCarritoModel } from 'src/app/Models/itemCarrito.model';
-import Swiper, { Autoplay } from 'swiper';
-import { ProductoService } from 'src/app/Services/producto.service';
-import { LoginService } from 'src/app/Services/login.service';
+import { Inventario_generalModel } from '../../../Models/Inventario_general.model';
+import { ClienteService } from '../../../Services/cliente.service';
+import { CarritoService } from '../../../Services/carrito.service';
+import { ProductoService } from '../../../Services/producto.service';
+import { LoginService } from '../../../Services/login.service';
 
 @Component({
   selector: 'app-modal-productos',
