@@ -16,11 +16,26 @@ export class RegistrarAdminComponent implements OnInit {
   banderaPasswordTwo: boolean = null;
   banderaTerminos: boolean = false;
   registroForm !: FormGroup;
+  activar:boolean;
 
   constructor(private fb: FormBuilder, public dialog: MatDialog, private adminService: AdminService, private router: Router) {
     this.crearFormulario();
     this.crearListeners();
 
+  }
+
+  ver(event, img){
+    this.activar = !this.activar;
+    console.log();
+    
+    if(this.activar==true){
+      event.type='text';
+      img.src='../../../../assets/Images/oculto.png'
+
+    }else{
+      event.type='password';
+      img.src='../../../../assets/Images/ver.png'
+    }
   }
 
   openDialog(titleNew: string, mensajeNew: string): void {

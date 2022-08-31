@@ -14,9 +14,12 @@ import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.compone
   styleUrls: ['./iniciar-sesion.component.css']
 })
 export class IniciarSesionComponent implements OnInit {
-
+  activar: Boolean=false;
   constructor(public dialog: MatDialog, private loginService: LoginService, private router: Router,
               private adminservice: AdminService, private clienteService: ClienteService) { }
+
+  
+
 
   ngOnInit(): void {
     
@@ -27,6 +30,20 @@ export class IniciarSesionComponent implements OnInit {
       width: '300px',
       data: {title: titleNew, mensaje: mensajeNew},
     });
+  }
+
+  ver(event1, event2){
+    this.activar = !this.activar;
+    console.log();
+    
+    if(this.activar==true){
+      event1.type='text';
+      event2.src='../../../../assets/Images/oculto.png'
+
+    }else{
+      event1.type='password';
+      event2.src='../../../../assets/Images/ver.png'
+    }
   }
 
   public loginForm = new FormGroup({

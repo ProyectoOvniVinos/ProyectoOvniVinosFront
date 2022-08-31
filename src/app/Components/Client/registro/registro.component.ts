@@ -17,6 +17,7 @@ export class RegistroComponent implements OnInit {
   banderaPasswordTwo: boolean = null;
   banderaTerminos: boolean = false;
   registroForm !: FormGroup;
+  activar: boolean=false;
 
   constructor(private fb: FormBuilder, public dialog: MatDialog, public clienteService:ClienteService,private router: Router) {
     this.crearFormulario();
@@ -29,6 +30,20 @@ export class RegistroComponent implements OnInit {
       width: '300px',
       data: {title: titleNew, mensaje: mensajeNew},
     });
+  }
+
+  ver(event, img){
+    this.activar = !this.activar;
+    console.log();
+    
+    if(this.activar==true){
+      event.type='text';
+      img.src='../../../../assets/Images/oculto.png'
+
+    }else{
+      event.type='password';
+      img.src='../../../../assets/Images/ver.png'
+    }
   }
 
   ngOnInit(): void {
