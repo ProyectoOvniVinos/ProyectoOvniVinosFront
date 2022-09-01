@@ -1,7 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ClienteModel } from 'src/app/Models/Cliente.model';
+import { ClienteService } from 'src/app/Services/cliente.service';
+import { LoginService } from 'src/app/Services/login.service';
 import { VentaModel } from '../../../Models/Venta.model';
-import { ModalDetallesCompraComponent } from '../modal-detalles-compra/modal-detalles-compra.component';
 
 @Component({
   selector: 'app-modal-confirmar-compra',
@@ -10,14 +12,45 @@ import { ModalDetallesCompraComponent } from '../modal-detalles-compra/modal-det
 })
 export class ModalConfirmarCompraComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<ModalDetallesCompraComponent>,
-    @Inject(MAT_DIALOG_DATA) public venta: VentaModel) { }
-
-  ngOnInit(): void {
+  isDomicilio:boolean=true;
+  objeto:{venta:VentaModel,esDomi:boolean}={
+    venta:this.venta,
+    esDomi:this.isDomicilio
   }
 
+  direccion:string=null;
+
+  constructor(public dialogRef: MatDialogRef<ModalConfirmarCompraComponent>,
+    @Inject(MAT_DIALOG_DATA) public venta: VentaModel,public loginService: LoginService,public clienteService: ClienteService) {
+      
+    }
+
+  ngOnInit(): void {
+    this.clienteService.getByEmail(this.loginService.usuario.correo).subscribe((resp:ClienteModel)=>{
+      this.direccion=resp.direccionCliente;
+    })
+    
+    
+    
+
+  }
+
+  cambiarSelected(){
+    this.isDomicilio=!this.isDomicilio;
+  }
   onNoClick(): void{
     this.dialogRef.close();
+  }
+
+  confirmarCompra(){
+    this.venta.correoCliente.direccionCliente=this.direccion
+    
+    
+    let newObjeto={
+      venta:this.venta,
+      esDomi:this.isDomicilio
+    }
+    this.objeto=newObjeto;
   }
 
 }

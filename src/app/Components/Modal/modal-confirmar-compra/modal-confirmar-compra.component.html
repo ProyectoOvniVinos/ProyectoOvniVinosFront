@@ -25,8 +25,19 @@
         <p>cantidad: {{venta.cantidadVenta}}</p>
     </div>
 </div>
+<div class="contenedor-tipos">
+    <div class="conteTipoVenta" [ngClass]="{'seleccionado': isDomicilio}" (click) = "cambiarSelected()">
+        <img class="imgVenta" src="../../../../assets/Images/domicilio.png" alt="" >
+        <p class="descVenta">Domicilio</p>
+        <input *ngIf="isDomicilio" class="inputDireccion" type="text" value="{{venta.correoCliente.direccionCliente}}" [(ngModel)]='direccion'>
+    </div>
+    <div class="conteTipoVenta" [ngClass]="{'seleccionado': isDomicilio==false}" (click) = "cambiarSelected()">
+        <img class="imgVenta" src="../../../../assets/Images/recojer.png" alt="" >
+        <p class="descVenta">Recojer en la tienda</p>
+    </div>
+</div>
 
 <div class="botones">
-    <button class="btnOk" [mat-dialog-close]="venta">Confirmar compra</button>
+    <button class="btnOk" (click)="confirmarCompra()" [mat-dialog-close]="objeto" >Confirmar compra</button>
     <button class="btnOk" [mat-dialog-close]="false">Cancelar</button>
 </div>

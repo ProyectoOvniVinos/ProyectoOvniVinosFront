@@ -115,8 +115,7 @@ registerLocaleData(localeEs, 'es');
     RegistrarAdminComponent,
     CambioPasswordAComponent,
     CambioPasswordCComponent,
-    PasswordPipe
-
+    PasswordPipe,
 
 
 
