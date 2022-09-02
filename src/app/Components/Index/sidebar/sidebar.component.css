@@ -67,6 +67,27 @@
     align-items: center;
     animation: fadeIn 1s;
 }
+.cajaSwitch{
+    cursor: pointer;
+    width:82px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 1.5rem;
+    bottom: 0;
+}
+
+.cajaSwitch p{
+    margin: 0;
+    color: white;
+    font-size: 0.8rem;
+}
+
+.switchModo{
+    width: 60%;
+}
 
 @keyframes fadeIn {
     0% {
@@ -92,7 +113,7 @@
 
 .linkRuta {
     color: aliceblue;
-    font-size: 1.3vh;
+    font-size: 0.8rem;
     text-align: center;
     transition: 0.2s;
 }
@@ -103,7 +124,7 @@
 
 .linkRuta2 {
     color: aliceblue;
-    font-size: 1.5vh;
+    font-size: 0.8rem;
 }
 
 .imagenes {
@@ -200,9 +221,6 @@
     font-size: 1.2rem;
 }
 
-.cajaTexts1{
-
-}
 
 .cajaTexts2{
     border: 2px solid #bbbbbb;
@@ -247,6 +265,9 @@
     background-color: black;
     pointer-events: none;
 }
+
+
+
 
 @media screen and (max-width: 1500px) and (max-height:1080px) {
 

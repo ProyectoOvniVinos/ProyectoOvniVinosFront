@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { DarkModeService } from 'src/app/Services/dark-mode.service';
 import { LoginService } from '../../../Services/login.service';
 
 @Component({
@@ -15,13 +16,15 @@ export class SidebarComponent implements OnInit {
   validarCarrito = false;
   validarRuta = false;
   modal: boolean = true;
+  banderaSwitch: boolean;
+  titleSwitch:string;
 
-  constructor(private router: Router, public loginService: LoginService) {
+  constructor(private router: Router, public loginService: LoginService, public darkModeService: DarkModeService) {
 
   }
 
   ngOnInit(): void {
-    
+    this.titleSwitch="Noche"
   }
 
   getRuta() {
@@ -36,8 +39,18 @@ export class SidebarComponent implements OnInit {
     this.router.navigate(['/catalogo']);
   }
   cambiarMode(){
-    document.body.classList.toggle("darkMode");
 
+    if(document.body.classList.value == "darkMode"){
+      document.body.classList.remove('darkMode');
+      this.darkModeService.guardarBandera("false");
+      this.banderaSwitch=false;
+      this.titleSwitch="Noche"
+    }else{
+      document.body.classList.add("darkMode");
+      this.darkModeService.guardarBandera("true");
+      this.banderaSwitch=true;
+      this.titleSwitch="Dia"
+    }
   }
 
 }
