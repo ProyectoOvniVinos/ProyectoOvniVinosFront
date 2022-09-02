@@ -10,6 +10,8 @@ import { ClienteModel } from '../../../Models/Cliente.model';
 import { ItemCarritoModel } from '../../../Models/itemCarrito.model';
 import { InventarioGService } from '../../../Services/inventario-g.service';
 import { LoginService } from '../../../Services/login.service';
+import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
+import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
 
 @Component({
   selector: 'app-catalogo',
@@ -138,6 +140,8 @@ export class CatalogoComponent implements OnInit, OnChanges {
       resp.carrito.itemCarrito.forEach(item => {
         if (item.codigoProducto.codigoProducto == producto.codigoProducto) {
           item.cantidadProducto = item.cantidadProducto + 1;
+          this.validarCantidades(item, resp.carrito);
+          
           flag = true;
 
         }
@@ -149,12 +153,8 @@ export class CatalogoComponent implements OnInit, OnChanges {
         newItem.precioItem = producto.precioProducto
 
         resp.carrito.itemCarrito.push(newItem);
+        this.validarCantidades(newItem, resp.carrito);
       }
-
-
-      this.carritoService.actualizarCarrito(resp.carrito).subscribe(resp => {
-        this.clienteInp.carrito = resp.carrito;
-      })
     })
 
     this.agrandar = true;
@@ -165,6 +165,22 @@ export class CatalogoComponent implements OnInit, OnChanges {
       this.recargarCarrito();
 
     }
+  }
+
+  validarCantidades(item:ItemCarritoModel,carrito:CarritoClienteModel) {
+    let bandera:boolean = false;
+    this.inventarioService.getInventarioGeneralByProducto(item.codigoProducto.codigoProducto).subscribe((resp:Inventario_generalModel)=>{
+      let cantidadP = resp.cantidadProducto
+      
+      if(item.cantidadProducto<cantidadP || item.cantidadProducto==cantidadP){
+        this.carritoService.actualizarCarrito(carrito).subscribe(resp => {
+          this.clienteInp.carrito = resp.carrito;
+        })
+      }else{
+        this.openDialog2("Error", "Ya añadiste la cantidad existente de este producto!!")
+
+      }
+    })
   }
 
   recargarCarrito() {
@@ -193,6 +209,13 @@ export class CatalogoComponent implements OnInit, OnChanges {
       } else {
 
       }
+    });
+  }
+
+  openDialog2(titleNew: string, mensajeNew: string): void {
+    const dialogRef = this.dialog.open(ModalErrorComponent, {
+      width: '300px',
+      data: {title: titleNew, mensaje: mensajeNew},
     });
   }
 

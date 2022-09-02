@@ -1,11 +1,10 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
 
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 .base {
@@ -134,6 +133,18 @@
 
 }
 
+@keyframes animated {
+    
+    0%{
+        background-position-y: 0;
+    }
+    100%{
+        background-position-y:1000px;
+    }
+
+}
+
+
 .termino{
     border-color:#be2558 ;
 }
@@ -165,7 +176,7 @@
     z-index: 1;
     overflow: hidden;
     display: inline-block;
-    font-size: 1.5rem;
+    font-size: 1rem;
 
 }
 
@@ -324,6 +335,7 @@ body.darkMode .input-buscar{
     height: 3.3rem;
     font-size: 1.4rem;
     border-color: rgb(32, 30, 31);;
+    border: 2px solid;
 }
 
 body.darkMode .input-buscar::placeholder{
@@ -415,3 +427,97 @@ body.darkMode .card-footer{
 body.darkMode .cajaInfoReco{
     background-color: rgb(27, 26, 26);
 }
+
+body.darkMode .card{
+    border-color: rgb(0 0 0 / 15%);;
+}
+
+body.darkMode .btnOk{
+    color: rgb(15, 14, 14)!important; /* color de fuente */
+    border: 2px solid rgb(24, 19, 20)!important; /* tamaño y color de borde */
+}
+
+body.darkMode .btnOk:hover {
+    color: #fff!important;/* color de fuente hover */
+}
+
+body.darkMode .btnOk:after{
+    background: rgb(0,0,0)!important;
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(59,58,58,1) 51%, rgba(0,0,0,1) 100%)!important;
+}
+
+
+body.darkMode .btn{
+    color: rgb(15, 14, 14)!important; /* color de fuente */
+    border: 2px solid rgb(24, 19, 20)!important; /* tamaño y color de borde */
+}
+
+body.darkMode .btn:hover {
+    color: #fff!important;/* color de fuente hover */
+}
+
+body.darkMode .btn:after{
+    background: rgb(0,0,0)!important;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.555) 0%, rgba(59, 58, 58, 0.432) 51%, rgba(0, 0, 0, 0.5) 100%)!important;
+}
+
+body.darkMode .imageCerrar{
+    content: url('assets/Images/salirNegro.png')!important;
+}
+
+body.darkMode .cajaPCarrito{
+    background: rgb(27, 27, 27) !important;
+    background: linear-gradient(90deg, rgb(56, 55, 55) 11%, rgb(49, 47, 48) 55%, rgb(39, 36, 37) 98%)!important;
+}
+
+body.darkMode .cajaComprar{
+    box-shadow: 16px 17px 4px -9px rgb(68, 64, 65)!important;
+}
+
+body.darkMode .caja1{
+    background-color: black!important;
+}
+
+body.darkMode .madreCarrito{
+    box-shadow: 16px 16px 6px -9px rgb(165 154 157)!important;
+}
+
+body.darkMode .btnMenos{
+    color: rgb(15, 14, 14)!important; /* color de fuente */
+    border: 2px solid rgb(24, 19, 20)!important; /* tamaño y color de borde */
+}
+
+body.darkMode .btnMenos:hover {
+    color: #fff!important;/* color de fuente hover */
+}
+
+body.darkMode .btnMenos:after{
+    background: rgb(0,0,0)!important;
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(59,58,58,1) 51%, rgba(0,0,0,1) 100%)!important;
+}
+
+body.darkMode .btnMas{
+    color: rgb(15, 14, 14)!important; /* color de fuente */
+    border: 2px solid rgb(24, 19, 20)!important; /* tamaño y color de borde */
+}
+
+body.darkMode .btnMas:hover {
+    color: #fff!important;/* color de fuente hover */
+}
+
+body.darkMode .btnMas:after{
+    background: rgb(0,0,0)!important;
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(59,58,58,1) 51%, rgba(0,0,0,1) 100%)!important;
+}
+
+body.darkMode .imgEliminar{
+    content: url('assets/Images/eliminarNegro.png')!important;
+}
+
+
+
+
+
+
+
+
