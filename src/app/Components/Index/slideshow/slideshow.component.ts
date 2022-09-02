@@ -63,7 +63,6 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
         this.agregar(result.inventarioG.codigoProducto);
 
       } else {
-        console.log("EN ELSE");
 
       }
     });
