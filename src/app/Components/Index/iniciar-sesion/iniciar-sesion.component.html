@@ -12,7 +12,7 @@
                         <br>
                         <input type="text" 
                             class="input form-control" formControlName="email" autocomplete='off'
-                            [ngClass]="emailNoValido == null ? '' : emailNoValido ? 'is-invalid': 'is-valid'" placeholder="ingrese su Correo electrónico">
+                            [ngClass]="emailNoValido == null ? '' : emailNoValido ? 'is-invalid': 'is-valid'" placeholder="Ingrese su correo electrónico...">
                         <div class="errors-container" *ngIf="emailControl.invalid && (emailControl.touched || emailControl.dirty)">
                             <p class="text-danger" *ngIf="emailControl.hasError('required')">El campo es obligatorio</p>
                             <p class="text-danger" *ngIf="emailControl.hasError('email')">Debe ingresar un email válido</p>
@@ -23,7 +23,7 @@
                         <br>
                         <div class="passwordVer">
                             <input type="password" class="input inputPass form-control" formControlName="password"
-                                    [ngClass]="passwordNoValido == null ? '' : passwordNoValido ? 'is-invalid': 'is-valid'" placeholder="ingrese su Contraseña" #password>
+                                    [ngClass]="passwordNoValido == null ? '' : passwordNoValido ? 'is-invalid': 'is-valid'" placeholder="Ingrese su contraseña..." #password>
                             <div class="cajaVer" (click)="ver(password, img)">
                                 <img src="../../../../assets/Images/ver.png" alt="" #img>
                             </div>

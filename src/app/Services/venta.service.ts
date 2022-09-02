@@ -32,7 +32,7 @@ export class VentaService {
 
   }
 
-  addVenta(venta: VentaModel): Observable<any> {
+  addVenta(venta: VentaModel,esDomi:boolean): Observable<any> {
 
     let clienteCompra = new ClienteModel()
     clienteCompra.correoCliente = venta.correoCliente.correoCliente
@@ -42,7 +42,13 @@ export class VentaService {
     clienteCompra.passwordCliente = venta.correoCliente.passwordCliente
     clienteCompra.telefonoCliente = venta.correoCliente.telefonoCliente
     venta.correoCliente = clienteCompra
-    const url: string = `${this.url}venta`;
+    let tipo:string;
+    if(esDomi){
+      tipo="domi"
+    }else{
+      tipo="recojer"
+    }
+    const url: string = `${this.url}venta/${tipo}`;
     return this.http.post<any>(url, venta, { headers: this.httpHeaders }).pipe(
       catchError(e => {
 
