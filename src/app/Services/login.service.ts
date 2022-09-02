@@ -91,4 +91,9 @@ export class LoginService {
     localStorage.clear();
   }
 
+  ayuda(email:string,problema:string,descripcion:string){
+    let url = `http://localhost:8080/apiCliente/ayuda/${email}/${problema}/${descripcion}`
+    return this.http.get<any>(url);
+  }
+
 }

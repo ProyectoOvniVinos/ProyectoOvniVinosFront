@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginService } from 'src/app/Services/login.service';
+import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 
 @Component({
   selector: 'app-ayuda',
@@ -11,7 +14,7 @@ export class AyudaComponent implements OnInit {
   ayudaForm !: FormGroup;
   banderaTextoOtro: Boolean;
 
-  constructor(private fb: FormBuilder) { 
+  constructor(private fb: FormBuilder,public dialog: MatDialog, private loginService:LoginService) { 
     this.crearFormulario();
     this.crearListeners();
   }
@@ -80,22 +83,64 @@ export class AyudaComponent implements OnInit {
 
   
   crearListeners() {
-    this.ayudaForm.get('correo')?.valueChanges.subscribe(console.log);
-    this.ayudaForm.get('problemas')?.valueChanges.subscribe(console.log);
-    this.ayudaForm.get('textoOtra')?.valueChanges.subscribe(console.log);
+    this.ayudaForm.get('correo')?.valueChanges.subscribe();
+    this.ayudaForm.get('problemas')?.valueChanges.subscribe();
+    this.ayudaForm.get('textoOtra')?.valueChanges.subscribe();
   }
 
   validar(){
-    console.log("validando");
-    
-    console.log(this.ayudaForm.controls['problemas'].value)
 
     if(this.ayudaForm.controls['problemas'].value=="Otra"){
       this.banderaTextoOtro= true;
     }else{
+      this.ayudaForm.controls['textoOtra'].setValue("")
       this.banderaTextoOtro=false;
     }
   }
 
+  vaciarForm(){
+    this.ayudaForm.controls['correo'].reset()
+    this.ayudaForm.controls['problemas'].reset()
+    this.ayudaForm.controls['textoOtra'].reset()
+  }
+  enviar(){
+    if(this.ayudaForm.controls['textoOtra'].value!=''){
+      if(this.ayudaForm.controls['correo'].invalid==false && this.ayudaForm.controls['problemas'].value==""){
+        this.openDialog("Error", "verifique que todos los campos esten llenos y el correo sea valido11111111111")
+        
+      }else{
+        this.loginService.ayuda(this.ayudaForm.controls['correo'].value, this.ayudaForm.controls['problemas'].value, this.ayudaForm.controls['textoOtra'].value).subscribe(resp=>{
+          this.openDialog(resp.status, resp.mensaje)
+          this.vaciarForm()
+        });
+      }
+
+    }else{
+      if(this.ayudaForm.controls['correo'].invalid==false && this.ayudaForm.controls['problemas'].value!=""){
+        
+        if(this.ayudaForm.controls['problemas'].value=="Otra"){
+
+          this.openDialog("Error", "verifique que todos los campos esten llenos y el correo sea valido")
+        }else{
+          this.loginService.ayuda(this.ayudaForm.controls['correo'].value, this.ayudaForm.controls['problemas'].value, "no").subscribe(resp=>{
+            this.openDialog(resp.status, resp.mensaje)
+            this.vaciarForm()
+          });
+        }
+        
+      }else{
+
+        this.openDialog("Error", "verifique que todos los campos esten llenos y el correo sea valido")
+      }
+    }
+    
+    
+  }
+  openDialog(titleNew: string, mensajeNew: string): void {
+    const dialogRef = this.dialog.open(ModalErrorComponent, {
+      width: '300px',
+      data: {title: titleNew, mensaje: mensajeNew},
+    });
+  }
 
 }
