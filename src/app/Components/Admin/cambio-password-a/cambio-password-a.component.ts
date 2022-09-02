@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { AdministradorModel } from 'src/app/Models/Administrador.model';
+import { AdminService } from 'src/app/Services/admin.service';
+import { LoginService } from 'src/app/Services/login.service';
+import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 
 @Component({
   selector: 'app-cambio-password-a',
@@ -11,10 +17,17 @@ export class CambioPasswordAComponent implements OnInit {
   banderaPasswordTwo: boolean = false ;
   activar:Boolean;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private adminService: AdminService, private loginServico: LoginService, private dialog: MatDialog, private router: Router) { }
 
   ngOnInit(): void {
     this.crearFormulario();
+  }
+
+  openDialog(titleNew: string, mensajeNew: string): void {
+    const dialogRef = this.dialog.open(ModalErrorComponent, {
+      width: '300px',
+      data: {title: titleNew, mensaje: mensajeNew},
+    });
   }
 
   ver(event, img){
@@ -80,6 +93,33 @@ export class CambioPasswordAComponent implements OnInit {
       passwordOne: ['', [Validators.required, Validators.minLength(8)]],
       passwordTwo: ['', Validators.required]
     })
+  }
+
+  confirmar(){
+
+
+    let usuario: any = this.loginServico.usuario;
+    console.log(usuario);
+    
+    let admin = new AdministradorModel();
+    admin.passwordAdmin=this.cambioForm.get('passwordOne').value;
+  
+
+    this.adminService.getAdminById(usuario.correo).subscribe(adminEncontrado => {
+
+      adminEncontrado.passwordAdmin = admin.passwordAdmin;
+
+      this.adminService.updateAdmin(adminEncontrado.correoAdmin ,adminEncontrado).subscribe( response => {
+        this.openDialog("Exito", "Se ha actualizado su contraseña exitosamente!!")
+        this.router.navigate(['/datosA'])
+      }, err=> {
+        this.openDialog("Error", "No se pudo cambiar la contraseña!!")
+      })
+    }, err => {
+      this.openDialog("Error", "Ha ocurrido un error, porfavor intentelo nuevamente")
+    })
+
+
   }
 
 

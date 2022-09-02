@@ -35,8 +35,14 @@ export class ModalConfirmarCompraComponent implements OnInit {
 
   }
 
-  cambiarSelected(){
-    this.isDomicilio=!this.isDomicilio;
+  cambiarSelectedTrue(){
+
+    this.isDomicilio=true
+
+  }
+  cambiarSelectedFalse(){
+
+    this.isDomicilio=false
   }
   onNoClick(): void{
     this.dialogRef.close();

@@ -26,12 +26,12 @@
     </div>
 </div>
 <div class="contenedor-tipos">
-    <div class="conteTipoVenta" [ngClass]="{'seleccionado': isDomicilio}" (click) = "cambiarSelected()">
+    <div class="conteTipoVenta" [ngClass]="{'seleccionado': isDomicilio}" (click) = "cambiarSelectedTrue()">
         <img class="imgVenta" src="../../../../assets/Images/domicilio.png" alt="" >
         <p class="descVenta">Domicilio</p>
         <input *ngIf="isDomicilio" class="inputDireccion" type="text" value="{{venta.correoCliente.direccionCliente}}" [(ngModel)]='direccion'>
     </div>
-    <div class="conteTipoVenta" [ngClass]="{'seleccionado': isDomicilio==false}" (click) = "cambiarSelected()">
+    <div class="conteTipoVenta" [ngClass]="{'seleccionado': isDomicilio==false}" (click) = "cambiarSelectedFalse()">
         <img class="imgVenta" src="../../../../assets/Images/recojer.png" alt="" >
         <p class="descVenta">Recojer en la tienda</p>
     </div>

@@ -65,7 +65,6 @@ import { AutoInterceptorService } from './Services/auto-interceptor.service';
 
 import { CambioPasswordAComponent } from './Components/Admin/cambio-password-a/cambio-password-a.component';
 import { CambioPasswordCComponent } from './Components/Client/cambio-password-c/cambio-password-c.component';
-import { PasswordPipe } from './Components/Pipes/password.pipe';
 
 
 registerLocaleData(localeEs, 'es');
@@ -115,7 +114,8 @@ registerLocaleData(localeEs, 'es');
     RegistrarAdminComponent,
     CambioPasswordAComponent,
     CambioPasswordCComponent,
-    PasswordPipe,
+    CambioPasswordCComponent
+
 
 
 
