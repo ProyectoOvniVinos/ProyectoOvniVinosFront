@@ -39,7 +39,7 @@
                             </div>
                         </div>
                         <div class="waves">
-                            <div class="wave a"></div>
+                            <div [ngClass]="darkMode.bandera == 'true' ? 'waveTwo' : 'wave'" class="aCarrito"></div>
     
                         </div>
                         <div class="cajaInfoCarrito">
@@ -73,7 +73,7 @@
             <p>Valor Total: {{valorTotal}} </p>
         </div>
         <div class="cajaBtnComprar">
-            <Button class="btnComprar" (click)="abrirModal()">Comprar</Button>
+            <Button class="btnOvni" (click)="abrirModal()">Comprar</Button>
         </div>
 
     </div>

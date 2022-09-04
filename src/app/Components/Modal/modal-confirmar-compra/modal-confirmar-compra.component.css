@@ -1,3 +1,32 @@
+.contenedor-tipos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+.conteTipoVenta{
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 35%;
+    height:8rem;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+.imgVenta{
+    width: 25%;
+}
+.inputDireccion{
+    margin-bottom: 10px;
+}
+.descVenta{
+    margin-bottom:2px !important;
+}
+.seleccionado{
+    border: 2px solid rgb(184, 13, 72);
+    border-radius: 10px;
+}
 .lista{
     display: flex;
     justify-content: space-between;

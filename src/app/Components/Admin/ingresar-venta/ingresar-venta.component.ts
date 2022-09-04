@@ -248,7 +248,7 @@ export class IngresarVentaComponent implements OnInit {
     this.venta.correoCliente = this.cliente;
     
 
-    this.serviceVenta.addVenta(this.venta).subscribe(e=>{
+    this.serviceVenta.addVenta(this.venta,false).subscribe(e=>{
       this.closeDialogLoading();
       this.openDialog("¡¡ÉXITO!!!","La venta se ha guardado satisfactoriamente. ")
       this.vaciar()

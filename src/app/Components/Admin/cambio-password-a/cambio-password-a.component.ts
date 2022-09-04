@@ -98,26 +98,32 @@ export class CambioPasswordAComponent implements OnInit {
   confirmar(){
 
 
-    let usuario: any = this.loginServico.usuario;
-    console.log(usuario);
+    if(this.cambioForm.valid){
+      let usuario: any = this.loginServico.usuario;
+      console.log(usuario);
+      
+      let admin = new AdministradorModel();
+      admin.passwordAdmin=this.cambioForm.get('passwordOne').value;
     
-    let admin = new AdministradorModel();
-    admin.passwordAdmin=this.cambioForm.get('passwordOne').value;
   
-
-    this.adminService.getAdminById(usuario.correo).subscribe(adminEncontrado => {
-
-      adminEncontrado.passwordAdmin = admin.passwordAdmin;
-
-      this.adminService.updateAdmin(adminEncontrado.correoAdmin ,adminEncontrado).subscribe( response => {
-        this.openDialog("Exito", "Se ha actualizado su contraseña exitosamente!!")
-        this.router.navigate(['/datosA'])
-      }, err=> {
-        this.openDialog("Error", "No se pudo cambiar la contraseña!!")
+      this.adminService.getAdminById(usuario.correo).subscribe(adminEncontrado => {
+  
+        adminEncontrado.passwordAdmin = admin.passwordAdmin;
+  
+        this.adminService.updateAdmin(adminEncontrado.correoAdmin ,adminEncontrado).subscribe( response => {
+          this.openDialog("Exito", "Se ha actualizado su contraseña exitosamente!!")
+          this.router.navigate(['/datosA'])
+        }, err=> {
+          this.openDialog("Error", "No se pudo cambiar la contraseña!!")
+        })
+      }, err => {
+        this.openDialog("Error", "Ha ocurrido un error, porfavor intentelo nuevamente")
       })
-    }, err => {
-      this.openDialog("Error", "Ha ocurrido un error, porfavor intentelo nuevamente")
-    })
+    }else{
+      this.openDialog("Error","Porfavor DIligencie todos los campos")
+    }
+
+
 
 
   }

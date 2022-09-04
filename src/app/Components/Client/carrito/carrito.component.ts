@@ -1,6 +1,7 @@
 import { importExpr } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, Input, OnChanges, EventEmitter , Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { DarkModeService } from 'src/app/Services/dark-mode.service';
 import { CarritoClienteModel } from '../../../Models/CarritoCliente.model';
 import { ClienteModel } from '../../../Models/Cliente.model';
 import { Inventario_generalModel } from '../../../Models/Inventario_general.model';
@@ -33,6 +34,7 @@ export class CarritoComponent implements OnInit, OnChanges {
   cantidadTotal:number=0;
   itemClick:number;
   banderaCarrito:Boolean=false;
+  banderaClase:Boolean=false;
 
   @Input() modal:boolean = false;
 
@@ -47,7 +49,8 @@ export class CarritoComponent implements OnInit, OnChanges {
               private carritoService:CarritoService, 
               private inventarioService:InventarioGService,
               public dialog: MatDialog, 
-              private ventaService: VentaService) {
+              private ventaService: VentaService,
+              public darkMode: DarkModeService) {
 
   }
   ngOnChanges(): void {
@@ -65,7 +68,17 @@ export class CarritoComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    
+    this.cambioClase();
+    console.log(this.darkMode.bandera);
+  }
+
+  cambioClase(){
+
+    if(document.body.classList.value=="darkMode"){
+      this.banderaClase=true;
+    }else{
+      this.banderaClase=false;
+    }
   }
 
   calcularTotal(){
@@ -208,48 +221,54 @@ export class CarritoComponent implements OnInit, OnChanges {
       data: venta,
     });
     dialogRef.afterClosed().subscribe( (result:any)=>{
+      console.log(result);
       if(result==false){
       }else{
-        ventaInterna = result;
+        ventaInterna = result.venta;
+        if(result.esDomi){
+          ventaInterna.correoCliente.direccionCliente=result.venta.correoCliente.direccionCliente
+        }else{
+  
+        }
+        
+        if(ventaInterna!=null){
+          let cliente = new ClienteModel();
+          cliente.correoCliente = ventaInterna.correoCliente.correoCliente;
+          cliente.direccionCliente = ventaInterna.correoCliente.direccionCliente;
+          cliente.nombreCliente = ventaInterna.correoCliente.nombreCliente;
+          cliente.passwordCliente = ventaInterna.correoCliente.passwordCliente;
+          cliente.telefonoCliente = ventaInterna.correoCliente.telefonoCliente;
+          cliente.ventas = ventaInterna.correoCliente.ventas;
+          cliente.carrito = ventaInterna.correoCliente.carrito;
+          ventaInterna.correoCliente = cliente;
+  
+          this.ventaService.addVenta(ventaInterna, result.esDomi).subscribe(venta =>{
+            this.banderaCarrito=true
+            this.valorTotal=0
+            this.cantidadTotal=0
+            this.openDialogConfirmacion("Exito!!!","Se ha realizado la compra satisfactoriamente!")
+            for(let i = this.carrito.itemCarrito.length; i>0;i--){
+              this.carrito.itemCarrito.pop()
+            }
+            this.carritoService.actualizarCarrito(this.carrito).subscribe();
+  
+            let list:Object={
+              objeto:this.carrito,
+              variable:true,
+              banderaCarrito:this.banderaCarrito
+            }
+        
+            this.devolver.emit(list);
+          },err => {
+            if(err.error.mensaje=="cantidad insuficiente"){
+              this.openDialogConfirmacion("Advertencia!!",`${err.error.mensaje}`)
+            }else{
+              this.openDialogConfirmacion("Error","Ha ocurrido un problema")
+            }
+              });
+        }
       }
-      console.log(ventaInterna);
       
-      if(ventaInterna!=null){
-        let cliente = new ClienteModel();
-        cliente.correoCliente = ventaInterna.correoCliente.correoCliente;
-        cliente.direccionCliente = ventaInterna.correoCliente.direccionCliente;
-        cliente.nombreCliente = ventaInterna.correoCliente.nombreCliente;
-        cliente.passwordCliente = ventaInterna.correoCliente.passwordCliente;
-        cliente.telefonoCliente = ventaInterna.correoCliente.telefonoCliente;
-        cliente.ventas = ventaInterna.correoCliente.ventas;
-        cliente.carrito = ventaInterna.correoCliente.carrito;
-        ventaInterna.correoCliente = cliente;
-
-        this.ventaService.addVenta(ventaInterna).subscribe(venta =>{
-          this.banderaCarrito=true
-          this.valorTotal=0
-          this.cantidadTotal=0
-          this.openDialogConfirmacion("Exito!!!","Se ha realizado la compra satisfactoriamente!")
-          for(let i = this.carrito.itemCarrito.length; i>0;i--){
-            this.carrito.itemCarrito.pop()
-          }
-          this.carritoService.actualizarCarrito(this.carrito).subscribe();
-
-          let list:Object={
-            objeto:this.carrito,
-            variable:true,
-            banderaCarrito:this.banderaCarrito
-          }
-      
-          this.devolver.emit(list);
-        },err => {
-          if(err.error.mensaje=="cantidad insuficiente"){
-            this.openDialogConfirmacion("Advertencia!!",`${err.error.mensaje}`)
-          }else{
-            this.openDialogConfirmacion("Error","Ha ocurrido un problema")
-          }
-            });
-      }
     });
   }
   openDialogInteraction(titleNew: string, mensajeNew: string, item:ItemCarritoModel):void{

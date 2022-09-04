@@ -3,7 +3,7 @@
     <div class="container cajaPadreAyuda mt-5">
         <div class="cajaMadre">
             <h2>Ingresa los datos</h2>
-            <form class="form"  [formGroup]="ayudaForm"> 
+            <form class="form"  [formGroup]="ayudaForm" (submit)="enviar()"> 
                 <div class="cajaInput">
                     <label for="exampleInputEmail1" class="form-label">Correo electrónico</label>
                     <input type="email" class="input form-control" id="exampleInputEmail1" aria-describedby="emailHelp" 
@@ -18,10 +18,9 @@
                 <div class="cajaInput">
                     <label for="exampleInputPassword1" class="form-label">Problema</label>
                     <select class="inputSelect form-control"formControlName="problemas" (change)="validar()">
-                        <option value="Inquietud 1">Inquietud 1</option>
-                        <option value="Inquietud 2">Inquietud 2</option>
-                        <option value="Inquietud 3">Inquietud 3</option>
-                        <option value="Inquietud 4">Inquietud 4</option>
+                        <option value="Inquietud 1">No me llega el correo de recuperacion de contraseña</option>
+                        <option value="Inquietud 2">No me llega el correo de verificacion de compra</option>
+                        <option value="Inquietud 3">Mi compra ha tardado mas de 2 horas en llegar</option>
                         <option value="Otra">Otra</option>
                     </select>
                 </div>

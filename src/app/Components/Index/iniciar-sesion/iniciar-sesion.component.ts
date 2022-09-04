@@ -114,7 +114,7 @@ export class IniciarSesionComponent implements OnInit {
           this.router.navigate(['/catalogo']);
         }
       }, error => {
-        this.openDialog("Advertencia","datos incorrectos")
+        this.openDialog("Advertencia","Datos incorrectos")
       });
 
     }else{

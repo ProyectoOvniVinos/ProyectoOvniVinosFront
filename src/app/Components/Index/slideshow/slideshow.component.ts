@@ -9,6 +9,9 @@ import { ClienteService } from '../../../Services/cliente.service';
 import { LoginService } from '../../../Services/login.service';
 import Swiper, { Autoplay } from 'swiper';
 import { ModalProductosComponent } from '../../Modal/modal-productos/modal-productos.component';
+import { InventarioGService } from 'src/app/Services/inventario-g.service';
+import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
+import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 @Component({
   selector: 'app-slideshow',
   templateUrl: './slideshow.component.html',
@@ -25,7 +28,7 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
 
   public cliente: ClienteModel = new ClienteModel();
   constructor(public carritoService: CarritoService, public clienteService: ClienteService, public dialog: MatDialog,
-    public loginService: LoginService) { }
+    public loginService: LoginService, private inventarioService: InventarioGService) { }
   ngAfterViewInit(): void {
     this.swiper = new Swiper('.swiper', {
       modules: [Autoplay],
@@ -60,7 +63,6 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
         this.agregar(result.inventarioG.codigoProducto);
 
       } else {
-        console.log("EN ELSE");
 
       }
     });
@@ -84,6 +86,7 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
         if (item.codigoProducto.codigoProducto == producto.codigoProducto) {
           item.cantidadProducto = item.cantidadProducto + 1;
           flag = true;
+          this.validarCantidades(item, resp.carrito);
 
         }
       })
@@ -94,19 +97,9 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
         newItem.precioItem = producto.precioProducto
 
         resp.carrito.itemCarrito.push(newItem);
+        this.validarCantidades(newItem, resp.carrito);
       }
 
-
-
-      this.carritoService.actualizarCarrito(resp.carrito).subscribe(resp => {
-        this.cliente.carrito = resp.carrito;
-        let list: Object = {
-          objeto: resp.carrito,
-          variable: false
-        }
-        this.devolver.emit(list)
-
-      })
 
 
     })
@@ -122,6 +115,7 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
         if (item.codigoProducto.codigoProducto == producto.codigoProducto) {
           item.cantidadProducto = item.cantidadProducto + 1;
           flag = true;
+          this.validarCantidades(item, resp.carrito);
 
         }
       })
@@ -132,23 +126,43 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
         newItem.precioItem = producto.precioProducto
 
         resp.carrito.itemCarrito.push(newItem);
+        this.validarCantidades(newItem, resp.carrito);
       }
 
-
-      this.carritoService.actualizarCarrito(resp.carrito).subscribe(resp => {
-        this.cliente.carrito = resp.carrito;
-        let list: Object = {
-          objeto: resp.carrito,
-          variable: false
-        }
-
-        this.devolver.emit(list)
-
-      })
 
 
     })
 
 
+  }
+
+
+  validarCantidades(item:ItemCarritoModel,carrito:CarritoClienteModel) {
+    let bandera:boolean = false;
+    this.inventarioService.getInventarioGeneralByProducto(item.codigoProducto.codigoProducto).subscribe((resp:Inventario_generalModel)=>{
+      let cantidadP = resp.cantidadProducto
+      
+      if(item.cantidadProducto<cantidadP || item.cantidadProducto==cantidadP){
+        this.carritoService.actualizarCarrito(carrito).subscribe(resp => {
+          this.cliente.carrito = resp.carrito;
+          let list: Object = {
+            objeto: resp.carrito,
+            variable: false
+          }
+  
+          this.devolver.emit(list)
+        })
+      }else{
+        this.openDialog2("Error", "Ya añadiste la cantidad existente de este producto!!")
+
+      }
+    })
+  }
+
+  openDialog2(titleNew: string, mensajeNew: string): void {
+    const dialogRef = this.dialog.open(ModalErrorComponent, {
+      width: '300px',
+      data: {title: titleNew, mensaje: mensajeNew},
+    });
   }
 }

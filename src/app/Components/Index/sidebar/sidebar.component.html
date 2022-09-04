@@ -17,10 +17,10 @@
         <mat-nav-list>
             <div class="contenedor-logo">
 
-                <img routerLink="/catalogo" class="logo" src="../../../../assets/Images/logo.png" alt="">
+                <img style="cursor:pointer;" routerLink="/catalogo" class="logo" src="../../../../assets/Images/logo.png" alt="">
             </div>
             <div *ngIf="!loginService.isAuthenticated()" class="text-center">
-                <a class="linkRuta" routerLink="/iniciarSesion" routerLinkActive="activo3" mat-list-item> <img class="imagenes" src="../../../../assets/Images/icons8-entrar-60.png" alt="iniciar Sesion"> Iniciar sesion</a>
+                <a class="linkRuta" routerLink="/iniciarSesion" routerLinkActive="activo3" mat-list-item> <img class="imagenes" src="../../../../assets/Images/icons8-entrar-60.png" alt="iniciar Sesion"> Iniciar</a>
                 <a class="linkRuta2" routerLink="/registro" routerLinkActive="activo" mat-list-item> <img class="imagenes" src="../../../../assets/Images/registrar.png" alt=""> Registrarse</a>
                 <a class="linkRuta" mat-list-item routerLink="/ayuda" routerLinkActive="activo"><img class="imagenes" src="../../../../assets/Images/ayuda.png" alt="ayuda"> Ayuda</a>
             </div>
@@ -29,7 +29,7 @@
 
                 <a class="linkRuta" routerLink="/productos" routerLinkActive="activo" mat-list-item > <img  class="imagenes" src="../../../../assets/Images/productos.png" alt="productos"> Productos</a>
                 <a class="linkRuta" mat-list-item routerLink="/datosA" routerLinkActive="activo"> <img class="imagenes" src="../../../../assets/Images/misDatos.png" alt="datos"> Mis Datos</a>
-                <a *ngIf="loginService.usuario.correo == 'cristian@gmail.com'" class="linkRuta" mat-list-item routerLink="/administradores" routerLinkActive="activo"><img class="imagenes" src="../../../../assets/Images/administradores.png" alt="clientes"> Admins</a>
+                <a *ngIf="loginService.usuario.correo == 'crissis2004@gmail.com'" class="linkRuta" mat-list-item routerLink="/administradores" routerLinkActive="activo"><img class="imagenes" src="../../../../assets/Images/administradores.png" alt="clientes"> Admins</a>
                 <a class="linkRuta" mat-list-item routerLink="/clientes" routerLinkActive="activo"><img class="imagenes" src="../../../../assets/Images/clientes}.png" alt="clientes"> Clientes</a>
                 <a class="linkRuta" mat-list-item routerLink="/contabilidad" routerLinkActive="activo"> <img class="imagenes" src="../../../../assets/Images/contabilidad.png" alt="">Contabilidad</a>
                 <a class="linkRuta" mat-list-item routerLink="/inventarioG" routerLinkActive="activo"> <img class="imagenes" src="../../../../assets/Images/inventario-disponible.png" alt="inventarios"> Inventario</a>
@@ -38,7 +38,7 @@
             <div *ngIf="loginService.hasRole('ROLE_CLIENTE')">
 
                 <a class="linkRuta" mat-list-item routerLink="/datosC" routerLinkActive="activo"> <img class="imagenes" src="../../../../assets/Images/misDatos.png" alt="datos"> Mis Datos</a>
-                <a class="linkRuta" mat-list-item routerLink="/historialC" routerLinkActive="activo2" > <img class="imagenes" src="../../../../assets/Images/historial.png" alt="historial">  Ver Historial</a>
+                <a class="linkRuta" mat-list-item routerLink="/historialC" routerLinkActive="activo2" > <img class="imagenes" src="../../../../assets/Images/historial.png" alt="historial"> Historial</a>
                 <a class="linkRuta" mat-list-item routerLink="/ayuda" routerLinkActive="activo"><img class="imagenes" src="../../../../assets/Images/ayuda.png" alt="ayuda"> Ayuda</a>
 
             </div>
@@ -47,8 +47,10 @@
 
                 <a (click)="salir()" class="linkRuta" mat-list-item> <img class="imagenes" src="../../../../assets/Images/ssalir.png" alt="">  Salir</a>
             </div>
-            <div>
-                <button (click)="cambiarMode()" >Dark Mode</button>
+            <div class="cajaSwitch" (click)="cambiarMode()">
+                <p>Modo {{titleSwitch}}</p>
+                <img *ngIf="banderaSwitch" class="switchModo" src="../../../../assets/Images/switchPrender.png" alt="">
+                <img *ngIf="!banderaSwitch" class="switchModo" src="../../../../assets/Images/switchApagar.png" alt="">
             </div>
 
         </mat-nav-list>
@@ -71,8 +73,8 @@
                     </div>
  
                 </div>
-                <div class="logos" >
-                    <a > <img src="../../../../assets/Images/whatsapp.png" alt="Whatsapp"></a>
+                <div class="logos">
+                    <a target="_blank" href="https://api.whatsapp.com/send/?phone=573102111965&text&type=phone_number&app_absent=0"> <img src="../../../../assets/Images/whatsapp.png" alt="Whatsapp"></a>
                 </div>
             </div>
         </div>

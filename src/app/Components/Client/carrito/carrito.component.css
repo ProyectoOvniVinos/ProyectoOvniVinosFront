@@ -268,12 +268,19 @@
 .wave{
     background: url('../../../../assets/Images/wave2.png');
     height: 100%;
-    width: 100%;
+    width: 105%;
+    background-size: cover;
+}
+
+.waveTwo{
+    background: url('../../../../assets/Images/wave2Negra.png');
+    height: 100%;
+    width: 105%;
     background-size: cover;
 }
 
 
-.wave.a{
+.aCarrito{
 
     animation: animate 25s linear infinite;
     z-index: 1000;

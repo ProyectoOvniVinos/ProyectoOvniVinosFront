@@ -28,7 +28,7 @@ export class ModalProductosComponent implements OnInit {
 
 
   onNoClick(): void{
-    this.dialogRef.close("cerro");
+    this.dialogRef.close();
   }
 
   agregar(inventario: Inventario_generalModel){

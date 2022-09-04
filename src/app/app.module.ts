@@ -115,7 +115,11 @@ registerLocaleData(localeEs, 'es');
     RegistrarAdminComponent,
     CambioPasswordAComponent,
     CambioPasswordCComponent,
+<<<<<<< HEAD
     AboutOvniComponent
+=======
+    CambioPasswordCComponent
+>>>>>>> 556acb1900b4c61964e4bc1d9892e55993fbfe57
 
 
 
