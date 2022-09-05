@@ -113,10 +113,7 @@ registerLocaleData(localeEs, 'es');
     AdministradoresComponent,
     ModalDetallesVentaComponent,
     RegistrarAdminComponent,
-    CambioPasswordAComponent,
-    CambioPasswordCComponent,
     AboutOvniComponent
-
 
   ],
   imports: [

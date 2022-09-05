@@ -24,7 +24,7 @@
 
 .cerrado {
     height: 100%;
-    width: 135px;
+    width: 140px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,7 +49,7 @@
 }
 
 .contenedor-sidebar {
-    width: 135px;
+    width: 140px;
     position: fixed;
     bottom: 0;
     top: 60px;
@@ -61,7 +61,7 @@
 
 .cont-menu {
     height: 100%;
-    width: 135px;
+    width: 140px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -100,7 +100,7 @@
 }
 
 .contenedor-header {
-    width: 135px;
+    width: 140px;
     margin: 0 !important;
     padding: 0 !important;
 }
