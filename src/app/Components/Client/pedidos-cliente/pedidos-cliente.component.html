@@ -1,0 +1,43 @@
+
+
+<div class="contenedor">
+    <h2>Pedidos</h2>
+    <hr>
+    <div class="pedido" *ngFor="let pedido of pedidos;let indice=index">
+        <div class="arriba">
+            <div>
+                <div class="organizar">
+                    <p>Encargado: {{pedido.administrador.nombreAdmin}}</p>
+                    <p>Estado: {{pedido.estado | pedidos}}</p>
+                </div>
+                <div class="organizar">
+                    <p>Cantidad total: {{pedido.venta.cantidadVenta}}</p>
+                    <p>Precio total: {{pedido.venta.precioVenta}}</p>
+                </div>
+            </div>
+            <div>
+                <p>
+                    numero pedido: {{indice+1}}
+                </p>  
+            </div>
+        </div>
+        <table class="tabla">
+        <thead class="tablaHeaderP">
+            <tr>
+                <th class="primero">Nombre</th>
+                <th>Cantidad</th>
+                <th>precio producto</th>
+                <th class="ultimo">Precio Detalle</th>
+            </tr>
+        </thead>
+        <tbody class="tablabodyP" *ngFor="let detalle of pedido.venta.ventas">
+            <tr>
+            <td>{{detalle.codigoProducto.nombreProducto}}</td>
+            <td>{{detalle.cantidadProducto}}</td>
+            <td>{{detalle.codigoProducto.precioProducto}}</td>
+            <td>{{detalle.precioVentaDetalle}}</td>
+            </tr>
+        </tbody>
+          </table>
+    </div>
+</div>

@@ -29,6 +29,9 @@ import { IngresarCompraComponent } from './Components/Admin/ingresar-compra/ingr
 import { IngresarVentaComponent } from './Components/Admin/ingresar-venta/ingresar-venta.component';
 import { CambioPasswordCComponent } from './Components/Client/cambio-password-c/cambio-password-c.component';
 import { RoleGuard } from './Guards/role.guard';
+import { RoleGuardAdmin } from './Guards/role.guardAdmin';
+import { PedidosComponent } from './Components/Admin/pedidos/pedidos.component';
+import { PedidosClienteComponent } from './Components/Client/pedidos-cliente/pedidos-cliente.component';
 
 
 const routes: Routes = [
@@ -44,10 +47,11 @@ const routes: Routes = [
   { path: 'datosC', component: DatosClienteComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_CLIENTE' } },
   { path: 'editarC', component: EditarDatosComponent , canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_CLIENTE' }},
   { path: 'historialC', component: HistorialComponent , canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_CLIENTE' } },
+  { path: 'pedidosCliente', component: PedidosClienteComponent , canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_CLIENTE' } },
   { path: 'ayuda', component: AyudaComponent },
 
   { path: 'clientes', component: ClientesComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' }  },
-  { path: 'administradores', component: AdministradoresComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } },
+  { path: 'administradores', component: AdministradoresComponent, canActivate: [AuthGuard, RoleGuardAdmin], data: { role: 'ROLE_ADMIN', correo: 'crissis2004@gmail.com'} },
   { path: 'datosA', component: DatosAdminComponent , canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' }},
   { path: 'editarA', component: EditarDatosAdmComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } },
   { path: 'contabilidad', component: ContabilidadComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } },
@@ -62,6 +66,7 @@ const routes: Routes = [
   { path: 'recuperacion/:correo', component: RecuperandoPasswordComponent },
   { path: 'cambiarContraseñaC', component: CambioPasswordCComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_CLIENTE' } },
   { path: 'cambiarContraseñaA', component: CambioPasswordAComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' }},
+  { path: 'pedidosAdmin', component: PedidosComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' }},
 
   { path: '**', pathMatch: 'full', redirectTo: '/catalogo' }
 ];

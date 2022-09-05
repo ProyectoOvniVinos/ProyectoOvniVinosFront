@@ -1,7 +1,9 @@
 import { importExpr } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, Input, OnChanges, EventEmitter , Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { PedidoModel } from 'src/app/Models/Pedido.model';
 import { DarkModeService } from 'src/app/Services/dark-mode.service';
+import { PedidosRestService } from 'src/app/Services/pedidos-rest.service';
 import { CarritoClienteModel } from '../../../Models/CarritoCliente.model';
 import { ClienteModel } from '../../../Models/Cliente.model';
 import { Inventario_generalModel } from '../../../Models/Inventario_general.model';
@@ -50,7 +52,8 @@ export class CarritoComponent implements OnInit, OnChanges {
               private inventarioService:InventarioGService,
               public dialog: MatDialog, 
               private ventaService: VentaService,
-              public darkMode: DarkModeService) {
+              public darkMode: DarkModeService,
+              private pedidoService: PedidosRestService) {
 
   }
   ngOnChanges(): void {
@@ -247,6 +250,13 @@ export class CarritoComponent implements OnInit, OnChanges {
             this.valorTotal=0
             this.cantidadTotal=0
             this.openDialogConfirmacion("Exito!!!","Se ha realizado la compra satisfactoriamente!")
+            let pedido: PedidoModel = new PedidoModel();
+            pedido.cliente = venta.venta.correoCliente;
+            console.log(pedido.cliente);
+            console.log(venta.venta);
+            pedido.venta = venta.venta;
+            pedido.estado = '1';
+            this.pedidoService.createPedido(pedido).subscribe();
             for(let i = this.carrito.itemCarrito.length; i>0;i--){
               this.carrito.itemCarrito.pop()
             }

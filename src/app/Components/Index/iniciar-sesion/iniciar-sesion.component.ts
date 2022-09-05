@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AdministradorModel } from 'src/app/Models/Administrador.model';
 import { AdminService } from 'src/app/Services/admin.service';
 import { ClienteService } from 'src/app/Services/cliente.service';
+import { SocketPedidoService } from 'src/app/Services/socket-pedido.service';
 import { LoginService } from '../../../Services/login.service';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 
@@ -16,7 +17,8 @@ import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.compone
 export class IniciarSesionComponent implements OnInit {
   activar: Boolean=false;
   constructor(public dialog: MatDialog, private loginService: LoginService, private router: Router,
-              private adminservice: AdminService, private clienteService: ClienteService) { }
+              private adminservice: AdminService, private clienteService: ClienteService, 
+              private pedidoSocket:SocketPedidoService) { }
 
   
 
@@ -104,6 +106,7 @@ export class IniciarSesionComponent implements OnInit {
             console.log(resp);
             
             if(resp.estado=='1'){
+              this.pedidoSocket.conectar();
               this.router.navigate(['/catalogo']);
             }else{
               this.loginService.logout();
