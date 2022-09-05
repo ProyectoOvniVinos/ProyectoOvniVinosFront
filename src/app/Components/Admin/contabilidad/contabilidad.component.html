@@ -2,16 +2,17 @@
 <div class="cajaPadre">
 
     <div class="cajaMadre">
-        <div class="cajaTitle">
-            <h2>CONTABILIDAD</h2>
+        <div>
+            <h2 class="text-center mt-3">CONTABILIDAD</h2>
         </div>
         <div class="cajaContenido">
             <div class="cajaBtns">
-                <button class="botones" (click)="traerContabiliad('Diaria')">Diaria</button>
-                <button class="botones" (click)="traerContabiliad('Mensual')">Mensual</button>
-                <button class="botones" (click)="traerContabiliad('Anual')">Anual</button>
-                <button routerLink="/ventas" class="botones">Ventas</button>
-                <button routerLink="/compras" class="botones">Compras</button>
+                <button class="botonesC" (click)="traerContabiliad('Diaria')">Diaria</button>
+                <button class="botonesC" (click)="traerContabiliad('Mensual')">Mensual</button>
+
+                <button class="botonesC" (click)="traerContabiliad('Anual')">Anual</button>
+                <button routerLink="/ventas" class="botonesC">Ventas</button>
+                <button routerLink="/compras" class="botonesC">Compras</button>
             </div>
             <div class="cajaBuscar">
                 <input (change)="buscar()" type="date" placeholder="Busca" class="form-control input" [(ngModel)]="fecha">
@@ -33,7 +34,7 @@
                         </tr>
                     </thead>
                     <tbody *ngIf="contabilidadesDiarias.length > 0" class="tablabodyP">
-                        <tr *ngFor="let contabilidad of contabilidadesDiarias">
+                        <tr class="trTable" *ngFor="let contabilidad of contabilidadesDiarias">
                             <td>{{contabilidad.idRegistroContabilidadDiaria}}</td>
                             <td>{{contabilidad.ventasContabilidadDiaria}}</td>
                             <td>{{contabilidad.ingresosContabilidadDiaria}}</td>
@@ -42,7 +43,7 @@
                         </tr>
                     </tbody>
                     <tbody *ngIf="contabilidadesMensuales.length > 0" class="tablabodyP">
-                        <tr *ngFor="let contabilidad of contabilidadesMensuales">
+                        <tr class="trTable" *ngFor="let contabilidad of contabilidadesMensuales">
                             <td>{{contabilidad.idRegistroContabilidadMensual}}</td>
                             <td>{{contabilidad.ventasContabilidadMensual}}</td>
                             <td>{{contabilidad.ingresosContabilidadMensual}}</td>
@@ -51,7 +52,7 @@
                         </tr>
                     </tbody>
                     <tbody *ngIf="contabilidadesAnuales.length > 0" class="tablabodyP">                            
-                        <tr *ngFor="let contabilidad of contabilidadesAnuales">
+                        <tr class="trTable" *ngFor="let contabilidad of contabilidadesAnuales">
                             <td>{{contabilidad.idRegistroContabilidadAnual}}</td>
                             <td>{{contabilidad.ventasContabilidadAnual}}</td>
                             <td>{{contabilidad.ingresosContabilidadAnual}}</td>

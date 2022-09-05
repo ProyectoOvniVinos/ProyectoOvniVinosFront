@@ -6,25 +6,11 @@
 }
 
 .cajaMadre{
-    border: 2px solid black;
     border-radius:10px;
     width: 80%;
     height: 85%;
-}
-
-.cajaTitle{
-    background: rgb(167,31,73);
-    background: linear-gradient(90deg, rgba(167,31,73,1) 11%, rgba(255,42,108,1) 55%, rgba(167,31,73,1) 100%);
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-    border-bottom: 2px solid black;
-    text-align: center;
-    color: white;
-    width: 100%;
-    height: 12%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    box-shadow: 9px 12px 19px #9b9b9ba1, -10px -10px 12px #ffffff;
+    background-color: #f1efef;
 }
 
 .cajaMensaje{
@@ -64,24 +50,22 @@
     gap: 1rem;
 }
 
-.botones{
+.botonesC{
+    width: 15%;
+    height: 100%;
+    color: white;
+    border: 1px solid rgb(255, 255, 255);
     background: rgb(167,31,73);
     background: linear-gradient(90deg, rgba(167,31,73,1) 11%, rgba(255,42,108,1) 55%, rgba(167,31,73,1) 100%);
- 
-    display: flex;
-    width: 60%;
-    justify-content: center;
-    margin-bottom: 0px;
-    text-align: center;
-    color: white;
-    border-radius: 6px;
-    border: 1px solid white;
-    transition: 0.1s;
+    border-radius: 10px;
+    transition: 0.2s;
 }
 
-.botones:hover{
+.botonesC:hover{
     transform: scale(1.1,1.1);
-    background-color: rgb(150, 8, 58);
+    background: rgb(192, 23, 76);
+    background: linear-gradient(90deg, rgb(202, 27, 83) 11%, rgb(252, 21, 94) 55%, rgb(196, 27, 80) 100%);
+ 
 }
 
 .cajaTable{
@@ -91,8 +75,8 @@
     display: flex;
     justify-content: flex-start;
     flex-direction: column;
-    align-items: center;
-    
+    align-items: center;    
+    overflow: auto;
 }
 
 .input{
@@ -121,6 +105,10 @@
     align-items: center;
 }
 
+.trTable:hover{
+    background-color: rgb(255, 131, 174);
+}
+
 .tablabodyG{
     display: flex;
     flex-direction: column;
@@ -137,7 +125,8 @@
 }
 
 .tabla2{
-    width: 95%;
+    width: 80%;
+    box-shadow: 8px 13px 12px #9b9b9b, 0px 1px 0px #ffffff;
 }
 
 .tablaHeaderP{
@@ -151,13 +140,14 @@
 }
 
 .primero{
-    border-end-start-radius: 10px;
-    border-start-start-radius: 10px;
+    border-end-start-radius: 0rem;
+    border-start-start-radius: 1rem;
+    width: 15%;
 }
 
 .ultimo{
-    border-start-end-radius: 10px;
-    border-end-end-radius: 10px;
+    border-start-end-radius: 1rem;
+    border-end-end-radius: 0rem;
 }
 
 .tablabodyP{
@@ -175,7 +165,7 @@
 
 /* A few custom styles for date inputs */
 input[type="date"] {
-    width: 15%;
+    width: 30%;
     background-color: rgba(255,42,108,1);
     color: white;
     outline: none;
