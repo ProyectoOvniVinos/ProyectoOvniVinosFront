@@ -113,7 +113,6 @@ registerLocaleData(localeEs, 'es');
     ModalDetallesVentaComponent,
     RegistrarAdminComponent,
     CambioPasswordAComponent,
-    CambioPasswordCComponent,
     CambioPasswordCComponent
 
 
