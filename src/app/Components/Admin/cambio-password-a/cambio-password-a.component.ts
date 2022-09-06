@@ -6,6 +6,7 @@ import { AdministradorModel } from 'src/app/Models/Administrador.model';
 import { AdminService } from 'src/app/Services/admin.service';
 import { LoginService } from 'src/app/Services/login.service';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
+import { ModalLoadingComponent } from '../../Modal/modal-loading/modal-loading.component';
 
 @Component({
   selector: 'app-cambio-password-a',
@@ -95,8 +96,18 @@ export class CambioPasswordAComponent implements OnInit {
     })
   }
 
-  confirmar(){
+  openDialogLoading(){
+    const dialogRef = this.dialog.open(ModalLoadingComponent, {
+      width: '130px'
+    });
+  }
 
+  closeDialogLoading(){
+    const dialogRef = this.dialog.closeAll();
+  }
+
+  confirmar(){
+    this.openDialogLoading();
 
     if(this.cambioForm.valid){
       let usuario: any = this.loginServico.usuario;
@@ -111,15 +122,19 @@ export class CambioPasswordAComponent implements OnInit {
         adminEncontrado.passwordAdmin = admin.passwordAdmin;
   
         this.adminService.updateAdmin(adminEncontrado.correoAdmin ,adminEncontrado).subscribe( response => {
+          this.closeDialogLoading()
           this.openDialog("Exito", "Se ha actualizado su contraseña exitosamente!!")
           this.router.navigate(['/datosA'])
         }, err=> {
+          this.closeDialogLoading()
           this.openDialog("Error", "No se pudo cambiar la contraseña!!")
         })
       }, err => {
+        this.closeDialogLoading()
         this.openDialog("Error", "Ha ocurrido un error, porfavor intentelo nuevamente")
       })
     }else{
+      this.closeDialogLoading()
       this.openDialog("Error","Porfavor DIligencie todos los campos")
     }
 
