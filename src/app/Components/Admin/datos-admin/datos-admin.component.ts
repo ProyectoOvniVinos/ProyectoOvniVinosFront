@@ -12,12 +12,14 @@ export class DatosAdminComponent implements OnInit {
 
   admin: AdministradorModel;
   usuario;
+  bandera:boolean=null;
   constructor(private adminService: AdminService, private loginService: LoginService) { }
 
   ngOnInit(): void {
     this.usuario = this.loginService.usuario;
     this.adminService.getAdminById(this.usuario.correo).subscribe(admin => {
       this.admin = admin;
+      this.bandera=true;
     });
   }
 

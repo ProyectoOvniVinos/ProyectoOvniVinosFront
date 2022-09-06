@@ -65,6 +65,7 @@ export class IngresarCompraComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.serviceProducto.getProducts().subscribe((productos: any) => {
       this.productos = productos;
       this.bandera= true;
@@ -249,31 +250,35 @@ export class IngresarCompraComponent implements OnInit {
     this.actualizarTotal();
   }
 
+
+
   realizarCompra() {
-    this.openDialogLoading();
-    this.compra.precioCompra = this.total;
-    this.compra.cantidadCompra = this.obtenerCantidadTotal()
+
+    if(this.compra.compras.length!=0){
+      this.openDialogLoading();
+      this.compra.precioCompra = this.total;
+      this.compra.cantidadCompra = this.obtenerCantidadTotal()
+      
+      this.usuario = this.loginService.usuario;
+  
+      this.serviceAdmin.getAdminById(this.usuario.correo).subscribe(admin =>{
+  
+        this.admin = this.convertirAdmin.convertir(admin);
+        this.compra.administradorCompra = this.admin;
     
-    this.usuario = this.loginService.usuario;
-
-    this.serviceAdmin.getAdminById(this.usuario.correo).subscribe(admin =>{
-
-      this.admin = this.convertirAdmin.convertir(admin);
-      this.compra.administradorCompra = this.admin;
-  
-      this.serviceCompra.addCompra(this.compra).subscribe(e => {
-        this.closeDialogLoading();
-        this.openDialog("¡¡ÉXITO!!!", "La compra se ha agregado satisfactoriamente. ")
-        this.vaciar()
-  
-      }, err => {
-        this.closeDialogLoading();
-        this.openDialog("ERROR", "Lo sentimos, no se pudo agregar la compra. Inténtalo de nuevo. ")
-      })
-    });
-
-
-
+        this.serviceCompra.addCompra(this.compra).subscribe(e => {
+          this.closeDialogLoading();
+          this.openDialog("¡¡ÉXITO!!", "La compra se ha agregado satisfactoriamente. ")
+          this.vaciar()
+    
+        }, err => {
+          this.closeDialogLoading();
+          this.openDialog("ERROR", "Lo sentimos, no se pudo agregar la compra. Inténtalo de nuevo. ")
+        })
+      });
+    }else{
+      this.openDialog("ERROR","No se pueden realizar compras vacías")
+    }
 
   }
 

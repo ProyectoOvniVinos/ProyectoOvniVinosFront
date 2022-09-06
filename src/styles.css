@@ -548,11 +548,7 @@ body.darkMode .btnEliminar{
 }
 
 body.darkMode input[type="date"] {
-    width: 15%;
     background-color: rgb(34, 31, 32);
-    color: white;
-    outline: none;
-    border-radius: 8px;
 }
 
 body.darkMode .trTable:hover{
@@ -577,6 +573,24 @@ body.darkMode input[type="file"] {
     background: linear-gradient(90deg, rgb(33, 32, 32) 11%, rgb(64, 62, 63) 55%, rgb(33, 32, 32) 100%) !important;
     color: WHITE !important;
 }
+
+body.darkMode .inputImage:focus{
+    box-shadow:  1px 1px 3px 1px rgb(43, 40, 41)!important;
+    border: 1px solid rgb(26, 24, 25)!important;
+}
+
+
+body.darkMode .seleccionado{
+    border: 2px solid rgb(0, 0, 0)!important;
+}
+
+body.darkMode .imgModalPro{
+    border: 2px solid  rgba(97, 94, 94, 0.391)!important;
+}
+
+
+
+
 
 
 

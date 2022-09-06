@@ -43,11 +43,12 @@
 
             </div>
 
-            <div *ngIf="loginService.isAuthenticated()">
 
-                <a (click)="salir()" class="linkRuta" mat-list-item> <img class="imagenes" src="../../../../assets/Images/ssalir.png" alt="">  Salir</a>
-            </div>
             <div class="cajaSwitch" (click)="cambiarMode()">
+                <div class="cajaSalir" *ngIf="loginService.isAuthenticated()">
+
+                    <a (click)="salir($event)" class="linkRuta" mat-list-item> <img class="imagenCerrar" src="../../../../assets/Images/ssalir.png" alt="">  Salir</a>
+                </div>
                 <p>Modo {{titleSwitch}}</p>
                 <img *ngIf="banderaSwitch" class="switchModo" src="../../../../assets/Images/switchPrender.png" alt="">
                 <img *ngIf="!banderaSwitch" class="switchModo" src="../../../../assets/Images/switchApagar.png" alt="">

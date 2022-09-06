@@ -6,6 +6,7 @@ import { ClienteModel } from 'src/app/Models/Cliente.model';
 import { ClienteService } from 'src/app/Services/cliente.service';
 import { LoginService } from 'src/app/Services/login.service';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
+import { ModalLoadingComponent } from '../../Modal/modal-loading/modal-loading.component';
 
 @Component({
   selector: 'app-cambio-password-c',
@@ -88,6 +89,16 @@ export class CambioPasswordCComponent implements OnInit {
 
   }
 
+  openDialogLoading(){
+    const dialogRef = this.dialog.open(ModalLoadingComponent, {
+      width: '130px'
+    });
+  }
+
+  closeDialogLoading(){
+    const dialogRef = this.dialog.closeAll();
+  }
+
   crearFormulario() {
     this.cambioForm = this.fb.group({
       passwordOne: ['', [Validators.required, Validators.minLength(8)]],
@@ -97,7 +108,7 @@ export class CambioPasswordCComponent implements OnInit {
 
   
   confirmar(){
-
+    this.openDialogLoading()
     if(this.cambioForm.valid){
       let usuario: any = this.loginService.usuario;
       console.log(usuario);
@@ -111,15 +122,19 @@ export class CambioPasswordCComponent implements OnInit {
         clienteEncontrado.passwordCliente = cliente.passwordCliente;
   
         this.clienteService.actualizar(clienteEncontrado).subscribe( response => {
+          this.closeDialogLoading();
           this.openDialog("Exito", "Se ha actualizado su contraseña exitosamente!!")
           this.router.navigate(['/datosC'])
         }, err=> {
+          this.closeDialogLoading();
           this.openDialog("Error", "No se pudo cambiar la contraseña!!")
         })
       }, err => {
+        this.closeDialogLoading();
         this.openDialog("Error", "Ha ocurrido un error, porfavor intentelo nuevamente")
       })
     }else{
+      this.closeDialogLoading();
       this.openDialog("Error","Porfavor DIligencie todos los campos")
     }
 
