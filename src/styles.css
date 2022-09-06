@@ -548,7 +548,7 @@ body.darkMode .btnEliminar{
 }
 
 body.darkMode input[type="date"] {
-    width: 30%;
+    width: 15%;
     background-color: rgb(34, 31, 32);
     color: white;
     outline: none;
@@ -565,6 +565,17 @@ body.darkMode .puntero:hover{
 
 body.darkMode .trMargin:hover{
     background-color: rgb(214, 210, 210)!important;
+}
+
+body.darkMode .cajaMensaje{
+    border: 2px solid rgb(0, 0, 0) !important;
+    color: rgb(0 0 0)!important;
+}
+
+body.darkMode input[type="file"] {
+    background: rgb(54, 54, 54) !important;
+    background: linear-gradient(90deg, rgb(33, 32, 32) 11%, rgb(64, 62, 63) 55%, rgb(33, 32, 32) 100%) !important;
+    color: WHITE !important;
 }
 
 
