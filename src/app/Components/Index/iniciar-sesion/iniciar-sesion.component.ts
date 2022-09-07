@@ -36,7 +36,6 @@ export class IniciarSesionComponent implements OnInit {
 
   ver(event1, event2){
     this.activar = !this.activar;
-    console.log();
     
     if(this.activar==true){
       event1.type='text';
@@ -103,7 +102,6 @@ export class IniciarSesionComponent implements OnInit {
         
         if(this.loginService.usuario.rol=="ROLE_ADMIN"){
           this.adminservice.getAdminById(this.loginService.usuario.correo).subscribe((resp:AdministradorModel)=>{
-            console.log(resp);
             
             if(resp.estado=='1'){
               this.pedidoSocket.conectar();

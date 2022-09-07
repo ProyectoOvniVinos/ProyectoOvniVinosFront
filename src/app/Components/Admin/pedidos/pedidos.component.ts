@@ -29,12 +29,9 @@ export class PedidosComponent implements OnInit {
   lugarmijo = '3';
   isDomicilio:boolean=true;
   venta: VentaModel = new VentaModel();
-  objeto:{venta:VentaModel,esDomi:boolean}={
-    venta:this.venta,
-    esDomi:this.isDomicilio
-  }
 
   pedidos: PedidoModel[] = [];
+
 
   constructor(private pedidoService: PedidosRestService, public dialog: MatDialog, public loginService: LoginService,
           private activateRoute: ActivatedRoute, private carritoService: CarritoService,
@@ -42,7 +39,10 @@ export class PedidosComponent implements OnInit {
           private router:Router) { }
 
   ngOnInit(): void {
-    //this.pedidosPendientes();
+    this.pedidosPendientes()
+    this.pedidoService.getPedidosCliente(this.loginService.usuario.correo).subscribe(pedidos=>{      
+      this.pedidos = pedidos;
+    });
     this.activateRoute.params.subscribe(params=>{
       let carrito  = params['carrito'];
       if(carrito){
@@ -71,9 +71,7 @@ export class PedidosComponent implements OnInit {
       this.venta.correoCliente = resp;
       
       this.venta.precioVenta = this.carrito.precioCarrito;
-      this.venta.cantidadVenta = cantidad;
-      console.log(this.venta);
-        //this.valorTotal= this.carrito.precioCarrito;
+      this.venta.cantidadVenta = cantidad;        //this.valorTotal= this.carrito.precioCarrito;
         //this.cantidadTotal+= item.cantidadProducto;
 
     });
@@ -200,22 +198,10 @@ export class PedidosComponent implements OnInit {
 
     this.isDomicilio=true;
 
-    let newObjeto={
-      venta:this.venta,
-      esDomi:this.isDomicilio
-    }
-    this.objeto=newObjeto;
-
   }
   cambiarSelectedFalse(){
 
     this.isDomicilio=false;
-
-    let newObjeto={
-      venta:this.venta,
-      esDomi:this.isDomicilio
-    }
-    this.objeto=newObjeto;
 
   }
 

@@ -82,7 +82,6 @@ export class SidebarComponent implements OnInit {
 
   peticion(){
     this.pedidoSocket.actualizarPedidos();
-    console.log(this.pedidoSocket.pedidos);
   }
 
 }

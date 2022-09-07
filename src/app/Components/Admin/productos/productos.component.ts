@@ -99,25 +99,21 @@ export class ProductosComponent implements OnInit {
   }
 
   buscar(event){
-    console.log(event.target.value);
     let name: string =event.target.value;
 
     if(name.length==0){
       this.obtenerProductos();
       this.banderaErrores=false
-      console.log(this.banderaErrores);
       
     }else{
       this.service.getProductByName(name).subscribe((productos:any) => {
         this.productos=productos;
         this.banderaErrores=false;
-        console.log(this.banderaErrores);
         
   
       }, err => {
         this.errores = err.error.mensaje
         this.banderaErrores=true
-        console.log(this.banderaErrores);
         
       })     
     }

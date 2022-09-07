@@ -37,11 +37,11 @@ export class EditarDatosAdmComponent implements OnInit {
   }
 
   crearListeners() {
-    this.actualizarForm.get('nombre')?.valueChanges.subscribe(console.log);
-    this.actualizarForm.get('apellido')?.valueChanges.subscribe(console.log);
-    this.actualizarForm.get('direccion')?.valueChanges.subscribe(console.log);
-    this.actualizarForm.get('celular')?.valueChanges.subscribe(console.log);
-    this.actualizarForm.get('correo')?.valueChanges.subscribe(console.log);
+    this.actualizarForm.get('nombre')?.valueChanges.subscribe();
+    this.actualizarForm.get('apellido')?.valueChanges.subscribe();
+    this.actualizarForm.get('direccion')?.valueChanges.subscribe();
+    this.actualizarForm.get('celular')?.valueChanges.subscribe();
+    this.actualizarForm.get('correo')?.valueChanges.subscribe();
   }
 
   get nombreControl(): FormControl {
@@ -130,7 +130,6 @@ export class EditarDatosAdmComponent implements OnInit {
   }
 
   editar() {
-    console.log(this.actualizarForm.valid);
 
     if (this.actualizarForm.valid) {
       this.admin.nombreAdmin = this.actualizarForm.controls['nombre'].value;

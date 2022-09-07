@@ -42,7 +42,7 @@
                         </tr>
                     </tbody>
                     <div *ngIf="banderaD==false" class='spinner'></div>
-                    <div class="cajaMensaje" *ngIf="pedidos.length==0">
+                    <div class="cajaMensaje" *ngIf="pedidos && pedidos.length==0">
                         <h1>No hay pedidos {{lugar}}</h1>
                     </div>
                 </table>

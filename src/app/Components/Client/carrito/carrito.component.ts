@@ -76,7 +76,6 @@ export class CarritoComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.cambioClase();
-    console.log(this.darkMode.bandera);
   }
 
   cambioClase(){
@@ -191,7 +190,6 @@ export class CarritoComponent implements OnInit, OnChanges {
   }
   
   abrirModal(){
-    console.log(this.carrito.itemCarrito.length);
     
     if(this.carrito.itemCarrito.length==0){
       this.openDialog2("Advertencia","Su carrito esta vacio para hacer una compra debe haber minimo un producto.")
@@ -212,8 +210,7 @@ export class CarritoComponent implements OnInit, OnChanges {
       venta.cantidadVenta = cantidad;
 
       this.router.navigate(['/pedidos/1']);
-      //this.router.navigate(['/catalogo']);
-      //this.openDialog(venta);
+      // this.openDialog(venta);
     }
     
   }
@@ -223,7 +220,7 @@ export class CarritoComponent implements OnInit, OnChanges {
       data: {title: titleNew, mensaje: mensajeNew},
     });
   }
-  
+
   openDialogInteraction(titleNew: string, mensajeNew: string, item:ItemCarritoModel):void{
     const dialogRef = this.dialog.open(ModalInteraccionComponent, {
       width: '300px',
