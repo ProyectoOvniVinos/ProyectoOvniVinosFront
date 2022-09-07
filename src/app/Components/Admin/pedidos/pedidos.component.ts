@@ -16,7 +16,7 @@ export class PedidosComponent implements OnInit {
   banderaC = true;
   texto = '';
   lugar = 'Pendientes';
-  lugarmijo = '3';
+  lugarmijo = '2';
   isDomicilio:boolean=true;
   venta: VentaModel = new VentaModel();
   objeto:{venta:VentaModel,esDomi:boolean}={
