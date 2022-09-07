@@ -1,10 +1,13 @@
-<div class="cajaPdatos container-fluid" *ngIf="cliente">
+<div class="cajaPdatos container-fluid" >
 
     <div class="cajaMdatos">
+        
+        <div *ngIf="bandera==null" class='spinner'></div>
+
         <div >
             <h2 class="text-center mt-3">MIS DATOS</h2>
         </div>
-        <div class="container-fluid cajaDatos">
+        <div class="container-fluid cajaDatos" *ngIf="cliente">
            <div class="cajaInputs" >
                 <div class="cajaInput">
                   <label for="inputNombre" class="">Nombre</label>
@@ -28,7 +31,6 @@
                 </div>
             </div> 
             <div class="cajaBtns">
-              <button class="btnOvni btnD btnAtras">Atrás</button>
               <button routerLink="/editarC" class="btnOvni btnD btnEditar">Editar</button>
           </div>
         </div>

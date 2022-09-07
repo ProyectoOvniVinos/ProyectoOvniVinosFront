@@ -54,7 +54,7 @@ export class AdministradoresComponent implements OnInit {
     this.serviceAdmin.getAllAdmins().subscribe(administradores => {
       console.log("entro al subscribe");
       this.bandera=true
-      this.administradores=administradores
+      this.administradores=administradores.filter(administrador => administrador.correoAdmin != 'crissis2004@gmail.com')
 
       if(this.administradores.length==0){
         this.bandera=false;

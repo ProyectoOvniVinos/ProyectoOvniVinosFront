@@ -19,6 +19,8 @@
 }
 .inputDireccion{
     margin-bottom: 10px;
+    border-radius: 5px;
+    padding-left: 5px;
 }
 .descVenta{
     margin-bottom:2px !important;
@@ -26,6 +28,8 @@
 .seleccionado{
     border: 2px solid rgb(184, 13, 72);
     border-radius: 10px;
+
+    padding-top: 8px;
 }
 .lista{
     display: flex;
