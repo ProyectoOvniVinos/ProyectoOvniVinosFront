@@ -31,7 +31,6 @@ import { CambioPasswordCComponent } from './Components/Client/cambio-password-c/
 import { RoleGuard } from './Guards/role.guard';
 import { RoleGuardAdmin } from './Guards/role.guardAdmin';
 import { PedidosComponent } from './Components/Admin/pedidos/pedidos.component';
-import { PedidosClienteComponent } from './Components/Client/pedidos-cliente/pedidos-cliente.component';
 
 
 const routes: Routes = [
@@ -47,7 +46,6 @@ const routes: Routes = [
   { path: 'datosC', component: DatosClienteComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_CLIENTE' } },
   { path: 'editarC', component: EditarDatosComponent , canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_CLIENTE' }},
   { path: 'historialC', component: HistorialComponent , canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_CLIENTE' } },
-  { path: 'pedidosCliente', component: PedidosClienteComponent , canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_CLIENTE' } },
   { path: 'ayuda', component: AyudaComponent },
 
   { path: 'clientes', component: ClientesComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' }  },
