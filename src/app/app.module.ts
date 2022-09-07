@@ -65,6 +65,10 @@ import { AutoInterceptorService } from './Services/auto-interceptor.service';
 
 import { CambioPasswordAComponent } from './Components/Admin/cambio-password-a/cambio-password-a.component';
 import { CambioPasswordCComponent } from './Components/Client/cambio-password-c/cambio-password-c.component';
+import { PedidosComponent } from './Components/Admin/pedidos/pedidos.component';
+import { PedidosClienteComponent } from './Components/Client/pedidos-cliente/pedidos-cliente.component';
+import { PedidosPipe } from './pipes/pedidos.pipe';
+import { PedidoDetalleComponent } from './Components/Modal/pedido-detalle/pedido-detalle.component';
 
 
 registerLocaleData(localeEs, 'es');
@@ -113,11 +117,11 @@ registerLocaleData(localeEs, 'es');
     ModalDetallesVentaComponent,
     RegistrarAdminComponent,
     CambioPasswordAComponent,
-    CambioPasswordCComponent
-
-
-
-
+    CambioPasswordCComponent,
+    PedidosComponent,
+    PedidosClienteComponent,
+    PedidosPipe,
+    PedidoDetalleComponent
   ],
   imports: [
     BrowserModule,

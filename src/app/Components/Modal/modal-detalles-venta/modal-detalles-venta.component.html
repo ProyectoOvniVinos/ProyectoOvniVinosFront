@@ -14,7 +14,8 @@
             <th class="primero">#</th>
             <th>Nombre</th>
             <th>Cantidad</th>
-            <th class="ultimo">Precio</th>
+            <th>Precio Producto</th>
+            <th class="ultimo">Precio Detalle</th>
         </tr>
     </thead>
     <tbody class="tablabodyP">
@@ -22,6 +23,7 @@
         <td >{{indice+1}} </td>
         <td >{{detalle.codigoProducto.nombreProducto}}</td>
         <td >{{detalle.cantidadProducto}}</td>
+        <td >{{detalle.codigoProducto.precioProducto}}</td>
         <td >{{detalle.precioVentaDetalle}}</td>
       </tr>
     </tbody>

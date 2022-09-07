@@ -1,0 +1,51 @@
+
+<div class="contenedor">
+    <h2>Pedido</h2>
+    <hr>
+    <div class="pedido">
+        <div class="arriba">
+            <div>
+                <div class="organizar">
+                    <p>Encargado: {{pedido.administrador.nombreAdmin}}</p>
+                    <p>Estado: {{pedido.estado | pedidos}}</p>
+                </div>
+                <div class="organizar">
+                    <p>Cantidad total: {{pedido.venta.cantidadVenta}}</p>
+                    <p>Precio total: {{pedido.venta.precioVenta}}</p>
+                </div>
+            </div>
+        </div>
+        <table class="tabla">
+        <thead class="tablaHeaderP">
+            <tr>
+                <th class="primero">Nombre</th>
+                <th>Cantidad</th>
+                <th>precio producto</th>
+                <th class="ultimo">Precio Detalle</th>
+            </tr>
+        </thead>
+        <tbody class="tablabodyP" *ngFor="let detalle of pedido.venta.ventas">
+            <tr>
+            <td>{{detalle.codigoProducto.nombreProducto}}</td>
+            <td>{{detalle.cantidadProducto}}</td>
+            <td>{{detalle.codigoProducto.precioProducto}}</td>
+            <td>{{detalle.precioVentaDetalle}}</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+</div>
+<div class="cambiar" *ngIf="pedido.estado=='1'">
+    <p>pasar pedido a {{texto}}</p>
+    <button (click)="pasarProceso()" class="botones">Pasar</button>
+</div>
+<div class="cambiar2" *ngIf="pedido.estado=='2'">
+    <div class="interior">
+        <p>pasar pedido a {{texto}}</p>
+    <button (click)="pasarCompletado()" class="botones tamano">Pasar</button>
+    </div>
+    <div class="interior">
+        <p>pasar pedido a {{texto2}}</p>
+    <button (click)="pasarCancelado()" class="botones tamano">Pasar</button>
+    </div>
+</div>
