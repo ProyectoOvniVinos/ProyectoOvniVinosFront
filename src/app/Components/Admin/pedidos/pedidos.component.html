@@ -1,8 +1,8 @@
-<div class="cajaPadre" *ngIf="lugarmijo== '1'">
+<div class="cajaPadre" >
 
-    <div class="cajaMadre">
-        <div class="cajaTitle">
-            <h2>PEDIDOS</h2>
+    <div class="cajaM" *ngIf="lugarmijo== '1'">
+        <div >
+            <h2 class="text-center">PEDIDOS</h2>
         </div>
         <div class="cajaContenido">
             <div class="cajaBtns">
@@ -42,7 +42,7 @@
                         </tr>
                     </tbody>
                     <div *ngIf="banderaD==false" class='spinner'></div>
-                    <div class="cajaMensaje" *ngIf="pedidos && pedidos.length==0">
+                    <div class="cajaMensaje" *ngIf="pedidos.length==0">
                         <h1>No hay pedidos {{lugar}}</h1>
                     </div>
                 </table>
@@ -51,96 +51,116 @@
         </div>
     </div>
 
+     <div class="cajaM" *ngIf="lugarmijo=='2'">
+        <div >
+            <h2 class="text-center">PEDIDOS</h2>
+        </div>
+        <hr>
+        <div class="btnsCliente">
+            <button class="botonCliente btnOvni">Pendientes</button>
+            <button class="botonCliente btnOvni">En Proceso</button>
+        </div>
+        <hr>
+
+        <div class="pedidos">
+            <div class="pedido" *ngFor="let pedido of pedidos;let indice=index">
+                <div class="arriba">
+                    <div>
+                        <div class="organizar">
+                            <p class="pPedido"><b>ENCARGADO</b>  {{pedido.administrador.nombreAdmin}}</p>
+                            <p class="pPedido"><b>ESTADO </b>  {{pedido.estado | pedidos }}</p>
+                            <p class="pPedido"><b>CANTIDAD TOTAL </b> {{pedido.venta.cantidadVenta}} </p>
+                            <p class="pPedido"><b>PRECIO TOTAL </b>  {{pedido.venta.precioVenta}} </p>
+                        </div>
+                    </div>
+                    <div class="codigoPedido">
+                        <p>
+                           {{indice+1}}
+                        </p>  
+                    </div>
+                </div>
+                <hr>
+                <div class="tabla" >
+                    <table class="tabla">
+                        <thead class="tablaHeaderPedido">
+                            <tr>
+                                <th class="primero">Nombre</th>
+                                <th>Cantidad</th>
+                                <th>precio producto</th>
+                                <th class="ultimo">Precio Detalle</th>
+                            </tr>
+                        </thead>
+                        <tbody class="tablabodyPedido">
+                             <tr *ngFor="let detalle of pedido.venta.ventas">
+                                <td>{{detalle.codigoProducto.nombreProducto}}</td>
+                                <td>{{detalle.cantidadProducto}}</td>
+                                <td>{{detalle.codigoProducto.precioProducto}}</td>
+                                <td>{{detalle.precioVentaDetalle}}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    
+    <div class="cajaM" *ngIf="lugarmijo=='3' && venta">
+    <div *ngIf="venta.ventas.length > 0">
+
+        <div class="scrol">
+            <li class="contenedor" *ngFor="let item of venta.ventas;let indice = index">
+                <div class="lista">
+                    <img class="imagen" src={{item.codigoProducto.fotoProducto}} alt="">
+                    <div class="item">
+                        <p>producto:</p>
+                        <p>{{item.codigoProducto.nombreProducto}}</p>
+                    </div>
+                    <div class="item">
+                        <p>cantidad:</p>
+                        <p>{{item.cantidadProducto}}</p>
+                    </div>
+                    <div class="item">
+                        <p>precio del producto:</p>
+                        <p>{{item.codigoProducto.precioProducto}}</p>
+                    </div>
+                    <div class="item">
+                        <p>precio del detalle:</p>
+                        <p>{{item.precioVentaDetalle}}</p>
+                    </div>
+                </div>
+                <hr *ngIf="indice != venta.ventas.length-1" class="completo">
+            </li>
+        </div>
+        <div class="contenedorP">
+            <hr>
+            <div class="general">
+                <p>total: {{venta.precioVenta}}</p>
+                <p>cantidad: {{venta.cantidadVenta}}</p>
+            </div>
+        </div>
+        <div class="contenedor-tipos">
+            <div class="conteTipoVenta" [ngClass]="{'seleccionado': isDomicilio}" (click) = "cambiarSelectedTrue()">
+                <img class="imgVenta" src="../../../../assets/Images/domicilio.png" alt="" >
+                <p class="descVenta">Domicilio</p>
+                <input *ngIf="isDomicilio" class="inputDireccion" type="text" [(ngModel)]='venta.correoCliente.direccionCliente'>
+            </div>
+            <div class="conteTipoVenta" [ngClass]="{'seleccionado': isDomicilio==false}" (click) = "cambiarSelectedFalse()">
+                <img class="imgVenta" src="../../../../assets/Images/recojer.png" alt="" >
+                <p class="descVenta">Recojer en la tienda</p>
+            </div>
+        </div>
+        <hr>
+        <div class="botones2">
+            <button class="btnOk" (click)="confirmarCompra()">Confirmar compra</button>
+            <button class="btnOk" (click)="regresar()">Cancelar</button>
+        </div>
+    </div>
+    <div class="cajaMensaje2" *ngIf="venta.ventas.length == 0">
+        <h1>No tiene nada en el carrito</h1>
+    </div>
 </div>
 
-<div class="contenedor" *ngIf="lugarmijo=='2'">
-    <h2>Pedidos</h2>
-    <hr>
-    <div class="pedido" *ngFor="let pedido of pedidos;let indice=index">
-        <div class="arriba">
-            <div>
-                <div class="organizar">
-                    <p>Encargado: {{pedido.administrador.nombreAdmin}}</p>
-                    <p>Estado: {{pedido.estado | pedidos}}</p>
-                </div>
-                <div class="organizar">
-                    <p>Cantidad total: {{pedido.venta.cantidadVenta}}</p>
-                    <p>Precio total: {{pedido.venta.precioVenta}}</p>
-                </div>
-            </div>
-            <div>
-                <p>
-                    numero pedido: {{indice+1}}
-                </p>  
-            </div>
-        </div>
-        <table class="tabla">
-        <thead class="tablaHeaderP">
-            <tr>
-                <th class="primero">Nombre</th>
-                <th>Cantidad</th>
-                <th>precio producto</th>
-                <th class="ultimo">Precio Detalle</th>
-            </tr>
-        </thead>
-        <tbody class="tablabodyP" *ngFor="let detalle of pedido.venta.ventas">
-            <tr>
-            <td>{{detalle.codigoProducto.nombreProducto}}</td>
-            <td>{{detalle.cantidadProducto}}</td>
-            <td>{{detalle.codigoProducto.precioProducto}}</td>
-            <td>{{detalle.precioVentaDetalle}}</td>
-            </tr>
-        </tbody>
-          </table>
-    </div>
-</div>
-<div class="contenedor2" *ngIf="lugarmijo=='3' && venta">
-    <div class="scrol">
-        <li class="contenedor" *ngFor="let item of venta.ventas;let indice = index">
-            <div class="lista">
-                <img class="imagen" src={{item.codigoProducto.fotoProducto}} alt="">
-                <div class="item">
-                    <p>producto:</p>
-                    <p>{{item.codigoProducto.nombreProducto}}</p>
-                </div>
-                <div class="item">
-                    <p>cantidad:</p>
-                    <p>{{item.cantidadProducto}}</p>
-                </div>
-                <div class="item">
-                    <p>precio del producto:</p>
-                    <p>{{item.codigoProducto.precioProducto}}</p>
-                </div>
-                <div class="item">
-                    <p>precio del detalle:</p>
-                    <p>{{item.precioVentaDetalle}}</p>
-                </div>
-            </div>
-            <hr *ngIf="indice != venta.ventas.length-1" class="completo">
-        </li>
-    </div>
-    <div class="contenedorP">
-        <hr>
-        <div class="general">
-            <p>total: {{venta.precioVenta}}</p>
-            <p>cantidad: {{venta.cantidadVenta}}</p>
-        </div>
-    </div>
-    <div class="contenedor-tipos">
-        <div *ngIf="isDomicilio" class="conteTipoVenta" [ngClass]="{'seleccionado': isDomicilio}" (click) = "cambiarSelectedTrue()">
-            <img class="imgVenta" src="../../../../assets/Images/domicilio.png" alt="" >
-            <p class="descVenta">Domicilio</p>
-            <input class="inputDireccion" type="text" [(ngModel)]='venta.correoCliente.direccionCliente'>
-        </div>
-        <div class="conteTipoVenta" [ngClass]="{'seleccionado': isDomicilio==false}" (click) = "cambiarSelectedFalse()">
-            <img class="imgVenta" src="../../../../assets/Images/recojer.png" alt="" >
-            <p class="descVenta">Recojer en la tienda</p>
-        </div>
-    </div>
-    <hr>
-    <div class="botones2">
-        <button class="btnOk" (click)="confirmarCompra()">Confirmar compra</button>
-        <button class="btnOk" [mat-dialog-close]="false">Cancelar</button>
-    </div>
-</div>
-<!-- [mat-dialog-close]="objeto" -->

@@ -567,6 +567,10 @@ body.darkMode .trMargin:hover{
     background-color: rgb(214, 210, 210)!important;
 }
 
+body.darkMode .tablaHeaderPedido{
+    background: linear-gradient(90deg, rgb(24, 22, 23) 11%, rgb(87, 87, 87) 55%, rgb(19, 17, 18) 100%) !important;
+}
+
 
 
 

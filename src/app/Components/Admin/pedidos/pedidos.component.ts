@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
 import { ClienteModel } from 'src/app/Models/Cliente.model';
 import { Item_ventaModel } from 'src/app/Models/Item_venta.model';
@@ -10,6 +10,8 @@ import { CarritoService } from 'src/app/Services/carrito.service';
 import { ClienteService } from 'src/app/Services/cliente.service';
 import { LoginService } from 'src/app/Services/login.service';
 import { PedidosRestService } from 'src/app/Services/pedidos-rest.service';
+import { VentaService } from 'src/app/Services/venta.service';
+import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 import { PedidoDetalleComponent } from '../../Modal/pedido-detalle/pedido-detalle.component';
 
 @Component({
@@ -24,21 +26,17 @@ export class PedidosComponent implements OnInit {
   banderaC = true;
   texto = '';
   lugar = 'Pendientes';
-  lugarmijo = '3';
+  lugarmijo = '2';
   isDomicilio:boolean=true;
   venta: VentaModel = new VentaModel();
-  objeto:{venta:VentaModel,esDomi:boolean}={
-    venta:this.venta,
-    esDomi:this.isDomicilio
-  }
 
-  direccion:string=null;
+  pedidos: PedidoModel[] = [];
 
-  pedidos: PedidoModel[];
 
   constructor(private pedidoService: PedidosRestService, public dialog: MatDialog, public loginService: LoginService,
           private activateRoute: ActivatedRoute, private carritoService: CarritoService,
-          private clienteService: ClienteService) { }
+          private clienteService: ClienteService, private ventaService: VentaService,
+          private router:Router) { }
 
   ngOnInit(): void {
     this.pedidosPendientes()
@@ -90,6 +88,13 @@ export class PedidosComponent implements OnInit {
 
   abrirModal(pedido:PedidoModel){
     this.openDialog(pedido)
+  }
+
+  openDialogConfirmacion(titleNew: string, mensajeNew: string): void {
+    const dialogRef = this.dialog.open(ModalErrorComponent, {
+      width: '300px',
+      data: {title: titleNew, mensaje: mensajeNew},
+    });
   }
 
   openDialog( pedido: PedidoModel): void {
@@ -166,36 +171,51 @@ export class PedidosComponent implements OnInit {
   }
 
   confirmarCompra(){
-    this.venta.correoCliente.direccionCliente=this.direccion
+    this.ventaService.addVenta(this.venta, this.isDomicilio).subscribe(venta =>{
+      let pedido: PedidoModel = new PedidoModel();
+      pedido.cliente = venta.venta.correoCliente;
+      console.log(pedido.cliente);
+      console.log(venta.venta);
+      pedido.venta = venta.venta;
+      pedido.estado = '1';
+      let modo = '';
+      if(this.isDomicilio){
+        modo = "domicilio";
+      }else{
+        modo = "retiro en tienda";
+      }
+      pedido.modoAdquirir = modo;
+      this.pedidoService.createPedido(pedido).subscribe();
+      //this.pedidoSocket.actualizarPedidos();
+      for(let i = this.carrito.itemCarrito.length; i>0;i--){
+        this.carrito.itemCarrito.pop()
+      }
+      this.carritoService.actualizarCarrito(this.carrito).subscribe();
+
+      this.openDialogConfirmacion("Exito!!!","Se ha realizado la compra satisfactoriamente!")
+      this.router.navigate(['/pedidos']);
+    },err => {
+      if(err.error.mensaje=="cantidad insuficiente"){
+        this.openDialogConfirmacion("Advertencia!!",`${err.error.mensaje}`)
+      }else{
+        this.openDialogConfirmacion("Error","Ha ocurrido un problema")
+      }
+    });
     
-    
-    let newObjeto={
-      venta:this.venta,
-      esDomi:this.isDomicilio
-    }
-    this.objeto=newObjeto;
+  }
+
+  regresar(){
+    this.router.navigate(['/catalogo']);
   }
 
   cambiarSelectedTrue(){
 
     this.isDomicilio=true;
 
-    let newObjeto={
-      venta:this.venta,
-      esDomi:this.isDomicilio
-    }
-    this.objeto=newObjeto;
-
   }
   cambiarSelectedFalse(){
 
     this.isDomicilio=false;
-
-    let newObjeto={
-      venta:this.venta,
-      esDomi:this.isDomicilio
-    }
-    this.objeto=newObjeto;
 
   }
 
