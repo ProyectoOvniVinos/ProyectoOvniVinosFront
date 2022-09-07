@@ -158,7 +158,6 @@ export class IngresarVentaComponent implements OnInit {
         this.seleccionarProducto()
         
       }else{
-        console.log("en else");
 
       }
     });

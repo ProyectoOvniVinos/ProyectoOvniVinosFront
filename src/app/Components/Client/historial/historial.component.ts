@@ -25,7 +25,6 @@ export class HistorialComponent implements OnInit {
     })
   }
   abrirModal(venta: VentaModel){
-    console.log(venta);
     venta.correoCliente = this.cliente;
     this.openDialog(venta);
   }

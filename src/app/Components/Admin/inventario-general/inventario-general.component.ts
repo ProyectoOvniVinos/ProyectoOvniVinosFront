@@ -34,10 +34,8 @@ export class InventarioGeneralComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe( (result:any)=>{
       if(result==false){
-        console.log("cancelo");
       }else{
         this.router.navigate([`/ingresarCompra/${inventario.codigoProducto.codigoProducto}`])
-        console.log("Acepto");
         
       }
     })

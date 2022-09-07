@@ -1,7 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
+import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
+import { ClienteModel } from 'src/app/Models/Cliente.model';
+import { Item_ventaModel } from 'src/app/Models/Item_venta.model';
 import { PedidoModel } from 'src/app/Models/Pedido.model';
 import { VentaModel } from 'src/app/Models/Venta.model';
+import { CarritoService } from 'src/app/Services/carrito.service';
+import { ClienteService } from 'src/app/Services/cliente.service';
+import { LoginService } from 'src/app/Services/login.service';
 import { PedidosRestService } from 'src/app/Services/pedidos-rest.service';
 import { PedidoDetalleComponent } from '../../Modal/pedido-detalle/pedido-detalle.component';
 
@@ -12,6 +19,7 @@ import { PedidoDetalleComponent } from '../../Modal/pedido-detalle/pedido-detall
 })
 export class PedidosComponent implements OnInit {
   
+  carrito: CarritoClienteModel;
   banderaD = true;
   banderaC = true;
   texto = '';
@@ -26,12 +34,50 @@ export class PedidosComponent implements OnInit {
 
   direccion:string=null;
 
-  pedidos: PedidoModel[] = [];
+  pedidos: PedidoModel[];
 
-  constructor(private pedidoService: PedidosRestService, public dialog: MatDialog) { }
+  constructor(private pedidoService: PedidosRestService, public dialog: MatDialog, public loginService: LoginService,
+          private activateRoute: ActivatedRoute, private carritoService: CarritoService,
+          private clienteService: ClienteService) { }
 
   ngOnInit(): void {
-    this.pedidosPendientes();
+    this.pedidosPendientes()
+    this.pedidoService.getPedidosCliente(this.loginService.usuario.correo).subscribe(pedidos=>{      
+      this.pedidos = pedidos;
+    });
+    this.activateRoute.params.subscribe(params=>{
+      let carrito  = params['carrito'];
+      if(carrito){
+        this.lugarmijo = '3';
+      }else{
+        if(this.loginService.hasRole('ROLE_ADMIN')){
+          this.lugarmijo = '1';
+        }else{
+          this.lugarmijo = '2';
+        }
+      }
+    })
+
+    this.clienteService.getByEmail(this.loginService.usuario.correo).subscribe((resp:ClienteModel)=>{
+      this.carrito = resp.carrito;
+      let cantidad = 0; 
+      this.carrito.itemCarrito.map(item => {
+        let ventas: Item_ventaModel = new Item_ventaModel();
+        cantidad += item.cantidadProducto;
+        ventas.cantidadProducto = item.cantidadProducto;
+        ventas.codigoProducto = item.codigoProducto;
+        ventas.precioVentaDetalle = item.precioItem;
+        this.venta.ventas.push(ventas);
+      })
+      
+      this.venta.correoCliente = resp;
+      
+      this.venta.precioVenta = this.carrito.precioCarrito;
+      this.venta.cantidadVenta = cantidad;        //this.valorTotal= this.carrito.precioCarrito;
+        //this.cantidadTotal+= item.cantidadProducto;
+
+    });
+
   }
 
   buscar(){

@@ -55,7 +55,6 @@ export class RecuperarPasswordComponent implements OnInit {
     
     this.clienteService.getByEmail(this.recuperarForm.controls["email"].value).subscribe((resp:ClienteModel) => {
       let urlya = window.location
-      console.log(this.encriptar(resp.correoCliente));
       this.clienteService.recuperarPassword(urlya.origin,this.encriptar(resp.correoCliente)).subscribe(resp=>{
         
         this.openDialog("Recuperar", "Se le envio un correo de verificacion para recuperar su contraseña");

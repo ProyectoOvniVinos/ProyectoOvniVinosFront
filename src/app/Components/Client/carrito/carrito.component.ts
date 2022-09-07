@@ -1,6 +1,7 @@
 import { importExpr } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, Input, OnChanges, EventEmitter , Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { PedidoModel } from 'src/app/Models/Pedido.model';
 import { DarkModeService } from 'src/app/Services/dark-mode.service';
 import { PedidosRestService } from 'src/app/Services/pedidos-rest.service';
@@ -55,7 +56,8 @@ export class CarritoComponent implements OnInit, OnChanges {
               private ventaService: VentaService,
               public darkMode: DarkModeService,
               private pedidoService: PedidosRestService,
-              private pedidoSocket: SocketPedidoService) {
+              private pedidoSocket: SocketPedidoService,
+              private router: Router) {
 
   }
   ngOnChanges(): void {
@@ -74,7 +76,6 @@ export class CarritoComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.cambioClase();
-    console.log(this.darkMode.bandera);
   }
 
   cambioClase(){
@@ -189,7 +190,6 @@ export class CarritoComponent implements OnInit, OnChanges {
   }
   
   abrirModal(){
-    console.log(this.carrito.itemCarrito.length);
     
     if(this.carrito.itemCarrito.length==0){
       this.openDialog2("Advertencia","Su carrito esta vacio para hacer una compra debe haber minimo un producto.")
@@ -209,7 +209,8 @@ export class CarritoComponent implements OnInit, OnChanges {
       venta.precioVenta = this.carrito.precioCarrito;
       venta.cantidadVenta = cantidad;
 
-      this.openDialog(venta);
+      this.router.navigate(['/pedidos/1']);
+      // this.openDialog(venta);
     }
     
   }
@@ -226,7 +227,6 @@ export class CarritoComponent implements OnInit, OnChanges {
       data: venta,
     });
     dialogRef.afterClosed().subscribe( (result:any)=>{
-      console.log(result);
       if(result==false){
       }else{
         ventaInterna = result.venta;
@@ -254,8 +254,6 @@ export class CarritoComponent implements OnInit, OnChanges {
             this.openDialogConfirmacion("Exito!!!","Se ha realizado la compra satisfactoriamente!")
             let pedido: PedidoModel = new PedidoModel();
             pedido.cliente = venta.venta.correoCliente;
-            console.log(pedido.cliente);
-            console.log(venta.venta);
             pedido.venta = venta.venta;
             pedido.estado = '1';
             this.pedidoService.createPedido(pedido).subscribe();

@@ -106,19 +106,19 @@
         <hr>
 
         <div class="pedidos">
-            <div class="pedido" >
+            <div class="pedido" *ngFor="let pedido of pedidos;let indice=index">
                 <div class="arriba">
                     <div>
                         <div class="organizar">
-                            <p class="pPedido"><b>ENCARGADO</b> Ezequiel</p>
-                            <p class="pPedido"><b>ESTADO </b> Proceso</p>
-                            <p class="pPedido"><b>CANTIDAD TOTAL </b> 16  </p>
-                            <p class="pPedido"><b>PRECIO TOTAL </b> 26000 </p>
+                            <p class="pPedido"><b>ENCARGADO</b>  {{pedido.administrador.nombreAdmin}}</p>
+                            <p class="pPedido"><b>ESTADO </b>  {{pedido.venta.cantidadVenta}}</p>
+                            <p class="pPedido"><b>CANTIDAD TOTAL </b> {{pedido.venta.cantidadVenta}} </p>
+                            <p class="pPedido"><b>PRECIO TOTAL </b>  {{pedido.venta.precioVenta}} </p>
                         </div>
                     </div>
                     <div class="codigoPedido">
                         <p>
-                            5
+                            numero pedido: {{indice+1}}
                         </p>  
                     </div>
                 </div>
@@ -134,165 +134,23 @@
                             </tr>
                         </thead>
                         <tbody class="tablabodyPedido">
-                             <tr>
-                                <td>vino abocado</td>
-                                <td>5</td>
-                                <td>12000</td>
-                                <td>24000</td>
+                             <tr *ngFor="let detalle of pedido.venta.ventas">
+                                <td>{{detalle.codigoProducto.nombreProducto}}</td>
+                                <td>{{detalle.cantidadProducto}}</td>
+                                <td>{{detalle.codigoProducto.precioProducto}}</td>
+                                <td>{{detalle.precioVentaDetalle}}</td>
                             </tr>
-                            <tr>
-                                <td>vino abocado</td>
-                                <td>5</td>
-                                <td>12000</td>
-                                <td>24000</td>
-                            </tr>
-                            <tr>
-                                <td>vino abocado</td>
-                                <td>5</td>
-                                <td>12000</td>
-                                <td>24000</td>
-                            </tr>
-                            <tr>
-                                <td>vino abocado</td>
-                                <td>5</td>
-                                <td>12000</td>
-                                <td>24000</td>
-                            </tr>
+
                         </tbody>
                     </table>
                 </div>
             </div>
-            <div class="pedido" >
-                <div class="arriba">
-                    <div>
-                        <div class="organizar">
-                            <p class="pPedido"><b>ENCARGADO</b> Ezequiel</p>
-                            <p class="pPedido"><b>ESTADO </b> Proceso</p>
-                            <p class="pPedido"><b>CANTIDAD TOTAL </b> 16  </p>
-                            <p class="pPedido"><b>PRECIO TOTAL </b> 26000 </p>
-                        </div>
-                    </div>
-                    <div class="codigoPedido">
-                        <p>
-                            5
-                        </p>  
-                    </div>
-                </div>
-                <hr>
-                <div class="tabla" >
-                    <table class="tabla">
-                        <thead class="tablaHeaderPedido">
-                            <tr>
-                                <th class="primero">Nombre</th>
-                                <th>Cantidad</th>
-                                <th>precio producto</th>
-                                <th class="ultimo">Precio Detalle</th>
-                            </tr>
-                        </thead>
-                        <tbody class="tablabodyPedido">
-                             <tr>
-                                <td>vino abocado</td>
-                                <td>5</td>
-                                <td>12000</td>
-                                <td>24000</td>
-                            </tr>
-                            <tr>
-                                <td>vino abocado</td>
-                                <td>5</td>
-                                <td>12000</td>
-                                <td>24000</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="pedido" >
-                <div class="arriba">
-                    <div>
-                        <div class="organizar">
-                            <p class="pPedido"><b>ENCARGADO</b> Ezequiel</p>
-                            <p class="pPedido"><b>ESTADO </b> Proceso</p>
-                            <p class="pPedido"><b>CANTIDAD TOTAL </b> 16  </p>
-                            <p class="pPedido"><b>PRECIO TOTAL </b> 26000 </p>
-                        </div>
-                    </div>
-                    <div class="codigoPedido">
-                        <p>
-                            5
-                        </p>  
-                    </div>
-                </div>
-                <hr>
-                <div class="tabla" >
-                    <table class="tabla">
-                        <thead class="tablaHeaderPedido">
-                            <tr>
-                                <th class="primero">Nombre</th>
-                                <th>Cantidad</th>
-                                <th>precio producto</th>
-                                <th class="ultimo">Precio Detalle</th>
-                            </tr>
-                        </thead>
-                        <tbody class="tablabodyPedido">
-                             <tr>
-                                <td>vino abocado</td>
-                                <td>5</td>
-                                <td>12000</td>
-                                <td>24000</td>
-                            </tr>
-                            <tr>
-                                <td>vino abocado</td>
-                                <td>5</td>
-                                <td>12000</td>
-                                <td>24000</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="pedido" >
-                <div class="arriba">
-                    <div>
-                        <div class="organizar">
-                            <p class="pPedido"><b>ENCARGADO</b> Ezequiel</p>
-                            <p class="pPedido"><b>ESTADO </b> Proceso</p>
-                            <p class="pPedido"><b>CANTIDAD TOTAL </b> 16  </p>
-                            <p class="pPedido"><b>PRECIO TOTAL </b> 26000 </p>
-                        </div>
-                    </div>
-                    <div class="codigoPedido">
-                        <p>
-                            5
-                        </p>  
-                    </div>
-                </div>
-                <hr>
-                <div class="tabla" >
-                    <table class="tabla">
-                        <thead class="tablaHeaderPedido">
-                            <tr>
-                                <th class="primero">Nombre</th>
-                                <th>Cantidad</th>
-                                <th>precio producto</th>
-                                <th class="ultimo">Precio Detalle</th>
-                            </tr>
-                        </thead>
-                        <tbody class="tablabodyPedido">
-                            <tr>
-                                <td>vino abocado</td>
-                                <td>5</td>
-                                <td>12000</td>
-                                <td>24000</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+
         </div>
 
     </div>
     
-    <div class="cajaM" *ngIf="lugarmijo=='3'">
+    <div class="cajaM" *ngIf="lugarmijo=='3' && venta">
         <div class="scrol">
             <li class="contenedor" *ngFor="let item of venta.ventas;let indice = index">
                 <div class="lista">
@@ -306,7 +164,11 @@
                         <p>{{item.cantidadProducto}}</p>
                     </div>
                     <div class="item">
-                        <p>precio:</p>
+                        <p>precio del producto:</p>
+                        <p>{{item.codigoProducto.precioProducto}}</p>
+                    </div>
+                    <div class="item">
+                        <p>precio del detalle:</p>
                         <p>{{item.precioVentaDetalle}}</p>
                     </div>
                 </div>
