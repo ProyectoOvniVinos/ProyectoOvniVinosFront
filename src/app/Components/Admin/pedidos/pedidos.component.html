@@ -33,7 +33,7 @@
                     <tbody class="tablabodyP">
                         <tr *ngFor="let pedido of pedidos">
                             <td>{{pedido.estado | pedidos}}</td>
-                            <td>{{pedido.venta.fechaVenta}}</td>
+                            <td *ngIf="pedido.estado!='4'">{{pedido.venta.fechaVenta}}</td>
                             <td>{{pedido.administrador.nombreAdmin}}</td>
                             <td>{{pedido.cliente.correoCliente}}</td>
                             <td class="puntero" (click)="abrirModal(pedido)">

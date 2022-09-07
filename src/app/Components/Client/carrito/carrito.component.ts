@@ -209,8 +209,8 @@ export class CarritoComponent implements OnInit, OnChanges {
       venta.precioVenta = this.carrito.precioCarrito;
       venta.cantidadVenta = cantidad;
 
-      this.router.navigate(['/pedidos/1']);
-      // this.openDialog(venta);
+      // this.router.navigate(['/pedidos/1']);
+      this.openDialog(venta);
     }
     
   }

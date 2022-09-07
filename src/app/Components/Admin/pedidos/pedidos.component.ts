@@ -97,6 +97,18 @@ export class PedidosComponent implements OnInit {
       width: '70%',
       data: pedido,
     });
+    dialogRef.afterClosed().subscribe( (result:boolean) => {
+      console.log(this.lugar);
+      if(this.lugar=="Pendientes"){
+        this.pedidosPendientes();
+      }else if(this.lugar=="en Proceso"){
+        this.pedidosProceso();
+      }else if(this.lugar=="Completados"){
+        this.pedidosCompletados();
+      }else{
+        this.pedidosCanselados();
+      }
+    });
   }
 
   pedidosCliente(){
@@ -136,6 +148,8 @@ export class PedidosComponent implements OnInit {
   pedidosCompletados(){
     this.pedidoService.getPedidosTerminado().subscribe(
       pedidos =>{
+        console.log(pedidos);
+        
         this.pedidos = pedidos;
         this.lugar = 'Completados';
       }
