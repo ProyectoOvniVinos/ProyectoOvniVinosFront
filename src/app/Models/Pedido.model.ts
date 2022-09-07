@@ -6,6 +6,7 @@ import { VentaModel } from "./Venta.model";
 export class PedidoModel {
     id!:number;
 	estado!:string;
+	modoAdquirir!:string;
     administrador!:AdministradorModel;
 	cliente!:ClienteModel;
 	venta:VentaModel;

@@ -67,6 +67,7 @@ const routes: Routes = [
   { path: 'cambiarContraseñaC', component: CambioPasswordCComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_CLIENTE' } },
   { path: 'cambiarContraseñaA', component: CambioPasswordAComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' }},
   { path: 'pedidos', component: PedidosComponent, canActivate: [AuthGuard]},
+  { path: 'pedidos/:carrito', component: PedidosComponent, canActivate: [AuthGuard,RoleGuard], data: { role: 'ROLE_CLIENTE' }},
 
   { path: '**', pathMatch: 'full', redirectTo: '/catalogo' }
 ];

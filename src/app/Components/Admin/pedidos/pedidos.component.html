@@ -94,7 +94,7 @@
           </table>
     </div>
 </div>
-<div class="contenedor2" *ngIf="lugarmijo=='3'">
+<div class="contenedor2" *ngIf="lugarmijo=='3' && venta">
     <div class="scrol">
         <li class="contenedor" *ngFor="let item of venta.ventas;let indice = index">
             <div class="lista">
@@ -108,7 +108,11 @@
                     <p>{{item.cantidadProducto}}</p>
                 </div>
                 <div class="item">
-                    <p>precio:</p>
+                    <p>precio del producto:</p>
+                    <p>{{item.codigoProducto.precioProducto}}</p>
+                </div>
+                <div class="item">
+                    <p>precio del detalle:</p>
                     <p>{{item.precioVentaDetalle}}</p>
                 </div>
             </div>
@@ -123,19 +127,20 @@
         </div>
     </div>
     <div class="contenedor-tipos">
-        <div class="conteTipoVenta" [ngClass]="{'seleccionado': isDomicilio}" (click) = "cambiarSelectedTrue()">
+        <div *ngIf="isDomicilio" class="conteTipoVenta" [ngClass]="{'seleccionado': isDomicilio}" (click) = "cambiarSelectedTrue()">
             <img class="imgVenta" src="../../../../assets/Images/domicilio.png" alt="" >
             <p class="descVenta">Domicilio</p>
-            <input *ngIf="isDomicilio" class="inputDireccion" type="text" value="{{venta.correoCliente.direccionCliente}}" [(ngModel)]='direccion'>
+            <input class="inputDireccion" type="text" [(ngModel)]='venta.correoCliente.direccionCliente'>
         </div>
         <div class="conteTipoVenta" [ngClass]="{'seleccionado': isDomicilio==false}" (click) = "cambiarSelectedFalse()">
             <img class="imgVenta" src="../../../../assets/Images/recojer.png" alt="" >
             <p class="descVenta">Recojer en la tienda</p>
         </div>
     </div>
-
+    <hr>
     <div class="botones2">
-        <button class="btnOk" (click)="confirmarCompra()" [mat-dialog-close]="objeto" >Confirmar compra</button>
+        <button class="btnOk" (click)="confirmarCompra()">Confirmar compra</button>
         <button class="btnOk" [mat-dialog-close]="false">Cancelar</button>
     </div>
 </div>
+<!-- [mat-dialog-close]="objeto" -->

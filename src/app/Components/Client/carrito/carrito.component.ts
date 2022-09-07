@@ -1,6 +1,7 @@
 import { importExpr } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, Input, OnChanges, EventEmitter , Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { PedidoModel } from 'src/app/Models/Pedido.model';
 import { DarkModeService } from 'src/app/Services/dark-mode.service';
 import { PedidosRestService } from 'src/app/Services/pedidos-rest.service';
@@ -55,7 +56,8 @@ export class CarritoComponent implements OnInit, OnChanges {
               private ventaService: VentaService,
               public darkMode: DarkModeService,
               private pedidoService: PedidosRestService,
-              private pedidoSocket: SocketPedidoService) {
+              private pedidoSocket: SocketPedidoService,
+              private router: Router) {
 
   }
   ngOnChanges(): void {
@@ -209,7 +211,9 @@ export class CarritoComponent implements OnInit, OnChanges {
       venta.precioVenta = this.carrito.precioCarrito;
       venta.cantidadVenta = cantidad;
 
-      this.openDialog(venta);
+      this.router.navigate(['/pedidos/1']);
+      //this.router.navigate(['/catalogo']);
+      //this.openDialog(venta);
     }
     
   }
