@@ -95,52 +95,57 @@
     </div>
 </div>
 <div class="contenedor2" *ngIf="lugarmijo=='3' && venta">
-    <div class="scrol">
-        <li class="contenedor" *ngFor="let item of venta.ventas;let indice = index">
-            <div class="lista">
-                <img class="imagen" src={{item.codigoProducto.fotoProducto}} alt="">
-                <div class="item">
-                    <p>producto:</p>
-                    <p>{{item.codigoProducto.nombreProducto}}</p>
+    <div *ngIf="venta.ventas.length > 0">
+        <div class="scrol">
+            <li class="contenedor" *ngFor="let item of venta.ventas;let indice = index">
+                <div class="lista">
+                    <img class="imagen" src={{item.codigoProducto.fotoProducto}} alt="">
+                    <div class="item">
+                        <p>producto:</p>
+                        <p>{{item.codigoProducto.nombreProducto}}</p>
+                    </div>
+                    <div class="item">
+                        <p>cantidad:</p>
+                        <p>{{item.cantidadProducto}}</p>
+                    </div>
+                    <div class="item">
+                        <p>precio del producto:</p>
+                        <p>{{item.codigoProducto.precioProducto}}</p>
+                    </div>
+                    <div class="item">
+                        <p>precio del detalle:</p>
+                        <p>{{item.precioVentaDetalle}}</p>
+                    </div>
                 </div>
-                <div class="item">
-                    <p>cantidad:</p>
-                    <p>{{item.cantidadProducto}}</p>
-                </div>
-                <div class="item">
-                    <p>precio del producto:</p>
-                    <p>{{item.codigoProducto.precioProducto}}</p>
-                </div>
-                <div class="item">
-                    <p>precio del detalle:</p>
-                    <p>{{item.precioVentaDetalle}}</p>
-                </div>
+                <hr *ngIf="indice != venta.ventas.length-1" class="completo">
+            </li>
+        </div>
+        <div class="contenedorP">
+            <hr>
+            <div class="general">
+                <p>total: {{venta.precioVenta}}</p>
+                <p>cantidad: {{venta.cantidadVenta}}</p>
             </div>
-            <hr *ngIf="indice != venta.ventas.length-1" class="completo">
-        </li>
-    </div>
-    <div class="contenedorP">
+        </div>
+        <div class="contenedor-tipos">
+            <div class="conteTipoVenta" [ngClass]="{'seleccionado': isDomicilio}" (click) = "cambiarSelectedTrue()">
+                <img class="imgVenta" src="../../../../assets/Images/domicilio.png" alt="" >
+                <p class="descVenta">Domicilio</p>
+                <input *ngIf="isDomicilio" class="inputDireccion" type="text" [(ngModel)]='venta.correoCliente.direccionCliente'>
+            </div>
+            <div class="conteTipoVenta" [ngClass]="{'seleccionado': isDomicilio==false}" (click) = "cambiarSelectedFalse()">
+                <img class="imgVenta" src="../../../../assets/Images/recojer.png" alt="" >
+                <p class="descVenta">Recojer en la tienda</p>
+            </div>
+        </div>
         <hr>
-        <div class="general">
-            <p>total: {{venta.precioVenta}}</p>
-            <p>cantidad: {{venta.cantidadVenta}}</p>
+        <div class="botones2">
+            <button class="btnOk" (click)="confirmarCompra()">Confirmar compra</button>
+            <button class="btnOk" (click)="regresar()">Cancelar</button>
         </div>
     </div>
-    <div class="contenedor-tipos">
-        <div *ngIf="isDomicilio" class="conteTipoVenta" [ngClass]="{'seleccionado': isDomicilio}" (click) = "cambiarSelectedTrue()">
-            <img class="imgVenta" src="../../../../assets/Images/domicilio.png" alt="" >
-            <p class="descVenta">Domicilio</p>
-            <input class="inputDireccion" type="text" [(ngModel)]='venta.correoCliente.direccionCliente'>
-        </div>
-        <div class="conteTipoVenta" [ngClass]="{'seleccionado': isDomicilio==false}" (click) = "cambiarSelectedFalse()">
-            <img class="imgVenta" src="../../../../assets/Images/recojer.png" alt="" >
-            <p class="descVenta">Recojer en la tienda</p>
-        </div>
-    </div>
-    <hr>
-    <div class="botones2">
-        <button class="btnOk" (click)="confirmarCompra()">Confirmar compra</button>
-        <button class="btnOk" [mat-dialog-close]="false">Cancelar</button>
+    <div class="cajaMensaje2" *ngIf="venta.ventas.length == 0">
+        <h1>No tiene nada en el carrito</h1>
     </div>
 </div>
 <!-- [mat-dialog-close]="objeto" -->
