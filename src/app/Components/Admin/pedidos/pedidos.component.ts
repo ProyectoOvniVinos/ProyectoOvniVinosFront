@@ -34,14 +34,17 @@ export class PedidosComponent implements OnInit {
 
   direccion:string=null;
 
-  pedidos: PedidoModel[] = [];
+  pedidos: PedidoModel[];
 
   constructor(private pedidoService: PedidosRestService, public dialog: MatDialog, public loginService: LoginService,
           private activateRoute: ActivatedRoute, private carritoService: CarritoService,
           private clienteService: ClienteService) { }
 
   ngOnInit(): void {
-    //this.pedidosPendientes();
+    this.pedidosPendientes()
+    this.pedidoService.getPedidosCliente(this.loginService.usuario.correo).subscribe(pedidos=>{      
+      this.pedidos = pedidos;
+    });
     this.activateRoute.params.subscribe(params=>{
       let carrito  = params['carrito'];
       if(carrito){
@@ -70,9 +73,7 @@ export class PedidosComponent implements OnInit {
       this.venta.correoCliente = resp;
       
       this.venta.precioVenta = this.carrito.precioCarrito;
-      this.venta.cantidadVenta = cantidad;
-      console.log(this.venta);
-        //this.valorTotal= this.carrito.precioCarrito;
+      this.venta.cantidadVenta = cantidad;        //this.valorTotal= this.carrito.precioCarrito;
         //this.cantidadTotal+= item.cantidadProducto;
 
     });
@@ -159,8 +160,6 @@ export class PedidosComponent implements OnInit {
       esDomi:this.isDomicilio
     }
     this.objeto=newObjeto;
-
-    console.log(this.venta);
   }
 
   cambiarSelectedTrue(){

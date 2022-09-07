@@ -62,12 +62,10 @@ export class ModalProductosComponent implements OnInit {
       data: inventario,
     });
     dialogRef.afterClosed().subscribe( (result:boolean) => {
-      console.log(`Dialog result: ${result}`); // Pizza!
       if(result==true){
 /*         this.agregar(inventario.codigoProducto);  */
         
       }else{
-        console.log("en else");
         
       }
     });

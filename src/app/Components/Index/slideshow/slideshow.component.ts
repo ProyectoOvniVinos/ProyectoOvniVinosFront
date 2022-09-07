@@ -56,7 +56,6 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
       data: inventario,
     });
     dialogRef.afterClosed().subscribe((result: any) => {
-      console.log(result);
 
       if (result.resultado == true) {
 

@@ -34,7 +34,6 @@ export class RegistroComponent implements OnInit {
 
   ver(event, img){
     this.activar = !this.activar;
-    console.log();
     
     if(this.activar==true){
       event.type='text';
