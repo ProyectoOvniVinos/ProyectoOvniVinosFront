@@ -8,39 +8,39 @@ import { PedidoModel } from '../Models/Pedido.model';
 })
 export class PedidosRestService {
 
-  url:string="http://localhost:8080/apiPedidos/";
+  url: string = "http://localhost:8080/apiPedidos/";
 
   constructor(private http: HttpClient) { }
 
-  getPedidosCliente(correo:string):Observable<PedidoModel[]> {
+  getPedidosCliente(correo: string): Observable<PedidoModel[]> {
     const url: string = `${this.url}pedidosCliente/${correo}`
     return this.http.get<PedidoModel[]>(url);
   }
 
-  getPedidosPendientes():Observable<PedidoModel[]> {
+  getPedidosPendientes(): Observable<PedidoModel[]> {
     const url: string = `${this.url}pedidosPendientes`
     return this.http.get<PedidoModel[]>(url);
   }
-  getPedidosProceso():Observable<PedidoModel[]> {
+  getPedidosProceso(): Observable<PedidoModel[]> {
     const url: string = `${this.url}pedidosProceso`
     return this.http.get<PedidoModel[]>(url);
   }
-  getPedidosTerminado():Observable<PedidoModel[]> {
+  getPedidosTerminado(): Observable<PedidoModel[]> {
     const url: string = `${this.url}pedidosCompletados`
     return this.http.get<PedidoModel[]>(url);
   }
-  getPedidosCanselados():Observable<PedidoModel[]> {
-    const url: string = `${this.url}pedidosCompletados`
+  getPedidosCanselados(): Observable<PedidoModel[]> {
+    const url: string = `${this.url}pedidosCancelados`
     return this.http.get<PedidoModel[]>(url);
   }
 
-  createPedido(pedido:PedidoModel):Observable<PedidoModel>{
-    const url: string  = `${this.url}pedido`;
-    return this.http.post<PedidoModel>(url,pedido);
+  createPedido(pedido: PedidoModel): Observable<PedidoModel> {
+    const url: string = `${this.url}pedido`;
+    return this.http.post<PedidoModel>(url, pedido);
   }
 
-  updatePedido(pedido:PedidoModel):Observable<PedidoModel>{
-    const url: string  = `${this.url}update`;
-    return this.http.put<PedidoModel>(url,pedido);
+  updatePedido(pedido: PedidoModel): Observable<PedidoModel> {
+    const url: string = `${this.url}update`;
+    return this.http.put<PedidoModel>(url, pedido);
   }
 }

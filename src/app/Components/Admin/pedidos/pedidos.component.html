@@ -12,9 +12,9 @@
                 <button class="botones" (click)="pedidosCanselados()">Cancelados</button>
             </div>
             <div class="cajaBuscar">
-                <input (change)="buscar()" type="text" placeholder="Busca" class="form-control input" [(ngModel)]="texto">
+                <input (change)="buscar()" type="text" placeholder="Buscar por correo" class="form-control input" [(ngModel)]='texto'>
             </div>
-            <div class="cajaTable">
+            <div class="cajaTable" >
                 
                 <div>
                     <h4>Pedidos {{lugar}}</h4>
@@ -24,7 +24,7 @@
                     <thead class="tablaHeaderP">
                         <tr>
                             <th class="primero">Estado</th>
-                            <th>Fecha</th>
+                            <th *ngIf="!mostrarCancelados">Fecha</th>
                             <th>Encargado</th>
                             <th>Cliente</th>
                             <th class="ultimo">Detalle</th>
@@ -33,7 +33,7 @@
                     <tbody class="tablabodyP">
                         <tr *ngFor="let pedido of pedidos">
                             <td>{{pedido.estado | pedidos}}</td>
-                            <td *ngIf="pedido.estado!='4'">{{pedido.venta.fechaVenta}}</td>
+                            <td *ngIf="pedido.estado!='4' && !mostrarCancelados">{{pedido.venta.fechaVenta}}</td>
                             <td>{{pedido.administrador.nombreAdmin}}</td>
                             <td>{{pedido.cliente.correoCliente}}</td>
                             <td class="puntero" (click)="abrirModal(pedido)">

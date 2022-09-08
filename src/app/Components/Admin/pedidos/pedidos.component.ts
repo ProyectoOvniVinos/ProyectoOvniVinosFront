@@ -20,45 +20,47 @@ import { PedidoDetalleComponent } from '../../Modal/pedido-detalle/pedido-detall
   styleUrls: ['./pedidos.component.css']
 })
 export class PedidosComponent implements OnInit {
-  
+
   carrito: CarritoClienteModel;
   banderaD = true;
   banderaC = true;
-  texto = '';
+  texto = null;
   lugar = 'Pendientes';
   lugarmijo = '2';
-  isDomicilio:boolean=true;
+  isDomicilio: boolean = true;
+
+  mostrarCancelados = false;
   venta: VentaModel = new VentaModel();
 
   pedidos: PedidoModel[] = [];
 
 
   constructor(private pedidoService: PedidosRestService, public dialog: MatDialog, public loginService: LoginService,
-          private activateRoute: ActivatedRoute, private carritoService: CarritoService,
-          private clienteService: ClienteService, private ventaService: VentaService,
-          private router:Router) { }
+    private activateRoute: ActivatedRoute, private carritoService: CarritoService,
+    private clienteService: ClienteService, private ventaService: VentaService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.pedidosPendientes()
-    this.pedidoService.getPedidosCliente(this.loginService.usuario.correo).subscribe(pedidos=>{      
+    this.pedidoService.getPedidosCliente(this.loginService.usuario.correo).subscribe(pedidos => {
       this.pedidos = pedidos;
     });
-    this.activateRoute.params.subscribe(params=>{
-      let carrito  = params['carrito'];
-      if(carrito){
+    this.activateRoute.params.subscribe(params => {
+      let carrito = params['carrito'];
+      if (carrito) {
         this.lugarmijo = '3';
-      }else{
-        if(this.loginService.hasRole('ROLE_ADMIN')){
+      } else {
+        if (this.loginService.hasRole('ROLE_ADMIN')) {
           this.lugarmijo = '1';
-        }else{
+        } else {
           this.lugarmijo = '2';
         }
       }
     })
 
-    this.clienteService.getByEmail(this.loginService.usuario.correo).subscribe((resp:ClienteModel)=>{
+    this.clienteService.getByEmail(this.loginService.usuario.correo).subscribe((resp: ClienteModel) => {
       this.carrito = resp.carrito;
-      let cantidad = 0; 
+      let cantidad = 0;
       this.carrito.itemCarrito.map(item => {
         let ventas: Item_ventaModel = new Item_ventaModel();
         cantidad += item.cantidadProducto;
@@ -67,155 +69,160 @@ export class PedidosComponent implements OnInit {
         ventas.precioVentaDetalle = item.precioItem;
         this.venta.ventas.push(ventas);
       })
-      
+
       this.venta.correoCliente = resp;
-      
+
       this.venta.precioVenta = this.carrito.precioCarrito;
       this.venta.cantidadVenta = cantidad;        //this.valorTotal= this.carrito.precioCarrito;
-        //this.cantidadTotal+= item.cantidadProducto;
+      //this.cantidadTotal+= item.cantidadProducto;
 
     });
 
   }
 
-  buscar(){
-    if(this.texto=''){
+  buscar() {
+    if (this.texto == '') {
       this.pedidosPendientes();
-    }else{
+    } else {
       this.pedidosCliente();
     }
   }
 
-  abrirModal(pedido:PedidoModel){
+  abrirModal(pedido: PedidoModel) {
     this.openDialog(pedido)
   }
 
   openDialogConfirmacion(titleNew: string, mensajeNew: string): void {
     const dialogRef = this.dialog.open(ModalErrorComponent, {
       width: '300px',
-      data: {title: titleNew, mensaje: mensajeNew},
+      data: { title: titleNew, mensaje: mensajeNew },
     });
   }
 
-  openDialog( pedido: PedidoModel): void {
+  openDialog(pedido: PedidoModel): void {
     const dialogRef = this.dialog.open(PedidoDetalleComponent, {
       width: '70%',
       data: pedido,
     });
-    dialogRef.afterClosed().subscribe( (result:boolean) => {
-      console.log(this.lugar);
-      if(this.lugar=="Pendientes"){
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (this.lugar == "Pendientes") {
         this.pedidosPendientes();
-      }else if(this.lugar=="en Proceso"){
+      } else if (this.lugar == "en Proceso") {
         this.pedidosProceso();
-      }else if(this.lugar=="Completados"){
+      } else if (this.lugar == "Completados") {
         this.pedidosCompletados();
-      }else{
+      } else {
         this.pedidosCanselados();
       }
     });
   }
 
-  pedidosCliente(){
+  pedidosCliente() {
+    console.log(this.texto + "AAAAAAAAAAAAAAAAAAAAAAAAAAa");
+
     this.pedidoService.getPedidosCliente(this.texto).subscribe(
-      pedidos =>{
-        if(this.lugar=='Pendientes'){
-          this.pedidos = pedidos.filter(pedido => pedido.estado=='1');
-        }else if(this.lugar=='en Proceso'){
-          this.pedidos = pedidos.filter(pedido => pedido.estado=='2');
-        }else if(this.lugar=='Completados'){
-          this.pedidos = pedidos.filter(pedido => pedido.estado=='3');
-        }else{
-          this.pedidos = pedidos.filter(pedido => pedido.estado=='4');
+      pedidos => {
+        if (this.lugar == 'Pendientes') {
+          this.pedidos = pedidos.filter(pedido => pedido.estado == '1');
+        } else if (this.lugar == 'en Proceso') {
+          this.pedidos = pedidos.filter(pedido => pedido.estado == '2');
+        } else if (this.lugar == 'Completados') {
+          this.pedidos = pedidos.filter(pedido => pedido.estado == '3');
+        } else {
+          this.pedidos = pedidos.filter(pedido => pedido.estado == '4');
         }
       }
     );
   }
 
-  pedidosPendientes(){
+  pedidosPendientes() {
+    this.mostrarCancelados = false;
     this.pedidoService.getPedidosPendientes().subscribe(
-      pedidos =>{
+      pedidos => {
         this.pedidos = pedidos;
         this.lugar = 'Pendientes';
       }
     );
   }
 
-  pedidosProceso(){
+  pedidosProceso() {
+    this.mostrarCancelados = false;
     this.pedidoService.getPedidosProceso().subscribe(
-      pedidos =>{
+      pedidos => {
         this.pedidos = pedidos;
         this.lugar = 'en Proceso';
       }
     );
   }
 
-  pedidosCompletados(){
+  pedidosCompletados() {
+    this.mostrarCancelados = false;
     this.pedidoService.getPedidosTerminado().subscribe(
-      pedidos =>{
-        console.log(pedidos);
-        
+      pedidos => {
+
         this.pedidos = pedidos;
         this.lugar = 'Completados';
       }
     );
   }
 
-  pedidosCanselados(){
-    this.pedidoService.getPedidosCanselados().subscribe(
-      pedidos =>{
-        this.pedidos = pedidos;
-        this.lugar = 'Canselados';
-      }
+  pedidosCanselados() {
+    this.mostrarCancelados = true;
+    this.pedidoService.getPedidosCanselados().subscribe((pedidos: PedidoModel[]) => {
+      console.log(pedidos);
+      pedidos.filter(pedido => pedido.estado == '4')
+      console.log(pedidos);
+
+      this.pedidos = pedidos;
+      this.lugar = 'Canselados';
+    }
     );
   }
 
-  confirmarCompra(){
-    this.ventaService.addVenta(this.venta, this.isDomicilio).subscribe(venta =>{
+  confirmarCompra() {
+    this.ventaService.addVenta(this.venta, this.isDomicilio).subscribe(venta => {
       let pedido: PedidoModel = new PedidoModel();
       pedido.cliente = venta.venta.correoCliente;
-      console.log(pedido.cliente);
-      console.log(venta.venta);
       pedido.venta = venta.venta;
       pedido.estado = '1';
       let modo = '';
-      if(this.isDomicilio){
+      if (this.isDomicilio) {
         modo = "domicilio";
-      }else{
+      } else {
         modo = "retiro en tienda";
       }
       pedido.modoAdquirir = modo;
       this.pedidoService.createPedido(pedido).subscribe();
       //this.pedidoSocket.actualizarPedidos();
-      for(let i = this.carrito.itemCarrito.length; i>0;i--){
+      for (let i = this.carrito.itemCarrito.length; i > 0; i--) {
         this.carrito.itemCarrito.pop()
       }
       this.carritoService.actualizarCarrito(this.carrito).subscribe();
 
-      this.openDialogConfirmacion("Exito!!!","Se ha realizado la compra satisfactoriamente!")
+      this.openDialogConfirmacion("Exito!!!", "Se ha realizado la compra satisfactoriamente!")
       this.router.navigate(['/pedidos']);
-    },err => {
-      if(err.error.mensaje=="cantidad insuficiente"){
-        this.openDialogConfirmacion("Advertencia!!",`${err.error.mensaje}`)
-      }else{
-        this.openDialogConfirmacion("Error","Ha ocurrido un problema")
+    }, err => {
+      if (err.error.mensaje == "cantidad insuficiente") {
+        this.openDialogConfirmacion("Advertencia!!", `${err.error.mensaje}`)
+      } else {
+        this.openDialogConfirmacion("Error", "Ha ocurrido un problema")
       }
     });
-    
+
   }
 
-  regresar(){
+  regresar() {
     this.router.navigate(['/catalogo']);
   }
 
-  cambiarSelectedTrue(){
+  cambiarSelectedTrue() {
 
-    this.isDomicilio=true;
+    this.isDomicilio = true;
 
   }
-  cambiarSelectedFalse(){
+  cambiarSelectedFalse() {
 
-    this.isDomicilio=false;
+    this.isDomicilio = false;
 
   }
 
