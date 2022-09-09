@@ -104,7 +104,6 @@ export class IniciarSesionComponent implements OnInit {
           this.adminservice.getAdminById(this.loginService.usuario.correo).subscribe((resp:AdministradorModel)=>{
             
             if(resp.estado=='1'){
-              this.pedidoSocket.conectar();
               this.router.navigate(['/catalogo']);
             }else{
               this.loginService.logout();
@@ -112,7 +111,6 @@ export class IniciarSesionComponent implements OnInit {
             }
           });
         }else{
-          this.pedidoSocket.conectar();
           this.router.navigate(['/catalogo']);
         }
       }, error => {

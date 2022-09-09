@@ -6,13 +6,13 @@
         </div>
         <div class="cajaContenido">
             <div class="cajaBtns">
-                <button class="botones" (click)="pedidosPendientes()">Pendientes</button>
-                <button class="botones" (click)="pedidosProceso()">Proceso</button>
+                <button class="botones" (click)="pedidosPendientes()">Pendientes {{pedidosPendientesL.length}}</button>
+                <button class="botones" (click)="pedidosProceso()">Proceso {{pedidosProcesoL.length}}</button>
                 <button class="botones" (click)="pedidosCompletados()">Completados</button>
                 <button class="botones" (click)="pedidosCanselados()">Cancelados</button>
             </div>
             <div class="cajaBuscar">
-                <input (change)="buscar()" type="text" placeholder="Buscar por correo" class="form-control input" [(ngModel)]='texto'>
+                <input (keyup)="buscar()" type="text" placeholder="Buscar por correo" class="form-control input" [(ngModel)]='texto'>
             </div>
             <div class="cajaTable" >
                 
