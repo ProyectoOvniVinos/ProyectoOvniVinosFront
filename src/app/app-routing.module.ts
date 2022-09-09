@@ -30,6 +30,7 @@ import { IngresarVentaComponent } from './Components/Admin/ingresar-venta/ingres
 import { CambioPasswordCComponent } from './Components/Client/cambio-password-c/cambio-password-c.component';
 import { RoleGuard } from './Guards/role.guard';
 import { AboutOvniComponent } from './Components/Index/about-ovni/about-ovni.component';
+import { TerminosYcondicionesComponent } from './Components/Index/terminos-ycondiciones/terminos-ycondiciones.component';
 
 
 const routes: Routes = [
@@ -47,6 +48,7 @@ const routes: Routes = [
   { path: 'editarC', component: EditarDatosComponent , canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_CLIENTE' }},
   { path: 'historialC', component: HistorialComponent , canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_CLIENTE' } },
   { path: 'ayuda', component: AyudaComponent },
+  { path: 'terminos', component: TerminosYcondicionesComponent},
 
   { path: 'clientes', component: ClientesComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' }  },
   { path: 'administradores', component: AdministradoresComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } },

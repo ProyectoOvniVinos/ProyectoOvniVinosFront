@@ -14,4 +14,8 @@ export class AboutOvniComponent implements OnInit {
     
   }
 
+  scroll(el:HTMLElement){
+    el.scrollIntoView()
+  }
+  
 }
