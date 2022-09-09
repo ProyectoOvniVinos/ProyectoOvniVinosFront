@@ -27,10 +27,10 @@
     justify-content: center;
     text-align: center;
     position: absolute;
-    width: 50%;
+    width: 40%;
     box-shadow: 11px 11px 8px #9b9b9b, -11px -11px 8px #ffffff;
     top: 55%;
-    left: 25%;
+    left: 30%;
 }
 
 .cajaMensaje2{

@@ -81,9 +81,17 @@ export class PedidosComponent implements OnInit {
     this.pedidoService.getPedidosCliente(this.loginService.usuario.correo).subscribe(pedidos => {
       this.pedidos = pedidos;
       if(modo==1){
-        this.pedidos = this.pedidos.filter(pedido => pedido.estado!='2');
+        this.pedidos = this.pedidos.filter(pedido => pedido.estado!='2' && pedido.estado!='3');
+        if(this.pedidos.length==0){
+          console.log("error");
+          this.lugar="pendientes";
+        }
       }else{
-        this.pedidos = this.pedidos.filter(pedido => pedido.estado!='1');
+        this.pedidos = this.pedidos.filter(pedido => pedido.estado!='1' && pedido.estado!='3');
+        if(this.pedidos.length==0){
+          console.log("error");
+          this.lugar="en proceso";
+        }
       }
     });
   }
@@ -183,7 +191,7 @@ export class PedidosComponent implements OnInit {
       console.log(pedidos);
 
       this.pedidos = pedidos;
-      this.lugar = 'Canselados';
+      this.lugar = 'Cancelados';
     }
     );
   }
@@ -236,10 +244,13 @@ export class PedidosComponent implements OnInit {
   }
 
   pedidosPendientesCliente(){
+    console.log("pendientes");
+    
     this.getPedidosCliente(1);
   }
 
   pedidosProcesoCliente(){
+    console.log("proceso");
     this.getPedidosCliente(2);
   }
 

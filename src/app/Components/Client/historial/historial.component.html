@@ -1,5 +1,8 @@
 <div class="container">
-    <table class="tabla">
+    <div class="cajaMensaje" *ngIf="ventas.length==0">
+        <h1>No existen compras</h1>
+    </div>
+    <table class="tabla" *ngIf="ventas.length!=0">
         <thead class="tablaHeaderG">
             <tr>
                 <th>

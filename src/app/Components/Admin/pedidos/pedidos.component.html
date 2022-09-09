@@ -98,9 +98,13 @@
                                 <td>{{detalle.precioVentaDetalle}}</td>
                             </tr>
 
+
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div class="cajaMensaje" *ngIf="pedidos.length==0">
+                <h1>No hay pedidos {{lugar}}</h1>
             </div>
 
         </div>
