@@ -86,23 +86,17 @@ export class PedidosComponent implements OnInit {
     this.pedidoService.getPedidosCliente(this.loginService.usuario.correo).subscribe(pedidos => {
       this.pedidos = pedidos;
       if(modo==1){
-<<<<<<< HEAD
-        this.pedidos = this.pedidos.filter(pedido => pedido.estado!='2' && pedido.estado!='3');
+        this.pedidos = this.pedidos.filter(pedido => pedido.estado!='2' && pedido.estado!='3' && pedido.estado!='4');
         if(this.pedidos.length==0){
           console.log("error");
           this.lugar="pendientes";
         }
       }else{
-        this.pedidos = this.pedidos.filter(pedido => pedido.estado!='1' && pedido.estado!='3');
+        this.pedidos = this.pedidos.filter(pedido => pedido.estado!='1' && pedido.estado!='3' && pedido.estado!='4');
         if(this.pedidos.length==0){
           console.log("error");
           this.lugar="en proceso";
         }
-=======
-        this.pedidos = this.pedidos.filter(pedido => pedido.estado!='2' && pedido.estado!='3' && pedido.estado!='4');
-      }else{
-        this.pedidos = this.pedidos.filter(pedido => pedido.estado!='1' && pedido.estado!='3' && pedido.estado!='4');
->>>>>>> 2a2a172e5cc0577713f624768afdaf5a2d6cd81b
       }
     });
   }
