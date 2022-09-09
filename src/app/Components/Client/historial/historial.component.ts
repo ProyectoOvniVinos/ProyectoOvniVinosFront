@@ -14,6 +14,7 @@ import { ModalDetallesVentaComponent } from '../../Modal/modal-detalles-venta/mo
 export class HistorialComponent implements OnInit {
   usuario;
   cliente:ClienteModel;
+  ventas: VentaModel[]=[]
   constructor(private clienteService:ClienteService, public dialog: MatDialog, private loginService:LoginService) { }
 
   ngOnInit(): void {
@@ -21,9 +22,16 @@ export class HistorialComponent implements OnInit {
     this.clienteService.getByEmail(this.usuario.correo).subscribe(resp=>{
       
       this.cliente = resp;
+      this.ventas=this.cliente.ventas;
+      this.ordenar();
       
     })
   }
+
+  ordenar(){
+    this.ventas=this.ventas.filter(venta => venta.idRegistroContabilidadDiaria!=null)
+  }
+
   abrirModal(venta: VentaModel){
     venta.correoCliente = this.cliente;
     this.openDialog(venta);

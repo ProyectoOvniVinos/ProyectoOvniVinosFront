@@ -27,7 +27,7 @@
                             <th *ngIf="!mostrarCancelados">Fecha</th>
                             <th>Encargado</th>
                             <th>Cliente</th>
-                            <th class="ultimo">Detalle</th>
+                            <th class="ultimo" *ngIf="!mostrarCancelados">Detalle</th>
                         </tr>
                     </thead>
                     <tbody class="tablabodyP">
@@ -36,13 +36,13 @@
                             <td *ngIf="pedido.estado!='4' && !mostrarCancelados">{{pedido.venta.fechaVenta}}</td>
                             <td>{{pedido.administrador.nombreAdmin}}</td>
                             <td>{{pedido.cliente.correoCliente}}</td>
-                            <td class="puntero" (click)="abrirModal(pedido)">
+                            <td class="puntero" (click)="abrirModal(pedido)" *ngIf="!mostrarCancelados">
                                 <img class="imagenes" src="../../../../assets/Images/detalles.png" alt="">
                             </td>
                         </tr>
                     </tbody>
                     <div *ngIf="banderaD==false" class='spinner'></div>
-                    <div class="cajaMensaje" *ngIf="pedidos.length==0">
+                    <div class="cajaMensaje" *ngIf="pedidos.length==0 && cargo">
                         <h1>No hay pedidos {{lugar}}</h1>
                     </div>
                 </table>
@@ -57,8 +57,8 @@
         </div>
         <hr>
         <div class="btnsCliente">
-            <button class="botonCliente btnOvni">Pendientes</button>
-            <button class="botonCliente btnOvni">En Proceso</button>
+            <button (click)="pedidosPendientesCliente()" class="botonCliente btnOvni">Pendientes</button>
+            <button (click)="pedidosProcesoCliente()" class="botonCliente btnOvni">En Proceso</button>
         </div>
         <hr>
 
@@ -86,8 +86,8 @@
                             <tr>
                                 <th class="primero">Nombre</th>
                                 <th>Cantidad</th>
-                                <th>precio producto</th>
-                                <th class="ultimo">Precio Detalle</th>
+                                <th>Precio Producto</th>
+                                <th class="ultimo">Precio Total</th>
                             </tr>
                         </thead>
                         <tbody class="tablabodyPedido">
@@ -98,9 +98,13 @@
                                 <td>{{detalle.precioVentaDetalle}}</td>
                             </tr>
 
+
                         </tbody>
                     </table>
                 </div>
+            </div>
+            <div class="cajaMensaje" *ngIf="pedidos.length==0">
+                <h1>No hay pedidos {{lugar}}</h1>
             </div>
 
         </div>

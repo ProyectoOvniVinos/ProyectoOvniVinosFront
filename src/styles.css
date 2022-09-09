@@ -577,6 +577,15 @@ body.darkMode .seleccionado{
 
 }
 
+body.darkMode .botones{
+    background: rgb(36, 36, 36)!important;
+    background: linear-gradient(90deg, rgb(20, 20, 20) 11%, rgb(114, 109, 111) 55%, rgb(18, 17, 17) 100%)!important;
+}
+body.darkMode .cajaMensaje{
+    border: 2px solid rgb(0, 0, 0)!important;
+    color: rgb(0, 0, 0)!important;
+}
+
 
 
 
