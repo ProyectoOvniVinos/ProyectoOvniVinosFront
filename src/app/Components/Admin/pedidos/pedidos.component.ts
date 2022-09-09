@@ -86,9 +86,9 @@ export class PedidosComponent implements OnInit {
     this.pedidoService.getPedidosCliente(this.loginService.usuario.correo).subscribe(pedidos => {
       this.pedidos = pedidos;
       if(modo==1){
-        this.pedidos = this.pedidos.filter(pedido => pedido.estado!='2');
+        this.pedidos = this.pedidos.filter(pedido => pedido.estado!='2' && pedido.estado!='3' && pedido.estado!='4');
       }else{
-        this.pedidos = this.pedidos.filter(pedido => pedido.estado!='1');
+        this.pedidos = this.pedidos.filter(pedido => pedido.estado!='1' && pedido.estado!='3' && pedido.estado!='4');
       }
     });
   }
