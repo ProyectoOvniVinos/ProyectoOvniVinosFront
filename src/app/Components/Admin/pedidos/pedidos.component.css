@@ -311,8 +311,7 @@ p{
 
 .scrol{
     overflow: auto;
-    max-height: 25vh;
-    min-height: 0px;
+    height: 14rem;
     padding: 0;
 }
 

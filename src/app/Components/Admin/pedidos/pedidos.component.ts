@@ -44,9 +44,7 @@ export class PedidosComponent implements OnInit {
 
   ngOnInit(): void {
     this.pedidosPendientes()
-    this.pedidoService.getPedidosCliente(this.loginService.usuario.correo).subscribe(pedidos => {
-      this.pedidos = pedidos;
-    });
+    this.getPedidosCliente(1)
     this.activateRoute.params.subscribe(params => {
       let carrito = params['carrito'];
       if (carrito) {
@@ -75,8 +73,7 @@ export class PedidosComponent implements OnInit {
       this.venta.correoCliente = resp;
 
       this.venta.precioVenta = this.carrito.precioCarrito;
-      this.venta.cantidadVenta = cantidad;        //this.valorTotal= this.carrito.precioCarrito;
-      //this.cantidadTotal+= item.cantidadProducto;
+      this.venta.cantidadVenta = cantidad;      
 
     });
     setTimeout(() => {
@@ -84,6 +81,19 @@ export class PedidosComponent implements OnInit {
     },1000)
     
   }
+
+  getPedidosCliente(modo: number){
+    this.pedidoService.getPedidosCliente(this.loginService.usuario.correo).subscribe(pedidos => {
+      this.pedidos = pedidos;
+      if(modo==1){
+        this.pedidos = this.pedidos.filter(pedido => pedido.estado!='2');
+      }else{
+        this.pedidos = this.pedidos.filter(pedido => pedido.estado!='1');
+      }
+    });
+  }
+
+
 
   buscar() {
     if (this.texto == '') {
@@ -194,7 +204,9 @@ export class PedidosComponent implements OnInit {
         modo = "retiro en tienda";
       }
       pedido.modoAdquirir = modo;
-      this.pedidoService.createPedido(pedido).subscribe();
+      this.pedidoService.createPedido(pedido).subscribe(e => {
+
+      });
       //this.pedidoSocket.actualizarPedidos();
       for (let i = this.carrito.itemCarrito.length; i > 0; i--) {
         this.carrito.itemCarrito.pop()
@@ -203,6 +215,7 @@ export class PedidosComponent implements OnInit {
 
       this.openDialogConfirmacion("Exito!!!", "Se ha realizado la compra satisfactoriamente!")
       this.router.navigate(['/pedidos']);
+      this.getPedidosCliente(1)
     }, err => {
       if (err.error.mensaje == "cantidad insuficiente") {
         this.openDialogConfirmacion("Advertencia!!", `${err.error.mensaje}`)
@@ -218,14 +231,19 @@ export class PedidosComponent implements OnInit {
   }
 
   cambiarSelectedTrue() {
-
     this.isDomicilio = true;
-
   }
+
   cambiarSelectedFalse() {
-
     this.isDomicilio = false;
+  }
 
+  pedidosPendientesCliente(){
+    this.getPedidosCliente(1);
+  }
+
+  pedidosProcesoCliente(){
+    this.getPedidosCliente(2);
   }
 
 }
