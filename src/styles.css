@@ -571,6 +571,12 @@ body.darkMode .tablaHeaderPedido{
     background: linear-gradient(90deg, rgb(24, 22, 23) 11%, rgb(87, 87, 87) 55%, rgb(19, 17, 18) 100%) !important;
 }
 
+body.darkMode .seleccionado{
+
+    border: 2px solid rgb(21, 21, 21) !important;
+
+}
+
 
 
 
