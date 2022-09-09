@@ -34,11 +34,13 @@ export class PedidosComponent implements OnInit {
 
   pedidos: PedidoModel[] = [];
 
-
+  cargo:boolean=false;
   constructor(private pedidoService: PedidosRestService, public dialog: MatDialog, public loginService: LoginService,
     private activateRoute: ActivatedRoute, private carritoService: CarritoService,
     private clienteService: ClienteService, private ventaService: VentaService,
-    private router: Router) { }
+    private router: Router) {
+    
+  }
 
   ngOnInit(): void {
     this.pedidosPendientes()
@@ -74,13 +76,17 @@ export class PedidosComponent implements OnInit {
       this.venta.cantidadVenta = cantidad;      
 
     });
-
+    setTimeout(() => {
+      this.cargo=true
+    },1000)
+    
   }
 
   getPedidosCliente(modo: number){
     this.pedidoService.getPedidosCliente(this.loginService.usuario.correo).subscribe(pedidos => {
       this.pedidos = pedidos;
       if(modo==1){
+<<<<<<< HEAD
         this.pedidos = this.pedidos.filter(pedido => pedido.estado!='2' && pedido.estado!='3');
         if(this.pedidos.length==0){
           console.log("error");
@@ -92,6 +98,11 @@ export class PedidosComponent implements OnInit {
           console.log("error");
           this.lugar="en proceso";
         }
+=======
+        this.pedidos = this.pedidos.filter(pedido => pedido.estado!='2' && pedido.estado!='3' && pedido.estado!='4');
+      }else{
+        this.pedidos = this.pedidos.filter(pedido => pedido.estado!='1' && pedido.estado!='3' && pedido.estado!='4');
+>>>>>>> 2a2a172e5cc0577713f624768afdaf5a2d6cd81b
       }
     });
   }
@@ -186,9 +197,7 @@ export class PedidosComponent implements OnInit {
   pedidosCanselados() {
     this.mostrarCancelados = true;
     this.pedidoService.getPedidosCanselados().subscribe((pedidos: PedidoModel[]) => {
-      console.log(pedidos);
       pedidos.filter(pedido => pedido.estado == '4')
-      console.log(pedidos);
 
       this.pedidos = pedidos;
       this.lugar = 'Cancelados';
