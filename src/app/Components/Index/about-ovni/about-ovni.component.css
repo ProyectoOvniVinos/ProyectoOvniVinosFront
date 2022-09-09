@@ -1,0 +1,238 @@
+.first-container{
+    height: 25rem;
+    overflow: auto;
+    padding-bottom: 1rem;
+}
+
+.headerF{
+    margin-top: 1rem;
+}
+
+.div-Manjar{
+    font-size: 1.8rem;
+    text-align: center;
+    width: 65%;
+}
+.div-option{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 2rem;
+}
+
+.div-option ul{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.div-option ul a{
+    font-size: 1.3rem;
+    display: flex;
+    border: none;
+    justify-content: center;
+    align-items: center;
+
+}
+.as{
+    width: 24% !important;
+    text-decoration: none;
+}
+.div-option ul a::after{
+    content: "";
+    background: rgb(167,31,73);
+    background: linear-gradient(90deg, rgba(167,31,73,1) 11%, rgba(255,42,108,1) 55%, rgba(167,31,73,1) 100%);
+    position: absolute;
+    z-index: -1;
+    padding: 16px 20px;
+    display: block;
+    left: -20%;
+    right: -20%;
+    top: 0;
+    bottom: 0;
+    transform: skewX(45deg) scale(0, 1);
+    transition: all 0.3s ease;
+}
+
+
+.div-option ul a:hover{
+    color: #fff;
+}
+.div-option ul a:hover::after{
+    transition: all 0.3s ease-out;
+    transform: skewX(45deg) scale(1, 1);
+}
+
+.second-Container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.div-weAre{
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+}
+
+.logo{
+    width: 18rem;
+    border-radius: 2rem;
+    height: 14.5rem;
+    /*box-shadow: 5px 5px 7px #9b9b9b, -2px -3px 5px #ededed;*/
+    box-shadow: 8px 8px 7px #9b9b9b, -1px -2px 2px #ededed;
+
+}
+
+.titles2{
+    width: 100%;
+    text-align: center;
+}
+.parrafo1{
+    display: flex;
+    width: 44rem;
+    text-align: justify;
+    gap: 4rem;
+
+}
+
+
+
+.container-M-V{
+    margin-top: 4rem;
+    display: flex;
+    width: 85%;
+    justify-content: space-evenly;
+}
+
+.titles1{
+    width: 100%;
+    text-align: center;
+}
+.div-Vision-Ovni{
+    width: 28%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.div-Vision-Ovni p{
+    width: 99%;
+    text-align: justify;
+}
+
+.div-mision-ovni p{
+    width: 19rem;
+    text-align: justify;
+}
+.div-mision-ovni{
+    width: 28%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.imgC{
+    width: 80%;
+    box-shadow: 10px 10px 8px #9b9b9b, -1px -2px 4px #ededed;
+
+    
+
+}
+.imagen{
+    display: flex;
+    justify-content: space-around;
+}
+
+.div-contactenos{
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+}
+.titles{
+    width: 100%;
+    text-align: center;
+}
+
+.team{
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    box-shadow: 5px 5px 7px #9b9b9b, -2px -3px 5px #ededed;
+    height: 18rem;
+    padding: 10px;
+    margin-top: 3rem;
+}
+.imgJuan{
+    width: 30%;
+}
+
+
+.juan{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 40%;
+
+}
+.juan p{
+    margin-top: 1rem;
+}
+
+.cristian{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 40%;
+
+}
+.cristian p{
+    margin-top: 1rem;
+}
+.ivan{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 40%;
+}
+
+.ivan p{
+    margin-top: 1rem;
+}
+.ivan h3{
+    width: 80%;
+}
+
+.jDiego{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 40%;
+}
+
+.jDiego h3{
+    width: 80%;
+}
+.jDiego p{
+    margin-top: 1rem;
+
+}
+
+.brayni{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 40%;
+}
+
+.brayni p{
+    margin-top: 1rem;
+}
