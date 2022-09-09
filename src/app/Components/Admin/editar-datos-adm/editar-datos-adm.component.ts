@@ -6,6 +6,7 @@ import { AdministradorModel } from '../../../Models/Administrador.model';
 import { AdminService } from '../../../Services/admin.service';
 import { LoginService } from '../../../Services/login.service';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
+import { ModalLoadingComponent } from '../../Modal/modal-loading/modal-loading.component';
 
 @Component({
   selector: 'app-editar-datos-adm',
@@ -17,6 +18,7 @@ export class EditarDatosAdmComponent implements OnInit {
   banderaPasswordTwo: boolean = false;
   usuario;
   admin: AdministradorModel;
+  bandera: boolean=null;
 
   actualizarForm !: FormGroup;
   constructor(private fb: FormBuilder, public loginService: LoginService, private adminService: AdminService, private router: Router, public dialog: MatDialog) {
@@ -33,6 +35,7 @@ export class EditarDatosAdmComponent implements OnInit {
       this.actualizarForm.controls['direccion'].setValue(admin.direccionAdmin);
       this.actualizarForm.controls['celular'].setValue(admin.telefonoAdmin);
       this.admin = admin;
+      this.bandera=true;
     })
   }
 
@@ -119,6 +122,15 @@ export class EditarDatosAdmComponent implements OnInit {
     //return this.registroForm.get('celular')?.invalid && this.registroForm.get('celular')?.touched;
   }
 
+  openDialogLoading(){
+    const dialogRef = this.dialog.open(ModalLoadingComponent, {
+      width: '130px'
+    });
+  }
+
+  closeDialogLoading(){
+    const dialogRef = this.dialog.closeAll();
+  }
 
   crearFormulario() {
     this.actualizarForm = this.fb.group({
@@ -131,7 +143,7 @@ export class EditarDatosAdmComponent implements OnInit {
 
   editar() {
     console.log(this.actualizarForm.valid);
-
+    this.openDialogLoading();
     if (this.actualizarForm.valid) {
       this.admin.nombreAdmin = this.actualizarForm.controls['nombre'].value;
       this.admin.apellidoAdmin = this.actualizarForm.controls['apellido'].value;
@@ -139,10 +151,11 @@ export class EditarDatosAdmComponent implements OnInit {
       this.admin.telefonoAdmin = this.actualizarForm.controls['celular'].value;
 
       this.adminService.updateAdmin(this.admin.correoAdmin, this.admin).subscribe(resp => {
-
+        this.closeDialogLoading();
         this.router.navigate(['/datosA']);
         this.openDialog("Felicitaciones", "Se actualizaron sus datos con exito")
       }, error => {
+        this.closeDialogLoading();
         this.openDialog("Error", error.error.mensaje)
       });
     }
@@ -154,5 +167,7 @@ export class EditarDatosAdmComponent implements OnInit {
       data: { title: titleNew, mensaje: mensajeNew },
     });
   }
+
+  
 
 }

@@ -76,6 +76,16 @@
 
 .tabla2{
     width: 89%;
+    box-shadow: 8px 13px 12px #9b9b9b, 0px -5px 0px #ffffff;
+}
+
+.trMargin{
+    height: 3rem;
+    transition: 0.1s;
+}
+
+.trMargin:hover{
+    background-color: rgba(255, 42, 110, 0.432);
 }
 
 .tablaHeaderP{
@@ -89,13 +99,13 @@
 }
 
 .primero{
-    border-end-start-radius: 10px;
-    border-start-start-radius: 10px;
+    border-end-start-radius: 0rem;
+    border-start-start-radius: 1rem;
 }
 
 .ultimo{
-    border-start-end-radius: 10px;
-    border-end-end-radius: 10px;
+    border-start-end-radius: 1rem;
+    border-end-end-radius: 0rem;
 }
 
 .tablabodyP{
