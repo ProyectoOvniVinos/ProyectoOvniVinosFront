@@ -21,7 +21,7 @@
                         </tr>
                     </thead>
                     <tbody class="tablabodyP" *ngIf="cliente">
-                        <tr *ngFor="let venta of cliente.ventas">
+                        <tr *ngFor="let venta of ventas">
                             <td>{{venta.codigoVenta}}</td>
                             <td>{{venta.fechaVenta}}</td>
                             <td>{{venta.precioVenta}}</td>
