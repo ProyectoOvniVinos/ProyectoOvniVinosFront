@@ -29,10 +29,13 @@ import { IngresarCompraComponent } from './Components/Admin/ingresar-compra/ingr
 import { IngresarVentaComponent } from './Components/Admin/ingresar-venta/ingresar-venta.component';
 import { CambioPasswordCComponent } from './Components/Client/cambio-password-c/cambio-password-c.component';
 import { RoleGuard } from './Guards/role.guard';
+import { AboutOvniComponent } from './Components/Index/about-ovni/about-ovni.component';
+import { TerminosYcondicionesComponent } from './Components/Index/terminos-ycondiciones/terminos-ycondiciones.component';
 
 
 const routes: Routes = [
   { path: 'catalogo', component: CatalogoComponent},
+  { path: 'about', component: AboutOvniComponent},
   { path: 'productos', component: ProductosComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } },
   { path: 'agregarProducto', component: AgregarProductoComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } },
 
@@ -45,6 +48,7 @@ const routes: Routes = [
   { path: 'editarC', component: EditarDatosComponent , canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_CLIENTE' }},
   { path: 'historialC', component: HistorialComponent , canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_CLIENTE' } },
   { path: 'ayuda', component: AyudaComponent },
+  { path: 'terminos', component: TerminosYcondicionesComponent},
 
   { path: 'clientes', component: ClientesComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' }  },
   { path: 'administradores', component: AdministradoresComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } },
@@ -62,6 +66,7 @@ const routes: Routes = [
   { path: 'recuperacion/:correo', component: RecuperandoPasswordComponent },
   { path: 'cambiarContraseñaC', component: CambioPasswordCComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_CLIENTE' } },
   { path: 'cambiarContraseñaA', component: CambioPasswordAComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' }},
+
 
   { path: '**', pathMatch: 'full', redirectTo: '/catalogo' }
 ];
