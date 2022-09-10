@@ -33,7 +33,6 @@ export class CambioPasswordCComponent implements OnInit {
 
   ver(event, img){
     this.activar = !this.activar;
-    console.log();
     
     if(this.activar==true){
       event.type='text';
@@ -111,7 +110,6 @@ export class CambioPasswordCComponent implements OnInit {
     this.openDialogLoading()
     if(this.cambioForm.valid){
       let usuario: any = this.loginService.usuario;
-      console.log(usuario);
       
       let cliente = new ClienteModel();
       cliente.passwordCliente=this.cambioForm.get('passwordOne').value;

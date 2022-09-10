@@ -282,6 +282,9 @@ a:hover{
     .cajaInput{
         width: 15rem;
     }
+    .btnRegistrar{
+        font-size: 1.3rem;
+    }
 }
 
 

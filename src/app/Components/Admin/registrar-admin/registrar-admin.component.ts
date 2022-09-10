@@ -27,7 +27,6 @@ export class RegistrarAdminComponent implements OnInit {
 
   ver(event, img){
     this.activar = !this.activar;
-    console.log();
     
     if(this.activar==true){
       event.type='text';
@@ -61,11 +60,11 @@ export class RegistrarAdminComponent implements OnInit {
   }
 
   crearListeners() {
-    this.registroForm.get('nombre')?.valueChanges.subscribe(console.log);
-    this.registroForm.get('apellido')?.valueChanges.subscribe(console.log);
-    this.registroForm.get('direccion')?.valueChanges.subscribe(console.log);
-    this.registroForm.get('celular')?.valueChanges.subscribe(console.log);
-    this.registroForm.get('correo')?.valueChanges.subscribe(console.log);
+    this.registroForm.get('nombre')?.valueChanges.subscribe();
+    this.registroForm.get('apellido')?.valueChanges.subscribe();
+    this.registroForm.get('direccion')?.valueChanges.subscribe();
+    this.registroForm.get('celular')?.valueChanges.subscribe();
+    this.registroForm.get('correo')?.valueChanges.subscribe();
   }
 
   get nombreControl(): FormControl{
@@ -250,7 +249,6 @@ export class RegistrarAdminComponent implements OnInit {
   }
 
   verificar() {
-    console.log("ASDASD");
     
     if(this.registroForm.invalid){
 
@@ -260,21 +258,18 @@ export class RegistrarAdminComponent implements OnInit {
           this.registroForm.get("direccion").status == "INVALID" || this.registroForm.get("contrasena1").status == "INVALID" || 
           this.registroForm.get("contrasena2").status == "INVALID" || this.registroForm.get("edad").status == "INVALID" 
       ){
-        console.log("BBBBBBBBBBBBBBBBBBBBBB");
         
         let title="Error"
         let mensaje="Verifique los campos por favor!!"
         this.openDialog(title, mensaje);
         
       }else if(this.registroForm.get("terminos").status== "INVALID"){
-        console.log("CCCCCCCCCCCCCCCCCCCCCCCCC");
         let title="Advertencia"
         let mensaje="Por favor acepte los términos y condiciones"
         this.openDialog(title, mensaje);
       }
 
     }else{
-
       this.registrar();
     }
   }
@@ -290,7 +285,6 @@ export class RegistrarAdminComponent implements OnInit {
     admin.telefonoAdmin= this.registroForm.controls['celular'].value
     admin.passwordAdmin=this.registroForm.controls['contrasena1'].value
 
-    console.log(admin);
     
     this.adminService.getUsuarioById(admin.correoAdmin).subscribe(admin=>{
       if(admin!=null){

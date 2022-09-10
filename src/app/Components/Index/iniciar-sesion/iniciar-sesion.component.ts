@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AdministradorModel } from 'src/app/Models/Administrador.model';
 import { AdminService } from 'src/app/Services/admin.service';
 import { ClienteService } from 'src/app/Services/cliente.service';
+import { SocketPedidoService } from 'src/app/Services/socket-pedido.service';
 import { LoginService } from '../../../Services/login.service';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 
@@ -16,7 +17,8 @@ import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.compone
 export class IniciarSesionComponent implements OnInit {
   activar: Boolean=false;
   constructor(public dialog: MatDialog, private loginService: LoginService, private router: Router,
-              private adminservice: AdminService, private clienteService: ClienteService) { }
+              private adminservice: AdminService, private clienteService: ClienteService, 
+              private pedidoSocket:SocketPedidoService) { }
 
   
 
@@ -34,7 +36,6 @@ export class IniciarSesionComponent implements OnInit {
 
   ver(event1, event2){
     this.activar = !this.activar;
-    console.log();
     
     if(this.activar==true){
       event1.type='text';
@@ -101,7 +102,6 @@ export class IniciarSesionComponent implements OnInit {
         
         if(this.loginService.usuario.rol=="ROLE_ADMIN"){
           this.adminservice.getAdminById(this.loginService.usuario.correo).subscribe((resp:AdministradorModel)=>{
-            console.log(resp);
             
             if(resp.estado=='1'){
               this.router.navigate(['/catalogo']);
