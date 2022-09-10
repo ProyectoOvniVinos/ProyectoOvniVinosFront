@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../../Services/admin.service';
 import { Router } from '@angular/router';
+import { ModalLoadingComponent } from '../../Modal/modal-loading/modal-loading.component';
 
 @Component({
   selector: 'app-registrar-admin',
@@ -42,6 +43,16 @@ export class RegistrarAdminComponent implements OnInit {
       width: '300px',
       data: {title: titleNew, mensaje: mensajeNew},
     });
+  }
+
+  openDialogLoading(){
+    const dialogRef = this.dialog.open(ModalLoadingComponent, {
+      width: '130px'
+    });
+  }
+
+  closeDialogLoading(){
+    const dialogRef = this.dialog.closeAll();
   }
 
   ngOnInit(): void {
@@ -264,6 +275,8 @@ export class RegistrarAdminComponent implements OnInit {
   }
 
   registrar(){
+
+    this.openDialogLoading();
     let admin = new AdministradorModel();
     admin.correoAdmin = this.registroForm.controls['correo'].value
     admin.nombreAdmin = this.registroForm.controls['nombre'].value
@@ -275,16 +288,18 @@ export class RegistrarAdminComponent implements OnInit {
     
     this.adminService.getUsuarioById(admin.correoAdmin).subscribe(admin=>{
       if(admin!=null){
+        this.closeDialogLoading()
         this.openDialog("Advertencia","este correo ya esta registrado");
       }
     },err=>{
       this.adminService.createAdmin(admin).subscribe((res:any)=>{
-        
+        this.closeDialogLoading()
         this.openDialog("Exito!!!",res.mensaje)
         this.router.navigate(['/administradores'])
   
       },err =>{
-        
+        this.closeDialogLoading()
+        this.openDialog("ERROR", "Ha ocurrido un problema vuelve a intentarlo")
       })
     });
     

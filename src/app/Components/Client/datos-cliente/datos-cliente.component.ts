@@ -12,6 +12,7 @@ export class DatosClienteComponent implements OnInit {
 
   cliente:ClienteModel;
   usuario;
+  bandera:boolean=null;
 
   constructor(private clienteService:ClienteService,  private loginService:LoginService) { 
     
@@ -21,6 +22,7 @@ export class DatosClienteComponent implements OnInit {
     this.usuario = this.loginService.usuario;
     this.clienteService.getByEmail(this.usuario.correo).subscribe(cliente=>{
       this.cliente = cliente;
+      this.bandera = true;
     });
   }
 

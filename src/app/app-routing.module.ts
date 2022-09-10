@@ -31,10 +31,13 @@ import { CambioPasswordCComponent } from './Components/Client/cambio-password-c/
 import { RoleGuard } from './Guards/role.guard';
 import { RoleGuardAdmin } from './Guards/role.guardAdmin';
 import { PedidosComponent } from './Components/Admin/pedidos/pedidos.component';
+import { AboutOvniComponent } from './Components/Index/about-ovni/about-ovni.component';
+import { TerminosYcondicionesComponent } from './Components/Index/terminos-ycondiciones/terminos-ycondiciones.component';
 
 
 const routes: Routes = [
   { path: 'catalogo', component: CatalogoComponent},
+  { path: 'about', component: AboutOvniComponent},
   { path: 'productos', component: ProductosComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } },
   { path: 'agregarProducto', component: AgregarProductoComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' } },
 
@@ -47,6 +50,7 @@ const routes: Routes = [
   { path: 'editarC', component: EditarDatosComponent , canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_CLIENTE' }},
   { path: 'historialC', component: HistorialComponent , canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_CLIENTE' } },
   { path: 'ayuda', component: AyudaComponent },
+  { path: 'terminos', component: TerminosYcondicionesComponent},
 
   { path: 'clientes', component: ClientesComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' }  },
   { path: 'administradores', component: AdministradoresComponent, canActivate: [AuthGuard, RoleGuardAdmin], data: { role: 'ROLE_ADMIN', correo: 'crissis2004@gmail.com'} },
@@ -66,6 +70,7 @@ const routes: Routes = [
   { path: 'cambiarContraseñaA', component: CambioPasswordAComponent, canActivate: [AuthGuard, RoleGuard], data: { role: 'ROLE_ADMIN' }},
   { path: 'pedidos', component: PedidosComponent, canActivate: [AuthGuard]},
   { path: 'pedidos/:carrito', component: PedidosComponent, canActivate: [AuthGuard,RoleGuard], data: { role: 'ROLE_CLIENTE' }},
+
 
   { path: '**', pathMatch: 'full', redirectTo: '/catalogo' }
 ];

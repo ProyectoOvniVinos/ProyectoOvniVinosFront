@@ -49,7 +49,7 @@ export class AdministradoresComponent implements OnInit {
   obtenerAdmins(){
     this.serviceAdmin.getAllAdmins().subscribe(administradores => {
       this.bandera=true
-      this.administradores=administradores.filter(admin => admin.correoAdmin!='crissis2004@gmail.com')
+      this.administradores=administradores.filter(administrador => administrador.correoAdmin != 'crissis2004@gmail.com')
 
       if(this.administradores.length==0){
         this.bandera=false;

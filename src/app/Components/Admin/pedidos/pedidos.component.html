@@ -95,7 +95,7 @@
                         </thead>
                         <tbody class="tablabodyPedido" >
                              <tr *ngFor="let detalle of pedido.venta.ventas">
-                                <td>{{detalle.codigoProducto.nombreProducto}}</td>
+                                <td>{{detalle.codigoProducto.nombreProducto  | slice:0:16 }}</td>
                                 <td>{{detalle.cantidadProducto}}</td>
                                 <td>{{detalle.codigoProducto.precioProducto}}</td>
                                 <td>{{detalle.precioVentaDetalle}}</td>
@@ -124,7 +124,7 @@
                         <img class="imagen" src={{item.codigoProducto.fotoProducto}} alt="">
                         <div class="item">
                             <p> <b> Producto </b></p>
-                            <p>{{item.codigoProducto.nombreProducto}}</p>
+                            <p>{{item.codigoProducto.nombreProducto  | slice:0:16}}</p>
                         </div>
                         <div class="item">
                             <p> <b> Cantidad </b></p>

@@ -7,6 +7,7 @@ import { ClienteService } from '../../../Services/cliente.service';
 import { ConvertirClienteService } from '../../../Services/convertir-cliente.service';
 import { LoginService } from '../../../Services/login.service';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
+import { ModalLoadingComponent } from '../../Modal/modal-loading/modal-loading.component';
 
 @Component({
   selector: 'app-editar-datos',
@@ -18,6 +19,7 @@ export class EditarDatosComponent implements OnInit {
   banderaPasswordTwo: boolean = false;
   cliente:ClienteModel;
   usuario;
+  bandera: boolean=null;
 
   actualizarForm !: FormGroup;
   constructor(private fb: FormBuilder,public loginService:LoginService,
@@ -38,6 +40,7 @@ export class EditarDatosComponent implements OnInit {
       this.actualizarForm.controls['contrasena1'].setValue(cliente.passwordCliente); 
       this.actualizarForm.controls['contrasena2'].setValue(cliente.passwordCliente);
       this.cliente = cliente;
+      this.bandera=true;
     });
 
   }
@@ -168,6 +171,16 @@ export class EditarDatosComponent implements OnInit {
     //return (contrasena1 === contrasena2) ? false : true && this.registroForm.get('contrasena2')?.touched;
   }
 
+  openDialogLoading(){
+    const dialogRef = this.dialog.open(ModalLoadingComponent, {
+      width: '130px'
+    });
+  }
+
+  closeDialogLoading(){
+    const dialogRef = this.dialog.closeAll();
+  }
+
 
   crearFormulario() {
     this.actualizarForm = this.fb.group({
@@ -181,6 +194,7 @@ export class EditarDatosComponent implements OnInit {
   }
 
   editar(){
+    this.openDialogLoading();
     if(this.actualizarForm.valid){
       this.cliente.nombreCliente = this.actualizarForm.controls['nombre'].value;
       this.cliente.apellidoCliente = this.actualizarForm.controls['apellido'].value;
@@ -190,9 +204,11 @@ export class EditarDatosComponent implements OnInit {
       this.cliente = this.convertirCliente.convertir(this.cliente);
       this.clienteService.actualizar(this.cliente).subscribe(cliente=>{
         
+        this.closeDialogLoading();
         this.router.navigate(['/datosC']);
         this.openDialog("Felicitaciones","Se actualizaron sus datos con exito")
       },error=>{
+        this.closeDialogLoading();
         this.openDialog("Error",error.error.mensaje)
       });
     }

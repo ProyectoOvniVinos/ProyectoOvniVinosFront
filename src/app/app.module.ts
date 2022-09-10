@@ -68,6 +68,8 @@ import { CambioPasswordCComponent } from './Components/Client/cambio-password-c/
 import { PedidosComponent } from './Components/Admin/pedidos/pedidos.component';
 import { PedidosPipe } from './pipes/pedidos.pipe';
 import { PedidoDetalleComponent } from './Components/Modal/pedido-detalle/pedido-detalle.component';
+import { AboutOvniComponent } from './Components/Index/about-ovni/about-ovni.component';
+import { TerminosYcondicionesComponent } from './Components/Index/terminos-ycondiciones/terminos-ycondiciones.component';
 
 
 registerLocaleData(localeEs, 'es');
@@ -119,7 +121,10 @@ registerLocaleData(localeEs, 'es');
     CambioPasswordCComponent,
     PedidosComponent,
     PedidosPipe,
-    PedidoDetalleComponent
+    PedidoDetalleComponent,
+    AboutOvniComponent,
+    TerminosYcondicionesComponent,
+
   ],
   imports: [
     BrowserModule,
