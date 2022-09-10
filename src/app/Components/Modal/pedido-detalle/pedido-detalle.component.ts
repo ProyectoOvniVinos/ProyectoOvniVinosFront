@@ -35,7 +35,6 @@ export class PedidoDetalleComponent implements OnInit {
     this.pedido.estado = '2';
     this.updatePedido();
     this.regresar = true;
-    this.dialogRef.close();
   }
 
   pasarCompletado(){
@@ -44,14 +43,14 @@ export class PedidoDetalleComponent implements OnInit {
     this.pedido.estado = '3';
     this.updatePedido();
     this.regresar = true;
-    this.dialogRef.close();
+
   }
   
   pasarCancelado(){
     this.pedido.estado = '4';
     this.updatePedido();
     this.regresar = true;
-    this.dialogRef.close();
+
   }
 
   updatePedido(){

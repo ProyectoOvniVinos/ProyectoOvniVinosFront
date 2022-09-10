@@ -24,6 +24,7 @@
                     <thead class="tablaHeaderP">
                         <tr>
                             <th class="primero">Estado</th>
+                            <th>Modo</th>
                             <th *ngIf="!mostrarCancelados">Fecha</th>
                             <th>Encargado</th>
                             <th>Cliente</th>
@@ -33,6 +34,7 @@
                     <tbody class="tablabodyP">
                         <tr *ngFor="let pedido of pedidos">
                             <td>{{pedido.estado | pedidos}}</td>
+                            <td>{{pedido.modoAdquirir}}</td>
                             <td *ngIf="pedido.estado!='4' && !mostrarCancelados">{{pedido.venta.fechaVenta}}</td>
                             <td>{{pedido.administrador.nombreAdmin}}</td>
                             <td>{{pedido.cliente.correoCliente}}</td>
@@ -57,8 +59,8 @@
         </div>
         <hr>
         <div class="btnsCliente">
-            <button (click)="pedidosPendientesCliente()" class="botonCliente btnOvni">Pendientes</button>
-            <button (click)="pedidosProcesoCliente()" class="botonCliente btnOvni">En Proceso</button>
+            <button (click)="pedidosPendientesCliente()" class="botonCliente btnOvni">Pendientes {{pedidosPendientesC.length}}</button>
+            <button (click)="pedidosProcesoCliente()" class="botonCliente btnOvni">En Proceso {{pedidosProcesoC.length}}</button>
         </div>
         <hr>
 
@@ -69,6 +71,7 @@
                         <div class="organizar">
                             <p class="pPedido"><b>ENCARGADO</b>  {{pedido.administrador.nombreAdmin}}</p>
                             <p class="pPedido"><b>ESTADO </b>  {{pedido.estado | pedidos }}</p>
+                            <p class="pPedido"><b>MODO DE ENTREGA </b>  {{pedido.modoAdquirir}}</p>
                             <p class="pPedido" *ngIf="pedido.venta"><b>CANTIDAD TOTAL </b> {{pedido.venta.cantidadVenta}} </p>
                             <p class="pPedido" *ngIf="pedido.venta"><b>PRECIO TOTAL </b>  {{pedido.venta.precioVenta}} </p>
                         </div>

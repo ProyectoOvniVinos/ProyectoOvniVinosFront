@@ -17,6 +17,11 @@ export class PedidosRestService {
     return this.http.get<PedidoModel[]>(url);
   }
 
+  getPedidosClienteEspecifico(correo: string): Observable<PedidoModel[]> {
+    const url: string = `${this.url}pedidosClienteEspecifico/${correo}`
+    return this.http.get<PedidoModel[]>(url);
+  }
+
   getPedidosPendientes(): Observable<PedidoModel[]> {
     const url: string = `${this.url}pedidosPendientes`
     return this.http.get<PedidoModel[]>(url);

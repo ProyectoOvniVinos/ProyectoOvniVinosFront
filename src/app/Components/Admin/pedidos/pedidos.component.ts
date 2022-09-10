@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
@@ -21,7 +21,7 @@ import * as SockJS from 'sockjs-client';
   templateUrl: './pedidos.component.html',
   styleUrls: ['./pedidos.component.css']
 })
-export class PedidosComponent implements OnInit {
+export class PedidosComponent implements OnInit, OnDestroy {
 
   private client!: Client;
 
@@ -39,6 +39,8 @@ export class PedidosComponent implements OnInit {
   pedidos: PedidoModel[] = [];
   pedidosPendientesL: PedidoModel[] = [];
   pedidosProcesoL: PedidoModel[] = [];
+  pedidosPendientesC: PedidoModel[] = [];
+  pedidosProcesoC: PedidoModel[] = [];
 
   cargo: boolean = false;
   constructor(private pedidoService: PedidosRestService, public dialog: MatDialog, public loginService: LoginService,
@@ -46,6 +48,10 @@ export class PedidosComponent implements OnInit {
     private clienteService: ClienteService, private ventaService: VentaService,
     private router: Router) {
 
+  }
+  
+  ngOnDestroy(){
+    this.client.deactivate();
   }
 
   ngOnInit(): void {
@@ -78,8 +84,23 @@ export class PedidosComponent implements OnInit {
 
       });
 
+      this.client.subscribe('/topic/alerta3', e => {
+        let pedidos = JSON.parse(e.body) as PedidoModel[];
+        this.pedidosPendientesC = pedidos.filter(pedido=>pedido.estado=='1');
+        this.pedidosProcesoC = pedidos.filter(pedido=>pedido.estado=='2');
+        if (this.lugar == 'en Proceso') {
+          this.pedidos = this.pedidosProcesoC;
+        }else{
+          this.pedidos = this.pedidosPendientesC;
+        }
+
+      });
+
       this.client.publish({ destination: '/app/alerta', body: "entro" });
       this.client.publish({ destination: '/app/alerta2', body: "entro" });
+      if(this.loginService.hasRole('ROLE_CLIENTE')){
+        this.client.publish({ destination: '/app/alerta3', body: this.loginService.usuario.correo });
+      }
     };
 
     this.client.onDisconnect = (frame) => {
@@ -101,6 +122,10 @@ export class PedidosComponent implements OnInit {
     this.client.publish({ destination: '/app/alerta2', body: "entro" });
   }
 
+  actualizarPedidosCliente(correo:string): void {
+    this.client.publish({ destination: '/app/alerta3', body: correo });
+  }
+
   inicio1() {
 
     this.pedidosPendientes();
@@ -115,7 +140,7 @@ export class PedidosComponent implements OnInit {
           this.pedidosPendientes()
         } else {
           this.lugarmijo = '2';
-          this.pedidoService.getPedidosCliente(this.loginService.usuario.correo).subscribe(pedidos => {
+          this.pedidoService.getPedidosClienteEspecifico(this.loginService.usuario.correo).subscribe(pedidos => {
             this.pedidos = pedidos;
             this.pedidosPendientesCliente()
           });
@@ -152,6 +177,8 @@ export class PedidosComponent implements OnInit {
   getPedidosCliente(modo: number) {
     this.pedidoService.getPedidosCliente(this.loginService.usuario.correo).subscribe(pedidos => {
       this.pedidos = pedidos;
+      this.pedidosPendientesC = pedidos.filter(pedido => pedido.estado=='1');
+      this.pedidosProcesoC = pedidos.filter(pedido => pedido.estado=='2');
       if (modo == 1) {
 
         this.pedidos = this.pedidos.filter(pedido => pedido.estado != '2' && pedido.estado != '3' && pedido.estado != '4');
@@ -162,7 +189,7 @@ export class PedidosComponent implements OnInit {
       } else {
         this.pedidos = this.pedidos.filter(pedido => pedido.estado != '1' && pedido.estado != '3' && pedido.estado != '4');
         if (this.pedidos.length == 0) {
-          this.lugar = "en proceso";
+          this.lugar = "en Proceso";
         }
       }
     });
@@ -204,7 +231,7 @@ export class PedidosComponent implements OnInit {
       width: '70%',
       data: pedido,
     });
-    dialogRef.afterClosed().subscribe((result: boolean) => {
+    dialogRef.afterClosed().subscribe((result: any) => {
       if (this.lugar == "Pendientes") {
         this.pedidosPendientes();
       } else if (this.lugar == "en Proceso") {
@@ -214,11 +241,14 @@ export class PedidosComponent implements OnInit {
       } else {
         this.pedidosCanselados();
       }
-
-
-      this.actualizarPedidosPendientes();
-      this.actualizarPedidosProceso();
-
+      
+      console.log(result);
+      
+      if(result){
+        this.actualizarPedidosPendientes();
+        this.actualizarPedidosProceso();
+        this.actualizarPedidosCliente(result.cliente.correoCliente);
+      }
 
     });
   }
