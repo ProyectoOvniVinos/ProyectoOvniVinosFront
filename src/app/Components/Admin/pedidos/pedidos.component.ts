@@ -118,7 +118,6 @@ export class PedidosComponent implements OnInit {
   }
 
   pedidosCliente() {
-    console.log(this.texto + "AAAAAAAAAAAAAAAAAAAAAAAAAAa");
 
     this.pedidoService.getPedidosCliente(this.texto).subscribe(
       pedidos => {
