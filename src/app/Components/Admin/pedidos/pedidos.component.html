@@ -69,8 +69,8 @@
                         <div class="organizar">
                             <p class="pPedido"><b>ENCARGADO</b>  {{pedido.administrador.nombreAdmin}}</p>
                             <p class="pPedido"><b>ESTADO </b>  {{pedido.estado | pedidos }}</p>
-                            <p class="pPedido"><b>CANTIDAD TOTAL </b> {{pedido.venta.cantidadVenta}} </p>
-                            <p class="pPedido"><b>PRECIO TOTAL </b>  {{pedido.venta.precioVenta}} </p>
+                            <p class="pPedido" *ngIf="pedido.venta"><b>CANTIDAD TOTAL </b> {{pedido.venta.cantidadVenta}} </p>
+                            <p class="pPedido" *ngIf="pedido.venta"><b>PRECIO TOTAL </b>  {{pedido.venta.precioVenta}} </p>
                         </div>
                     </div>
                     <div class="codigoPedido">
@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <hr>
-                <div class="tabla" >
+                <div class="tabla" *ngIf="pedido.venta">
                     <table class="tabla">
                         <thead class="tablaHeaderPedido">
                             <tr>
@@ -90,7 +90,7 @@
                                 <th class="ultimo">Precio Total</th>
                             </tr>
                         </thead>
-                        <tbody class="tablabodyPedido">
+                        <tbody class="tablabodyPedido" >
                              <tr *ngFor="let detalle of pedido.venta.ventas">
                                 <td>{{detalle.codigoProducto.nombreProducto}}</td>
                                 <td>{{detalle.cantidadProducto}}</td>

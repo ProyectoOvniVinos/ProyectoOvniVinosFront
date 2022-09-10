@@ -40,56 +40,50 @@ export class PedidosComponent implements OnInit {
   pedidosPendientesL: PedidoModel[] = [];
   pedidosProcesoL: PedidoModel[] = [];
 
-  cargo:boolean=false;
+  cargo: boolean = false;
   constructor(private pedidoService: PedidosRestService, public dialog: MatDialog, public loginService: LoginService,
     private activateRoute: ActivatedRoute, private carritoService: CarritoService,
     private clienteService: ClienteService, private ventaService: VentaService,
     private router: Router) {
-    
+
   }
 
   ngOnInit(): void {
-    
+
     this.inicio1();
     this.inicio2();
 
     this.client = new Client();
-    this.client.webSocketFactory = ():any => {
+    this.client.webSocketFactory = (): any => {
       return new SockJS("http://localhost:8080/alerta-back");
     }
 
     this.client.activate();
 
     this.client.onConnect = (frame) => {
-      
-      console.log("Desonectados: " + !this.client.connected + " : " + frame);
-      this.client.subscribe('/topic/alerta',e=>{
+
+      this.client.subscribe('/topic/alerta', e => {
         this.pedidosPendientesL = JSON.parse(e.body) as PedidoModel[];
-        if(this.lugar == 'Pendientes'){
+        if (this.lugar == 'Pendientes') {
           this.pedidos = this.pedidosPendientesL;
         }
-        
+
       });
 
-      this.client.subscribe('/topic/alerta2',e=>{
+      this.client.subscribe('/topic/alerta2', e => {
         this.pedidosProcesoL = JSON.parse(e.body) as PedidoModel[];
-        if(this.lugar == 'en Proceso'){
+        if (this.lugar == 'en Proceso') {
           this.pedidos = this.pedidosProcesoL;
         }
-        
+
       });
 
-      this.client.publish({ destination: '/app/alerta',body: "entro" });
-      this.client.publish({ destination: '/app/alerta2',body: "entro" });
-      /* this.client.subscribe('/topic/alerta',e=>{
-        this.pedido = JSON.parse(e.body) as PedidoModel[];
-        
-      }); */
+      this.client.publish({ destination: '/app/alerta', body: "entro" });
+      this.client.publish({ destination: '/app/alerta2', body: "entro" });
     };
 
     this.client.onDisconnect = (frame) => {
-      console.log("Desonectados: " + !this.client.connected + " : " + frame);
-    } 
+    }
 
   }
 
@@ -100,17 +94,17 @@ export class PedidosComponent implements OnInit {
     this.client.deactivate();
   }
   actualizarPedidosPendientes(): void {
-    this.client.publish({ destination: '/app/alerta', body: "entro"});
+    this.client.publish({ destination: '/app/alerta', body: "entro" });
   }
 
   actualizarPedidosProceso(): void {
-    this.client.publish({ destination: '/app/alerta2', body: "entro"});
+    this.client.publish({ destination: '/app/alerta2', body: "entro" });
   }
 
-  inicio1(){
+  inicio1() {
 
-    this.pedidosPendientes()
-    this.getPedidosCliente(1)
+    this.pedidosPendientes();
+    this.getPedidosCliente(1);
     this.activateRoute.params.subscribe(params => {
       let carrito = params['carrito'];
       if (carrito) {
@@ -123,13 +117,14 @@ export class PedidosComponent implements OnInit {
           this.lugarmijo = '2';
           this.pedidoService.getPedidosCliente(this.loginService.usuario.correo).subscribe(pedidos => {
             this.pedidos = pedidos;
+            this.pedidosPendientesCliente()
           });
         }
       }
     })
   }
 
-  inicio2(){
+  inicio2() {
     this.clienteService.getByEmail(this.loginService.usuario.correo).subscribe((resp: ClienteModel) => {
       this.carrito = resp.carrito;
       let cantidad = 0;
@@ -145,29 +140,29 @@ export class PedidosComponent implements OnInit {
       this.venta.correoCliente = resp;
 
       this.venta.precioVenta = this.carrito.precioCarrito;
-      this.venta.cantidadVenta = cantidad;      
+      this.venta.cantidadVenta = cantidad;
 
     });
     setTimeout(() => {
-      this.cargo=true
-    },1000)
-    
+      this.cargo = true
+    }, 1000)
+
   }
 
-  getPedidosCliente(modo: number){
+  getPedidosCliente(modo: number) {
     this.pedidoService.getPedidosCliente(this.loginService.usuario.correo).subscribe(pedidos => {
       this.pedidos = pedidos;
-      if(modo==1){
-        this.pedidos = this.pedidos.filter(pedido => pedido.estado!='2' && pedido.estado!='3' && pedido.estado!='4');
-        if(this.pedidos.length==0){
-          console.log("error");
-          this.lugar="pendientes";
+      if (modo == 1) {
+
+        this.pedidos = this.pedidos.filter(pedido => pedido.estado != '2' && pedido.estado != '3' && pedido.estado != '4');
+
+        if (this.pedidos.length == 0) {
+          this.lugar = "pendientes";
         }
-      }else{
-        this.pedidos = this.pedidos.filter(pedido => pedido.estado!='1' && pedido.estado!='3' && pedido.estado!='4');
-        if(this.pedidos.length==0){
-          console.log("error");
-          this.lugar="en proceso";
+      } else {
+        this.pedidos = this.pedidos.filter(pedido => pedido.estado != '1' && pedido.estado != '3' && pedido.estado != '4');
+        if (this.pedidos.length == 0) {
+          this.lugar = "en proceso";
         }
       }
     });
@@ -177,17 +172,17 @@ export class PedidosComponent implements OnInit {
 
   buscar() {
     if (this.texto == '') {
-      if(this.lugar == 'Pendientes'){
+      if (this.lugar == 'Pendientes') {
         this.pedidosPendientes();
-      }else if(this.lugar == 'en Proceso'){
+      } else if (this.lugar == 'en Proceso') {
         this.pedidosProceso();
-      }else if(this.lugar == 'Completados'){
+      } else if (this.lugar == 'Completados') {
         this.pedidosCompletados();
-      }else{
+      } else {
         this.pedidosCanselados();
 
       }
-      
+
     } else {
       this.pedidosCliente();
     }
@@ -219,11 +214,11 @@ export class PedidosComponent implements OnInit {
       } else {
         this.pedidosCanselados();
       }
-     
+
 
       this.actualizarPedidosPendientes();
       this.actualizarPedidosProceso();
-      
+
 
     });
   }
@@ -238,7 +233,6 @@ export class PedidosComponent implements OnInit {
           this.pedidos = pedidos.filter(pedido => pedido.estado == '2');
         } else if (this.lugar == 'Completados') {
           this.pedidos = pedidos.filter(pedido => pedido.estado == '3');
-          console.log(this.pedidos);
         } else {
           this.pedidos = pedidos.filter(pedido => pedido.estado == '4');
         }
@@ -252,7 +246,7 @@ export class PedidosComponent implements OnInit {
       pedidos => {
         this.pedidos = pedidos;
         this.lugar = 'Pendientes';
-        if(this.texto != '' && this.texto !=null){
+        if (this.texto != '' && this.texto != null) {
           this.buscar();
         }
       }
@@ -265,7 +259,7 @@ export class PedidosComponent implements OnInit {
       pedidos => {
         this.pedidos = pedidos;
         this.lugar = 'en Proceso';
-        if(this.texto != '' && this.texto !=null){
+        if (this.texto != '' && this.texto != null) {
           this.buscar();
         }
       }
@@ -279,7 +273,7 @@ export class PedidosComponent implements OnInit {
 
         this.pedidos = pedidos;
         this.lugar = 'Completados';
-        if(this.texto != '' && this.texto !=null){
+        if (this.texto != '' && this.texto != null) {
           this.buscar();
         }
       }
@@ -293,7 +287,7 @@ export class PedidosComponent implements OnInit {
 
       this.pedidos = pedidos;
       this.lugar = 'Cancelados';
-      if(this.texto != '' && this.texto !=null){
+      if (this.texto != '' && this.texto != null) {
         this.buscar();
       }
     }
@@ -348,14 +342,12 @@ export class PedidosComponent implements OnInit {
     this.isDomicilio = false;
   }
 
-  pedidosPendientesCliente(){
-    console.log("pendientes");
-    
+  pedidosPendientesCliente() {
+
     this.getPedidosCliente(1);
   }
 
-  pedidosProcesoCliente(){
-    console.log("proceso");
+  pedidosProcesoCliente() {
     this.getPedidosCliente(2);
   }
 
