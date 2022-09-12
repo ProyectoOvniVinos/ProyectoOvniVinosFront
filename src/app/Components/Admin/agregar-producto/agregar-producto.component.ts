@@ -59,13 +59,10 @@ export class AgregarProductoComponent implements OnInit {
       data: {title: titleNew, mensaje: mensajeNew},
     });
     dialogRef.afterClosed().subscribe( (result:boolean) => {
-      console.log(`Dialog result: ${result}`); // Pizza!
       if(result==true){
         this.openDialogLoading();
-        console.log("confirmo");
         this.deshabilitarProducto();        
       }else{
-        console.log("en else");
         
       }
     });
@@ -82,7 +79,6 @@ export class AgregarProductoComponent implements OnInit {
         this.openDialogLoading();
         this.habilitarProducto();        
       }else{
-        console.log("en else");
         
       }
     });
@@ -113,7 +109,6 @@ export class AgregarProductoComponent implements OnInit {
           this.registroProductoForm.controls["precioProducto"].setValue(this.producto.precioProducto);
           this.registroProductoForm.controls["precioProveedor"].setValue(this.producto.precioProductoProveedor);
           this.registroProductoForm.controls["descripcionProducto"].setValue(this.producto.descripcionProducto);
-          console.log(this.producto);
           
           if(this.producto.estado==="1"){
             this.botonAccion="Deshabilitar";
@@ -174,7 +169,6 @@ export class AgregarProductoComponent implements OnInit {
 
   registrar(){
     if(!this.fotoSeleccionada){
-      console.log("Por favor seleccione una foto. ")
       this.closeDialogLoading();
       this.openDialog("ADVERTENCIA","Por favor seleccione una foto. ")
     }else{
@@ -202,7 +196,6 @@ export class AgregarProductoComponent implements OnInit {
             },err=>{
               this.closeDialogLoading();
               this.openDialog("ERROR","Lo sentimos, no se pudo agregar el producto. Inténtalo de nuevo. ")
-              console.log(err.status);
               
             });
           })
@@ -277,7 +270,6 @@ export class AgregarProductoComponent implements OnInit {
           this.closeDialogLoading();
           this.router.navigate(['/productos'])
           this.openDialog("¡¡ÉXITO!!","El producto se ha actualizado correctamente. ")
-          console.log(productoNew);
           
         },err=>{
           this.closeDialogLoading();
@@ -322,7 +314,6 @@ export class AgregarProductoComponent implements OnInit {
       this.openDialog("¡¡ÉXITO!!","Se ha desahabilitado correctamente el producto. ")
       this.router.navigate(['/productos'])
     }, err => {
-      console.log(err);
       
     })
   }
@@ -334,7 +325,6 @@ export class AgregarProductoComponent implements OnInit {
       this.openDialog("¡¡ÉXITO!!","Se ha habilitado correctamente el producto. ")
       this.router.navigate(['/productos'])
     }, err => {
-      console.log(err);
       
     })
   }

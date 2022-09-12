@@ -33,7 +33,6 @@ export class CambioPasswordAComponent implements OnInit {
 
   ver(event, img){
     this.activar = !this.activar;
-    console.log();
     
     if(this.activar==true){
       event.type='text';
@@ -111,7 +110,6 @@ export class CambioPasswordAComponent implements OnInit {
 
     if(this.cambioForm.valid){
       let usuario: any = this.loginServico.usuario;
-      console.log(usuario);
       
       let admin = new AdministradorModel();
       admin.passwordAdmin=this.cambioForm.get('passwordOne').value;

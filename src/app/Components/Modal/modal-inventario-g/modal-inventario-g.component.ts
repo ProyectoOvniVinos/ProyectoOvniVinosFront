@@ -22,7 +22,6 @@ export class ModalInventarioGComponent implements OnInit {
   
 
   ngOnInit(): void {
-    console.log(this .inventario);
     
   }
 

@@ -7,5 +7,6 @@ export class VentaModel {
     cantidadVenta!:number;
 	fechaVenta !:Date;
 	correoCliente!:ClienteModel;
+	idRegistroContabilidadDiaria!:any;
 	ventas:Item_ventaModel[] = [];
 }

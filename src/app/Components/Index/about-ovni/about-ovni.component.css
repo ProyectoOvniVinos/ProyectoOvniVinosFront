@@ -1,5 +1,5 @@
 .first-container{
-    height: 25rem;
+    height: 75%;
     overflow: auto;
     padding-bottom: 1rem;
 }
@@ -92,9 +92,9 @@
 }
 .parrafo1{
     display: flex;
-    width: 44rem;
+    width: 95%;
     text-align: justify;
-    gap: 4rem;
+    gap: 10rem;
 
 }
 

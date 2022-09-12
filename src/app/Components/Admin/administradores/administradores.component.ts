@@ -18,7 +18,6 @@ export class AdministradoresComponent implements OnInit {
   constructor(private serviceAdmin: AdminService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    console.log("hola");
     this.obtenerAdmins();
   }
 
@@ -38,13 +37,10 @@ export class AdministradoresComponent implements OnInit {
       data: {title: titleNew, mensaje: mensajeNew},
     });
     dialogRef.afterClosed().subscribe( (result:boolean) => {
-      console.log(`Dialog result: ${result}`); // Pizza!
       if(result==true){
         this.openDialogLoading();
-        console.log("confirmo");
         this.deshabilitarAdmin(correo,estado);        
       }else{
-        console.log("en else");
         
       }
     });
@@ -52,7 +48,6 @@ export class AdministradoresComponent implements OnInit {
 
   obtenerAdmins(){
     this.serviceAdmin.getAllAdmins().subscribe(administradores => {
-      console.log("entro al subscribe");
       this.bandera=true
       this.administradores=administradores.filter(administrador => administrador.correoAdmin != 'crissis2004@gmail.com')
 
@@ -93,11 +88,9 @@ export class AdministradoresComponent implements OnInit {
       })
       this.sorteando()
       this.closeDialogLoading();
-      console.log(res);
       
     },err => {
       this.closeDialogLoading();
-      console.log(err);
       
     })
   }

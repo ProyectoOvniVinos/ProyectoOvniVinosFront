@@ -25,7 +25,6 @@ export class RecuperandoPasswordComponent implements OnInit {
 
   ver(event, img){
     this.activar = !this.activar;
-    console.log();
     
     if(this.activar==true){
       event.type='text';
@@ -116,7 +115,6 @@ export class RecuperandoPasswordComponent implements OnInit {
     });
   }
   verificar() {
-    console.log(this.recuperandoForm.invalid);
 
     if (this.recuperandoForm.invalid) {
 
@@ -140,19 +138,11 @@ export class RecuperandoPasswordComponent implements OnInit {
     this.clienteService.getByEmail(this.recuperandoForm.controls["correo"].value).subscribe((resp: ClienteModel) => {
 
       resp.passwordCliente = this.recuperandoForm.controls["contrasena1"].value
-      console.log(resp);
       this.clienteService.actualizar(resp).subscribe(respue => {
         this.openDialog("Actualizados", "Actualizo la contraseña con exito.");
         this.router.navigate(['/iniciarSesion'])
       })
     })
-  }
-
-
-  prueba() {
-    console.log(window.screen);
-    console.log(screen.width)
-    console.log(screen.height)
   }
 
 }
