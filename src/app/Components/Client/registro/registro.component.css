@@ -371,12 +371,12 @@ a:hover{
         gap: 0;
     }
     .cajaP-login{
-        height: 60%;
+        height: 80%;
     }
 
     .cajaM-login{
         overflow: auto;
-        height: 60%;
+        height: 70%;
     }
 }
 
