@@ -278,9 +278,9 @@ export class RegistrarAdminComponent implements OnInit {
 
     this.openDialogLoading();
     let admin = new AdministradorModel();
-    admin.correoAdmin = this.registroForm.controls['correo'].value
-    admin.nombreAdmin = this.registroForm.controls['nombre'].value
-    admin.apellidoAdmin = this.registroForm.controls['apellido'].value
+    admin.correoAdmin = this.registroForm.controls['correo'].value.toLowerCase()
+    admin.nombreAdmin = this.registroForm.controls['nombre'].value.toLowerCase()
+    admin.apellidoAdmin = this.registroForm.controls['apellido'].value.toLowerCase()
     admin.direccionAdmin= this.registroForm.controls['direccion'].value
     admin.telefonoAdmin= this.registroForm.controls['celular'].value
     admin.passwordAdmin=this.registroForm.controls['contrasena1'].value
