@@ -195,8 +195,6 @@ export class PedidosComponent implements OnInit, OnDestroy {
     });
   }
 
-
-
   buscar() {
     if (this.texto == '') {
       if (this.lugar == 'Pendientes') {

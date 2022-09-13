@@ -121,19 +121,19 @@ export class CambioPasswordAComponent implements OnInit {
   
         this.adminService.updateAdmin(adminEncontrado.correoAdmin ,adminEncontrado).subscribe( response => {
           this.closeDialogLoading()
-          this.openDialog("Exito", "Se ha actualizado su contraseña exitosamente!!")
+          this.openDialog("¡¡ÉXITO!!", "Su contraseña se ha actualizado satisfactoriamente. ")
           this.router.navigate(['/datosA'])
         }, err=> {
           this.closeDialogLoading()
-          this.openDialog("Error", "No se pudo cambiar la contraseña!!")
+          this.openDialog("ERROR", "Lo sentimos, no se pudo cambiar la contraseña. Inténtalo de nuevo. ")
         })
       }, err => {
         this.closeDialogLoading()
-        this.openDialog("Error", "Ha ocurrido un error, porfavor intentelo nuevamente")
+        this.openDialog("ERROR", "Lo sentimos, ha ocurrido un problema. Inténtalo de nuevo. ")
       })
     }else{
       this.closeDialogLoading()
-      this.openDialog("Error","Porfavor DIligencie todos los campos")
+      this.openDialog("ERROR","Por favor verifique que todos los campos estén llenos. ")
     }
 
 

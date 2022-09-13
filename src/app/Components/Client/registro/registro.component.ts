@@ -250,13 +250,13 @@ export class RegistroComponent implements OnInit {
           this.registroForm.get("contrasena2").status == "INVALID" || this.registroForm.get("edad").status == "INVALID" 
       ){
         
-        let title="Error"
-        let mensaje="Verifique los campos por favor!!"
+        let title="ERROR"
+        let mensaje="Verifique que todos los campo estén llenos, por favor. "
         this.openDialog(title, mensaje);
         
       }else if(this.registroForm.get("terminos").status== "INVALID"){
-        let title="Advertencia"
-        let mensaje="Por favor Acepte Terminos y Condiciones!!"
+        let title="ADVERTENCIA"
+        let mensaje="Por favor acepte los términos y condiciones."
         this.openDialog(title, mensaje);
       }
 
@@ -275,11 +275,11 @@ export class RegistroComponent implements OnInit {
     cliente.passwordCliente=this.registroForm.controls['contrasena1'].value
     this.clienteService.getUsuarioById(cliente.correoCliente).subscribe(cliente=>{
       if(cliente!=null){
-        this.openDialog("Advertencia", "El correo ya se encontraba registrado");
+        this.openDialog("ADVERTENCIA", "Este correo ya existe. ");
       }
     },error=>{
       this.clienteService.registro(cliente).subscribe(res=>{
-        this.openDialog("Felicitaciones", "Se ha registrado satisfactoriamente.")
+        this.openDialog("¡¡ÉXITO!!", "Se ha registrado satisfactoriamente.")
         this.router.navigate(['/iniciarSesion']);
       });
     });

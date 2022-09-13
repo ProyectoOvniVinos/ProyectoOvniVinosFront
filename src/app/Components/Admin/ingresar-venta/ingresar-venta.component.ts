@@ -137,7 +137,7 @@ export class IngresarVentaComponent implements OnInit {
             
           }
         }else{
-          this.openDialog("Lo sentimos", "No hay existencias de ese producto en el momento")
+          this.openDialog("LO SENTIMOS", "No hay existencias de ese producto en el momento.")
           this.ventaForm.controls['producto'].reset()
           this.ventaForm.controls['cantidad'].reset()
         }
