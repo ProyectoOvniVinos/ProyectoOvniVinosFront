@@ -327,6 +327,57 @@ p{
     opacity: 100%;
 }
 
+.mat-icon-button{
+    border-radius: 0%!important;
+    width: 7%!important; 
+    border-radius: 0.3rem!important;
+    border: 1px solid rgb(184, 13, 72);
+    height: 3.35rem !important;
+
+}
+.mat-menu-panel {
+
+    width: 12rem!important;
+}
+
+.imgMenuFiltro{
+    width: 15%;
+    height: 70%;
+    margin-left: 8%!important;
+}
+
+.imgMenuFiltrotwo{
+    width: 25%;
+    height: 70%;
+}
+
+.textSpan{
+    width: 100%;
+
+}
+
+button.mat-menu-item {
+
+    display: flex!important;
+    text-align: center!important;
+    gap: 2%!important; 
+}
+
+.btnFiltroTwo{
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.menuFiltro{
+    display: none;
+}
+
+.cajaMenu{
+    width: 8%;
+    height: 3.3rem;
+}
+
 @media screen and (max-width:1920px) and (max-height:1080px){
     .cardP{
         width: 15%;
@@ -499,6 +550,16 @@ p{
     .cajaCarrito{
         width: 10%;
     }
+    .btnFiltroTwo{
+        display:block;
+    }
+    .menuFiltro{
+        display: block;
+    }
+    .btnFil{
+        display: none;
+    }
+
 }
 @media screen and (max-width:1020px) and (max-height:1000px){
     .catalogoTwo{
@@ -509,6 +570,7 @@ p{
     .catalogoTwo{
         margin-bottom:55%;
     }
+    
 }
 
 @media screen and (max-width:940px) and (max-height:1080px){
@@ -529,8 +591,9 @@ p{
         width: 45%;
     }
     .btnFiltro{
-        width: 13%;
+        width: 8%;
     }
+
 }
 
 @media screen and (max-width:920px) and (max-height:1000px){

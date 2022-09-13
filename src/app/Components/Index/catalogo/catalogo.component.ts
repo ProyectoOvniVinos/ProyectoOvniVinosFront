@@ -1,5 +1,5 @@
 import { ModalProductosComponent } from './../../Modal/modal-productos/modal-productos.component';
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductoModel } from '../../../Models/Producto.model';
 import { ProductoService } from '../../../Services/producto.service';
@@ -12,6 +12,7 @@ import { InventarioGService } from '../../../Services/inventario-g.service';
 import { LoginService } from '../../../Services/login.service';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
+import { MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
   selector: 'app-catalogo',
@@ -21,7 +22,9 @@ import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
 export class CatalogoComponent implements OnInit, OnChanges {
 
 
+
   private usuario;
+  bandera: boolean=false;
 
   inventarioGeneral: Inventario_generalModel[] = [];
   validarCarrito = false;
@@ -45,7 +48,12 @@ export class CatalogoComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-
+/*     const width =document.documentElement.scrollWidth;
+    if(width > 921) {
+      this.banderaWidth=true;
+    }else{
+      this.banderaWidth=false;
+    } */
     this.obtenerProductos();
     this.usuario = this.loginService.usuario;
     if (this.loginService.isAuthenticated() && this.loginService.hasRole('ROLE_CLIENTE')) {
@@ -265,6 +273,15 @@ export class CatalogoComponent implements OnInit, OnChanges {
 
   mostrarCarrito() {
     this.validarCarrito = !this.validarCarrito;
+  }
+
+
+  entrarMenu(){
+    this.bandera=true;
+  }
+
+  salirMenu(){
+    this.bandera=false;
   }
 
 }

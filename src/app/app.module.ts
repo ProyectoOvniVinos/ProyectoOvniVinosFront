@@ -59,7 +59,6 @@ import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
 import { AdministradoresComponent } from './Components/Admin/administradores/administradores.component';
 import { RegistrarAdminComponent } from './Components/Admin/registrar-admin/registrar-admin.component';
-import { HttpIntercepterBasicAuthService } from './Services/http-intercepter-basic-auth.service';
 import { TokenInterceptorService } from './Services/tokenInterceptor.service';
 import { AutoInterceptorService } from './Services/auto-interceptor.service';
 
@@ -70,6 +69,8 @@ import { PedidosPipe } from './pipes/pedidos.pipe';
 import { PedidoDetalleComponent } from './Components/Modal/pedido-detalle/pedido-detalle.component';
 import { AboutOvniComponent } from './Components/Index/about-ovni/about-ovni.component';
 import { TerminosYcondicionesComponent } from './Components/Index/terminos-ycondiciones/terminos-ycondiciones.component';
+
+import {MatMenuModule} from '@angular/material/menu';
 
 
 registerLocaleData(localeEs, 'es');
@@ -139,7 +140,8 @@ registerLocaleData(localeEs, 'es');
     ReactiveFormsModule,
     ScrollingModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    MatMenuModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'es' },
   //{provide: HTTP_INTERCEPTORS, useClass: HttpIntercepterBasicAuthService, multi: true},
