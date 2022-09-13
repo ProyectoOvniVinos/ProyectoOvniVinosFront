@@ -326,6 +326,15 @@
         width: 60%;
         height: 40%;
     }
+    .cajaEmail{
+        height: 6rem;
+    }
+    .cajaPassword {
+        height: 6rem;
+    }
+    .cajaHijo2 {
+        display: none;
+    }
 
     .cajaBtnsGlobal {
         flex-direction: column;
@@ -339,8 +348,8 @@
     .cajaHijo1 {
         width: 100%;
     }
-
-    .cajaHijo2 {
-        display: none;
+    .cajaEmail {
+        height: 6rem;
     }
+    
 }
