@@ -7,6 +7,7 @@
             <div>
                 <div class="organizar">
                     <p>Encargado: {{pedido.administrador.nombreAdmin}}</p>
+                    <p *ngIf="pedido.direccion">Dirección: {{pedido.direccion.direccion}}</p>
                     <p>Estado: {{pedido.estado | pedidos}}</p>
                 </div>
                 <div class="organizar">

@@ -337,7 +337,7 @@ export class PedidosComponent implements OnInit, OnDestroy {
         modo = "retiro en tienda";
       }
       pedido.modoAdquirir = modo;
-      this.pedidoService.createPedido(pedido).subscribe(e => {
+      this.pedidoService.createPedido(pedido, this.venta.correoCliente.direccionCliente).subscribe(e => {
 
       });
       //this.pedidoSocket.actualizarPedidos();
