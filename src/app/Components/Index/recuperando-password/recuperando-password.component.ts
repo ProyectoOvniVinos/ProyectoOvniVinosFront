@@ -120,8 +120,8 @@ export class RecuperandoPasswordComponent implements OnInit {
 
       if (this.recuperandoForm.get("contrasena2").status == "INVALID") {
 
-        let title = "Error"
-        let mensaje = "Verifique los campos por favor!!"
+        let title = "ERROR"
+        let mensaje = "Verifique que todos los campos estén llenos, por favor."
         this.openDialog(title, mensaje);
 
       }
@@ -139,7 +139,7 @@ export class RecuperandoPasswordComponent implements OnInit {
 
       resp.passwordCliente = this.recuperandoForm.controls["contrasena1"].value
       this.clienteService.actualizar(resp).subscribe(respue => {
-        this.openDialog("Actualizados", "Actualizo la contraseña con exito.");
+        this.openDialog("¡¡ÉXITO!!", "Se han actualizado los datos satisfactoriamente.");
         this.router.navigate(['/iniciarSesion'])
       })
     })

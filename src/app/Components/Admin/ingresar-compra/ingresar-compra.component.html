@@ -26,7 +26,7 @@
                                 <option [value]="producto.codigoProducto" *ngFor="let producto of productos">{{producto.nombreProducto}}</option>
                             </select>
                             <div class="errors-container" *ngIf="productoControl.invalid && (productoControl.touched || productoControl.dirty)">
-                                <p class="text-danger" *ngIf="productoControl.hasError('required')">El campo es obligatorio</p>
+                                <p class="text-danger" *ngIf="productoControl.hasError('required')">El campo es obligatorio.</p>
                             </div>
                         </div>
                         <div class="cajaInput">
@@ -37,7 +37,7 @@
                                     formControlName="cantidad"
                                     [ngClass]="cantidadNoValido == null ? '' : cantidadNoValido ? 'is-invalid': 'is-valid'">
                             <div class="errors-container" *ngIf="cantidadControl.invalid && (cantidadControl.touched || cantidadControl.dirty)">
-                                <p class="text-danger" *ngIf="cantidadControl.hasError('required')">El campo es obligatorio</p>
+                                <p class="text-danger" *ngIf="cantidadControl.hasError('required')">El campo es obligatorio.</p>
                             </div>
                         </div>
                         <div class="cajaInput">
@@ -48,7 +48,7 @@
                                     formControlName="precio"
                                     [ngClass]="precioNoValido == null ? '' : precioNoValido ? 'is-invalid': 'is-valid'">
                                     <div class="errors-container" *ngIf="precioControl.invalid && (precioControl.touched || precioControl.dirty)">
-                                        <p class="text-danger" *ngIf="precioControl.hasError('required')">El campo es obligatorio</p>
+                                        <p class="text-danger" *ngIf="precioControl.hasError('required')">El campo es obligatorio.</p>
                                     </div>
                         </div>
                     </div>

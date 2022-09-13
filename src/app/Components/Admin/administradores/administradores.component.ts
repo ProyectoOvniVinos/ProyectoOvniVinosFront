@@ -65,7 +65,7 @@ export class AdministradoresComponent implements OnInit {
     if(estado=="1"){
       this.openDialogInteraction("ADVERTENCIA","¿Estás seguro de deshabilitar a este administrador?",correo,estado)
     }else{
-      this.openDialogInteraction("ADVERTENCIA","Estás seguro de habilitar a este administrador?",correo, estado)
+      this.openDialogInteraction("ADVERTENCIA","¿Estás seguro de habilitar a este administrador?",correo, estado)
     }
   }
 

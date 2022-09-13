@@ -176,7 +176,7 @@ export class CarritoComponent implements OnInit, OnChanges {
   disminuirCantidad(event, item: ItemCarritoModel) {
     event.stopPropagation();
     if (item.cantidadProducto == 1) {
-      this.openDialogInteraction("ADVERTENCIA", `Este producto se eliminará el producto de su carrito. ¿Está seguro de eliminarlo?`, item);
+      this.openDialogInteraction("ADVERTENCIA", `Este producto se eliminará de su carrito. ¿Está seguro de eliminarlo?`, item);
     } else {
       this.advertirCantidad = false;
       item.cantidadProducto -= 1;

@@ -106,7 +106,7 @@ export class AyudaComponent implements OnInit {
   enviar(){
     if(this.ayudaForm.controls['textoOtra'].value!=''){
       if(this.ayudaForm.controls['correo'].invalid==false && this.ayudaForm.controls['problemas'].value==""){
-        this.openDialog("Error", "verifique que todos los campos esten llenos y el correo sea valido11111111111")
+        this.openDialog("ERROR", "Por favor verifique que todos los campos estén llenos y el correo sea válido. ")
         
       }else{
         this.loginService.ayuda(this.ayudaForm.controls['correo'].value, this.ayudaForm.controls['problemas'].value, this.ayudaForm.controls['textoOtra'].value).subscribe(resp=>{
@@ -120,7 +120,7 @@ export class AyudaComponent implements OnInit {
         
         if(this.ayudaForm.controls['problemas'].value=="Otra"){
 
-          this.openDialog("Error", "verifique que todos los campos esten llenos y el correo sea valido")
+          this.openDialog("EERROR", "Por favor verifique que todos los campos estén llenos y el correo sea válido. ")
         }else{
           this.loginService.ayuda(this.ayudaForm.controls['correo'].value, this.ayudaForm.controls['problemas'].value, "no").subscribe(resp=>{
             this.openDialog(resp.status, resp.mensaje)
@@ -130,7 +130,7 @@ export class AyudaComponent implements OnInit {
         
       }else{
 
-        this.openDialog("Error", "verifique que todos los campos esten llenos y el correo sea valido")
+        this.openDialog("ERROR", "Por favor verifique que todos los campos estén llenos y el correo sea válido.")
       }
     }
     

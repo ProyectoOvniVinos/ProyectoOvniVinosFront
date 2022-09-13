@@ -152,7 +152,7 @@ export class EditarDatosAdmComponent implements OnInit {
       this.adminService.updateAdmin(this.admin.correoAdmin, this.admin).subscribe(resp => {
         this.closeDialogLoading();
         this.router.navigate(['/datosA']);
-        this.openDialog("Felicitaciones", "Se actualizaron sus datos con exito")
+        this.openDialog("¡¡ÉXITO!!", "sSus datos se actualizaron satisfactoriamente. ")
       }, error => {
         this.closeDialogLoading();
         this.openDialog("Error", error.error.mensaje)
