@@ -152,7 +152,7 @@ export class SlideshowComponent implements OnInit, AfterViewInit {
           this.devolver.emit(list)
         })
       }else{
-        this.openDialog2("Error", "Ya añadiste la cantidad existente de este producto!!")
+        this.openDialog2("ERROR", "Ya añadiste la cantidad existente de este producto.")
 
       }
     })

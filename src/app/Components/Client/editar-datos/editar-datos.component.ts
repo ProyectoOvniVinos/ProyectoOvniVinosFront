@@ -206,7 +206,7 @@ export class EditarDatosComponent implements OnInit {
         
         this.closeDialogLoading();
         this.router.navigate(['/datosC']);
-        this.openDialog("Felicitaciones","Se actualizaron sus datos con exito")
+        this.openDialog("¡¡ÉXITO!!","Sus datos se actualizaron satisfactoriamente.")
       },error=>{
         this.closeDialogLoading();
         this.openDialog("Error",error.error.mensaje)

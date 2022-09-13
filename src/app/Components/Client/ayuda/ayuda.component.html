@@ -10,17 +10,17 @@
                         formControlName="correo"
                         [ngClass]="correoNoValido == null ? '' : correoNoValido ? 'is-invalid': 'is-valid'">
                         <div class="errors-container" *ngIf="correoControl.invalid && (correoControl.touched || correoControl.dirty)">
-                            <p class="text-danger form-text" *ngIf="correoControl.hasError('required')">El campo es obligatorio</p>
-                            <p class="text-danger form-text" *ngIf="!correoControl.hasError('required')">No es formato de correo</p>
+                            <p class="text-danger form-text" *ngIf="correoControl.hasError('required')">El campo es obligatorio.</p>
+                            <p class="text-danger form-text" *ngIf="!correoControl.hasError('required')">No es formato de correo.</p>
                         </div>
                     <div *ngIf="!correoControl.touched && !correoControl.dirty" id="emailHelp" class="form-text">El correo es necesario para saber sus datos</div>
                 </div>
                 <div class="cajaInput">
                     <label for="exampleInputPassword1" class="form-label">Problema</label>
                     <select class="inputSelect form-control"formControlName="problemas" (change)="validar()">
-                        <option value="Inquietud 1">No me llega el correo de recuperacion de contraseña</option>
-                        <option value="Inquietud 2">No me llega el correo de verificacion de compra</option>
-                        <option value="Inquietud 3">Mi compra ha tardado mas de 2 horas en llegar</option>
+                        <option value="Inquietud 1">No me llega el correo de recuperación de contraseña.</option>
+                        <option value="Inquietud 2">No me llega el correo de verificación de compra.</option>
+                        <option value="Inquietud 3">Mi compra ha tardado más de 2 horas en llegar.</option>
                         <option value="Otra">Otra</option>
                     </select>
                 </div>
