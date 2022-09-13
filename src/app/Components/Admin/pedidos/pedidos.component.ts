@@ -101,8 +101,6 @@ export class PedidosComponent implements OnInit {
     });
   }
 
-
-
   buscar() {
     if (this.texto == '') {
       this.pedidosPendientes();
