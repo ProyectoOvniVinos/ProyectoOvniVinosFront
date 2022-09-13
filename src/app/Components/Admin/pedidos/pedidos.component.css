@@ -479,7 +479,7 @@ p{
 }
 
 th{
-    font-size: 1.3rem;
+    font-size: 1.2rem;
 }
 
 td{
@@ -489,6 +489,7 @@ td{
 .primero{
     border-end-start-radius: 0rem;
     border-start-start-radius: 0.5rem;
+    width: 8rem;
 
 }
 
@@ -609,7 +610,12 @@ td{
 @media screen and (max-width: 1080px) and (max-height:1080px){
 
     .cajaM{
-        width: 85%;
+        width: 85%;    
+        height: 85%;
+    }
+
+    .organizar{
+        gap: 1rem;
     }
 
     input[type="date"] {
