@@ -8,13 +8,13 @@ export class PedidosPipe implements PipeTransform {
   transform(value: string): unknown {
     let salida:string = '';
     if(value == '1'){
-      salida = 'pendiente'
+      salida = 'Pendiente'
     }else if(value == '2'){
-      salida = 'en proceso';
+      salida = 'En proceso';
     }else if(value == '3'){
-      salida = 'completado';
+      salida = 'Completado';
     }else{
-      salida = 'cancelado';
+      salida = 'Cancelado';
     }
     return salida;
   }

@@ -35,8 +35,8 @@
                                     value="{{producto.precioProducto}}"
                                     [ngClass]="precioProductoNoValido == null ? '' : precioProductoNoValido ? 'is-invalid': 'is-valid'">
                                     <div class="errors-container" *ngIf="precioControl.invalid && (precioControl.touched || precioControl.dirty)">
-                                        <p class="text-danger" *ngIf="precioControl.hasError('required')">El campo es obligatorio</p>
-                                        <p class="text-danger" *ngIf="precioControl.hasError('pattern')">Solamente ingrese números por favor</p>
+                                        <p class="text-danger" *ngIf="precioControl.hasError('required')">El campo es obligatorio.</p>
+                                        <p class="text-danger" *ngIf="precioControl.hasError('pattern')">Solamente ingrese números por favor.</p>
                                     </div>
                         </div>
                         <div class="cajaInput">
@@ -48,8 +48,8 @@
                                     value="{{producto.precioProductoProveedor}}"
                                     [ngClass]="precioProveedorNoValido == null ? '' : precioProveedorNoValido ? 'is-invalid': 'is-valid'">
                                     <div class="errors-container" *ngIf="proveedorControl.invalid && (proveedorControl.touched || proveedorControl.dirty)">
-                                        <p class="text-danger" *ngIf="proveedorControl.hasError('required')">El campo es obligatorio</p>
-                                        <p class="text-danger" *ngIf="proveedorControl.hasError('pattern')">Solamente ingrese números por favor</p>
+                                        <p class="text-danger" *ngIf="proveedorControl.hasError('required')">El campo es obligatorio.</p>
+                                        <p class="text-danger" *ngIf="proveedorControl.hasError('pattern')">Solamente ingrese números por favor.</p>
                                     </div>
                         </div>
                         <div class="cajaInput">
