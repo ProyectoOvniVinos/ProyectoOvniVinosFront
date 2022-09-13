@@ -57,7 +57,7 @@ export class RecuperarPasswordComponent implements OnInit {
       let urlya = window.location
       this.clienteService.recuperarPassword(urlya.origin,this.encriptar(resp.correoCliente)).subscribe(resp=>{
         
-        this.openDialog("Recuperar", "Se le envio un correo de verificacion para recuperar su contraseña");
+        this.openDialog("RECUPERANDO", "Se le envió un correo de verificación para recuperar su contraseña. ");
 
       })
       

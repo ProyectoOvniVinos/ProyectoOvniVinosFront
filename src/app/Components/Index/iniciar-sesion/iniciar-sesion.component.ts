@@ -107,14 +107,14 @@ export class IniciarSesionComponent implements OnInit {
               this.router.navigate(['/catalogo']);
             }else{
               this.loginService.logout();
-              this.openDialog("Inicio de sesion fallido", "Su usuario administrador se encuentra deshabilitado.")
+              this.openDialog("Inicio de sesión fallido", "Su usuario administrador se encuentra deshabilitado.")
             }
           });
         }else{
           this.router.navigate(['/catalogo']);
         }
       }, error => {
-        this.openDialog("Advertencia","Datos incorrectos")
+        this.openDialog("ADVERTENCIA","Datos incorrectos.")
       });
 
     }else{

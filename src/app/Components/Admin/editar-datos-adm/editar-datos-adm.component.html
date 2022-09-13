@@ -18,7 +18,7 @@
                                 formControlName="nombre"
                                 [ngClass]="nombreNoValido == null ? '' : nombreNoValido ? 'is-invalid': 'is-valid'">
                             <div class="errors-container" *ngIf="nombreControl.invalid && (nombreControl.touched || nombreControl.dirty)">
-                                <p class="text-danger" *ngIf="nombreControl.hasError('required')">El campo es obligatorio</p>
+                                <p class="text-danger" *ngIf="nombreControl.hasError('required')">El campo es obligatorio.</p>
                             </div>
                         </div>
                         <div class="cajaInput">
@@ -27,7 +27,7 @@
                             formControlName="apellido"
                             [ngClass]="apellidoNoValido == null ? '' : apellidoNoValido ? 'is-invalid': 'is-valid'">
                             <div class="errors-container" *ngIf="apellidoControl.invalid && (apellidoControl.touched || apellidoControl.dirty)">
-                                <p class="text-danger" *ngIf="apellidoControl.hasError('required')">El campo es obligatorio</p>
+                                <p class="text-danger" *ngIf="apellidoControl.hasError('required')">El campo es obligatori.</p>
                             </div> 
                         </div>
                         <div class="cajaInput">
@@ -36,7 +36,7 @@
                             formControlName="direccion"
                             [ngClass]="direccionNoValido == null ? '' : direccionNoValido ? 'is-invalid': 'is-valid'">
                             <div class="errors-container" *ngIf="direccionControl.invalid && (direccionControl.touched || direccionControl.dirty)">
-                                <p class="text-danger" *ngIf="direccionControl.hasError('required')">El campo es obligatorio</p>
+                                <p class="text-danger" *ngIf="direccionControl.hasError('required')">El campo es obligatorio.</p>
                             </div>
                         </div>
                         <div class="cajaInput">
@@ -46,8 +46,8 @@
                             [ngClass]="celularNoValido == null ? '' : celularNoValido ? 'is-invalid': 'is-valid'">
                             <div class="errors-container" *ngIf="celularControl.invalid && (celularControl.touched || celularControl.dirty)">
                                 <p class="text-danger" *ngIf="celularControl.hasError('required')">El campo es obligatorio</p>
-                                <p class="text-danger" *ngIf="!celularControl.hasError('required') && !celularControl.hasError('pattern')">Debe tener 10 caracteres</p>
-                                <p class="text-danger" *ngIf="celularControl.hasError('pattern')">Solamente ingrese número por favor</p>
+                                <p class="text-danger" *ngIf="!celularControl.hasError('required') && !celularControl.hasError('pattern')">Debe tener 10 caracteres.</p>
+                                <p class="text-danger" *ngIf="celularControl.hasError('pattern')">Solamente ingrese número por favor.</p>
 
                             </div>
                         </div>

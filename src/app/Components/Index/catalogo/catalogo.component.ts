@@ -93,7 +93,7 @@ export class CatalogoComponent implements OnInit, OnChanges {
 
 
         if (this.inventarioGeneral.length == 0) {
-          this.error = "No se encontraron productos por ese nombre"
+          this.error = "Lo sentimos, no se encontraron productos por ese nombre."
           this.banderaErrores = true
 
         } else {
@@ -126,7 +126,7 @@ export class CatalogoComponent implements OnInit, OnChanges {
 
 
         if (this.inventarioGeneral.length == 0) {
-          this.error = "No se encontraron productos por ese nombre"
+          this.error = "Lo sentimos, no se encontraron productos por ese nombre."
           this.banderaErrores = true
 
         } else {
@@ -185,7 +185,7 @@ export class CatalogoComponent implements OnInit, OnChanges {
           this.clienteInp.carrito = resp.carrito;
         })
       }else{
-        this.openDialog2("Error", "Ya añadiste la cantidad existente de este producto!!")
+        this.openDialog2("ERROR", "Ya añadiste la cantidad existente de este producto.")
 
       }
     })

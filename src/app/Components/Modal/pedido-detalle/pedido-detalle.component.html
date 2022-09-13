@@ -37,16 +37,16 @@
     </div>
 </div>
 <div class="cambiar" *ngIf="pedido.estado=='1'">
-    <p>pasar pedido a {{texto}}</p>
+    <p>Pasar pedido a {{texto}}</p>
     <button (click)="pasarProceso()" [mat-dialog-close]="pedido" class="botones">Pasar</button>
 </div>
 <div class="cambiar2" *ngIf="pedido.estado=='2'">
     <div class="interior">
-        <p>pasar pedido a {{texto}}</p>
+        <p>Pasar pedido a {{texto}}</p>
     <button (click)="pasarCompletado()" [mat-dialog-close]="pedido" class="botones tamano">Pasar</button>
     </div>
     <div class="interior">
-        <p>pasar pedido a {{texto2}}</p>
+        <p>Pasar pedido a {{texto2}}</p>
     <button (click)="pasarCancelado()" [mat-dialog-close]="pedido" class="botones tamano">Pasar</button>
     </div>
 </div>

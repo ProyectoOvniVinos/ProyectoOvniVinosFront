@@ -3,15 +3,15 @@
         <div class="lista">
             <img class="imagen" src={{item.codigoProducto.fotoProducto}} alt="">
             <div class="item">
-                <p>producto:</p>
+                <p>Producto:</p>
                 <p>{{item.codigoProducto.nombreProducto}}</p>
             </div>
             <div class="item">
-                <p>cantidad:</p>
+                <p>Cantidad:</p>
                 <p>{{item.cantidadProducto}}</p>
             </div>
             <div class="item">
-                <p>precio:</p>
+                <p>Precio:</p>
                 <p>{{item.precioVentaDetalle}}</p>
             </div>
         </div>
@@ -21,8 +21,8 @@
 <div class="contenedorP">
     <hr>
     <div class="general">
-        <p>total: {{venta.precioVenta}}</p>
-        <p>cantidad: {{venta.cantidadVenta}}</p>
+        <p>Total: {{venta.precioVenta}}</p>
+        <p>Cantidad: {{venta.cantidadVenta}}</p>
     </div>
 </div>
 <div class="contenedor-tipos">
@@ -33,7 +33,7 @@
     </div>
     <div class="conteTipoVenta" [ngClass]="{'seleccionado': isDomicilio==false}" (click) = "cambiarSelectedFalse()">
         <img class="imgVenta" src="../../../../assets/Images/recojer.png" alt="" >
-        <p class="descVenta">Recojer en la tienda</p>
+        <p class="descVenta">Recoger en la tienda</p>
     </div>
 </div>
 
