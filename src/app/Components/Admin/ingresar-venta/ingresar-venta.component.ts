@@ -232,32 +232,39 @@ export class IngresarVentaComponent implements OnInit {
   }
 
   realizarVenta(){
-    this.openDialogLoading();
-    this.venta.precioVenta=this.total;
-    this.venta.cantidadVenta = this.obtenerCantidadTotal()
-    
-    this.cliente = new ClienteModel();
-    this.cliente.apellidoCliente = "cliente"
-    this.cliente.correoCliente = "correoClienteOvni@gmail.com"
-    this.cliente.direccionCliente = "cliente"
-    this.cliente.nombreCliente = "cliente"
-    this.cliente.passwordCliente = "tatiana1004"
-    this.cliente.telefonoCliente = "3005208221" 
 
-    this.venta.correoCliente = this.cliente;
-    
+    if(this.venta.ventas.length!=0){
+      this.openDialogLoading();
+      this.venta.precioVenta=this.total;
+      this.venta.cantidadVenta = this.obtenerCantidadTotal()
+      
+      this.cliente = new ClienteModel();
+      this.cliente.apellidoCliente = "cliente"
+      this.cliente.correoCliente = "correoClienteOvni@gmail.com"
+      this.cliente.direccionCliente = "cliente"
+      this.cliente.nombreCliente = "cliente"
+      this.cliente.passwordCliente = "tatiana1004"
+      this.cliente.telefonoCliente = "3005208221" 
+  
+      this.venta.correoCliente = this.cliente;
+      
+  
+      this.serviceVenta.addVenta(this.venta,false).subscribe(e=>{
+        this.closeDialogLoading();
+        this.openDialog("¡¡ÉXITO!!","La venta se ha guardado satisfactoriamente. ")
+        this.vaciar()
+  
+      },err => {
+        this.closeDialogLoading();
+        this.openDialog("ERROR","Lo sentimos, no se pudo guardar la venta. Inténtalo de nuevo. ")
+        this.vaciar()
+  
+      })
+    }else{
+      this.openDialog("ERROR","No se pueden realizar ventas vacías")
+    } 
 
-    this.serviceVenta.addVenta(this.venta,false).subscribe(e=>{
-      this.closeDialogLoading();
-      this.openDialog("¡¡ÉXITO!!!","La venta se ha guardado satisfactoriamente. ")
-      this.vaciar()
 
-    },err => {
-      this.closeDialogLoading();
-      this.openDialog("ERROR","Lo sentimos, no se pudo guardar la venta. Inténtalo de nuevo. ")
-      this.vaciar()
-
-    })
 
     
     

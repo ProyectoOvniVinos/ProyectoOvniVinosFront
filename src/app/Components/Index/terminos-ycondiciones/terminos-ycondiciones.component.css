@@ -1,0 +1,15 @@
+.terminos{
+    height: 75%;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.title{
+    text-align: center;
+}
+.terminos p{
+    width: 75%;
+    text-align: justify;
+}
+

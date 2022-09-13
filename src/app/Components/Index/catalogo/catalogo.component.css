@@ -91,7 +91,6 @@
     position: absolute;
     right: 1.5%;
     top: 1.5%;
-    border: 0.2rem solid white;
     z-index: 6;
 }
 
@@ -211,6 +210,20 @@
     gap: 7%;
 }
 
+.close{
+    box-sizing: content-box;
+    width: 1em;
+    height: 1em;
+    padding: 0.25em 0.25em;
+    color: #000;
+    background: transparent;
+    background-image: url('../../../../assets/Images/cerrarB.png');
+    background-size: cover;
+    border: 0;
+    border-radius: 0.375rem;
+    opacity: .5;
+}
+
 p{
     margin: 0;
 }
@@ -243,6 +256,7 @@ p{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-align: center;
 }
 
 
@@ -529,7 +543,10 @@ p{
 @media screen and (max-width:920px) and (max-height:940px){
 
     .catalogoTwo{
-        margin-bottom: 40%;
+        margin-bottom: 55%;
+    }
+    .cardFootert{
+        font-size: 1rem;
     }
 }
 

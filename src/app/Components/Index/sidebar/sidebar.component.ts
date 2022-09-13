@@ -60,7 +60,8 @@ export class SidebarComponent implements OnInit {
       return false;
     }
   }
-  salir(){
+  salir(event){
+    event.stopPropagation();
     this.loginService.logout();
     this.pedidoSocket.desconectar();
     this.router.navigate(['/catalogo']);

@@ -1,6 +1,9 @@
 <div class="cajaPdatos container-fluid">
 
     <div class="cajaMdatos">
+
+        <div *ngIf="bandera==null" class='spinner'></div>
+
         <div >
             <h3 class="text-center mt-3">MIS DATOS</h3>
         </div>
@@ -28,7 +31,6 @@
                 </div>
             </div> 
             <div class="cajaBtns">
-              <button class="btnOvni btnD btnAtras">Atrás</button>
               <button routerLink="/editarA" class="btnOvni btnD btnEditar">Editar</button>
           </div>
         </div>

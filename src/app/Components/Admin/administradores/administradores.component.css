@@ -112,16 +112,6 @@
     background-color: rgba(255, 42, 110, 0.432);
 }
 
-.primero{
-    border-end-start-radius: 10px;
-    border-start-start-radius: 10px;
-}
-
-.ultimo{
-    border-start-end-radius: 10px;
-    border-end-end-radius: 10px;
-}
-
 .tablabodyP{
     text-align: center;
 }

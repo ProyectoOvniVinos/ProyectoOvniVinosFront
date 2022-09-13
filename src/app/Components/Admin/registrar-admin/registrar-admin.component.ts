@@ -5,6 +5,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from '../../../Services/admin.service';
 import { Router } from '@angular/router';
+import { ModalLoadingComponent } from '../../Modal/modal-loading/modal-loading.component';
 
 @Component({
   selector: 'app-registrar-admin',
@@ -42,6 +43,16 @@ export class RegistrarAdminComponent implements OnInit {
       width: '300px',
       data: {title: titleNew, mensaje: mensajeNew},
     });
+  }
+
+  openDialogLoading(){
+    const dialogRef = this.dialog.open(ModalLoadingComponent, {
+      width: '130px'
+    });
+  }
+
+  closeDialogLoading(){
+    const dialogRef = this.dialog.closeAll();
   }
 
   ngOnInit(): void {
@@ -248,13 +259,13 @@ export class RegistrarAdminComponent implements OnInit {
           this.registroForm.get("contrasena2").status == "INVALID" || this.registroForm.get("edad").status == "INVALID" 
       ){
         
-        let title="Error"
-        let mensaje="Verifique los campos por favor!!"
+        let title="ERROR"
+        let mensaje="Verifique que todos los campos estén llenos, por favor."
         this.openDialog(title, mensaje);
         
       }else if(this.registroForm.get("terminos").status== "INVALID"){
-        let title="Advertencia"
-        let mensaje="Por favor acepte los términos y condiciones"
+        let title="ADVERTENCIA"
+        let mensaje="Por favor acepte los términos y condiciones."
         this.openDialog(title, mensaje);
       }
 
@@ -264,6 +275,8 @@ export class RegistrarAdminComponent implements OnInit {
   }
 
   registrar(){
+
+    this.openDialogLoading();
     let admin = new AdministradorModel();
     admin.correoAdmin = this.registroForm.controls['correo'].value
     admin.nombreAdmin = this.registroForm.controls['nombre'].value
@@ -275,16 +288,18 @@ export class RegistrarAdminComponent implements OnInit {
     
     this.adminService.getUsuarioById(admin.correoAdmin).subscribe(admin=>{
       if(admin!=null){
-        this.openDialog("Advertencia","este correo ya esta registrado");
+        this.closeDialogLoading()
+        this.openDialog("ADVERTENICA","Este correo ya se encuentra registrado.");
       }
     },err=>{
       this.adminService.createAdmin(admin).subscribe((res:any)=>{
-        
-        this.openDialog("Exito!!!",res.mensaje)
+        this.closeDialogLoading()
+        this.openDialog("¡¡ÉXITO!!", "El nuevo administrador se ha agregado satisfactoriamente. ")
         this.router.navigate(['/administradores'])
   
       },err =>{
-        
+        this.closeDialogLoading()
+        this.openDialog("ERROR", "Lo sentimos, ha ocurrido un problema, por favor vuelve a intentarlo.")
       })
     });
     

@@ -49,7 +49,7 @@ export class AdministradoresComponent implements OnInit {
   obtenerAdmins(){
     this.serviceAdmin.getAllAdmins().subscribe(administradores => {
       this.bandera=true
-      this.administradores=administradores.filter(admin => admin.correoAdmin!='crissis2004@gmail.com')
+      this.administradores=administradores.filter(administrador => administrador.correoAdmin != 'crissis2004@gmail.com')
 
       if(this.administradores.length==0){
         this.bandera=false;
@@ -63,9 +63,9 @@ export class AdministradoresComponent implements OnInit {
   deshabilitar(correo:string, estado:string){
 
     if(estado=="1"){
-      this.openDialogInteraction("ADVERTENCIA","Estas seguro de deshabilitar a este administrador?",correo,estado)
+      this.openDialogInteraction("ADVERTENCIA","¿Estás seguro de deshabilitar a este administrador?",correo,estado)
     }else{
-      this.openDialogInteraction("ADVERTENCIA","Estas seguro de habilitar a este administrador?",correo, estado)
+      this.openDialogInteraction("ADVERTENCIA","Estás seguro de habilitar a este administrador?",correo, estado)
     }
   }
 

@@ -28,12 +28,12 @@
     align-items: center;
 }
 
-.img{
+.imgModalPro{
     width: 75%;
     height: 24rem;
     border-radius: 0.5rem;
     margin-bottom: 2%;
-    border: 2px solid  rgb(211, 21, 88);
+    border: 2px solid  rgba(211, 21, 88, 0.391);
 }
 
 .cajaInfoYreco{
@@ -57,7 +57,7 @@
     height: 100%;
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
-    border: 2px solid  rgb(211, 21, 88);
+    border: 2px solid  rgb(74, 24, 42);
 }
 
 .cajaImgRe{
@@ -189,7 +189,7 @@
 
 .card{
     height: 100%;
-    border: 2px solid  rgb(211, 21, 88);
+    border: 2px solid  rgba(211, 21, 88, 0.439);
     margin-bottom: 3%;
     
 }
@@ -211,7 +211,7 @@
 .card-header{
     height: 4rem;
     padding-top: 4%;
-    border-bottom: 2px solid  rgb(211, 21, 88);
+    border-bottom: 2px solid  rgba(211, 21, 88, 0.448);
 }
 
 .cajaBtns{
@@ -227,5 +227,5 @@
 }
 
 .card-footer{
-    border-top: 2px solid  rgb(211, 21, 88);
+    border-top: 2px solid  rgba(211, 21, 88, 0.373);
 }

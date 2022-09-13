@@ -42,7 +42,7 @@
 .cajaTable{
     width: 100%;
     height: 35rem;
-    padding-left: 30%;
+    padding-left: 10%;
     padding-bottom: 2%;
     overflow:auto;
 }
@@ -63,7 +63,7 @@
 }
 
 .tabla2{
-    width: 60%;
+    width: 90%;
 }
 
 .tablaHeaderP{

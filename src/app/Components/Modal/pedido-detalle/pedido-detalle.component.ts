@@ -13,6 +13,8 @@ export class PedidoDetalleComponent implements OnInit {
   texto:string = '';
   texto2:string = '';
 
+  regresar:boolean = false;
+
   constructor(public dialogRef: MatDialogRef<PedidoDetalleComponent>,
     @Inject(MAT_DIALOG_DATA) public pedido: PedidoModel, public pedidosRestService:PedidosRestService) { }
 
@@ -32,6 +34,7 @@ export class PedidoDetalleComponent implements OnInit {
   pasarProceso(){
     this.pedido.estado = '2';
     this.updatePedido();
+    this.regresar = true;
   }
 
   pasarCompletado(){
@@ -39,12 +42,17 @@ export class PedidoDetalleComponent implements OnInit {
     
     this.pedido.estado = '3';
     this.updatePedido();
+    this.regresar = true;
+
   }
   
   pasarCancelado(){
     this.pedido.estado = '4';
     this.updatePedido();
+    this.regresar = true;
+
   }
+
   updatePedido(){
     console.log(this.pedido);
     
