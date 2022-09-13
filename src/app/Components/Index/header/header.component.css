@@ -39,7 +39,7 @@
 
 @media screen and (max-width:1180px) and (max-height:1080px){
     .contenedor-titulo-header{
-        width: 42%;
+        width: 45%;
     }
 }
 
@@ -51,7 +51,7 @@
 
 @media screen and (max-width:720px) and (max-height:1080px){
     .contenedor-titulo-header{
-        width: 55%;
+        width: 60%;
 
     }
     .headerCerrado{
@@ -61,13 +61,13 @@
 
 @media screen and (max-width: 601px) and (max-height:1080px){
     .contenedor-titulo-header{
-        width: 51%;
+        width: 56%;
     }
 }
 
 @media screen and (max-width: 600px) and (max-height:1080px){
     .contenedor-titulo-header{
-        width: 55%;
+        width: 65%;
     }
 }
 
@@ -80,13 +80,13 @@
 
 @media screen and (max-width: 535px) and (max-height:1080px){
     .contenedor-titulo-header{
-        width: 60%;
+        width: 70%;
     }
 }
 
 @media screen and (max-width: 525px) and (max-height:1080px){
     .contenedor-titulo-header{
-        width: 70%;
+        width: 75%;
     }
 }
 

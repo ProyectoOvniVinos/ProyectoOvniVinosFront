@@ -337,7 +337,7 @@ export class PedidosComponent implements OnInit, OnDestroy {
         modo = "retiro en tienda";
       }
       pedido.modoAdquirir = modo;
-      this.pedidoService.createPedido(pedido).subscribe(e => {
+      this.pedidoService.createPedido(pedido, this.venta.correoCliente.direccionCliente).subscribe(e => {
 
       });
       //this.pedidoSocket.actualizarPedidos();
@@ -346,7 +346,7 @@ export class PedidosComponent implements OnInit, OnDestroy {
       }
       this.carritoService.actualizarCarrito(this.carrito).subscribe();
 
-      this.openDialogConfirmacion("Exito!!!", "Se ha realizado la compra satisfactoriamente!")
+      this.openDialogConfirmacion("¡¡ÉXITO!!!", "Su compra se ha realizado satisfactoriamente.")
       this.actualizarPedidosPendientes();
       this.router.navigate(['/pedidos']);
       this.getPedidosCliente(1)
@@ -354,7 +354,7 @@ export class PedidosComponent implements OnInit, OnDestroy {
       if (err.error.mensaje == "cantidad insuficiente") {
         this.openDialogConfirmacion("Advertencia!!", `${err.error.mensaje}`)
       } else {
-        this.openDialogConfirmacion("Error", "Ha ocurrido un problema")
+        this.openDialogConfirmacion("ERROR", "Lo sentimos, ha ocurrido un problema.")
       }
     });
 

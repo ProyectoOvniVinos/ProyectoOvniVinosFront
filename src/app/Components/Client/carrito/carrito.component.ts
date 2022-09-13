@@ -176,7 +176,7 @@ export class CarritoComponent implements OnInit, OnChanges {
   disminuirCantidad(event, item: ItemCarritoModel) {
     event.stopPropagation();
     if (item.cantidadProducto == 1) {
-      this.openDialogInteraction("Advertencia", `Eliminara el producto de su carrito. ¿Desea eliminarlo?`, item);
+      this.openDialogInteraction("ADVERTENCIA", `Este producto se eliminará el producto de su carrito. ¿Está seguro de eliminarlo?`, item);
     } else {
       this.advertirCantidad = false;
       item.cantidadProducto -= 1;
@@ -192,7 +192,7 @@ export class CarritoComponent implements OnInit, OnChanges {
   abrirModal() {
 
     if (this.carrito.itemCarrito.length == 0) {
-      this.openDialog2("Advertencia", "Su carrito esta vacio para hacer una compra debe haber minimo un producto.")
+      this.openDialog2("ADVERTENCIA", "Su carrito esta vacío, para hacer una compra debe haber mínimo un producto.")
     } else {
       let venta: VentaModel = new VentaModel();
       let cantidad = 0;

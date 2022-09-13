@@ -9,8 +9,8 @@
 
                     <div class="cont-interno" >
 
-                        <h1>{{inventario.codigoProducto.nombreProducto | slice:0:16}}...</h1>
-                        <h2>{{inventario.codigoProducto.precioProducto | currency : '$' : 'symbol' : '1.0-0'}}</h2>
+                        <h4>{{inventario.codigoProducto.nombreProducto | slice:0:16}}...</h4>
+                        <h5>{{inventario.codigoProducto.precioProducto | currency : '$' : 'symbol' : '1.0-0'}}</h5>
                         <p> Cantidad disponible : {{inventario.cantidadProducto}}</p>
                     </div>
                     <div class="cont-interno2" *ngIf="loginService.hasRole('ROLE_CLIENTE')">
