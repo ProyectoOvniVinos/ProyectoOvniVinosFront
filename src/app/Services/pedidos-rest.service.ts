@@ -39,8 +39,8 @@ export class PedidosRestService {
     return this.http.get<PedidoModel[]>(url);
   }
 
-  createPedido(pedido: PedidoModel): Observable<PedidoModel> {
-    const url: string = `${this.url}pedido`;
+  createPedido(pedido: PedidoModel, direccion:String): Observable<PedidoModel> {
+    const url: string = `${this.url}pedido/${direccion}`;
     return this.http.post<PedidoModel>(url, pedido);
   }
 
