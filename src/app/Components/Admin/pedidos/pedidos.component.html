@@ -75,6 +75,9 @@
                             <p class="pPedido" *ngIf="pedido.venta"><b>CANTIDAD TOTAL </b> {{pedido.venta.cantidadVenta}} </p>
                             <p class="pPedido" *ngIf="pedido.venta"><b>PRECIO TOTAL </b>  {{pedido.venta.precioVenta}} </p>
                         </div>
+                        <div class="organizarDireccion">
+                            <p *ngIf="pedido.direccion" class="pPedido"><b>DIRECCION</b>  {{pedido.direccion.direccion}}</p>
+                        </div>
                     </div>
                     <div class="codigoPedido">
                         <p>

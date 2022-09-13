@@ -267,9 +267,9 @@ export class RegistroComponent implements OnInit {
 
   registrar(){
     let cliente = new ClienteModel();
-    cliente.correoCliente = this.registroForm.controls['correo'].value
-    cliente.nombreCliente = this.registroForm.controls['nombre'].value
-    cliente.apellidoCliente = this.registroForm.controls['apellido'].value
+    cliente.correoCliente = this.registroForm.controls['correo'].value.toLowerCase();
+    cliente.nombreCliente = this.registroForm.controls['nombre'].value.toLowerCase();
+    cliente.apellidoCliente = this.registroForm.controls['apellido'].value.toLowerCase();
     cliente.direccionCliente= this.registroForm.controls['direccion'].value
     cliente.telefonoCliente= this.registroForm.controls['celular'].value
     cliente.passwordCliente=this.registroForm.controls['contrasena1'].value

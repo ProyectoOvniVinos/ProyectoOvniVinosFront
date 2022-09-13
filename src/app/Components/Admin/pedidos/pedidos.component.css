@@ -456,7 +456,10 @@ p{
     text-align:start;
     margin-top:1%;
     margin-bottom: 1%;
-    
+}
+
+.organizarDireccion{
+    display: flex;
 }
 
 .tablaHeaderPedido{
