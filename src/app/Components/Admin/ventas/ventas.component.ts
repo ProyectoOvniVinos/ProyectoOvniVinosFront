@@ -14,7 +14,7 @@ export class VentasComponent implements OnInit {
   
   ventas: VentaModel[] = [];
   productos: ProductoModel[] = [];
-  banderaC:boolean = true;
+  banderaC:boolean = null;
   constructor(private ventasService: VentaService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -22,7 +22,10 @@ export class VentasComponent implements OnInit {
       this.ventas = ventas;
       if(this.ventas.length==0){
         this.banderaC = false;
+      }else{
+        this.banderaC = true;
       }
+
     });
   }
 

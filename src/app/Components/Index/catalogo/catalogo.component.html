@@ -53,8 +53,11 @@
                 <h1>{{error}}</h1>
             </div>    
             <div class="cajaCartas">
-
+                <span *ngIf="!banderaCarga" class="loader"></span>
+                <span *ngIf="!banderaCarga" class="loader"></span>
+                <span *ngIf="!banderaCarga" class="loader"></span>
                 <div *ngFor="let inventario of inventarioGeneral" class="cardP">
+      
                     <div class="cardImg">
                         <img class="imgCardBody" src="{{inventario.codigoProducto.fotoProducto}}" alt="" (click)="openDialog(inventario)">
                         <img *ngIf="loginService.hasRole('ROLE_CLIENTE')" (click)="agregar(inventario.codigoProducto)" class="imgCarrito" src="../../../../assets/Images/carritoVioleta.png" alt="">

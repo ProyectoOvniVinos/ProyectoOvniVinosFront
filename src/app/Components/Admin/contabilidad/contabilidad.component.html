@@ -60,7 +60,9 @@
                             <td>{{contabilidad.fecha | date:'yyyy'}}</td>
                         </tr>
                     </tbody>
-                    <div *ngIf="banderaD==false" class='spinner'></div>
+
+                    <span *ngIf="banderaD==false" class="loader"></span>
+                    
                     <div class="cajaMensaje"  *ngIf="fecha !== '' && 
                                 contabilidadesDiarias.length == 0 &&
                                 contabilidadesMensuales.length == 0 &&
