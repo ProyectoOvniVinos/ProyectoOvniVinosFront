@@ -27,7 +27,7 @@
                             formControlName="apellido"
                             [ngClass]="apellidoNoValido == null ? '' : apellidoNoValido ? 'is-invalid': 'is-valid'">
                             <div class="errors-container" *ngIf="apellidoControl.invalid && (apellidoControl.touched || apellidoControl.dirty)">
-                                <p class="text-danger" *ngIf="apellidoControl.hasError('required')">El campo es obligatori.</p>
+                                <p class="text-danger" *ngIf="apellidoControl.hasError('required')">El campo es obligatorio.</p>
                             </div> 
                         </div>
                         <div class="cajaInput">
