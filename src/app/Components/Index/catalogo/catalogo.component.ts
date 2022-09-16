@@ -25,7 +25,7 @@ export class CatalogoComponent implements OnInit, OnChanges {
 
   private usuario;
   bandera: boolean=false;
-
+  banderaCarga:boolean=false;
   inventarioGeneral: Inventario_generalModel[] = [];
   validarCarrito = false;
   agrandar = false;
@@ -70,6 +70,7 @@ export class CatalogoComponent implements OnInit, OnChanges {
     this.inventarioGeneral = []
     this.productoService.getProductsInventario().subscribe(inventario => {
       this.inventarioGeneral = inventario;
+      this.banderaCarga=true
     }, err => {
 
     })

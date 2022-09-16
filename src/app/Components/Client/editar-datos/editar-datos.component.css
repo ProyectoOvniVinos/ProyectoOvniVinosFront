@@ -177,27 +177,44 @@ a:hover{
     height: 40vh;
 }
 
-.spinner {
-    border: 6px solid rgb(184, 13, 72);
-    border-left-color: transparent;
-    width: 5rem;
-    height: 5rem;  
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    position: absolute;
+.loader {
+    width: 40px;
+    height: 90px;
+    display: inline-block;
+    position: relative;
+    border: 2px solid rgb(156, 156, 156);
+    box-sizing: border-box;
+    color: rgba(167, 31, 73, 1);
+    border-radius: 20px 20px 4px 4px;
+    background: rgb(255, 255, 255);
+    animation: fill 2s linear infinite alternate;
     left: 47%;
-    top: 45%;
-    top: center;
+    margin-top: 15%;
   }
-
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
+  .loader::after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    top: 0%;
+    transform: translate(-50% , -95%);
+    border: 2px solid rgb(156, 156, 156);
+    border-bottom: none;
+    background: rgb(255, 255, 255);
+    width: 15px;
+    height: 35px;
+    animation: fillNeck 2s linear infinite alternate;
+  }
   
-    100% {
-      transform: rotate(360deg);
-    }
+  @keyframes fill {
+    0% { box-shadow: 0 0  inset }
+    50% , 100% { box-shadow: 0 -98px inset }
+  }
+  
+  
+  @keyframes fillNeck {
+    0% , 50%{ box-shadow: 0 0  inset }
+    100% { box-shadow: 0 -20px inset }
   }
 
 

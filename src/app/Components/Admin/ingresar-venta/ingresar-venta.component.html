@@ -6,7 +6,7 @@
         <button class="btnOvni btnAgregarProducto"routerLink="/ingresarCompra">Ingresar Compra</button>
     </div>
 
-    <div *ngIf="bandera==null" class='spinner'></div>
+    <span *ngIf="bandera==null" class="loader"></span>
 
     <div *ngIf="bandera==true" class ="cajaM-login">
         <div >

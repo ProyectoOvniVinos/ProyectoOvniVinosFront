@@ -8,6 +8,7 @@ import { ClienteService } from 'src/app/Services/cliente.service';
 import { SocketPedidoService } from 'src/app/Services/socket-pedido.service';
 import { LoginService } from '../../../Services/login.service';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
+import { ModalLoadingComponent } from '../../Modal/modal-loading/modal-loading.component';
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -24,7 +25,12 @@ export class IniciarSesionComponent implements OnInit {
 
 
   ngOnInit(): void {
-    
+  }
+
+  openDialogLoading(): void {
+    const dialogRef = this.dialog.open(ModalLoadingComponent, {
+      width: '150px',
+    });
   }
 
   openDialog(titleNew: string, mensajeNew: string): void {
@@ -86,16 +92,15 @@ export class IniciarSesionComponent implements OnInit {
 
   }
 
+  closeDialogLoading(){
+    const dialogRef = this.dialog.closeAll();
+  }
+
   iniciarSecion(){
 
-
+    this.openDialogLoading();
     if(!this.loginForm.invalid){
-
-
-
       this.loginService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value).subscribe(response => {
-        
-        
 
         this.loginService.guardarUsuario(response.access_token);
         this.loginService.guardarToken(response.access_token);
@@ -104,20 +109,25 @@ export class IniciarSesionComponent implements OnInit {
           this.adminservice.getAdminById(this.loginService.usuario.correo).subscribe((resp:AdministradorModel)=>{
             
             if(resp.estado=='1'){
+              this.closeDialogLoading()
               this.router.navigate(['/catalogo']);
             }else{
+              this.closeDialogLoading();
               this.loginService.logout();
               this.openDialog("Inicio de sesión fallido", "Su usuario administrador se encuentra deshabilitado.")
             }
           });
         }else{
+          this.closeDialogLoading();
           this.router.navigate(['/catalogo']);
         }
       }, error => {
+        this.closeDialogLoading();
         this.openDialog("ADVERTENCIA","Datos incorrectos.")
       });
 
     }else{
+      this.closeDialogLoading();
       this.openDialog("ERROR","Verifique que todos los campos estén diligenciados.")
     }
     

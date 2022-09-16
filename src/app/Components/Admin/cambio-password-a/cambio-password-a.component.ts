@@ -97,7 +97,7 @@ export class CambioPasswordAComponent implements OnInit {
 
   openDialogLoading(){
     const dialogRef = this.dialog.open(ModalLoadingComponent, {
-      width: '130px'
+      width: '150px'
     });
   }
 

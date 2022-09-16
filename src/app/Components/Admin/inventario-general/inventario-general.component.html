@@ -4,7 +4,7 @@
         <button class="btnOvni btnDetalles mb-3 float-end me-5" routerLink="/ingresarVenta">Ingresar ventas</button>
     </div>
 
-    <div *ngIf="bandera==null" class='spinner'></div>
+    <span *ngIf="bandera==null" class="loader"></span>
 
     <table *ngIf="bandera==true" class="tabla">
         <thead class="tablaHeaderG">

@@ -33,7 +33,7 @@ export class IngresarCompraComponent implements OnInit {
   banderaCantidad: boolean = false;
   banderaPrecio: boolean = false;
   compraForm !: FormGroup;
-  bandera !: Boolean;
+  bandera: boolean=null;
 
   admin: AdministradorModel;
 
@@ -56,7 +56,7 @@ export class IngresarCompraComponent implements OnInit {
 
   openDialogLoading(){
     const dialogRef = this.dialog.open(ModalLoadingComponent, {
-      width: '130px'
+      width: '150px'
     });
   }
 
@@ -65,6 +65,7 @@ export class IngresarCompraComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
 
     this.serviceProducto.getProducts().subscribe((productos: any) => {
       this.productos = productos;

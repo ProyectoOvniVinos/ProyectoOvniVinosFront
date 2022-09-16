@@ -12,7 +12,7 @@ import { ModalDetallesCompraComponent } from '../../Modal/modal-detalles-compra/
 export class ComprasComponent implements OnInit {
 
   compras:CompraModel[];
-  banderaC:boolean = true;
+  banderaC:boolean = null;
 
   constructor(public compraService:CompraService, public dialog: MatDialog) { }
 
@@ -21,6 +21,8 @@ export class ComprasComponent implements OnInit {
       this.compras = resp
       if(this.compras.length==0){
         this.banderaC = false;
+      }else{
+        this.banderaC = true;
       }
     })
   }

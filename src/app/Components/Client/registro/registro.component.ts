@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ClienteModel } from '../../../Models/Cliente.model';
 import { ClienteService } from '../../../Services/cliente.service';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
+import { ModalLoadingComponent } from '../../Modal/modal-loading/modal-loading.component';
 
 
 @Component({
@@ -238,9 +239,20 @@ export class RegistroComponent implements OnInit {
     })
   }
 
+  openDialogLoading(): void {
+    const dialogRef = this.dialog.open(ModalLoadingComponent, {
+      width: '150px',
+    });
+  }
   
+  closeDialogLoading(){
+    const dialogRef = this.dialog.closeAll();
+  }
+
   verificar() {
     
+    this.openDialogLoading();
+
     if(this.registroForm.invalid){
 
       if(
@@ -251,12 +263,14 @@ export class RegistroComponent implements OnInit {
       ){
         
         let title="ERROR"
-        let mensaje="Verifique que todos los campo estén llenos, por favor. "
+        let mensaje="Por favor, verifique que todos los campos estén llenos. "
+        this.closeDialogLoading();
         this.openDialog(title, mensaje);
         
       }else if(this.registroForm.get("terminos").status== "INVALID"){
         let title="ADVERTENCIA"
         let mensaje="Por favor acepte los términos y condiciones."
+        this.closeDialogLoading();
         this.openDialog(title, mensaje);
       }
 
@@ -275,10 +289,12 @@ export class RegistroComponent implements OnInit {
     cliente.passwordCliente=this.registroForm.controls['contrasena1'].value
     this.clienteService.getUsuarioById(cliente.correoCliente).subscribe(cliente=>{
       if(cliente!=null){
+        this.closeDialogLoading();
         this.openDialog("ADVERTENCIA", "Este correo ya existe. ");
       }
     },error=>{
       this.clienteService.registro(cliente).subscribe(res=>{
+        this.closeDialogLoading();
         this.openDialog("¡¡ÉXITO!!", "Se ha registrado satisfactoriamente.")
         this.router.navigate(['/iniciarSesion']);
       });

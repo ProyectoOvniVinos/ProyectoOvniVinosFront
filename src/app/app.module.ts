@@ -71,6 +71,7 @@ import { AboutOvniComponent } from './Components/Index/about-ovni/about-ovni.com
 import { TerminosYcondicionesComponent } from './Components/Index/terminos-ycondiciones/terminos-ycondiciones.component';
 
 import {MatMenuModule} from '@angular/material/menu';
+import { ModalLoadingCompraComponent } from './Components/Modal/modal-loading-compra/modal-loading-compra.component';
 
 
 registerLocaleData(localeEs, 'es');
@@ -125,6 +126,7 @@ registerLocaleData(localeEs, 'es');
     PedidoDetalleComponent,
     AboutOvniComponent,
     TerminosYcondicionesComponent,
+    ModalLoadingCompraComponent,
 
   ],
   imports: [

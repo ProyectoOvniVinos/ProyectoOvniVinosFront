@@ -6,7 +6,8 @@
     </div>
 
 
-    <div *ngIf="bandera==null" class='spinner'></div>
+    
+    <span *ngIf="bandera==null" class="loader"></span>
 
     <table *ngIf="bandera==true" class="tabla">
         <thead class="tablaHeaderG">

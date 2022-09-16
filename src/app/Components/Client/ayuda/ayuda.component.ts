@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog';
 import { LoginService } from 'src/app/Services/login.service';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
+import { ModalLoadingComponent } from '../../Modal/modal-loading/modal-loading.component';
 
 @Component({
   selector: 'app-ayuda',
@@ -103,13 +104,27 @@ export class AyudaComponent implements OnInit {
     this.ayudaForm.controls['problemas'].reset()
     this.ayudaForm.controls['textoOtra'].reset()
   }
+
+  openDialogLoading(): void {
+    const dialogRef = this.dialog.open(ModalLoadingComponent, {
+      width: '150px',
+    });
+  }
+  
+  closeDialogLoading(){
+    const dialogRef = this.dialog.closeAll();
+  }
+
   enviar(){
+    this.openDialogLoading();
     if(this.ayudaForm.controls['textoOtra'].value!=''){
       if(this.ayudaForm.controls['correo'].invalid==false && this.ayudaForm.controls['problemas'].value==""){
+        this.closeDialogLoading();
         this.openDialog("ERROR", "Por favor verifique que todos los campos estén llenos y el correo sea válido. ")
         
       }else{
         this.loginService.ayuda(this.ayudaForm.controls['correo'].value, this.ayudaForm.controls['problemas'].value, this.ayudaForm.controls['textoOtra'].value).subscribe(resp=>{
+          this.closeDialogLoading();
           this.openDialog(resp.status, resp.mensaje)
           this.vaciarForm()
         });
@@ -119,17 +134,18 @@ export class AyudaComponent implements OnInit {
       if(this.ayudaForm.controls['correo'].invalid==false && this.ayudaForm.controls['problemas'].value!=""){
         
         if(this.ayudaForm.controls['problemas'].value=="Otra"){
-
+          this.closeDialogLoading();
           this.openDialog("EERROR", "Por favor verifique que todos los campos estén llenos y el correo sea válido. ")
         }else{
           this.loginService.ayuda(this.ayudaForm.controls['correo'].value, this.ayudaForm.controls['problemas'].value, "no").subscribe(resp=>{
+            this.closeDialogLoading();
             this.openDialog(resp.status, resp.mensaje)
             this.vaciarForm()
           });
         }
         
       }else{
-
+        this.closeDialogLoading();
         this.openDialog("ERROR", "Por favor verifique que todos los campos estén llenos y el correo sea válido.")
       }
     }
