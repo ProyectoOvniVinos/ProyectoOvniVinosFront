@@ -14,6 +14,7 @@ import { ModalDetallesVentaComponent } from '../../Modal/modal-detalles-venta/mo
 export class HistorialComponent implements OnInit {
   usuario;
   cliente:ClienteModel;
+  bandera:boolean=null;
   ventas: VentaModel[]=[]
   constructor(private clienteService:ClienteService, public dialog: MatDialog, private loginService:LoginService) { }
 
@@ -24,12 +25,21 @@ export class HistorialComponent implements OnInit {
       this.cliente = resp;
       this.ventas=this.cliente.ventas;
       this.ordenar();
+      this.validar();
       
     })
   }
 
   ordenar(){
     this.ventas=this.ventas.filter(venta => venta.idRegistroContabilidadDiaria!=null)
+  }
+
+  validar(){
+    if(this.ventas.length==0){
+      this.bandera=false;
+    }else{
+      this.bandera=true
+    }
   }
 
   abrirModal(venta: VentaModel){

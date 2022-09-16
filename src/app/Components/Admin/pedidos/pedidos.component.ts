@@ -1,3 +1,4 @@
+import { ModalLoadingComponent } from './../../Modal/modal-loading/modal-loading.component';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,6 +16,7 @@ import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.compone
 import { PedidoDetalleComponent } from '../../Modal/pedido-detalle/pedido-detalle.component';
 import { Client } from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
+import { ModalLoadingCompraComponent } from '../../Modal/modal-loading-compra/modal-loading-compra.component';
 
 @Component({
   selector: 'app-pedidos',
@@ -322,7 +324,19 @@ export class PedidosComponent implements OnInit, OnDestroy {
     );
   }
 
+  openDialogLoading(){
+    const dialogRef = this.dialog.open(ModalLoadingCompraComponent, {
+      width: '95px',
+      height: '98px',
+    });
+  }
+
+  closeDialogLoading(){
+    const dialogRef = this.dialog.closeAll();
+  }
+
   confirmarCompra() {
+    this.openDialogLoading();
     this.ventaService.addVenta(this.venta, this.isDomicilio).subscribe(venta => {
       let pedido: PedidoModel = new PedidoModel();
       pedido.cliente = venta.venta.correoCliente;
@@ -336,14 +350,14 @@ export class PedidosComponent implements OnInit, OnDestroy {
       }
       pedido.modoAdquirir = modo;
       this.pedidoService.createPedido(pedido, this.venta.correoCliente.direccionCliente).subscribe(e => {
-
+       
       });
       //this.pedidoSocket.actualizarPedidos();
       for (let i = this.carrito.itemCarrito.length; i > 0; i--) {
         this.carrito.itemCarrito.pop()
       }
       this.carritoService.actualizarCarrito(this.carrito).subscribe();
-
+      this.closeDialogLoading();
       this.openDialogConfirmacion("¡¡ÉXITO!!!", "Su compra se ha realizado satisfactoriamente.")
       this.actualizarPedidosPendientes();
       this.router.navigate(['/pedidos']);

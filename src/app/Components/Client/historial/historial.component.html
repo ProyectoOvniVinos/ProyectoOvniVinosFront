@@ -1,8 +1,11 @@
 <div class="container">
-    <div class="cajaMensaje" *ngIf="ventas.length==0">
+    <div class="cajaMensaje" *ngIf="bandera==false">
         <h1>No existen compras</h1>
     </div>
-    <table class="tabla" *ngIf="ventas.length!=0">
+    
+    <span *ngIf="bandera==null" class="loader"></span>
+    
+    <table class="tabla" *ngIf="bandera==true">
         <thead class="tablaHeaderG">
             <tr>
                 <th>
@@ -10,6 +13,9 @@
                 </th>
             </tr>
         </thead>
+
+
+
         <tbody class="tablabodyG">
 
             <hr class="todo">
