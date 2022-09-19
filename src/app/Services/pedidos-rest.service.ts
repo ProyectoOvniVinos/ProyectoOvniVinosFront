@@ -8,7 +8,7 @@ import { PedidoModel } from '../Models/Pedido.model';
 })
 export class PedidosRestService {
 
-  url: string = "http://localhost:8080/apiPedidos/";
+  url: string = "http://ovnivinos.rj.r.appspot.com/apiPedidos/";
 
   constructor(private http: HttpClient) { }
 

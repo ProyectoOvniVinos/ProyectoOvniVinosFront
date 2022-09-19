@@ -10,7 +10,7 @@ import { ContabilidadAnualModel } from '../Models/ContabilidadAnual.model';
 })
 export class ContabilidadService {
 
-  url: string = "http://localhost:8080/apiContabilidad/"
+  url: string = "http://ovnivinos.rj.r.appspot.com/apiContabilidad/"
 
   constructor(private http: HttpClient) { }
 

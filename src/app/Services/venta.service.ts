@@ -11,7 +11,7 @@ import { VentaModel } from '../Models/Venta.model';
 })
 export class VentaService {
 
-  url: string = "http://localhost:8080/apiVenta/";
+  url: string = "http://ovnivinos.rj.r.appspot.com/apiVenta/";
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' })
 
