@@ -1,10 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { PedidoModel } from 'src/app/Models/Pedido.model';
-import { AdminService } from 'src/app/Services/admin.service';
-import { ConvertirAdminService } from 'src/app/Services/convertir-admin.service';
-import { LoginService } from 'src/app/Services/login.service';
-import { PedidosRestService } from 'src/app/Services/pedidos-rest.service';
+import { PedidoModel } from '../../../Models/Pedido.model';
+import { AdminService } from '../../../Services/admin.service';
+import { ConvertirAdminService } from '../../../Services/convertir-admin.service';
+import { LoginService } from '../../../Services/login.service';
+import { PedidosRestService } from '../../../Services/pedidos-rest.service';
 
 @Component({
   selector: 'app-pedido-detalle',

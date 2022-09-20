@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { PedidoModel } from 'src/app/Models/Pedido.model';
-import { DarkModeService } from 'src/app/Services/dark-mode.service';
-import { PedidosRestService } from 'src/app/Services/pedidos-rest.service';
-import { SocketPedidoService } from 'src/app/Services/socket-pedido.service';
+import { PedidoModel } from '../../../Models/Pedido.model';
+import { DarkModeService } from '../../../Services/dark-mode.service';
+import { PedidosRestService } from '../../../Services/pedidos-rest.service';
+import { SocketPedidoService } from '../../../Services/socket-pedido.service';
 import { LoginService } from '../../../Services/login.service';
 
 @Component({

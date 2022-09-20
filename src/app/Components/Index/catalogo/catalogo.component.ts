@@ -11,7 +11,7 @@ import { ItemCarritoModel } from '../../../Models/itemCarrito.model';
 import { InventarioGService } from '../../../Services/inventario-g.service';
 import { LoginService } from '../../../Services/login.service';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
-import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
+import { CarritoClienteModel } from '../../../Models/CarritoCliente.model';
 import { MatMenuTrigger } from '@angular/material/menu';
 
 @Component({
