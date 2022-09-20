@@ -9,8 +9,8 @@ import { ClienteService } from '../../../Services/cliente.service';
 import { LoginService } from '../../../Services/login.service';
 import Swiper, { Autoplay } from 'swiper';
 import { ModalProductosComponent } from '../../Modal/modal-productos/modal-productos.component';
-import { InventarioGService } from 'src/app/Services/inventario-g.service';
-import { CarritoClienteModel } from 'src/app/Models/CarritoCliente.model';
+import { InventarioGService } from '../../../Services/inventario-g.service';
+import { CarritoClienteModel } from '../../../Models/CarritoCliente.model';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 @Component({
   selector: 'app-slideshow',

@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { CompraModel } from 'src/app/Models/Compra.model';
+import { CompraModel } from '../../../Models/Compra.model';
 
 @Component({
   selector: 'app-modal-detalles-compra',

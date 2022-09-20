@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { AdministradorModel } from 'src/app/Models/Administrador.model';
-import { AdminService } from 'src/app/Services/admin.service';
-import { LoginService } from 'src/app/Services/login.service';
+import { AdministradorModel } from '../../../Models/Administrador.model';
+import { AdminService } from '../../../Services/admin.service';
+import { LoginService } from '../../../Services/login.service';
 import { ModalErrorComponent } from '../../Modal/modal-error/modal-error.component';
 import { ModalLoadingComponent } from '../../Modal/modal-loading/modal-loading.component';
 
