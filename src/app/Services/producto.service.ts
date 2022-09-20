@@ -10,9 +10,9 @@ import { ProductoModel } from '../Models/Producto.model';
 })
 export class ProductoService {
 
-  url:string="http://localhost:8080/apiProd/";
+  url:string="https://ovnivinos.herokuapp.com/apiProd/";
 
-  url2:string="http://localhost:8080/apiInventario/inventarioGeneralCompleto/";
+  url2:string="https://ovnivinos.herokuapp.com/apiInventario/inventarioGeneralCompleto/";
 
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 

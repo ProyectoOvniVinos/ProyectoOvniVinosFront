@@ -15,7 +15,7 @@ export class SocketPedidoService {
   constructor() {
     this.client = new Client();
     this.client.webSocketFactory = ():any => {
-      return new SockJS("http://localhost:8080/alerta-back");
+      return new SockJS("https://ovnivinos.herokuapp.com/alerta-back");
     }
     this.conectando();
   }

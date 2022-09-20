@@ -8,7 +8,7 @@ import { Inventario_generalModel } from '../Models/Inventario_general.model';
 })
 export class InventarioService {
 
-  url:string="http://localhost:8080/apiInventario/";
+  url:string="https://ovnivinos.herokuapp.com/apiInventario/";
 
   constructor(private http: HttpClient) { }
 

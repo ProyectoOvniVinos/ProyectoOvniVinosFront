@@ -8,7 +8,7 @@ import { PedidoModel } from '../Models/Pedido.model';
 })
 export class PedidosRestService {
 
-  url: string = "http://localhost:8080/apiPedidos/";
+  url: string = "https://ovnivinos.herokuapp.com/apiPedidos/";
 
   constructor(private http: HttpClient) { }
 

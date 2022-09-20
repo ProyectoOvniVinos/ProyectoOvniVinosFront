@@ -59,18 +59,21 @@ export class PedidosComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     this.inicio1();
-    this.inicio2();
+    if(this.loginService.hasRole("ROLE_CLIENTE")){
+
+      this.inicio2();
+    }
 
     this.client = new Client();
     this.client.webSocketFactory = (): any => {
-      return new SockJS("http://localhost:8080/alerta-back");
+      return new SockJS("https://ovnivinos.herokuapp.com/alerta-back");
     }
 
     this.client.activate();
 
     this.client.onConnect = (frame) => {
 
-      this.client.subscribe('/topic/alerta', e => {
+      this.client.subscribe('/topic/alerta1', e => {
         this.pedidosPendientesL = JSON.parse(e.body) as PedidoModel[];
         if (this.lugar == 'Pendientes') {
           this.pedidos = this.pedidosPendientesL;
@@ -78,7 +81,7 @@ export class PedidosComponent implements OnInit, OnDestroy {
 
       });
 
-      this.client.subscribe('/topic/alerta2', e => {
+      this.client.subscribe('/topic/alerta22', e => {
         this.pedidosProcesoL = JSON.parse(e.body) as PedidoModel[];
         if (this.lugar == 'en Proceso') {
           this.pedidos = this.pedidosProcesoL;
@@ -86,7 +89,7 @@ export class PedidosComponent implements OnInit, OnDestroy {
 
       });
 
-      this.client.subscribe('/topic/alerta3', e => {
+      this.client.subscribe('/topic/alerta33', e => {
         let pedidos = JSON.parse(e.body) as PedidoModel[];
         this.pedidosPendientesC = pedidos.filter(pedido=>pedido.estado=='1');
         this.pedidosProcesoC = pedidos.filter(pedido=>pedido.estado=='2');
@@ -98,10 +101,10 @@ export class PedidosComponent implements OnInit, OnDestroy {
 
       });
 
-      this.client.publish({ destination: '/app/alerta', body: "entro" });
-      this.client.publish({ destination: '/app/alerta2', body: "entro" });
+      this.client.publish({ destination: '/app/alerta1', body: "entro" });
+      this.client.publish({ destination: '/app/alerta22', body: "entro" });
       if(this.loginService.hasRole('ROLE_CLIENTE')){
-        this.client.publish({ destination: '/app/alerta3', body: this.loginService.usuario.correo });
+        this.client.publish({ destination: '/app/alerta33', body: this.loginService.usuario.correo });
       }
     };
 
@@ -117,15 +120,15 @@ export class PedidosComponent implements OnInit, OnDestroy {
     this.client.deactivate();
   }
   actualizarPedidosPendientes(): void {
-    this.client.publish({ destination: '/app/alerta', body: "entro" });
+    this.client.publish({ destination: '/app/alerta1', body: "entro" });
   }
 
   actualizarPedidosProceso(): void {
-    this.client.publish({ destination: '/app/alerta2', body: "entro" });
+    this.client.publish({ destination: '/app/alerta22', body: "entro" });
   }
 
   actualizarPedidosCliente(correo:string): void {
-    this.client.publish({ destination: '/app/alerta3', body: correo });
+    this.client.publish({ destination: '/app/alerta33', body: correo });
   }
 
   inicio1() {

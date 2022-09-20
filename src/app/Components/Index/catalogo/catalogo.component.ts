@@ -211,12 +211,15 @@ export class CatalogoComponent implements OnInit, OnChanges {
 
     dialogRef.afterClosed().subscribe((result: any) => {
 
-      if (result.resultado == true) {
+      if(result && result.resultado){
 
-        this.agregar(result.inventarioG.codigoProducto);
-
-      } else {
-
+        if (result.resultado == true) {
+  
+          this.agregar(result.inventarioG.codigoProducto);
+  
+        } else {
+  
+        }
       }
     });
   }
