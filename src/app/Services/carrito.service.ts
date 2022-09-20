@@ -7,7 +7,7 @@ import { CarritoClienteModel } from '../Models/CarritoCliente.model';
   providedIn: 'root'
 })
 export class CarritoService {
-  url:string="http://ovnivinos.rj.r.appspot.com/apiCarrito/";
+  url:string="https://ovnivinos.herokuapp.com/apiCarrito/";
 
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 

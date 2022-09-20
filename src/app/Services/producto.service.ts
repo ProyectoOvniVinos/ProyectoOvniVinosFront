@@ -10,9 +10,9 @@ import { ProductoModel } from '../Models/Producto.model';
 })
 export class ProductoService {
 
-  url:string="http://ovnivinos.rj.r.appspot.com/apiProd/";
+  url:string="https://ovnivinos.herokuapp.com/apiProd/";
 
-  url2:string="http://ovnivinos.rj.r.appspot.com/apiInventario/inventarioGeneralCompleto/";
+  url2:string="https://ovnivinos.herokuapp.com/apiInventario/inventarioGeneralCompleto/";
 
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 

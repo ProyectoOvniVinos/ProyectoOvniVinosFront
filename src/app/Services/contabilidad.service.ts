@@ -10,7 +10,7 @@ import { ContabilidadAnualModel } from '../Models/ContabilidadAnual.model';
 })
 export class ContabilidadService {
 
-  url: string = "http://ovnivinos.rj.r.appspot.com/apiContabilidad/"
+  url: string = "https://ovnivinos.herokuapp.com/apiContabilidad/"
 
   constructor(private http: HttpClient) { }
 

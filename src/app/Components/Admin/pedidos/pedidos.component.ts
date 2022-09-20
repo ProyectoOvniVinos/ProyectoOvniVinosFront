@@ -59,11 +59,14 @@ export class PedidosComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     this.inicio1();
-    this.inicio2();
+    if(this.loginService.hasRole("ROLE_CLIENTE")){
+
+      this.inicio2();
+    }
 
     this.client = new Client();
     this.client.webSocketFactory = (): any => {
-      return new SockJS("http://localhost:8080/alerta-back");
+      return new SockJS("https://ovnivinos.herokuapp.com/alerta-back");
     }
 
     this.client.activate();

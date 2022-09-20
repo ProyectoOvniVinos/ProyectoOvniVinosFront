@@ -8,7 +8,7 @@ import { CompraModel } from '../Models/Compra.model';
 })
 export class CompraService {
 
-  url:string="http://ovnivinos.rj.r.appspot.com/apiCompra/";
+  url:string="https://ovnivinos.herokuapp.com/apiCompra/";
 
   private httpHeaders = new HttpHeaders({'Content-Type':'application/json'})
 

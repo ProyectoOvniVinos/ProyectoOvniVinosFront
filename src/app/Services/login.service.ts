@@ -35,7 +35,7 @@ export class LoginService {
   }
 
   login(username:string, password:string):Observable<any>{
-    const urlEnpoint = 'http://ovnivinos.rj.r.appspot.com/oauth/token';
+    const urlEnpoint = 'https://ovnivinos.herokuapp.com/oauth/token';
     const credenciales = btoa('ovniVinos' + ':' + '12345');
     const httpHeaders = new HttpHeaders({'Content-Type':'application/x-www-form-urlencoded',
     'Authorization':'Basic '+ credenciales}); 
@@ -92,7 +92,7 @@ export class LoginService {
   }
 
   ayuda(email:string,problema:string,descripcion:string){
-    let url = `http://ovnivinos.rj.r.appspot.com/apiCliente/ayuda/${email}/${problema}/${descripcion}`
+    let url = `https://ovnivinos.herokuapp.com/apiCliente/ayuda/${email}/${problema}/${descripcion}`
     return this.http.get<any>(url);
   }
 

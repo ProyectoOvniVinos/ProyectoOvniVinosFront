@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class InventarioGService {
 
   
-  url:string="http://ovnivinos.rj.r.appspot.com/apiInventario/";
+  url:string="https://ovnivinos.herokuapp.com/apiInventario/";
 
   constructor(private http: HttpClient, public dialog: MatDialog, private router: Router) { }
 

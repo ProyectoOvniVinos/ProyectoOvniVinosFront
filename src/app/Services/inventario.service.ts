@@ -8,7 +8,7 @@ import { Inventario_generalModel } from '../Models/Inventario_general.model';
 })
 export class InventarioService {
 
-  url:string="http://ovnivinos.rj.r.appspot.com/apiInventario/";
+  url:string="https://ovnivinos.herokuapp.com/apiInventario/";
 
   constructor(private http: HttpClient) { }
 

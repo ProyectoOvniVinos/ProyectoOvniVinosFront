@@ -8,8 +8,8 @@ import { ClienteModel } from '../Models/Cliente.model';
 })
 export class ClienteService {
 
-  url: string = "http://ovnivinos.rj.r.appspot.com/apiCliente/";
-  url2: string = "http://ovnivinos.rj.r.appspot.com/apiAdmin/";
+  url: string = "https://ovnivinos.herokuapp.com/apiCliente/";
+  url2: string = "https://ovnivinos.herokuapp.com/apiAdmin/";
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' })
   constructor(private http: HttpClient) { }

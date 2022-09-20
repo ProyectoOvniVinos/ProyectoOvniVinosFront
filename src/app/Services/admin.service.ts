@@ -7,7 +7,7 @@ import { AdministradorModel } from '../Models/Administrador.model';
   providedIn: 'root'
 })
 export class AdminService {
-  url: string = "http://ovnivinos.rj.r.appspot.com/apiAdmin/";
+  url: string = "https://ovnivinos.herokuapp.com/apiAdmin/";
 
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' })
 
