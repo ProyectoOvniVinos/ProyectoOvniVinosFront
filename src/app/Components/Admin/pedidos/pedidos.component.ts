@@ -17,6 +17,8 @@ import { PedidoDetalleComponent } from '../../Modal/pedido-detalle/pedido-detall
 import { Client } from '@stomp/stompjs';
 import * as SockJS from 'sockjs-client';
 import { ModalLoadingCompraComponent } from '../../Modal/modal-loading-compra/modal-loading-compra.component';
+import { AdminService } from 'src/app/Services/admin.service';
+import { ConvertirAdminService } from 'src/app/Services/convertir-admin.service';
 
 @Component({
   selector: 'app-pedidos',
@@ -48,7 +50,8 @@ export class PedidosComponent implements OnInit, OnDestroy {
   constructor(private pedidoService: PedidosRestService, public dialog: MatDialog, public loginService: LoginService,
     private activateRoute: ActivatedRoute, private carritoService: CarritoService,
     private clienteService: ClienteService, private ventaService: VentaService,
-    private router: Router) {
+    private router: Router, private adminService: AdminService, private convertirAdmin: ConvertirAdminService,
+    public pedidosRestService:PedidosRestService) {
 
   }
   
@@ -234,7 +237,7 @@ export class PedidosComponent implements OnInit, OnDestroy {
       width: '70%',
       data: pedido,
     });
-    dialogRef.afterClosed().subscribe((result: any) => {
+    dialogRef.afterClosed().subscribe((result: PedidoModel) => {
       if (this.lugar == "Pendientes") {
         this.pedidosPendientes();
       } else if (this.lugar == "en Proceso") {
@@ -248,9 +251,18 @@ export class PedidosComponent implements OnInit, OnDestroy {
       console.log(result);
       
       if(result){
-        this.actualizarPedidosPendientes();
-        this.actualizarPedidosProceso();
-        this.actualizarPedidosCliente(result.cliente.correoCliente);
+        console.log(result,"antes");
+
+        this.adminService.getAdminById(this.loginService.usuario.correo).subscribe(admin=>{
+          result.administrador = this.convertirAdmin.convertir(admin);
+          this.pedidosRestService.updatePedido(result).subscribe(resp=>{
+            this.actualizarPedidosPendientes();
+            this.actualizarPedidosProceso();
+            this.actualizarPedidosCliente(result.cliente.correoCliente);
+          })
+        });
+        
+        
       }
 
     });

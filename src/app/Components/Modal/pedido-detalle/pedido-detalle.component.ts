@@ -38,34 +38,16 @@ export class PedidoDetalleComponent implements OnInit {
 
   pasarProceso(){
     this.pedido.estado = '2';
-    this.updatePedido();
-    this.regresar = true;
   }
 
   pasarCompletado(){
     console.log(this.pedido);
     
     this.pedido.estado = '3';
-    this.updatePedido();
-    this.regresar = true;
 
   }
   
   pasarCancelado(){
     this.pedido.estado = '4';
-    this.updatePedido();
-    this.regresar = true;
-
-  }
-
-  updatePedido(){
-    console.log(this.pedido);
-    
-    this.adminService.getAdminById(this.loginService.usuario.correo).subscribe(admin=>{
-      this.pedido.administrador = this.convertirAdmin.convertir(admin);
-      this.pedidosRestService.updatePedido(this.pedido).subscribe(resp=>{
-        console.log(resp);
-      })
-    });
   }
 }
