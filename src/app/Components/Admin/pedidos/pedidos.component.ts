@@ -248,11 +248,11 @@ export class PedidosComponent implements OnInit, OnDestroy {
       console.log(result);
       
       if(result){
-        console.log(result,"antes");
+        console.log("antes ////////////////////////");
         this.actualizarPedidosPendientes();
         this.actualizarPedidosProceso();
         this.actualizarPedidosCliente(result.cliente.correoCliente);
-        console.log(result,"despues");
+        console.log("despues ///////////////////////");
       }
 
     });
