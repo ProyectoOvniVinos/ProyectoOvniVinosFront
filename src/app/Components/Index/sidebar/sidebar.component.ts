@@ -5,6 +5,7 @@ import { DarkModeService } from '../../../Services/dark-mode.service';
 import { PedidosRestService } from '../../../Services/pedidos-rest.service';
 import { SocketPedidoService } from '../../../Services/socket-pedido.service';
 import { LoginService } from '../../../Services/login.service';
+import { MatDrawerMode } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,6 +14,7 @@ import { LoginService } from '../../../Services/login.service';
 })
 export class SidebarComponent implements OnInit {
 
+  sidebar= "over";
   abierto = true;
   cliente = false;
   admin = false;
@@ -33,6 +35,15 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const width =document.documentElement.scrollWidth;
+    if(width < 500) {
+      console.log("AAAAAAAAAAAAAAAAAA");
+      
+      this.sidebar="over";
+    }else{
+      console.log("BBBBBBBBBBBBBBBB");
+      this.sidebar="side";
+    }
     this.titleSwitch="Noche"
     if(this.loginService.isAuthenticated()){
       this.pedidoSocket.conectar();

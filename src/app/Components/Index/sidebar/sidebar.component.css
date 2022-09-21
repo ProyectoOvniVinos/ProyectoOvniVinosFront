@@ -307,8 +307,8 @@
 @media screen and (max-width: 1108px) and (max-height:695px) {
 
     .texts {
-        margin-left: 30px;
-        margin-right: 30px;
+        margin-left: -3px;
+        margin-right: 4px;
     }
 
     .footer {
