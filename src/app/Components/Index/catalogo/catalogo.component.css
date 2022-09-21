@@ -705,3 +705,12 @@ button.mat-menu-item {
         margin-bottom: 35%
     }
 }
+@media screen and (max-width:400px) and (max-height:700px){
+
+    .catalogoTwo{
+        margin-bottom: 280%;
+    }
+    .footer{
+        position: absolute;
+    }
+}

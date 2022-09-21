@@ -13,7 +13,8 @@
     </mat-toolbar-row>
 </mat-toolbar>
 <mat-sidenav-container>
-    <mat-sidenav #sidenav opened="true" mode="side" class="contenedor-sidebar fmorado" >
+    <!-- [mode]="sidebar=='over' ? 'over' : 'side'" -->
+    <mat-sidenav #sidenav opened="true" [mode]="sidebar=='over' ? 'over' : 'side'" class="contenedor-sidebar fmorado" >
         <mat-nav-list>
             <div class="contenedor-logo">
 
