@@ -89,7 +89,8 @@
                         <thead class="tablaHeaderPedido">
                             <tr>
                                 <th class="primero">Nombre</th>
-                                <th>Cantidad</th>
+                                <th class="grande">Cantidad</th>
+                                <th class="peque">Cant</th>
                                 <th>Precio</th>
                                 <th class="ultimo">Precio total</th>
                             </tr>
@@ -123,7 +124,7 @@
                 <li class="contenedor" *ngFor="let item of venta.ventas;let indice = index">
                     <div class="lista">
                         <img class="imagen" src={{item.codigoProducto.fotoProducto}} alt="">
-                        <div class="item">
+                        <div class="item nuevo">
                             <p> <b> Producto </b></p>
                             <p>{{item.codigoProducto.nombreProducto  | slice:0:16}}</p>
                         </div>
@@ -136,7 +137,8 @@
                             <p>{{item.codigoProducto.precioProducto}}</p>
                         </div>
                         <div class="item">
-                            <p><b> Precio total</b></p>
+                            <p class="grande"><b> Precio total</b></p>
+                            <p class="peque"><b> Total</b></p>
                             <p>{{item.precioVentaDetalle}}</p>
                         </div>
                     </div>

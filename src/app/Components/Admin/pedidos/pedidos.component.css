@@ -498,6 +498,10 @@ td{
     border-end-end-radius: 0rem;
 }
 
+.peque{
+    display: none;
+}
+
 
 
 
@@ -665,6 +669,83 @@ td{
     .conteTipoVenta{
         width: 55%;
 
+    }
+
+}
+
+@media screen and (max-width: 550px) and (max-height:1080px){
+
+    .organizar{
+        flex-direction: column;
+    }
+
+    .pedidos{
+        height: 70%;
+    }
+
+    .pedido{
+        width: 96%;
+        margin-left:2%;
+        margin-right:2%;
+    }
+
+    .cajaM{
+        width:95%;
+        height: 82%;
+    }
+
+    .grande{
+        display: none;
+    }
+
+    .peque{
+        display: block;
+    }
+
+    .imagen{
+        width: 80px;
+        height: 80px;
+        border-end-start-radius: 0px;
+        align-self: start;
+    }
+
+    .lista{
+        display: grid;
+        grid-template: 1fr / 1fr 1fr 1fr;
+        height: auto;
+        align-items: start;
+    }
+
+    .contenedor{
+        align-items: center;
+        height: auto;
+        padding-bottom: 0;
+    }
+
+    .nuevo{
+        grid-area: 1 / 2 / 2 / 4;
+        align-self: start;
+    }
+
+    .general{
+        justify-content: space-evenly;
+    }
+
+    .cajaPadre{
+        height: auto;
+    }
+
+    .botones2{
+        margin-bottom: 10px;
+    }
+
+    .conteTipoVenta{
+        width: 75%;
+        height: 9rem;
+    }
+
+    .contenedor-tipos{
+        overflow: auto;
     }
 
 }
