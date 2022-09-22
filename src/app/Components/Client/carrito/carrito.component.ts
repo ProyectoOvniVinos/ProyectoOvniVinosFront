@@ -76,6 +76,12 @@ export class CarritoComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.cambioClase();
+    const width =document.documentElement.scrollWidth;
+    if(width < 500) {
+      document.body.classList.add("carritoAbierto");
+    }else{
+      document.body.classList.remove("carritoAbierto");
+    }
   }
 
   cambioClase() {

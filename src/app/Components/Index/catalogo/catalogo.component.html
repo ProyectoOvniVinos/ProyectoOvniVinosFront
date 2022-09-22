@@ -79,6 +79,6 @@
 <div *ngIf="validarCarrito">
     <app-carrito [clienteInp]="clienteInp" (devolver)="procesarDevolver($event)"></app-carrito>
     <button type="button" class="close cerrar"></button>
-    <button (click)="validarCarrito=!validarCarrito" type="button" class="close cerrar"></button>
+    <button (click)="validarCarro()" type="button" class="close cerrar"></button>
 </div>
 

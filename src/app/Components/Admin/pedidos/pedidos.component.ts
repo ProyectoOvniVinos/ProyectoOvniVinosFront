@@ -248,10 +248,8 @@ export class PedidosComponent implements OnInit, OnDestroy {
         this.pedidosCanselados();
       }
       
-      console.log(result);
       
       if(result){
-        console.log(result,"antes");
 
         this.adminService.getAdminById(this.loginService.usuario.correo).subscribe(admin=>{
           result.administrador = this.convertirAdmin.convertir(admin);
