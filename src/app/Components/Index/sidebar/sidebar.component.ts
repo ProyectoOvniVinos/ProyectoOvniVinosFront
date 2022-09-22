@@ -37,12 +37,10 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     const width =document.documentElement.scrollWidth;
     if(width < 500) {
-      console.log("AAAAAAAAAAAAAAAAAA");
-      
       this.sidebar="over";
     }else{
-      console.log("BBBBBBBBBBBBBBBB");
       this.sidebar="side";
+
     }
     this.titleSwitch="Noche"
     if(this.loginService.isAuthenticated()){
