@@ -153,6 +153,7 @@
         height:15rem;
     }
 }
+
 @media screen and (max-width: 1920px) and (max-height:840px){
 
     .cajaInputs{
@@ -163,7 +164,7 @@
 @media screen and (max-width: 1920px) and (max-height:760px){
 
     .cajaInputs{
-        height:14rem;
+        height:18rem;
     }
 
     .cajaMdatos{
@@ -171,7 +172,12 @@
     }
 
     .cajaBtns{
-        padding-top: 4%;
+        padding-top: 6%;
+    }
+    .cajaDatos{
+
+        padding-top: 0;
+
     }
 
 }
@@ -183,6 +189,7 @@
     }
     .btnD{
         height: 2.5rem;
+        width: 50%;
     }
 }
 
@@ -258,3 +265,42 @@
 
 }
 
+@media screen and (max-width: 450px) and (max-height:900px){
+
+    .cajaInputs{
+        height:27rem;
+        justify-content: flex-start;
+    }
+    .btnD{
+        width: 65%;
+    }
+    .cajaMdatos{
+        height:90%;
+    }
+    .cajaBtn{
+        padding-top:9%;
+    }
+    .cajaInput{
+        width: 18rem;
+    }
+    
+
+}
+@media screen and (max-width: 400px) and (max-height:700px){
+    .cajaInputs{
+        justify-content:flex-start;
+        height:18rem;
+    }
+    .cajaMdatos {
+        width: 90%;
+        height:80%;
+    }
+    
+    .cajaBtn{
+        padding-top:9%;
+    }
+    .cajaInput{
+        width: 95%;
+    }
+
+}
