@@ -705,12 +705,43 @@ button.mat-menu-item {
         margin-bottom: 35%
     }
 }
+
+@media screen and (max-width:500px){
+
+    .btnFiltro{
+        width:14%;
+    }
+
+    .catalogoTwo{
+        margin-bottom: 100%;
+    }
+
+    .cardP{
+        width: 39%;
+        height: 16rem;
+    }
+
+}
+
 @media screen and (max-width:400px) and (max-height:700px){
 
     .catalogoTwo{
-        margin-bottom: 280%;
+        margin-bottom: 120%;
     }
     .footer{
         position: absolute;
+    }
+}
+
+@media screen and (max-width:420px) {
+
+    .catalogoTwo{
+        margin-bottom: 120%;
+    }
+    .footer{
+        position: absolute;
+    }
+    .btnFiltro{
+        width:20%;
     }
 }

@@ -211,6 +211,18 @@
 
 }
 
+body.carritoAbierto .mat-toolbar-multiple-rows{
+    width:0% !important;
+}
+
+body.carritoAbierto .cont-menu{
+    display: none;
+}
+
+body.carritoAbierto .contenedor-sidebar{
+    display: none;
+}
+
 body.darkMode{
     background-color: rgb(0, 0, 0);
 }

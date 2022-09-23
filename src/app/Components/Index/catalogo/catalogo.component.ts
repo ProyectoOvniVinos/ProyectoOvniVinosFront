@@ -66,6 +66,15 @@ export class CatalogoComponent implements OnInit, OnChanges {
 
   }
 
+  validarCarro(){
+    this.validarCarrito=!this.validarCarrito;
+    if(this.validarCarrito==false){
+      document.body.classList.remove('carritoAbierto')
+    }else{
+
+    }
+  }
+
   obtenerProductos() {
     this.inventarioGeneral = []
     this.productoService.getProductsInventario().subscribe(inventario => {
