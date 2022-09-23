@@ -498,6 +498,10 @@ td{
     border-end-end-radius: 0rem;
 }
 
+.peque{
+    display: none;
+}
+
 
 
 
@@ -665,6 +669,116 @@ td{
     .conteTipoVenta{
         width: 55%;
 
+    }
+
+}
+
+@media screen and (max-width: 550px) and (max-height:1080px){
+
+    .organizar{
+        flex-direction: column;
+    }
+
+    .pedidos{
+        height: 74%;
+    }
+
+    .pedido{
+        width: 96%;
+        margin-left:2%;
+        margin-right:2%;
+    }
+
+    .cajaM{
+        width:95%;
+        height: 76vh;
+    }
+
+    .grande{
+        display: none;
+    }
+
+    .peque{
+        display: block;
+    }
+
+    .imagen{
+        width: 80px;
+        height: 80px;
+        border-end-start-radius: 0px;
+        align-self: start;
+    }
+
+    .lista{
+        display: grid;
+        grid-template: 1fr / 1fr 1fr 1fr;
+        height: auto;
+        align-items: start;
+    }
+
+    .contenedor{
+        align-items: center;
+        height: auto;
+        padding-bottom: 0;
+    }
+
+    .nuevo{
+        grid-area: 1 / 2 / 2 / 4;
+        align-self: start;
+    }
+
+    .general{
+        justify-content: space-evenly;
+    }
+
+    .cajaPadre{
+        height: auto;
+    }
+
+    .botones2{
+        margin-bottom: 10px;
+    }
+
+    .conteTipoVenta{
+        width: 80%;
+        height: 7.8rem;
+    }
+
+    .imgVenta{
+        width: 16%;
+    }
+
+    .cajaPedido{
+        height: 78vh !important;
+    }
+
+    .contenedor-tipos{
+        overflow: auto;
+    }
+
+    .cajaMensaje{
+        top: 45%;
+    }
+
+}
+
+@media screen and (max-width: 380px) and (max-height:1080px){
+    .pedidos{
+        height: 65%;
+    }
+
+    .cajaPedido{
+        height: 71vh !important;
+        overflow: auto;
+    }
+
+    .cajaM{
+        height: 70vh;
+    }
+
+    .scrol{
+        height: 10rem;
+        direction: ltr;
     }
 
 }
