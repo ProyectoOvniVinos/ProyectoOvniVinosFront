@@ -105,4 +105,10 @@
         width: 70%;
     }
 }
+@media screen and (max-width: 360px) and (max-height: 750px){
+    .contenedor-titulo-header{
+        width: 65%;
+        margin-left: 9rem;
+    }
+}
 

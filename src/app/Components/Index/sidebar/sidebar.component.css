@@ -429,3 +429,9 @@
         transform: scale(1,1);
     }
 }
+@media screen and (max-width: 360px) and (max-height: 750px){
+    
+    .logos {
+        width: 6%;
+    }
+}
