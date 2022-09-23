@@ -679,6 +679,10 @@ td{
         flex-direction: column;
     }
 
+    .inputDireccion{
+        width: 80%;
+    }
+
     .pedidos{
         height: 74%;
     }
@@ -768,7 +772,7 @@ td{
     }
 
     .cajaPedido{
-        height: 71vh !important;
+        height: 76vh !important;
         overflow: auto;
     }
 
@@ -778,7 +782,7 @@ td{
 
     .scrol{
         height: 10rem;
-        direction: ltr;
+        direction: rtl;
     }
 
 }
