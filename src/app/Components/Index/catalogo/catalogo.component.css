@@ -744,4 +744,12 @@ button.mat-menu-item {
     .btnFiltro{
         width:20%;
     }
+    .btnFiltroTwo{
+        width: 2rem !important;
+    }
+    .cajaCarrito{
+        width: 15%;
+        margin-bottom: 8%;
+    }
 }
+

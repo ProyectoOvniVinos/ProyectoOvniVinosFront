@@ -1,3 +1,5 @@
+import { MatDialog } from '@angular/material/dialog';
+import { ModalErrorComponent } from './../../Modal/modal-error/modal-error.component';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { PedidoModel } from '../../../Models/Pedido.model';
@@ -30,7 +32,8 @@ export class SidebarComponent implements OnInit {
     public loginService: LoginService, 
     public darkModeService: DarkModeService, 
     private pedidoService: PedidosRestService,
-    public pedidoSocket: SocketPedidoService) {
+    public pedidoSocket: SocketPedidoService,
+    private dialog: MatDialog) {
 
   }
 
@@ -92,6 +95,19 @@ export class SidebarComponent implements OnInit {
 
   peticion(){
     this.pedidoSocket.actualizarPedidos();
+  }
+
+  open(){
+    console.log("abrio");
+    
+    this.openDialog();
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(ModalErrorComponent, {
+      width: '300px',
+      data: {title: "Informacion", mensaje: "Municipio: Armenia Quindio " +"\n" + "Direccion: Barrio centenario, Manzana C casa 13  y  Telefono: (+57) 310-211-1965"},
+    });
   }
 
 }

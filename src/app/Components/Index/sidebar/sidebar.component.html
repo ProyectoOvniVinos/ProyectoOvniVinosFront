@@ -66,7 +66,7 @@
             <app-header *ngIf="abierto" clase="true"></app-header>
             <app-header *ngIf="!abierto" clase="false"></app-header> 
             <router-outlet></router-outlet>
-            <div class="footer" [ngClass]="abierto ? 'sin' : 'footerAbierto'">
+            <div  class="footer" [ngClass]="abierto ? 'sin' : 'footerAbierto'">
                 <div class="texts">
 
                     <div class="cajaTexts1">
@@ -76,7 +76,7 @@
 
                     
                     <div class="cajaTexts3">
-                        <a> <b>Informacion </b> </a> 
+                        <a  > <b>Informacion </b> </a> 
                    </div>
 
                     <div class="cajaTexts2" routerLink="/about">
@@ -98,7 +98,7 @@
                     </div>
 
                     
-                    <div class="cajaTexts3">
+                    <div (click)="openDialog()" class="cajaTexts3">
                         <a> <b>Informacion </b> </a> 
                    </div>
 
