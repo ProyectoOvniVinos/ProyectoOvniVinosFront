@@ -304,3 +304,9 @@
     }
 
 }
+@media screen and (max-width: 360px) and (max-height: 750px){
+    .cajaMdatos{
+        height:95%;
+    }
+}
+

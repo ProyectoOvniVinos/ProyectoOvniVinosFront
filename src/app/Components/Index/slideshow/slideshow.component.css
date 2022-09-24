@@ -135,3 +135,8 @@
         width: 60%;
     }
 }
+@media screen and (max-width: 450px) and (max-height: 900px){
+    .swiper{
+        width: 70%;
+    }
+}

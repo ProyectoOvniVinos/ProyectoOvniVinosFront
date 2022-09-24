@@ -332,7 +332,7 @@ a:hover{
 @media screen and (max-width: 400px) and (max-height:700px){
 
     .cajaM-login{
-        height:80%;
+        height:85%;
     }
     .cajaInput{
         height:10vh;
@@ -342,4 +342,11 @@ a:hover{
     }
     
 }
-
+@media screen and (max-width: 360px) and (max-height: 750px){
+    .btnRegistrar{
+        width:47%;
+    }
+    .cajaM-login {
+        height: 92%;
+    }
+}

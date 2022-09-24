@@ -732,11 +732,23 @@ button.mat-menu-item {
         position: absolute;
     }
 }
-
-@media screen and (max-width:420px) {
+@media screen and (max-width: 450px) and (max-height: 900px){
 
     .catalogoTwo{
-        margin-bottom: 120%;
+        margin-bottom: 65%;
+    }
+    .buscador input{
+        width: 65%;
+    }
+    .mat-icon-button{
+        width:9% !important;
+    }
+}
+
+@media screen and (max-width: 400px) and (max-height:700px){
+
+    .catalogoTwo{
+        margin-bottom: 130%;
     }
     .footer{
         position: absolute;
@@ -744,6 +756,7 @@ button.mat-menu-item {
     .btnFiltro{
         width:20%;
     }
+
     .btnFiltroTwo{
         width: 2rem !important;
     }
@@ -753,3 +766,14 @@ button.mat-menu-item {
     }
 }
 
+@media screen and (max-width: 360px) and (max-height: 750px){
+    .catalogoTwo{
+        margin-bottom: 120%;
+    }
+    .btnFiltro {
+        width: 19%;
+    }
+    .logos {
+        width: 6%;
+    }
+}
