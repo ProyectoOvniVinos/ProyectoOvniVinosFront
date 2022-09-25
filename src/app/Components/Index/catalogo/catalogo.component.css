@@ -760,6 +760,28 @@ button.mat-menu-item {
     }
 }
 
+
+
+
+@media screen and (min-height:600px)and (max-height: 642px) {
+    .catalogoTwo {
+        margin-bottom: 170%;
+    }
+}
+
+@media screen and (max-height: 600px) {
+    .catalogoTwo {
+        margin-bottom: 167%;
+    }
+}
+
+
+@media screen and (min-height: 540px) and (max-height: 600px) {
+    .catalogoTwo {
+        margin-bottom: 210%;
+    }
+}
+
 @media screen and (max-width:500px) {
 
     .btnFiltro {
@@ -767,7 +789,7 @@ button.mat-menu-item {
     }
 
     .catalogoTwo {
-        margin-bottom: 60%;
+        margin-bottom: 120%;
     }
 
     .cardP {
@@ -777,14 +799,10 @@ button.mat-menu-item {
 
 }
 
-@media screen and (max-width:400px) and (max-height:700px) {
 
+@media screen and (max-height: 450px) {
     .catalogoTwo {
-        margin-bottom: 120%;
-    }
-
-    .footer {
-        position: absolute;
+        margin-bottom: 200%;
     }
 }
 
@@ -793,7 +811,7 @@ button.mat-menu-item {
 @media screen and (max-width: 450px) and (max-height: 900px) {
 
     .catalogoTwo {
-        margin-bottom: 80%;
+        margin-bottom: 120%;
     }
 
     .buscador input {
@@ -804,6 +822,7 @@ button.mat-menu-item {
         width: 9% !important;
     }
 }
+
 
 @media screen and (max-width:413px) and (max-height: 662px) {
     .catalogoTwo {
@@ -833,6 +852,10 @@ button.mat-menu-item {
 
 }
 
+
+
+
+
 @media screen and (max-width: 360px) and (max-height: 750px) {
     .catalogoTwo {
         margin-bottom: 130%;
@@ -847,35 +870,13 @@ button.mat-menu-item {
     }
 }
 
-@media screen and (min-height:600px)and (max-height: 642px) {
-    .catalogoTwo {
-        margin-bottom: 170%;
-    }
-}
-
-@media screen and (max-height: 600px) {
-    .catalogoTwo {
-        margin-bottom: 167%;
-    }
-}
-
-@media screen and (min-height: 540px) and (max-height: 600px) {
-    .catalogoTwo {
-        margin-bottom: 210%;
-    }
-}
-
 @media screen and (max-width: 330px) and (max-height: 540px) {
     .catalogoTwo {
         margin-bottom: 220%;
     }
 }
 
-@media screen and (max-height: 450px) {
-    .catalogoTwo {
-        margin-bottom: 200%;
-    }
-}
+
 
 @media screen and (min-width:330px)and (max-width: 381px) and (max-height: 645px) {
     .catalogoTwo {

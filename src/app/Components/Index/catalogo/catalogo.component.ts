@@ -212,6 +212,8 @@ export class CatalogoComponent implements OnInit, OnChanges {
     let width = '50%'
     if (pageWidth <= 1400) {
       width = '70%'
+    }else if(pageWidth<=500){
+      width = '80%'
     }
     const dialogRef = this.dialog.open(ModalProductosComponent, {
       width: width,

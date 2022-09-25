@@ -195,11 +195,16 @@ export class CarritoComponent implements OnInit, OnChanges {
     }
   }
 
+  validarCarro(){
+      document.body.classList.remove('carritoAbierto')
+  }
+
   abrirModal() {
 
     if (this.carrito.itemCarrito.length == 0) {
       this.openDialog2("ADVERTENCIA", "Su carrito esta vacío, para hacer una compra debe haber mínimo un producto.")
     } else {
+      this.validarCarro();
       let venta: VentaModel = new VentaModel();
       let cantidad = 0;
       this.carrito.itemCarrito.map(item => {
