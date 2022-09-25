@@ -623,6 +623,25 @@ body.darkMode .loader {
     color: rgb(0, 0, 0)!important;
 }
 
+body.darkMode .imgProducto1{
+    content: url("assets/Images/botella-de-plasticoNegra.png");
+}
+
+body.darkMode .imgProducto2{
+    content: url("assets/Images/vinoNegro.png");
+}
+
+body.darkMode .imgProducto3{
+    content: url("assets/Images/juntasNegra.png");
+}
+
+body.darkMode .imgProducto4{
+    content: url("assets/Images/estrellaNegra.png");
+}
+
+body.darkMode .mat-icon-button{
+    border-color: black;
+}
 
 
 

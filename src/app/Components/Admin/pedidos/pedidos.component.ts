@@ -171,7 +171,6 @@ export class PedidosComponent implements OnInit, OnDestroy {
       })
 
       this.venta.correoCliente = resp;
-
       this.venta.precioVenta = this.carrito.precioCarrito;
       this.venta.cantidadVenta = cantidad;
 

@@ -557,3 +557,23 @@
         padding-top: 20%;
     }
 }
+
+
+@media screen and (max-width:500px){
+    .cajaM{
+        flex-direction: column;
+    }
+    .cajaImg{
+        width: 100%;
+    }
+    .cajaInfoReco{
+        display: none;
+    }
+    .prueba{
+        width: 100%;
+        margin-top: 10px;
+    }
+    .card-text{
+        font-size: 1.2rem;
+    }
+}
