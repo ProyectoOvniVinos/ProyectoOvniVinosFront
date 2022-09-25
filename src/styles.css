@@ -624,23 +624,23 @@ body.darkMode .loader {
 }
 
 body.darkMode .imgProducto1{
-    content: url("assets/Images/botella-de-plasticoNegra.png");
+    content: url("assets/Images/botella-de-plasticoNegra.png")!important;
 }
 
 body.darkMode .imgProducto2{
-    content: url("assets/Images/vinoNegro.png");
+    content: url("assets/Images/vinoNegro.png")!important;
 }
 
 body.darkMode .imgProducto3{
-    content: url("assets/Images/juntasNegra.png");
+    content: url("assets/Images/juntasNegra.png")!important;
 }
 
 body.darkMode .imgProducto4{
-    content: url("assets/Images/estrellaNegra.png");
+    content: url("assets/Images/estrellaNegra.png")!important;
 }
 
 body.darkMode .mat-icon-button{
-    border-color: black;
+    border-color: black !important;
 }
 
 
