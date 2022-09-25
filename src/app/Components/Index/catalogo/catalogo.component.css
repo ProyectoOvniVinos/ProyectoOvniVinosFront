@@ -832,3 +832,9 @@ button.mat-menu-item {
         width: 6%;
     }
 }
+
+@media screen and (max-height: 450px) {
+    .catalogoTwo {
+        margin-bottom: 200%;
+    }
+}
