@@ -767,7 +767,7 @@ button.mat-menu-item {
     }
 
     .catalogoTwo {
-        margin-bottom: 100%;
+        margin-bottom: 60%;
     }
 
     .cardP {
@@ -791,7 +791,7 @@ button.mat-menu-item {
 @media screen and (max-width: 450px) and (max-height: 900px) {
 
     .catalogoTwo {
-        margin-bottom: 65%;
+        margin-bottom: 80%;
     }
 
     .buscador input {
@@ -821,7 +821,7 @@ button.mat-menu-item {
 
 @media screen and (max-width: 360px) and (max-height: 750px) {
     .catalogoTwo {
-        margin-bottom: 145%;
+        margin-bottom: 130%;
     }
 
     .btnFiltro {
@@ -833,9 +833,41 @@ button.mat-menu-item {
     }
 }
 
+@media screen and (min-height:600px)and (max-height: 642px) {
+    .catalogoTwo {
+        margin-bottom: 170%;
+    }
+}
+
+@media screen and (max-height: 600px) {
+    .catalogoTwo {
+        margin-bottom: 167%;
+    }
+}
+
+@media screen and (min-height: 540px) and (max-height: 600px) {
+    .catalogoTwo {
+        margin-bottom: 210%;
+    }
+}
+
+@media screen and (max-width: 330px) and (max-height: 540px) {
+    .catalogoTwo {
+        margin-bottom: 220%;
+    }
+}
+
 @media screen and (max-height: 450px) {
     .catalogoTwo {
         margin-bottom: 200%;
     }
 }
 
+<<<<<<< HEAD
+=======
+@media screen and (min-width:330px)and (max-width: 381px) and (max-height: 645px) {
+    .catalogoTwo {
+        margin-bottom: 165%;
+    }
+}
+>>>>>>> 0418971804fed58c570b2b85ab9e1ba63120d2b1
