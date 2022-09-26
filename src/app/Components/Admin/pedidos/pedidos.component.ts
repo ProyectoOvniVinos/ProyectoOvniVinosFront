@@ -103,9 +103,11 @@ export class PedidosComponent implements OnInit, OnDestroy {
         }
 
       });
+      if(!this.loginService.hasRole("ROLE_CLIENTE")){
+        this.client.publish({ destination: '/app/alerta', body: "entro" });
 
-      this.client.publish({ destination: '/app/alerta', body: "entro" });
-      this.client.publish({ destination: '/app/alerta2', body: "entro" });
+      }
+          this.client.publish({ destination: '/app/alerta2', body: "entro" });
       if(this.loginService.hasRole('ROLE_CLIENTE')){
         this.client.publish({ destination: '/app/alerta3', body: this.loginService.usuario.correo });
       }
@@ -136,7 +138,6 @@ export class PedidosComponent implements OnInit, OnDestroy {
 
   inicio1() {
 
-    this.pedidosPendientes();
     this.getPedidosCliente(1);
     this.activateRoute.params.subscribe(params => {
       let carrito = params['carrito'];
@@ -145,7 +146,7 @@ export class PedidosComponent implements OnInit, OnDestroy {
       } else {
         if (this.loginService.hasRole('ROLE_ADMIN')) {
           this.lugarmijo = '1';
-          this.pedidosPendientes()
+          this.pedidosPendientes();
         } else {
           this.lugarmijo = '2';
           this.pedidoService.getPedidosClienteEspecifico(this.loginService.usuario.correo).subscribe(pedidos => {

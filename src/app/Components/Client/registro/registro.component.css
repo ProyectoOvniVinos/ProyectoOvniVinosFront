@@ -380,5 +380,16 @@ a:hover{
     }
 }
 
+@media screen and (max-width: 500px){
+    .cajaM-login{
+        height:75%;
+    }
+
+    .btnRegistrar{
+        width: 80%;
+        margin-bottom: 5%;
+    }
+}
+
 
 
