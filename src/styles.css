@@ -643,6 +643,14 @@ body.darkMode .mat-icon-button{
     border-color: black !important;
 }
 
+body.darkMode .infoHeaderT{
+    background: linear-gradient(90deg, rgb(21, 20, 20) 11%, rgb(74, 74, 74) 55%, rgb(6, 6, 6) 100%)!important;
+}
+
+body.darkMode .img{
+    border-color: black!important;
+}
+
 
 
 

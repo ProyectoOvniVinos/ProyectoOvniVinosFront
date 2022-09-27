@@ -32,7 +32,7 @@ export class AgregarProductoComponent implements OnInit {
 
   botonAccion = "Deshabilitar"
   boton:string = "Registrar"
-  titulo:string = "CREAR PRODUCTO";
+  titulo:string = "AGREGAR PRODUCTO";
   registroProductoForm !: FormGroup;
   private fotoSeleccionada !: File;
 
