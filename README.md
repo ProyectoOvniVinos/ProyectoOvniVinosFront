@@ -9,7 +9,7 @@ Si se desea usar localmente, se deben de actualizar los servicios o services del
 e instalar los módulos de node, navegar a la carpeta de services y actualizar la url a "localhost:8080", esto en caso de que tenga este puerto en springboot, 
 pero si usted usa otro puerto, pues deberá colocar el que use.
 
-porfavor instalar la version mas estable y actual de nodejs, se recomienda la version 16.15.1
+Por favor instalar la versión más estable y actual de nodejs, se recomienda la versión 16.15.1
 
 link del backend = https://github.com/ProyectoOvniVinos/ProyectoOvniVinosBack.git
 
