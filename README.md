@@ -16,7 +16,8 @@ link del frontend = https://github.com/ProyectoOvniVinos/ProyectoOvniVinosFront.
 link de la documentacion = https://github.com/ProyectoOvniVinos/OvniVinosDocumentos.git 
 Link del aplicativo = https://proyectoovnivinosfront.pages.dev/catalogo
 
-Créditos: \n
+Créditos:
+
 Cristian Amador mancera -> https://github.com/cristianmancera 
 Brayni Valentina Campo -> https://github.com/BrayniCampo 
 Juan Camilo Grajales -> https://github.com/grajales100 
